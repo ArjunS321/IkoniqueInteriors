@@ -7,11 +7,11 @@
 	<div class="menu-sidebar__content js-scrollbar1">
 		<nav class="navbar-sidebar">
 			<ul class="list-unstyled navbar__list">
-				<li class="active has-sub"><a class="js-arrow" href="#"> <i
+				<li class="active has-sub"><a class="js-arrow" href="index.jsp"> <i
 						class="fas fa-tachometer-alt"></i>Dashboard
 				</a>
 					<ul class="list-unstyled navbar__sub-list js-sub-list">
-						<li><a href="index.jsp">Dashboard 1</a></li>
+<!-- 						<li><a href="index.jsp">Dashboard 1</a></li> -->
 						<!-- 								<li><a href="index2.jsp">Dashboard 2</a></li> -->
 						<!-- 								<li><a href="index3.jsp">Dashboard 3</a></li> -->
 						<!-- 								<li><a href="index4.jsp">Dashboard 4</a></li> -->
