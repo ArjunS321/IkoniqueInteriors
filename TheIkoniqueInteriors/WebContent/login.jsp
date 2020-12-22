@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<title>Login</title>
 
 <head>
     <!-- Required meta tags-->
@@ -44,7 +45,7 @@
                                         <input type="checkbox" name="remember">Remember Me
                                     </label>
                                     <label>
-                                        <a href="#">Forgotten Password?</a>
+                                        <a href="forget-pass.jsp">Forgotten Password?</a>
                                     </label>
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
@@ -54,11 +55,17 @@
                                         <button class="au-btn au-btn--block au-btn--blue2">sign in with twitter</button>
                                     </div> -->
                                 </div>
+
                             </form>
+                            
+                          
                             <div class="register-link">
                                 <p>
+                                  <a href="#">Skip Login</a>
+                                  <br><br>
                                     Don't you have account?
-                                    <a href="#">Sign Up Here</a>
+                                    <a href="register.jsp">Sign Up Here</a>
+                                    
                                 </p>
                             </div>
                         </div>
