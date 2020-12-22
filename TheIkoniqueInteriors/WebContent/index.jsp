@@ -38,7 +38,7 @@
 			<!-- HEADER DESKTOP-->
 
 			<!-- MAIN CONTENT-->
-			<div class="main-content">
+			 <div class="main-content">
 				<div class="section__content section__content--p30">
 					<div class="container-fluid">
 						<div class="row">
@@ -51,8 +51,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="row m-t-25">
-							<div class="col-sm-6 col-lg-3">
+			 			<div class="row m-t-25">
+							 <div class="col-sm-6 col-lg-3">
 								<div class="overview-item overview-item--c1">
 									<div class="overview__inner">
 										<div class="overview-box clearfix">
@@ -70,11 +70,18 @@
 									</div>
 								</div>
 							</div>
+							
+							
+							
+							<div>
+							<a>About Us</a> 
+							</div>
 							<div class="col-sm-6 col-lg-3">
 								<div class="overview-item overview-item--c2">
 									<div class="overview__inner">
 										<div class="overview-box clearfix">
 											<div class="icon">
+												
 												<i class="zmdi zmdi-shopping-cart"></i>
 											</div>
 											<div class="text">
@@ -88,7 +95,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-6 col-lg-3">
+							  <div class="col-sm-6 col-lg-3">
 								<div class="overview-item overview-item--c3">
 									<div class="overview__inner">
 										<div class="overview-box clearfix">
@@ -158,7 +165,7 @@
 									</div>
 								</div>
 							</div>
-<!-- 							<div class="col-lg-6"> -->
+ 							<div class="col-lg-6"> -->
 <!-- 								<div class="au-card chart-percent-card"> -->
 <!-- 									<div class="au-card-inner"> -->
 <!-- 										<h3 class="title-2 tm-b-5">char by %</h3> -->
@@ -183,7 +190,7 @@
 <!-- 								</div> -->
 <!-- 							</div> -->
 						</div>
-						<div class="row">
+						 <div class="row">
 							<div class="col-lg-9">
 								<h2 class="title-1 m-b-25">Earnings By Items</h2>
 								<div class="table-responsive table--no-card m-b-40">
@@ -267,7 +274,7 @@
 										</tbody>
 									</table>
 								</div>
-							</div>
+							</div> 
 <!-- 							<div class="col-lg-3"> -->
 <!-- 								<h2 class="title-1 m-b-25">Top countries</h2> -->
 <!-- 								<div -->
@@ -315,7 +322,7 @@
 <!-- 								</div> -->
 <!-- 							</div> -->
 						</div>
-						<div class="row">
+						 <div class="row">
 							<div class="col-lg-6">
 								<div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
 									<div class="au-card-title"
@@ -593,7 +600,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- END MAIN CONTENT-->
+ 			<!-- END MAIN CONTENT-->
 			<!-- END PAGE CONTAINER-->
 		</div>
 
@@ -605,3 +612,4 @@
 
 </html>
 <!-- end document-->
+s
