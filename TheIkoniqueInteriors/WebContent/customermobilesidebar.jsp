@@ -22,7 +22,7 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="visitor.jsp">
                                 <i class="fas fa-tachometer-alt"></i>Home</a>
                         </li>
                         <li class="has-sub">
@@ -61,7 +61,7 @@
                                 <i class="fas fa-map-marker-alt"></i>Enquiry</a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="aboutus.jsp">
                                 <i class="fas fa-map-marker-alt"></i>About Us</a>
                         </li>
                         

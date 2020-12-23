@@ -61,7 +61,7 @@
                           
                             <div class="register-link">
                                 <p>
-                                  <a href="#">Skip Login</a>
+                                  <a href="visitor.jsp">Skip Login</a>
                                   <br><br>
                                     Don't you have account?
                                     <a href="register.jsp">Sign Up Here</a>
