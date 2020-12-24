@@ -18,11 +18,10 @@
 		<%@include file="customersidebar.jsp"%>
 		<div class="page-container">
 			<%@include file="customerheader.jsp"%>
-
-
-			<div class="main-content">
 			<link href="css/table.css" rel="stylesheet" media="all">
 			<link href="js/table.js" rel="stylesheet" media="all">
+			<div class="main-content">
+			
 			
 				<div class="section__content section__content--p30">
 					<div class="container-fluid">
