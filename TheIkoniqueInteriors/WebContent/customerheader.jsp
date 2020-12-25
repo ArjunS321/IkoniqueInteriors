@@ -87,8 +87,6 @@
 						<div class="noti__item js-item-menu">
 							<a href="cart.jsp"><i class="fas fa-shopping-cart"></i> </a>
 						</div>
-						<a class="noti__item" href="cart.jsp"><i class="fas fa-shopping-cart"></i><span
-								class="quantity">1</span></a>
 						<div class="noti__item js-item-menu">
 							<i class="zmdi zmdi-notifications"></i> <span class="quantity">3</span>
 							<div class="notifi-dropdown js-dropdown">

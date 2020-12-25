@@ -83,9 +83,8 @@ html {
 <%@include file="commoncss.jsp"%>
 </head>
 <body>
-	<div class="noti__item js-item-menu about-section col-md-12 home" >
+	<div class="noti__item about-section col-md-12 home" >
 		<a href="customer.jsp"><i class="fas fa-home"></i></a>
-
 	</div>
 	<div class="about-section">
   <h1>About Us Page</h1>

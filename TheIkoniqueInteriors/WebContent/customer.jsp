@@ -11,7 +11,7 @@
 </head>
 <body class="animsition">
 	<div class="page-wrapper">
-		<%@include file="customermobilesidebar.jsp"%>
+<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>
 		<%@include file="customersidebar.jsp"%>
 		<div class="page-container">
 			<%@include file="customerheader.jsp"%>
