@@ -32,7 +32,6 @@ body{
 	
 	background-color: #fff;
 	border-radious: 10px;
-    /* box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034), 0 6.7px 5.3px rgba(0,0,0,0.048); */
     box-shadow: 5px 10px #888888;
 	-webkit-border-radious: 10px;
 	overflow: hidden;
@@ -74,7 +73,7 @@ body{
 }
 .form{
 	
-	padding: 7px;
+	padding: 20px;
 	
 	
 }
@@ -84,6 +83,7 @@ body{
 }
 .form-control label{
 	display: inline-block;
+	margin-top: 20px;
 	margin-bottom: 5px;
 	font-weight: bold;
 }
@@ -130,10 +130,11 @@ body{
 }
 .form-control i{
 	position: absolute;
-	 right: 15px; 
-	top: 50px;
+	 right: 3px; 
+	top: 60px;
 	visibility: hidden;
 }
+
 .form-control small{
 	color: #e74c3c;
 	position: absolute;
@@ -153,5 +154,6 @@ body{
 	color: #e74c3c;
 	visibility: visible;
 }
+
 
 }

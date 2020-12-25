@@ -59,14 +59,14 @@
 				
  -->
  			<label>Address</label><br>
- 			<textarea rows="3" cols="10"  id="add" name="address"></textarea>
+ 			<textarea rows="3" cols="50"  id="add" name="address"></textarea>
  			<i class="fas fa-check-circle"></i>
 				<i class="fas fa-exclamation-circle"></i> <small>Error Msg</small>
 				
 							
 			</div>
 			<div class="form-group form-control">
-				<label>ContactNo</label> <input type="text" name="contactno"
+				<label>ContactNo</label> <input type="number" name="contactno"
 					id="cno" placeholder="contactno"> <i
 					class="fas fa-check-circle"></i> <i
 					class="fas fa-exclamation-circle"></i> <small>Error Msg</small>
@@ -98,12 +98,12 @@
 
 			</div> -->
 			<div class="form-group form-control">
-				<label>Pincode</label> <input type="text" name="pincode"
+				<label>Pincode</label> <input type="number" name="pincode"
 					id="pcode" placeholder="pincode"> <i
 					class="fas fa-check-circle"></i> <i
 					class="fas fa-exclamation-circle"></i> <small>Error Msg</small>
 
-			</div>
+			</div><br>
 			<div class="login-checkbox">
 									<label> <input type="checkbox" name="aggree">Agree
 										the terms and policy
@@ -120,7 +120,7 @@
 							</div>
 							<div class="register-link">
 								<p>
-									Already have account? <a href="login.jsp">Sign In</a>
+									Already have an account? <a href="login.jsp">Sign In</a>
 								</p>
 							</div>
 			
@@ -232,9 +232,9 @@
 				setErrorMsg(add,'ADRESS CANNOT BE BLANK');
 				
 			}
-		else if(addVal.length <=5)
+		else if(addVal.length <10)
 			{
-				setErrorMsg(add,'PLEASE ENTER ATLEAST 5 CHARACTER ');
+				setErrorMsg(add,'PLEASE ENTER ATLEAST 10 CHARACTER ');
 			}
 		else
 			{
@@ -272,10 +272,14 @@
 		 {
 		 	setErrorMsg(pass,'PASSWORD CAN NOT BE BLANK')
 		 }
-	 	else if(passVal.length <=8){
+	 	else if(passVal.length <8){
 		 	setErrorMsg(pass,'PLEASE ENTER ATLEAST 8 CHARACTER');
 		 
 	 	}
+	 	else if(passVal.length >15)
+ 		{
+ 			setErrorMsg(pass,'PASSWORD CANNOT EXCEED MORE THAN 15 CHARACTERS');
+ 		}
 		 else if(!isPass(passVal)){
 		 	setErrorMsg(pass,'PASSWORD MUST CONTAIN ATLEAST ONE SPECIAL CHARACTER @,#,$,*,&,_');
 		 }
@@ -288,8 +292,8 @@
 		 {
 		 	setErrorMsg(pcode,'PINCODE CAN NOT BE BLANK')
 		 }
-	 	else if(pcodeVal.length <=6){
-		 	setErrorMsg(pcode,'PINCODE CAN NOT BE LESS THE 6 DIGIT');
+	 	else if(pcodeVal.length != 6){
+		 	setErrorMsg(pcode,'PINCODE MUST HAVE 6 DIGIT');
 		 
 	 	}
 		 else
@@ -305,9 +309,9 @@
 	
 	const isEmail = (emailVal) => {
 		var atSymbol=emailVal.indexOf("@");
-		if(atSymbol < 1) return false;
+		if(atSymbol < 3) return false;
 		var dot=emailVal.lastIndexOf('.');
-		if(dot<= atSymbol + 2) return false;
+		if(dot<= atSymbol + 3) return false;
 		if(dot === emailVal.length -1) return false;
 		
 		return true;

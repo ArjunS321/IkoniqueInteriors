@@ -159,7 +159,7 @@
 		 {
 		 	setErrorMsg(pass,'PASSWORD CAN NOT BE BLANK')
 		 }
-	 	else if(passVal.length <=8){
+	 	else if(passVal.length <8){
 		 	setErrorMsg(pass,'PLEASE ENTER ATLEAST 8 CHARACTER');
 		 
 	 	}
@@ -183,9 +183,9 @@
 	
 	const isEmail = (emailVal) => {
 		var atSymbol=emailVal.indexOf("@");
-		if(atSymbol < 1) return false;
+		if(atSymbol < 3) return false;
 		var dot=emailVal.lastIndexOf('.');
-		if(dot<= atSymbol + 2) return false;
+		if(dot<= atSymbol + 3) return false;
 		if(dot === emailVal.length -1) return false;
 		
 		return true;
