@@ -97,7 +97,7 @@ html {
 <div class="row">
   <div class="column">
     <div class="card">
-      <img src="images/icon/avatar-01.jpg" alt="Jane" style="width:100%">
+      <img src="images/icon/Passport Size Photo.jpg" alt="Jane" style="width:100%">
       <div class="container">
         <h2>Jane Doe</h2>
         <p class="title">CEO & Founder</p>
