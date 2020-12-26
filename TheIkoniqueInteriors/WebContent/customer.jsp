@@ -13,14 +13,16 @@
 	<div class="page-wrapper">
 <%-- 		<%@include file="customermobilesidebar.jsp"%> --%>
 		<%@include file="customersidebar.jsp"%>
+		<%@include file="customerheader.jsp"%>
 		<div class="page-container">
-			<%@include file="customerheader.jsp"%>
+			
 			<div class="main-content">
+			
 				<table>
 					<tr>
 						<td>
 							<div class="container col-md-4">
-								<div class="card">
+								<div class="card ">
 									<div class="imgBx">
 										<img src="images/icon/table.png">
 									</div>
