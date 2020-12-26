@@ -40,21 +40,21 @@
 
 				<div class="wrap-input100 validate-input" data-validate="Name is required">
 					<label class="label-input100" for="name">Full name</label>
-					<input id="name" class="input100" type="text" name="name" placeholder="Enter your name...">
+					<input id="name" class="input100" type="text" name="name" placeholder="Enter your name..." required>
 					<span class="focus-input100"></span>
 				</div>
 
 
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 					<label class="label-input100" for="email">Email Address</label>
-					<input id="email" class="input100" type="text" name="email" placeholder="Enter your email...">
+					<input id="email" class="input100" type="text" name="email" placeholder="Enter your email..." required>
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100">
 					<div class="label-input100">What do you need?</div>
 					<div>
-						<select class="js-select2" name="service">
+						<select class="js-select2" name="service" required>
 							<option>Please chooses</option>
 							<option>UI/UX Design</option>
 							<option>eCommerce Bussiness</option>
@@ -67,13 +67,17 @@
 
 				<div class="wrap-input100 validate-input" data-validate = "Message is required">
 					<label class="label-input100" for="message">Message</label>
-					<textarea id="message" class="input100" name="message" placeholder="Type your message here..."></textarea>
+					<textarea id="message" class="input100" name="message" placeholder="Type your message here..." required></textarea>
 					<span class="focus-input100"></span>
 				</div>
 				<div class="container-contact100-form-btn">
+				<a href="#">
 					<button class="contact100-form-btn">
+					
 						Send
+						
 					</button>
+					</a>
 				</div>
 
 				<div class="contact100-form-social flex-c-m">
