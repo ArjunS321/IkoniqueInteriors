@@ -21,13 +21,9 @@
 <link rel="stylesheet" href="css/styleValidation.css" type="text/css">
 <%--  <%@include file="commoncss.jsp"%> --%> 
  
- 
 </head>
-
 <body>
 	<div class="container">
-	
-		
 		<div class="header">
 		<h2>
 			<a href="#"> <img src="images/icon/logo.png"
@@ -123,11 +119,6 @@
 									Already have an account? <a href="login.jsp">Sign In</a>
 								</p>
 							</div>
-			
-
-	
-	
-
 <%-- 
 	 <%@include file="commonjs.jsp"%>   --%>
 	</form>
