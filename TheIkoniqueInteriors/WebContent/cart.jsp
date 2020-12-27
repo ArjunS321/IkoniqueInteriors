@@ -255,7 +255,7 @@ var product_total_amt = document.getElementById('product_total_amt');
 var shipping_charge = document.getElementById('shipping_charge');
 var total_cart_amt = document.getElementById('total_cart_amt');
 var discountCode = document.getElementById('discount_code1');
-const decreaseNumber = (incdec, itemprice) => {
+const decreaseNumber = (incdec, itemprice) =>{
 var itemval = document.getElementById(incdec);
 var itemprice = document.getElementById(itemprice);
 console.log( itemprice.innerHTML);
