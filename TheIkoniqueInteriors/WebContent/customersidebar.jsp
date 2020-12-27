@@ -21,9 +21,9 @@
 						<li class="has-sub"><a class="js-arrow" href="#"><i
 								class="fas  fa-toggle-down (alias)"></i>Home</a>
 							<ul class="list-unstyled js-sub-list">
-								<li><a href="#"><i class="fas fa-arrow-circle-o-right"></i>Tables</a></li>
-								<li><a href="#"><i class="fas fa-arrow-circle-o-right"></i>Lighting</a></li>
-								<li><a href="#"><i class="fas fa-arrow-circle-o-right"></i>Art</a></li>
+								<li><a href="customerhometable.jsp"><i class="fas fa-arrow-circle-o-right"></i>Tables</a></li>
+								<li><a href="customerhomelamp.jsp"><i class="fas fa-arrow-circle-o-right"></i>Lighting</a></li>
+								<li><a href="customerhomeart.jsp"><i class="fas fa-arrow-circle-o-right"></i>Art</a></li>
 							</ul></li>
 						<li class="has-sub"><a class="js-arrow" href="#"><i
 								class="fas fa-toggle-down (alias)"></i>Hotel</a>
