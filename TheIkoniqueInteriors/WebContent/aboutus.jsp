@@ -1,160 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>About Us</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
+    background-color: #d8d8d8;
 }
-
-html {
-  box-sizing: border-box;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-.column {
-  float: left;
-  width: 33.3%;
-  margin-bottom: 16px;
-  padding: 0 8px;
-}
-
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: 8px;
-}
-
-.about-section {
-  padding: 50px;
+h1 {
   text-align: center;
-  background-color: #474e5d;
-  color: white;
 }
-
-.container {
-  padding: 0 16px;
+.social-menu ul {
+    position: absolute;
+    top: 90%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    margin: 0;
+    display: flex;
 }
-
-.container::after, .row::after {
-  content: "";
-  clear: both;
-  display: table;
+.social-menu ul li {
+    list-style: none;
+    margin: 0 10px;
 }
-
-.title {
-  color: grey;
+.social-menu ul li .fa {
+    color: #000000;
+    font-size: 25px;
+    line-height: 50px;
+    transition: .5s;
 }
-
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
+.social-menu ul li .fa:hover {
+    color: #ffffff;
 }
-
-.button:hover {
-  background-color: #555;
-}
-
-/* .home */
-/* { */
-/* 	background-color: grey; */
-/* } */
-
-@media screen and (max-width: 650px) {
-  .column {
-    width: 100%;
+.social-menu ul li a {
+    position: relative;
     display: block;
-  }
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    text-align: center;
+    transition: 0.5s;
+    transform: translate(0,0px);
+    box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.5);
+}
+.social-menu ul li a:hover {
+    transform: rotate(0deg) skew(0deg) translate(0, -10px);
+}
+.social-menu ul li:nth-child(1) a:hover {
+    background-color: #3b5999;
+}
+.social-menu ul li:nth-child(2) a:hover {
+    background-color: #55acee;
+}
+.social-menu ul li:nth-child(3) a:hover {
+    background-color: #e4405f;
+}
+.social-menu ul li:nth-child(4) a:hover {
+    background-color: #cd201f;
+}
+.social-menu ul li:nth-child(5) a:hover {
+    background-color: #0077B5;
 }
 </style>
-<%@include file="FontFaces.jsp"%>
-
-<%@include file="commoncss.jsp"%>
+<title>About Us</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
-	<div class="noti__item about-section col-md-12 home" >
-		<a href="customer.jsp"><i class="fas fa-home"></i></a>
-	</div>
-	<div class="about-section">
-  <h1>About Us Page</h1>
-  <p>Some text about who we are and what we do.</p>
-  <p>Resize the browser window to see that this page is responsive by the way.</p>
-</div>
-
-<h2 style="text-align:center">Our Team</h2>
-<div class="row">
-  <div class="column">
-    <div class="card">
-      <img src="images/icon/Passport Size Photo.jpg" alt="Jane" style="width:100%">
-      <div class="container">
-        <h2>Jane Doe</h2>
-        <p class="title">CEO & Founder</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>jane@example.com</p>
-<!--         <p><button class="button">Contact</button></p> -->
-      </div>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <img src="images/icon/avatar-01.jpg" alt="Mike" style="width:100%">
-      <div class="container">
-        <h2>Mike Ross</h2>
-        <p class="title">Art Director</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>mike@example.com</p>
-<!--         <p><button class="button">Contact</button></p> -->
-      </div>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-      <img src="images/icon/avatar-01.jpg" alt="John" style="width:100%">
-      <div class="container">
-        <h2>John Doe</h2>
-        <p class="title">Designer</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>john@example.com</p>
-<!--         <p><button class="button">Contact</button></p> -->
-      </div>
-    </div>
-  </div>
-</div>
+<body class=animsition>
 <div class="about-section">
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container">
-    <h3>Social Media</h3>
-    <br />
-    <!-- *-*-*-*-*-*-*-*-*-*-*-*  ANIMATED ICONS  *-*-*-*-*-*-*-*-*-*-*-* -->
-    <div class="col-md-12">
-      <ul class="social-network social-circle">
-        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-        <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
-        <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
-      </ul>
-    </div>
+<%@include file="appointmentcards.jsp" %>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="social-menu">
+  
+  <ul>
+    <li><a href=""><i class="fa fa-facebook"></i></a></li>
+    <li><a href=""><i class="fa fa-twitter"></i></a></li>
+    <li><a href=""><i class="fa fa-instagram"></i></a></li>
+    <li><a href=""><i class="fa fa-youtube"></i></a></li>
+    <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+  </ul>
 </div>
 </div>
 <%@include file="commonjs.jsp"%>
 </body>
 </html>
+
+
+<!-- <div class="container"> -->
+<!--     <h3>Social Media</h3> -->
+<!--     <br /> -->
+<!--     *-*-*-*-*-*-*-*-*-*-*-*  ANIMATED ICONS  *-*-*-*-*-*-*-*-*-*-*-* -->
+<!--     <div class="col-md-12"> -->
+<!--       <ul class="social-network social-circle"> -->
+<!--         <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li> -->
+<!--         <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li> -->
+<!--         <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li> -->
+<!--         <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li> -->
+<!--         <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li> -->
+<!--       </ul> -->
+<!--     </div> -->
+<!-- </div> -->

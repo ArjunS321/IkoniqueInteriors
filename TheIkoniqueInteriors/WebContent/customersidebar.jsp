@@ -1,6 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>About Us</title>
 <%@include file="FontFaces.jsp"%>
 
 <%@include file="commoncss.jsp"%>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class=animsition>
+
+
 
 <aside class="menu-sidebar d-none d-lg-block">
 	<div class="logo">
@@ -48,7 +57,7 @@
 				<li><a href="myorder.jsp"> <i class="fas fa-suitcase"></i>My
 						Orders
 				</a></li>
-				<li><a href="showinterior.jsp"> <i class="fas fa-male"></i>Appoint
+				<li><a href="appointmentcards.jsp"> <i class="fas fa-male"></i>Appoint
 						Interior Designer
 				</a></li>
 				<li><a href="enquiry.jsp"> <i class="fas fa-question"></i>Enquiry
@@ -64,3 +73,5 @@
 </aside>
 
 <%@include file="commonjs.jsp"%>
+</body>
+</html>
