@@ -16,7 +16,7 @@
 		<%@include file="customersidebar.jsp"%>
 		<%@include file="customerheader.jsp"%>
 		<div class="page-container">
-			<div class="main-content">
+			<div class="main-content pt-4">
 <%-- 								<%@include file="slideshow.jsp" %> --%>
 				<%@include file="product.jsp"%>
 			</div>
