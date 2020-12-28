@@ -15,7 +15,7 @@
 		<div class="page-container">
 			<div class="main-content">
 				<!-- HEADER -->
-				<header class="l-header">
+				<header class="header-desktop">
 					<nav class="nav bd-grid">
 						<a href="#" class="nav__logo">Wooden Table</a>
 

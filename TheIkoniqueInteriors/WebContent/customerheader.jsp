@@ -84,7 +84,7 @@
 						<!-- 											</div> -->
 						<!-- 										</div> -->
 						<!-- 									</div> -->
-						<div class="noti__item js-item-menu">
+						<div class="noti__item">
 							<a href="cart.jsp"><i class="fas fa-shopping-cart"></i> </a>
 						</div>
 						<div class="noti__item js-item-menu">
