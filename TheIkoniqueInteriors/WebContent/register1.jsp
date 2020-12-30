@@ -16,6 +16,7 @@
 	<%--  <%@include file="FontFaces.jsp"%>  --%>
 <link rel="stylesheet" href="css/login1css.css" type="text/css">
 
+
 <!-- <link rel="stylesheet" href="css/styleValidation.css" type="text/css"> -->
 <%--  <%@include file="commoncss.jsp"%> --%> 
  
@@ -42,7 +43,7 @@
 		<i class="fas fa-exclamation-circle"></i> <small>Error Msg</small> 
 		</div>
 		
-		<div class="form-group form-control">
+		<div class="form-group form-control form-size">
 		<textarea rows="5"  name="address" id="add" placeholder="Address" autocomplete="off"></textarea>
 		<i class="fas fa-check-circle"></i> 
 		<i class="fas fa-exclamation-circle"></i> <small>Error Msg</small> 
@@ -77,7 +78,7 @@
 							</div>
 	</form>
 </div>
-
+<%@include file="commonjs.jsp"%>
 </body>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
