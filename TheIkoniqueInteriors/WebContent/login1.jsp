@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>َLogin</title>
-    <link rel="stylesheet" href="css/login1css.css">
-    <link rel="stylesheet"
+<html lang="en">
+
+<head>
+<!-- Required meta tags-->
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0">
+<!-- Title Page-->
+<title>Login</title>
+<link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"
 	integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg=="
 	crossorigin="anonymous" />
-<link rel="stylesheet" href="css/styleValidation.css" type="text/css">
-  </head>
+	<%--  <%@include file="FontFaces.jsp"%>  --%>
+
+<link rel="stylesheet" href="css/login1css.css" type="text/css">
+ <%-- <%@include file="commoncss.jsp"%> 
+  --%>
+ 
+</head>
+
   <body>
   <div class="container">
 
@@ -17,12 +27,12 @@
   <h1>Login</h1>
   
   <div class="form-group form-control">
-  <input type="text" name="email" id="email" placeholder="E-Mail"><i class="fas fa-check-circle"></i>
+  <input type="text" name="email" id="email" placeholder="E-Mail" autocomplete="off"><i class="fas fa-check-circle"></i>
 		<i class="fas fa-exclamation-circle"></i> <small>Error Msg</small> 
   </div>
   
   <div class="form-group form-control">
-  <input type="text" name="password" id="pass" placeholder="Password"><i class="fas fa-check-circle"></i>
+  <input type="password" name="password" id="pass" placeholder="Password"><i class="fas fa-check-circle"></i>
 		<i class="fas fa-exclamation-circle"></i> <small>Error Msg</small> 
   </div>
 			<div class="login-checkbox">
@@ -41,7 +51,7 @@
                                   <a href="visitor.jsp" class="color">Skip Login</a>
                                   <br><br>
                                     Don't you have account?
-                                    <a class="color" href="register.jsp">Sign Up Here</a>
+                                    <a clas="color" href="register1.jsp">Sign Up Here</a>
                                     
                                 </h6>
                             </div>
@@ -52,107 +62,133 @@
   </body>
  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
-	const form=document.getElementById('form');
-	const fname=document.getElementById('fname');
-	const lname=document.getElementById('lname');
-	const add=document.getElementById('add');
-	const cno=document.getElementById('cno');
-	const email=document.getElementById('email');
-	const pass=document.getElementById('pass');
-	const pcode=document.getElementById('pcode');
-	
-	form.addEventListener('submit',(event) => {
-		 event.preventDefault();
-		
-		validate();
-	})
-	
-	const sendData =(sRate,count) =>{
-		if(sRate === count)
-			{	alert("SuccessFull");
-				swal("Good job!", "You clicked the button!", "success");
-				response.sendRedirect("customer.jsp");
-			}
-	}
-	
-	const successMsg = () => {
-			
-		 
-		 var formCon =document.getElementsByClassName('form-control');
-	
-		var count=(formCon.length)-1;
-		
-		for(var i=0;i< formCon.length;i++)
-			{
-				if(formCon[i].className === 'form-control success'){
-					var sRate=0+i;
-					console.log(sRate);
-					sendData(sRate,count);
-					
-				}
-				else
-					{
-						return false;
-					}
-			} 
-	
-		
-		
-		
-	}
-	
-	//define the validate function
-	
-	const validate =()=> {
-		
-	
-		const emailVal=email.value.trim();
-		const passVal=pass.value.trim();
-		
-		  
-			 if(emailVal ==="")
-			 {
-			 	setErrorMsg(email,'EMAIL CAN NOT BE BLANK')
-			 }
-		
-		 else
-			 {
-			 	setSuccessMsg(email);
-			 }
+const email=document.getElementById('email');
+const pass=document.getElementById('pass');
 
-		 if(passVal==="")
-		 {
-		 	setErrorMsg(pass,'PASSWORD CAN NOT BE BLANK')
-		 }
+
+form.addEventListener('submit',(event)=> {
+	 event.preventDefault();
+	
+	validate();
+})
+
+const sendData =(sRate,count) =>{
+	if(sRate === count)
+		{	
+			swal( "","log in is successful!!","success"); 
+		}
+}
+
+const successMsg = () => {
+		
 	 
-	 	else
-		 {
-		 	setSuccessMsg(pass);
-		 }
-		 
-			successMsg();
-	}
-	
-	
-	//more Email validation
-	
-	
-	
-	function setErrorMsg(input, errormsgs){
-		const formControl=input.parentElement;
-		const small=formControl.querySelector('small');
-		formControl.className="form-control error";
-		small.innerText=errormsgs;
-	}
-	
-	
-	
-	function setSuccessMsg(input){
-		const formControl=input.parentElement;
-		formControl.className="form-control success";
-		
-		
-	}
+	 var formCon =document.getElementsByClassName('form-control');
 
+	var count=(formCon.length)-2;
+	
+	for(var i=0;i< formCon.length;i++)
+		{
+			if(formCon[i].className === 'form-control success'){
+				var sRate=0+i;
+				console.log(sRate);
+				sendData(sRate,count);
+				
+			}
+			else
+				{
+					return false;
+				}
+		} 
+
+	
+	
+	
+}
+
+//define the validate function
+
+const validate =()=> {
+	
+
+	const emailVal=email.value.trim();
+	const passVal=pass.value.trim();
+	
+	  
+		 if(emailVal ==="")
+		 {
+		 	setErrorMsg(email,'EMAIL CAN NOT BE BLANK')
+		 }
+	 else if(!isEmail(emailVal)){
+		 setErrorMsg(email,'NOT A VALID EMAIL');
+		 
+	 }
+	 else
+		 {
+		 	setSuccessMsg(email);
+		 }
+
+	 if(passVal==="")
+	 {
+	 	setErrorMsg(pass,'PASSWORD CAN NOT BE BLANK')
+	 }
+ 	else if(passVal.length <8){
+	 	setErrorMsg(pass,'PLEASE ENTER ATLEAST 8 CHARACTER');
+	 
+ 	}
+ 	else if(passVal.length >15)
+ 		{
+ 			setErrorMsg(pass,'PASSWORD CANNOT EXCEED MORE THAN 15 CHARACTERS');
+ 		}
+	 else if(!isPass(passVal)){
+	 	setErrorMsg(pass,'PASSWORD MUST CONTAIN ATLEAST ONE SPECIAL CHARACTER @,#,$,*,&,_');
+	 }
+ 	else
+	 {
+	 	setSuccessMsg(pass);
+	 }
+	 
+		successMsg();
+}
+
+
+//more Email validation
+
+const isEmail = (emailVal) => {
+	var atSymbol=emailVal.indexOf("@");
+	if(atSymbol < 3) return false;
+	var dot=emailVal.lastIndexOf('.');
+	if(dot<= atSymbol + 3) return false;
+	if(dot === emailVal.length -1) return false;
+	
+	return true;
+}
+const isPass = (passVal) => {
+	var atSymbol=passVal.indexOf("@");
+	 var atSymbol1=passVal.indexOf("#");
+	var atSymbol2=passVal.indexOf("$");
+	var atSymbol3=passVal.indexOf("*");
+	var atSymbol4=passVal.indexOf("_");
+	var atSymbol5=passVal.indexOf("&"); 
+	if(atSymbol<1 && atSymbol1<1 && atSymbol2<1 && atSymbol3<1 && atSymbol4<1 && atSymbol5<1 )return false;
+	if(passVal.length >15) return false;
+	return true;
+}
+
+function setErrorMsg(input, errormsgs){
+	const formControl=input.parentElement;
+	const small=formControl.querySelector('small');
+	formControl.className="form-control error";
+	small.innerText=errormsgs;
+}
+
+
+
+function setSuccessMsg(input){
+	const formControl=input.parentElement;
+	formControl.className="form-control success";
+	
+	
+}	
+	
 </script>
 </html>

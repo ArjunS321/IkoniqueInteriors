@@ -1,20 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
+
 <head>
-<meta charset="utf-8">
-<title>َRegistration</title>
-<link rel="stylesheet" href="css/login1css.css">
+<!-- Required meta tags-->
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0">
+
+<!-- Title Page-->
+<title>Registration</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"
 	integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg=="
 	crossorigin="anonymous" />
-<link rel="stylesheet" href="css/styleValidation.css" type="text/css">
+	<%--  <%@include file="FontFaces.jsp"%>  --%>
+<link rel="stylesheet" href="css/login1css.css" type="text/css">
+
+<!-- <link rel="stylesheet" href="css/styleValidation.css" type="text/css"> -->
+<%--  <%@include file="commoncss.jsp"%> --%> 
+ 
+ 
 </head>
+
+
+
 <body>
 <div class="container">
 	
 	<form class="box" action="customer.jsp" method="post" class="form" id="form">
-		<h1>Login</h1>
+		<div class="header">
+		<h2>Registration</h2>
+		</div>
 		
 		<div class="form-group form-control">
 		<input type="text" placeholder="First Name" name="firstname" id="fname" autocomplete="off"> <i class="fas fa-check-circle"></i>
@@ -22,36 +38,43 @@
 		</div>
 		
 		<div class="form-group form-control">
-		<input type="text" name="lastname" placeholder="Last Name" id="lname"><i class="fas fa-check-circle"></i> 
+		<input type="text" name="lastname" placeholder="Last Name" id="lname" autocomplete="off"><i class="fas fa-check-circle"></i> 
 		<i class="fas fa-exclamation-circle"></i> <small>Error Msg</small> 
 		</div>
 		
 		<div class="form-group form-control">
-		<input type="textarea" name="address" id="add" placeholder="Address"><i class="fas fa-check-circle"></i> 
+		<textarea rows="5"  name="address" id="add" placeholder="Address" autocomplete="off"></textarea>
+		<i class="fas fa-check-circle"></i> 
 		<i class="fas fa-exclamation-circle"></i> <small>Error Msg</small> 
 		</div>
 		
 		<div class="form-group form-control">
-		<input type="number" name="contactno" id="cno" placeholder="Contact No."><i class="fas fa-check-circle"></i> 
+		<input type="number" name="contactno" id="cno" placeholder="Contact No." autocomplete="off"><i class="fas fa-check-circle"></i> 
 		<i class="fas fa-exclamation-circle"></i> <small>Error Msg</small> 
 		 </div>
 		 
 		 <div class="form-group form-control">
-		<input type="text" name="email" id="email" placeholder="E-Mail"><i class="fas fa-check-circle"></i> 
+		<input type="text" name="email" id="email" placeholder="E-Mail" autocomplete="off"><i class="fas fa-check-circle"></i> 
 		<i class="fas fa-exclamation-circle"></i> <small>Error Msg</small>  
 		</div>
 		
 		<div class="form-group form-control">
-		<input type="number" name="pincode" id="pcode" placeholder="Pincode"><i class="fas fa-check-circle"></i> 
+		<input type="number" name="pincode" id="pcode" placeholder="Pincode" autocomplete="off"><i class="fas fa-check-circle"></i> 
 		<i class="fas fa-exclamation-circle"></i> <small>Error Msg</small>
 		</div>
 		
 		<div class="form-group form-control">
-		<input type="password" name="password" id="pass" placeholder="Password"><i class="fas fa-check-circle"></i> 
+		<input type="password" name="password" id="pass" placeholder="Password" autocomplete="off"><i class="fas fa-check-circle"></i> 
 		<i class="fas fa-exclamation-circle"></i> <small>Error Msg</small>
 		 </div>
 		 
-		<input type="submit" name="" value="Login">
+		 <input type="submit" name="submit" value="Register">
+		 
+		 <div class="color">
+								<p>
+									Already have an account? <a href="login1.jsp">Sign In</a>
+								</p>
+							</div>
 	</form>
 </div>
 
@@ -75,9 +98,9 @@
 	
 	const sendData =(sRate,count) =>{
 		if(sRate === count)
-			{	alert("SuccessFull");
-				swal("Good job!", "You clicked the button!", "success");
-				response.sendRedirect("index.jsp");
+			{	
+				swal("", "Registration Successfull!!", "success");
+				
 			}
 	}
 	
@@ -86,7 +109,7 @@
 		 
 		 var formCon =document.getElementsByClassName('form-control');
 	
-		var count=(formCon.length)-1;
+		var count=(formCon.length)-2;
 		
 		for(var i=0;i< formCon.length;i++)
 			{

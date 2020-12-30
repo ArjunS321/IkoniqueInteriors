@@ -5,10 +5,7 @@
 <!-- Required meta tags-->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- <meta name="description" content="au theme template">
-<meta name="author" content="Hau Nguyen">
-<meta name="keywords" content="au theme template">
- -->
+
 <!-- Title Page-->
 <title>Login</title>
 <link rel="stylesheet"
@@ -17,7 +14,7 @@
 	crossorigin="anonymous" />
 <%--  <%@include file="FontFaces.jsp"%>  --%>
 
-<link rel="stylesheet" href="css/styleValidation.css" type="text/css">
+<link rel="stylesheet" href="css/login1css.css" type="text/css">
 <%-- <%@include file="commoncss.jsp"%> 
   --%>
 
@@ -27,20 +24,13 @@
 	<div class="container">
 
 
-		<div class="header">
-			<h2>
-				<a href="#"> <img src="images/icon/logo.png"
-					alt="The Ikonique Interiors"> <br>
-				</a>
-			</h2>
-		</div>
-
-		<form action="index.jsp" class="form " id="form" method="post">
+		
+		<form action="" class="box" class="form " id="form" method="post">
 
 
 			<div class="form-group form-control">
-				<label>Email</label> <input type="text" name="email" id="email"
-					placeholder="Email"> <i class="fas fa-check-circle"></i> <i
+				 <input type="text" name="email" id="email"
+					placeholder="Email" autocomplete="off"> <i class="fas fa-check-circle"></i> <i
 					class="fas fa-exclamation-circle"></i> <small>Error Msg</small>
 
 			</div>
@@ -70,10 +60,11 @@
 	
 	const sendData =(sRate,count) =>{
 		if(sRate === count)
-			{	alert("SuccessFull");
-				swal("Good job!", "You clicked the button!", "success");
-				response.sendRedirect("index.jsp");
+			{	console.log(sRate+count);
+				swal("", "Done...!", "success");
+				
 			}
+		
 	}
 	
 	const successMsg = () => {
@@ -81,7 +72,7 @@
 		 
 		 var formCon =document.getElementsByClassName('form-control');
 	
-		var count=(formCon.length)-1;
+		var count=(formCon.length)-2;
 		
 		for(var i=0;i< formCon.length;i++)
 			{
