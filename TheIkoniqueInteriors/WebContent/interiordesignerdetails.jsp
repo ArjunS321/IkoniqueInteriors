@@ -223,9 +223,9 @@ button:active {
 }
 
 .services-text p:nth-child(3) {
-	font-family: calibri;
-	color: #7e7d7d;
-	font-size:;
+/* 	font-family: calibri; */
+/* 	color: #7e7d7d; */
+/* 	font-size:; */
 }
 
 .services-text {
@@ -252,15 +252,15 @@ button:active {
 }
 
 .box-1 {
-	background-image: url("../images/services-1.png");
+	background-image: url('images/services-1.png');
 }
 
 .box-2 {
-	background-image: url("../images/services-2.png");
+	background-image: url("images/services-2.png");
 }
 
 .box-3 {
-	background-image: url("../images/servies-3.png");
+	background-image: url("images/servies-3.png");
 }
 
 .box-1 span, .box-2 span, .box-3 span {
@@ -304,7 +304,7 @@ button:active {
 	height: 280px;
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-image: url("../images/project in your mind.png");
+	background-image: url("images/project in your mind.png");
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -601,7 +601,6 @@ footer {
 			</ul>
 			<!--bars--------------->
 			<div class="toggle"></div>
-
 		</nav>
 	</section>
 	<!--text----------------------->
