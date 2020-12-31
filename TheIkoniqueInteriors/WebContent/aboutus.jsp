@@ -62,10 +62,13 @@ h1 {
 }
 </style>
 <title>About Us</title>
+   <%@include file="commoncss.jsp"%>
+   <%@include file="FontFaces.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class=animsition>
 <div class="about-section">
+  
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>

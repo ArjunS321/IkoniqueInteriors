@@ -15,9 +15,7 @@
 				</form>
 				<div class="header-button">
 					<div class="noti-wrap">
-						<div class="noti__item">
-							<a href="login.jsp"><i class="fas fa-shopping-cart"></i> </a>
-						</div>
+						
 						<div class="noti__item js-item-menu">
 							<i class="zmdi zmdi-notifications"></i> <span class="quantity">3</span>
 							<div class="notifi-dropdown js-dropdown">
@@ -55,6 +53,9 @@
 									<a href="#">All notifications</a>
 								</div>
 							</div>
+						</div>
+						<div class="noti__item">
+							<a href="login.jsp"><i class="fas fa-shopping-cart"></i> </a>
 						</div>
 					</div>
 <!-- 					<div class="account-wrap"> -->

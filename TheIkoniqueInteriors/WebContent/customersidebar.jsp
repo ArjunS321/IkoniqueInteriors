@@ -11,8 +11,8 @@
 
 
 
-<aside class="menu-sidebar d-none d-lg-block">
-	<div class="logo">
+<aside class="menu-sidebar d-none d-lg-block" style="background-color: #e6e7ee;">
+	<div class="logo" style="background-color: #e6e7ee;">
 		<a href="#"> <img src="images/icon/logo.png" alt="Cool Admin" />
 		</a>
 	</div>

@@ -35,7 +35,7 @@
 			<div class="main-content">
 				<div class="row mr-0 ml-0">
 					<div class="col-12">
-						<div class="card shadow-soft border-light p-4 mb-5">
+						<div class="card shadow-soft border-light p-4 mb-5" style="background-color: #e6e7ee;">
 							<div class="row align-items-center">
 								<div class="col-3">
 									<a href="#"> <img src="assets/img/tables/table.jpg"
@@ -73,7 +73,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="card shadow-soft border-light p-4 mb-5">
+						<div class="card shadow-soft border-light p-4 mb-5" style="background-color: #e6e7ee;">
 							<div class="row align-items-center">
 								<div class="col-3">
 									<a href="#"> <img src="assets/img/tables/table.jpg"

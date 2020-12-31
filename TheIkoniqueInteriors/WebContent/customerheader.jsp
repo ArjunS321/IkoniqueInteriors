@@ -2,8 +2,8 @@
 
 <%@include file="commoncss.jsp"%>
 
-<header class="header-desktop">
-	<div class="section__content section__content--p30">
+<header class="header-desktop" style="background-color: #e6e7ee;">
+	<div class="section__content section__content--p30" >
 		<div class="container-fluid">
 			<div class="header-wrap">
 				<form class="form-header" action="" method="POST">
@@ -137,20 +137,20 @@
 							<div class="account-dropdown js-dropdown">
 								<div class="info clearfix">
 									<div class="image">
-										<a href="#"> <img src="images/icon/avatar-01.jpg"
+										<a href="editprofile.jsp"> <img src="images/icon/avatar-01.jpg"
 											alt="John Doe" />
 										</a>
 									</div>
 									<div class="content">
 										<h5 class="name">
-											<a href="#">john doe</a>
+											<a href="editprofile.jsp">john doe</a>
 										</h5>
 										<span class="email">johndoe@example.com</span>
 									</div>
 								</div>
 								<div class="account-dropdown__body">
 									<div class="account-dropdown__item">
-										<a href="#"> <i class="zmdi zmdi-account"></i>Edit Profile
+										<a href="editprofile.jsp"> <i class="zmdi zmdi-account"></i>Edit Profile
 										</a>
 									</div>
 									<div class="account-dropdown__item">

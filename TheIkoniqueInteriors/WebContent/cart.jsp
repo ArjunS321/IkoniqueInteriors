@@ -62,13 +62,17 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="theme-color" content="#ffffff">
 <style>
-.cart {
-	background-color: #e6e7ee;
-}
-.btn-primary
-{
-	background-color: grey;
-}
+/* .cart { */
+/* 	background-color: #e6e7ee; */
+/* } */
+/* .btn-primary */
+/* { */
+/* 	background-color: grey; */
+/* } */
+.bk
+/* { */
+/* 	background-color: #e6e7ee; */
+/* } */
 </style>
 
 <!-- Fontawesome -->
@@ -90,9 +94,9 @@
 		<%@include file="customerheader.jsp"%>
 		<div class="page-container">
 			<div class="main-content">
-				<div class="row mr-0 ml-0">
+				<div class="row mr-0 ml-10">
 					<div class="col-12 col-md-8">
-						<div class="card shadow-soft border-light p-4">
+						<div class="card shadow-soft border-light p-4 " style="background-color: #e6e7ee;">
 							<h3 class="h5 mb-4">Items (2)</h3>
 							<div class="row mb-4">
 								<div class="col-4">
@@ -129,17 +133,17 @@
 								</div>
 							</div>
 							<div class="card-body p-0">
-								<ul class="list-group list-group-sm mt-3">
-									<li class="list-group-item d-flex"><span>Subtotal</span> <span
+								<ul class="list-group list-group-sm mt-3"  >
+									<li class="list-group-item d-flex" style="background-color: #e6e7ee;"><span>Subtotal</span> <span
 										class="ml-auto">$398.00</span></li>
-									<li class="list-group-item d-flex"><span>Tax</span> <span
+									<li class="list-group-item d-flex" style="background-color: #e6e7ee;"><span>Tax</span> <span
 										class="ml-auto">$18.00</span></li>
 									<li
-										class="list-group-item d-flex font-weight-bold rounded-bottom h5">
+										class="list-group-item d-flex font-weight-bold rounded-bottom h5" style="background-color: #e6e7ee;">
 										<span>Total</span> <span class="ml-auto">$416.00</span>
 									</li>
 								</ul>
-								<a class="btn btn-block btn-primary mt-4 mb-3" href="#">Place
+								<a class="btn btn-block btn-primary mt-4 mb-3" href="#" style="background-color: #e6e7ee;border-color: #e6e7ee;color:black;">Place
 									Order</a> <small>By placing the order you are confirming
 									that you are over 16 years of age and you agree with our <a
 									href="#">Terms and Conditions</a>.

@@ -4,8 +4,8 @@
 
 <link rel="stylesheet" href="css1/product.css">
 
-<section class="section-bg">
-	<div class="container">
+<section class="section-bg" style="background-color: #e6e7ee;">
+	<div class="container" >
 
 		<div class="row">
 			<div class="col-xl-12">
@@ -15,7 +15,7 @@
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row" >
 
 			<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
 				<div class="single-product">
