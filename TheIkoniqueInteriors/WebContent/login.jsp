@@ -1,224 +1,274 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<!-- Required meta tags-->
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0">
-<!-- <meta name="description" content="au theme template">
-<meta name="author" content="Hau Nguyen">
-<meta name="keywords" content="au theme template">
- -->
-<!-- Title Page-->
-<title>Login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Primary Meta Tags -->
+<title>Neumorphism UI</title>
+<style>
+#form .indicator1
+{
+	position: absolute;
+	top: 50px;
+	right: 20px;
+	width: 10px;
+	height:10px;
+	background: #555;
+	border-radius: 50%;
+}
+
+#form.invalid .indicator1
+{
+	background: #f00;
+	box-shadow: 0 0 5px #f00,
+				0 0 10px #f00,
+				0 0 20px #f00,
+				0 0 40px #f00;
+}
+
+#form.valid .indicator1
+{
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0,
+				0 0 10px #0f0,
+				0 0 20px #0f0,
+				0 0 40px #0f0;
+}
+
+#form .indicator2
+{
+	position: absolute;
+	top: 50px;
+	right: 20px;
+	width: 10px;
+	height:10px;
+	background: #555;
+	border-radius: 50%;
+}
+
+#form.invalid1 .indicator2
+{
+	background: #f00;
+	box-shadow: 0 0 5px #f00,
+				0 0 10px #f00,
+				0 0 20px #f00,
+				0 0 40px #f00;
+}
+
+#form.valid1 .indicator2
+{
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0,
+				0 0 10px #0f0,
+				0 0 20px #0f0,
+				0 0 40px #0f0;
+}
+.forget
+{
+	top: 30px;
+}
+
+</style>
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"
 	integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg=="
 	crossorigin="anonymous" />
-	<%--  <%@include file="FontFaces.jsp"%>  --%>
 
-<link rel="stylesheet" href="css/styleValidation.css" type="text/css">
- <%-- <%@include file="commoncss.jsp"%> 
-  --%>
- 
+<!-- Fontawesome -->
+<link type="text/css"
+	href="neuro/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+	rel="stylesheet">
+
+<!-- Pixel CSS -->
+<link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
+
+
+<!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
+
 </head>
 
-<body>
-	<div class="container">
-	
-		
-		<div class="header">
-		<h2>
-			<a href="#"> <img src="images/icon/logo.png"
-				alt="The Ikonique Interiors"> <br>
-			</a>
-			</h2>
-		</div>
-
-		<form action="index.jsp" class="form " id="form" method="post">
-
-			
-						<div class="form-group form-control">
-				<label>Email</label> <input type="text" name="email" id="email"
-					placeholder="Email"> <i class="fas fa-check-circle"></i> <i
-					class="fas fa-exclamation-circle"></i> <small>Error Msg</small>
-
-			</div>
-			<div class="form-group form-control">
-				<label>Password</label> <input type="text" name="password"
-					id="pass" placeholder="password"> <i
-					class="fas fa-check-circle"></i> <i
-					class="fas fa-exclamation-circle"></i> <small>Error Msg</small>
-
-			</div>
-			<br>
-			<br>
-			<div class="login-checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember">Remember Me
-                                    </label>
-                                    <label>
-                                        <a href="forget-pass.jsp">Forgotten Password?</a>
-                                    </label>
-                                </div>
-			<div class="form-group form-control">
-								<input type="submit" value="Sign In" class="btn" name="submit">
-			</div>
-			  <div class="register-link">
-                                <p>
-                                  <a href="visitor.jsp">Skip Login</a>
+<body class="animsition">
+<div class="page-wrapper">
+		<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>
+<%-- 		<%@include file="customersidebar.jsp"%> --%>
+<%-- 		<%@include file="customerheader.jsp"%> --%>
+		<div class="page-container">
+			<div class="main-content">
+			<h1 align="center" style="margin-top: 50px;">Login</h1>
+				  <section class="min-vh-80 d-flex bg-primary align-items-center">
+				<form action="customer.jsp" class="w-50 ml-10" class="box" class="form" id="form" method="post"  onsubmit="return login()">
+				
+					<div class="form-group mb-3 ml-10 inputBox">
+						<label for="email">Email address</label> 
+						<input type="text" name="email" class="form-control" id="email" autocomplete="off" aria-describedby="emailHelp" onkeyup="validate();">
+						<span class="indicator1"></span>
+					</div>
+					
+					<div class="form-group mb-3 ml-10">
+						<label for="password">Password</label> 
+						<input type="password" name="password" class="form-control" id="pass" onkeyup="validate1();">
+						<span class="indicator2"></span>
+					</div>
+					
+					<div class="form-check square-check mb-3 ml-10">
+						<input class="form-check-input" type="checkbox" value=""
+							id="remember"> <label class="form-check-label"
+							for="remember"> Remember me </label>
+					</div>
+					
+					<div align="right" class="forget ml-10">
+				<h6> <a class="color small" id="forget" href="forget-pass.jsp">Forgotten Password?</a> </h6><br>
+				</div>
+					<div align="center" >
+					
+					<button type="submit" name="submit" class="btn btn-primary form-group ml-10">Login</button>
+					</div>
+					
+				<div class="register-link ml-10" align="center">
+                                <h6>
+                                  <a href="visitor.jsp" class="color">Skip Login</a>
                                   <br><br>
                                     Don't you have account?
-                                    <a href="register.jsp">Sign Up Here</a>
+                                    <a class="color" href="register1.jsp"><b>Sign Up Here</b></a>
                                     
-                                </p>
-                            </div>
-			
-			
-			<%-- 
-	 <%@include file="commonjs.jsp"%>   --%>
-	</form>
+                                </h6>
+                </div>
+				
+				</form>
+				</section>
+				
+				<!-- Core -->
+				<script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
+				<script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
+				<script src="neuro/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+				<script src="neuro/vendor/headroom.js/dist/headroom.min.js"></script>
 
-</div>
-</body>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script type="text/javascript">
-	const form=document.getElementById('form');
-	const fname=document.getElementById('fname');
-	const lname=document.getElementById('lname');
-	const add=document.getElementById('add');
-	const cno=document.getElementById('cno');
-	const email=document.getElementById('email');
-	const pass=document.getElementById('pass');
-	const pcode=document.getElementById('pcode');
-	
-	form.addEventListener('submit',(event)=> {
-		 event.preventDefault();
+				<!-- Vendor JS -->
+				<script src="neuro/vendor/onscreen/dist/on-screen.umd.min.js"></script>
+				<script src="neuro/vendor/nouislider/distribute/nouislider.min.js"></script>
+				<script
+					src="neuro/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+				<script src="neuro/vendor/waypoints/lib/jquery.waypoints.min.js"></script>
+				<script src="neuro/vendor/jarallax/dist/jarallax.min.js"></script>
+				<script src="neuro/vendor/jquery.counterup/jquery.counterup.min.js"></script>
+				<script
+					src="neuro/vendor/jquery-countdown/dist/jquery.countdown.min.js"></script>
+				<script
+					src="neuro/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+				<script src="neuro/vendor/prismjs/prism.js"></script>
+
+				<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+				<!-- Neumorphism JS -->
+				<script src="neuro/assets/js/neumorphism.js"></script>
+				<%@include file="commonjs.jsp"%>
+		</div>
+		</div>
+		</div>
 		
-		validate();
-	})
-	
-	const sendData =(sRate,count) =>{
-		if(sRate === count)
-			{	alert("SuccessFull");
-				swal("Good job!", "You clicked the button!", "success");
-				response.sendRedirect("index.jsp");
-			}
-	}
-	
-	const successMsg = () => {
+		<script>
+// 		form.addEventListener('submit',(event)=> {
+// 			 event.preventDefault();
 			
-		 
-		 var formCon =document.getElementsByClassName('form-control');
+// 			validate();
+// 			validate1();
+// 		})
+		
+// 		const sendData =(sRate,count) =>{
+// 	if(sRate == count)
+// 		{	
+// 			swal( "","log in is successful!!","valid"); 
+// 		}
+// }
 	
-		var count=(formCon.length)-1;
-		
-		for(var i=0;i< formCon.length;i++)
-			{
-				if(formCon[i].className === 'form-control success'){
-					var sRate=0+i;
-					console.log(sRate);
-					sendData(sRate,count);
-					
-				}
-				else
-					{
-						return false;
-					}
-			} 
-	
-		
-		
-		
-	}
-	
-	//define the validate function
-	
-	const validate =()=> {
-		
-	
-		const emailVal=email.value.trim();
-		const passVal=pass.value.trim();
-		
-		  
-			 if(emailVal ==="")
-			 {
-			 	setErrorMsg(email,'EMAIL CAN NOT BE BLANK')
-			 }
-		 else if(!isEmail(emailVal)){
-			 setErrorMsg(email,'NOT A VALID EMAIL');
+// 		const successMsg = () => {
+			
 			 
-		 }
-		 else
-			 {
-			 	setSuccessMsg(email);
-			 }
+// 			 var formCon =document.getElementsByClassName('form-group');
 
-		 if(passVal==="")
-		 {
-		 	setErrorMsg(pass,'PASSWORD CAN NOT BE BLANK')
-		 }
-	 	else if(passVal.length <8){
-		 	setErrorMsg(pass,'PLEASE ENTER ATLEAST 8 CHARACTER');
-		 
-	 	}
-	 	else if(passVal.length >15)
-	 		{
-	 			setErrorMsg(pass,'PASSWORD CANNOT EXCEED MORE THAN 15 CHARACTERS');
-	 		}
-		 else if(!isPass(passVal)){
-		 	setErrorMsg(pass,'PASSWORD MUST CONTAIN ATLEAST ONE SPECIAL CHARACTER @,#,$,*,&,_');
-		 }
-	 	else
-		 {
-		 	setSuccessMsg(pass);
-		 }
-		 
-			successMsg();
-	}
-	
-	
-	//more Email validation
-	
-	const isEmail = (emailVal) => {
-		var atSymbol=emailVal.indexOf("@");
-		if(atSymbol < 3) return false;
-		var dot=emailVal.lastIndexOf('.');
-		if(dot<= atSymbol + 3) return false;
-		if(dot === emailVal.length -1) return false;
-		
-		return true;
-	}
-	const isPass = (passVal) => {
-		var atSymbol=passVal.indexOf("@");
-		 var atSymbol1=passVal.indexOf("#");
-		var atSymbol2=passVal.indexOf("$");
-		var atSymbol3=passVal.indexOf("*");
-		var atSymbol4=passVal.indexOf("_");
-		var atSymbol5=passVal.indexOf("&"); 
-		if(atSymbol<1 && atSymbol1<1 && atSymbol2<1 && atSymbol3<1 && atSymbol4<1 && atSymbol5<1 )return false;
-		if(passVal.length >15) return false;
-		return true;
-	}
-	
-	function setErrorMsg(input, errormsgs){
-		const formControl=input.parentElement;
-		const small=formControl.querySelector('small');
-		formControl.className="form-control error";
-		small.innerText=errormsgs;
-	}
-	
-	
-	
-	function setSuccessMsg(input){
-		const formControl=input.parentElement;
-		formControl.className="form-control success";
-		
-		
-	}
+// 			var count=(formCon.length)-2;
+			
+// 			for(var i=0;i< formCon.length;i++)
+// 				{
+// 					if(formCon[i].className == 'form-group valid'){
+// 						var sRate=0+i;
+// 						console.log(sRate);
+// 						sendData(sRate,count);
+						
+// 					}
+// 					else
+// 						{
+// 							return false;
+// 						}
+// 				} 
 
-</script>
+			
+			
+			
+// 		}
+		
+		function validate(){
+				const form= document.getElementById('form');
+				const email= document.getElementById('email').value;
+				const pattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+				
+				if(email.match(pattern)){
+					form.classList.add('valid')
+					form.classList.remove('invalid')
+				}else{
+					form.classList.add('invalid')
+					form.classList.remove('valid')
+				}
+				if(email == "")
+					{
+					form.classList.remove('invalid')
+					form.classList.remove('valid')
+					}
+			}
+			
+			function validate1(){
+				const form= document.getElementById('form');
+				const pass= document.getElementById('pass').value;
+				const pattern1=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
+				
+				if(pass.match(pattern1)){
+					form.classList.add('valid1')
+					form.classList.remove('invalid1')
+				}else{
+					form.classList.add('invalid1')
+					form.classList.remove('valid1')
+				}
+				if(pass == "")
+					{
+					form.classList.remove('invalid1')
+					form.classList.remove('valid1')
+					}
+			}
+			
+			function login()
+			{
+				const form= document.getElementById('form');
+				const email= document.getElementById('email').value;
+				const pass= document.getElementById('pass').value;
+				const pattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+				const pattern1=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
+				
+				if(email.match(pattern) && pass.match(pattern1))
+					{
+						
+// 						window.location="/customer.jsp";
+						return true;
+					}
+				else{
+					return false;
+// 					window.location="/triallogin.jsp";
+				}
+			}
+		
+		</script>
+</body>
+
 
 </html>
-<!-- end document-->
