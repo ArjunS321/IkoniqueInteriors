@@ -171,6 +171,34 @@
 				0 0 20px #0f0,
 				0 0 40px #0f0;
 }
+#form .indicator7
+{
+	position: absolute;
+	top: 50px;
+	right: 20px;
+	width: 10px;
+	height:10px;
+	background: #555;
+	border-radius: 50%;
+}
+
+#form.invalid6 .indicator7
+{
+	background: #f00;
+	box-shadow: 0 0 5px #f00,
+				0 0 10px #f00,
+				0 0 20px #f00,
+				0 0 40px #f00;
+}
+
+#form.valid6 .indicator7
+{
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0,
+				0 0 10px #0f0,
+				0 0 20px #0f0,
+				0 0 40px #0f0;
+}
 .forget
 {
 	top: 30px;

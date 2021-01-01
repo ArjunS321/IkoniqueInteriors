@@ -2,154 +2,149 @@
 <html lang="en">
 
 <head>
-<!-- Required meta tags-->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Primary Meta Tags -->
+<title>Forgot-Password</title>
+<style>
+#form .indicator7 {
+	position: absolute;
+	top: 50px;
+	right: 20px;
+	width: 10px;
+	height: 10px;
+	background: #555;
+	border-radius: 50%;
+}
 
-<!-- Title Page-->
-<title>Login</title>
+#form.invalid6 .indicator7 {
+	background: #f00;
+	box-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00;
+}
+
+#form.valid6 .indicator7 {
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
+}
+
+.forget {
+	top: 30px;
+}
+</style>
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"
 	integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg=="
 	crossorigin="anonymous" />
-<%--  <%@include file="FontFaces.jsp"%>  --%>
 
-<link rel="stylesheet" href="css/login1css.css" type="text/css">
-<%-- <%@include file="commoncss.jsp"%> 
-  --%>
+<!-- Fontawesome -->
+<link type="text/css"
+	href="neuro/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+	rel="stylesheet">
+
+<!-- Pixel CSS -->
+<link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
+
+
+<!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
 
 </head>
 
-<body>
-	<div class="container">
+<body class="animsition">
+	<div class="page-wrapper">
+		<div class="page-container">
+			<div class="main-content">
+				<h1 align="center" style="margin-top: 50px;">Forgot-PassWord</h1>
+				<section class="min-vh-80 d-flex bg-primary align-items-center">
+					<form action="customer.jsp" class="w-50 ml-10" class="box"
+						class="form" id="form" method="post" onsubmit="return login()">
 
+						<div class="form-group mb-3 ml-10 inputBox">
+							<label for="email">Email address</label> <input type="text"
+								name="email" class="form-control" id="email" autocomplete="off"
+								aria-describedby="emailHelp" onkeyup="validate();"> <span
+								class="indicator7"></span>
+						</div>
+						<div align="center">
+							<button type="submit" name="submit"
+								class="btn btn-primary form-group ml-10">Send</button>
+						</div>
+						<div class="register-link ml-10" align="center">
+							<h6>
+								<a href="login.jsp" class="color">Back To Login</a>
+							</h6>
+						</div>
+					</form>
+				</section>
+				<!-- Core -->
+				<script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
+				<script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
+				<script src="neuro/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+				<script src="neuro/vendor/headroom.js/dist/headroom.min.js"></script>
 
-		
-		<form action="" class="box" class="form " id="form" method="post">
+				<!-- Vendor JS -->
+				<script src="neuro/vendor/onscreen/dist/on-screen.umd.min.js"></script>
+				<script src="neuro/vendor/nouislider/distribute/nouislider.min.js"></script>
+				<script
+					src="neuro/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+				<script src="neuro/vendor/waypoints/lib/jquery.waypoints.min.js"></script>
+				<script src="neuro/vendor/jarallax/dist/jarallax.min.js"></script>
+				<script src="neuro/vendor/jquery.counterup/jquery.counterup.min.js"></script>
+				<script
+					src="neuro/vendor/jquery-countdown/dist/jquery.countdown.min.js"></script>
+				<script
+					src="neuro/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+				<script src="neuro/vendor/prismjs/prism.js"></script>
 
+				<script async defer src="https://buttons.github.io/buttons.js"></script>
 
-			<div class="form-group form-control">
-				 <input type="text" name="email" id="email"
-					placeholder="Email" autocomplete="off"> <i class="fas fa-check-circle"></i> <i
-					class="fas fa-exclamation-circle"></i> <small>Error Msg</small>
-
+				<!-- Neumorphism JS -->
+				<script src="neuro/assets/js/neumorphism.js"></script>
+				<%@include file="commonjs.jsp"%>
 			</div>
-			<br>
-
-			<div class="form-group form-control">
-				<input type="submit" value="Submit" class="btn" name="submit">
-			</div>
-
-
-			<%-- 
-	 <%@include file="commonjs.jsp"%>   --%>
-		</form>
-
+		</div>
 	</div>
-</body>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script type="text/javascript">
-	const form=document.getElementById('form');
-	const email=document.getElementById('email');
-	
-	form.addEventListener('submit',(event)=> {
-		 event.preventDefault();
+
+	<script>
+// 		form.addEventListener('submit',(event)= > {
+// 			 event.preventDefault();
+// 			 validate();
+// 		})
 		
-		validate();
-	})
-	
-	const sendData =(sRate,count) =>{
-		if(sRate === count)
-			{	console.log(sRate+count);
-				swal("", "Done...!", "success");
+		function validate(){
+				const form= document.getElementById('form');
+				const email= document.getElementById('email').value;
+				const pattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/
 				
+				if(email.match(pattern)){
+					form.classList.add('valid6')
+					form.classList.remove('invalid6')
+				}else{
+					form.classList.add('invalid6')
+					form.classList.remove('valid6')
+				}
+				if(email == "")
+					{
+						form.classList.remove('invalid6')
+						form.classList.remove('valid6')
+					}
+			}
+			function login()
+			{
+				const form= document.getElementById('form');
+				const email= document.getElementById('email').value;
+				const pattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+				
+				if(email.match(pattern))
+					{
+// 						window.location="/customer.jsp";
+						return true;
+					}
+				else{
+					return false;
+// 					window.location="/triallogin.jsp";
+				}
 			}
 		
-	}
-	
-	const successMsg = () => {
-			
-		 
-		 var formCon =document.getElementsByClassName('form-control');
-	
-		var count=(formCon.length)-2;
-		
-		for(var i=0;i< formCon.length;i++)
-			{
-				if(formCon[i].className === 'form-control success'){
-					var sRate=0+i;
-					console.log(sRate);
-					sendData(sRate,count);
-					
-				}
-				else
-					{
-						return false;
-					}
-			} 
-	
-		
-		
-		
-	}
-	
-	//define the validate function
-	
-	const validate =()=> {
-		
-	
-		const emailVal=email.value.trim();
-		
-		
-		  
-			 if(emailVal ==="")
-			 {
-			 	setErrorMsg(email,'EMAIL CAN NOT BE BLANK')
-			 }
-		 else if(!isEmail(emailVal)){
-			 setErrorMsg(email,'NOT A VALID EMAIL');
-			 
-		 }
-		 else
-			 {
-			 	setSuccessMsg(email);
-			 }
-
-		
-		 
-			successMsg();
-	}
-	
-	
-	//more Email validation
-	
-	const isEmail = (emailVal) => {
-		var atSymbol=emailVal.indexOf("@");
-		if(atSymbol < 3) return false;
-		var dot=emailVal.lastIndexOf('.');
-		if(dot<= atSymbol + 3) return false;
-		if(dot === emailVal.length -1) return false;
-		
-		return true;
-	}
-	
-	function setErrorMsg(input, errormsgs){
-		const formControl=input.parentElement;
-		const small=formControl.querySelector('small');
-		formControl.className="form-control error";
-		small.innerText=errormsgs;
-	}
-	
-	
-	
-	function setSuccessMsg(input){
-		const formControl=input.parentElement;
-		formControl.className="form-control success";
-		
-		
-	}
-
-</script>
-
+		</script>
+</body>
 </html>
-<!-- end document-->
