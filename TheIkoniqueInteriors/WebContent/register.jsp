@@ -33,7 +33,7 @@
 			<div class="main-content">
 			<h1 align="center" style="margin-top: 50px;">Registration</h1>
 				  <section class="min-vh-80 d-flex bg-primary align-items-center">
-				<form action="customer.jsp" class="w-50 ml-10" class="box" class="form" id="form" method="post"  onsubmit="return login()">
+				<form action="RegistrationServlet" class="w-50 ml-10" class="box" class="form" id="form" method="post"  onsubmit="return login()">
 						<div class="form-group mb-3 ml-10 inputBox">Choose Your Role<br>
 						<div class="form-check">
                         <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios11" value="option11" checked>
@@ -68,11 +68,11 @@
 					</div>
 					<div class="form-group mb-3 ml-10 inputBox">Gender<br>
 						<div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="Male" checked>
                         <label class="form-check-label" for="exampleRadios1">
                          Male
                         </label>
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Female">
                         <label class="form-check-label" for="exampleRadios2">
                           Female
                         </label>
