@@ -31,19 +31,20 @@
 <%-- 		<%@include file="customerheader.jsp"%> --%>
 		<div class="page-container">
 			<div class="main-content">
-			<h1 align="center" style="margin-top: 50px;">Registration</h1>
+			<h1 align="center" style="margin-top: 50px;">Registration</h1><br>
 				  <section class="min-vh-80 d-flex bg-primary align-items-center">
 				<form action="RegistrationServlet" class="w-50 ml-10" class="box" class="form" id="form" method="post"  onsubmit="return login()">
-						<div class="form-group mb-3 ml-10 inputBox">Choose Your Role<br>
+						<div class="form-group mb-3 ml-10 inputBox">Choose Your <b>Role</b><br>
 						<div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios11" value="option11" checked>
-                        <label class="form-check-label" for="exampleRadios11">
-                        Customer
-                        </label>
-                        <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios21" value="option21">
+						<input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios21" value="option21" checked>
                         <label class="form-check-label" for="exampleRadios21">
-                         Interior Designer
+                        <b>Interior Designer</b>
                         </label>
+                        <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios11" value="option11" >
+                        <label class="form-check-label" for="exampleRadios11">
+                        <b>Customer</b>
+                        </label>
+                        
                       </div>
                       </div>
 				<div class="form-group mb-3 ml-10 inputBox">
@@ -61,6 +62,26 @@
 						<textarea rows="5" name="address" class="form-control" id="add" autocomplete="off" aria-describedby="emailHelp" onkeyup="validate4();"></textarea>
 						<span class="indicator5"></span>
 					</div>
+					
+					
+					<div class="form-group mb-3 ml-10 inputBox">
+						<label for="area">Area</label> 
+						<input type="text" name="area" class="form-control" id="area" autocomplete="off" aria-describedby="emailHelp" onkeyup="validate6();">
+						<span class="indicator8"></span>
+					</div>
+					<div class="form-group mb-3 ml-10 inputBox">
+						<label for="pincode">Pincode</label> 
+						<input type="number" name="pin" class="form-control" id="pin" autocomplete="off" aria-describedby="emailHelp" onkeyup="validate7();">
+						<span class="indicator9"></span>
+					</div>
+					<div class="form-group mb-3 ml-10 inputBox vfees">
+						<label id="vfees" for="visitingfees">Visiting Fees</label> 
+						<input type="number" name="vfees1" class="form-control" id="vfees" autocomplete="off" aria-describedby="emailHelp" onkeyup="validate8();">
+						<span id="vfees2" class="indicator10"></span>
+					</div>
+					
+					
+					
 					<div class="form-group mb-3 ml-10 inputBox">
 						<label for="mobilenumber">Mobile Number</label> 
 						<input type="text" name="mno" class="form-control" id="mno" autocomplete="off" aria-describedby="emailHelp" onkeyup="validate5();">
@@ -87,6 +108,7 @@
 						<label for="password">Password</label> 
 						<input type="password" name="password" class="form-control" id="pass" onkeyup="validate1();">
 						<span class="indicator2"></span>
+						<h6 class="small">* Password Must Contain Atleast 8 Character<br>* Password must Contain Atleaset one: <br>Special Character(@#$&!)<br>Number[0-9]<br>An Uppercase Charater[A-Z]<br>A Lowercase Character[a-z]</h6>
 					</div>
 					<div align="center" >
 					<button type="submit" name="submit" class="btn btn-primary form-group ml-10">Register</button>
@@ -229,9 +251,16 @@
 				const mno= document.getElementById('mno').value;
 				const pattern5=/(7|8|9)\d{9}/
 				
+				const area= document.getElementById('area').value;
+				const pattern6=" ";
 				
+				const pin= document.getElementById('pin').value;
+				const pattern7="^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$";
 				
-				if(email.match(pattern) && pass.match(pattern1) && fname != pattern2 && lname != pattern3 && add != pattern4 && mno.match(pattern5))
+				const vfees= document.getElementById('vfees').value;
+				const pattern8=" ";
+				
+				if(email.match(pattern) && pass.match(pattern1) && fname != pattern2 && lname != pattern3 && add != pattern4 && mno.match(pattern5) && area != pattern6 && pin.match(pattern7) && vfees != pattern8)
 					{
 						
 // 						window.location="/customer.jsp";
@@ -315,6 +344,76 @@
 					form.classList.remove('valid5')
 					}
 			}
+			
+			function validate6(){
+				const form= document.getElementById('form');
+				const area= document.getElementById('area').value;
+				const pattern=" ";
+				
+				if(area != pattern){
+					form.classList.add('valid6')
+					form.classList.remove('invalid6')
+				}else{
+					form.classList.add('invalid6')
+					form.classList.remove('valid6')
+				}
+				if(area == "")
+					{
+					form.classList.remove('invalid6')
+					form.classList.remove('valid6')
+					}
+			}
+			
+			function validate7(){
+				const form= document.getElementById('form');
+				const pin= document.getElementById('pin').value;
+				const pattern="^[1-9]{1}[0-9]{2}[0-9]{3}$";
+				
+				if(pin.match(pattern) && pin.length==6 ){
+					form.classList.add('valid7')
+					form.classList.remove('invalid7')
+				}else{
+					form.classList.add('invalid7')
+					form.classList.remove('valid7')
+				}
+				if(pin == "")
+					{
+					form.classList.remove('invalid7')
+					form.classList.remove('valid7')
+					}
+			}
+			
+			function validate8(){
+				const form= document.getElementById('form');
+				const vfees= document.getElementById('vfees').value;
+				const pattern=" ";
+				
+				if(vfees != pattern){
+					form.classList.add('valid8')
+					form.classList.remove('invalid8')
+				}else{
+					form.classList.add('invalid8')
+					form.classList.remove('valid8')
+				}
+				if(vfees == "")
+					{
+					form.classList.remove('invalid8')
+					form.classList.remove('valid8')
+					}
+			}
+			
+			$("input[name='exampleRadios1']").change(function(){
+
+				if($(this).val()=="option21")
+				{
+				    $(".vfees").show();
+				}
+				else
+				{
+				       $(".vfees").hide(); 
+				}
+
+				});
 		</script>
 </body>
 
