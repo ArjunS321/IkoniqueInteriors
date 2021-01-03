@@ -41,31 +41,34 @@ public class RegistrationServlet extends HttpServlet {
 		 * doGet(request, response);
 		 */	
 		
-		String fname=request.getParameter("fname");
-		String lname=request.getParameter("lname");
-		String address=request.getParameter("address");
-		String mno=request.getParameter("mno");
-		String exampleRadios=request.getParameter("exampleRadios");
-		String email=request.getParameter("email");
-		String password=request.getParameter("password");
+			String fname=request.getParameter("fname");
+			String lname=request.getParameter("lname");
+			String address=request.getParameter("address");
+			String mno=request.getParameter("mno");
+			String exampleRadios=request.getParameter("exampleRadios");
+			String email=request.getParameter("email");
+			String password=request.getParameter("password");
+			
+			User user=new User();
+			
+			user.setFirstname(fname);
+			user.setLastname(lname);
+			user.setAddress(address);
+			user.setMobileno(mno);
+			user.setGender(exampleRadios);
+			user.setEmail(email);
+			user.setPassword(password);
+			
+			
+			userServiceImpl s1=new userServiceImpl();
+			
+			String message=s1.saveUserDetails(user);
+			response.getWriter().append(message);
+			
+			
+
 		
-		User user=new User();
 		
-		user.setFirstname(fname);
-		user.setLastname(lname);
-		user.setAddress(address);
-		user.setMobileno(mno);
-		user.setGender(exampleRadios);
-		user.setEmail(email);
-		user.setPassword(password);
-		
-		
-		userServiceImpl s1=new userServiceImpl();
-		
-		String message=s1.saveUserDetails(user);
-		response.getWriter().append(message);
-		
-		
-	}
+			}
 
 }

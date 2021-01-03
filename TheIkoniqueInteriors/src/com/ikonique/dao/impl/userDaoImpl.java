@@ -32,6 +32,7 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setString(6, user.getPassword());
 			preparedStatement.setString(7, user.getGender());
 			
+			
 			i = preparedStatement.executeUpdate();
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
