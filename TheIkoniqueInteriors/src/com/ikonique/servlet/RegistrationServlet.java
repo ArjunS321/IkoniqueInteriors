@@ -1,6 +1,8 @@
 package com.ikonique.servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -48,6 +50,7 @@ public class RegistrationServlet extends HttpServlet {
 			String exampleRadios=request.getParameter("exampleRadios");
 			String email=request.getParameter("email");
 			String password=request.getParameter("password");
+			String vfees=request.getParameter("vfees1");
 			
 			User user=new User();
 			
@@ -58,12 +61,26 @@ public class RegistrationServlet extends HttpServlet {
 			user.setGender(exampleRadios);
 			user.setEmail(email);
 			user.setPassword(password);
+			user.setVisitingfees(vfees);
 			
 			
 			userServiceImpl s1=new userServiceImpl();
+			String message=null;
+			message=s1.saveUserDetails(user);
 			
-			String message=s1.saveUserDetails(user);
-			response.getWriter().append(message);
+			if (message=="Registration Failed") {
+				RequestDispatcher requestdispatcher=request.getRequestDispatcher("register.jsp");
+				requestdispatcher.forward(request, response);
+				
+			}
+			else
+			{
+				RequestDispatcher requestdispatcher=request.getRequestDispatcher("customer.jsp");
+				requestdispatcher.forward(request, response);
+				
+			}
+			/* response.getWriter().append(message); */
+			
 			
 			
 

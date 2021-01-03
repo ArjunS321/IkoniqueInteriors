@@ -35,7 +35,7 @@
 				<br>
 				<section class="min-vh-80 d-flex bg-primary align-items-center">
 					<form action="RegistrationServlet" class="w-50 ml-10" class="box"
-						class="form" id="form" method="post" onsubmit="return login()">
+						class="form" id="form" method="post" onsubmit=" login()">
 						<div class="form-group mb-3 ml-10 inputBox">
 							Choose Your <b>Role</b><br>
 							<div class="form-check">
@@ -83,13 +83,13 @@
 								aria-describedby="emailHelp" onkeyup="validate7();"> <span
 								class="indicator9"></span>
 						</div>
-						<!-- <div class="form-group mb-3 ml-10 inputBox vfees">
+						 <div class="form-group mb-3 ml-10 inputBox vfees">
 							<label for="visitingfees">Visiting Fees</label> <input
 								type="number" name="vfees1" class="form-control" id="vfees"
 								autocomplete="off" aria-describedby="emailHelp"
 								onkeyup="validate8();"> <span id="vfees2"
 								class="indicator10"></span>
-						</div> -->
+						</div> 
 
 
 
@@ -104,7 +104,7 @@
 							<div class="form-check">
 								<input class="form-check-input" type="radio"
 			
-									name="exampleRadios" id="exampleRadios1" value="Male" checked>
+									name="exampleRadios" id="exampleRadios1" value="Male">
 								<label class="form-check-label" for="exampleRadios1">
 									Male </label> <input class="form-check-input" type="radio"
 									name="exampleRadios" id="exampleRadios2" value="Female">
@@ -269,20 +269,20 @@
 			const pin = document.getElementById('pin').value;
 			const pattern7 = "^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$";
 
-			/* const vfees = document.getElementById('vfees').value;
+			const vfees = document.getElementById('vfees').value;
 			const pattern8 = " ";
- */
+ 
 			if (email.match(pattern) && pass.match(pattern1)
 					&& fname != pattern2 && lname != pattern3
 					&& add != pattern4 && mno.match(pattern5)
-					&& area != pattern6 && pin.match(pattern7)) {
+					&& area != pattern6 && pin.match(pattern7) && vfees!= pattern8) {
 
-				// 						window.location="/customer.jsp";
-				 return true; 
+				 						window.location="/customer.jsp";
+				 //return true; 
 				//response.sendRedirect("customer.jsp");
 			} else {
-				return false;
-				// 					window.location="/triallogin.jsp";
+				//return false;
+				 					window.location="/register.jsp";
 			}
 		}
 
@@ -391,7 +391,7 @@
 			}
 		}
 
-		/* function validate8() {
+		 function validate8() {
 			const form = document.getElementById('form');
 			const vfees = document.getElementById('vfees').value;
 			const pattern = " ";
@@ -407,9 +407,9 @@
 				form.classList.remove('invalid8')
 				form.classList.remove('valid8')
 			}
-		} */
+		} 
 
-		/* $("input[name='exampleRadios1']").change(function(){
+		 $("input[name='exampleRadios1']").change(function(){
 
 			if($(this).val()=="option21")
 			{
@@ -418,9 +418,20 @@
 			else
 			{
 			       $(".vfees").hide(); 
+			       $("#fname").value=""; 
+			       $("#lname").value=""; 
+			       $("#add").value=""; 
+			       $("#pin").value=""; 
+			       $("#exampleRadios1").value=""; 
+			       $("#exampleRadios2").value=""; 
+			       $("#mno").value=""; 
+			       $("#email").value=""; 
+			       $("#area").value=""; 
+			       $("#pass").value=""; 
+			       
 			}
 
-			}); */
+			}); 
 	</script>
 </body>
 

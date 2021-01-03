@@ -10,6 +10,7 @@ public class User {
 	private String gender;
 	private String email;
 	private String password;
+	private String visitingfees;
 	public String getFirstname() {
 		return firstname;
 	}
@@ -51,6 +52,12 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getVisitingfees() {
+		return visitingfees;
+	}
+	public void setVisitingfees(String visitingfees) {
+		this.visitingfees = visitingfees;
 	}
 	
 }

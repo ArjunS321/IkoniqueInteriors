@@ -14,7 +14,7 @@ public class userDaoImpl implements userDao {
 	@Override
 	public int insertUserDetails(User user, Connection connection) {
 		int i = 0, insertedUserId = 0;
-		String insertQuery = "insert into user (c_first_name,c_last_name,c_address,c_contact_no,c_email,c_password,c_gender) values (?,?,?,?,?,?,?)";
+		String insertQuery = "insert into user (c_first_name,c_last_name,c_address,c_contact_no,c_email,c_password,c_gender,i_visiting_fess) values (?,?,?,?,?,?,?,?)";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -31,6 +31,7 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setString(5, user.getEmail());
 			preparedStatement.setString(6, user.getPassword());
 			preparedStatement.setString(7, user.getGender());
+			preparedStatement.setString(8, user.getVisitingfees());
 			
 			
 			i = preparedStatement.executeUpdate();
