@@ -275,7 +275,7 @@
 			if (email.match(pattern) && pass.match(pattern1)
 					&& fname != pattern2 && lname != pattern3
 					&& add != pattern4 && mno.match(pattern5)
-					&& area != pattern6 && pin.match(pattern7) && vfees!= pattern8) {
+					&& area != pattern6 && pin.match(pattern7)) {
 
 				 						window.location="/customer.jsp";
 				 //return true; 
@@ -418,16 +418,60 @@
 			else
 			{
 			       $(".vfees").hide(); 
-			       $("#fname").value=""; 
+			       /* $("#fname").value=""; 
 			       $("#lname").value=""; 
-			       $("#add").value=""; 
-			       $("#pin").value=""; 
-			       $("#exampleRadios1").value=""; 
-			       $("#exampleRadios2").value=""; 
-			       $("#mno").value=""; 
-			       $("#email").value=""; 
-			       $("#area").value=""; 
-			       $("#pass").value=""; 
+			       $("#add").value=''; 
+			       $("#pin").value=''; 
+			       $("#exampleRadios1").value=''; 
+			       $("#exampleRadios2").value=''; 
+			       $("#mno").value=''; 
+			       $("#email").value=''; 
+			       $("#area").value=''; 
+			       $("#pass").value=''; 
+			       $("#vfees").value='0'; 
+			        */
+			       document.getElementById("fname").value="";
+			       document.getElementById("lname").value="";
+			       document.getElementById("add").value="";
+			       document.getElementById("pin").value="";
+			/*        document.getElementById("exampleRadios1").value="";
+			       document.getElementById("exampleRadios2").value=""; */
+			       document.getElementById("mno").value="";
+			       document.getElementById("email").value="";
+			       document.getElementById("area").value="";
+			       document.getElementById("pass").value="";
+			       document.getElementById("vfees").value="0";
+			       
+			       form.classList.remove('invalid1')
+			       form.classList.remove('valid1')
+			       
+			       form.classList.remove('invalid2')
+			       form.classList.remove('valid2')
+			       
+			       form.classList.remove('invalid3')
+			       form.classList.remove('valid3')
+			       
+			       form.classList.remove('invalid4')
+			       form.classList.remove('valid4')
+			       
+			       form.classList.remove('invalid5')
+			       form.classList.remove('valid5')
+			       
+			       form.classList.remove('invalid6')
+			       form.classList.remove('valid6')
+			       
+			       form.classList.remove('invalid7')
+			       form.classList.remove('valid7')
+			       
+			       form.classList.remove('invalid8')
+			       form.classList.remove('valid8')
+			       
+			       form.classList.remove('invalid')
+			       form.classList.remove('valid')
+			       
+			       
+			       
+			       
 			       
 			}
 
