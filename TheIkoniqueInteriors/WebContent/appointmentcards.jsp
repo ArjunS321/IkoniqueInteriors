@@ -24,7 +24,70 @@
 			<div class="main-content">
 				<section>
 					<div class="container">
-						<div class="card">
+						<div class="card" style="height: 300px;">
+							<div class="imgBx">
+								<img src="appointmentcssjs/img/pexels-ali-pazani-5627494 (1).jpg">
+							</div>
+							<div class="content">
+								<div class="contentBx">
+									<h3>
+										Someone Famous<br> <span>Creative Designer</span>
+									</h3>
+								</div>
+								<ul class="sci">
+									<li style="-i: 1;"><a href="#"><i
+											class="fa fa-facebook" aria-hidden="true"></i></a></li>
+									<li style="-i: 2;"><a href="#"><i
+											class="fa fa-twitter" aria-hidden="true"></i></a></li>
+									<li style="-i: 3;"><a href="#"><i
+											class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="card" style="height: 300px;">
+							<div class="imgBx">
+								<img src="appointmentcssjs/img/pexels-ali-pazani-5627494 (1).jpg">
+							</div>
+							<div class="content">
+								<div class="contentBx">
+									<h3>
+										Someone Famous<br> <span>Creative Designer</span>
+									</h3>
+								</div>
+								<ul class="sci">
+									<li style="-i: 1;"><a href="#"><i
+											class="fa fa-facebook" aria-hidden="true"></i></a></li>
+									<li style="-i: 2;"><a href="#"><i
+											class="fa fa-twitter" aria-hidden="true"></i></a></li>
+									<li style="-i: 3;"><a href="#"><i
+											class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="card" style="height: 300px;">
+							<div class="imgBx">
+								<img src="appointmentcssjs/img/pexels-ali-pazani-5627494 (1).jpg">
+							</div>
+							<div class="content">
+								<div class="contentBx">
+									<h3>
+										Someone Famous<br> <span>Creative Designer</span>
+									</h3>
+								</div>
+								<ul class="sci">
+									<li style="-i: 1;"><a href="#"><i
+											class="fa fa-facebook" aria-hidden="true"></i></a></li>
+									<li style="-i: 2;"><a href="#"><i
+											class="fa fa-twitter" aria-hidden="true"></i></a></li>
+									<li style="-i: 3;"><a href="#"><i
+											class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="card" style="height: 300px;">
 							<div class="imgBx">
 								<img src="appointmentcssjs/img/pexels-ali-pazani-5627494 (1).jpg">
 							</div>
@@ -45,7 +108,7 @@
 							</div>
 						</div>
 
-						<div class="card">
+						<div class="card" style="height: 300px;">
 							<div class="imgBx">
 								<img src="appointmentcssjs/img/pexels-ali-pazani-5627494 (1).jpg">
 							</div>
@@ -66,7 +129,7 @@
 							</div>
 						</div>
 
-						<div class="card">
+						<div class="card" style="height: 300px;">
 							<div class="imgBx">
 								<img src="appointmentcssjs/img/pexels-ali-pazani-5627494 (1).jpg">
 							</div>
