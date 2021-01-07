@@ -294,11 +294,11 @@
 			</div>
 			</div>
 		
-		<div class="row button-center">
-			<div class="col-xl-6 centered">
-				<a href="" class="bttn-def"><span>Load more</span></a>
-			</div>
-		</div>
+<!-- 		<div class="row button-center"> -->
+<!-- 			<div class="col-xl-6 centered"> -->
+<!-- 				<a href="" class="bttn-def"><span>Load more</span></a> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 
 	</div>
 </section>

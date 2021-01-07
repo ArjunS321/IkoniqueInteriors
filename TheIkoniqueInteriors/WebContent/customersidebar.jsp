@@ -5,6 +5,7 @@
 <%@include file="FontFaces.jsp"%>
 
 <%@include file="commoncss.jsp"%>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class=animsition>
@@ -13,7 +14,7 @@
 
 <aside class="menu-sidebar d-none d-lg-block" style="background-color: #e6e7ee;">
 	<div class="logo" style="background-color: #e6e7ee;">
-		<a href="#"> <img src="images/icon/logo.png" alt="Cool Admin" />
+		<a href="#"> <img src="images/icon/logo1.png" alt="Cool Admin" />
 		</a>
 	</div>
 	<div class="menu-sidebar__content js-scrollbar1">
