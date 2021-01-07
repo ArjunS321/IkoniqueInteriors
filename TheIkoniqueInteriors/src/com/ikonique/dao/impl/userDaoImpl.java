@@ -14,7 +14,7 @@ public class userDaoImpl implements userDao {
 	@Override
 	public int insertUserDetails(User user, Connection connection) {
 		int i = 0, insertedUserId = 0;
-		String insertQuery = "insert into user (c_first_name,c_last_name,c_address,c_contact_no,c_email,c_password,c_gender,i_visiting_fess) values (?,?,?,?,?,?,?,?)";
+		String insertQuery = "insert into user (c_first_name,c_last_name,c_address,c_contact_no,c_email,c_password,c_gender,i_role_id) values (?,?,?,?,?,?,?,?)";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -31,7 +31,52 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setString(5, user.getEmail());
 			preparedStatement.setString(6, user.getPassword());
 			preparedStatement.setString(7, user.getGender());
-			preparedStatement.setString(8, user.getVisitingfees());
+			/* preparedStatement.setString(8, user.getVisitingfees()); */
+			preparedStatement.setInt(8,1);
+			
+			
+			i = preparedStatement.executeUpdate();
+			ResultSet resultSet = preparedStatement.getGeneratedKeys();
+
+			while (resultSet.next()) {
+				insertedUserId = resultSet.getInt(1);
+			}
+			System.out.println(insertedUserId);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return insertedUserId;
+
+
+
+	}
+
+	@Override
+	public int insertDesignerDetails(User user, Connection connection) {
+		
+		int i = 0, insertedUserId = 0;
+		String insertQuery = "insert into user (c_first_name,c_last_name,c_address,c_contact_no,c_email,c_password,c_gender,i_role_id,i_visiting_fess) values (?,?,?,?,?,?,?,?,?)";
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery,
+				Statement.RETURN_GENERATED_KEYS)) {
+			preparedStatement.setString(1, user.getFirstname());
+			preparedStatement.setString(2, user.getLastname());
+			preparedStatement.setString(3, user.getAddress());
+			preparedStatement.setString(4, user.getMobileno());
+			preparedStatement.setString(5, user.getEmail());
+			preparedStatement.setString(6, user.getPassword());
+			preparedStatement.setString(7, user.getGender());
+			preparedStatement.setInt(8,2);
+		    preparedStatement.setString(9, user.getVisitingfees()); 
 			
 			
 			i = preparedStatement.executeUpdate();

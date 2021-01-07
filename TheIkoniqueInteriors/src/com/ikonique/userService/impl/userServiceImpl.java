@@ -51,5 +51,22 @@ public class userServiceImpl {
 		return connection;
 
 	}
+	public String saveDesignerDetails(User user) {
+		userDao userDao = new userDaoImpl();
+		Connection connection=getConnection();
+		String msg=null;
+		
+		int insertedUserId= userDao.insertDesignerDetails(user,connection);
+		if(insertedUserId>0) {
+			msg="Registration Is Successfully";
+		}
+		else
+		{
+			msg="Registration Failed";
+		}
+
+		return msg;
+
+	}
 
 }

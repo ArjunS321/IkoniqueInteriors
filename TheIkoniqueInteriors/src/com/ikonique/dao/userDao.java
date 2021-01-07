@@ -8,4 +8,6 @@ public interface userDao {
 
 	public int insertUserDetails(User user, Connection connection);
 
+	public int insertDesignerDetails(User user, Connection connection);
+
 }
