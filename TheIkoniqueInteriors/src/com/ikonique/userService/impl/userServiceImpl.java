@@ -3,17 +3,21 @@ package com.ikonique.userService.impl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
+import com.ikonique.bean.Area;
 import com.ikonique.bean.User;
 import com.ikonique.dao.userDao;
 import com.ikonique.dao.impl.userDaoImpl;
 
 
 public class userServiceImpl {
-
+	
+	userDao userDao = new userDaoImpl();
+	
 	public String saveUserDetails(User user) {
 		
-		userDao userDao = new userDaoImpl();
+		
 		Connection connection=getConnection();
 		String msg=null;
 		
@@ -68,5 +72,11 @@ public class userServiceImpl {
 		return msg;
 
 	}
+	public List<Area> fatcharea() {
+		Connection connection=getConnection();
+		return userDao.selectArea(connection);
+	
+	}
+	
 
 }

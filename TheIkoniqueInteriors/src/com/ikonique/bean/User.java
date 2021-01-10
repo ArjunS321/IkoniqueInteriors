@@ -11,6 +11,7 @@ public class User {
 	private String email;
 	private String password;
 	private String visitingfees;
+	private int area_id;
 	public String getFirstname() {
 		return firstname;
 	}
@@ -58,6 +59,12 @@ public class User {
 	}
 	public void setVisitingfees(String visitingfees) {
 		this.visitingfees = visitingfees;
+	}
+	public int getArea_id() {
+		return area_id;
+	}
+	public void setArea_id(int area_id) {
+		this.area_id = area_id;
 	}
 	
 }

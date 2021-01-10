@@ -17,6 +17,7 @@ import com.ikonique.userService.impl.userServiceImpl;
 public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	userServiceImpl s1 = new userServiceImpl();
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -59,6 +60,10 @@ public class RegistrationServlet extends HttpServlet {
 			String exampleRadios = request.getParameter("exampleRadios");
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
+			String areaname=request.getParameter("area");
+			
+	
+			
 			/* String vfees = request.getParameter("vfees1"); */
 
 			User user = new User();
@@ -70,9 +75,10 @@ public class RegistrationServlet extends HttpServlet {
 			user.setGender(exampleRadios);
 			user.setEmail(email);
 			user.setPassword(password);
+			user.setArea_id(Integer.parseInt(areaname));
 			/* user.setVisitingfees(vfees); */
 
-			userServiceImpl s1 = new userServiceImpl();
+			
 
 			message = s1.saveUserDetails(user);
 

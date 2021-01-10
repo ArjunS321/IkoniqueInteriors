@@ -19,4 +19,14 @@
     <servlet-name>RegistrationServlet</servlet-name>
     <url-pattern>/RegistrationServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AreaRegistration</display-name>
+    <servlet-name>AreaRegistration</servlet-name>
+    <servlet-class>com.ikonique.servlet.AreaRegistration</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AreaRegistration</servlet-name>
+    <url-pattern>/AreaRegistration</url-pattern>
+  </servlet-mapping>
 </web-app>
