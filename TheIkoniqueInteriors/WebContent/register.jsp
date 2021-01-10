@@ -142,7 +142,7 @@
 								name="password" class="form-control" id="pass"
 								onkeyup="validate1();"> <span class="indicator2"></span>
 							<h6 class="small">
-								* Password Must Contain Atleast 8 Character<br>* Password
+								* Password Must Contain 8-20 Character<br>* Password
 								must Contain Atleast one: <br>Special Character(@#$&!)<br>Number[0-9]<br>An
 								Uppercase Charater[A-Z]<br>A Lowercase Character[a-z]
 							</h6>
@@ -250,7 +250,7 @@
 			const pass = document.getElementById('pass').value;
 			const pattern1 = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
 
-			if (pass.match(pattern1)) {
+			if (pass.match(pattern1) && pass.length >= 8 && pass.length <= 20) {
 				form.classList.add('valid1')
 				form.classList.remove('invalid1')
 			} else {
@@ -294,7 +294,8 @@
 			const area = document.getElementById('area').value; 
 		    var strUser = area.options[area.selectedIndex].value;
 
-			if (email.match(pattern) && pass.match(pattern1)
+			if (email.match(pattern) && pass.match(pattern1) 
+					&& pass.length >= 8 && pass.length <= 20
 					&& fname != pattern2 && lname != pattern3
 					&& add != pattern4 && mno.match(pattern5)
 					&& strUser!=0 && pin.match(pattern7)) {
@@ -395,13 +396,13 @@
 			}
 			 */
 			 
-			 const form = document.getElementById('form');
-				const area = document.getElementById('area').value; 
-			
-			var strUser = area.options[area.selectedIndex].value;
+			const form = document.getElementById('form');
+			const area = document.getElementById('area').value; 
+			console.log(area);
+// 			var strUser = area.options[area.selectedIndex].value;
 
-			/* var strUser1 = e.options[e.selectedIndex].text; */
-			if (strUser!= 0) {
+// 			 var strUser1 = e.options[e.selectedIndex].text; 
+			if (area != null) {
 				
 				form.classList.add('valid6')
 				form.classList.remove('invalid6')
@@ -409,10 +410,10 @@
 				form.classList.add('invalid6')
 				form.classList.remove('valid6')
 			}
-			if (area == "") {
-				form.classList.remove('invalid6')
-				form.classList.remove('valid6')
-			}
+// 			if (area == "") {
+// 				form.classList.remove('invalid6')
+// 				form.classList.remove('valid6')
+// 			}
 			
 			
 		}

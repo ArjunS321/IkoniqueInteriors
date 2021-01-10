@@ -64,7 +64,7 @@ public class userDaoImpl implements userDao {
 	public int insertDesignerDetails(User user, Connection connection) {
 		
 		int i = 0, insertedUserId = 0;
-		String insertQuery = "insert into user (c_first_name,c_last_name,c_address,c_contact_no,c_email,c_password,c_gender,i_role_id,i_visiting_fess) values (?,?,?,?,?,?,?,?,?)";
+		String insertQuery = "insert into user (c_first_name,c_last_name,c_address,c_contact_no,c_email,c_password,c_gender,i_role_id,i_visiting_fess,i_area_id) values (?,?,?,?,?,?,?,?,?,?)";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -83,6 +83,7 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setString(7, user.getGender());
 			preparedStatement.setInt(8,2);
 		    preparedStatement.setString(9, user.getVisitingfees()); 
+		    preparedStatement.setInt(10, user.getArea_id());
 			
 			
 			i = preparedStatement.executeUpdate();

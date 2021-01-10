@@ -37,9 +37,9 @@ public class AreaRegistration extends HttpServlet {
 		
 		
 		List<Area> area=u1.fatcharea();
-		for(Area abc: area) {
-			System.out.println(abc.getArea_name());
-		}
+//		for(Area abc: area) {
+//			System.out.println(abc.getArea_name());
+//		}
 		request.setAttribute("area", area);
 		/*
 		 * RequestDispatcher
