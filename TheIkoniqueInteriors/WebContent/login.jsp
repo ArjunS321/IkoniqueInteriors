@@ -129,8 +129,7 @@
                                   <a href="visitor.jsp" class="color">Skip Login</a>
                                   <br><br>
                                     Don't you have account?
-                                    <a class="color" href="register1.jsp"><b>Sign Up Here</b></a>
-                                    
+                                    <a class="color" href="register.jsp"><b>Sign Up Here</b></a>
                                 </h6>
                 </div>
 				
