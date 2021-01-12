@@ -5,8 +5,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Customer</title>
-
-
 <%@include file="FontFaces.jsp"%>
 <%@include file="commoncss.jsp"%>
 <link type="text/css"
