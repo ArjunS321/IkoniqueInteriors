@@ -115,6 +115,7 @@
 									<div class="bg-c3 img-cir img-40">
 										<i class="zmdi zmdi-file-text"></i>
 									</div>
+									
 									<div class="content">
 										<p>You got a new file</p>
 										<span class="date">April 12, 2018 06:50</span>
@@ -147,10 +148,15 @@
 										</h5>
 										<span class="email">johndoe@example.com</span>
 									</div>
+									
 								</div>
 								<div class="account-dropdown__body">
 									<div class="account-dropdown__item">
 										<a href="editprofile.jsp"> <i class="zmdi zmdi-account"></i>Edit Profile
+										</a>
+									</div>
+									<div class="account-dropdown__item">
+										<a href="DeleteUserRecord"> <i class="fas fa-user-minus"></i>Delete Account?
 										</a>
 									</div>
 									<div class="account-dropdown__item">
@@ -159,7 +165,7 @@
 									</div>
 								</div>
 								<div class="account-dropdown__footer">
-									<a href="login.jsp"> <i class="zmdi zmdi-power"></i>Logout
+									<a href="login.jsp"> <i class="fas fa-sign-out-alt"></i>Logout
 									</a>
 								</div>
 							</div>

@@ -75,7 +75,12 @@ public class RegistrationServlet extends HttpServlet {
 			user.setGender(exampleRadios);
 			user.setEmail(email);
 			user.setPassword(password);
-			user.setArea_id(Integer.parseInt(areaname));
+			try {
+				user.setArea_id(Integer.parseInt(areaname));
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
 			/* user.setVisitingfees(vfees); */
 
 			
@@ -105,7 +110,12 @@ public class RegistrationServlet extends HttpServlet {
 			user.setEmail(email);
 			user.setPassword(password);
 			user.setVisitingfees(vfees); 
-			user.setArea_id(Integer.parseInt(areaname));
+			try {
+				user.setArea_id(Integer.parseInt(areaname));
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
 
 			userServiceImpl s1 = new userServiceImpl();
 
@@ -122,7 +132,7 @@ public class RegistrationServlet extends HttpServlet {
 		
 
 		else {
-			RequestDispatcher requestdispatcher = request.getRequestDispatcher("customer.jsp");
+			RequestDispatcher requestdispatcher = request.getRequestDispatcher("login.jsp");
 			requestdispatcher.forward(request, response);
 
 		}

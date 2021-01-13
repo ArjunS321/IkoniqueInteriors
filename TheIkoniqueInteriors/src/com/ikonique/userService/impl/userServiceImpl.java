@@ -101,6 +101,22 @@ public class userServiceImpl {
 		}
 		return msg;
 	}
+	public String deleteUserDetails(int user_id) {
+		Connection connection=getConnection();
+		int deleteCount=0;
+		String msg=null;
+		deleteCount=userDao.removeUserDetails(user_id,connection);
+		if(deleteCount>0) {
+			msg="Deletion Successfully";
+		}
+		else
+		{
+			msg="Deletion Failed";
+		}
+		return msg;
+		
+		
+	}
 	
 
 }

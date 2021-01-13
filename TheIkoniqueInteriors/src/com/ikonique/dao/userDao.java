@@ -20,6 +20,8 @@ public interface userDao {
 
 	public int modifyUserDetails(User user, Connection connection);
 
+	public int removeUserDetails(int user_id, Connection connection);
+
 	
 
 }

@@ -13,7 +13,7 @@ body{
 }
 </style>
 </head>
-<% HttpSession httpSession = request.getSession(true);
+<% HttpSession httpSession = request.getSession(false);
 	User user = null;   
 	if(null!=httpSession){
 	   user = (User)httpSession.getAttribute("loginBean");
@@ -24,7 +24,15 @@ body{
 	List<Area> area = (List) request.getAttribute("area");
 %>
 <jsp:include page="/AreaName" />
+<script src="js/jquery/jquery-2.2.4.min.js" type="text/javascript">
+	$(document).ready(function(){
+		$('#logout').click(function(){
+			/* response.sendRedirect("login.jsp"); */
+			window.location = "/login.jsp";
+		})
+	})
 
+</script>
 <body>
 <div class="container">
 <div class="row flex-lg-nowrap">
@@ -200,13 +208,14 @@ body{
         <div class="card mb-3">
           <div class="card-body">
             <div class="px-xl-3">
-              <button class="btn btn-block btn-secondary">
+              <button class="btn btn-block btn-secondary" id="logout">
                 <i class="fa fa-sign-out"></i>
                 <span>Logout</span>
               </button>
             </div>
           </div>
         </div>
+        
         <div class="card">
           <div class="card-body">
             <h6 class="card-title font-weight-bold">Support</h6>
@@ -220,6 +229,8 @@ body{
   </div>
 </div>
 </div>
+
+
 </body>
 </html>
 

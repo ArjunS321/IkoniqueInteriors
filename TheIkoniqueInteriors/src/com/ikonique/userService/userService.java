@@ -13,5 +13,6 @@ public interface userService {
 	public User getUser(String email, String password);
 	public String getAreaName(int id);
 	public String updateUserDetails(User user);
+	public String deleteUserDetails(int user_id);
 	
 }

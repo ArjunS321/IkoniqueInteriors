@@ -59,4 +59,14 @@
     <servlet-name>UpdateUserDetails</servlet-name>
     <url-pattern>/UpdateUserDetails</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteUserRecord</display-name>
+    <servlet-name>DeleteUserRecord</servlet-name>
+    <servlet-class>com.ikonique.servlet.DeleteUserRecord</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteUserRecord</servlet-name>
+    <url-pattern>/DeleteUserRecord</url-pattern>
+  </servlet-mapping>
 </web-app>

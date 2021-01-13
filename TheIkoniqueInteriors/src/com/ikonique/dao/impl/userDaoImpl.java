@@ -207,4 +207,21 @@ public class userDaoImpl implements userDao {
 		return 0;
 	}
 
+	@Override
+	public int removeUserDetails(int user_id, Connection connection) {
+		String deleteQuery = "update user set i_status=? where i_user_id=?";
+		try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
+			preparedStatement.setInt(1,0);
+			preparedStatement.setInt(2,user_id);
+			
+
+			return preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 }
