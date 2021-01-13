@@ -10,19 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ikonique.bean.User;
-import com.ikonique.userService.userService;
 import com.ikonique.userService.impl.userServiceImpl;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class UpdateUserDetails
  */
-public class LoginServlet extends HttpServlet {
+public class UpdateUserDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       userServiceImpl u1=new userServiceImpl();
+	
+	userServiceImpl u1=new userServiceImpl();
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public UpdateUserDetails() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,24 +41,35 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		User user =new User();
+		String fname=request.getParameter("fname");
+		String lname=request.getParameter("lname");
 		String email=request.getParameter("email");
-		String password=request.getParameter("password");
-		User user = u1.getUser(email,password);
-		/* System.out.println(user.getUser_id()); */
-		
-		
-		if(user!=null) {
-			// create session
-			HttpSession httpSession = request.getSession();
-			httpSession.setAttribute("loginBean", user);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
-			dispatcher.forward(request, response);
-		}else {
-			// forward to login page with proper message
-			request.setAttribute("message", "Incorrect username or password. please try again.");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-			dispatcher.forward(request, response);
+		String address=request.getParameter("address");
+		String contactno=request.getParameter("contactno");
+		try {
+			int user_id=Integer.parseInt(request.getParameter("user_id"));
+			user.setUser_id(user_id);
+			
 		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		user.setFirstname(fname);
+		user.setLastname(lname);
+		user.setEmail(email);
+		user.setAddress(address);
+		user.setMobileno(contactno);
+		
+		String msg=u1.updateUserDetails(user);
+		System.out.println(msg);
+		HttpSession httpSession = request.getSession();
+		httpSession.setAttribute("loginBean", user);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
+		dispatcher.forward(request, response);
 		
 		
 		

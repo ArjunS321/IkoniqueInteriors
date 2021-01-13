@@ -82,6 +82,25 @@ public class userServiceImpl {
 		return userDao.selectUserDetails(email,password,connection);
 		
 	}
+	public String getAreaName(int id) {
+		Connection connection=getConnection();
+		return userDao.fetchAreaName(id,connection);
+		
+	}
+	public String updateUserDetails(User user) {
+		Connection connection=getConnection();
+		int updateCount=0;
+		String msg=null;
+		updateCount=userDao.modifyUserDetails(user,connection);
+		if(updateCount>0) {
+			msg="Updation Successfully";
+		}
+		else
+		{
+			msg="Updation Failed";
+		}
+		return msg;
+	}
 	
 
 }

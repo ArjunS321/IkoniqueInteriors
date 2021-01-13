@@ -39,4 +39,24 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AreaName</display-name>
+    <servlet-name>AreaName</servlet-name>
+    <servlet-class>com.ikonique.servlet.AreaName</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AreaName</servlet-name>
+    <url-pattern>/AreaName</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateUserDetails</display-name>
+    <servlet-name>UpdateUserDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.UpdateUserDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateUserDetails</servlet-name>
+    <url-pattern>/UpdateUserDetails</url-pattern>
+  </servlet-mapping>
 </web-app>

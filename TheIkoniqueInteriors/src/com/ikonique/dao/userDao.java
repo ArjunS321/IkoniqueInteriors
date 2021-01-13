@@ -16,6 +16,10 @@ public interface userDao {
 
 	public User selectUserDetails(String email, String password, Connection connection);
 
+	public String fetchAreaName(int id, Connection connection);
+
+	public int modifyUserDetails(User user, Connection connection);
+
 	
 
 }

@@ -136,6 +136,7 @@ public class userDaoImpl implements userDao {
 				
 				while (resultSet.next()){
 					user = new User();
+					user.setUser_id(resultSet.getInt("i_user_id"));
 					user.setFirstname(resultSet.getString("c_first_name"));
 					user.setLastname(resultSet.getString("c_last_name"));
 					user.setAddress(resultSet.getString("c_address"));
@@ -155,6 +156,55 @@ public class userDaoImpl implements userDao {
 		}
 		
 		return user;
+	}
+
+	@Override
+	public String fetchAreaName(int id, Connection connection) {
+		
+		String selectQuery="select c_area_name from area where i_area_id=?";
+		
+		try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
+			preparedStatement.setInt(1,id);
+			
+			try (ResultSet resultSet = preparedStatement.executeQuery();) {
+				
+				while (resultSet.next()){
+					String name=resultSet.getString("c_area_name");
+					return name;
+					
+				}
+				
+			}
+			
+
+		} catch(SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	@Override
+	public int modifyUserDetails(User user, Connection connection) {
+		String updateQuery = "update user set c_first_name=?,c_last_name=?,c_address=?,c_contact_no=?,c_email=? where i_user_id=?";
+		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+			preparedStatement.setString(1, user.getFirstname());
+			preparedStatement.setString(2, user.getLastname());
+			preparedStatement.setString(3, user.getAddress());
+			preparedStatement.setString(4, user.getMobileno());
+			preparedStatement.setString(5, user.getEmail());
+			preparedStatement.setInt(6,user.getUser_id());
+			
+
+			return preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 0;
 	}
 
 }

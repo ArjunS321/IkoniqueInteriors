@@ -2,7 +2,7 @@ package com.ikonique.bean;
 
 public class User {
 
-	
+	private int user_id;
 	private String firstname;
 	private String lastname;
 	private String address;
@@ -65,6 +65,12 @@ public class User {
 	}
 	public void setArea_id(int area_id) {
 		this.area_id = area_id;
+	}
+	public int getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 	
 }

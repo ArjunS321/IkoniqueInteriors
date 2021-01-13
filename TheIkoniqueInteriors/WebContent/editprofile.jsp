@@ -3,6 +3,9 @@
 <title>edit profile</title>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <%@include file="commoncss.jsp"%>
+<%@page import="com.ikonique.bean.User"%>
+<%@page import="java.util.List"%>
+<%@page import="com.ikonique.bean.Area"%>
 <style>
 body{
     margin-top:20px;
@@ -10,6 +13,18 @@ body{
 }
 </style>
 </head>
+<% HttpSession httpSession = request.getSession(true);
+	User user = null;   
+	if(null!=httpSession){
+	   user = (User)httpSession.getAttribute("loginBean");
+   }
+%>
+<jsp:include page="/AreaRegistration" />
+<%
+	List<Area> area = (List) request.getAttribute("area");
+%>
+<jsp:include page="/AreaName" />
+
 <body>
 <div class="container">
 <div class="row flex-lg-nowrap">
@@ -64,20 +79,21 @@ body{
               </ul> -->
               <div class="tab-content pt-3">
                 <div class="tab-pane active">
-                  <form class="form" novalidate="">
+                  <form action="UpdateUserDetails" class="form" novalidate="" method="post">
+                  <input type="hidden" name="user_id" value="<%=String.valueOf(user.getUser_id()) %>"> <br>
                     <div class="row">
                       <div class="col">
                         <div class="row">
                           <div class="col">
                             <div class="form-group">
                               <label>First Name</label>
-                              <input class="form-control" type="text" name="name" placeholder="John Smith" value="John Smith">
+                              <input class="form-control" type="text" name="fname" value="<%=user.getFirstname()%>">
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
                               <label>Last Name</label>
-                              <input class="form-control" type="text" name="username" placeholder="johnny.s" value="johnny.s">
+                              <input class="form-control" type="text" name="lname" value="<%=user.getLastname()%>">
                             </div>
                           </div>
                         </div>
@@ -85,7 +101,7 @@ body{
                           <div class="col">
                             <div class="form-group">
                               <label>Email</label>
-                              <input class="form-control" type="text" placeholder="user@example.com">
+                              <input class="form-control" type="text" name="email" value="<%=user.getEmail()%>">
                             </div>
                           </div>
                         </div>
@@ -93,7 +109,7 @@ body{
                           <div class="col mb-3">
                             <div class="form-group">
                               <label>Address</label>
-                              <textarea class="form-control" rows="5" placeholder="My Bio"></textarea>
+                              <textarea class="form-control" name="address" rows="5"><%=user.getAddress()%></textarea>
                             </div>
                           </div>
                         </div>
@@ -106,7 +122,24 @@ body{
                           <div class="col">
                             <div class="form-group">
                               <label>Area</label>
-                              <input class="form-control" type="password" placeholder="">
+                             <!--  console.log(areaname); -->
+                               <select name="area"
+								class="form-control" id="area" value=name>
+								
+
+								<%
+									for (Area place : area) {
+								%>
+
+								<option value="<%=place.getArea_id()%>"><%=place.getArea_name()%></option>
+
+								<%
+									}
+								%>
+							</select> <span class="indicator8"></span>
+                              
+                              
+                              
                             </div>
                           </div>
                         </div>
@@ -114,7 +147,7 @@ body{
                           <div class="col">
                             <div class="form-group">
                               <label>Contact No</label>
-                              <input class="form-control" type="password" placeholder="">
+                              <input class="form-control" type="number" name="contactno" value="<%=user.getMobileno()%>">
                             </div>
                           </div>
                         </div>
