@@ -51,15 +51,17 @@ body{
                       </button>
                     </div>
                   </div>
-                  <div class="text-center text-sm-right">
+                 <!--  <div class="text-center text-sm-right">
+                 
                     <span class="badge badge-secondary">administrator</span>
                     <div class="text-muted"><small>Joined 09 Dec 2017</small></div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
-              <ul class="nav nav-tabs">
+              
+             <!--  <ul class="nav nav-tabs">
                 <li class="nav-item"><a href="" class="active nav-link">Settings</a></li>
-              </ul>
+              </ul> -->
               <div class="tab-content pt-3">
                 <div class="tab-pane active">
                   <form class="form" novalidate="">
@@ -68,13 +70,13 @@ body{
                         <div class="row">
                           <div class="col">
                             <div class="form-group">
-                              <label>Full Name</label>
+                              <label>First Name</label>
                               <input class="form-control" type="text" name="name" placeholder="John Smith" value="John Smith">
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
-                              <label>Username</label>
+                              <label>Last Name</label>
                               <input class="form-control" type="text" name="username" placeholder="johnny.s" value="johnny.s">
                             </div>
                           </div>
@@ -90,7 +92,7 @@ body{
                         <div class="row">
                           <div class="col mb-3">
                             <div class="form-group">
-                              <label>About</label>
+                              <label>Address</label>
                               <textarea class="form-control" rows="5" placeholder="My Bio"></textarea>
                             </div>
                           </div>
@@ -99,32 +101,32 @@ body{
                     </div>
                     <div class="row">
                       <div class="col-12 col-sm-6 mb-3">
-                        <div class="mb-2"><b>Change Password</b></div>
+                        <!-- <div class="mb-2"><b>Change Password</b></div> -->
                         <div class="row">
                           <div class="col">
                             <div class="form-group">
-                              <label>Current Password</label>
+                              <label>Area</label>
                               <input class="form-control" type="password" placeholder="">
                             </div>
                           </div>
                         </div>
-                        <div class="row">
+                         <div class="row">
                           <div class="col">
                             <div class="form-group">
-                              <label>New Password</label>
+                              <label>Contact No</label>
                               <input class="form-control" type="password" placeholder="">
                             </div>
                           </div>
                         </div>
-                        <div class="row">
+                       <!--  <div class="row">
                           <div class="col">
                             <div class="form-group">
                               <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
                               <input class="form-control" type="password" placeholder=""></div>
                           </div>
-                        </div>
-                      </div>
-                      <div class="col-12 col-sm-5 offset-sm-1 mb-3">
+                        </div> -->
+                    </div>
+                     <!--  <div class="col-12 col-sm-5 offset-sm-1 mb-3">
                         <div class="mb-2"><b>Keeping in Touch</b></div>
                         <div class="row">
                           <div class="col">
@@ -145,7 +147,7 @@ body{
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                     <div class="row">
                       <div class="col d-flex justify-content-end">

@@ -96,7 +96,7 @@
 			<div class="main-content">
 			<h1 align="center" style="margin-top: 50px;">Login</h1>
 				  <section class="min-vh-80 d-flex bg-primary align-items-center">
-				<form action="customer.jsp" class="w-50 ml-10" class="box" class="form" id="form" method="post"  onsubmit="return login()">
+				<form action="LoginServlet " class="w-50 ml-10" class="box" class="form" id="form" method="post"  onsubmit="return login()">
 				
 					<div class="form-group mb-3 ml-10 inputBox">
 						<label for="email">Email address</label> 

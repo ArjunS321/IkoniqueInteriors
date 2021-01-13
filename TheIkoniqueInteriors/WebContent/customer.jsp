@@ -7,6 +7,8 @@
 <title>Customer</title>
 <%@include file="FontFaces.jsp"%>
 <%@include file="commoncss.jsp"%>
+<%@page import="com.ikonique.bean.User"%>
+
 <link type="text/css"
 	href="neuro/vendor/@fortawesome/fontawesome-free/css/all.min.css"
 	rel="stylesheet">
@@ -18,6 +20,13 @@
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
+<% HttpSession httpSession = request.getSession(false);
+	User user = null;   
+	if(null!=httpSession){
+	   user = (User)httpSession.getAttribute("loginBean");
+   }
+%>
+
 <body class="animsition" style="background-color: #e6e7ee;">
 	<div class="page-wrapper" style="background-color: #e6e7ee;">
 		<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>

@@ -10,6 +10,7 @@ public interface userService {
 	public String saveUserDetails(User user) ;
 	public String saveDesignerDetails(User user);
 	public List<Area> fatcharea();
+	public User getUser(String email, String password);
 	
 	
 }

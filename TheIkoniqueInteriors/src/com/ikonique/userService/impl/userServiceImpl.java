@@ -77,6 +77,11 @@ public class userServiceImpl {
 		return userDao.selectArea(connection);
 	
 	}
+	public User getUser(String email, String password) {
+		Connection connection=getConnection();
+		return userDao.selectUserDetails(email,password,connection);
+		
+	}
 	
 
 }

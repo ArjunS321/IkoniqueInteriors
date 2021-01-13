@@ -14,6 +14,8 @@ public interface userDao {
 
 	public List<Area> selectArea(Connection connection);
 
+	public User selectUserDetails(String email, String password, Connection connection);
+
 	
 
 }

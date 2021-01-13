@@ -12,7 +12,6 @@ import com.ikonique.bean.Area;
 import com.ikonique.bean.User;
 import com.ikonique.dao.userDao;
 
-
 public class userDaoImpl implements userDao {
 
 	@Override
@@ -35,12 +34,11 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setString(5, user.getEmail());
 			preparedStatement.setString(6, user.getPassword());
 			preparedStatement.setString(7, user.getGender());
-			
+
 			/* preparedStatement.setString(8, user.getVisitingfees()); */
-			preparedStatement.setInt(8,1);
+			preparedStatement.setInt(8, 1);
 			preparedStatement.setInt(9, user.getArea_id());
-			
-			
+
 			i = preparedStatement.executeUpdate();
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
@@ -56,13 +54,11 @@ public class userDaoImpl implements userDao {
 
 		return insertedUserId;
 
-
-
 	}
 
 	@Override
 	public int insertDesignerDetails(User user, Connection connection) {
-		
+
 		int i = 0, insertedUserId = 0;
 		String insertQuery = "insert into user (c_first_name,c_last_name,c_address,c_contact_no,c_email,c_password,c_gender,i_role_id,i_visiting_fess,i_area_id) values (?,?,?,?,?,?,?,?,?,?)";
 		try {
@@ -81,11 +77,10 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setString(5, user.getEmail());
 			preparedStatement.setString(6, user.getPassword());
 			preparedStatement.setString(7, user.getGender());
-			preparedStatement.setInt(8,2);
-		    preparedStatement.setString(9, user.getVisitingfees()); 
-		    preparedStatement.setInt(10, user.getArea_id());
-			
-			
+			preparedStatement.setInt(8, 2);
+			preparedStatement.setString(9, user.getVisitingfees());
+			preparedStatement.setInt(10, user.getArea_id());
+
 			i = preparedStatement.executeUpdate();
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
@@ -100,8 +95,6 @@ public class userDaoImpl implements userDao {
 		}
 
 		return insertedUserId;
-
-
 
 	}
 
@@ -128,6 +121,40 @@ public class userDaoImpl implements userDao {
 
 	}
 
-	
-	
+	@Override
+	public User selectUserDetails(String email, String password, Connection connection) {
+		User user =null;
+		
+		String selectQuery = "select * from user where c_email=? and c_password=? and i_status=? and i_role_id=?";
+
+		try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
+			preparedStatement.setString(1, email);
+			preparedStatement.setString(2, password);
+			preparedStatement.setInt(3, 1);
+			preparedStatement.setInt(4, 1);
+			try (ResultSet resultSet = preparedStatement.executeQuery();) {
+				
+				while (resultSet.next()){
+					user = new User();
+					user.setFirstname(resultSet.getString("c_first_name"));
+					user.setLastname(resultSet.getString("c_last_name"));
+					user.setAddress(resultSet.getString("c_address"));
+					user.setMobileno(resultSet.getString("c_contact_no"));
+					user.setEmail(resultSet.getString("c_email"));
+					user.setArea_id(resultSet.getInt("i_area_id"));
+					
+					
+				}
+				
+			}
+			
+
+		} catch(SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return user;
+	}
+
 }

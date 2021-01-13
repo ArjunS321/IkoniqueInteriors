@@ -60,7 +60,7 @@
 <body class="animsition">
 	<div class="page-wrapper">
 		<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>
-<%-- 		<%@include file="customersidebar.jsp"%> --%>
+	<%-- <%@include file="customersidebar.jsp"%> --%> 
 <%-- 		<%@include file="customerheader.jsp"%> --%>
 <div align="center" class="ml-10 mt-5">
 	<h1 class="mr-10">Our Team</h1>
