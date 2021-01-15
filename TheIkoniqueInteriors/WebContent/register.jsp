@@ -81,9 +81,9 @@
 
 						<div class="form-group mb-3 ml-10 inputBox">
 							<label for="areaname">Area</label> <select name="area"
-								class="form-control" id="area" autocomplete="off"
+								class="form-control" id="area" 
 								aria-describedby="emailHelp" onkeyup="validate6()">
-
+								<option value="0" selected>select</option>
 								<%
 									for (Area place : area) {
 								%>
@@ -397,12 +397,19 @@
 			 */
 			 
 			const form = document.getElementById('form');
-			const area = document.getElementById('area').value; 
-			console.log(area);
+			/*const area = document.getElementById('area').value; 
+			const value=area.options[area.selectedIndex].value; */
+			/* console.log(area); */
 // 			var strUser = area.options[area.selectedIndex].value;
 
 // 			 var strUser1 = e.options[e.selectedIndex].text; 
-			if (area != null) {
+
+			var e=document.getElementById('area');
+			console.log(e);
+			var value=e.options[e.selectedIndex].value;
+			console.log(value);
+			
+			if (value!='0') {
 				
 				form.classList.add('valid6')
 				form.classList.remove('invalid6')

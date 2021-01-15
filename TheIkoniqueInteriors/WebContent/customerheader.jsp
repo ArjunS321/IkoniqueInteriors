@@ -152,7 +152,7 @@
 								</div>
 								<div class="account-dropdown__body">
 									<div class="account-dropdown__item">
-										<a href="editprofile.jsp"> <i class="zmdi zmdi-account"></i>Edit Profile
+										<a href="editprofile.jsp"> <i class="far fa-edit"></i>Edit Profile
 										</a>
 									</div>
 									<div class="account-dropdown__item">
