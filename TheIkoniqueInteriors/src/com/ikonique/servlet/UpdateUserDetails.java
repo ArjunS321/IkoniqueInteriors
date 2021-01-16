@@ -66,7 +66,7 @@ public class UpdateUserDetails extends HttpServlet {
 		
 		String msg=u1.updateUserDetails(user);
 		System.out.println(msg);
-		HttpSession httpSession = request.getSession();
+		HttpSession httpSession = request.getSession(false);
 		httpSession.setAttribute("loginBean", user);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
 		dispatcher.forward(request, response);

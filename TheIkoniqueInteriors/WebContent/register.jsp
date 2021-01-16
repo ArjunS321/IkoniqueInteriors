@@ -82,7 +82,7 @@
 						<div class="form-group mb-3 ml-10 inputBox">
 							<label for="areaname">Area</label> <select name="area"
 								class="form-control" id="area" 
-								aria-describedby="emailHelp" onkeyup="validate6()">
+								aria-describedby="emailHelp" onchange="validate6()">
 								<option value="0" selected>select</option>
 								<%
 									for (Area place : area) {
@@ -97,12 +97,12 @@
 
 						</div>
 
-						<div class="form-group mb-3 ml-10 inputBox">
+						<!-- <div class="form-group mb-3 ml-10 inputBox">
 							<label for="pincode">Pincode</label> <input type="number"
 								name="pin" class="form-control" id="pin" autocomplete="off"
 								aria-describedby="emailHelp" onkeyup="validate7();"> <span
 								class="indicator9"></span>
-						</div>
+						</div> -->
 						<div class="form-group mb-3 ml-10 inputBox vfees">
 							<label for="visitingfees">Visiting Fees</label> <input
 								type="number" name="vfees1" class="form-control" id="vfees"
@@ -379,6 +379,7 @@
 		}
 
 		function validate6() {
+			
 			/* const form = document.getElementById('form');
 			const area = document.getElementById('area').value;
 			const pattern = " ";
@@ -405,9 +406,9 @@
 // 			 var strUser1 = e.options[e.selectedIndex].text; 
 
 			var e=document.getElementById('area');
-			console.log(e);
+			
 			var value=e.options[e.selectedIndex].value;
-			console.log(value);
+			
 			
 			if (value!='0') {
 				
@@ -425,7 +426,9 @@
 			
 		}
 
-		function validate7() {
+		/* function validate7() {
+			
+		
 			const form = document.getElementById('form');
 			const pin = document.getElementById('pin').value;
 			const pattern = "^[1-9]{1}[0-9]{2}[0-9]{3}$";
@@ -442,7 +445,7 @@
 				form.classList.remove('valid7')
 			}
 		}
-
+ */
 		function validate8() {
 			const form = document.getElementById('form');
 			const vfees = document.getElementById('vfees').value;

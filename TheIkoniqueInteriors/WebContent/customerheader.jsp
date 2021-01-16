@@ -165,7 +165,7 @@
 									</div>
 								</div>
 								<div class="account-dropdown__footer">
-									<a href="login.jsp"> <i class="fas fa-sign-out-alt"></i>Logout
+									<a href="LogoutServlet"> <i class="fas fa-sign-out-alt"></i>Logout
 									</a>
 								</div>
 							</div>
