@@ -47,6 +47,7 @@ public class UpdateUserDetails extends HttpServlet {
 		String email=request.getParameter("email");
 		String address=request.getParameter("address");
 		String contactno=request.getParameter("contactno");
+		String exampleRadios = request.getParameter("exampleRadios");
 		try {
 			int user_id=Integer.parseInt(request.getParameter("user_id"));
 			user.setUser_id(user_id);
@@ -63,6 +64,7 @@ public class UpdateUserDetails extends HttpServlet {
 		user.setEmail(email);
 		user.setAddress(address);
 		user.setMobileno(contactno);
+		user.setGender("exampleRadios");
 		
 		String msg=u1.updateUserDetails(user);
 		System.out.println(msg);

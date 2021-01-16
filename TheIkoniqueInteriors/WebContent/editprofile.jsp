@@ -114,7 +114,8 @@ if (null != httpSession) {
 															<div class="col">
 																<div class="form-group">
 																	<label>Email</label> <input class="form-control"
-																		type="text" name="email" value="<%=user.getEmail()%>" readonly>
+																		type="text" name="email" value="<%=user.getEmail()%>"
+																		readonly>
 																</div>
 															</div>
 														</div>
@@ -177,6 +178,23 @@ if (null != httpSession) {
 																</div>
 															</div>
 														</div>
+														<div class="row">
+															<div class="col">
+																<div class="form-group">
+																	<label>Gender</label>
+																	 <br> <input type="radio"
+																		name="exampleRadios" id="exampleRadios1"
+																		value="<%=user.getGender()%>" class="from-control">
+														 			<label class="form-check-label" for="exampleRadios1">
+																		Male </label><br> <input type="radio" name="exampleRadios" id="exampleRadios2"
+																		value="Female" class="form-control"> 
+																		<label
+																		class="form-check-label" for="exampleRadios2">
+																		Female </label>
+
+																</div>
+															</div>
+														</div>
 														<!--  <div class="row">
                           <div class="col">
                             <div class="form-group">
@@ -207,11 +225,10 @@ if (null != httpSession) {
                           </div>
                         </div>
                       </div> -->
-					</div>
+												</div>
 												<div class="row">
 													<div class="col d-flex justify-content-end">
-														<button class="btn btn-primary" type="submit"
-															>Save
+														<button class="btn btn-primary" type="submit">Save
 															Changes</button>
 														<!-- <div class="modal fade" id="exampleModal" tabindex="-1"
 															role="dialog" aria-labelledby="exampleModalLabel"
@@ -235,45 +252,53 @@ if (null != httpSession) {
 																	</div>
 																</div>
 															</div> -->
-														</div>
 													</div>
 												</div>
-											</form>
-
 										</div>
+										</form>
+
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+				</div>
 
-					<div class="col-12 col-md-3 mb-3">
-						<div class="card mb-3">
-							<div class="card-body">
-								<div class="px-xl-3">
-									<a href="LogoutServlet" class="btn btn-block btn-secondary"
-										id="logout"> <i class="fa fa-sign-out"></i> <span>Logout</span>
-									</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="card">
-							<div class="card-body">
-								<h6 class="card-title font-weight-bold">Support</h6>
-								<p class="card-text">Get fast, free help from our friendly
-									assistants.</p>
-								<button type="button" class="btn btn-primary">Contact
-									Us</button>
+				<div class="col-12 col-md-3 mb-3">
+					<div class="card mb-3">
+						<div class="card-body">
+							<div class="px-xl-3">
+								<a href="LogoutServlet" class="btn btn-block btn-secondary"
+									id="logout"> <i class="fa fa-sign-out"></i> <span>Logout</span>
+								</a>
 							</div>
 						</div>
 					</div>
-				</div>
 
+					<div class="card">
+						<div class="card-body">
+							<h6 class="card-title font-weight-bold">Support</h6>
+							<p class="card-text">Get fast, free help from our friendly
+								assistants.</p>
+							<button type="button" class="btn btn-primary">Contact Us</button>
+						</div>
+					</div>
+				</div>
 			</div>
+
 		</div>
 	</div>
-
+	</div>
+<script>
+	gender=user.getGender();
+	radio=doxument.getElementById("exampleRadios1");
+	if(gender=="male")
+		{
+			radio.checked=true;
+		}
+	
+	
+</script>
 
 </body>
 </html>

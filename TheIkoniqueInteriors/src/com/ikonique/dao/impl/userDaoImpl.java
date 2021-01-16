@@ -143,6 +143,7 @@ public class userDaoImpl implements userDao {
 					user.setMobileno(resultSet.getString("c_contact_no"));
 					user.setEmail(resultSet.getString("c_email"));
 					user.setArea_id(resultSet.getInt("i_area_id"));
+					user.setGender(resultSet.getString("c_gender"));
 					
 					
 				}
@@ -187,14 +188,15 @@ public class userDaoImpl implements userDao {
 
 	@Override
 	public int modifyUserDetails(User user, Connection connection) {
-		String updateQuery = "update user set c_first_name=?,c_last_name=?,c_address=?,c_contact_no=?,c_email=? where i_user_id=?";
+		String updateQuery = "update user set c_first_name=?,c_last_name=?,c_address=?,c_contact_no=?,c_email=?,c_gender=? where i_user_id=?";
 		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
 			preparedStatement.setString(1, user.getFirstname());
 			preparedStatement.setString(2, user.getLastname());
 			preparedStatement.setString(3, user.getAddress());
 			preparedStatement.setString(4, user.getMobileno());
 			preparedStatement.setString(5, user.getEmail());
-			preparedStatement.setInt(6,user.getUser_id());
+			preparedStatement.setString(6,user.getGender());
+			preparedStatement.setInt(7,user.getUser_id());
 			
 
 			return preparedStatement.executeUpdate();
