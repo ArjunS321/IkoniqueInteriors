@@ -3,10 +3,12 @@
 <%@include file="commoncss.jsp"%>
 
 <header class="header-desktop" style="background-color: #e6e7ee;">
+ <!-- <link data-require="sweet-alert@*" data-semver="0.4.2" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" /> -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<div class="section__content section__content--p30" >
 		<div class="container-fluid">
 			<div class="header-wrap" style="position: sticky;z-index: 9">
-				<form class="form-header" action="" method="POST">
+				<form id="from1" class="form-header" action="" method="POST">
 					<input class="au-input au-input--xl" type="text" name="search"
 						placeholder="Search Products...." />
 					<button class="au-btn--submit" type="submit">
@@ -156,7 +158,7 @@
 										</a>
 									</div>
 									<div class="account-dropdown__item">
-										<a href="DeleteUserRecord"> <i class="fas fa-user-minus"></i>Delete Account?
+										<a href="DeleteUserRecord" id="click" onclick="return confirm('Are You Sure You Want To Delete Acoount?')"> <i class="fas fa-user-minus"></i>Delete Account?
 										</a>
 									</div>
 									<div class="account-dropdown__item">
@@ -176,5 +178,41 @@
 		</div>
 	</div>
 </header>
-
+<!-- <script>
+    document.querySelector('#click').addEventListener('onclick', function(e) {
+      var form = this;
+      
+      e.preventDefault();
+      
+      swal({
+          title: "Are you sure?",
+          text: "You will not be able to recover this imaginary file!",
+          icon: "warning",
+          buttons: [
+            'No, cancel it!',
+            'Yes, I am sure!'
+          ],
+          dangerMode: true,
+        }).then(function(isConfirm) {
+          if (isConfirm) {
+            swal({
+              title: 'Shortlisted!',
+              text: 'Candidates are successfully shortlisted!',
+              icon: 'success'
+            }).then(function() {
+              form.onclick();
+            });
+          } else {
+            swal("Cancelled", "Your imaginary file is safe :)", "error");
+          }
+        });
+    });
+  </script>
+  
+  <style>
+    .swal-button--confirm {
+      background-color: #DD6B55;
+    }
+  </style>
+ -->
 <%@include file="commonjs.jsp"%>
