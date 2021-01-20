@@ -180,21 +180,24 @@ if (null != httpSession) {
 														</div>
 														<div class="row">
 															<div class="col">
-																<div class="form-group">
-																	<label>Gender</label>
-																	 <br> <input type="radio"
-																		name="exampleRadios" id="exampleRadios1"
-																		value="<%=user.getGender()%>" class="from-control">
-														 			<label class="form-check-label" for="exampleRadios1">
-																		Male </label><br> <input type="radio" name="exampleRadios" id="exampleRadios2"
-																		value="Female" class="form-control"> 
-																		<label
-																		class="form-check-label" for="exampleRadios2">
-																		Female </label>
-
-																</div>
+																
+																	<div class="form-group mb-3 ml-10 inputBox">
+																		Gender<br>
+																		 <div class="form-check"> 
+																			<input class="form-control" type="radio"
+																				name="exampleRadios" id="exampleRadios1"
+																				value="Male"> <label
+																				 for="exampleRadios1">
+																				Male </label> <input class="form-control" type="radio"
+																				name="exampleRadios" id="exampleRadios2"
+																				value="Female"> <label
+																				 for="exampleRadios2">
+																				Female </label>
+																		 </div> 
+																	</div>
+																
 															</div>
-														</div>
+														</div> 
 														<!--  <div class="row">
                           <div class="col">
                             <div class="form-group">
@@ -202,8 +205,8 @@ if (null != httpSession) {
                               <input class="form-control" type="password" placeholder=""></div>
                           </div>
                         </div> -->
-													</div>
-													<!--  <div class="col-12 col-sm-5 offset-sm-1 mb-3">
+														<!-- </div> -->
+														<!--  <div class="col-12 col-sm-5 offset-sm-1 mb-3">
                         <div class="mb-2"><b>Keeping in Touch</b></div>
                         <div class="row">
                           <div class="col">
@@ -225,80 +228,60 @@ if (null != httpSession) {
                           </div>
                         </div>
                       </div> -->
-												</div>
-												<div class="row">
-													<div class="col d-flex justify-content-end">
-														<button class="btn btn-primary" type="submit">Save
-															Changes</button>
-														<!-- <div class="modal fade" id="exampleModal" tabindex="-1"
-															role="dialog" aria-labelledby="exampleModalLabel"
-															aria-hidden="true">
-															<div class="modal-dialog" role="document">
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<h5 class="modal-title" id="exampleModalLabel">Modal
-																			title</h5>
-																		<button type="button" class="close"
-																			data-dismiss="modal" aria-label="Close">
-																			<span aria-hidden="true">&times;</span>
-																		</button>
-																	</div>
-																	<div class="modal-body">...</div>
-																	<div class="modal-footer">
-																		<button type="button" class="btn btn-secondary"
-																			data-dismiss="modal">Close</button>
-																		<button type="button" class="btn btn-primary">Save
-																			changes</button>
-																	</div>
-																</div>
-															</div> -->
+													<!-- </div> -->
+													<div class="row">
+														<div class="col d-flex justify-content-end">
+															<button class="btn btn-primary" type="submit">Save
+																Changes</button>
+															  
 													</div>
 												</div>
+													</form>
+												</div>
+												</div>
+												
+											
+											
 										</div>
-										</form>
-
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="col-12 col-md-3 mb-3">
-					<div class="card mb-3">
-						<div class="card-body">
-							<div class="px-xl-3">
-								<a href="LogoutServlet" class="btn btn-block btn-secondary"
-									id="logout"> <i class="fa fa-sign-out"></i> <span>Logout</span>
-								</a>
+					<div class="col-12 col-md-3 mb-3">
+						<div class="card mb-3">
+							<div class="card-body">
+								<div class="px-xl-3">
+									<a href="LogoutServlet" class="btn btn-block btn-secondary"
+										id="logout"> <i class="fa fa-sign-out"></i> <span>Logout</span>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-body">
+								<h6 class="card-title font-weight-bold">Support</h6>
+								<p class="card-text">Get fast, free help from our friendly
+									assistants.</p>
+								<button type="button" class="btn btn-primary">Contact
+									Us</button>
 							</div>
 						</div>
 					</div>
-
-					<div class="card">
-						<div class="card-body">
-							<h6 class="card-title font-weight-bold">Support</h6>
-							<p class="card-text">Get fast, free help from our friendly
-								assistants.</p>
-							<button type="button" class="btn btn-primary">Contact Us</button>
-						</div>
-					</div>
 				</div>
-			</div>
 
+			</div>
 		</div>
 	</div>
-	</div>
-<script>
-	gender=user.getGender();
-	radio=doxument.getElementById("exampleRadios1");
-	if(gender=="male")
-		{
-			radio.checked=true;
+	<script>
+		gender = user.getGender();
+		radio = doxument.getElementById("exampleRadios1");
+		if (gender == "male") {
+			radio.checked = true;
 		}
-	
-	
-</script>
+	</script>
 
 </body>
 </html>
