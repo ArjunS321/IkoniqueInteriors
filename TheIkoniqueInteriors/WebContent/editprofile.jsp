@@ -183,16 +183,23 @@ if (null != httpSession) {
 																
 																	<div class="form-group mb-3 ml-10 inputBox">
 																		Gender<br>
-																		 <div class="form-check"> 
-																			<input class="form-control" type="radio"
+																		<input class="form-control" type="radio"
 																				name="exampleRadios" id="exampleRadios1"
 																				value="Male"> <label
 																				 for="exampleRadios1">
-																				Male </label> <input class="form-control" type="radio"
+																				Male </label>
+																		 <div class="form-check"> 
+																			<input class="form-control" type="radio"
 																				name="exampleRadios" id="exampleRadios2"
-																				value="Female"> <label
+																				value="Female" checked> <label
 																				 for="exampleRadios2">
 																				Female </label>
+																		
+																			<!-- <input class="form-control" type="radio"
+																				name="exampleRadios" id="exampleRadios1"
+																				value="Male" checkhed> <label
+																				 for="exampleRadios1">
+																				Male </label>  -->
 																		 </div> 
 																	</div>
 																

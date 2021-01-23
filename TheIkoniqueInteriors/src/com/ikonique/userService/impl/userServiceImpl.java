@@ -9,6 +9,7 @@ import com.ikonique.bean.Area;
 import com.ikonique.bean.User;
 import com.ikonique.dao.userDao;
 import com.ikonique.dao.impl.userDaoImpl;
+import com.ikonique.util.Main;
 
 
 public class userServiceImpl {
@@ -23,6 +24,10 @@ public class userServiceImpl {
 		
 		int insertedUserId= userDao.insertUserDetails(user,connection);
 		if(insertedUserId>0) {
+			
+			Main main=new Main();
+			main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {user.getEmail()}, "Registration Successfull", "Welcome to the world of THE IKONIQUE INTERIORS");
+			
 			msg="Registration Is Successfully";
 		}
 		else
