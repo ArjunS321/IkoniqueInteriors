@@ -107,7 +107,7 @@
 								<div class="col">
 									<div class="d-flex mb-2 font-weight-bold">
 										<a class="h6" href="#">Apple Watch Series 3</a>
-									</div>
+		3							</div>
 									<ul class="pl-3">
 										<li class="small">Transport: Free transport</li>
 										<li class="small">Moneyback: 1 month</li>

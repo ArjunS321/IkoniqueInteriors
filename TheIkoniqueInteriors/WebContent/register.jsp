@@ -5,7 +5,14 @@
 <html lang="en">
 
 <head>
-
+<style>
+.animsition {
+  background-image: url(bg-img/bg.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- Primary Meta Tags -->
 <title>Registration</title>
@@ -40,7 +47,7 @@
 			<div class="main-content">
 				<h1 align="center" style="margin-top: 50px;">Registration</h1>
 				<br>
-				<section class="min-vh-80 d-flex bg-primary align-items-center">
+				<section class="min-vh-80 d-flex align-items-center">
 					<form action="RegistrationServlet" class="w-50 ml-10" class="box"
 						class="form" id="form" method="post" onsubmit=" login()"
 						enctype="multipart/form-data">
