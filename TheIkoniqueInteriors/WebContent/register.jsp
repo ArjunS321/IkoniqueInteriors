@@ -5,14 +5,7 @@
 <html lang="en">
 
 <head>
-<style>
-.animsition {
-  background-image: url(bg-img/bg.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-}
-</style>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- Primary Meta Tags -->
 <title>Registration</title>
