@@ -25,7 +25,8 @@
 <div class="welcome-text">
         <h1>
 Welcome to <span>Ikonique Interiors and Design</span></h1>
-<a href="register.jsp">Get Started</a>
+<a href="register.jsp">Register Here</a>
+<a href="login.jsp">Login</a>
     </div>
 </header>
 
