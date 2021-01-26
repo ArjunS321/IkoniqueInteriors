@@ -81,12 +81,22 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>GenarateOtp</display-name>
-    <servlet-name>GenarateOtp</servlet-name>
-    <servlet-class>com.ikonique.servlet.GenarateOtp</servlet-class>
+    <display-name>GenerateOtpPass</display-name>
+    <servlet-name>GenerateOtpPass</servlet-name>
+    <servlet-class>com.ikonique.servlet.GenerateOtpPass</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GenarateOtp</servlet-name>
-    <url-pattern>/GenarateOtp</url-pattern>
+    <servlet-name>GenerateOtpPass</servlet-name>
+    <url-pattern>/GenerateOtpPass</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TrialServlet</display-name>
+    <servlet-name>TrialServlet</servlet-name>
+    <servlet-class>com.ikonique.servlet.TrialServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TrialServlet</servlet-name>
+    <url-pattern>/TrialServlet</url-pattern>
   </servlet-mapping>
 </web-app>

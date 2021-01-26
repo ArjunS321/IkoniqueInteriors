@@ -125,18 +125,23 @@ public class RegistrationServlet extends HttpServlet {
 		}
 
 		if (message == "Registration Failed") {
-			RequestDispatcher requestdispatcher = request.getRequestDispatcher("register.jsp");
-			requestdispatcher.forward(request, response);
-
+			message=null;
+			/*
+			 * RequestDispatcher requestdispatcher =
+			 * request.getRequestDispatcher("register.jsp");
+			 * requestdispatcher.forward(request, response);
+			 */
 		} 
 		
 
-		else {
-			RequestDispatcher requestdispatcher = request.getRequestDispatcher("login.jsp");
-			requestdispatcher.forward(request, response);
-
-		}
-		/* response.getWriter().append(message); */
+		/*
+		 * else { RequestDispatcher requestdispatcher =
+		 * request.getRequestDispatcher("login.jsp"); requestdispatcher.forward(request,
+		 * response);
+		 * 
+		 * }
+		 */
+		response.getWriter().append(message); 
 
 	}
 

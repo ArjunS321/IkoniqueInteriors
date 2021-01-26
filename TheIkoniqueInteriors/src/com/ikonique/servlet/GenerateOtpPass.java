@@ -52,13 +52,12 @@ public class GenerateOtpPass extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		System.out.println("Hiii");
 		String mail = request.getParameter("email");
 		User user = new User();
 		user.setEmail(mail);
 		
-		HttpSession httpSession = request.getSession();
-		httpSession.setAttribute("forgotpass", user);
+		
 		
 		GenerateOtp otp = new GenerateOtp();
 		String otpstring = otp.generateOTP();
