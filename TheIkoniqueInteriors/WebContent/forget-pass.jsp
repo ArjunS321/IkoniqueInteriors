@@ -48,6 +48,11 @@
 <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
 
 </head>
+<jsp:include page="/CheckEmail" />
+<%
+	String mailid = (String) request.getAttribute("mailid");
+%>
+
 <body class="animsition">
 	<div class="page-wrapper">
 		<div class="page-container">
@@ -62,6 +67,7 @@
 								name="email" class="form-control" id="email" autocomplete="off"
 								aria-describedby="emailHelp" onkeyup="validate();"> <span
 								class="indicator7"></span>
+								
 						</div>
 						<div align="center">
 							<button type="submit" name="submit"
@@ -113,6 +119,7 @@
 				const form= document.getElementById('form');
 				const email= document.getElementById('email').value;
 				const pattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+				
 				
 				if(email.match(pattern)){
 					form.classList.add('valid6')

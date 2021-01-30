@@ -14,5 +14,7 @@ public interface userService {
 	public String getAreaName(int id);
 	public String updateUserDetails(User user);
 	public String deleteUserDetails(int user_id);
+	public User getEmailId(String email);
+	public String updatePass(String cpass, int user_id);
 	
 }

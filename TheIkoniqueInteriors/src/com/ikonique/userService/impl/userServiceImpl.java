@@ -122,6 +122,29 @@ public class userServiceImpl {
 		
 		
 	}
+	public User getEmailId(String email) {
+		// TODO Auto-generated method stub
+		Connection connection=getConnection();
+		return userDao.fetchEmailId(email,connection);
+	}
+	public String updatePass(String cpass, int user_id) {
+		String msg=null;
+		Connection connection=getConnection();
+		int count=0;
+		count=userDao.modifyPass(connection,cpass,user_id);
+		if(count>0) {
+			msg="Updation Of Password Successfully";
+		}
+		else
+		{
+			msg="Updation Of Password Failed";
+		}
+		
+		return msg;
+		
+	}
+	
+	
 	
 
 }

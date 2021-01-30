@@ -226,4 +226,66 @@ public class userDaoImpl implements userDao {
 		return 0;
 	}
 
+	@Override
+	public User fetchEmailId(String email,Connection connection) {
+		// TODO Auto-generated method stub
+		String selectQuery="select * from user where c_email=?"; 
+		User user=new User();
+		try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
+			preparedStatement.setString(1, email);
+			
+			try (ResultSet resultSet = preparedStatement.executeQuery();) {
+				
+				while (resultSet.next()){
+				
+					user.setUser_id(resultSet.getInt("i_user_id"));
+					user.setFirstname(resultSet.getString("c_first_name"));
+					user.setLastname(resultSet.getString("c_last_name"));
+					user.setAddress(resultSet.getString("c_address"));
+					user.setMobileno(resultSet.getString("c_contact_no"));
+					user.setEmail(resultSet.getString("c_email"));
+					user.setArea_id(resultSet.getInt("i_area_id"));
+					user.setGender(resultSet.getString("c_gender"));
+					
+					
+				}
+				
+			}
+			
+
+		} catch(SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return user;
+
+		
+		
+	}
+
+	@Override
+	public int modifyPass(Connection connection, String cpass, int user_id) {
+		
+		String updateQuery = "update user set c_password=? where i_user_id=?";
+		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+			preparedStatement.setString(1, cpass);
+			preparedStatement.setInt(2,user_id);
+			
+
+			return preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+		return 0;
+	}
+
+	
+	
 }
+
+	

@@ -1,3 +1,4 @@
+<%@page import="com.ikonique.bean.User"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,7 +87,12 @@
 <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
 
 </head>
-
+<% HttpSession httpSession = request.getSession(false);
+	User user = null;   
+	if(null!=httpSession){
+	   user = (User)httpSession.getAttribute("user");
+   }
+%>
 <body class="animsition">
 <div class="page-wrapper">
 		<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>
@@ -94,45 +100,30 @@
 <%-- 		<%@include file="customerheader.jsp"%> --%>
 		<div class="page-container">
 			<div class="main-content">
-			<h1 align="center" style="margin-top: 50px;">Login</h1>
+			<h1 align="center" style="margin-top: 50px;">Change Password</h1>
 				  <section class="min-vh-80 d-flex bg-primary align-items-center">
-				<form action="LoginServlet " class="w-50 ml-10" class="box" class="form" id="form" method="post"  onsubmit="return login()">
+				<form action="ChangePassword" class="w-50 ml-10" class="box" class="form" id="form" method="post"  onsubmit="return login()">
 				
 					<div class="form-group mb-3 ml-10 inputBox">
-						<label for="email">Email address</label> 
-						<input type="text" name="email" class="form-control" id="email" autocomplete="off" aria-describedby="emailHelp" onkeyup="validate();">
+						<label for="newpass">New Password</label> 
+						<input type="hidden" name="user_id" value="<%=String.valueOf(user.getUser_id())%>"> <br>
+						<input type="password" name="newpass" class="form-control" id="newpass" autocomplete="off" aria-describedby="emailHelp" onkeyup="validate();">
 						<span class="indicator1"></span>
 					</div>
 					
 					<div class="form-group mb-3 ml-10">
-						<label for="password">Password</label> 
-						<input type="password" name="password" class="form-control" id="pass" onkeyup="validate1();">
+						<label for="cpass">Confirm Password</label> 
+						<input type="password" name="cpass" class="form-control" id="cpass" onkeyup="validate1();">
 						<span class="indicator2"></span>
 					</div>
 					
-					<div class="form-check square-check mb-3 ml-10">
-						<input class="form-check-input" type="checkbox" value=""
-							id="remember"> <label class="form-check-label"
-							for="remember"> Remember me </label>
-					</div>
 					
-					<div align="right" class="forget ml-10">
-				<h6> <a class="color small" id="forget" href="forget-pass.jsp">Forgotten Password?</a> </h6><br>
-				</div>
+					
 					<div align="center" >
 					
-					<button type="submit" name="submit" class="btn btn-primary form-group ml-10">Login</button>
+					<button type="submit" name="submit" class="btn btn-primary form-group ml-10">Submit</button>
 					</div>
 					
-					
-				<div class="register-link ml-10" align="center">
-                                <h6>
-                                  <a href="visitor.jsp" class="color">Skip Login</a>
-                                  <br><br>
-                                    Don't you have account?
-                                    <a class="color" href="register.jsp"><b>Sign Up Here</b></a>
-                                </h6>
-                </div>
 				
 				</form>
 				</section>
@@ -209,17 +200,17 @@
 		
 		function validate(){
 				const form= document.getElementById('form');
-				const email= document.getElementById('email').value;
-				const pattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+				const newpass= document.getElementById('newpass').value;
+				const pattern=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
 				
-				if(email.match(pattern)){
+				if(newpass.match(pattern)){
 					form.classList.add('valid')
 					form.classList.remove('invalid')
 				}else{
 					form.classList.add('invalid')
 					form.classList.remove('valid')
 				}
-				if(email == "")
+				if(newpass == "")
 					{
 					form.classList.remove('invalid')
 					form.classList.remove('valid')
@@ -228,17 +219,17 @@
 			
 			function validate1(){
 				const form= document.getElementById('form');
-				const pass= document.getElementById('pass').value;
+				const cpass= document.getElementById('cpass').value;
 				const pattern1=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
 				
-				if(pass.match(pattern1)){
+				if(cpass.match(pattern1)){
 					form.classList.add('valid1')
 					form.classList.remove('invalid1')
 				}else{
 					form.classList.add('invalid1')
 					form.classList.remove('valid1')
 				}
-				if(pass == "")
+				if(cpass == "")
 					{
 					form.classList.remove('invalid1')
 					form.classList.remove('valid1')
@@ -248,12 +239,13 @@
 			function login()
 			{
 				const form= document.getElementById('form');
-				const email= document.getElementById('email').value;
-				const pass= document.getElementById('pass').value;
-				const pattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+				const newpass= document.getElementById('newpass').value;
+				const cpass= document.getElementById('cpass').value;
+				
+				
 				const pattern1=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
 				
-				if(email.match(pattern) && pass.match(pattern1))
+				if(newpass.match(pattern1) && cpass.match(pattern1) && cpass.match(newpass))
 					{
 						
 // 						window.location="/customer.jsp";
@@ -266,7 +258,8 @@
 			}
 		
 		</script>
-</body>
+</bod
+y>
 
 
 </html>

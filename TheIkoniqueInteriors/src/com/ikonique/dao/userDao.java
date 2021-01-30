@@ -22,6 +22,14 @@ public interface userDao {
 
 	public int removeUserDetails(int user_id, Connection connection);
 
+	public User fetchEmailId(String email, Connection connection);
+
+	public int modifyPass(Connection connection, String cpass, int user_id);
+
+	
+
+	
+
 	
 
 }
