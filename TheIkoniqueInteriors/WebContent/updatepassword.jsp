@@ -6,68 +6,49 @@
 <!-- Primary Meta Tags -->
 <title>Login</title>
 <style>
-#form .indicator1
-{
+#form .indicator1 {
 	position: absolute;
 	top: 50px;
 	right: 20px;
 	width: 10px;
-	height:10px;
+	height: 10px;
 	background: #555;
 	border-radius: 50%;
 }
 
-#form.invalid .indicator1
-{
+#form.invalid .indicator1 {
 	background: #f00;
-	box-shadow: 0 0 5px #f00,
-				0 0 10px #f00,
-				0 0 20px #f00,
-				0 0 40px #f00;
+	box-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00;
 }
 
-#form.valid .indicator1
-{
+#form.valid .indicator1 {
 	background: #0f0;
-	box-shadow: 0 0 5px #0f0,
-				0 0 10px #0f0,
-				0 0 20px #0f0,
-				0 0 40px #0f0;
+	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
 }
 
-#form .indicator2
-{
+#form .indicator2 {
 	position: absolute;
 	top: 50px;
 	right: 20px;
 	width: 10px;
-	height:10px;
+	height: 10px;
 	background: #555;
 	border-radius: 50%;
 }
 
-#form.invalid1 .indicator2
-{
+#form.invalid1 .indicator2 {
 	background: #f00;
-	box-shadow: 0 0 5px #f00,
-				0 0 10px #f00,
-				0 0 20px #f00,
-				0 0 40px #f00;
+	box-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00;
 }
 
-#form.valid1 .indicator2
-{
+#form.valid1 .indicator2 {
 	background: #0f0;
-	box-shadow: 0 0 5px #0f0,
-				0 0 10px #0f0,
-				0 0 20px #0f0,
-				0 0 40px #0f0;
+	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
 }
-.forget
-{
+
+.forget {
 	top: 30px;
 }
-
 </style>
 
 <link rel="stylesheet"
@@ -94,40 +75,48 @@
    }
 %>
 <body class="animsition">
-<div class="page-wrapper">
+	<div class="page-wrapper">
 		<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>
-<%-- 		<%@include file="customersidebar.jsp"%> --%>
-<%-- 		<%@include file="customerheader.jsp"%> --%>
+		<%-- 		<%@include file="customersidebar.jsp"%> --%>
+		<%-- 		<%@include file="customerheader.jsp"%> --%>
 		<div class="page-container">
 			<div class="main-content">
-			<h1 align="center" style="margin-top: 50px;">Change Password</h1>
-				  <section class="min-vh-80 d-flex bg-primary align-items-center">
-				<form action="ChangePassword" class="w-50 ml-10" class="box" class="form" id="form" method="post"  onsubmit="return login()">
-				
-					<div class="form-group mb-3 ml-10 inputBox">
-						<label for="newpass">New Password</label> 
-						<input type="hidden" name="user_id" value="<%=String.valueOf(user.getUser_id())%>"> <br>
-						<input type="password" name="newpass" class="form-control" id="newpass" autocomplete="off" aria-describedby="emailHelp" onkeyup="validate();">
-						<span class="indicator1"></span>
-					</div>
-					
-					<div class="form-group mb-3 ml-10">
-						<label for="cpass">Confirm Password</label> 
-						<input type="password" name="cpass" class="form-control" id="cpass" onkeyup="validate1();">
-						<span class="indicator2"></span>
-					</div>
-					
-					
-					
-					<div align="center" >
-					
-					<button type="submit" name="submit" class="btn btn-primary form-group ml-10">Submit</button>
-					</div>
-					
-				
-				</form>
+				<h1 align="center" style="margin-top: 50px;">Change Password</h1>
+				<section class="min-vh-80 d-flex bg-primary align-items-center">
+					<form action="ChangePassword" class="w-50 ml-10" class="box"
+						class="form" id="form" method="post" onsubmit="return login()">
+
+						<div class="form-group mb-3 ml-10 inputBox">
+							<label for="newpass">New Password</label> <input type="hidden"
+								name="user_id" value="<%=String.valueOf(user.getUser_id())%>">
+							<br> <input type="password" name="newpass"
+								class="form-control" id="newpass" autocomplete="off"
+								aria-describedby="emailHelp" onkeyup="validate();"> <span
+								class="indicator1"></span>
+						</div>
+
+						<div class="form-group mb-3 ml-10">
+							<label for="cpass">Confirm Password</label> <input
+								type="password" name="cpass" class="form-control" id="cpass"
+								onkeyup="validate1();"> <span class="indicator2"></span>
+							<span class="small" id="p"></span>
+							<h6 class="small">
+								* Password Must Contain 8-20 Character<br>* Password must
+								Contain Atleast one: <br>Special Character(@#$&!)<br>Number[0-9]<br>An
+								Uppercase Charater[A-Z]<br>A Lowercase Character[a-z]
+							</h6>
+						</div>
+
+						<div align="center">
+
+							<button type="submit" name="submit"
+								class="btn btn-primary form-group ml-10">Submit</button>
+						</div>
+
+
+					</form>
 				</section>
-				
+
 				<!-- Core -->
 				<script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
 				<script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
@@ -153,11 +142,11 @@
 				<!-- Neumorphism JS -->
 				<script src="neuro/assets/js/neumorphism.js"></script>
 				<%@include file="commonjs.jsp"%>
+			</div>
 		</div>
-		</div>
-		</div>
-		
-		<script>
+	</div>
+
+	<script>
 // 		form.addEventListener('submit',(event)=> {
 // 			 event.preventDefault();
 			
@@ -217,23 +206,28 @@
 					}
 			}
 			
-			function validate1(){
+			function validate1()
+			{
 				const form= document.getElementById('form');
 				const cpass= document.getElementById('cpass').value;
+				const newpass= document.getElementById('newpass').value;
 				const pattern1=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
 				
-				if(cpass.match(pattern1)){
+				if(cpass.match(newpass))
+				{
 					form.classList.add('valid1')
 					form.classList.remove('invalid1')
-				}else{
+				}
+				else
+				{
 					form.classList.add('invalid1')
 					form.classList.remove('valid1')
 				}
 				if(cpass == "")
-					{
+				{
 					form.classList.remove('invalid1')
 					form.classList.remove('valid1')
-					}
+				}
 			}
 			
 			function login()
@@ -247,7 +241,7 @@
 				
 				if(newpass.match(pattern1) && cpass.match(pattern1) && cpass.match(newpass))
 					{
-						
+						=
 // 						window.location="/customer.jsp";
 						return true;
 					}
@@ -256,10 +250,15 @@
 // 					window.location="/triallogin.jsp";
 				}
 			}
+			
+
+$('#newpass, #cpass').on('keyup', function () {
+  if ($('#newpass').val() == $('#cpass').val()) {
+    $('#p').html('Password Matched').css('color', 'green');
+  } else 
+    $('#p').html('Confirm Password Must Match With New Password').css('color', 'red');
+});
 		
 		</script>
-</bod
-y>
-
-
+</body>
 </html>

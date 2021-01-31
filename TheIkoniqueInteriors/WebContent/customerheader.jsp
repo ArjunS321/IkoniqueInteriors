@@ -1,6 +1,13 @@
+<%@page import="com.ikonique.bean.User"%>
 <%@include file="FontFaces.jsp"%>
 
 <%@include file="commoncss.jsp"%>
+<% HttpSession httpSession = request.getSession(false);
+	User user = null;   
+	if(null!=httpSession){
+	   user = (User)httpSession.getAttribute("loginBean");
+   }
+%>
 
 <header class="header-desktop" style="background-color: #e6e7ee;">
  <!-- <link data-require="sweet-alert@*" data-semver="0.4.2" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" /> -->
@@ -135,7 +142,7 @@
 								<img src="images/icon/avatar-01.jpg" alt="John Doe" />
 							</div>
 							<div class="content">
-								<a class="js-acc-btn" href="#">john doe</a>
+								<a class="js-acc-btn" href="#"><%=user.getFirstname()%> <%=user.getLastname() %></a>
 							</div>
 							<div class="account-dropdown js-dropdown">
 								<div class="info clearfix">
@@ -146,9 +153,9 @@
 									</div>
 									<div class="content">
 										<h5 class="name">
-											<a href="editprofile.jsp">john doe</a>
+											<a href="editprofile.jsp"><%=user.getFirstname()%> <%=user.getLastname() %></a>
 										</h5>
-										<span class="email">johndoe@example.com</span>
+										<span class="email"><%=user.getEmail() %></span>
 									</div>
 									
 								</div>

@@ -1,5 +1,9 @@
 package com.ikonique.bean;
 
+import java.io.InputStream;
+
+import com.mysql.cj.jdbc.Blob;
+
 public class User {
 
 	private int user_id;
@@ -12,6 +16,10 @@ public class User {
 	private String password;
 	private String visitingfees;
 	private int area_id;
+	private InputStream UserProfilepicStream;
+	private String UserProfilepicString;
+	
+	
 	public String getFirstname() {
 		return firstname;
 	}
@@ -72,5 +80,18 @@ public class User {
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
+	public InputStream getUserProfilepicStream() {
+		return UserProfilepicStream;
+	}
+	public void setUserProfilepicStream(InputStream userProfilepicStream) {
+		UserProfilepicStream = userProfilepicStream;
+	}
+	public String getUserProfilepicString() {
+		return UserProfilepicString;
+	}
+	public void setUserProfilepicString(String userProfilepicString) {
+		UserProfilepicString = userProfilepicString;
+	}
+	
 	
 }

@@ -41,7 +41,7 @@
 				<h1 align="center" style="margin-top: 50px;">Registration</h1>
 				<br>
 				<section class="min-vh-80 d-flex align-items-center">
-					<form action="RegistrationServlet" class="w-50 ml-10" class="box"
+					<form class="w-50 ml-10" class="box"
 						class="form" id="form" method="post" onsubmit=" login()"
 						enctype="multipart/form-data">
 						<div class="form-group mb-3 ml-10 inputBox">
@@ -151,8 +151,7 @@
 							<!-- 							<button type="submit" name="submit" -->
 							<!-- 								class="btn btn-primary form-group ml-10">Register</button> -->
 							<button type="submit" name="submit"
-								class="btn form-group btn-primary ml-10"
-								>Register</button>
+							class="btn form-group btn-primary ml-10">Register</button>
 							<div class="modal fade" id="modal-default" tabindex="-1"
 								role="dialog" aria-labelledby="modal-default" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered" role="document">
@@ -162,14 +161,11 @@
 												of Service</h2>
 											<button type="button" class="close" data-dismiss="modal"
 												aria-label="Close">
-												<span aria-hidden="true">×</span>
+<!-- 												<span aria-hidden="true">×</span> -->
 											</button>
 										</div>
 										<div class="modal-body">
-											<p>With less than a month to go before the European Union
-												enacts new consumer privacy laws for its citizens, companies
-												around the world are updating their terms of service
-												agreements to comply.</p>
+											<p>Register Failed!!!!!!!!</p>
 											<p>The European Union’s General Data Protection
 												Regulation (G.D.P.R.) goes into effect on May 25 and is
 												meant to ensure a common set of data rights in the European
@@ -178,11 +174,39 @@
 												affect them.</p>
 										</div>
 										<div class="modal-footer">
-											<button type="button" class="btn btn-sm btn-primary">I
-												Got It</button>
-											<button type="button"
+											<button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Ok</button>
+<!-- 											<button type="button" -->
+<!-- 												class="btn btn-primary text-danger ml-auto" -->
+<!-- 												data-dismiss="modal">Close</button> -->
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal fade" id="modal" tabindex="-1"
+								role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h2 class="h6 modal-title mb-0" id="modal-title-default">Terms
+												of Service</h2>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+<!-- 												<span aria-hidden="true">×</span> -->
+											</button>
+										</div>
+										<div class="modal-body">
+											<p>Register Succefully!!!!!!!!</p>
+											<p>The European Union’s General Data Protection
+												Regulation (G.D.P.R.) goes into effect on May 25 and is
+												meant to ensure a common set of data rights in the European
+												Union. It requires organizations to notify users as soon as
+												possible of high-risk data breaches that could personally
+												affect them.</p>
+										</div>
+										<div class="modal-footer">
+											<a href="login.jsp" type="button"
 												class="btn btn-primary text-danger ml-auto"
-												data-dismiss="modal">Close</button>
+												>I Got It</a>
 										</div>
 									</div>
 								</div>
@@ -274,13 +298,16 @@
             data:$('#form').serialize(),
             success:function(data)
             {
-            	
-                if(data ==="null"){
+                if(data ==="null")
+                {
                 	 $('#modal-default').modal('show');
+                	 $('#modal').modal('hide');
                 }
-                
-                
-
+                else
+                {
+                	$('#modal').modal('show');
+                	$('#modal-default').modal('hide');
+                }
             }
         })
     });

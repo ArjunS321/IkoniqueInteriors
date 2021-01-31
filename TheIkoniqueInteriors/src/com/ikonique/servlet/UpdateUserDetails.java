@@ -1,6 +1,8 @@
 package com.ikonique.servlet;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import com.ikonique.bean.User;
 import com.ikonique.userService.impl.userServiceImpl;
@@ -48,10 +51,20 @@ public class UpdateUserDetails extends HttpServlet {
 		String address=request.getParameter("address");
 		String contactno=request.getParameter("contactno");
 		String exampleRadios = request.getParameter("exampleRadios");
-		try {
+		Part part = request.getPart("file");
+		InputStream is=null;
+		if(null!=part) 
+		{
+			System.out.println("File Name:-"+part.getName());
+		}
+		else
+		{
+			System.out.println("null image");
+		}
+		try
+		{
 			int user_id=Integer.parseInt(request.getParameter("user_id"));
 			user.setUser_id(user_id);
-			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
