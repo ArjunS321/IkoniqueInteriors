@@ -181,7 +181,26 @@ if (null != httpSession) {
 																
 																	<div class="form-group mb-3 ml-10 inputBox">
 																		Gender<br>
-																		<input class="form-control" type="radio"
+																		<%
+																			if (user.getGender().equals("Male") ){
+																		%>
+																			<div class="form-check">
+																			<input class="form-control" type="radio"
+																					name="exampleRadios" id="exampleRadios1"
+																					value="Male" checked> <label
+																					 for="exampleRadios1">
+																					Male </label>
+																			  
+																				<input class="form-control" type="radio"
+																					name="exampleRadios" id="exampleRadios2"
+																					value="Female"> <label
+																					 for="exampleRadios2">
+																					Female </label>
+																				</div>
+																		<%
+																			} else {
+																		%>
+																			<input class="form-control" type="radio"
 																				name="exampleRadios" id="exampleRadios1"
 																				value="Male"> <label
 																				 for="exampleRadios1">
@@ -192,13 +211,10 @@ if (null != httpSession) {
 																				value="Female" checked> <label
 																				 for="exampleRadios2">
 																				Female </label>
-																		
-																			<!-- <input class="form-control" type="radio"
-																				name="exampleRadios" id="exampleRadios1"
-																				value="Male" checkhed> <label
-																				 for="exampleRadios1">
-																				Male </label>  -->
 																		 </div> 
+																		 <%
+																			}
+																		%>
 																	</div>
 																
 															</div>
@@ -278,15 +294,9 @@ if (null != httpSession) {
 				</div>
 
 			</div>
-		</div>
-	</div>
-	<script>
-		gender = user.getGender();
-		radio = doxument.getElementById("exampleRadios1");
-		if (gender == "male") {
-			radio.checked = true;
-		}
-	</script>
+		 </div>
+	</div> 
+	
 
 </body>
 </html>
