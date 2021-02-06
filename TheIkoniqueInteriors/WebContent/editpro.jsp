@@ -1,3 +1,4 @@
+<%@page import="com.ikonique.bean.User"%>
 <%@page import="com.ikonique.bean.Area"%>
 <%@page import="java.util.List"%>
 
@@ -6,248 +7,211 @@
 
 <head>
 <style>
-
-#form .indicator1
-{
+#form .indicator1 {
 	position: absolute;
 	top: 50px;
 	right: -150px;
 	width: 10px;
-	height:10px;
+	height: 10px;
 	background: #555;
 	border-radius: 50%;
 }
 
-#form.invalid .indicator1
-{
+#form.invalid .indicator1 {
 	background: #f00;
-	box-shadow: 0 0 5px #f00,
-				0 0 10px #f00,
-				0 0 20px #f00,
-				0 0 40px #f00;
+	box-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00;
 }
 
-#form.valid .indicator1
-{
+#form.valid .indicator1 {
 	background: #0f0;
-	box-shadow: 0 0 5px #0f0,
-				0 0 10px #0f0,
-				0 0 20px #0f0,
-				0 0 40px #0f0;
+	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
 }
 
-#form .indicator2
-{
+#form .indicator2 {
 	position: absolute;
 	top: 50px;
 	right: -150px;
 	width: 10px;
-	height:10px;
+	height: 10px;
 	background: #555;
 	border-radius: 50%;
 }
 
-#form.invalid1 .indicator2
-{
+#form.invalid1 .indicator2 {
 	background: #f00;
-	box-shadow: 0 0 5px #f00,
-				0 0 10px #f00,
-				0 0 20px #f00,
-				0 0 40px #f00;
+	box-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00;
 }
 
-#form.valid1 .indicator2
-{
+#form.valid1 .indicator2 {
 	background: #0f0;
-	box-shadow: 0 0 5px #0f0,
-				0 0 10px #0f0,
-				0 0 20px #0f0,
-				0 0 40px #0f0;
+	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
 }
 
-#form .indicator3
-{
+#form .indicator3 {
 	position: absolute;
 	top: 50px;
 	right: -150px;
 	width: 10px;
-	height:10px;
+	height: 10px;
 	background: #555;
 	border-radius: 50%;
 }
 
-#form.invalid2 .indicator3
-{
+#form.invalid2 .indicator3 {
 	background: #f00;
-	box-shadow: 0 0 5px #f00,
-				0 0 10px #f00,
-				0 0 20px #f00,
-				0 0 40px #f00;
+	box-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00;
 }
 
-#form.valid2 .indicator3
-{
+#form.valid2 .indicator3 {
 	background: #0f0;
-	box-shadow: 0 0 5px #0f0,
-				0 0 10px #0f0,
-				0 0 20px #0f0,
-				0 0 40px #0f0;
+	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
 }
 
-#form .indicator4
-{
+#form .indicator4 {
 	position: absolute;
 	top: 50px;
 	right: -150px;
 	width: 10px;
-	height:10px;
+	height: 10px;
 	background: #555;
 	border-radius: 50%;
 }
 
-#form.invalid3 .indicator4
-{
+#form.invalid3 .indicator4 {
 	background: #f00;
-	box-shadow: 0 0 5px #f00,
-				0 0 10px #f00,
-				0 0 20px #f00,
-				0 0 40px #f00;
+	box-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00;
 }
 
-#form.valid3 .indicator4
-{
+#form.valid3 .indicator4 {
 	background: #0f0;
-	box-shadow: 0 0 5px #0f0,
-				0 0 10px #0f0,
-				0 0 20px #0f0,
-				0 0 40px #0f0;
+	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
 }
 
-#form .indicator5
-{
+#form .indicator5 {
 	position: absolute;
 	top: 50px;
 	right: -150px;
 	width: 10px;
-	height:10px;
+	height: 10px;
 	background: #555;
 	border-radius: 50%;
 }
 
-#form.invalid4 .indicator5
-{
+#form.invalid4 .indicator5 {
 	background: #f00;
-	box-shadow: 0 0 5px #f00,
-				0 0 10px #f00,
-				0 0 20px #f00,
-				0 0 40px #f00;
+	box-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00;
 }
 
-#form.valid4 .indicator5
-{
+#form.valid4 .indicator5 {
 	background: #0f0;
-	box-shadow: 0 0 5px #0f0,
-				0 0 10px #0f0,
-				0 0 20px #0f0,
-				0 0 40px #0f0;
+	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
 }
-#form .indicator6
-{
+
+#form .indicator6 {
 	position: absolute;
 	top: 50px;
 	right: -150px;
 	width: 10px;
-	height:10px;
+	height: 10px;
 	background: #555;
 	border-radius: 50%;
 }
 
-#form.invalid5 .indicator6
-{
+#form.invalid5 .indicator6 {
 	background: #f00;
-	box-shadow: 0 0 5px #f00,
-				0 0 10px #f00,
-				0 0 20px #f00,
-				0 0 40px #f00;
+	box-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00;
 }
 
-#form.valid5 .indicator6
-{
+#form.valid5 .indicator6 {
 	background: #0f0;
-	box-shadow: 0 0 5px #0f0,
-				0 0 10px #0f0,
-				0 0 20px #0f0,
-				0 0 40px #0f0;
+	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
 }
+
+#form .indicator8 {
+	position: absolute;
+	top: 20px;
+	right: 26px;
+	width: 10px;
+	height: 10px;
+	background: #555;
+	border-radius: 50%;
+}
+
+#form.invalid6 .indicator8 {
+	background: #f00;
+	box-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00;
+}
+
+#form.valid6 .indicator8 {
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
+}
+
 .form-control1 {
-    font-size: 1rem;
-    border-radius: 0.55rem;
-    box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #ffffff;
+	font-size: 1rem;
+	border-radius: 0.55rem;
+	box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #ffffff;
 }
+
 .form-control1 {
-    display: block;
-    width: 150%;
-    height: calc(1.5em + 1.2rem + 0.0625rem);
-    padding: 0.6rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.5;
-    color: #44476A;
-    background-color: #e6e7ee;
-    background-clip: padding-box;
-    border: 0.0625rem solid #D1D9E6;
-    border-radius: 0.55rem;
-    box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #ffffff;
-    transition: all 0.3s ease-in-out;
-    }
- textarea.form-control1
- {
-  height: auto;
- 
- }
-  textarea.form-control1:hover
- {
-  border: hidden;
- 
- }
- 
- .profile-image1 {
-    width: 25rem;
-    height: 25rem;
+	display: block;
+	width: 150%;
+	height: calc(1.5em + 1.2rem + 0.0625rem);
+	padding: 0.6rem 0.75rem;
+	font-size: 1rem;
+	font-weight: 300;
+	line-height: 1.5;
+	color: #44476A;
+	background-color: #e6e7ee;
+	background-clip: padding-box;
+	border: 0.0625rem solid #D1D9E6;
+	border-radius: 0.55rem;
+	box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #ffffff;
+	transition: all 0.3s ease-in-out;
+}
+
+textarea.form-control1 {
+	height: auto;
+}
+
+textarea.form-control1:hover {
+	border: hidden;
+}
+
+.profile-image1 {
+	width: 25rem;
+	height: 25rem;
 }
 
 .ml-11, .mx-1 {
-    margin-left: -10.25rem !important;
-    margin-top: -9.25rem !important;
+	margin-left: -10.25rem !important;
+	margin-top: -9.25rem !important;
 }
 
-.custom-file
-{
+.custom-file {
 	margin-left: -7.25rem !important;
 }
 
-.margin2
-{
+.margin2 {
 	margin-left: 80.25rem !important;
 	margin-top: 0.25rem !important;
 }
 
-.margin1
-{
+.margin1 {
 	margin-left: 5.25rem !important;
 }
-.margin
-{
-  margin-top: -30rem !important;
+
+.margin {
+	margin-top: -30rem !important;
 }
-.margin4{
+
+.margin4 {
 	margin-left: 80.25rem !important;
 	margin-top: -0.25rem !important;
 }
 
-.size
-{
-width:10%;
+.size {
+	width: 10%;
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -271,7 +235,18 @@ width:10%;
 <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
 
 </head>
-
+<%
+HttpSession httpSession = request.getSession(false);
+User user = null;
+if (null != httpSession) {
+	user = (User) httpSession.getAttribute("loginBean");
+}
+%>
+<jsp:include page="/AreaRegistration" />
+<%
+	List<Area> area = (List) request.getAttribute("area");
+%>
+<jsp:include page="/AreaName" />
 <body class="animsition">
 	<div class="page-wrapper">
 		<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>
@@ -279,17 +254,19 @@ width:10%;
 		<%-- 		<%@include file="customerheader.jsp"%> --%>
 		<div class="page-container">
 			<div class="main-content">
-			<h1 align="center" style="margin-top: 50px;">Edit Profile</h1>
-			
-			<hr class="my-5"  style="background-color: #d4d4d4;">
-					<button type="submit" name="submit"
-									class="btn form-group size btn-primary margin2">Logout</button>
-									<button type="submit" name="submit"
-									class="btn form-group size btn-primary margin4">Contact Us</button>
+				<h1 align="center" style="margin-top: 50px;">Edit Profile</h1>
+
+				<hr class="my-5" style="background-color: #d4d4d4;">
+				<a href="login.jsp" type="submit" name="submit"
+					class="btn form-group size btn-primary margin2">Logout</a> <a
+					href="contactus.jsp" type="submit" name="submit"
+					class="btn form-group size btn-primary margin4">Contact Us</a>
 				<div class="section section-lg pt-4">
 					<div class="container">
-						<form action="" class="box" class="form" id="form" method="post"
+						<form action="UpdateUserDetails" class="box" class="form" id="form" method="post"
 							enctype="multipart/form-data">
+							<input type="hidden" name="user_id"
+								value="<%=String.valueOf(user.getUser_id())%>">
 							<div>
 
 
@@ -297,109 +274,159 @@ width:10%;
 									class="profile-image1 bg-primary shadow-inset border border-light rounded ml-11 p-3 ">
 									<img src="neuro/assets/img/team/profile-picture-4.jpg"
 										class="card-img-top rounded" alt="Leos Portrait">
-								</div><br>
+								</div>
+								<br>
 								<div class="custom-file mr-1 col-lg-3 col-sm-6">
 									<input type="file" class="custom-file-input" id="customFile"
 										aria-label="File upload"> <label
 										class="custom-file-label" for="customFile">Choose file</label>
 								</div>
-					
-							<div class="col-lg-5 col-sm-6 ml-10 ml-5 margin">
-								<!-- Form -->
-								
-								
-								<div class="form-group mb-4 margin1 inputbox">
-									
-									<label for="validationServer01">First name</label> <input
-										type="text" class="form-control1" id="fname" required
-										onkeyup="validate1();"> <span class="indicator1"></span>
-								</div>
-								<!-- End of Form -->
-								<!-- Form -->
-								<div class="form-group mb-4 margin1">
-									<label for="validationServerUsername">Lastname</label> <input
-										type="text" class="form-control1" id="lname" required
-										onkeyup="validate2();"> <span class="indicator2"></span>
-								</div>
-								<div class="form-group mb-4 margin1">
-									<label for="validationServerUsername">Email</label> <input
-										type="text" class="form-control1" id="email" required
-										onkeyup="validate3();"> <span class="indicator3"></span>
-								</div>
-								<div class="form-group mb-4 margin1">
-									<label for="validationServerUsername">Area</label> <input
-										type="text" class="form-control1" id="area" required
-										onkeyup="validate4();"> <span class="indicator4"></span>
-								</div>
-								<div class="form-group mb-4 margin1">
-									<label for="validationServerUsername">Address</label>
-									<textarea  class="form-control1" id="address"
-										required onkeyup="validate5();" rows="5"></textarea>
-									<span class="indicator5"></span>
-								</div>
-								<div class="form-group mb-4 margin1">
-									<label for="validationServerUsername">Contact No.</label> <input
-										type="number" class="form-control1" id="cno" required
-										onkeyup="validate6();"> <span class="indicator6"></span>
-								</div>
-								<div class="form-group mb-3  inputBox margin1">
-									Gender<br>
-									<div class="form-check">
-										<input class="form-check-input" type="radio"
-											name="exampleRadios" id="exampleRadios1" value="Male">
-										<label class="form-check-label" for="exampleRadios1">
-											Male </label> <input class="form-check-input" type="radio"
-											name="exampleRadios" id="exampleRadios2" value="Female">
-										<label class="form-check-label" for="exampleRadios2">
-											Female </label>
+
+								<div class="col-lg-5 col-sm-6 ml-10 ml-5 margin">
+									<!-- Form -->
+
+
+									<div class="form-group mb-4 margin1 inputbox">
+
+										<label for="validationServer01">First name</label> <input
+											type="text" class="form-control1" id="fname" required
+											onkeyup="validate1();" value="<%=user.getFirstname()%>"
+											autocomplete="off"> <span class="indicator1"></span>
 									</div>
+									<!-- End of Form -->
+									<!-- Form -->
+									<div class="form-group mb-4 margin1">
+										<label for="validationServerUsername">Lastname</label> <input
+											type="text" class="form-control1" id="lname" required
+											onkeyup="validate2();" value="<%=user.getLastname()%>"
+											autocomplete="off"> <span class="indicator2"></span>
+									</div>
+									<div class="form-group mb-4 margin1">
+										<label for="validationServerUsername">Email</label> <input
+											type="text" class="form-control1" id="email" required
+											onkeyup="validate3();" value="<%=user.getEmail()%>"
+											autocomplete="off" readonly><span class="indicator3"></span>
+									</div>
+									<div class="form-group mb-4 margin1">
+										<label for="validationServerUsername">Address</label>
+										<textarea class="form-control1" id="address" required
+											onkeyup="validate5();" rows="5" autocomplete="off"><%=user.getAddress()%></textarea>
+										<span class="indicator5"></span>
+									</div>
+									<div class="dropdown">
+										<div class="form-group ml-6" style="width: 530px">
+											<select class="form-control" name="area" id="area" onchange="validate6()">
+											<option value="0" selected>select Area</option>
+												<%
+																			for (Area place : area) {
+																		%>
+												<%
+																			if (user.getArea_id() == place.getArea_id()) {
+																		%>
+												<option value="<%=place.getArea_id()%>" selected><%=place.getArea_name()%></option>
+												<%
+																			} else {
+																		%>
+												<option value="<%=place.getArea_id()%>"><%=place.getArea_name()%></option>
+												<%
+																			}
+																		%>
+
+
+												<%--  <option value="<%=place.getArea_id()%>"><%=place.getArea_name()%></option> --%>
+
+												<%
+																			}
+																		%>
+											</select><span class="indicator8"></span>
+										</div>
+									</div>
+
+
+									<div class="form-group mb-4 margin1">
+										<label for="validationServerUsername">Contact No.</label> <input
+											value="<%=user.getMobileno()%>" type="number"
+											class="form-control1" id="cno" required
+											onkeyup="validate6();" maxLength="10" autocomplete="off">
+										<span class="indicator6"></span>
+									</div>
+									<div class="form-group mb-3  inputBox margin1">
+										Gender<br>
+										<%
+										if (user.getGender().equals("Male") ){
+								     %>
+										<div class="form-check">
+											<input class="form-check-input" type="radio"
+												name="exampleRadios" id="exampleRadios1" value="Male"
+												checked> <label class="form-check-label"
+												for="exampleRadios1"> Male </label> <input
+												class="form-check-input" type="radio" name="exampleRadios"
+												id="exampleRadios2" value="Female"> <label
+												class="form-check-label" for="exampleRadios2">
+												Female </label>
+											<%
+										} else {
+									%>
+											<input class="form-check-input" type="radio"
+												name="exampleRadios" id="exampleRadios1" value="Male"
+												checked> <label class="form-check-label"
+												for="exampleRadios1"> Male </label> <input
+												class="form-check-input" type="radio" name="exampleRadios"
+												id="exampleRadios2" value="Female"> <label
+												class="form-check-label" for="exampleRadios2">
+												Female </label>
+											<%
+												}
+										    %>
+										</div>
+									</div>
+
+									<!-- End of Form -->
+									<!-- Form -->
+
+									<button type="submit" name="submit"
+										class="btn form-group btn-primary mt-5 ml-10 margin1">Save
+										Changes</button>
+									<!-- End of Form -->
 								</div>
-
-								<!-- End of Form -->
-								<!-- Form -->
-
-								<button type="submit" name="submit"
-									class="btn form-group btn-primary mt-5 ml-10 margin1">Register</button>
-								<!-- End of Form -->
-							</div>
 							</div>
 						</form>
-						
-						
-					</div>
+
+
 					</div>
 				</div>
-
-				<!-- Core -->
-				<script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
-				<script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
-				<script src="neuro/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-				<script src="neuro/vendor/headroom.js/dist/headroom.min.js"></script>
-
-				<!-- Vendor JS -->
-				<script src="neuro/vendor/onscreen/dist/on-screen.umd.min.js"></script>
-				<script src="neuro/vendor/nouislider/distribute/nouislider.min.js"></script>
-				<script
-					src="neuro/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-				<script src="neuro/vendor/waypoints/lib/jquery.waypoints.min.js"></script>
-				<script src="neuro/vendor/jarallax/dist/jarallax.min.js"></script>
-				<script src="neuro/vendor/jquery.counterup/jquery.counterup.min.js"></script>
-				<script
-					src="neuro/vendor/jquery-countdown/dist/jquery.countdown.min.js"></script>
-				<script
-					src="neuro/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-				<script src="neuro/vendor/prismjs/prism.js"></script>
-
-				<script async defer src="https://buttons.github.io/buttons.js"></script>
-
-				<!-- Neumorphism JS -->
-				<script src="neuro/assets/js/neumorphism.js"></script>
-				<%@include file="commonjs.jsp"%>
 			</div>
+
+			<!-- Core -->
+			<script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
+			<script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
+			<script src="neuro/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+			<script src="neuro/vendor/headroom.js/dist/headroom.min.js"></script>
+
+			<!-- Vendor JS -->
+			<script src="neuro/vendor/onscreen/dist/on-screen.umd.min.js"></script>
+			<script src="neuro/vendor/nouislider/distribute/nouislider.min.js"></script>
+			<script
+				src="neuro/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+			<script src="neuro/vendor/waypoints/lib/jquery.waypoints.min.js"></script>
+			<script src="neuro/vendor/jarallax/dist/jarallax.min.js"></script>
+			<script src="neuro/vendor/jquery.counterup/jquery.counterup.min.js"></script>
+			<script
+				src="neuro/vendor/jquery-countdown/dist/jquery.countdown.min.js"></script>
+			<script
+				src="neuro/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+			<script src="neuro/vendor/prismjs/prism.js"></script>
+
+			<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+			<!-- Neumorphism JS -->
+			<script src="neuro/assets/js/neumorphism.js"></script>
+			<%@include file="commonjs.jsp"%>
 		</div>
+	</div>
 
 
-<script>
+	<script>
 function validate1() {
 	const form = document.getElementById('form');
 	const fname = document.getElementById('fname').value;
@@ -503,8 +530,26 @@ function validate6() {
 		form.classList.remove('valid5')
 	}
 }
+
+function validate7() {
+
+	const form = document.getElementById('form');
+	var e=document.getElementById('area');
+	var value=e.options[e.selectedIndex].value;
+	
+	if (value!='0') 
+	{
+		form.classList.add('valid6')
+		form.classList.remove('invalid6')
+	} 
+	else
+	{
+		form.classList.add('invalid6')
+		form.classList.remove('valid6')
+	}
+
+	
+}
 </script>
 </body>
-
-
 </html>

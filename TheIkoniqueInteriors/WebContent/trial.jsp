@@ -153,7 +153,7 @@
 							<button type="submit" name="submit"
 							class="btn form-group btn-primary ml-10">Register</button>
 							<div class="modal fade" id="modal-default" tabindex="-1"
-								role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+								role="dialog" aria-labelledby="modal-default" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 								<div class="modal-dialog modal-dialog-centered" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -183,7 +183,7 @@
 								</div>
 							</div>
 							<div class="modal fade" id="modal" tabindex="-1"
-								role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+								role="dialog" aria-labelledby="modal-default" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 								<div class="modal-dialog modal-dialog-centered" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -306,7 +306,7 @@
                 else
                 {
                 	$('#modal').modal('show');
-                	$('#modal-default').modal('hide');
+                	$('#modal-default').modal('hide'); 
                 }
             }
         })

@@ -51,6 +51,7 @@ public class UpdateUserDetails extends HttpServlet {
 		String address=request.getParameter("address");
 		String contactno=request.getParameter("contactno");
 		String exampleRadios = request.getParameter("exampleRadios");
+		System.out.println(exampleRadios);
 		Part part = request.getPart("file");
 		InputStream is=null;
 		if(null!=part) 
@@ -77,7 +78,7 @@ public class UpdateUserDetails extends HttpServlet {
 		user.setEmail(email);
 		user.setAddress(address);
 		user.setMobileno(contactno);
-		user.setGender("exampleRadios");
+		user.setGender(exampleRadios);
 		
 		String msg=u1.updateUserDetails(user);
 		System.out.println(msg);

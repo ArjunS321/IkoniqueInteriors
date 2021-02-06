@@ -34,7 +34,7 @@
                                 <div class="row justify-content-center">
                                     <div class="col-12">
                                         <div class="shadow-inset p-4 mb-5 rounded">
-                                            <iframe class="map rounded" id="gmap_canvas" src="https://maps.google.com/maps?q=san%20francisco&t=&z=8&ie=UTF8&iwloc=&output=embed"></iframe>
+                                            <iframe class="map rounded" id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15194.02192506155!2d72.54305455459047!3d23.081011715955118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1830938a555e979b!2sIQONIQE%20ARCHITECTS%20%26%20INTERIORS!5e0!3m2!1sen!2sin!4v1612590626432!5m2!1sen!2sin"></iframe>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-8 text-center mb-5">
