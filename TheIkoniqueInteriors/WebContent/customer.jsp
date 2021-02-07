@@ -74,7 +74,7 @@
                                 </p>
                             </div>
                             <div class="col-12 col-md-6 mt-4 mt-md-0 text-md-right">
-                                <a href="#" class="btn btn-primary" style="background-color: #e6e7ee; border-color: #e6e7ee; color: black;">
+                                <a href="contactus.jsp" class="btn btn-primary" style="background-color: #e6e7ee; border-color: #e6e7ee; color: black;">
                                     <span class="mr-1">
                                         <span class="fas fa-headphones"></span>
                                     </span>
