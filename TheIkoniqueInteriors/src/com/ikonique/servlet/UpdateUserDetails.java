@@ -51,12 +51,17 @@ public class UpdateUserDetails extends HttpServlet {
 		String address=request.getParameter("address");
 		String contactno=request.getParameter("contactno");
 		String exampleRadios = request.getParameter("exampleRadios");
+		String photo=request.getParameter("photo");
 		System.out.println(exampleRadios);
-		Part part = request.getPart("file");
+		Part part = request.getPart("photo");
 		InputStream is=null;
 		if(null!=part) 
 		{
-			System.out.println("File Name:-"+part.getName());
+			
+            System.out.println(part.getSubmittedFileName());
+
+			is = part.getInputStream();
+			
 		}
 		else
 		{
@@ -79,8 +84,11 @@ public class UpdateUserDetails extends HttpServlet {
 		user.setAddress(address);
 		user.setMobileno(contactno);
 		user.setGender(exampleRadios);
+		//user.setUserProfilepicStream(is);
 		
 		String msg=u1.updateUserDetails(user);
+		
+		
 		System.out.println(msg);
 		HttpSession httpSession = request.getSession(false);
 		httpSession.setAttribute("loginBean", user);

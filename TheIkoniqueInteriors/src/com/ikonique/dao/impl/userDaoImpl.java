@@ -1,11 +1,13 @@
 package com.ikonique.dao.impl;
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import com.ikonique.bean.Area;
@@ -123,8 +125,8 @@ public class userDaoImpl implements userDao {
 
 	@Override
 	public User selectUserDetails(String email, String password, Connection connection) {
-		User user =null;
-		
+		User user = null;
+
 		String selectQuery = "select * from user where c_email=? and c_password=? and i_status=? and i_role_id=?";
 
 		try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
@@ -133,9 +135,24 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setInt(3, 1);
 			preparedStatement.setInt(4, 1);
 			try (ResultSet resultSet = preparedStatement.executeQuery();) {
-				
-				while (resultSet.next()){
+
+				while (resultSet.next()) {
+					System.out.println(resultSet.getInt("i_user_id"));
 					user = new User();
+
+					
+					  byte[] imageData = resultSet.getBytes("b_image"); String imageString=null;
+					  
+					  if(null!=imageData && imageData.length>0) { imageString =
+					  Base64.getEncoder().encodeToString(imageData);
+					  System.out.println("Length::"+imageData.length);
+					  user.setUserProfilepicString(imageString); System.out.println(imageString); }
+					 
+					  
+					  
+				else { System.out.println("balnk.............."); }
+					  
+					 
 					user.setUser_id(resultSet.getInt("i_user_id"));
 					user.setFirstname(resultSet.getString("c_first_name"));
 					user.setLastname(resultSet.getString("c_last_name"));
@@ -144,41 +161,38 @@ public class userDaoImpl implements userDao {
 					user.setEmail(resultSet.getString("c_email"));
 					user.setArea_id(resultSet.getInt("i_area_id"));
 					user.setGender(resultSet.getString("c_gender"));
-					
-					
-				}
-				
-			}
-			
 
-		} catch(SQLException e) {
+				}
+
+			}
+
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return user;
 	}
 
 	@Override
 	public String fetchAreaName(int id, Connection connection) {
-		
-		String selectQuery="select c_area_name from area where i_area_id=?";
-		
-		try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
-			preparedStatement.setInt(1,id);
-			
-			try (ResultSet resultSet = preparedStatement.executeQuery();) {
-				
-				while (resultSet.next()){
-					String name=resultSet.getString("c_area_name");
-					return name;
-					
-				}
-				
-			}
-			
 
-		} catch(SQLException e) {
+		String selectQuery = "select c_area_name from area where i_area_id=?";
+
+		try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
+			preparedStatement.setInt(1, id);
+
+			try (ResultSet resultSet = preparedStatement.executeQuery();) {
+
+				while (resultSet.next()) {
+					String name = resultSet.getString("c_area_name");
+					return name;
+
+				}
+
+			}
+
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -188,16 +202,16 @@ public class userDaoImpl implements userDao {
 
 	@Override
 	public int modifyUserDetails(User user, Connection connection) {
-		String updateQuery = "update user set c_first_name=?,c_last_name=?,c_address=?,c_contact_no=?,c_email=?,c_gender=? where i_user_id=?";
+		String updateQuery = "update user set c_first_name=?,c_last_name=?,c_address=?,c_contact_no=?,c_email=?,c_gender=?,b_image=?where i_user_id=?";
 		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
 			preparedStatement.setString(1, user.getFirstname());
 			preparedStatement.setString(2, user.getLastname());
 			preparedStatement.setString(3, user.getAddress());
 			preparedStatement.setString(4, user.getMobileno());
 			preparedStatement.setString(5, user.getEmail());
-			preparedStatement.setString(6,user.getGender());
-			preparedStatement.setInt(7,user.getUser_id());
-			
+			preparedStatement.setString(6, user.getGender());
+			preparedStatement.setBlob(7, user.getUserProfilepicStream());
+			preparedStatement.setInt(8, user.getUser_id());
 
 			return preparedStatement.executeUpdate();
 
@@ -213,9 +227,8 @@ public class userDaoImpl implements userDao {
 	public int removeUserDetails(int user_id, Connection connection) {
 		String deleteQuery = "update user set i_status=? where i_user_id=?";
 		try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
-			preparedStatement.setInt(1,0);
-			preparedStatement.setInt(2,user_id);
-			
+			preparedStatement.setInt(1, 0);
+			preparedStatement.setInt(2, user_id);
 
 			return preparedStatement.executeUpdate();
 
@@ -227,17 +240,17 @@ public class userDaoImpl implements userDao {
 	}
 
 	@Override
-	public User fetchEmailId(String email,Connection connection) {
+	public User fetchEmailId(String email, Connection connection) {
 		// TODO Auto-generated method stub
-		String selectQuery="select * from user where c_email=?"; 
-		User user=new User();
+		String selectQuery = "select * from user where c_email=?";
+		User user = new User();
 		try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
 			preparedStatement.setString(1, email);
-			
+
 			try (ResultSet resultSet = preparedStatement.executeQuery();) {
-				
-				while (resultSet.next()){
-				
+
+				while (resultSet.next()) {
+
 					user.setUser_id(resultSet.getInt("i_user_id"));
 					user.setFirstname(resultSet.getString("c_first_name"));
 					user.setLastname(resultSet.getString("c_last_name"));
@@ -246,32 +259,27 @@ public class userDaoImpl implements userDao {
 					user.setEmail(resultSet.getString("c_email"));
 					user.setArea_id(resultSet.getInt("i_area_id"));
 					user.setGender(resultSet.getString("c_gender"));
-					
-					
-				}
-				
-			}
-			
 
-		} catch(SQLException e) {
+				}
+
+			}
+
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return user;
 
-		
-		
 	}
 
 	@Override
 	public int modifyPass(Connection connection, String cpass, int user_id) {
-		
+
 		String updateQuery = "update user set c_password=? where i_user_id=?";
 		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
 			preparedStatement.setString(1, cpass);
-			preparedStatement.setInt(2,user_id);
-			
+			preparedStatement.setInt(2, user_id);
 
 			return preparedStatement.executeUpdate();
 
@@ -280,12 +288,7 @@ public class userDaoImpl implements userDao {
 			e.printStackTrace();
 		}
 
-
 		return 0;
 	}
 
-	
-	
 }
-
-	

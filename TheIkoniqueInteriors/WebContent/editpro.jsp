@@ -264,7 +264,7 @@ if (null != httpSession) {
 				<div class="section section-lg pt-4">
 					<div class="container">
 						<form action="UpdateUserDetails" class="box" class="form" id="form" method="post"
-							enctype="multipart/form-data">
+							enctype="multipart/form-data" onsubmit="return login()">
 							<input type="hidden" name="user_id"
 								value="<%=String.valueOf(user.getUser_id())%>">
 							<div>
@@ -272,51 +272,51 @@ if (null != httpSession) {
 
 								<div
 									class="profile-image1 bg-primary shadow-inset border border-light rounded ml-11 p-3 ">
-									<img src="neuro/assets/img/team/profile-picture-4.jpg"
+									<img src="data:image/jpg;base64,<%=user.getUserProfilepicString() %>" height="150px" width="150px" 
 										class="card-img-top rounded" alt="Leos Portrait">
 								</div>
 								<br>
 								<div class="custom-file mr-1 col-lg-3 col-sm-6">
 									<input type="file" class="custom-file-input" id="customFile"
-										aria-label="File upload"> <label
+										aria-label="File upload" name="photo"> <label
 										class="custom-file-label" for="customFile">Choose file</label>
 								</div>
 
 								<div class="col-lg-5 col-sm-6 ml-10 ml-5 margin">
 									<!-- Form -->
 
-
+									
 									<div class="form-group mb-4 margin1 inputbox">
 
 										<label for="validationServer01">First name</label> <input
-											type="text" class="form-control1" id="fname" required
-											onkeyup="validate1();" value="<%=user.getFirstname()%>"
-											autocomplete="off"> <span class="indicator1"></span>
+											type="text" class="form-control1" id="fname"
+											 value="<%=user.getFirstname()%>"
+											autocomplete="off" name="fname" onkeyup="validate1();"> <span class="indicator1"></span>
 									</div>
 									<!-- End of Form -->
 									<!-- Form -->
 									<div class="form-group mb-4 margin1">
 										<label for="validationServerUsername">Lastname</label> <input
-											type="text" class="form-control1" id="lname" required
-											onkeyup="validate2();" value="<%=user.getLastname()%>"
-											autocomplete="off"> <span class="indicator2"></span>
+											type="text" class="form-control1" id="lname"
+											 value="<%=user.getLastname()%>"
+											autocomplete="off" name="lname" onkeyup="validate2();"> <span class="indicator2"></span>
 									</div>
 									<div class="form-group mb-4 margin1">
 										<label for="validationServerUsername">Email</label> <input
-											type="text" class="form-control1" id="email" required
-											onkeyup="validate3();" value="<%=user.getEmail()%>"
-											autocomplete="off" readonly><span class="indicator3"></span>
+											type="text" class="form-control1" id="email" 
+											 value="<%=user.getEmail()%>"
+											autocomplete="off" readonly name="email" onkeyup="validate3();"><span class="indicator3"></span>
 									</div>
 									<div class="form-group mb-4 margin1">
 										<label for="validationServerUsername">Address</label>
-										<textarea class="form-control1" id="address" required
-											onkeyup="validate5();" rows="5" autocomplete="off"><%=user.getAddress()%></textarea>
+										<textarea class="form-control1" id="address"
+											 rows="5" autocomplete="off" name="address" onkeyup="validate5();"><%=user.getAddress()%></textarea>
 										<span class="indicator5"></span>
 									</div>
 									<div class="dropdown">
 										<div class="form-group ml-6" style="width: 530px">
-											<select class="form-control" name="area" id="area" onchange="validate6()">
-											<option value="0" selected>select Area</option>
+											<select class="form-control" name="area" id="area" onchange="validate7()">
+											<option value="0" selected >select Area</option>
 												<%
 																			for (Area place : area) {
 																		%>
@@ -345,9 +345,9 @@ if (null != httpSession) {
 
 									<div class="form-group mb-4 margin1">
 										<label for="validationServerUsername">Contact No.</label> <input
-											value="<%=user.getMobileno()%>" type="number"
-											class="form-control1" id="cno" required
-											onkeyup="validate6();" maxLength="10" autocomplete="off">
+											value="<%=user.getMobileno()%>" type="text"
+											class="form-control1" id="cno" 
+											 maxlength="10" autocomplete="off" name="contactno" onkeyup="validate6();">
 										<span class="indicator6"></span>
 									</div>
 									<div class="form-group mb-3  inputBox margin1">
@@ -364,21 +364,24 @@ if (null != httpSession) {
 												id="exampleRadios2" value="Female"> <label
 												class="form-check-label" for="exampleRadios2">
 												Female </label>
+												</div>
 											<%
 										} else {
 									%>
+										    <div class="form-check">
 											<input class="form-check-input" type="radio"
 												name="exampleRadios" id="exampleRadios1" value="Male"
-												checked> <label class="form-check-label"
+												> <label class="form-check-label"
 												for="exampleRadios1"> Male </label> <input
 												class="form-check-input" type="radio" name="exampleRadios"
-												id="exampleRadios2" value="Female"> <label
+												id="exampleRadios2" value="Female" checked> <label
 												class="form-check-label" for="exampleRadios2">
 												Female </label>
+												</div>
 											<%
 												}
 										    %>
-										</div>
+										
 									</div>
 
 									<!-- End of Form -->
@@ -478,23 +481,7 @@ function validate3() {
 		form.classList.remove('valid2')
 	}
 }
-function validate4() {
-	const form = document.getElementById('form');
-	const area = document.getElementById('area').value;
-	
 
-	if (area!=" ") {
-		form.classList.add('valid3')
-		form.classList.remove('invalid3')
-	} else {
-		form.classList.add('invalid3')
-		form.classList.remove('valid3')
-	}
-	if (area == "") {
-		form.classList.remove('invalid3')
-		form.classList.remove('valid3')
-	}
-}
 function validate5() {
 	const form = document.getElementById('form');
 	const address = document.getElementById('address').value;
@@ -518,7 +505,7 @@ function validate6() {
 	const cno = document.getElementById('cno').value;
 	const pattern = /(7|8|9)\d{9}/
 
-	if (cno.match(pattern) && cno.length == 10) {
+	if (cno.match(pattern)) {
 		form.classList.add('valid5')
 		form.classList.remove('invalid5')
 	} else {
@@ -548,6 +535,30 @@ function validate7() {
 		form.classList.remove('valid6')
 	}
 
+	
+}
+
+function login(){
+	const form = document.getElementById('form');
+	const fname = document.getElementById('fname').value;
+	const lname = document.getElementById('lname').value;
+	const email = document.getElementById('email').value;
+	const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+	const area = document.getElementById('area').value;
+	const address = document.getElementById('address').value;
+	const cno = document.getElementById('cno').value;
+	const pattern1 = /(7|8|9)\d{9}/
+	var e=document.getElementById('area');
+	var value=e.options[e.selectedIndex].value;
+		
+	if(fname!=" " && lname!=" " && email.match(pattern) && value!='0' && address!=" " && cno.match(pattern1)){
+		return true;
+	}
+	else{
+		return false;
+	}
+	
+	
 	
 }
 </script>
