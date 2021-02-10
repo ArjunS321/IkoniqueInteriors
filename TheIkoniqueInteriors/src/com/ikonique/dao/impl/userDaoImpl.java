@@ -291,4 +291,57 @@ public class userDaoImpl implements userDao {
 		return 0;
 	}
 
+	@Override
+	public List<User> selectDetails(Connection connection) {
+		// TODO Auto-generated method stub
+		String selectQuery="select * from user";
+		List<User> userList = new ArrayList<User>();
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery);
+				ResultSet resultSet=preparedStatement.executeQuery())
+		{
+			while(resultSet.next())
+			{
+				Integer id = resultSet.getInt("i_user_id");
+				String fname = resultSet.getString("c_first_name");
+				String lname = resultSet.getString("c_last_name");
+				String address = resultSet.getString("c_address");
+				String phoneno = resultSet.getString("c_contact_no");
+				String email = resultSet.getString("c_email");
+				String password = resultSet.getString("c_password");
+				String gender = resultSet.getString("c_gender");
+				//Integer role = resultSet.getInt("i_role_id");
+				Integer areaid = resultSet.getInt("i_area_id");
+				//Integer status = resultSet.getInt("i_status");
+				String visitingfess = resultSet.getString("i_visiting_fess");
+				
+				System.out.println(id);
+				System.out.println(fname);
+				System.out.println(lname);
+				System.out.println(address);
+				System.out.println(phoneno);
+				System.out.println(email);
+				System.out.println(password);
+				System.out.println(gender);
+				System.out.println(areaid);
+			
+				User user = new User();
+				user.setUser_id(id);
+				user.setFirstname(fname);
+				user.setLastname(lname);
+				user.setAddress(address);
+				user.setMobileno(phoneno);
+				user.setEmail(email);
+				user.setPassword(password);
+				user.setGender(gender);
+				user.setArea_id(areaid);
+				user.setVisitingfees(visitingfess);	
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return userList;
+	}
+
 }

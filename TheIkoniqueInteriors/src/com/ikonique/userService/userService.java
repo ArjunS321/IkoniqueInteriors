@@ -16,5 +16,6 @@ public interface userService {
 	public String deleteUserDetails(int user_id);
 	public User getEmailId(String email);
 	public String updatePass(String cpass, int user_id);
+	public List<User> fetchuserdetails();
 	
 }

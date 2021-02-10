@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="com.ikonique.bean.User"%>
+<%@page import="java.util.List"%>
 <html lang="en">
 
 <head>
@@ -17,6 +19,7 @@
 
 </head>
 <body class="animsition">
+<%List<User> userList =(List)request.getAttribute("userList"); %>
 <%@include file="adminsidebar.jsp"%>
 <%@include file="adminheader.jsp"%>
     <div class="page-wrapper">
@@ -89,6 +92,7 @@
                                                 <th></th>
                                             </tr>
                                         </thead>
+                                         <%for(User user:userList) { %>
                                         <tbody>
                                             <tr class="tr-shadow">
                                                 <td>
@@ -97,19 +101,19 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </td>
-                                                <td>Lori Lynch</td>
+                                                <td><%=user.getUser_id() %></td>
                                                 <td>
-                                                    <span class="block-email">lori@example.com</span>
+                                                    <span class="block-email"><%=user.getFirstname() %></span>
                                                 </td>
-                                                <td class="desc">Samsung S8 Black</td>
-                                                <td>2018-09-27 02:12</td>
+                                                <td class="desc"><%=user.getLastname() %></td>
+                                                <td><%=user.getAddress() %></td>
                                                 <td>
-                                                    <span class="status--process">Processed</span>
+                                                    <span class="status--process"><%=user.getArea_id() %></span>
                                                 </td>
-                                                <td>$679.00</td>
-                                                <td>$679.00</td>
-                                                <td>$679.00</td>
-                                                <td>$679.00</td>
+                                                <td><%=user.getMobileno() %></td>
+                                                <td><%=user.getGender() %></td>
+                                                <td><%=user.getEmail() %></td>
+                                                <td><%=user.getPassword() %></td>
                                                 <td>$679.00</td>
                                                 <td>
                                                     <div class="table-data-feature">
@@ -128,8 +132,10 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            
                                             <tr class="spacer"></tr>
                                        </tbody>
+                                       <%} %>
                                     </table>
                                 </div>
                                 </div>

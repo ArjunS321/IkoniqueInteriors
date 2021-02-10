@@ -40,7 +40,7 @@
 					</li>
 				<li><a href="#"> <i class="fas fa-bar-chart-o"></i>Chart
 				</a></li>
-				<li><a href="table.jsp"> <i class="fas fa-table"></i>Tables
+				<li><a href="SelectUserDetails"> <i class="fas fa-table"></i>Tables
 				</a></li>
 				<li><a href="myorder.jsp"> <i class="fas fa-credit-card"></i>Payment Status
 				</a></li>

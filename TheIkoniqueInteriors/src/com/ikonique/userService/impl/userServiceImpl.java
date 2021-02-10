@@ -144,6 +144,23 @@ public class userServiceImpl {
 		
 	}
 	
+	public List<User> fetchuserdetails()
+	{
+		
+		
+		try(Connection connection=getConnection();)
+		{
+			 return userDao.selectDetails(connection);
+			
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+	
 	
 	
 

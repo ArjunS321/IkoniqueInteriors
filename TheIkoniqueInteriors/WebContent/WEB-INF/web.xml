@@ -119,4 +119,14 @@
     <servlet-name>ChangePassword</servlet-name>
     <url-pattern>/ChangePassword</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectUserDetails</display-name>
+    <servlet-name>SelectUserDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.SelectUserDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectUserDetails</servlet-name>
+    <url-pattern>/SelectUserDetails</url-pattern>
+  </servlet-mapping>
 </web-app>
