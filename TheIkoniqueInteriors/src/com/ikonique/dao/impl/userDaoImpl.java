@@ -127,13 +127,13 @@ public class userDaoImpl implements userDao {
 	public User selectUserDetails(String email, String password, Connection connection) {
 		User user = null;
 
-		String selectQuery = "select * from user where c_email=? and c_password=? and i_status=? and i_role_id=?";
+		String selectQuery = "select * from user where c_email=? and c_password=? and i_status=?";
 
 		try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
 			preparedStatement.setString(1, email);
 			preparedStatement.setString(2, password);
 			preparedStatement.setInt(3, 1);
-			preparedStatement.setInt(4, 1);
+			//preparedStatement.setInt(4, 1);
 			try (ResultSet resultSet = preparedStatement.executeQuery();) {
 
 				while (resultSet.next()) {
