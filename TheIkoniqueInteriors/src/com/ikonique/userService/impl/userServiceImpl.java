@@ -151,7 +151,6 @@ public class userServiceImpl {
 		try(Connection connection=getConnection();)
 		{
 			 return userDao.selectDetails(connection);
-			
 		}
 		catch (Exception e) {
 			// TODO: handle exception

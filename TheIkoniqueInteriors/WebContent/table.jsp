@@ -103,17 +103,17 @@
                                                 </td>
                                                 <td><%=user.getUser_id() %></td>
                                                 <td>
-                                                    <span class="block-email"><%=user.getFirstname() %></span>
+                                                    <%=user.getFirstname() %>
                                                 </td>
-                                                <td class="desc"><%=user.getLastname() %></td>
+                                                <td><%=user.getLastname() %></td>
                                                 <td><%=user.getAddress() %></td>
-                                                <td>
-                                                    <span class="status--process"><%=user.getArea_id() %></span>
+                                                <td class="desc">
+                                                    <%=user.getArea_id() %>
                                                 </td>
                                                 <td><%=user.getMobileno() %></td>
                                                 <td><%=user.getGender() %></td>
-                                                <td><%=user.getEmail() %></td>
-                                                <td><%=user.getPassword() %></td>
+                                                <td><span class="block-email"><%=user.getEmail() %></span></td>
+                                                <td><span class="status--process"><%=user.getPassword() %></span></td>
                                                 <td>$679.00</td>
                                                 <td>
                                                     <div class="table-data-feature">

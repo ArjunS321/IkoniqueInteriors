@@ -55,13 +55,11 @@ public class UpdateUserDetails extends HttpServlet {
 		System.out.println(exampleRadios);
 		Part part = request.getPart("photo");
 		InputStream is=null;
-		if(null!=part) 
+		if(null!=part)
 		{
 			
             System.out.println(part.getSubmittedFileName());
-
 			is = part.getInputStream();
-			
 		}
 		else
 		{
@@ -76,18 +74,15 @@ public class UpdateUserDetails extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		
-		
 		user.setFirstname(fname);
 		user.setLastname(lname);
 		user.setEmail(email);
 		user.setAddress(address);
 		user.setMobileno(contactno);
 		user.setGender(exampleRadios);
-		//user.setUserProfilepicStream(is);
+		user.setUserProfilepicStream(is);
 		
 		String msg=u1.updateUserDetails(user);
-		
 		
 		System.out.println(msg);
 		HttpSession httpSession = request.getSession(false);

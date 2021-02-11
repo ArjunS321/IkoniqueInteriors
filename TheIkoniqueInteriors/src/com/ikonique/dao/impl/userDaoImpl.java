@@ -314,16 +314,6 @@ public class userDaoImpl implements userDao {
 				//Integer status = resultSet.getInt("i_status");
 				String visitingfess = resultSet.getString("i_visiting_fess");
 				
-				System.out.println(id);
-				System.out.println(fname);
-				System.out.println(lname);
-				System.out.println(address);
-				System.out.println(phoneno);
-				System.out.println(email);
-				System.out.println(password);
-				System.out.println(gender);
-				System.out.println(areaid);
-			
 				User user = new User();
 				user.setUser_id(id);
 				user.setFirstname(fname);
@@ -335,6 +325,7 @@ public class userDaoImpl implements userDao {
 				user.setGender(gender);
 				user.setArea_id(areaid);
 				user.setVisitingfees(visitingfess);	
+				userList.add(user);
 			}
 		}
 		catch (Exception e) {
