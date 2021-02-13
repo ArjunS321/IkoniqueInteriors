@@ -11,6 +11,8 @@ import java.util.Base64;
 import java.util.List;
 
 import com.ikonique.bean.Area;
+import com.ikonique.bean.Category;
+import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
 import com.ikonique.dao.userDao;
 
@@ -294,9 +296,54 @@ public class userDaoImpl implements userDao {
 	@Override
 	public List<User> selectDetails(Connection connection) {
 		// TODO Auto-generated method stub
-		String selectQuery="select * from user";
+		String selectQuery="select * from user where i_role_id=1";
 		List<User> userList = new ArrayList<User>();
 		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery);
+				
+				ResultSet resultSet=preparedStatement.executeQuery())
+		{
+			while(resultSet.next())
+			{
+				Integer id = resultSet.getInt("i_user_id");
+				String fname = resultSet.getString("c_first_name");
+				String lname = resultSet.getString("c_last_name");
+				String address = resultSet.getString("c_address");
+				String phoneno = resultSet.getString("c_contact_no");
+				String email = resultSet.getString("c_email");
+				String password = resultSet.getString("c_password");
+				String gender = resultSet.getString("c_gender");
+				//Integer role = resultSet.getInt("i_role_id");
+				Integer areaid = resultSet.getInt("i_area_id");
+				//Integer status = resultSet.getInt("i_status");
+				//String visitingfess = resultSet.getString("i_visiting_fess");
+				
+				User user = new User();
+				user.setUser_id(id);
+				user.setFirstname(fname);
+				user.setLastname(lname);
+				user.setAddress(address);
+				user.setMobileno(phoneno);
+				user.setEmail(email);
+				user.setPassword(password);
+				user.setGender(gender);
+				user.setArea_id(areaid);
+				//user.setVisitingfees(visitingfess);	
+				userList.add(user);
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return userList;
+	}
+
+	@Override
+	public List<User> selectDesignerDetails(Connection connection) {
+		String selectQuery="select * from user where i_role_id=2";
+		List<User> designerList = new ArrayList<User>();
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery);
+				
 				ResultSet resultSet=preparedStatement.executeQuery())
 		{
 			while(resultSet.next())
@@ -325,14 +372,67 @@ public class userDaoImpl implements userDao {
 				user.setGender(gender);
 				user.setArea_id(areaid);
 				user.setVisitingfees(visitingfess);	
-				userList.add(user);
+				designerList.add(user);
 			}
 		}
 		catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		return userList;
+		return designerList;
+
+	}
+
+	@Override
+	public List<Category> selectCategoryDetails(Connection connection) {
+		String selectQuery="select * from category";
+		List<Category> categoryList = new ArrayList<Category>();
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery);
+				
+				ResultSet resultSet=preparedStatement.executeQuery())
+		{
+			while(resultSet.next())
+			{
+				
+				Category category = new Category();
+				category.setCategory_id(resultSet.getInt("i_category_id"));
+				category.setCategory_name(resultSet.getString("c_category_name"));
+				category.setStatus(resultSet.getInt("i_status"));
+				categoryList.add(category);
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return categoryList;
+
+	}
+
+	@Override
+	public List<SubCategory> selectSubCategoryDetails(Connection connection) {
+		String selectQuery="select * from sub_category";
+		List<SubCategory> subcategoryList = new ArrayList<SubCategory>();
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery);
+				
+				ResultSet resultSet=preparedStatement.executeQuery())
+		{
+			while(resultSet.next())
+			{
+				
+				SubCategory subcategory=new SubCategory();
+				subcategory.setSub_category_id(resultSet.getInt("i_sub_category_id"));
+				subcategory.setCategory_id(resultSet.getInt("i_category_id"));
+				subcategory.setSub_category_name(resultSet.getString("c_sub_category_name"));
+				subcategory.setStatus(resultSet.getInt("i_status"));
+				subcategoryList.add(subcategory);
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return subcategoryList;
 	}
 
 }

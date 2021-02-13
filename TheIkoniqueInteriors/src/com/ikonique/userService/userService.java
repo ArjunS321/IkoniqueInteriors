@@ -3,6 +3,8 @@ package com.ikonique.userService;
 import java.util.List;
 
 import com.ikonique.bean.Area;
+import com.ikonique.bean.Category;
+import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
 
 public interface userService {
@@ -17,5 +19,8 @@ public interface userService {
 	public User getEmailId(String email);
 	public String updatePass(String cpass, int user_id);
 	public List<User> fetchuserdetails();
+	public List<User> fetchdesignerdetails();
+	public List<Category> fetchcategorydetails();
+	public List<SubCategory> fetchsubcategorydetails();
 	
 }

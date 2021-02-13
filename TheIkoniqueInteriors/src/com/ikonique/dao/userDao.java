@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.ikonique.bean.Area;
+import com.ikonique.bean.Category;
+import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
 
 public interface userDao {
@@ -27,6 +29,12 @@ public interface userDao {
 	public int modifyPass(Connection connection, String cpass, int user_id);
 
 	public List<User> selectDetails(Connection connection);
+
+	public List<User> selectDesignerDetails(Connection connection);
+
+	public List<Category> selectCategoryDetails(Connection connection);
+
+	public List<SubCategory> selectSubCategoryDetails(Connection connection);
 
 	
 	

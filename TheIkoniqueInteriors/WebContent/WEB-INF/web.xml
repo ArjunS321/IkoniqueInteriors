@@ -129,4 +129,34 @@
     <servlet-name>SelectUserDetails</servlet-name>
     <url-pattern>/SelectUserDetails</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectDesignerDetails</display-name>
+    <servlet-name>SelectDesignerDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.SelectDesignerDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectDesignerDetails</servlet-name>
+    <url-pattern>/SelectDesignerDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectCategoryDetails</display-name>
+    <servlet-name>SelectCategoryDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.SelectCategoryDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectCategoryDetails</servlet-name>
+    <url-pattern>/SelectCategoryDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectSubCategoryDetails</display-name>
+    <servlet-name>SelectSubCategoryDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.SelectSubCategoryDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectSubCategoryDetails</servlet-name>
+    <url-pattern>/SelectSubCategoryDetails</url-pattern>
+  </servlet-mapping>
 </web-app>

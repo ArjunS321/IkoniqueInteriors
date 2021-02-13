@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="com.ikonique.bean.Category"%>
+<%@page import="java.util.List"%>
 <html>
 <head>
 <title>About Us</title>
@@ -8,8 +10,20 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body class=animsition>
+<%-- <%
+HttpSession httpSession = request.getSession(false);
+List<Category> categoryList = null;
+if (null != httpSession) {
+	categoryList  = (List) httpSession.getAttribute("categorylist");
+}
+%> --%>
+<%-- <% 
+List<Category> categoryList=(List<Category>)request.getSession().getAttribute("categorylist");
+%> --%> 
 
+<%-- <%List<Category> categorylist =(List)request.getSession().getAttribute("categorylist"); %> --%>
+
+<body class=animsition>
 
 
 <aside class="menu-sidebar d-none d-lg-block" style="background-color: #e6e7ee;">
@@ -27,6 +41,7 @@
 				<li class="has-sub"><a class="js-arrow" href="#"> <i
 						class="fas  fa-caret-down"></i>Categories
 				</a>
+				
 					<ul class="list-unstyled navbar__sub-list js-sub-list">
 						<li class="has-sub"><a class="js-arrow" href="#"><i
 								class="fas  fa-toggle-down (alias)"></i>Home</a>
@@ -53,6 +68,7 @@
 							</li>
 					</ul>
 					</li>
+				
 				<li><a href="#"> <i class="fas fa-bullseye"></i>Visualizer
 				</a></li>
 				<li><a href="wishlist.jsp"> <i class="fas fa-bookmark"></i>Wishlist

@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.ikonique.bean.Area;
+import com.ikonique.bean.Category;
+import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
 import com.ikonique.dao.userDao;
 import com.ikonique.dao.impl.userDaoImpl;
@@ -68,6 +70,9 @@ public class userServiceImpl {
 		int insertedUserId= userDao.insertDesignerDetails(user,connection);
 		if(insertedUserId>0) {
 			msg="Registration Is Successfully";
+			Main main=new Main();
+			main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {user.getEmail()}, "Registration Successfull", "Welcome to the world of THE IKONIQUE INTERIORS");
+			
 		}
 		else
 		{
@@ -158,6 +163,42 @@ public class userServiceImpl {
 		}
 		return null;
 		
+	}
+	public List<User> fetchdesignerdetails() {
+
+		try(Connection connection=getConnection();)
+		{
+			 return userDao.selectDesignerDetails(connection);
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public List<Category> fetchcategorydetails() {
+		
+		try(Connection connection=getConnection();)
+		{
+			 return userDao.selectCategoryDetails(connection);
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public List<SubCategory> fetchsubcategorydetails() {
+
+		try(Connection connection=getConnection();)
+		{
+			 return userDao.selectSubCategoryDetails(connection);
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	

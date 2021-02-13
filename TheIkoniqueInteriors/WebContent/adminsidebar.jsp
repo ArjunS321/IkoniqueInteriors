@@ -40,8 +40,30 @@
 					</li>
 				<li><a href="#"> <i class="fas fa-bar-chart-o"></i>Chart
 				</a></li>
-				<li><a href="SelectUserDetails"> <i class="fas fa-table"></i>Tables
-				</a></li>
+				<!-- <li><a href="SelectUserDetails"> <i class="fas fa-table"></i>Tables
+				</a></li> -->
+				<li class="has-sub"><a class="js-arrow" href="#"> <i
+						class="fas  fa-caret-down"></i>Manage
+				</a>
+					<ul class="list-unstyled navbar__sub-list js-sub-list">
+						<li class="has-sub"><a class="js-arrow" href="SelectUserDetails"><i
+								class="fas"></i>Customer Table</a>
+						</li>
+						<li class="has-sub"><a class="js-arrow" href="SelectDesignerDetails"><i
+								class="fas"></i>Designer Table</a>
+						</li>
+						<li class="has-sub"><a class="js-arrow" href="#"><i
+								class="fas"></i>Product Table</a>
+						</li>
+						<li class="has-sub"><a class="js-arrow" href="SelectCategoryDetails"><i
+								class="fas"></i>Category Table</a>
+						</li>
+						<li class="has-sub"><a class="js-arrow" href="SelectSubCategoryDetails"><i
+								class="fas"></i>Sub-Category Table</a>
+						</li>
+						</ul>
+						</li>
+						
 				<li><a href="myorder.jsp"> <i class="fas fa-credit-card"></i>Payment Status
 				</a></li>
 				<li><a href="appointmentcards.jsp"> <i class="fas  fa-truck"></i>Track Orders
