@@ -10,6 +10,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<%--  --%>
+<%-- <% 
+List<Category> categoryList=(List<Category>)request.getSession().getAttribute("categorylist");
+%> --%> 
+
+<%-- <%List<Category> categorylist =(List)request.getSession().getAttribute("categorylist"); %> --%>
 <%-- <%
 HttpSession httpSession = request.getSession(false);
 List<Category> categoryList = null;
@@ -17,12 +23,6 @@ if (null != httpSession) {
 	categoryList  = (List) httpSession.getAttribute("categorylist");
 }
 %> --%>
-<%-- <% 
-List<Category> categoryList=(List<Category>)request.getSession().getAttribute("categorylist");
-%> --%> 
-
-<%-- <%List<Category> categorylist =(List)request.getSession().getAttribute("categorylist"); %> --%>
-
 <body class=animsition>
 
 
@@ -50,6 +50,7 @@ List<Category> categoryList=(List<Category>)request.getSession().getAttribute("c
 								<li><a class="js-arrow" href="customerhomelamp.jsp"><i class="fas fa-arrow-circle-o-right"></i>Lighting</a></li>
 								<li><a class="js-arrow" href="customerhomeart.jsp"><i class="fas fa-arrow-circle-o-right"></i>Art</a></li>
 							</ul></li>
+					
 						<li class="has-sub"><a class="js-arrow" href="#"><i
 								class="fas fa-toggle-down (alias)"></i>Hotel</a>
 							<ul class="list-unstyled js-sub-list">

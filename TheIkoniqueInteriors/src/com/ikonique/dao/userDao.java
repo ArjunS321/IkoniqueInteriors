@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ikonique.bean.Area;
 import com.ikonique.bean.Category;
+import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
 
@@ -35,6 +36,8 @@ public interface userDao {
 	public List<Category> selectCategoryDetails(Connection connection);
 
 	public List<SubCategory> selectSubCategoryDetails(Connection connection);
+
+	public int saveProductDetails(Product product, Connection connection);
 
 	
 	

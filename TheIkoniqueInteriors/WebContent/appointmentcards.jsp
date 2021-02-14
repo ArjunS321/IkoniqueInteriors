@@ -19,7 +19,7 @@
 
 	<div class="page-wrapper">
 		<%@include file="customersidebar.jsp"%>
-		<%@include file="customerheader.jsp"%>
+		<%@include file="customerheader.jsp"%> 
 		<div class="page-container">
 			<div class="main-content">
 				<section>

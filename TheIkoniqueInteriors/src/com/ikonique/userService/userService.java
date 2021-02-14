@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ikonique.bean.Area;
 import com.ikonique.bean.Category;
+import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
 
@@ -22,5 +23,6 @@ public interface userService {
 	public List<User> fetchdesignerdetails();
 	public List<Category> fetchcategorydetails();
 	public List<SubCategory> fetchsubcategorydetails();
+	public String insertProductDetails(Product product);
 	
 }

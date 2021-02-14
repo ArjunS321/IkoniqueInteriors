@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.ikonique.bean.Area;
 import com.ikonique.bean.Category;
+import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
 import com.ikonique.dao.userDao;
@@ -199,6 +200,23 @@ public class userServiceImpl {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	public String insertProductDetails(Product product) {
+		
+		Connection connection=getConnection();
+		String msg=null;
+		
+		int insertedUserId= userDao.saveProductDetails(product,connection);
+		if(insertedUserId>0) {
+			msg="Insertion Is Successfully";
+			
+		}
+		else
+		{
+			msg="Insertion Is Failed";
+		}
+
+		return msg;
 	}
 	
 	

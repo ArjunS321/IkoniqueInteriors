@@ -1,5 +1,6 @@
 package com.ikonique.dao.impl;
 
+import java.sql.DriverManager;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,7 @@ import java.util.List;
 
 import com.ikonique.bean.Area;
 import com.ikonique.bean.Category;
+import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
 import com.ikonique.dao.userDao;
@@ -433,6 +435,41 @@ public class userDaoImpl implements userDao {
 			e.printStackTrace();
 		}
 		return subcategoryList;
+	}
+
+	@Override
+	public int saveProductDetails(Product product, Connection connection) {
+		int i = 0, insertedProductId = 0;
+		String insertQuery = "insert into product (c_product_name,d_product_price,i_product_quantity,d_product_weight)values (?,?,?,?)";
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS)) {
+			preparedStatement.setString(1, product.getProduct_name());
+			preparedStatement.setString(2, product.getProduct_price());
+			preparedStatement.setString(3, product.getProduct_quantity());
+			preparedStatement.setString(4, product.getProduct_weight());
+			
+
+			i = preparedStatement.executeUpdate();
+			ResultSet resultSet = preparedStatement.getGeneratedKeys();
+
+			while (resultSet.next()) {
+				insertedProductId = resultSet.getInt(1);
+			}
+			System.out.println(insertedProductId);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return insertedProductId;
+
 	}
 
 }

@@ -159,4 +159,14 @@
     <servlet-name>SelectSubCategoryDetails</servlet-name>
     <url-pattern>/SelectSubCategoryDetails</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InsertProduct</display-name>
+    <servlet-name>InsertProduct</servlet-name>
+    <servlet-class>com.ikonique.servlet.InsertProduct</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertProduct</servlet-name>
+    <url-pattern>/InsertProduct</url-pattern>
+  </servlet-mapping>
 </web-app>
