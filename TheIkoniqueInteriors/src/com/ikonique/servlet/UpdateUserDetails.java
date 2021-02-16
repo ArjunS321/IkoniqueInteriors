@@ -3,6 +3,7 @@ package com.ikonique.servlet;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
+import java.util.Base64;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -52,6 +53,7 @@ public class UpdateUserDetails extends HttpServlet {
 		String contactno=request.getParameter("contactno");
 		String exampleRadios = request.getParameter("exampleRadios");
 		String photo=request.getParameter("photo");
+		int areaId=Integer.parseInt(request.getParameter("area"));
 		System.out.println(exampleRadios);
 		Part part = request.getPart("photo");
 		InputStream is=null;
@@ -79,8 +81,10 @@ public class UpdateUserDetails extends HttpServlet {
 		user.setEmail(email);
 		user.setAddress(address);
 		user.setMobileno(contactno);
+		user.setArea_id(areaId);
 		user.setGender(exampleRadios);
 		user.setUserProfilepicStream(is);
+		user.setUserProfilepicString(Base64.getEncoder().encodeToString(part.getInputStream().readAllBytes()));
 		
 		String msg=u1.updateUserDetails(user);
 		

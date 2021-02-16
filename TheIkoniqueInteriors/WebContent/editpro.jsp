@@ -316,7 +316,7 @@ if (null != httpSession) {
 									<div class="dropdown">
 										<div class="form-group ml-6" style="width: 530px">
 											<select class="form-control" name="area" id="area" onchange="validate7()">
-											<option value="0" selected ></option>
+											<option value="0" ></option>
 												<%
 																			for (Area place : area) {
 																		%>

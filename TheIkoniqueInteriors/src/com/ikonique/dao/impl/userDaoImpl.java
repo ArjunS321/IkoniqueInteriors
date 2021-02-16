@@ -206,7 +206,7 @@ public class userDaoImpl implements userDao {
 
 	@Override
 	public int modifyUserDetails(User user, Connection connection) {
-		String updateQuery = "update user set c_first_name=?,c_last_name=?,c_address=?,c_contact_no=?,c_email=?,c_gender=?,b_image=?where i_user_id=?";
+		String updateQuery = "update user set c_first_name=?,c_last_name=?,c_address=?,c_contact_no=?,c_email=?,c_gender=?,i_area_id=?,b_image=?where i_user_id=?";
 		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
 			preparedStatement.setString(1, user.getFirstname());
 			preparedStatement.setString(2, user.getLastname());
@@ -214,8 +214,9 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setString(4, user.getMobileno());
 			preparedStatement.setString(5, user.getEmail());
 			preparedStatement.setString(6, user.getGender());
-			preparedStatement.setBlob(7, user.getUserProfilepicStream());
-			preparedStatement.setInt(8, user.getUser_id());
+			preparedStatement.setInt(7, user.getArea_id());
+			preparedStatement.setBlob(8, user.getUserProfilepicStream());
+			preparedStatement.setInt(9, user.getUser_id());
 
 			return preparedStatement.executeUpdate();
 
