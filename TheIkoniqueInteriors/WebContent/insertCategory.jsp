@@ -1,7 +1,6 @@
 <%@page import="com.ikonique.bean.User"%>
 <%@page import="com.ikonique.bean.Area"%>
 <%@page import="java.util.List"%>
-<%@page import="com.ikonique.bean.Category"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -179,7 +178,7 @@ textarea.form-control1:hover {
 	border: hidden;
 }
 
-/* .profile-image1 {
+.profile-image1 {
 	width: 25rem;
 	height: 25rem;
 }
@@ -214,7 +213,7 @@ textarea.form-control1:hover {
 .size {
 	width: 10%;
 }
- */</style>
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- Primary Meta Tags -->
 <title>Edit Profile</title>
@@ -236,7 +235,7 @@ textarea.form-control1:hover {
 <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
 
 </head>
-<%List<Category> categorylist =(List)request.getSession().getAttribute("categorylist"); %> 
+
 <body class="animsition">
 	<div class="page-wrapper">
 		<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>
@@ -244,10 +243,9 @@ textarea.form-control1:hover {
 		<%-- 		<%@include file="customerheader.jsp"%> --%>
 		<div class="page-container">
 			<div class="main-content">
-				<h1 align="center" style="margin-top: 50px;">New Product</h1>
+				<h1 align="center" style="margin-top: 50px;">New Category</h1>
 
 				<hr class="my-5" style="background-color: #d4d4d4;">
-				
 				<a href="login.jsp" type="submit" name="submit"
 					class="btn form-group size btn-primary margin2">Logout</a> <a
 					href="contactus.jsp" type="submit" name="submit"
@@ -257,121 +255,35 @@ textarea.form-control1:hover {
 						<form action="InsertProduct" class="box" class="form" id="form" method="post"
 							enctype="multipart/form-data" onsubmit="return login()">
 							
-							
-						<!-- 	<div class="image">
-								
+							<div>
+
 
 								<div
-									class="profile-image1 bg-primary  shadow-inset border border-light rounded ml-11 p-3 ">
+									class="profile-image1 bg-primary shadow-inset border border-light rounded ml-11 p-3 ">
 									 <img src="data:image/jpg;base64," height="150px" width="150px" 
 										class="card-img-top rounded" alt="Leos Portrait">
 							 </div>
 								<br>
-								<div class="custom-file  mr-1 col-lg-3 col-sm-6">
+								<!-- <div class="custom-file mr-1 col-lg-3 col-sm-6">
 									 <input type="file" class="custom-file-input" id="customFile"
 										aria-label="File upload" name="photo"> <label
 										class="custom-file-label" for="customFile">Choose Product Image</label> 
-								</div>
-								</div> -->	
+								</div> -->
+
 								<div class="col-lg-5 col-sm-6 ml-10 ml-5 margin">
 									<!-- Form -->
-									
+
 									
 									<div class="form-group mb-4 margin1 inputbox">
-									
-												<div class="form-check">
-								<input class="form-check-input" type="radio"
-									name="exampleRadios1" id="exampleRadios21" value="option21"
-									checked> <label class="form-check-label"
-									for="exampleRadios21"> <b>Category</b>
-								</label> <input class="form-check-input" type="radio"
-									name="exampleRadios1" id="exampleRadios11" value="option11">
-								<label class="form-check-label" for="exampleRadios11"> <b>Sub-category</b>
-								</label>
-								<input class="form-check-input" type="radio"
-									name="exampleRadios1" id="exampleRadios31" value="option31">
-								<label class="form-check-label" for="exampleRadios31"><b>Product</b>
-								</label>
 
-							</div>
-										<div class="pname">
-										<label for="validationServer01">Product Name</label> <input
-											type="text" class="form-control1" id="pname"
-											
-											autocomplete="off" name="pname" onkeyup="validate1();"> <span class="indicator1"></span>
-										</div>	
-										
-									</div>
-									<!-- End of Form -->
-									<!-- Form -->
-									<div class="form-group mb-4 margin1 pprice">
-										<label for="validationServerUsername">Product Price</label> <input
-											type="text" class="form-control1" id="pprice"
-											 
-											autocomplete="off" name="pprice" onkeyup="validate2();"> <span class="indicator2"></span>
-									</div>
-									<div class="form-group mb-4 margin1 pquantity">
-										<label for="validationServerUsername">Product Quantity</label> <input
-											type="number" class="form-control1" id="pquantity" 
-											
-											autocomplete="off"  name="pquantity" onkeyup="validate3();"><span class="indicator3"></span>
-									</div>
-									<div class="form-group mb-4 margin1 pweight">
-										<label for="validationServerUsername">Product Weight</label> <input
-											type="text" class="form-control1" id="pweight" 
-											
-											autocomplete="off"  name="pweight" onkeyup="validate3();"><span class="indicator3"></span>
-									</div>
-									
-
-									<div class="form-group mb-4 margin1 owner">
-										<label for="validationServerUsername">Owner Name</label> <input
-										 type="text"
-											class="form-control1" id="owner" 
-											 maxlength="10" autocomplete="off" name="owner" onkeyup="validate6();">
-				
-										<span class="indicator6"></span>
-									</div>
-									<div class="categoryname">
 										<label for="validationServer01">Category Name</label> <input
 											type="text" class="form-control1" id="categoryname"
 											
 											autocomplete="off" name="categoryname" onkeyup="validate1();"> <span class="indicator1"></span>
-										</div>	
-										<div class="dropdown">
-										<div class="form-group ml-6" style="width: 530px">
-											<select class="form-control" name="category" id="category" onchange="validate7()">
-											<option value="0" >Select Category</option>
-											
-												<%
-																			for (Category category : categorylist) {
-																		%>
-												
-												<option value="<%=category.getCategory_id()%>" selected><%=category.getCategory_name()%></option>
-												<%
-																			
-													
-																			}
-																		%>
-
-
-												<%--  <option value="<%=place.getArea_id()%>"><%=place.getArea_name()%></option> --%>
-
-												<%-- <%
-																			}
-																		%> --%>
-											</select><span class="indicator8"></span>
-										</div>
 									</div>
-										
-										<div class="subcategoryname">
-										<label for="validationServer01">Sub-Category Name</label> <input
-											type="text" class="form-control1" id="subcategoryname"
-											
-											autocomplete="off" name="subcategoryname" onkeyup="validate1();"> <span class="indicator1"></span>
-										</div>	
-										
-																		<!-- End of Form -->
+									<!-- End of Form -->
+									<!-- Form -->
+																											<!-- End of Form -->
 									<!-- Form -->
 										
 									<button type="submit" name="submit"
@@ -379,7 +291,7 @@ textarea.form-control1:hover {
 										Changes</button>
 									<!-- End of Form -->
 								</div>
-							
+							</div>
 						</form>
 
 
@@ -417,7 +329,6 @@ textarea.form-control1:hover {
 
 
 	<script>
-	$(document).ready(function(){
 function validate1() {
 	const form = document.getElementById('form');
 	const fname = document.getElementById('fname').value;
@@ -549,45 +460,6 @@ function login(){
 	
 	
 }
-
-$("input[name='exampleRadios1']").change(function() {
-	if($(this).val()=="option21"){
-		$(".pname").hide();
-		$(".pprice").hide();
-		$(".pquantity").hide();
-		$(".pweight").hide();
-		$(".owner").hide();
-		$(".image").hide();
-		$(".dropdown").hide();
-		$(".subcategoryname").hide();
-		$(".categoryname").show();
-	}
-	else if($(this).val()=="option11"){
-		$(".pname").hide();
-		$(".pprice").hide();
-		$(".pquantity").hide();
-		$(".pweight").hide();
-		$(".owner").hide();
-		$(".image").hide();
-		$(".categoryname").hide();
-		$(".subcategoryname").show();
-		$(".dropdown").show();
-	}
-	else
-		{
-			$(".pname").show();
-			$(".pprice").show();
-			$(".pquantity").show();
-			$(".pweight").show();
-			$(".owner").show();
-			$(".image").show();
-			$(".categoryname").hide();
-			$(".subcategoryname").hide();
-			$(".dropdown").hide();
-			
-		}
-	});
-});
 </script>
 </body>
 </html>

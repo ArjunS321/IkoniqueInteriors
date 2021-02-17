@@ -82,6 +82,9 @@
                                                 <th>Category-ID</th>
                                                 <th>Category Name</th>
                                                 <th>Status</th>
+                                                <th><a class="item" data-toggle="tooltip" data-placement="top" title="Add Category" href="">
+                                                            <i class="fa fa-plus"></i>
+                                                        </a></th>
                                                
                                             </tr>
                                         </thead>
@@ -102,6 +105,7 @@
                                                 
                                                 <td>
                                                     <div class="table-data-feature">
+                                                    	
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
                                                             <i class="zmdi zmdi-mail-send"></i>
                                                         </button>
