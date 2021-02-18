@@ -179,7 +179,7 @@ textarea.form-control1:hover {
 	border: hidden;
 }
 
-/* .profile-image1 {
+.profile-image1 {
 	width: 25rem;
 	height: 25rem;
 }
@@ -214,7 +214,7 @@ textarea.form-control1:hover {
 .size {
 	width: 10%;
 }
- */</style>
+ </style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- Primary Meta Tags -->
 <title>Edit Profile</title>
@@ -258,7 +258,7 @@ textarea.form-control1:hover {
 							enctype="multipart/form-data" onsubmit="return login()">
 							
 							
-						<!-- 	<div class="image">
+						 	<div class="image">
 								
 
 								<div
@@ -272,7 +272,7 @@ textarea.form-control1:hover {
 										aria-label="File upload" name="photo"> <label
 										class="custom-file-label" for="customFile">Choose Product Image</label> 
 								</div>
-								</div> -->	
+								</div> 
 								<div class="col-lg-5 col-sm-6 ml-10 ml-5 margin">
 									<!-- Form -->
 									
