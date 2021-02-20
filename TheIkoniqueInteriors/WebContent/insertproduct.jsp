@@ -236,7 +236,9 @@ textarea.form-control1:hover {
 <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
 
 </head>
-<%List<Category> categorylist =(List)request.getSession().getAttribute("categorylist"); %> 
+<jsp:include page="/SelectCategoryDetails"/>
+<%List<Category> categorylist =(List)request.getAttribute("categorylist"); %> 
+
 <body class="animsition">
 	<div class="page-wrapper">
 		<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>

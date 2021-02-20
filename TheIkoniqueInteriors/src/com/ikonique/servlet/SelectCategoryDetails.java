@@ -36,11 +36,18 @@ public class SelectCategoryDetails extends HttpServlet {
 		List<Category> categoryList = us.fetchcategorydetails();
 		request.setAttribute("categoryList", categoryList);
 		
-		HttpSession httpSession = request.getSession(true);
-		httpSession.setAttribute("categorylist", categoryList);
+		System.out.println(categoryList==null && categoryList.isEmpty());
 		
-		RequestDispatcher requestDispatcher=request.getRequestDispatcher("categoryTable.jsp");
-		requestDispatcher.forward(request, response);
+		/*
+		 * HttpSession httpSession = request.getSession(true);
+		 * httpSession.setAttribute("categorylist", categoryList);
+		 */
+		
+		/*
+		 * RequestDispatcher
+		 * requestDispatcher=request.getRequestDispatcher("categoryTable.jsp");
+		 * requestDispatcher.forward(request, response);
+		 */
 	}
 
 	/**
