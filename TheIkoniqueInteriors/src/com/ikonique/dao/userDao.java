@@ -39,6 +39,12 @@ public interface userDao {
 
 	public int saveProductDetails(Product product, Connection connection);
 
+	public int saveCategoryDetails(Connection connection, Category category);
+
+	public int saveSubCategoryDetails(Connection connection, SubCategory subcategory);
+
+	
+
 	
 	
 

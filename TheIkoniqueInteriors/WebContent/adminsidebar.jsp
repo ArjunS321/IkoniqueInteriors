@@ -55,10 +55,10 @@
 						<li class="has-sub"><a class="js-arrow" href="#"><i
 								class="fas"></i>Product Table</a>
 						</li>
-						<li class="has-sub"><a class="js-arrow" href="SelectCategoryDetails"><i
+						<li class="has-sub"><a class="js-arrow" href="categoryTable.jsp"><i
 								class="fas"></i>Category Table</a>
 						</li>
-						<li class="has-sub"><a class="js-arrow" href="SelectSubCategoryDetails"><i
+						<li class="has-sub"><a class="js-arrow" href="subcategoryTable.jsp"><i
 								class="fas"></i>Sub-Category Table</a>
 						</li>
 						</ul>

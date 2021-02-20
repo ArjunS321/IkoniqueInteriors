@@ -218,6 +218,35 @@ public class userServiceImpl {
 
 		return msg;
 	}
+	public String insertCategoryDetails(Category category) {
+		// TODO Auto-generated method stub
+		Connection connection = getConnection();
+		String msg=null;
+		int insertCategory = userDao.saveCategoryDetails(connection , category);
+		if(insertCategory>0) {
+			msg="Insertion Is Successfully";
+		}
+		else
+		{
+			msg="Insertion Is Failed";
+		}
+		return msg;
+	}
+	public String insertSubCategoryDetails(SubCategory subcategory) {
+		// TODO Auto-generated method stub
+		Connection connection = getConnection();
+		String msg=null;
+		int insertsubCategory = userDao.saveSubCategoryDetails(connection , subcategory);
+		if(insertsubCategory>0) {
+			msg="Insertion Is Successfully";
+		}
+		else
+		{
+			msg="Insertion Is Failed";
+		}
+		return msg;
+	}
+	
 	
 	
 	

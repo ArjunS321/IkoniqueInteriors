@@ -24,5 +24,8 @@ public interface userService {
 	public List<Category> fetchcategorydetails();
 	public List<SubCategory> fetchsubcategorydetails();
 	public String insertProductDetails(Product product);
+	public String insertCategoryDetails(Category category);
+	public String insertSubCategoryDetails(SubCategory subcategory);
+	
 	
 }

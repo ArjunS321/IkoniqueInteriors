@@ -19,6 +19,7 @@
 
 </head>
 <body class="animsition">
+<jsp:include page="/SelectSubCategoryDetails"/>
 <%List<SubCategory> subcategoryList =(List)request.getAttribute("subcategoryList"); %>
 <%@include file="adminsidebar.jsp"%>
 <%@include file="adminheader.jsp"%>

@@ -19,6 +19,7 @@
 
 </head>
 <body class="animsition">
+<jsp:include page="/SelectCategoryDetails"/>
 <%List<Category> categoryList =(List)request.getAttribute("categoryList"); %>
 <%@include file="adminsidebar.jsp"%>
 <%@include file="adminheader.jsp"%>
@@ -82,7 +83,7 @@
                                                 <th>Category-ID</th>
                                                 <th>Category Name</th>
                                                 <th>Status</th>
-                                                <th><a class="item" data-toggle="tooltip" data-placement="top" title="Add Category" href="">
+                                                <th><a class="item" data-toggle="tooltip" data-placement="top" title="Add Category" href="insertproduct.jsp">
                                                             <i class="fa fa-plus"></i>
                                                         </a></th>
                                                

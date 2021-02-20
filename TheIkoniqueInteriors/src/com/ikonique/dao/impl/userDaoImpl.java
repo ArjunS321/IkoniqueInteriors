@@ -473,4 +473,65 @@ public class userDaoImpl implements userDao {
 
 	}
 
+	@Override
+	public int saveCategoryDetails(Connection connection, Category category) {
+		// TODO Auto-generated method stub
+		int i = 0, insertedCategoryId = 0;
+		String insertQuery = "insert into category (c_category_name)values (?)";
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS)) {
+			preparedStatement.setString(1, category.getCategory_name());
+
+			i = preparedStatement.executeUpdate();
+			ResultSet resultSet = preparedStatement.getGeneratedKeys();
+
+			while (resultSet.next()) {
+				insertedCategoryId = resultSet.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return insertedCategoryId;
+	}
+
+	@Override
+	public int saveSubCategoryDetails(Connection connection, SubCategory subcategory) {
+		// TODO Auto-generated method stub
+		int i = 0, insertedsubCategoryId = 0;
+		String insertQuery = "insert into sub_category (c_sub_category_name,i_category_id)values (?,?)";
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS)) {
+			preparedStatement.setString(1, subcategory.getSub_category_name());
+			preparedStatement.setInt(2, subcategory.getCategory_id());
+
+			i = preparedStatement.executeUpdate();
+			ResultSet resultSet = preparedStatement.getGeneratedKeys();
+
+			while (resultSet.next()) {
+				insertedsubCategoryId = resultSet.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return insertedsubCategoryId;
+	}
+
+	
+
 }

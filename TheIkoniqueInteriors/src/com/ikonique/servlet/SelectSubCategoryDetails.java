@@ -34,8 +34,6 @@ public class SelectSubCategoryDetails extends HttpServlet {
 		List<SubCategory> subcategoryList = us.fetchsubcategorydetails();
 		request.setAttribute("subcategoryList", subcategoryList);
 		
-		RequestDispatcher requestDispatcher=request.getRequestDispatcher("subcategoryTable.jsp");
-		requestDispatcher.forward(request, response);
 	}
 
 	/**
