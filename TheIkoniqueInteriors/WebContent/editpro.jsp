@@ -272,7 +272,7 @@ if (null != httpSession) {
 
 								<div
 									class="profile-image1 bg-primary shadow-inset border border-light rounded ml-11 p-3 ">
-									<img src="data:image/jpg;base64,<%=user.getUserProfilepicString() %>" height="150px" width="150px" 
+									<img src="data:image/jpg;base64,<%=user.getUserProfilepicString() %>" height="365px" width="150px" 
 										class="card-img-top rounded" alt="Leos Portrait">
 								</div>
 								<br>

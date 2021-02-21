@@ -83,7 +83,7 @@ public class UpdateUserDetails extends HttpServlet {
 		user.setArea_id(areaId);
 		user.setGender(exampleRadios);
 		user.setUserProfilepicStream(is);
-		//user.setUserProfilepicString(Base64.getEncoder().encodeToString(part.getInputStream().readAllBytes()));
+		user.setUserProfilepicString(Base64.getEncoder().encodeToString(part.getInputStream().readAllBytes()));
 		String msg=u1.updateUserDetails(user);
 		
 		System.out.println(msg);
