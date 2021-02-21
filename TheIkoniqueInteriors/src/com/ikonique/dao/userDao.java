@@ -43,6 +43,8 @@ public interface userDao {
 
 	public int saveSubCategoryDetails(Connection connection, SubCategory subcategory);
 
+	public List<Product> selectProductDetails(Connection connection);
+
 	
 
 	

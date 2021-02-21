@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ikonique.bean.Category;
+import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.userService.userService;
 import com.ikonique.userService.impl.userServiceImpl;
@@ -48,6 +49,17 @@ public class InsertCategoryDetails extends HttpServlet {
 			Category category = new Category();
 			category.setCategory_name(categoryname);
 			message = serviceimpl.insertCategoryDetails(category);
+			
+			if(message!=null)
+			{
+				RequestDispatcher requestdispatcher = request.getRequestDispatcher("categoryTable.jsp");
+				requestdispatcher.forward(request, response);
+			}
+			else
+			{
+				RequestDispatcher requestdispatcher = request.getRequestDispatcher("insertproduct.jsp");
+				requestdispatcher.forward(request, response);
+			}
 		}
 		else if(name.equalsIgnoreCase("subcategory"))
 		{
@@ -59,21 +71,51 @@ public class InsertCategoryDetails extends HttpServlet {
 			subcategory.setCategory_id(categoryid);
 			
 			message = serviceimpl.insertSubCategoryDetails(subcategory);
-		}
-		else
-		{
 			
-		}
-		if(message!=null)
-		{
-			RequestDispatcher requestdispatcher = request.getRequestDispatcher("categoryTable.jsp");
-			requestdispatcher.forward(request, response);
+			if(message!=null)
+			{
+				RequestDispatcher requestdispatcher = request.getRequestDispatcher("subcategoryTable.jsp");
+				requestdispatcher.forward(request, response);
+			}
+			else
+			{
+				RequestDispatcher requestdispatcher = request.getRequestDispatcher("insertproduct.jsp");
+				requestdispatcher.forward(request, response);
+			}
 		}
 		else
 		{
-			RequestDispatcher requestdispatcher = request.getRequestDispatcher("insertproduct.jsp");
-			requestdispatcher.forward(request, response);
+			String productname=request.getParameter("pname");
+			String productprice=request.getParameter("pprice");
+			String productqty=request.getParameter("pquentity");
+			String productweight=request.getParameter("pweight");
+			String produtdesc=request.getParameter("pdescription");
+			String productcategory=request.getParameter("category");
+			int categoryid = Integer.parseInt(productcategory);
+			String productsubcategory=request.getParameter("subcategory");
+			int subcategoryid = Integer.parseInt(productsubcategory);
+			Product product=new Product();
+			product.setProduct_name(productname);
+			product.setProduct_price(productprice);
+			product.setProduct_quantity(productqty);
+			product.setProduct_weight(productweight);
+			product.setProduct_desc(produtdesc);
+			product.setCategory_id(categoryid);
+			product.setSubcategory_id(subcategoryid);
+			message=serviceimpl.insertProductDetails(product);
+			
+			if(message!=null)
+			{
+				RequestDispatcher requestdispatcher = request.getRequestDispatcher("productTable.jsp");
+				requestdispatcher.forward(request, response);
+			}
+			else
+			{
+				RequestDispatcher requestdispatcher = request.getRequestDispatcher("insertproduct.jsp");
+				requestdispatcher.forward(request, response);
+			}
 		}
+		
 		
 	}
 

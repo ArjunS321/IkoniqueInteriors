@@ -441,7 +441,7 @@ public class userDaoImpl implements userDao {
 	@Override
 	public int saveProductDetails(Product product, Connection connection) {
 		int i = 0, insertedProductId = 0;
-		String insertQuery = "insert into product (c_product_name,d_product_price,i_product_quantity,d_product_weight)values (?,?,?,?)";
+		String insertQuery = "insert into product (c_product_name,d_product_price,i_product_quantity,d_product_weight,c_product_description,i_main_category_id,i_sub_category_id)values (?,?,?,?,?,?,?)";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -454,7 +454,9 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setString(2, product.getProduct_price());
 			preparedStatement.setString(3, product.getProduct_quantity());
 			preparedStatement.setString(4, product.getProduct_weight());
-			
+			preparedStatement.setString(5, product.getProduct_desc());
+			preparedStatement.setInt(6, product.getCategory_id());
+			preparedStatement.setInt(7, product.getSubcategory_id());
 
 			i = preparedStatement.executeUpdate();
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -530,6 +532,38 @@ public class userDaoImpl implements userDao {
 		}
 
 		return insertedsubCategoryId;
+	}
+
+	@Override
+	public List<Product> selectProductDetails(Connection connection) {
+		// TODO Auto-generated method stub
+		String selectQuery="select * from product";
+		List<Product> productList = new ArrayList<Product>();
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery);
+				
+				ResultSet resultSet=preparedStatement.executeQuery())
+		{
+			while(resultSet.next())
+			{
+				
+				Product product=new Product();
+				product.setProduct_id(resultSet.getInt("i_product_id"));
+				product.setProduct_name(resultSet.getString("c_product_name"));
+				product.setProduct_price(resultSet.getString("d_product_price"));
+				product.setProduct_quantity(resultSet.getString("i_product_quantity"));
+				product.setProduct_weight(resultSet.getString("d_product_weight"));
+				product.setCategory_id(resultSet.getInt("i_main_category_id"));
+				product.setSubcategory_id(resultSet.getInt("i_sub_category_id"));
+				product.setProduct_desc(resultSet.getString("c_product_description"));
+				productList.add(product);
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return productList;
+		
 	}
 
 	

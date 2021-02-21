@@ -52,7 +52,7 @@
 						<li class="has-sub"><a class="js-arrow" href="SelectDesignerDetails"><i
 								class="fas"></i>Designer Table</a>
 						</li>
-						<li class="has-sub"><a class="js-arrow" href="#"><i
+						<li class="has-sub"><a class="js-arrow" href="productTable.jsp"><i
 								class="fas"></i>Product Table</a>
 						</li>
 						<li class="has-sub"><a class="js-arrow" href="categoryTable.jsp"><i

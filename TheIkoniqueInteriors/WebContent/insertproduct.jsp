@@ -310,19 +310,19 @@
 			</div>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox pprice">
-			<label for="pprice">Product Price</label> <input type="number"
+			<label for="pprice">Product Price</label> <input type="text"
 				name="pprice" class="form-control" id="pprice" autocomplete="off"
 				aria-describedby="emailHelp" onkeyup="validate2();"> <span
 				class="indicator2"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox pquentity">
-			<label for="pquentity">Product Quantity</label> <input type="number"
+			<label for="pquentity">Product Quantity</label> <input type="text"
 				name="pquentity" class="form-control" id="pquentity"
 				autocomplete="off" aria-describedby="emailHelp"
 				onkeyup="validate3();"> <span class="indicator3"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox pweight">
-			<label for="pweight">Product Weight</label> <input type="number"
+			<label for="pweight">Product Weight</label> <input type="text"
 				name="pweight" class="form-control" id="pweight" autocomplete="off"
 				aria-describedby="emailHelp" onkeyup="validate4();"> <span
 				class="indicator4"></span>
@@ -376,6 +376,13 @@
 				aria-describedby="emailHelp" onkeyup="validate9();"> <span
 				class="indicator9"></span>
 		</div>
+		<div align="center">
+		<div class="custom-file  mb-3 ml-10 col-sm-8 image">
+									<input type="file" class="custom-file-input" id="customFile"
+										aria-label="File upload" name="photo"> <label
+										class="custom-file-label" for="customFile">Choose Product Image</label>
+								</div>
+								</div>
 		<div align="center">
 		<button type="submit" name="submit" class="btn form-group btn-primary ml-10">Submit</button>
 	</div>
@@ -552,6 +559,7 @@
 			$(".category").hide();
 			$(".subcategory").hide();
 			$(".scname").hide();
+			$(".image").hide();
 			
 		} 
 		else if($(this).val() == "subcategory")
@@ -565,7 +573,7 @@
 			$(".pweight").hide();
 			$(".pdesc").hide();
 			$(".subcategory").hide();
-			
+			$(".image").hide();
 		}
 		else
 		{
@@ -578,6 +586,7 @@
 			$(".subcategory").show();
 			$(".cname").hide();
 			$(".scname").hide();
+			$(".image").show();
 		}
 	});
 	

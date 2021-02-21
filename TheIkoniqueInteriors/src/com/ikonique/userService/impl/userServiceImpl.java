@@ -246,6 +246,19 @@ public class userServiceImpl {
 		}
 		return msg;
 	}
+	public List<Product> fetchproductdetails() {
+		// TODO Auto-generated method stub
+		
+		try(Connection connection=getConnection();)
+		{
+			 return userDao.selectProductDetails(connection);
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	
 	

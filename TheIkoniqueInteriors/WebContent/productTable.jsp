@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <%@page import="com.ikonique.bean.SubCategory"%>
+<%@page import="com.ikonique.bean.Product"%>
+<%@page import="com.ikonique.bean.Category"%>
 <%@page import="java.util.List"%>
 <html lang="en">
 
@@ -19,6 +21,10 @@
 
 </head>
 <body class="animsition">
+<jsp:include page="/SelectProductDetails"/>
+<%List<Product> productList =(List)request.getAttribute("productList"); %>
+<jsp:include page="/SelectCategoryDetails"/>
+<%List<Category> categoryList =(List)request.getAttribute("categoryList"); %>
 <jsp:include page="/SelectSubCategoryDetails"/>
 <%List<SubCategory> subcategoryList =(List)request.getAttribute("subcategoryList"); %>
 <%@include file="adminsidebar.jsp"%>
@@ -34,7 +40,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">Sub-Category Details Table</h3>
+                                <h3 class="title-5 m-b-35">Product Details Table</h3>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-left">
 <!--                                         <div class="rs-select2--light rs-select2--md"> -->
@@ -80,17 +86,21 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </th>
-                                                <th>SubCategory-ID</th>
-                                                 <th>Category-ID</th>
-                                                <th>SubCategory Name</th>
-                                                <th>Status</th>
-                                                 <th><a class="item" data-toggle="tooltip" data-placement="top" title="Add Category" href="insertproduct.jsp">
+                                                <th>Product-ID</th>
+                                                <th>Product Name</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
+                                                <th>Weight</th>
+                                                <th>Description</th>
+                                                <th>Category Name</th>
+                                                <th>Sub-Category Name</th>
+                                                <th><a class="item" data-toggle="tooltip" data-placement="top" title="Add Category" href="insertproduct.jsp">
                                                             <i class="fa fa-plus"></i>
                                                         </a></th>
                                                
                                             </tr>
                                         </thead>
-                                         <%for(SubCategory subcategory:subcategoryList) { %>
+                                         <%for(Product product:productList) { %>
                                         <tbody>
                                             <tr class="tr-shadow">
                                                 <td>
@@ -99,17 +109,54 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </td>
-                                                <td><%=subcategory.getSub_category_id() %></td>
                                                 <td>
-                                                    <%=subcategory.getCategory_id() %>
+                                                    <%=product.getProduct_id() %>
                                                 </td>
                                                 <td>
-                                                    <%=subcategory.getSub_category_name() %>
+                                                    <%=product.getProduct_name() %>
                                                 </td>
-                                                <td><%=subcategory.getStatus() %></td>
+                                                <td><%=product.getProduct_price() %></td>
+                                                <td><%=product.getProduct_quantity() %></td>
+                                                <td><%=product.getProduct_weight() %></td>
+                                                <td><%=product.getProduct_desc()%></td>
+                                                <%
+																			for (Category category : categoryList) {
+																		%>
+												<%
+																			if (product.getCategory_id() == category.getCategory_id()) {
+																		%>
+												<td><%=category.getCategory_name() %></td>
+												<%
+																			} %>
+
+
+												
+
+												<%
+																			}
+																		%>
+                                                <%
+																			for (SubCategory subcategory : subcategoryList) {
+																		%>
+												<%
+																			if (product.getSubcategory_id() == subcategory.getSub_category_id()) {
+																		%>
+												<td><%=subcategory.getSub_category_name() %></td>
+												<%
+																			} %>
+
+
+												
+
+												<%
+																			}
+																		%>
+                                                
+                                                
                                                 
                                                 <td>
                                                     <div class="table-data-feature">
+                                                    	
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
                                                             <i class="zmdi zmdi-mail-send"></i>
                                                         </button>

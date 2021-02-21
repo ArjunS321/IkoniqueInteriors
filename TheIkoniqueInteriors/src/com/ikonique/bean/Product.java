@@ -9,6 +9,7 @@ public class Product {
 	private int product_owner_id;
 	private int category_id;
 	private int subcategory_id;
+	private String product_desc;
 	public int getProduct_id() {
 		return product_id;
 	}
@@ -56,6 +57,12 @@ public class Product {
 	}
 	public void setSubcategory_id(int subcategory_id) {
 		this.subcategory_id = subcategory_id;
+	}
+	public String getProduct_desc() {
+		return product_desc;
+	}
+	public void setProduct_desc(String product_desc) {
+		this.product_desc = product_desc;
 	}
 		
 	
