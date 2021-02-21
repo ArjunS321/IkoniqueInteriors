@@ -441,7 +441,7 @@ public class userDaoImpl implements userDao {
 	@Override
 	public int saveProductDetails(Product product, Connection connection) {
 		int i = 0, insertedProductId = 0;
-		String insertQuery = "insert into product (c_product_name,d_product_price,i_product_quantity,d_product_weight,c_product_description,i_main_category_id,i_sub_category_id)values (?,?,?,?,?,?,?)";
+		String insertQuery = "insert into product (c_product_name,d_product_price,i_product_quantity,d_product_weight,c_product_description,i_main_category_id,i_sub_category_id,b_product_image)values (?,?,?,?,?,?,?,?)";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -457,6 +457,7 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setString(5, product.getProduct_desc());
 			preparedStatement.setInt(6, product.getCategory_id());
 			preparedStatement.setInt(7, product.getSubcategory_id());
+			preparedStatement.setBlob(8, product.getProductpicStream());
 
 			i = preparedStatement.executeUpdate();
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -555,6 +556,15 @@ public class userDaoImpl implements userDao {
 				product.setCategory_id(resultSet.getInt("i_main_category_id"));
 				product.setSubcategory_id(resultSet.getInt("i_sub_category_id"));
 				product.setProduct_desc(resultSet.getString("c_product_description"));
+				byte[] productpic = resultSet.getBytes("b_product_image");
+				if(null!=productpic && productpic.length>0) 
+				{
+					String imageString = Base64.getEncoder().encodeToString(productpic);
+					product.setProductpicString(imageString);
+					System.out.println(imageString);
+				}
+				System.out.println(productpic);
+				
 				productList.add(product);
 			}
 		}

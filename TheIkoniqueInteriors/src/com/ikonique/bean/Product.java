@@ -1,5 +1,7 @@
 package com.ikonique.bean;
 
+import java.io.InputStream;
+
 public class Product {
 	private int product_id;
 	private String product_name;
@@ -10,6 +12,8 @@ public class Product {
 	private int category_id;
 	private int subcategory_id;
 	private String product_desc;
+	private InputStream productpicStream;
+	private String productpicString;
 	public int getProduct_id() {
 		return product_id;
 	}
@@ -63,6 +67,18 @@ public class Product {
 	}
 	public void setProduct_desc(String product_desc) {
 		this.product_desc = product_desc;
+	}
+	public InputStream getProductpicStream() {
+		return productpicStream;
+	}
+	public void setProductpicStream(InputStream productpicStream) {
+		this.productpicStream = productpicStream;
+	}
+	public String getProductpicString() {
+		return productpicString;
+	}
+	public void setProductpicString(String productpicString) {
+		this.productpicString = productpicString;
 	}
 		
 	

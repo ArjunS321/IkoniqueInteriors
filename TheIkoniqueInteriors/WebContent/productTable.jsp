@@ -89,6 +89,7 @@
                                                 <th>Product-ID</th>
                                                 <th>Product Name</th>
                                                 <th>Price</th>
+                                                <th>Image</th>
                                                 <th>Quantity</th>
                                                 <th>Weight</th>
                                                 <th>Description</th>
@@ -116,6 +117,7 @@
                                                     <%=product.getProduct_name() %>
                                                 </td>
                                                 <td><%=product.getProduct_price() %></td>
+                                                <td><img height="50px" width="50px" src="data:image/jpg;base64,<%=product.getProductpicString() %>"></td>
                                                 <td><%=product.getProduct_quantity() %></td>
                                                 <td><%=product.getProduct_weight() %></td>
                                                 <td><%=product.getProduct_desc()%></td>

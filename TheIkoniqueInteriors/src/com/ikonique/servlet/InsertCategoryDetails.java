@@ -1,12 +1,15 @@
 package com.ikonique.servlet;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import com.ikonique.bean.Category;
 import com.ikonique.bean.Product;
@@ -94,6 +97,18 @@ public class InsertCategoryDetails extends HttpServlet {
 			int categoryid = Integer.parseInt(productcategory);
 			String productsubcategory=request.getParameter("subcategory");
 			int subcategoryid = Integer.parseInt(productsubcategory);
+			String photo=request.getParameter("photo");
+			Part part = request.getPart("photo");
+			InputStream is=null;
+			if(null!=part)
+			{
+				System.out.println(part.getSubmittedFileName());
+				is = part.getInputStream();
+			}
+			else
+			{
+				System.out.println("null image");
+			}
 			Product product=new Product();
 			product.setProduct_name(productname);
 			product.setProduct_price(productprice);
@@ -102,6 +117,8 @@ public class InsertCategoryDetails extends HttpServlet {
 			product.setProduct_desc(produtdesc);
 			product.setCategory_id(categoryid);
 			product.setSubcategory_id(subcategoryid);
+			product.setProductpicStream(is);
+			//product.setProductpicString(Base64.getEncoder().encodeToString(getBytesFromInputStream.(part.getInputStream())));
 			message=serviceimpl.insertProductDetails(product);
 			
 			if(message!=null)
