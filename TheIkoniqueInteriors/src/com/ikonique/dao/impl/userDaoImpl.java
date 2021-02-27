@@ -576,6 +576,39 @@ public class userDaoImpl implements userDao {
 		
 	}
 
+	@Override
+	public List<SubCategory> getSubCategory(Connection connection, int categoryid) {
+	
+		String selectQuery="select * from sub_category where i_category_id=?";
+		List<SubCategory> subcatlist= new ArrayList<SubCategory>();
+		
+
+		try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
+			preparedStatement.setInt(1, categoryid);
+
+			try (ResultSet resultSet = preparedStatement.executeQuery();) {
+
+				while (resultSet.next()) {
+					
+					SubCategory subcategory=new SubCategory();
+					  subcategory.setSub_category_id(resultSet.getInt("i_sub_category_id"));
+					  subcategory.setSub_category_name(resultSet.getString("c_sub_category_name"));
+					  subcatlist.add(subcategory);
+					  
+				}
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return subcatlist;
+		
+
+	}
+
 	
 
 }

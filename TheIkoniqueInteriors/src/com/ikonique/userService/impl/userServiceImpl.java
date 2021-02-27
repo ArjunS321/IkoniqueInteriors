@@ -259,6 +259,11 @@ public class userServiceImpl {
 		}
 		return null;
 	}
+	public List<SubCategory> fetchSubCategory(int categoryid) {
+		Connection connection = getConnection();
+		return userDao.getSubCategory(connection , categoryid);
+		
+	}
 	
 	
 	

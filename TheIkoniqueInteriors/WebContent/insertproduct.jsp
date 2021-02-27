@@ -279,9 +279,12 @@
 </style>
 <jsp:include page="/SelectCategoryDetails"/>
 <jsp:include page="/SelectSubCategoryDetails"/>
+<%-- <jsp:include page="/SelectSubcategory"/> --%>
 <%List<Category> categorylist =(List)request.getAttribute("categoryList"); %>
 <%List<SubCategory> subcategorylist =(List)request.getAttribute("subcategoryList"); %>
+<%-- <%List<SubCategory> subcatlist =(List)request.getAttribute("subcatList"); %> --%>
 <body>
+
 	<h1 align="center" style="margin-top: 50px;">Insert Category,
 		Sub-Category & Product</h1>
 	<hr class="my-5" style="background-color: #d4d4d4;">
@@ -594,7 +597,14 @@
 		
 		const catid= document.getElementById('category').value;
 		alert(catid);
-		
+		$.get( "SelectSubcategory", {category: catid } )
+		  .done(function( data ) {
+			  
+			 var list= jQuery.parseJSON( data);
+			 $.each(list, function( key, value ) {
+				  alert('caste: ' + value + ' | id: ' +key);
+				}
+		  });
 		
 	});
 // });

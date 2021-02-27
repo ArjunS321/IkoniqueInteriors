@@ -45,6 +45,8 @@ public interface userDao {
 
 	public List<Product> selectProductDetails(Connection connection);
 
+	public List<SubCategory> getSubCategory(Connection connection, int categoryid);
+
 	
 
 	
