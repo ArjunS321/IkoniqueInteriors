@@ -355,6 +355,7 @@
 				name="subcategory" class="form-control" id="subcategory"
 				aria-describedby="emailHelp" onchange="validate7()">
 				<option value="0" selected>select Sub-Category</option>
+												
 												<%
 				 									for (SubCategory subcategory : subcategorylist) { 
 												%> 
@@ -589,7 +590,13 @@
 			$(".image").show();
 		}
 	});
-	
+	$("#category").change(function() {
+		
+		const catid= document.getElementById('category').value;
+		alert(catid);
+		
+		
+	});
 // });
 	
 	</script>
