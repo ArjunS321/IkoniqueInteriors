@@ -359,13 +359,13 @@
 				aria-describedby="emailHelp" onchange="validate7()">
 				<option value="0" selected>select Sub-Category</option>
 												
-												<%
+												<%-- <%
 				 									for (SubCategory subcategory : subcategorylist) { 
 												%> 
  												<option value="<%=subcategory.getSub_category_id()%>"><%=subcategory.getSub_category_name()%></option> 
 				 								<% 
 				 									}
-				 								%>
+				 								%> --%>
 			</select> <span class="indicator7"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox cname">
@@ -599,10 +599,19 @@
 		alert(catid);
 		$.get( "SelectSubcategory", {category: catid } )
 		  .done(function( data ) {
-			  
+			  $('#subcategory').empty()
 			 var list= jQuery.parseJSON( data);
+			  $('#subcategory')
+              .append($("<option></option>")
+              .attr("value","-1")
+              .text("Please Select"));
 			 $.each(list, function( key, value ) {
+				 $('#subcategory')
+	                .append($("<option></option>")
+	                .attr("value",value.sub_category_id)
+	                .text(value.sub_category_name));
 				  //alert('caste: ' + value + ' | id: ' +key);
+				  //alert(value.sub_category_id+"-"+value.sub_category_name);
 				});
 		  });
 		
