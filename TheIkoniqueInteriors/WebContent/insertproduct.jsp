@@ -1,3 +1,4 @@
+<%@page import="com.ikonique.bean.User"%>
 <%@page import="com.ikonique.bean.SubCategory"%>
 <%@page import="com.ikonique.bean.Category"%>
 <%@page import="java.util.List"%>
@@ -276,12 +277,42 @@
 				0 0 40px #0f0;
 }
 
+#form .indicator10
+{
+	position: absolute;
+	top: 50px;
+	right: 20px;
+	width: 10px;
+	height:10px;
+	background: #555;
+	border-radius: 50%;
+}
+
+#form.invalid10 .indicator10
+{
+	background: #f00;
+	box-shadow: 0 0 5px #f00,
+				0 0 10px #f00,
+				0 0 20px #f00,
+				0 0 40px #f00;
+}
+
+#form.valid10 .indicator10
+{
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0,
+				0 0 10px #0f0,
+				0 0 20px #0f0,
+				0 0 40px #0f0;
+}
+
 </style>
 <jsp:include page="/SelectCategoryDetails"/>
 <jsp:include page="/SelectSubCategoryDetails"/>
-<%-- <jsp:include page="/SelectSubcategory"/> --%>
+<jsp:include page="/SelectDesignerDetails"/>
 <%List<Category> categorylist =(List)request.getAttribute("categoryList"); %>
 <%List<SubCategory> subcategorylist =(List)request.getAttribute("subcategoryList"); %>
+<%List<User> designerList =(List)request.getAttribute("designerList"); %>
 <%-- <%List<SubCategory> subcatlist =(List)request.getAttribute("subcatList"); %> --%>
 <body>
 
@@ -353,19 +384,27 @@
 			</select> <span class="indicator6"></span>
 
 		</div>
+		<div class="form-group mb-3 ml-10 inputBox category">
+			<label for="ownername">Product Owner</label> <select name="ownername"
+				class="form-control" id="ownername" aria-describedby="emailHelp"
+				onchange="validate10()">
+				<option value="0" selected>Select Owner</option>
+				
+												<%
+				 									for (User user : designerList) { 
+												%> 
+												<option value="<%=user.getUser_id()%>"><%=user.getFirstname()%><%=user.getLastname()%></option>
+												<% 
+				 									} 
+			 								%> 
+			</select> <span class="indicator10"></span>
+
+		</div>
 		<div class="form-group mb-3 ml-10 inputBox subcategory">
 			<label for="subcategory">Sub-Category</label> <select
 				name="subcategory" class="form-control" id="subcategory"
 				aria-describedby="emailHelp" onchange="validate7()">
 				<option value="0" selected>select Sub-Category</option>
-												
-												<%-- <%
-				 									for (SubCategory subcategory : subcategorylist) { 
-												%> 
- 												<option value="<%=subcategory.getSub_category_id()%>"><%=subcategory.getSub_category_name()%></option> 
-				 								<% 
-				 									}
-				 								%> --%>
 			</select> <span class="indicator7"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox cname">
@@ -564,6 +603,7 @@
 			$(".subcategory").hide();
 			$(".scname").hide();
 			$(".image").hide();
+			$(".ownername").hide();
 			
 		} 
 		else if($(this).val() == "subcategory")
@@ -578,6 +618,7 @@
 			$(".pdesc").hide();
 			$(".subcategory").hide();
 			$(".image").hide();
+			$(".ownername").hide();
 		}
 		else
 		{
@@ -591,12 +632,12 @@
 			$(".cname").hide();
 			$(".scname").hide();
 			$(".image").show();
+			$(".ownername").show();
 		}
 	});
 	$("#category").change(function() {
 		
 		const catid= document.getElementById('category').value;
-		alert(catid);
 		$.get( "SelectSubcategory", {category: catid } )
 		  .done(function( data ) {
 			  $('#subcategory').empty()
@@ -609,9 +650,7 @@
 				 $('#subcategory')
 	                .append($("<option></option>")
 	                .attr("value",value.sub_category_id)
-	                .text(value.sub_category_name));
-				  //alert('caste: ' + value + ' | id: ' +key);
-				  //alert(value.sub_category_id+"-"+value.sub_category_name);
+	                .text(value.sub_category_name));  
 				});
 		  });
 		
