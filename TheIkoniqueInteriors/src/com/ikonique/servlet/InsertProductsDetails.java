@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.ikonique.bean.Category;
+import com.ikonique.bean.Offer;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.userService.userService;
@@ -86,6 +87,29 @@ public class InsertProductsDetails extends HttpServlet {
 				requestdispatcher.forward(request, response);
 			}
 		}
+		else if(name.equalsIgnoreCase("offer"))
+		{
+			String offername = request.getParameter("offername");
+			String discount = request.getParameter("offerdiscount");
+			double discountoffer = Double.parseDouble(discount); 
+			Offer offer = new Offer();
+			offer.setOffername(offername);
+			offer.setDiscount(discountoffer);
+			
+			message = serviceimpl.insertOfferDetails(offer);
+			 
+			
+			if(message!=null)
+			{
+				RequestDispatcher requestdispatcher = request.getRequestDispatcher("offertable.jsp");
+				requestdispatcher.forward(request, response);
+			}
+			else
+			{
+				RequestDispatcher requestdispatcher = request.getRequestDispatcher("insertproduct.jsp");
+				requestdispatcher.forward(request, response);
+			}
+		}
 		else
 		{
 			String productname=request.getParameter("pname");
@@ -94,6 +118,8 @@ public class InsertProductsDetails extends HttpServlet {
 			String productweight=request.getParameter("pweight");
 			String ownername=request.getParameter("ownername");
 			int ownerid = Integer.parseInt(ownername);
+			String offername=request.getParameter("offer");
+			int offerid = Integer.parseInt(offername);
 			String produtdesc=request.getParameter("pdescription");
 			String productcategory=request.getParameter("category");
 			int categoryid = Integer.parseInt(productcategory);
@@ -121,7 +147,9 @@ public class InsertProductsDetails extends HttpServlet {
 			product.setSubcategory_id(subcategoryid);
 			product.setProductpicStream(is);
 			product.setProduct_owner_id(ownerid);
-			//product.setProductpicString(Base64.getEncoder().encodeToString(getBytesFromInputStream.(part.getInputStream())));
+			product.setOfferid(offerid);
+			//product.setProductpicString(Base64.getEncoder().encodeToString(getBytesFromInputStream(part.getInputStream())));
+			//product.setProductpicString(Base64.getEncoder().encodeToString(getBytesFromInputStream(part.getInputStream())));
 			message=serviceimpl.insertProductDetails(product);
 			
 			if(message!=null)

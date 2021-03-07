@@ -11,8 +11,12 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
+
 import com.ikonique.bean.Area;
 import com.ikonique.bean.Category;
+import com.ikonique.bean.Offer;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
@@ -55,6 +59,7 @@ public class userDaoImpl implements userDao {
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -441,7 +446,7 @@ public class userDaoImpl implements userDao {
 	@Override
 	public int saveProductDetails(Product product, Connection connection) {
 		int i = 0, insertedProductId = 0;
-		String insertQuery = "insert into product (c_product_name,d_product_price,i_product_quantity,d_product_weight,c_product_description,i_main_category_id,i_sub_category_id,b_product_image,i_product_owner_id)values (?,?,?,?,?,?,?,?,?)";
+		String insertQuery = "insert into product (c_product_name,d_product_price,i_product_quantity,d_product_weight,c_product_description,i_main_category_id,i_sub_category_id,b_product_image,i_product_owner_id,i_offer_id) values(?,?,?,?,?,?,?,?,?,?)";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -459,6 +464,7 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setInt(7, product.getSubcategory_id());
 			preparedStatement.setBlob(8, product.getProductpicStream());
 			preparedStatement.setInt(9,product.getProduct_owner_id());
+			preparedStatement.setInt(10, product.getOfferid());
 
 			i = preparedStatement.executeUpdate();
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -557,6 +563,9 @@ public class userDaoImpl implements userDao {
 				product.setCategory_id(resultSet.getInt("i_main_category_id"));
 				product.setSubcategory_id(resultSet.getInt("i_sub_category_id"));
 				product.setProduct_desc(resultSet.getString("c_product_description"));
+				product.setProduct_owner_id(resultSet.getInt("i_product_owner_id"));
+				product.setOfferid(resultSet.getInt("i_offer_id"));
+				product.setStatus(resultSet.getInt("i_status"));
 				byte[] productpic = resultSet.getBytes("b_product_image");
 				if(null!=productpic && productpic.length>0) 
 				{
@@ -608,6 +617,117 @@ public class userDaoImpl implements userDao {
 		return subcatlist;
 		
 
+	}
+
+	@Override
+	public List<Offer> fetchOfferDetails(Connection connection) {
+		// TODO Auto-generated method stub
+		String selectQuery="select * from offer";
+		List<Offer> offerList= new ArrayList<Offer>();
+		
+
+		try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
+			
+			try (ResultSet resultSet = preparedStatement.executeQuery();) {
+
+				while (resultSet.next()) {
+					
+					Offer offer = new Offer();
+					offer.setOfferid(resultSet.getInt("i_offer_id"));
+					offer.setOffername(resultSet.getString("c_offer_name"));
+					offer.setValidoffer(resultSet.getInt("i_is_valid"));
+					offer.setDiscount(resultSet.getDouble("d_discount"));
+					offerList.add(offer);	  
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return offerList;
+	}
+
+	@Override
+	public int saveOfferDetails(Connection connection, Offer offer) {
+		// TODO Auto-generated method stub
+		int i = 0, insertedOfferId = 0;
+		String insertQuery = "insert into offer (c_offer_name,i_is_valid,d_discount) values(?,?,?)";
+		try { 
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try(PreparedStatement preparedStatement = connection.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS)) {
+			preparedStatement.setString(1, offer.getOffername());
+			preparedStatement.setInt(2, 1);
+			preparedStatement.setDouble(3, offer.getDiscount());
+
+			i = preparedStatement.executeUpdate();
+			ResultSet resultSet = preparedStatement.getGeneratedKeys();
+
+			while (resultSet.next()) 
+			{
+				insertedOfferId = resultSet.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return insertedOfferId;
+	}
+
+	@Override
+	public int removeCategoryDetails(int categoryId, Connection connection) {
+		// TODO Auto-generated method stub
+		String deleteQuery = "update category set i_status=? where i_category_id=?";
+		try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
+			preparedStatement.setInt(1, 0);
+			preparedStatement.setInt(2, categoryId);
+
+			return preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public int removeSubCategoryDetails(int subcategoryId, Connection connection) {
+		// TODO Auto-generated method stub
+		String deleteQuery = "update sub_category set i_status=? where i_sub_category_id=?";
+		try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
+			preparedStatement.setInt(1, 0);
+			preparedStatement.setInt(2, subcategoryId);
+
+			return preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public int removeProduct(int productid, Connection connection) {
+		// TODO Auto-generated method stub
+		String deleteQuery = "update product set i_status=? where i_product_id=?";
+		try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
+			preparedStatement.setInt(1, 0);
+			preparedStatement.setInt(2, productid);
+
+			return preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 	

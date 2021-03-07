@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.ikonique.bean.Offer"%>
 <%@page import="com.ikonique.bean.Category"%>
 <%@page import="java.util.List"%>
 <html lang="en">
@@ -15,11 +16,12 @@
     <title>Tables</title>
 
    <%@include file="FontFaces.jsp"%>
-   <%@include file="commoncss.jsp"%>
+	<%@include file="commoncss.jsp"%>
+
 </head>
 <body class="animsition">
-<jsp:include page="/SelectCategoryDetails"/>
-<%List<Category> categoryList =(List)request.getAttribute("categoryList"); %>
+<jsp:include page="/SelectOfferDetails"/>
+<%List<Offer> offerList =(List)request.getAttribute("offerList"); %>
 <%@include file="adminsidebar.jsp"%>
 <%@include file="adminheader.jsp"%>
     <div class="page-wrapper">
@@ -33,7 +35,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">Category Details Table</h3>
+                                <h3 class="title-5 m-b-35">Offer Details Table</h3>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-left">
 <!--                                         <div class="rs-select2--light rs-select2--md"> -->
@@ -79,16 +81,17 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </th>
-                                                <th>Category-ID</th>
-                                                <th>Category Name</th>
-                                                <th>Status</th>
-                                                <th><a class="item" data-toggle="tooltip" data-placement="top" title="Add Category" href="insertproduct.jsp">
+                                                <th>Offer-ID</th>
+                                                <th>Offer Name</th>
+                                                <th>Offer Discount</th>
+                                                <th>Offer Valid Or Not</th>
+                                                <th><a class="item" data-toggle="tooltip" data-placement="top" title="Add Offer" href="insertproduct.jsp">
                                                             <i class="fa fa-plus"></i>
                                                         </a></th>
                                                
                                             </tr>
                                         </thead>
-                                         <%for(Category category:categoryList) { %>
+                                         <%for(Offer offer:offerList) { %>
                                         <tbody>
                                             <tr class="tr-shadow">
                                                 <td>
@@ -97,12 +100,12 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </td>
-                                                <td><%=category.getCategory_id() %></td>
+                                                <td><%=offer.getOfferid() %></td>
                                                 <td>
-                                                    <%=category.getCategory_name() %>
+                                                    <%=offer.getOffername() %>
                                                 </td>
-                                                <td><%=category.getStatus() %></td>
-                                                
+                                                <td><%=offer.getDiscount() %> %</td>
+                                                <td><%=offer.getValidoffer() %></td>
                                                 <td>
                                                     <div class="table-data-feature">
                                                     	
@@ -112,9 +115,9 @@
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                             <i class="zmdi zmdi-edit"></i>
                                                         </button>
-                                                        <a href="DelectCategoryDetails?categoryId=<%=category.getCategory_id() %>" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                             <i class="zmdi zmdi-delete"></i>
-                                                        </a>
+                                                        </button>
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="More">
                                                             <i class="zmdi zmdi-more"></i>
                                                         </button>

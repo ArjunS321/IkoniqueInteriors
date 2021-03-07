@@ -43,7 +43,7 @@
 				<!-- <li><a href="SelectUserDetails"> <i class="fas fa-table"></i>Tables
 				</a></li> -->
 				<li class="has-sub"><a class="js-arrow" href="#"> <i
-						class="fas  fa-caret-down"></i>Manage
+						class="fas  fa-caret-down"></i>Manage Tables
 				</a>
 					<ul class="list-unstyled navbar__sub-list js-sub-list">
 						<li class="has-sub"><a class="js-arrow" href="SelectUserDetails"><i
@@ -60,6 +60,9 @@
 						</li>
 						<li class="has-sub"><a class="js-arrow" href="subcategoryTable.jsp"><i
 								class="fas"></i>Sub-Category Table</a>
+						</li>
+						<li class="has-sub"><a class="js-arrow" href="offertable.jsp"><i
+								class="fas"></i>Offer Table</a>
 						</li>
 						</ul>
 						</li>

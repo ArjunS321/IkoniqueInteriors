@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ikonique.bean.Area;
 import com.ikonique.bean.Category;
+import com.ikonique.bean.Offer;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
@@ -46,6 +47,16 @@ public interface userDao {
 	public List<Product> selectProductDetails(Connection connection);
 
 	public List<SubCategory> getSubCategory(Connection connection, int categoryid);
+
+	public List<Offer> fetchOfferDetails(Connection connection);
+
+	public int saveOfferDetails(Connection connection, Offer offer);
+
+	public int removeCategoryDetails(int categoryId, Connection connection);
+
+	public int removeSubCategoryDetails(int subcategoryId, Connection connection);
+
+	public int removeProduct(int productid, Connection connection);
 
 	
 

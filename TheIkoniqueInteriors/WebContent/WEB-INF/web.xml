@@ -9,6 +9,26 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/errorpage.jsp</location>
+  </error-page>
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/errorpage.jsp</location>
+  </error-page>
+  <error-page>
+  	<error-code>505</error-code>
+  	<location>/errorpage.jsp</location>
+  </error-page>
+  <error-page>
+  	<error-code>501</error-code>
+  	<location>/errorpage.jsp</location>
+  </error-page>
+  <error-page>
+  	<error-code>502</error-code>
+  	<location>/errorpage.jsp</location>
+  </error-page>
   <servlet>
     <description></description>
     <display-name>RegistrationServlet</display-name>
@@ -171,9 +191,9 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>InsertCategoryDetails</display-name>
-    <servlet-name>InsertCategoryDetails</servlet-name>
-    <servlet-class>com.ikonique.servlet.InsertCategoryDetails</servlet-class>
+    <display-name>InsertProductsDetails</display-name>
+    <servlet-name>InsertProductsDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.InsertProductsDetails</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>InsertProductsDetails</servlet-name>
@@ -198,5 +218,45 @@
   <servlet-mapping>
     <servlet-name>SelectSubcategory</servlet-name>
     <url-pattern>/SelectSubcategory</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectOfferDetails</display-name>
+    <servlet-name>SelectOfferDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.SelectOfferDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectOfferDetails</servlet-name>
+    <url-pattern>/SelectOfferDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DelectCategoryDetails</display-name>
+    <servlet-name>DelectCategoryDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.DelectCategoryDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DelectCategoryDetails</servlet-name>
+    <url-pattern>/DelectCategoryDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DelectSubCategoryDetails</display-name>
+    <servlet-name>DelectSubCategoryDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.DelectSubCategoryDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DelectSubCategoryDetails</servlet-name>
+    <url-pattern>/DelectSubCategoryDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteProductDetails</display-name>
+    <servlet-name>DeleteProductDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.DeleteProductDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteProductDetails</servlet-name>
+    <url-pattern>/DeleteProductDetails</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -163,9 +163,9 @@
         </div>
       </div>
     </div>
-    <div class="button">GO HOME</div>
+    <div class="button"><a href="welcome.jsp">GO HOME</a></div>
   </div>
-  <div class="sorry">Oops! Sorry, page not found.</div>
+  <div class="sorry">Opps!!Something Went Wrong.. Please Try Again!!</div>
 </div><a class="inspiration" href="https://dribbble.com/shots/4571035-Error-404" target="_blank" rel="noopener">inspiration</a>
 </body>
 <script>

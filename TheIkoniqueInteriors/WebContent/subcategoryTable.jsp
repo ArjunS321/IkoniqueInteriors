@@ -116,9 +116,9 @@
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                             <i class="zmdi zmdi-edit"></i>
                                                         </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                        <a href="DelectSubCategoryDetails?subcategoryId=<%=subcategory.getSub_category_id() %>"class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                             <i class="zmdi zmdi-delete"></i>
-                                                        </button>
+                                                        </a>
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="More">
                                                             <i class="zmdi zmdi-more"></i>
                                                         </button>

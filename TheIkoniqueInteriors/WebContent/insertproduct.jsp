@@ -1,3 +1,4 @@
+<%@page import="com.ikonique.bean.Offer"%>
 <%@page import="com.ikonique.bean.User"%>
 <%@page import="com.ikonique.bean.SubCategory"%>
 <%@page import="com.ikonique.bean.Category"%>
@@ -306,13 +307,103 @@
 				0 0 40px #0f0;
 }
 
+#form .indicator11
+{
+	position: absolute;
+	top: 50px;
+	right: 20px;
+	width: 10px;
+	height:10px;
+	background: #555;
+	border-radius: 50%;
+}
+
+#form.invalid11 .indicator11
+{
+	background: #f00;
+	box-shadow: 0 0 5px #f00,
+				0 0 10px #f00,
+				0 0 20px #f00,
+				0 0 40px #f00;
+}
+
+#form.valid11 .indicator11
+{
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0,
+				0 0 10px #0f0,
+				0 0 20px #0f0,
+				0 0 40px #0f0;
+}
+
+#form .indicator12
+{
+	position: absolute;
+	top: 50px;
+	right: 20px;
+	width: 10px;
+	height:10px;
+	background: #555;
+	border-radius: 50%;
+}
+
+#form.invalid12 .indicator12
+{
+	background: #f00;
+	box-shadow: 0 0 5px #f00,
+				0 0 10px #f00,
+				0 0 20px #f00,
+				0 0 40px #f00;
+}
+
+#form.valid12 .indicator12
+{
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0,
+				0 0 10px #0f0,
+				0 0 20px #0f0,
+				0 0 40px #0f0;
+}
+
+#form .indicator13
+{
+	position: absolute;
+	top: 50px;
+	right: 20px;
+	width: 10px;
+	height:10px;
+	background: #555;
+	border-radius: 50%;
+}
+
+#form.invalid13 .indicator13
+{
+	background: #f00;
+	box-shadow: 0 0 5px #f00,
+				0 0 10px #f00,
+				0 0 20px #f00,
+				0 0 40px #f00;
+}
+
+#form.valid13 .indicator13
+{
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0,
+				0 0 10px #0f0,
+				0 0 20px #0f0,
+				0 0 40px #0f0;
+}
+
 </style>
 <jsp:include page="/SelectCategoryDetails"/>
 <jsp:include page="/SelectSubCategoryDetails"/>
- <jsp:include page="/SelectDesignerDetails"/>
+<jsp:include page="/SelectDesignerDetails"/>
+<jsp:include page="/SelectOfferDetails"/>
+
 <%List<Category> categorylist =(List)request.getAttribute("categoryList"); %>
 <%List<SubCategory> subcategorylist =(List)request.getAttribute("subcategoryList"); %>
 <%List<User> designerList =(List)request.getAttribute("designerList"); %> 
+<%List<Offer> offerList =(List)request.getAttribute("offerList"); %>
 <%-- <%List<SubCategory> subcatlist =(List)request.getAttribute("subcatList"); %> --%>
 <body>
 
@@ -333,6 +424,9 @@
 					id="exampleRadios31" value="product"> <label
 					class="form-check-label" for="exampleRadios31"> <b>Product</b>
 				</label>
+				<input class="form-check-input" type="radio" name="exampleRadios1"
+					id="exampleRadios41" value="offer"> <label
+					class="form-check-label" for="exampleRadios41"> <b>Offer</b></label>
 			</div>
 		</div>
 		<div class="pname">
@@ -341,6 +435,22 @@
 					name="pname" class="form-control" id="pname" autocomplete="off"
 					aria-describedby="emailHelp" onkeyup="validate1();"> <span
 					class="indicator1"></span>
+			</div>
+		</div>
+		<div class="offername">
+			<div class="form-group mb-3 ml-10 inputBox">
+				<label for="offername">Offer Name</label> <input type="text"
+					name="offername" class="form-control" id="offername" autocomplete="off"
+					aria-describedby="emailHelp" onkeyup="validate12();"> <span
+					class="indicator12"></span>
+			</div>
+		</div>
+		<div class="offerdiscount">
+			<div class="form-group mb-3 ml-10 inputBox">
+				<label for="offerdiscount">Offer Discount</label> <input type="text"
+					name="offerdiscount" class="form-control" id="offerdiscount" autocomplete="off"
+					aria-describedby="emailHelp" onkeyup="validate13();"> <span
+					class="indicator13"></span>
 			</div>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox pprice">
@@ -398,6 +508,22 @@
 				 									} 
 			 								%> 
 			</select> <span class="indicator10"></span>
+
+		</div> 
+		<div class="form-group mb-3 ml-10 inputBox category">
+			<label for="offer">Product Offer</label> <select name="offer"
+				class="form-control" id="offer" aria-describedby="emailHelp"
+				onchange="validate11()">
+				<option value="0" selected>Select Offer</option>
+				
+												<%
+				 									for (Offer offer : offerList) { 
+												%> 
+												<option value="<%=offer.getOfferid()%>"><%=offer.getOffername()%></option>
+												<% 
+				 									} 
+			 								%> 
+			</select> <span class="indicator11"></span>
 
 		</div> 
 		<div class="form-group mb-3 ml-10 inputBox subcategory">
@@ -604,6 +730,9 @@
 			$(".scname").hide();
 			$(".image").hide();
 			$(".ownername").hide();
+			$(".offer").hide();
+			$(".offername").hide();
+			$(".offerdiscount").hide();
 			
 		} 
 		else if($(this).val() == "subcategory")
@@ -619,9 +748,31 @@
 			$(".subcategory").hide();
 			$(".image").hide();
 			$(".ownername").hide();
+			$(".offer").hide();
+			$(".offername").hide();
+			$(".offerdiscount").hide();
 		}
-		else
+		else if($(this).val() == "offer")
 		{
+			$(".offername").show();
+			$(".offerdiscount").show();
+			$(".category").hide();
+			$(".scname").hide();
+			$(".pname").hide();
+			$(".cname").hide();
+			$(".pprice").hide();
+			$(".pquentity").hide();
+			$(".pweight").hide();
+			$(".pdesc").hide();
+			$(".subcategory").hide();
+			$(".image").hide();
+			$(".ownername").hide();
+			$(".offer").hide();
+		}
+		else 
+		{
+			$(".offername").hide();
+			$(".offerdiscount").hide();
 			$(".pname").show();
 			$(".pprice").show();
 			$(".pquentity").show();
@@ -633,6 +784,7 @@
 			$(".scname").hide();
 			$(".image").show();
 			$(".ownername").show();
+			$(".offer").show();
 		}
 	});
 	$("#category").change(function() {

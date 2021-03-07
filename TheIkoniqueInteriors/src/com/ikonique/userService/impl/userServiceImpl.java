@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.ikonique.bean.Area;
 import com.ikonique.bean.Category;
+import com.ikonique.bean.Offer;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
@@ -263,6 +264,77 @@ public class userServiceImpl {
 		Connection connection = getConnection();
 		return userDao.getSubCategory(connection , categoryid);
 		
+	}
+	public List<Offer> SelectOfferDetails() {
+		// TODO Auto-generated method stub
+		try(Connection connection=getConnection();)
+		{
+			 return userDao.fetchOfferDetails(connection);
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public String insertOfferDetails(Offer offer) {
+		// TODO Auto-generated method stub
+		Connection connection = getConnection();
+		String msg=null;
+		int insertofferconunt = userDao.saveOfferDetails(connection , offer);
+		if(insertofferconunt>0) {
+			msg="Insertion Is Successfully";
+		}
+		else
+		{
+			msg="Insertion Is Failed";
+		}
+		return msg;
+	}
+	public String removecategoryDetails(int categoryId) {
+		// TODO Auto-generated method stub
+		Connection connection=getConnection();
+		int deleteCount=0;
+		String msg=null;
+		deleteCount=userDao.removeCategoryDetails(categoryId,connection);
+		if(deleteCount>0) {
+			msg="Deletion Successfully";
+		}
+		else
+		{
+			msg="Deletion Failed";
+		}
+		return msg;
+	}
+	public String removesubcategoryDetails(int subcategoryId) {
+		// TODO Auto-generated method stub
+		Connection connection=getConnection();
+		int deleteCount=0;
+		String msg=null;
+		deleteCount=userDao.removeSubCategoryDetails(subcategoryId,connection);
+		if(deleteCount>0) {
+			msg="Deletion Successfully";
+		}
+		else
+		{
+			msg="Deletion Failed";
+		}
+		return msg;
+	}
+	public String removeProductDetails(int productid) {
+		// TODO Auto-generated method stub
+		Connection connection=getConnection();
+		int deleteCount=0;
+		String msg=null;
+		deleteCount=userDao.removeProduct(productid,connection);
+		if(deleteCount>0) {
+			msg="Deletion Successfully";
+		}
+		else
+		{
+			msg="Deletion Failed";
+		}
+		return msg;
 	}
 	
 	

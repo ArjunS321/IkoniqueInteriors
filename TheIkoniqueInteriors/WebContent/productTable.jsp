@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="com.ikonique.bean.Offer"%>
+<%@page import="com.ikonique.bean.User"%>
 <%@page import="com.ikonique.bean.SubCategory"%>
 <%@page import="com.ikonique.bean.Product"%>
 <%@page import="com.ikonique.bean.Category"%>
@@ -27,6 +29,11 @@
 <%List<Category> categoryList =(List)request.getAttribute("categoryList"); %>
 <jsp:include page="/SelectSubCategoryDetails"/>
 <%List<SubCategory> subcategoryList =(List)request.getAttribute("subcategoryList"); %>
+<jsp:include page="/SelectDesignerDetails"/>
+<%List<User> designerList =(List)request.getAttribute("designerList"); %>
+<jsp:include page="/SelectOfferDetails"/>
+<%List<Offer> offerList =(List)request.getAttribute("offerList"); %>
+
 <%@include file="adminsidebar.jsp"%>
 <%@include file="adminheader.jsp"%>
     <div class="page-wrapper">
@@ -86,16 +93,20 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </th>
+                                                <th>Product Status</th>
                                                 <th>Product-ID</th>
                                                 <th>Product Name</th>
                                                 <th>Price</th>
+                                                <th>Offer</th>
+                                                <th>Product Owner</th>
                                                 <th>Image</th>
                                                 <th>Quantity</th>
                                                 <th>Weight</th>
                                                 <th>Description</th>
                                                 <th>Category Name</th>
                                                 <th>Sub-Category Name</th>
-                                                <th><a class="item" data-toggle="tooltip" data-placement="top" title="Add Category" href="insertproduct.jsp">
+                                                 
+                                                <th><a class="item" data-toggle="tooltip" data-placement="top" title="Add Product" href="insertproduct.jsp">
                                                             <i class="fa fa-plus"></i>
                                                         </a></th>
                                                
@@ -110,6 +121,7 @@
                                                         <span class="au-checkmark"></span>
                                                     </label>
                                                 </td>
+                                                <td><%=product.getStatus() %></td>
                                                 <td>
                                                     <%=product.getProduct_id() %>
                                                 </td>
@@ -117,64 +129,59 @@
                                                     <%=product.getProduct_name() %>
                                                 </td>
                                                 <td><%=product.getProduct_price() %></td>
+                                                <% for(Offer offer : offerList){%>
+                                                	<%if(product.getOfferid() == offer.getOfferid()){ %>
+                                                	<td><%=offer.getOffername()%></td>
+                                                	<%}else {%>
+                                            		<td>NO OFFER</td>
+                                            	<%} %>
+                                                
+                                                <%} %>
+                                                <% for(User user : designerList){%>
+                                                
+                                                	<%if(product.getProduct_owner_id() == user.getUser_id()){ %>
+                                                	
+                                                	<td><%=user.getFirstname()%> <%=user.getLastname() %></td>
+                                                	
+                                                	
+                                                	<%} else {%>
+                                                	<td>NO OWNER</td>
+                                                	<%} %>
+                                                	
+                                                <%} %>
+                                                
                                                 <td><img height="50px" width="50px" src="data:image/jpg;base64,<%=product.getProductpicString() %>"></td>
                                                 <td><%=product.getProduct_quantity() %></td>
                                                 <td><%=product.getProduct_weight() %></td>
                                                 <td><%=product.getProduct_desc()%></td>
-                                                <%
-																			for (Category category : categoryList) {
-																		%>
-												<%
-																			if (product.getCategory_id() == category.getCategory_id()) {
-																		%>
-												<td><%=category.getCategory_name() %></td>
-												<%
-																			} %>
-
-
-												
-
-												<%
-																			}
-																		%>
-                                                <%
-																			for (SubCategory subcategory : subcategoryList) {
-																		%>
-												<%
-																			if (product.getSubcategory_id() == subcategory.getSub_category_id()) {
-																		%>
-												<td><%=subcategory.getSub_category_name() %></td>
-												<%
-																			} %>
-
-
-												
-
-												<%
-																			}
-																		%>
-                                                
-                                                
-                                                
+                                                <%for (Category category : categoryList) {%>
+												<%if (product.getCategory_id() == category.getCategory_id()) {%>
+													<td><%=category.getCategory_name() %></td>
+													<%} %>
+												<%}%>
+                                                <%for (SubCategory subcategory : subcategoryList) {%>
+													<%if (product.getSubcategory_id() == subcategory.getSub_category_id()) {%>
+													<td><%=subcategory.getSub_category_name() %></td>
+													<%} %>
+												<%}%>
+                                           
                                                 <td>
                                                     <div class="table-data-feature">
-                                                    	
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
                                                             <i class="zmdi zmdi-mail-send"></i>
                                                         </button>
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                             <i class="zmdi zmdi-edit"></i>
                                                         </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                        <a href="DeleteProductDetails?productid=<%=product.getProduct_id() %>" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                             <i class="zmdi zmdi-delete"></i>
-                                                        </button>
+                                                        </a>
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="More">
                                                             <i class="zmdi zmdi-more"></i>
                                                         </button>
                                                     </div>
                                                 </td>
                                             </tr>
-                                            
                                             <tr class="spacer"></tr>
                                        </tbody>
                                        <%} %>

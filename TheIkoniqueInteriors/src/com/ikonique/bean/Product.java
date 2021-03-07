@@ -9,11 +9,14 @@ public class Product {
 	private String product_quantity;
 	private String product_weight;
 	private int product_owner_id;
+	private int offerid;
 	private int category_id;
 	private int subcategory_id;
 	private String product_desc;
 	private InputStream productpicStream;
 	private String productpicString;
+	private int status;
+	
 	public int getProduct_id() {
 		return product_id;
 	}
@@ -79,6 +82,18 @@ public class Product {
 	}
 	public void setProductpicString(String productpicString) {
 		this.productpicString = productpicString;
+	}
+	public int getOfferid() {
+		return offerid;
+	}
+	public void setOfferid(int offerid) {
+		this.offerid = offerid;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 		
 	
