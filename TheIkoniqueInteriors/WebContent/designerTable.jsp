@@ -18,8 +18,10 @@
 	<%@include file="commoncss.jsp"%>
 
 </head>
-<body class="animsition">
+<jsp:include page="/SelectDesignerDetails"/>
 <%List<User> designerList =(List)request.getAttribute("designerList"); %>
+<body class="animsition">
+
 <%@include file="adminsidebar.jsp"%>
 <%@include file="adminheader.jsp"%>
     <div class="page-wrapper">

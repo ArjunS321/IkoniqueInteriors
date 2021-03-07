@@ -441,7 +441,7 @@ public class userDaoImpl implements userDao {
 	@Override
 	public int saveProductDetails(Product product, Connection connection) {
 		int i = 0, insertedProductId = 0;
-		String insertQuery = "insert into product (c_product_name,d_product_price,i_product_quantity,d_product_weight,c_product_description,i_main_category_id,i_sub_category_id,b_product_image)values (?,?,?,?,?,?,?,?)";
+		String insertQuery = "insert into product (c_product_name,d_product_price,i_product_quantity,d_product_weight,c_product_description,i_main_category_id,i_sub_category_id,b_product_image,i_product_owner_id)values (?,?,?,?,?,?,?,?,?)";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -458,6 +458,7 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setInt(6, product.getCategory_id());
 			preparedStatement.setInt(7, product.getSubcategory_id());
 			preparedStatement.setBlob(8, product.getProductpicStream());
+			preparedStatement.setInt(9,product.getProduct_owner_id());
 
 			i = preparedStatement.executeUpdate();
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -481,7 +482,7 @@ public class userDaoImpl implements userDao {
 		// TODO Auto-generated method stub
 		int i = 0, insertedCategoryId = 0;
 		String insertQuery = "insert into category (c_category_name)values (?)";
-		try {
+		try { 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

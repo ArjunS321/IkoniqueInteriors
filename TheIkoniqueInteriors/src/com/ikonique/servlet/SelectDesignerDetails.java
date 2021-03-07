@@ -33,8 +33,11 @@ public class SelectDesignerDetails extends HttpServlet {
 		List<User> designerList = us.fetchdesignerdetails();
 		request.setAttribute("designerList", designerList);
 		
-		RequestDispatcher requestDispatcher=request.getRequestDispatcher("designerTable.jsp");
-		requestDispatcher.forward(request, response);
+		/*
+		 * RequestDispatcher
+		 * requestDispatcher=request.getRequestDispatcher("designerTable.jsp");
+		 * requestDispatcher.forward(request, response);
+		 */
 	}
 
 	/**

@@ -176,8 +176,8 @@
     <servlet-class>com.ikonique.servlet.InsertCategoryDetails</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>InsertCategoryDetails</servlet-name>
-    <url-pattern>/InsertCategoryDetails</url-pattern>
+    <servlet-name>InsertProductsDetails</servlet-name>
+    <url-pattern>/InsertProductsDetails</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

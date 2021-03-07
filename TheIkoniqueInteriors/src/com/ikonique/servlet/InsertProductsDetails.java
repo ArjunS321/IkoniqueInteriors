@@ -20,13 +20,13 @@ import com.ikonique.userService.impl.userServiceImpl;
 /**
  * Servlet implementation class InsertCategoryDetails
  */
-public class InsertCategoryDetails extends HttpServlet {
+public class InsertProductsDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        userServiceImpl serviceimpl = new userServiceImpl(); 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertCategoryDetails() {
+    public InsertProductsDetails() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -92,6 +92,8 @@ public class InsertCategoryDetails extends HttpServlet {
 			String productprice=request.getParameter("pprice");
 			String productqty=request.getParameter("pquentity");
 			String productweight=request.getParameter("pweight");
+			String ownername=request.getParameter("ownername");
+			int ownerid = Integer.parseInt(ownername);
 			String produtdesc=request.getParameter("pdescription");
 			String productcategory=request.getParameter("category");
 			int categoryid = Integer.parseInt(productcategory);
@@ -118,6 +120,7 @@ public class InsertCategoryDetails extends HttpServlet {
 			product.setCategory_id(categoryid);
 			product.setSubcategory_id(subcategoryid);
 			product.setProductpicStream(is);
+			product.setProduct_owner_id(ownerid);
 			//product.setProductpicString(Base64.getEncoder().encodeToString(getBytesFromInputStream.(part.getInputStream())));
 			message=serviceimpl.insertProductDetails(product);
 			

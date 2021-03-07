@@ -309,17 +309,17 @@
 </style>
 <jsp:include page="/SelectCategoryDetails"/>
 <jsp:include page="/SelectSubCategoryDetails"/>
-<jsp:include page="/SelectDesignerDetails"/>
+ <jsp:include page="/SelectDesignerDetails"/>
 <%List<Category> categorylist =(List)request.getAttribute("categoryList"); %>
 <%List<SubCategory> subcategorylist =(List)request.getAttribute("subcategoryList"); %>
-<%List<User> designerList =(List)request.getAttribute("designerList"); %>
+<%List<User> designerList =(List)request.getAttribute("designerList"); %> 
 <%-- <%List<SubCategory> subcatlist =(List)request.getAttribute("subcatList"); %> --%>
 <body>
 
 	<h1 align="center" style="margin-top: 50px;">Insert Category,
 		Sub-Category & Product</h1>
 	<hr class="my-5" style="background-color: #d4d4d4;">
-	<form action="InsertCategoryDetails" class="w-50 ml-10" class="box" class="form" id="form"
+	<form action="InsertProductsDetails" class="w-50 ml-10" class="box" class="form" id="form"
 		method="post" onsubmit=" login()" enctype="multipart/form-data">
 		<div class="form-group mb-3 ml-10 inputBox">
 			<div class="form-check">
@@ -384,7 +384,7 @@
 			</select> <span class="indicator6"></span>
 
 		</div>
-		<div class="form-group mb-3 ml-10 inputBox category">
+		 <div class="form-group mb-3 ml-10 inputBox category">
 			<label for="ownername">Product Owner</label> <select name="ownername"
 				class="form-control" id="ownername" aria-describedby="emailHelp"
 				onchange="validate10()">
@@ -393,13 +393,13 @@
 												<%
 				 									for (User user : designerList) { 
 												%> 
-												<option value="<%=user.getUser_id()%>"><%=user.getFirstname()%><%=user.getLastname()%></option>
+												<option value="<%=user.getUser_id()%>"><%=user.getFirstname()%> <%=user.getLastname()%></option>
 												<% 
 				 									} 
 			 								%> 
 			</select> <span class="indicator10"></span>
 
-		</div>
+		</div> 
 		<div class="form-group mb-3 ml-10 inputBox subcategory">
 			<label for="subcategory">Sub-Category</label> <select
 				name="subcategory" class="form-control" id="subcategory"
