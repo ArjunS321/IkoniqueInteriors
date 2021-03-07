@@ -602,8 +602,8 @@
 			  
 			 var list= jQuery.parseJSON( data);
 			 $.each(list, function( key, value ) {
-				  alert('caste: ' + value + ' | id: ' +key);
-				}
+				  //alert('caste: ' + value + ' | id: ' +key);
+				});
 		  });
 		
 	});
