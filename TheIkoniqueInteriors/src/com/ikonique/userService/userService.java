@@ -34,5 +34,7 @@ public interface userService {
 	public String removecategoryDetails(int categoryId);
 	public String removesubcategoryDetails(int subcategoryId);
 	public String removeProductDetails(int productid);
+	public String removeOfferDetails(int offerid);
+	public Category fetchCategoryDetails(String categoryid);
 	
 }

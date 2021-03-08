@@ -336,6 +336,34 @@ public class userServiceImpl {
 		}
 		return msg;
 	}
+	public String removeOfferDetails(int offerid) {
+		// TODO Auto-generated method stub
+		Connection connection=getConnection();
+		int deleteCount=0;
+		String msg=null;
+		deleteCount=userDao.removeoffer(offerid,connection);
+		if(deleteCount>0) {
+			msg="Deletion Successfully";
+		}
+		else
+		{
+			msg="Deletion Failed";
+		}
+		return msg;
+	}
+	public Category fetchCategoryDetails(String categoryid) {
+		// TODO Auto-generated method stub
+		Category category = null;
+		try (Connection connection = getConnection()) 
+		{
+			category = userDao.selectCategoryDetails(connection,categoryid);
+		} 
+		catch (Exception exception) 
+		{
+			exception.printStackTrace();
+		}
+		return category;
+	}
 	
 	
 	

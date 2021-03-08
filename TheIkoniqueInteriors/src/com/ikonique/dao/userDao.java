@@ -58,6 +58,10 @@ public interface userDao {
 
 	public int removeProduct(int productid, Connection connection);
 
+	public int removeoffer(int offerid, Connection connection);
+
+	public Category selectCategoryDetails(Connection connection, String categoryid);
+
 	
 
 	

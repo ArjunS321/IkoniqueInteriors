@@ -21,7 +21,7 @@
 
 <!-- Pixel CSS -->
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
-<title>Insert Product</title>
+<title>Insert Product,Category,Sub-Category & Offer</title>
 </head>
 <style>
 #form .indicator1
@@ -408,7 +408,7 @@
 <body>
 
 	<h1 align="center" style="margin-top: 50px;">Insert Category,
-		Sub-Category & Product</h1>
+		Sub-Category ,Offer & Product</h1>
 	<hr class="my-5" style="background-color: #d4d4d4;">
 	<form action="InsertProductsDetails" class="w-50 ml-10" class="box" class="form" id="form"
 		method="post" onsubmit=" login()" enctype="multipart/form-data">
@@ -484,17 +484,15 @@
 				onchange="validate6()">
 				<option value="0" selected>select Category</option>
 				
-												<%
-				 									for (Category category : categorylist) { 
-												%> 
-												<option value="<%=category.getCategory_id()%>"><%=category.getCategory_name()%></option>
-												<% 
-				 									} 
-			 								%> 
+												<%for (Category category : categorylist) {%>
+													<%if(category.getStatus()==1){ %>
+														<option value="<%=category.getCategory_id()%>"><%=category.getCategory_name()%></option>
+													<%} %>
+												<%}%> 
 			</select> <span class="indicator6"></span>
 
 		</div>
-		 <div class="form-group mb-3 ml-10 inputBox category">
+		 <div class="form-group mb-3 ml-10 inputBox ownername">
 			<label for="ownername">Product Owner</label> <select name="ownername"
 				class="form-control" id="ownername" aria-describedby="emailHelp"
 				onchange="validate10()">
@@ -510,19 +508,16 @@
 			</select> <span class="indicator10"></span>
 
 		</div> 
-		<div class="form-group mb-3 ml-10 inputBox category">
+		<div class="form-group mb-3 ml-10 inputBox offer">
 			<label for="offer">Product Offer</label> <select name="offer"
 				class="form-control" id="offer" aria-describedby="emailHelp"
 				onchange="validate11()">
 				<option value="0" selected>Select Offer</option>
-				
-												<%
-				 									for (Offer offer : offerList) { 
-												%> 
-												<option value="<%=offer.getOfferid()%>"><%=offer.getOffername()%></option>
-												<% 
-				 									} 
-			 								%> 
+				<% for(Offer offer : offerList) {  %> 
+					<%if(offer.getValidoffer()==1){ %>
+				    	<option value="<%=offer.getOfferid()%>"><%=offer.getOffername()%></option>
+					<%} %>
+				<%}%> 
 			</select> <span class="indicator11"></span>
 
 		</div> 

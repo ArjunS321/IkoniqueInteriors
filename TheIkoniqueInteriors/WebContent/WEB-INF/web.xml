@@ -10,24 +10,24 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <error-page>
-  	<error-code>404</error-code>
-  	<location>/errorpage.jsp</location>
+    <error-code>404</error-code>
+    <location>/errorpage.jsp</location>
   </error-page>
   <error-page>
-  	<error-code>500</error-code>
-  	<location>/errorpage.jsp</location>
+    <error-code>500</error-code>
+    <location>/errorpage.jsp</location>
   </error-page>
   <error-page>
-  	<error-code>505</error-code>
-  	<location>/errorpage.jsp</location>
+    <error-code>505</error-code>
+    <location>/errorpage.jsp</location>
   </error-page>
   <error-page>
-  	<error-code>501</error-code>
-  	<location>/errorpage.jsp</location>
+    <error-code>501</error-code>
+    <location>/errorpage.jsp</location>
   </error-page>
   <error-page>
-  	<error-code>502</error-code>
-  	<location>/errorpage.jsp</location>
+    <error-code>502</error-code>
+    <location>/errorpage.jsp</location>
   </error-page>
   <servlet>
     <description></description>
@@ -258,5 +258,25 @@
   <servlet-mapping>
     <servlet-name>DeleteProductDetails</servlet-name>
     <url-pattern>/DeleteProductDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteOfferDetails</display-name>
+    <servlet-name>DeleteOfferDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.DeleteOfferDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteOfferDetails</servlet-name>
+    <url-pattern>/DeleteOfferDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditProductsDetails</display-name>
+    <servlet-name>EditProductsDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.EditProductsDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditProductsDetails</servlet-name>
+    <url-pattern>/EditProductsDetails</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -730,6 +730,45 @@ public class userDaoImpl implements userDao {
 		return 0;
 	}
 
+	@Override
+	public int removeoffer(int offerid, Connection connection) {
+		// TODO Auto-generated method stub
+		String deleteQuery = "update offer set i_is_valid=? where i_offer_id=?";
+		try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
+			preparedStatement.setInt(1, 0);
+			preparedStatement.setInt(2, offerid);
+
+			return preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public Category selectCategoryDetails(Connection connection, String categoryid) {
+		// TODO Auto-generated method stub
+		String selectQuery = "select * from category where i_category_id = ?";
+		Category category = new Category();
+		
+		try(PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)){
+			preparedStatement.setInt(1, Integer.parseInt(categoryid));
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				category.setCategory_name(resultSet.getString("c_category_name"));
+				category.setStatus(resultSet.getInt("i_status"));
+			}
+			System.out.println("name:-"+category.getCategory_name());
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();		
+		}
+		return category;
+	}
+
 	
 
 }

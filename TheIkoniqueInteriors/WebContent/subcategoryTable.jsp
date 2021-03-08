@@ -84,7 +84,7 @@
                                                  <th>Category-ID</th>
                                                 <th>SubCategory Name</th>
                                                 <th>Status</th>
-                                                 <th><a class="item" data-toggle="tooltip" data-placement="top" title="Add Category" href="insertproduct.jsp">
+                                                 <th><a class="item" data-toggle="tooltip" data-placement="top" title="Add Sub-Category" href="insertproduct.jsp">
                                                             <i class="fa fa-plus"></i>
                                                         </a></th>
                                                
