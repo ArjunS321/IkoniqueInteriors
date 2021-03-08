@@ -30,28 +30,19 @@ public class EditProductsDetails extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//String name = request.getParameter("exampleRadios1");
-		//String message = null;
-		//if(name.equalsIgnoreCase("category"))
-		//{
+			int catid=0;
 			String categoryid = request.getParameter("categoryid");
-			Category category = us.fetchCategoryDetails(categoryid);
+			try{
+				catid=Integer.parseInt(categoryid);
+			}
+			catch(NumberFormatException e) {
+				e.printStackTrace();
+			}
+			Category category=new Category();
+			category = us.fetchCategoryDetails(catid);
 			request.setAttribute("category", category);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("editproducts.jsp");
-			requestDispatcher.forward(request, response);
-//		}
-//		else if(name.equalsIgnoreCase("subcategory"))
-//		{
-//			
-//		}
-//		else if(name.equalsIgnoreCase("offer"))
-//		{
-//			
-//		}
-//		else
-//		{
-//			
-//		}
+			//System.out.println(category.getCategory_name());
+			
 	}
 
 	/**

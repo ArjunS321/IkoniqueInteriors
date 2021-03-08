@@ -351,12 +351,13 @@ public class userServiceImpl {
 		}
 		return msg;
 	}
-	public Category fetchCategoryDetails(String categoryid) {
+	public Category fetchCategoryDetails(int catid) {
 		// TODO Auto-generated method stub
-		Category category = null;
+		Category category =new Category();
 		try (Connection connection = getConnection()) 
 		{
-			category = userDao.selectCategoryDetails(connection,categoryid);
+			category = userDao.selectCategoryDetails(connection,catid);
+			//System.out.println(category.getCategory_name());
 		} 
 		catch (Exception exception) 
 		{

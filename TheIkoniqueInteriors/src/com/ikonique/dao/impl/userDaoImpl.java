@@ -748,19 +748,22 @@ public class userDaoImpl implements userDao {
 	}
 
 	@Override
-	public Category selectCategoryDetails(Connection connection, String categoryid) {
+	public Category selectCategoryDetails(Connection connection, int categoryid) {
 		// TODO Auto-generated method stub
 		String selectQuery = "select * from category where i_category_id = ?";
-		Category category = new Category();
+		Category category=null;
 		
 		try(PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)){
-			preparedStatement.setInt(1, Integer.parseInt(categoryid));
+			preparedStatement.setInt(1, categoryid);
+			
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
+				category=new Category();
 				category.setCategory_name(resultSet.getString("c_category_name"));
 				category.setStatus(resultSet.getInt("i_status"));
+				
 			}
-			System.out.println("name:-"+category.getCategory_name());
+			//System.out.println("name:-"+category.getCategory_name());
 		}
 		catch (Exception e)
 		{

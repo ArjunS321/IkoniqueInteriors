@@ -60,7 +60,7 @@ public interface userDao {
 
 	public int removeoffer(int offerid, Connection connection);
 
-	public Category selectCategoryDetails(Connection connection, String categoryid);
+	public Category selectCategoryDetails(Connection connection, int categoryid);
 
 	
 

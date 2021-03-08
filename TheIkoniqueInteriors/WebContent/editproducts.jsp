@@ -18,6 +18,10 @@
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 <title>Edit Category,Sub-category,Product & Offer</title>
 </head>
+<jsp:include page="/EditProductsDetails"/>
+
+<% Category cat = (Category)request.getAttribute("category"); %>
+	
 <style>
 #form .indicator1
 {
@@ -392,11 +396,11 @@
 </style>
 
 <body>
-<% Category category = (Category)request.getAttribute("category"); %>
+
 <h1 align="center" style="margin-top: 50px;">Edit Category,
 		Sub-Category ,Offer & Product</h1>
 	<hr class="my-5" style="background-color: #d4d4d4;">
-	<form action="EditProductsDetails" class="w-50 ml-10" class="box" class="form" id="form"
+	<form action="UpdateProductsDetails" class="w-50 ml-10" class="box" class="form" id="form"
 		method="post" onsubmit=" login()" enctype="multipart/form-data">
 		<div class="form-group mb-3 ml-10 inputBox">
 			<div class="form-check">
@@ -417,8 +421,9 @@
 		</div>
 		
 		<div class="form-group mb-3 ml-10 inputBox cname">
+			<input type="hidden" name="categoryId" value="<%=String.valueOf(cat.getCategory_id()) %>"> <br>
 			<label for="cname">Category Name</label> <input type="text"
-				value="<%=category.getCategory_name() %>" name="cname" class="form-control" id="cname" autocomplete="off"
+				value="<%=cat.getCategory_name() %>" name="cname" class="form-control" id="cname" autocomplete="off"
 				aria-describedby="emailHelp" onkeyup="validate8();"> <span
 				class="indicator8"></span>
 		</div>
