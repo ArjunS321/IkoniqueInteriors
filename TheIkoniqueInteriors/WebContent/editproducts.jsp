@@ -18,7 +18,7 @@
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 <title>Edit Category,Sub-category,Product & Offer</title>
 </head>
-<jsp:include page="/EditProductsDetails"/>
+<%-- <jsp:include page="/EditProductsDetails"/> --%>
 
 <% Category cat = (Category)request.getAttribute("category"); %>
 	

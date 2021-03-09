@@ -31,17 +31,17 @@ public class EditProductsDetails extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 			int catid=0;
-			String categoryid = request.getParameter("categoryid");
-			try{
+			String categoryid = request.getParameter("categoryId");
+			System.out.println(categoryid+"hello");
+			
 				catid=Integer.parseInt(categoryid);
-			}
-			catch(NumberFormatException e) {
-				e.printStackTrace();
-			}
+			
 			Category category=new Category();
 			category = us.fetchCategoryDetails(catid);
 			request.setAttribute("category", category);
 			//System.out.println(category.getCategory_name());
+			RequestDispatcher requestdispacher=request.getRequestDispatcher("editproducts.jsp");
+			requestdispacher.forward(request, response);
 			
 	}
 

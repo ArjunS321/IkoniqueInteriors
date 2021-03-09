@@ -129,14 +129,17 @@
                                                     <%=product.getProduct_name() %>
                                                 </td>
                                                 <td><%=product.getProduct_price() %></td>
-                                                <% for(Offer offer : offerList){%>
-                                                	<%if(product.getOfferid() == offer.getOfferid()){ %>
-                                                	<td><%=offer.getOffername()%></td>
-                                                	<%}else {%>
-                                            		<td>NO OFFER</td>
-                                            	<%} %>
+                                                <% String s="No Offer"; %>
                                                 
-                                                <%} %>
+                                                 <% for(Offer offer : offerList){%>
+                                                	<%if(product.getOfferid() == offer.getOfferid()){ %>
+                                                	<%s=offer.getOffername(); break;}%>
+                                                	<%} %>
+                                            		 
+                                            	
+                                                 
+                                                
+                                                <td><%=s %></td>
                                                 <% for(User user : designerList){%>
                                                 
                                                 	<%if(product.getProduct_owner_id() == user.getUser_id()){ %>
