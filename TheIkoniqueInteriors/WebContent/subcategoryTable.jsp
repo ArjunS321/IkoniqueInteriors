@@ -113,9 +113,10 @@
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
                                                             <i class="zmdi zmdi-mail-send"></i>
                                                         </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                        
+                                                        <a href="EditSubCategoryDetails?subcategoryId=<%=subcategory.getSub_category_id()%>"class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                             <i class="zmdi zmdi-edit"></i>
-                                                        </button>
+                                                        </a>
                                                         <a href="DelectSubCategoryDetails?subcategoryId=<%=subcategory.getSub_category_id() %>"class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                             <i class="zmdi zmdi-delete"></i>
                                                         </a>

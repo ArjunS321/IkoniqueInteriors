@@ -294,4 +294,10 @@ public class userServiceImpl {
 		}
 		return msg;
 	}
+
+	public SubCategory fetchSubCategoryDetails(int subcatid) {
+		SubCategory subcategory =new SubCategory();
+		subcategory = userDao.selectSubCategory(connection,subcatid);
+		return subcategory;
+	}
 }

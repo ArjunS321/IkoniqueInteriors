@@ -7,20 +7,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.ikonique.bean.Category;
 import com.ikonique.userService.impl.userServiceImpl;
 
+import com.ikonique.bean.SubCategory;
+
 /**
- * Servlet implementation class EditProductsDetails
+ * Servlet implementation class EditSubCategoryDetails
  */
-public class EditProductsDetails extends HttpServlet {
+public class EditSubCategoryDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       userServiceImpl us = new userServiceImpl();
+	userServiceImpl us = new userServiceImpl();  
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditProductsDetails() {
+    public EditSubCategoryDetails() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,20 +29,21 @@ public class EditProductsDetails extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-			int catid=0;
-			String categoryid = request.getParameter("categoryId");
-			//System.out.println(categoryid+"hello");
+		int subcatid=0;
+		String subcategoryid = request.getParameter("subcategoryId");
+		//System.out.println(categoryid+"hello");
+		
+			subcatid=Integer.parseInt(subcategoryid);
 			
-				catid=Integer.parseInt(categoryid);
-			
-			Category category=new Category();
-			category = us.fetchCategoryDetails(catid);
-			request.setAttribute("category", category);
-			
-			  RequestDispatcher requestdispacher=request.getRequestDispatcher("editproducts.jsp");
-			  requestdispacher.forward(request, response);
-			 
+		
+		SubCategory subcategory=new SubCategory();
+		subcategory = us.fetchSubCategoryDetails(subcatid);
+		
+		request.setAttribute("subcategory", subcategory);
+		
+		  RequestDispatcher requestdispacher=request.getRequestDispatcher("editproducts.jsp");
+		  requestdispacher.forward(request, response);
+		 
 	}
 
 	/**

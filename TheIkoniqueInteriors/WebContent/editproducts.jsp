@@ -1,3 +1,4 @@
+<%@page import="com.ikonique.bean.SubCategory"%>
 <%@page import="com.ikonique.bean.Category"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -18,9 +19,11 @@
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 <title>Edit Category,Sub-category,Product & Offer</title>
 </head>
-<%-- <jsp:include page="/EditProductsDetails"/> --%>
 
-<% Category cat = (Category)request.getAttribute("category"); %>
+ <%-- <jsp:include page="/EditProductsDetails"/> --%> 
+ <% Category cat = (Category)request.getAttribute("category"); %> 
+  
+<%-- <% SubCategory subcategory = (SubCategory)request.getAttribute("subcategory"); %> --%>
 	
 <style>
 #form .indicator1
@@ -419,7 +422,7 @@
 			</div>
 		</div>
 		
-		<div class="form-group mb-3 ml-10 inputBox cname">
+		 <div class="form-group mb-3 ml-10 inputBox cname">
 			<input type="hidden" name="categoryId" value="<%=String.valueOf(cat.getCategory_id()) %>"> <br>
 			<label for="cname">Category Name</label> 
 			<input type="text" value="<%=cat.getCategory_name() %>" name="cname" class="form-control" id="cname" autocomplete="off"
@@ -444,8 +447,15 @@
 				<label class="form-check-label" for="exampleRadios11"> <b>Inactive</b></label>
 			<%} %>
 			</div>
-		</div>
-		
+		</div> 
+		<%-- <div class="form-group mb-3 ml-10 inputBox subcatgeoryname">
+			<input type="hidden" name="subcategoryId" value="<%=String.valueOf(subcategory.getSub_category_id()) %>"> <br>
+			<label for="subcategoryname">Sub-Category Name</label> 
+			<input type="text" value="<%=subcategory.getSub_category_name() %>" name="subcategoryname" class="form-control" id="subcategory" autocomplete="off"
+				aria-describedby="emailHelp" onkeyup="validate1();"> <span
+				class="indicator1"></span>
+		</div> 
+		 --%>
 		<div align="center">
 			<button type="submit" name="submit" class="btn form-group btn-primary ml-10">Submit</button>
 		</div>
@@ -493,22 +503,26 @@
 				{
 					$(".cname").show();
 					$(".status").show();
+					$(".subcategoryname").hide();
 					
 				} 
 				else if($(this).val() == "subcategory")
 				{
 					$(".cname").hide();
 					$(".status").hide();
+					$(".subcategoryname").show();
 				}
 				else if($(this).val() == "offer")
 				{
 					$(".cname").hide();
 					$(".status").hide();
+					$(".subcategoryname").hide();
 				}
 				else 
 				{
 					$(".cname").hide();
 					$(".status").hide();
+					$(".subcategoryname").hide();
 				}
 			});
 	
