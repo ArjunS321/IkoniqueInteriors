@@ -36,5 +36,6 @@ public interface userService {
 	public String removeProductDetails(int productid);
 	public String removeOfferDetails(int offerid);
 	public Category fetchCategoryDetails(int categoryid);
+	public String updateCategoryDetails(Category category);
 	
 }

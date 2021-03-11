@@ -1,5 +1,6 @@
 package com.ikonique.servlet;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
@@ -17,6 +18,7 @@ import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.userService.userService;
 import com.ikonique.userService.impl.userServiceImpl;
+import com.ikonique.util.Main;
 
 /**
  * Servlet implementation class InsertCategoryDetails
@@ -130,7 +132,7 @@ public class InsertProductsDetails extends HttpServlet {
 			InputStream is=null;
 			if(null!=part)
 			{
-				System.out.println(part.getSubmittedFileName());
+				//System.out.println(part.getSubmittedFileName());
 				is = part.getInputStream();
 			}
 			else
@@ -148,8 +150,7 @@ public class InsertProductsDetails extends HttpServlet {
 			product.setProductpicStream(is);
 			product.setProduct_owner_id(ownerid);
 			product.setOfferid(offerid);
-			//product.setProductpicString(Base64.getEncoder().encodeToString(getBytesFromInputStream(part.getInputStream())));
-			//product.setProductpicString(Base64.getEncoder().encodeToString(getBytesFromInputStream(part.getInputStream())));
+			product.setProductpicString(Base64.getEncoder().encodeToString(Main.getBytesFromInputStream(part.getInputStream())));
 			message=serviceimpl.insertProductDetails(product);
 			
 			if(message!=null)
@@ -166,5 +167,6 @@ public class InsertProductsDetails extends HttpServlet {
 		
 		
 	}
-
 }
+
+

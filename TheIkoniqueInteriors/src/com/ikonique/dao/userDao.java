@@ -62,6 +62,8 @@ public interface userDao {
 
 	public Category selectCategoryDetails(Connection connection, int categoryid);
 
+	public int modifyCategoryDetails(Category category, Connection connection);
+
 	
 
 	

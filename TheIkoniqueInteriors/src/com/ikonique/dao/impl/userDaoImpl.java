@@ -759,6 +759,7 @@ public class userDaoImpl implements userDao {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
 				category=new Category();
+				category.setCategory_id(resultSet.getInt("i_category_id"));
 				category.setCategory_name(resultSet.getString("c_category_name"));
 				category.setStatus(resultSet.getInt("i_status"));
 				
@@ -770,6 +771,24 @@ public class userDaoImpl implements userDao {
 			e.printStackTrace();		
 		}
 		return category;
+	}
+
+	@Override
+	public int modifyCategoryDetails(Category category, Connection connection) {
+		String updateQuery = "update category set c_category_name=?,i_status=? where i_category_id=?";
+		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+			preparedStatement.setString(1, category.getCategory_name());
+			preparedStatement.setInt(2, category.getStatus());
+			preparedStatement.setInt(3, category.getCategory_id());
+			
+			return preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 0;
 	}
 
 	

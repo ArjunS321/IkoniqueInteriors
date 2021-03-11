@@ -1,5 +1,11 @@
 package com.ikonique.util;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -102,4 +108,43 @@ public class Main {
             me.printStackTrace();
         }
     }
+    
+    public static byte[] getBytesFromInputStream(InputStream is) throws IOException {
+		//InputStream is = ...
+				ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+
+		int nRead;
+		byte[] data = new byte[16384];
+
+		while ((nRead = is.read(data, 0, data.length)) != -1) {
+		  buffer.write(data, 0, nRead);
+		}
+
+		return buffer.toByteArray();
+    }
+    
+    public static Connection getConnection() 
+	{
+		Connection connection=null;
+		try 
+		{
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		
+		String connectionUrl = "jdbc:mysql://localhost:3306/ikoniqueschema";
+		String connectionUsername = "root";
+		String connectionPassword = "root";
+
+		
+			connection= DriverManager.getConnection(connectionUrl, connectionUsername, connectionPassword);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return connection;
+
+	}
 }

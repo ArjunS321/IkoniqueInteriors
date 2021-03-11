@@ -32,14 +32,13 @@ public class EditProductsDetails extends HttpServlet {
 		// TODO Auto-generated method stub
 			int catid=0;
 			String categoryid = request.getParameter("categoryId");
-			System.out.println(categoryid+"hello");
+			//System.out.println(categoryid+"hello");
 			
 				catid=Integer.parseInt(categoryid);
 			
 			Category category=new Category();
 			category = us.fetchCategoryDetails(catid);
 			request.setAttribute("category", category);
-			//System.out.println(category.getCategory_name());
 			RequestDispatcher requestdispacher=request.getRequestDispatcher("editproducts.jsp");
 			requestdispacher.forward(request, response);
 			

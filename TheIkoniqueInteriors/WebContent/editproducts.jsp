@@ -404,38 +404,46 @@
 		method="post" onsubmit=" login()" enctype="multipart/form-data">
 		<div class="form-group mb-3 ml-10 inputBox">
 			<div class="form-check">
-				<input class="form-check-input" type="radio" name="exampleRadios1"
-					id="exampleRadios21" value="category"> <label
-					class="form-check-label" for="exampleRadios21"> <b>Category</b></label>
-				<input class="form-check-input" type="radio" name="exampleRadios1"
-					id="exampleRadios11" value="subcategory"> <label
-					class="form-check-label" for="exampleRadios11"> <b>Sub-category</b>
-				</label> <input class="form-check-input" type="radio" name="exampleRadios1"
-					id="exampleRadios31" value="product"> <label
-					class="form-check-label" for="exampleRadios31"> <b>Product</b>
-				</label>
-				<input class="form-check-input" type="radio" name="exampleRadios1"
-					id="exampleRadios41" value="offer"> <label
-					class="form-check-label" for="exampleRadios41"> <b>Offer</b></label>
+					<input class="form-check-input" type="radio" name="exampleRadios1"
+					id="exampleRadios1" value="category" checked> 
+					<label class="form-check-label" for="exampleRadios1"> <b>Category</b></label>
+					<input class="form-check-input" type="radio" name="exampleRadios1"
+					id="exampleRadios2" value="subcategory"> 
+					<label class="form-check-label" for="exampleRadios2"> <b>Sub-category</b></label> 
+					<input class="form-check-input" type="radio" name="exampleRadios1"
+					id="exampleRadios3" value="product"> 
+					<label class="form-check-label" for="exampleRadios3"> <b>Product</b></label>
+					<input class="form-check-input" type="radio" name="exampleRadios1"
+					id="exampleRadios4" value="offer"> 
+					<label class="form-check-label" for="exampleRadios4"> <b>Offer</b></label>
 			</div>
 		</div>
 		
 		<div class="form-group mb-3 ml-10 inputBox cname">
 			<input type="hidden" name="categoryId" value="<%=String.valueOf(cat.getCategory_id()) %>"> <br>
-			<label for="cname">Category Name</label> <input type="text"
-				value="<%=cat.getCategory_name() %>" name="cname" class="form-control" id="cname" autocomplete="off"
-				aria-describedby="emailHelp" onkeyup="validate8();"> <span
-				class="indicator8"></span>
+			<label for="cname">Category Name</label> 
+			<input type="text" value="<%=cat.getCategory_name() %>" name="cname" class="form-control" id="cname" autocomplete="off"
+				aria-describedby="emailHelp" onkeyup="validate1();"> <span
+				class="indicator1"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox status">
-		<div class="form-check">
-		<input class="form-check-input" type="radio" name="exampleRadios1"
-					id="exampleRadios21" value="1"> 
-		<label class="form-check-label" for="exampleRadios21"> <b>Active</b></label>
-		<input class="form-check-input" type="radio" name="exampleRadios1"
-		id="exampleRadios11" value="0"> 
-		<label class="form-check-label" for="exampleRadios11"> <b>Inactive</b></label>
-		</div>
+			<div class="form-check">
+			<%if(cat.getStatus()==1){ %>
+				<input class="form-check-input" type="radio" name="exampleRadios2"
+						id="exampleRadios21" value="1" checked> 
+				<label class="form-check-label" for="exampleRadios21"> <b>Active</b></label>
+				<input class="form-check-input" type="radio" name="exampleRadios2"
+				id="exampleRadios11" value="0"> 
+				<label class="form-check-label" for="exampleRadios11"> <b>Inactive</b></label>
+			<%}else{ %>
+				<input class="form-check-input" type="radio" name="exampleRadios2"
+						id="exampleRadios21" value="1"> 
+				<label class="form-check-label" for="exampleRadios21"> <b>Active</b></label>
+				<input class="form-check-input" type="radio" name="exampleRadios2"
+				id="exampleRadios11" value="0" checked> 
+				<label class="form-check-label" for="exampleRadios11"> <b>Inactive</b></label>
+			<%} %>
+			</div>
 		</div>
 		
 		<div align="center">
