@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ikonique.bean.Category;
+import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.userService.impl.userServiceImpl;
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
 
 /**
  * Servlet implementation class UpdateProductsDetails
@@ -42,6 +44,7 @@ public class UpdateProductsDetails extends HttpServlet {
 		
 		String type=request.getParameter("category");
 		String type1=request.getParameter("subcategory");
+		String type2=request.getParameter("product");
 		String message = null;
 		
 		if(type.equalsIgnoreCase("forcategory")) {
@@ -94,8 +97,44 @@ public class UpdateProductsDetails extends HttpServlet {
 			}
 			
 		}
-		else {
+		else if(type2.equalsIgnoreCase("forproduct")) {
+			int productid = Integer.parseInt(request.getParameter("productId"));
+			String productname = request.getParameter("productname");
+			String productprice = request.getParameter("productprice");
+			String productquantity = request.getParameter("productquantity");
+			String productweight = request.getParameter("productweight");
+			int productownerid = Integer.parseInt(request.getParameter("ownername"));
+			String produdesc = request.getParameter("pdescription");
+			int categoryid = Integer.parseInt(request.getParameter("category"));
+			int subcatgoryid = Integer.parseInt(request.getParameter("subcategory"));
+			int offerid = Integer.parseInt(request.getParameter("offer"));
+			int productstatus = Integer.parseInt(request.getParameter("exampleRadios2"));
 			
+			Product product = new Product();
+			product.setProduct_id(productid);
+			product.setProduct_name(productname);
+			product.setProduct_price(productprice);
+			product.setProduct_quantity(productquantity);
+			product.setProduct_weight(productweight);
+			product.setProduct_owner_id(productownerid);
+			product.setProduct_desc(produdesc);
+			product.setCategory_id(categoryid);
+			product.setSubcategory_id(subcatgoryid);
+			product.setOfferid(offerid);
+			product.setStatus(productstatus);
+			
+			message = userimpl.updateProductDetails(product);
+			
+			if(message!=null)
+			{
+				RequestDispatcher requestdispatcher = request.getRequestDispatcher("productTable.jsp");
+				requestdispatcher.forward(request, response);
+			}
+			else
+			{
+				RequestDispatcher requestdispatcher = request.getRequestDispatcher("editproducts.jsp");
+				requestdispatcher.forward(request, response);
+			}
 		}
 			
 	}
