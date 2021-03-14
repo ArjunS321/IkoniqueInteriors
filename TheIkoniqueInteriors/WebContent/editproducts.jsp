@@ -1,5 +1,8 @@
 <%@page import="com.ikonique.bean.SubCategory"%>
 <%@page import="com.ikonique.bean.Category"%>
+<%@page import="com.ikonique.bean.Product"%>
+
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -19,12 +22,22 @@
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 <title>Edit Category,Sub-category,Product & Offer</title>
 </head>
+<%boolean iscategory=request.getAttribute("category")!=null; %>
+<%boolean issubcategory=request.getAttribute("subcategory")!=null; %>
+<%boolean isproduct=request.getAttribute("product")!=null; %>
+  <% Category cat=null; SubCategory subcategory=null; Product product=null;%>
+ <%if(iscategory){ %>
+ <%  cat = (Category)request.getAttribute("category"); %> 
+  <%} %>
+  <%if(issubcategory) {%>
+ <%  subcategory = (SubCategory)request.getAttribute("subcategory"); %> 
+	<%} %>
+	<%if(isproduct) {%>
+ <%  product = (Product)request.getAttribute("product"); %> 
+	<%} %>
+ <jsp:include page="/SelectCategoryDetails"/> 
+ <%List<Category> categorylist=(List)request.getAttribute("categoryList"); %> 
 
- <%-- <jsp:include page="/EditProductsDetails"/> --%> 
- <% Category cat = (Category)request.getAttribute("category"); %> 
-  
-<%-- <% SubCategory subcategory = (SubCategory)request.getAttribute("subcategory"); %> --%>
-	
 <style>
 #form .indicator1
 {
@@ -403,26 +416,12 @@
 <h1 align="center" style="margin-top: 50px;">Edit Category,
 		Sub-Category ,Offer & Product</h1>
 	<hr class="my-5" style="background-color: #d4d4d4;">
+	<%if(iscategory){ %>
 	<form action="UpdateProductsDetails" class="w-50 ml-10" class="box" class="form" id="form"
 		method="post" onsubmit=" login()" enctype="multipart/form-data">
-		<div class="form-group mb-3 ml-10 inputBox">
-			<div class="form-check">
-					<input class="form-check-input" type="radio" name="exampleRadios1"
-					id="exampleRadios1" value="category" checked> 
-					<label class="form-check-label" for="exampleRadios1"> <b>Category</b></label>
-					<input class="form-check-input" type="radio" name="exampleRadios1"
-					id="exampleRadios2" value="subcategory"> 
-					<label class="form-check-label" for="exampleRadios2"> <b>Sub-category</b></label> 
-					<input class="form-check-input" type="radio" name="exampleRadios1"
-					id="exampleRadios3" value="product"> 
-					<label class="form-check-label" for="exampleRadios3"> <b>Product</b></label>
-					<input class="form-check-input" type="radio" name="exampleRadios1"
-					id="exampleRadios4" value="offer"> 
-					<label class="form-check-label" for="exampleRadios4"> <b>Offer</b></label>
-			</div>
-		</div>
 		
 		 <div class="form-group mb-3 ml-10 inputBox cname">
+		 <input type="hidden" name="category" value="forcategory"> <br>
 			<input type="hidden" name="categoryId" value="<%=String.valueOf(cat.getCategory_id()) %>"> <br>
 			<label for="cname">Category Name</label> 
 			<input type="text" value="<%=cat.getCategory_name() %>" name="cname" class="form-control" id="cname" autocomplete="off"
@@ -448,30 +447,65 @@
 			<%} %>
 			</div>
 		</div> 
-		<%-- <div class="form-group mb-3 ml-10 inputBox subcatgeoryname">
-			<input type="hidden" name="subcategoryId" value="<%=String.valueOf(subcategory.getSub_category_id()) %>"> <br>
-			<label for="subcategoryname">Sub-Category Name</label> 
-			<input type="text" value="<%=subcategory.getSub_category_name() %>" name="subcategoryname" class="form-control" id="subcategory" autocomplete="off"
-				aria-describedby="emailHelp" onkeyup="validate1();"> <span
-				class="indicator1"></span>
-		</div> 
-		 --%>
+		
 		<div align="center">
 			<button type="submit" name="submit" class="btn form-group btn-primary ml-10">Submit</button>
 		</div>
+	</form>
+		<%} else if(issubcategory){%>
+			<form action="UpdateProductsDetails" class="w-50 ml-10" class="box" class="form" id="form"
+		method="post" onsubmit=" login()" enctype="multipart/form-data">
 		
+			<div class="form-group mb-3 ml-10 inputBox subcatgeoryname">
+			<input type="hidden" name="subcategory" value="forsubcategory"> <br>
+			<input type="hidden" name="subcategoryId" value="<%=String.valueOf(subcategory.getSub_category_id()) %>"> <br>
+			<label for="subcategoryname">Sub-Category Name</label> 
+			<input type="text" value="<%=subcategory.getSub_category_name() %>" name="subcategoryname" class="form-control" id="subcategory" autocomplete="off"
+				aria-describedby="emailHelp" onkeyup="validate2();"> <span
+				class="indicator2"></span>
+		</div> 
 		
+			<div class="form-group mb-3 ml-10 inputBox category">
+			<label for="category">Category</label> <select name="category"
+				class="form-control" id="category" aria-describedby="emailHelp"
+				onchange="validate6()">
+				<!-- <option value="0" selected></option> -->
+				
+												<%for (Category category : categorylist) {%>
+													<%if((category.getCategory_id()==subcategory.getCategory_id())){ %>
+														<option value="<%=category.getCategory_id()%>" selected><%=category.getCategory_name()%></option>
+													<%} else{%>
+															<option value="<%=category.getCategory_id()%>"><%=category.getCategory_name()%></option>
+													<%} %>
+												<%}%> 
+			</select> <span class="indicator6"></span>
+
+		</div>
+		 <div class="form-group mb-3 ml-10 inputBox status">
+			<div class="form-check">
+			<%if(subcategory.getStatus()==1){ %>
+				<input class="form-check-input" type="radio" name="exampleRadios2"
+						id="exampleRadios21" value="1" checked> 
+				<label class="form-check-label" for="exampleRadios21"> <b>Active</b></label>
+				<input class="form-check-input" type="radio" name="exampleRadios2"
+				id="exampleRadios11" value="0"> 
+				<label class="form-check-label" for="exampleRadios11"> <b>Inactive</b></label>
+			<%}else{ %>
+				<input class="form-check-input" type="radio" name="exampleRadios2"
+						id="exampleRadios21" value="1"> 
+				<label class="form-check-label" for="exampleRadios21"> <b>Active</b></label>
+				<input class="form-check-input" type="radio" name="exampleRadios2"
+				id="exampleRadios11" value="0" checked> 
+				<label class="form-check-label" for="exampleRadios11"> <b>Inactive</b></label>
+			<%} %>
+			</div>
+			</div>
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		<div align="center">
+			<button type="submit" name="submit" class="btn form-group btn-primary ml-10">Submit</button>
+		</div>
 		</form>
+		<%} %>
 	<script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
 	<script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
 	<script src="neuro/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -496,36 +530,6 @@
 	<script src="neuro/assets/js/neumorphism.js"></script>
 	<%@include file="commonjs.jsp"%>
 	
-	<script>
-	$("input[name='exampleRadios1']").change(function() 
-			{
-				if ($(this).val() == "category") 
-				{
-					$(".cname").show();
-					$(".status").show();
-					$(".subcategoryname").hide();
-					
-				} 
-				else if($(this).val() == "subcategory")
-				{
-					$(".cname").hide();
-					$(".status").hide();
-					$(".subcategoryname").show();
-				}
-				else if($(this).val() == "offer")
-				{
-					$(".cname").hide();
-					$(".status").hide();
-					$(".subcategoryname").hide();
-				}
-				else 
-				{
-					$(".cname").hide();
-					$(".status").hide();
-					$(".subcategoryname").hide();
-				}
-			});
 	
-	</script>
 </body>
 </html>

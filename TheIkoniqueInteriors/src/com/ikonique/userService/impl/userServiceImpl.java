@@ -300,4 +300,25 @@ public class userServiceImpl {
 		subcategory = userDao.selectSubCategory(connection,subcatid);
 		return subcategory;
 	}
+
+	public String updateSubCategoryDetails(SubCategory subcategory) {
+		int updateCount=0;
+		String msg=null;
+		updateCount=userDao.modifySubCategoryDetails(subcategory,connection);
+		if(updateCount>0) {
+			msg="Updation Successfully";
+		}
+		else
+		{
+			msg="Updation Failed";
+		}
+		return msg;
+	
+	}
+
+	public Product fetchProductDetails(int productid) {
+		Product product =new Product();
+		product = userDao.selectProductDetails(connection,productid);
+		return product;
+	}
 }

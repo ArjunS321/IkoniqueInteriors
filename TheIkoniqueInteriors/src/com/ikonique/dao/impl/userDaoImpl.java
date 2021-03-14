@@ -818,6 +818,64 @@ public class userDaoImpl implements userDao {
 		return subcategory;
 	}
 
+	@Override
+	public int modifySubCategoryDetails(SubCategory subcategory, Connection connection) {
+		String updateQuery = "update sub_category set i_category_id=?,c_sub_category_name=?,i_status=? where i_sub_category_id=?";
+		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+			preparedStatement.setInt(1,subcategory.getCategory_id());
+			preparedStatement.setString(2, subcategory.getSub_category_name());
+			preparedStatement.setInt(3, subcategory.getStatus());
+			preparedStatement.setInt(4, subcategory.getSub_category_id());
+			
+			return preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
+
+	@Override
+	public Product selectProductDetails(Connection connection, int productid) {
+		String selectQuery = "select * from product where i_product_id = ?";
+		Product product=null;
+		
+		try(PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)){
+			preparedStatement.setInt(1, productid);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				product=new Product();
+				product.setProduct_id(resultSet.getInt("i_product_id"));
+				product.setProduct_name(resultSet.getString("c_product_name"));
+				product.setProduct_price(resultSet.getString("d_product_price"));
+				product.setProduct_quantity(resultSet.getString("i_product_quantity"));
+				product.setProduct_weight(resultSet.getString("d_product_weight"));
+				product.setProduct_owner_id(resultSet.getInt("i_product_owner_id"));
+				product.setProduct_desc(resultSet.getString("c_product_description"));
+				product.setCategory_id(resultSet.getInt("i_main_category_id"));
+				product.setOfferid(resultSet.getInt("i_offer_id"));
+				product.setSubcategory_id(resultSet.getInt("i_sub_category_id"));
+				product.setStatus(resultSet.getInt("i_status"));
+				
+				
+				
+				
+				
+			}
+			//System.out.println("name:-"+category.getCategory_name());
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();		
+		}
+		return product;
+	}
+
+	}
+
 	
 
-}
+

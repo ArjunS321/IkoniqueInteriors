@@ -173,9 +173,10 @@
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
                                                             <i class="zmdi zmdi-mail-send"></i>
                                                         </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                       
+                                                         <a href="EditProductDetails?productId=<%=product.getProduct_id()%>"class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                             <i class="zmdi zmdi-edit"></i>
-                                                        </button>
+                                                        </a>
                                                         <a href="DeleteProductDetails?productid=<%=product.getProduct_id() %>" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                             <i class="zmdi zmdi-delete"></i>
                                                         </a>

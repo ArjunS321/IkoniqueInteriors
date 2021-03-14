@@ -66,6 +66,10 @@ public interface userDao {
 
 	public SubCategory selectSubCategory(Connection connection, int subcatid);
 
+	public int modifySubCategoryDetails(SubCategory subcategory, Connection connection);
+
+	public Product selectProductDetails(Connection connection, int productid);
+
 	
 
 	

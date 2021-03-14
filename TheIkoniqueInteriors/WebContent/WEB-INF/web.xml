@@ -299,4 +299,14 @@
     <servlet-name>EditSubCategoryDetails</servlet-name>
     <url-pattern>/EditSubCategoryDetails</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditProductDetails</display-name>
+    <servlet-name>EditProductDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.EditProductDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditProductDetails</servlet-name>
+    <url-pattern>/EditProductDetails</url-pattern>
+  </servlet-mapping>
 </web-app>

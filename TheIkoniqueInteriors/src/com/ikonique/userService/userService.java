@@ -38,5 +38,6 @@ public interface userService {
 	public Category fetchCategoryDetails(int categoryid);
 	public String updateCategoryDetails(Category category);
 	public SubCategory fetchSubCategoryDetails(int subcatid);
+	public String updateSubCategoryDetails(SubCategory subcategory);
 	
 }
