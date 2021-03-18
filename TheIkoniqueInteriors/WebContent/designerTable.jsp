@@ -1,165 +1,169 @@
 <!DOCTYPE html>
 <%@page import="com.ikonique.bean.User"%>
 <%@page import="java.util.List"%>
-<html lang="en">
-
+<html lang="en-US">
 <head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
-
-    <!-- Title Page-->
-    <title>Tables</title>
-
-   <%@include file="FontFaces.jsp"%>
+    <title>Interior-Designer Table</title>
+     <%@include file="FontFaces.jsp"%>
 	<%@include file="commoncss.jsp"%>
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        h3 span {
+            font-size: 22px;
+        }
+        h2 input.search-input {
+            width: 300px;
+            margin-left: auto;
+            float: 150
+        }
+        .mt32 {
+            margin-top: 100px;
+            margin-left: 300px;
+        }
+    </style>
+    
 </head>
 <jsp:include page="/SelectDesignerDetails"/>
 <%List<User> designerList =(List)request.getAttribute("designerList"); %>
-<body class="animsition">
-
+<body class="mt32">
 <%@include file="adminsidebar.jsp"%>
 <%@include file="adminheader.jsp"%>
-    <div class="page-wrapper">
-		<!-- PAGE CONTAINER-->
-		<div class="page-container">
-		<!-- MAIN CONTENT-->
-            <div class="main-content">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="row">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">Interior-Designer Information table</h3>
-                                <div class="table-data__tool">
-                                    <div class="table-data__tool-left">
-<!--                                         <div class="rs-select2--light rs-select2--md"> -->
-<!--                                             <select class="js-select2" name="property"> -->
-<!--                                                 <option selected="selected">All Properties</option> -->
-<!--                                                 <option value="">Option 1</option> -->
-<!--                                                 <option value="">Option 2</option> -->
-<!--                                             </select> -->
-<!--                                             <div class="dropDownSelect2"></div> -->
-<!--                                         </div> -->
-<!--                                         <div class="rs-select2--light rs-select2--sm"> -->
-<!--                                             <select class="js-select2" name="time"> -->
-<!--                                                 <option selected="selected">Today</option> -->
-<!--                                                 <option value="">3 Days</option> -->
-<!--                                                 <option value="">1 Week</option> -->
-<!--                                             </select> -->
-<!--                                             <div class="dropDownSelect2"></div> -->
-<!--                                         </div> -->
-                                        <button class="au-btn-filter">
-                                            <i class="zmdi zmdi-filter-list"></i>filters</button>
-                                    </div>
-<!--                                     <div class="table-data__tool-right"> -->
-<!--                                         <button class="au-btn au-btn-icon au-btn--green au-btn--small"> -->
-<!--                                             <i class="zmdi zmdi-plus"></i>add item</button> -->
-<!--                                         <div class="rs-select2--dark rs-select2--sm rs-select2--dark2"> -->
-<!--                                             <select class="js-select2" name="type"> -->
-<!--                                                 <option selected="selected">Export</option> -->
-<!--                                                 <option value="">Option 1</option> -->
-<!--                                                 <option value="">Option 2</option> -->
-<!--                                             </select> -->
-<!--                                             <div class="dropDownSelect2"></div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-                                </div>
-                                <div class="col-lg-9">
-                                <div class="table-responsive table-responsive-data2" style="overflow-x: scroll !important;">
-                                    <table class="table  table-data2">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </th>
-                                                <th>Role</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Address</th>
-                                                <th>Area</th>
-                                                <th>Contact No.</th>
-                                                <th>Gender</th>
-                                                <th>Visiting Fees</th>
-                                                <th>Email-Id</th>
-                                                <th>Status</th>
-                                                <th>User image</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                         <%for(User user:designerList) { %>
-                                        <tbody>
-                                            <tr class="tr-shadow">
-                                                <td>
-                                                    <label class="au-checkbox">
-                                                        <input type="checkbox">
-                                                        <span class="au-checkmark"></span>
-                                                    </label>
-                                                </td>
-                                                <td><%=user.getUser_id() %></td>
-                                                <td>
-                                                    <%=user.getFirstname() %>
-                                                </td>
-                                                <td><%=user.getLastname() %></td>
-                                                <td><%=user.getAddress() %></td>
-                                                <td class="desc">
-                                                    <%=user.getArea_id() %>
-                                                </td>
-                                                <td><%=user.getMobileno() %></td>
-                                                <td><%=user.getGender() %></td>
-                                                 <td><%=user.getVisitingfees() %></td>
-                                                <td><span class="block-email"><%=user.getEmail() %></span></td>
-                                                <td><span class="status--process"><%=user.getPassword() %></span></td>
-                                                <td>$679.00</td>
-                                                <td>
-                                                    <div class="table-data-feature">
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                            <i class="zmdi zmdi-mail-send"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                            <i class="zmdi zmdi-delete"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                            <i class="zmdi zmdi-more"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            
-                                            <tr class="spacer"></tr>
-                                       </tbody>
-                                       <%} %>
-                                    </table>
-                                </div>
-                                </div>
-                                <br>
-                                <br>
-                               <!-- END DATA TABLE -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container" style="overflow-x: scroll">
+        <h2>
+            <span>Interior-Designer Details Table</span>
+            <input type="search" placeholder="Search..." class="form-control search-input" data-table="customers-list"/>
+        </h2>
+        <table class="table table-striped mt32 customers-list" id="myTable">
+            <thead>
+                <tr>
+					<th>User ID<i class="fa fa-fw fa-sort" onclick="sortTable(0)"></i></th>
+					<th>First Name<i class="fa fa-fw fa-sort" onclick="sortTable(1)"></i></th>
+					<th>Last Name<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
+					<th>Address<i class="fa fa-fw fa-sort" onclick="sortTable(3)"></i></th>
+					<th>Area<i class="fa fa-fw fa-sort" onclick="sortTable(4)"></i></th>
+					<th>Contact No<i class="fa fa-fw fa-sort" onclick="sortTable(5)"></i></th>
+					<th>Gender<i class="fa fa-fw fa-sort" onclick="sortTable(6)"></i></th>
+					<th>Visiting Fees<i class="fa fa-fw fa-sort" onclick="sortTable(7)"></i></th>
+					<th>Email-Id<i class="fa fa-fw fa-sort" onclick="sortTable(8)"></i></th>
+					<th>Status<i class="fa fa-fw fa-sort" onclick="sortTable(9)"></i></th>
+					<th>User image<i class="fa fa-fw fa-sort" onclick="sortTable(10)"></i></th>
+					<th>Edit</th>
+                    <th>Delete</th>
+				</tr>
+            </thead>
+            <%for(User user:designerList) { %>
+            <tbody>
+                <tr>
+                    <td><%=user.getUser_id() %></td>
+                    <td><%=user.getFirstname() %></td>
+                    <td><%=user.getLastname() %></td>
+                    <td><%=user.getAddress() %></td>
+                    <td><%=user.getArea_id() %></td>
+                    <td><%=user.getMobileno() %></td>
+                    <td><%=user.getGender() %></td>
+                    <td><%=user.getVisitingfees() %></td>
+                    <td><%=user.getEmail() %></td>
+                    <td><%=user.getPassword() %></td>
+                    <td>
+                    <div class="table-data-feature">
+                       <a href=""class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                        <i class="zmdi zmdi-edit"></i>
+                        </a>
+                     </div>
+                    </td>
+                    <td>
+                     <div class="table-data-feature">
+                       <a href="" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                       <i class="zmdi zmdi-delete"></i>
+                       </a>                                    
+                  </div>
+                  </td>
+                </tr>
+            </tbody>
+            <%} %>
+        </table>
+    </div>
+    <script>
+        (function(document) {
+            'use strict';
 
-     </div>
+            var TableFilter = (function(myArray) {
+                var search_input;
 
- 
-	<%@include file="commonjs.jsp"%>
+                function _onInputSearch(e) {
+                    search_input = e.target;
+                    var tables = document.getElementsByClassName(search_input.getAttribute('data-table'));
+                    myArray.forEach.call(tables, function(table) {
+                        myArray.forEach.call(table.tBodies, function(tbody) {
+                            myArray.forEach.call(tbody.rows, function(row) {
+                                var text_content = row.textContent.toLowerCase();
+                                var search_val = search_input.value.toLowerCase();
+                                row.style.display = text_content.indexOf(search_val) > -1 ? '' : 'none';
+                            });
+                        });
+                    });
+                }
 
+                return {
+                    init: function() {
+                        var inputs = document.getElementsByClassName('search-input');
+                        myArray.forEach.call(inputs, function(input) {
+                            input.oninput = _onInputSearch;
+                        });
+                    }
+                };
+            })(Array.prototype);
 
+            document.addEventListener('readystatechange', function() {
+                if (document.readyState === 'complete') {
+                    TableFilter.init();
+                }
+            });
+
+        })(document);
+        
+        function sortTable(n) {
+        	  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        	  table = document.getElementById("myTable");
+        	  switching = true;
+        	  dir = "asc";
+        	  while (switching) {
+        		  switching = false;
+        		  rows = table.rows;
+        		  for (i = 1; i < (rows.length - 1); i++) {
+        			  shouldSwitch = false;
+        			  x = rows[i].getElementsByTagName("TD")[n];
+        		      y = rows[i + 1].getElementsByTagName("TD")[n];
+        		      if (dir == "asc") {
+        		          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        		            // If so, mark as a switch and break the loop:
+        		            shouldSwitch = true;
+        		            break;
+        		          }
+        		      }
+        		      else if (dir == "desc") 
+        		      {
+        		    	  if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) 
+        		    	  {
+        		              // If so, mark as a switch and break the loop:
+        		              shouldSwitch = true;
+        		              break;
+        		          }
+        		      }
+        		  }
+        		  if (shouldSwitch) {
+        			  rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        		      switching = true;
+        		      switchcount ++;
+        		  }
+        		  else {
+        			  if (switchcount == 0 && dir == "asc") {
+        			        dir = "desc";
+        			        switching = true;
+        			      }
+        		  }
+        	  }
+        }
+    </script>
 </body>
-
 </html>
-<!-- end document-->
