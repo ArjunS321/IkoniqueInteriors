@@ -12,7 +12,7 @@ import com.ikonique.bean.Category;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.userService.impl.userServiceImpl;
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
+
 
 /**
  * Servlet implementation class UpdateProductsDetails

@@ -79,15 +79,14 @@
                              <%s=offer.getOffername(); break;}%>
                          <%} %>
                     <td><%=s %></td>
+                    <% String str="No Owner"; %>
                     
                     <% for(User user : designerList){%>
                        <%if(product.getProduct_owner_id() == user.getUser_id()){ %>
-                            <td><%=user.getFirstname()%> <%=user.getLastname() %></td>
-                        <%} else {%>
-                             <td>NO OWNER</td>
-                        <%} %>
+                             <%str=user.getFirstname()+" "+user.getLastname();%> <% break;} %>
+                       
                      <%} %>
-                     
+                     <td><%=str %></td>
                      <td><img height="50px" width="50px" src="data:image/jpg;base64,<%=product.getProductpicString() %>"></td>
                      <td><%=product.getProduct_quantity() %></td>
                      <td><%=product.getProduct_weight() %></td>
