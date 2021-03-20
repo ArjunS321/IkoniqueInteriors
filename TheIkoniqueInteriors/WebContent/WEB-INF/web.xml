@@ -309,4 +309,14 @@
     <servlet-name>EditProductDetails</servlet-name>
     <url-pattern>/EditProductDetails</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditOfferDetails</display-name>
+    <servlet-name>EditOfferDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.EditOfferDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditOfferDetails</servlet-name>
+    <url-pattern>/EditOfferDetails</url-pattern>
+  </servlet-mapping>
 </web-app>

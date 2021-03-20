@@ -155,13 +155,14 @@ public class userDaoImpl implements userDao {
 					  if(null!=imageData && imageData.length>0) { imageString =
 					  Base64.getEncoder().encodeToString(imageData);
 					  System.out.println("Length::"+imageData.length);
-					  user.setUserProfilepicString(imageString); System.out.println(imageString); }
-					 
+					  user.setUserProfilepicString(imageString);
+					  //System.out.println(imageString); 
+					  }
 					  
 					  
 				else { System.out.println("balnk.............."); }
 					  
-					 
+					user.setRole_id(resultSet.getInt("i_role_id"));
 					user.setUser_id(resultSet.getInt("i_user_id"));
 					user.setFirstname(resultSet.getString("c_first_name"));
 					user.setLastname(resultSet.getString("c_last_name"));
@@ -604,7 +605,6 @@ public class userDaoImpl implements userDao {
 					  subcategory.setSub_category_id(resultSet.getInt("i_sub_category_id"));
 					  subcategory.setSub_category_name(resultSet.getString("c_sub_category_name"));
 					  subcatlist.add(subcategory);
-					  
 				}
 
 			}
@@ -859,13 +859,19 @@ public class userDaoImpl implements userDao {
 				product.setOfferid(resultSet.getInt("i_offer_id"));
 				product.setSubcategory_id(resultSet.getInt("i_sub_category_id"));
 				product.setStatus(resultSet.getInt("i_status"));
-				
-				
-				
-				
-				
+				byte[] productimage = resultSet.getBytes("b_product_image"); 
+				String imageString=null;
+				  
+				  if(null!=productimage && productimage.length>0) { 
+					imageString = Base64.getEncoder().encodeToString(productimage);
+				  product.setProductpicString(imageString);
 			}
+				  else
+				  {
+					  System.out.println("blank....");
+				  }
 			//System.out.println("name:-"+category.getCategory_name());
+		}
 		}
 		catch (Exception e)
 		{
@@ -876,7 +882,7 @@ public class userDaoImpl implements userDao {
 
 	@Override
 	public int modifyProductDetails(Product product, Connection connection) {
-		String updateQuery = "update product set c_product_name=?,d_product_price=?,i_product_quantity=?,d_product_weight=?,i_product_owner_id=?,c_product_description=?,i_main_category_id=?,i_sub_category_id=?,i_offer_id=?,i_status=? where i_product_id=?";
+		String updateQuery = "update product set c_product_name=?,d_product_price=?,i_product_quantity=?,d_product_weight=?,i_product_owner_id=?,c_product_description=?,i_main_category_id=?,i_sub_category_id=?,i_offer_id=?,i_status=?,b_product_image=? where i_product_id=?";
 		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
 			preparedStatement.setString(1, product.getProduct_name());
 			preparedStatement.setString(2, product.getProduct_price());
@@ -888,7 +894,9 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setInt(8, product.getSubcategory_id());
 			preparedStatement.setInt(9, product.getOfferid());
 			preparedStatement.setInt(10, product.getStatus());
-			preparedStatement.setInt(11, product.getProduct_id());
+			preparedStatement.setBlob(11, product.getProductpicStream());
+			preparedStatement.setInt(12, product.getProduct_id());
+			
 			
 			
 			return preparedStatement.executeUpdate();
@@ -901,7 +909,51 @@ public class userDaoImpl implements userDao {
 		return 0;
 	}
 
+	@Override
+	public Offer selectOfferDetails(Connection connection, int offerid) {
+		String selectQuery = "select * from offer where i_offer_id = ?";
+		Offer offer=null;
+		
+		try(PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)){
+			preparedStatement.setInt(1, offerid);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				offer = new Offer();
+				offer.setOffername(resultSet.getString("c_offer_name"));
+				offer.setDiscount(resultSet.getDouble("d_discount"));
+				offer.setValidoffer(resultSet.getInt("i_is_valid"));
+				offer.setOfferid(resultSet.getInt("i_offer_id"));
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();		
+		}
+		return offer;
 	}
+
+	@Override
+	public int modifyOfferDetails(Offer offer, Connection connection) {
+		System.out.println("hy2...");
+		String updateQuery = "update offer set c_offer_name=?,d_discount=?,i_is_valid=? where i_offer_id=?";
+		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+			preparedStatement.setString(1, offer.getOffername());
+			preparedStatement.setDouble(2, offer.getDiscount());
+			preparedStatement.setInt(3, offer.getValidoffer());
+			preparedStatement.setInt(4, offer.getOfferid());
+			System.out.println("hy3...");
+			return preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
+
+}
 
 	
 

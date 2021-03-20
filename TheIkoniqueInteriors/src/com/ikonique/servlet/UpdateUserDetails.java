@@ -15,6 +15,7 @@ import javax.servlet.http.Part;
 
 import com.ikonique.bean.User;
 import com.ikonique.userService.impl.userServiceImpl;
+import com.ikonique.util.Main;
 
 /**
  * Servlet implementation class UpdateUserDetails
@@ -84,7 +85,7 @@ public class UpdateUserDetails extends HttpServlet {
 		user.setArea_id(areaId);
 		user.setGender(exampleRadios);
 		user.setUserProfilepicStream(is);
-		user.setUserProfilepicString(Base64.getEncoder().encodeToString(getBytesFromInputStream(part.getInputStream())));
+		user.setUserProfilepicString(Base64.getEncoder().encodeToString(Main.getBytesFromInputStream(part.getInputStream())));
 		String msg=u1.updateUserDetails(user);
 		
 		System.out.println(msg);
@@ -97,21 +98,4 @@ public class UpdateUserDetails extends HttpServlet {
 		
 		
 	}
-
-	
-	public byte[] getBytesFromInputStream(InputStream is) throws IOException {
-		//InputStream is = ...
-				ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-
-		int nRead;
-		byte[] data = new byte[16384];
-
-		while ((nRead = is.read(data, 0, data.length)) != -1) {
-		  buffer.write(data, 0, nRead);
-		}
-
-		return buffer.toByteArray();
-
-	}
-	
 }

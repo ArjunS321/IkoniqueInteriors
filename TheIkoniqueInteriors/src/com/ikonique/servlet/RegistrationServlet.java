@@ -133,15 +133,11 @@ public class RegistrationServlet extends HttpServlet {
 			  requestdispatcher.forward(request, response);
 			 
 		} 
-		
-
-		
-		  else 
-		  { 
+		else 
+		{ 
 			  RequestDispatcher requestdispatcher =
 			  request.getRequestDispatcher("login.jsp"); requestdispatcher.forward(request,response);
-		  
-		  }
+		}
 		 
 		response.getWriter().append(message); 
 

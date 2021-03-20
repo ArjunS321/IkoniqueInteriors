@@ -72,6 +72,10 @@ public interface userDao {
 
 	public int modifyProductDetails(Product product, Connection connection);
 
+	public Offer selectOfferDetails(Connection connection, int offerid);
+
+	public int modifyOfferDetails(Offer offer, Connection connection);
+
 	
 
 	

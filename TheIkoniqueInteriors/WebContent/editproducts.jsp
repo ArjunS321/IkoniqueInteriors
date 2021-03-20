@@ -27,16 +27,20 @@
 <%boolean iscategory=request.getAttribute("category")!=null; %>
 <%boolean issubcategory=request.getAttribute("subcategory")!=null; %>
 <%boolean isproduct=request.getAttribute("product")!=null; %>
-  <% Category cat=null; SubCategory subcategory=null; Product product=null;%>
+<%boolean isoffer=request.getAttribute("offer")!=null; %>
+ <% Category cat=null; SubCategory subcategory=null; Product product=null; Offer offer=null;%>
  <%if(iscategory){ %>
  <%  cat = (Category)request.getAttribute("category"); %> 
-  <%} %>
-  <%if(issubcategory) {%>
- <%  subcategory = (SubCategory)request.getAttribute("subcategory"); %> 
-	<%} %>
-	<%if(isproduct) {%>
- <%  product = (Product)request.getAttribute("product"); %> 
-	<%} %>
+ <%} %>
+ <%if(issubcategory) {%>
+ <% subcategory = (SubCategory)request.getAttribute("subcategory"); %> 
+<%} %>
+<%if(isproduct) {%>
+ <% product = (Product)request.getAttribute("product"); %> 
+<%} %>
+<%if(isoffer){ %>
+<%offer = (Offer)request.getAttribute("offer"); %>
+<%} %>
  <jsp:include page="/SelectCategoryDetails"/> 
  <%List<Category> categorylist=(List)request.getAttribute("categoryList"); %> 
 <jsp:include page="/SelectDesignerDetails"/> 
@@ -429,7 +433,7 @@
 		method="post" onsubmit=" login()" enctype="multipart/form-data">
 		
 		 <div class="form-group mb-3 ml-10 inputBox cname">
-		 <input type="hidden" name="category" value="forcategory"> <br>
+		 <input type="hidden" name="category" value="forcategory">
 			<input type="hidden" name="categoryId" value="<%=String.valueOf(cat.getCategory_id()) %>"> <br>
 			<label for="cname">Category Name</label> 
 			<input type="text" value="<%=cat.getCategory_name() %>" name="cname" class="form-control" id="cname" autocomplete="off"
@@ -465,7 +469,7 @@
 		method="post" onsubmit=" login()" enctype="multipart/form-data">
 		
 			<div class="form-group mb-3 ml-10 inputBox subcatgeoryname">
-			<input type="hidden" name="subcategory" value="forsubcategory"> <br>
+			<input type="hidden" name="subcategory" value="forsubcategory">
 			<input type="hidden" name="subcategoryId" value="<%=String.valueOf(subcategory.getSub_category_id()) %>"> <br>
 			<label for="subcategoryname">Sub-Category Name</label> 
 			<input type="text" value="<%=subcategory.getSub_category_name() %>" name="subcategoryname" class="form-control" id="subcategory" autocomplete="off"
@@ -483,7 +487,7 @@
 													<%if(category.getCategory_id()==subcategory.getCategory_id() ){ %>
 														<option value="<%=category.getCategory_id()%>" selected><%=category.getCategory_name()%></option>
 													<%} else{ %>
-													<option value="<%=category.getCategory_id()%>" selected><%=category.getCategory_name()%></option>
+													<option value="<%=category.getCategory_id()%>"><%=category.getCategory_name()%></option>
 													<%}%> 
 												<%}%>
 			</select> <span class="indicator6"></span>
@@ -516,7 +520,18 @@
 		<%}else if(isproduct){ %>
 			<form action="UpdateProductsDetails" class="w-50 ml-10" class="box" class="form" id="form"
 			method="post" onsubmit=" login()" enctype="multipart/form-data">
-		
+			
+			<div class="profile-image1 bg-primary shadow-inset border border-light rounded ml-11 p-3 ">
+				<img src="data:image/jpg;base64,<%=product.getProductpicString() %>" height="365px" width="150px" 
+				class="card-img-top rounded" alt="Leos Portrait">
+			</div>
+			<br>
+			<div class="custom-file mr-1 col-lg-3 col-sm-6">
+				<input type="file" class="custom-file-input" id="customFile"
+				aria-label="File upload" name="photo"> <label
+				class="custom-file-label" for="customFile">Choose file</label>
+			</div>
+								
 			<div class="form-group mb-3 ml-10 inputBox productname">
 			<input type="hidden" name="product" value="forproduct"> <br>
 			<input type="hidden" name="productId" value="<%=String.valueOf(product.getProduct_id()) %>"> <br>
@@ -578,23 +593,22 @@
 													<%} else{%>
 															<option value="<%=category.getCategory_id()%>"><%=category.getCategory_name()%></option>
 													<%} %>
-												<%}%> 
+												<%}%>
+												 
 			</select> <span class="indicator6"></span>
-
 			</div> 
 			<div class="form-group mb-3 ml-10 inputBox category">
 			<label for="subcategory">Sub-Category</label> 
 			<select name="subcategory" class="form-control" id="subcategory" 
 			aria-describedby="emailHelp" onchange="validate6()">
-			<!-- <option value="0" selected>Select category</option> -->
-				
-												<%for (SubCategory subCategory : subcategorylist){%>
-													<%if(subCategory.getSub_category_id()==product.getSubcategory_id()){ %>
-														<option value="<%=subCategory.getSub_category_id()%>" selected><%=subCategory.getSub_category_name()%></option>
-													<%} else{%>
-														<option value="<%=subCategory.getSub_category_id()%>" ><%=subCategory.getSub_category_name()%></option>
-													<%} %>
-												<%}%> 
+			<option value="0" selected>Select sub-category</option>	
+										 <%for(SubCategory subcategory1 : subcategorylist) {%>
+											<%if(subcategory1.getSub_category_id()==product.getSubcategory_id()){ %>
+												<option value="<%=subcategory1.getSub_category_id()%>" selected><%=subcategory1.getSub_category_name()%></option>
+											<%} else {%>
+												<option value="<%=subcategory1.getSub_category_id()%>" selected><%=subcategory1.getSub_category_name()%></option>
+											<%} %>
+										<%} %> 
 			</select> <span class="indicator6"></span>
 
 			</div> 
@@ -604,11 +618,11 @@
 			aria-describedby="emailHelp" onchange="validate6()">
 			<!-- <option value="0" selected>Select category</option> -->
 				
-												<%for (Offer offer : offerList){%>
-													<%if(offer.getOfferid()==product.getOfferid()){ %>
-														<option value="<%=offer.getOfferid()%>" selected><%=offer.getOffername()%></option>
+												<%for (Offer offer1 : offerList){%>
+													<%if(offer1.getOfferid()==product.getOfferid()){ %>
+														<option value="<%=offer1.getOfferid()%>" selected><%=offer1.getOffername()%></option>
 													<%} else{%>
-														<option value="<%=offer.getOfferid()%>" selected><%=offer.getOffername()%></option>
+														<option value="<%=offer1.getOfferid()%>" selected><%=offer1.getOffername()%></option>
 													<%} %>
 												<%}%> 
 			</select> <span class="indicator6"></span>
@@ -638,7 +652,48 @@
 			<button type="submit" name="submit" class="btn form-group btn-primary ml-10">Submit</button>
 		</div>
 		</form>
+		<%}else{ %>
+			<form action="UpdateProductsDetails" class="w-50 ml-10" class="box" class="form" id="form"
+			method="post" onsubmit=" login()" enctype="multipart/form-data">
+			<input type="hidden" name="offer" value="foroffer">
+			<input type="hidden" name="offerid" value="<%=String.valueOf(offer.getOfferid()) %>">
+			<div class="form-group mb-3 ml-10 inputBox Offername">
+			<label for="Offername">Offer Name</label> 
+			<input type="text" value="<%=offer.getOffername() %>" name="Offername" class="form-control" id="subcategory" autocomplete="off"
+				aria-describedby="emailHelp" onkeyup="validate1();"> <span
+				class="indicator1"></span>
+			</div>
+			<div class="form-group mb-3 ml-10 inputBox OfferDiscount">
+			<label for="OfferDiscount">Offer Discount</label> 
+			<input type="text" value="<%=offer.getDiscount() %>" name="OfferDiscount" class="form-control" id="subcategory" autocomplete="off"
+				aria-describedby="emailHelp" onkeyup="validate2();"> <span
+				class="indicator2"></span>
+			</div>
+			<div class="form-group mb-3 ml-10 inputBox status">
+			<div class="form-check">
+			<%if(offer.getValidoffer()==1){ %>
+				<input class="form-check-input" type="radio" name="exampleRadios2"
+						id="exampleRadios21" value="1" checked> 
+				<label class="form-check-label" for="exampleRadios21"> <b>Active</b></label>
+				<input class="form-check-input" type="radio" name="exampleRadios2"
+				id="exampleRadios11" value="0"> 
+				<label class="form-check-label" for="exampleRadios11"> <b>Inactive</b></label>
+			<%}else{ %>
+				<input class="form-check-input" type="radio" name="exampleRadios2"
+						id="exampleRadios21" value="1"> 
+				<label class="form-check-label" for="exampleRadios21"> <b>Active</b></label>
+				<input class="form-check-input" type="radio" name="exampleRadios2"
+				id="exampleRadios11" value="0" checked> 
+				<label class="form-check-label" for="exampleRadios11"> <b>Inactive</b></label>
+			<%} %>
+			</div>
+		</div>
+		<div align="center">
+			<button type="submit" name="submit" class="btn form-group btn-primary ml-10">Submit</button>
+		</div>
+			</form>
 		<%} %>
+		
 		
 	<script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
 	<script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
@@ -663,6 +718,28 @@
 	<!-- Neumorphism JS -->
 	<script src="neuro/assets/js/neumorphism.js"></script>
 	<%@include file="commonjs.jsp"%>
+	<!-- <script>
+$("#category").change(function() {
+		
+		const catid= document.getElementById('category').value;
+		$.get( "SelectSubcategory", {category: catid } )
+		  .done(function( data ) {
+			  $('#subcategory').empty()
+			 var list= jQuery.parseJSON( data);
+			  $('#subcategory')
+              .append($("<option></option>")
+              .attr("value","-1")
+              .text("Select Sub-category"));
+			 $.each(list, function( key, value ) {
+				 $('#subcategory')
+	                .append($("<option></option>")
+	                .attr("value",value.sub_category_id)
+	                .text(value.sub_category_name));  
+				});
+		  });
+		
+	});
+	</script> -->
 	
 	
 </body>

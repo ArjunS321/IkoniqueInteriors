@@ -47,11 +47,29 @@ public class LoginServlet extends HttpServlet {
 		
 		
 		if(user!=null) {
-			// create session
-			HttpSession httpSession = request.getSession();
-			httpSession.setAttribute("loginBean", user);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
-			dispatcher.forward(request, response);
+			if(user.getRole_id()==1)
+			{
+				// create session
+				HttpSession httpSession = request.getSession();
+				httpSession.setAttribute("loginBean", user);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
+				dispatcher.forward(request, response);
+			}
+			else if(user.getRole_id()==2)
+			{
+				HttpSession httpSession = request.getSession();
+				httpSession.setAttribute("loginBean", user);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("#");
+				dispatcher.forward(request, response);
+			}
+			else
+			{
+				HttpSession httpSession = request.getSession();
+				httpSession.setAttribute("loginBean", user);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("admin.jsp");
+				dispatcher.forward(request, response);
+			}
+			
 		}else {
 			// forward to login page with proper message
 			request.setAttribute("message", "Incorrect username or password. please try again.");

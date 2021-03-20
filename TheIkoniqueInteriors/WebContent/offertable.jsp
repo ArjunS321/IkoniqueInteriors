@@ -54,7 +54,7 @@
                     <td><%=offer.getValidoffer() %></td>
                     <td>
                     <div class="table-data-feature">
-                       <a href=""class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                       <a href="EditOfferDetails?offerid=<%=offer.getOfferid() %>" class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                         <i class="zmdi zmdi-edit"></i>
                         </a>
                      </div>

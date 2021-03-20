@@ -7,6 +7,7 @@ import com.mysql.cj.jdbc.Blob;
 public class User {
 
 	private int user_id;
+	private int role_id;
 	private String firstname;
 	private String lastname;
 	private String address;
@@ -91,6 +92,12 @@ public class User {
 	}
 	public void setUserProfilepicString(String userProfilepicString) {
 		UserProfilepicString = userProfilepicString;
+	}
+	public int getRole_id() {
+		return role_id;
+	}
+	public void setRole_id(int role_id) {
+		this.role_id = role_id;
 	}
 	
 	

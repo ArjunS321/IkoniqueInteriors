@@ -114,58 +114,57 @@ public class InsertProductsDetails extends HttpServlet {
 		}
 		else
 		{
-			String productname=request.getParameter("pname");
-			String productprice=request.getParameter("pprice");
-			String productqty=request.getParameter("pquentity");
-			String productweight=request.getParameter("pweight");
-			String ownername=request.getParameter("ownername");
-			int ownerid = Integer.parseInt(ownername);
-			String offername=request.getParameter("offer");
-			int offerid = Integer.parseInt(offername);
-			String produtdesc=request.getParameter("pdescription");
-			String productcategory=request.getParameter("category");
-			int categoryid = Integer.parseInt(productcategory);
-			String productsubcategory=request.getParameter("subcategory");
-			int subcategoryid = Integer.parseInt(productsubcategory);
-			String photo=request.getParameter("photo");
-			Part part = request.getPart("photo");
-			InputStream is=null;
-			if(null!=part)
-			{
-				//System.out.println(part.getSubmittedFileName());
-				is = part.getInputStream();
-			}
-			else
-			{
-				System.out.println("null image");
-			}
-			Product product=new Product();
-			product.setProduct_name(productname);
-			product.setProduct_price(productprice);
-			product.setProduct_quantity(productqty);
-			product.setProduct_weight(productweight);
-			product.setProduct_desc(produtdesc);
-			product.setCategory_id(categoryid);
-			product.setSubcategory_id(subcategoryid);
-			product.setProductpicStream(is);
-			product.setProduct_owner_id(ownerid);
-			product.setOfferid(offerid);
-			product.setProductpicString(Base64.getEncoder().encodeToString(Main.getBytesFromInputStream(part.getInputStream())));
-			message=serviceimpl.insertProductDetails(product);
 			
-			if(message!=null)
-			{
-				RequestDispatcher requestdispatcher = request.getRequestDispatcher("productTable.jsp");
-				requestdispatcher.forward(request, response);
-			}
-			else
-			{
-				RequestDispatcher requestdispatcher = request.getRequestDispatcher("insertproduct.jsp");
-				requestdispatcher.forward(request, response);
-			}
-		}
-		
-		
+				String productname=request.getParameter("pname");
+				String productprice=request.getParameter("pprice");
+				String productqty=request.getParameter("pquentity");
+				String productweight=request.getParameter("pweight");
+				String ownername=request.getParameter("ownername");
+				int ownerid = Integer.parseInt(ownername);
+				String offername=request.getParameter("offer");
+				int offerid = Integer.parseInt(offername);
+				String produtdesc=request.getParameter("pdescription");
+				String productcategory=request.getParameter("category");
+				int categoryid = Integer.parseInt(productcategory);
+				String productsubcategory=request.getParameter("subcategory");
+				int subcategoryid = Integer.parseInt(productsubcategory);
+				String photo=request.getParameter("photo");
+				Part part = request.getPart("photo");
+				InputStream is=null;
+				if(null!=part)
+				{
+					//System.out.println(part.getSubmittedFileName());
+					is = part.getInputStream();
+				}
+				else
+				{
+					System.out.println("null image");
+				}
+				Product product=new Product();
+				product.setProduct_name(productname);
+				product.setProduct_price(productprice);
+				product.setProduct_quantity(productqty);
+				product.setProduct_weight(productweight);
+				product.setProduct_desc(produtdesc);
+				product.setCategory_id(categoryid);
+				product.setSubcategory_id(subcategoryid);
+				product.setProductpicStream(is);
+				product.setProduct_owner_id(ownerid);
+				product.setOfferid(offerid);
+				product.setProductpicString(Base64.getEncoder().encodeToString(Main.getBytesFromInputStream(part.getInputStream())));
+				message=serviceimpl.insertProductDetails(product);
+				
+				if(message!=null)
+				{
+					RequestDispatcher requestdispatcher = request.getRequestDispatcher("productTable.jsp");
+					requestdispatcher.forward(request, response);
+				}
+				else
+				{
+					RequestDispatcher requestdispatcher = request.getRequestDispatcher("insertproduct.jsp");
+					requestdispatcher.forward(request, response);
+				}
+		}	
 	}
 }
 

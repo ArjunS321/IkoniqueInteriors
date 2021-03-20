@@ -147,7 +147,7 @@
 							<div class="account-dropdown js-dropdown">
 								<div class="info clearfix">
 									<div class="image">
-										<a href="editprofile.jsp">
+										<a href="editpro.jsp">
 										<img src="data:image/jpg;base64,<%=user.getUserProfilepicString() %>" />
 										</a>
 									</div>

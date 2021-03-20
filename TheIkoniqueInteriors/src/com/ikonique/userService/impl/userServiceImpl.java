@@ -335,4 +335,28 @@ public class userServiceImpl {
 		}
 		return msg;
 	}
+
+	public Offer fetchOfferDetails(int offerid) 
+	{
+		Offer offer = new Offer();
+		offer = userDao.selectOfferDetails(connection,offerid);
+		return offer;
+	}
+
+	public String updateOfferDetails(Offer offer) {
+		System.out.println("hy1...");
+		int updateCount=0;
+		String msg=null;
+		updateCount=userDao.modifyOfferDetails(offer,connection);
+		if(updateCount>0) {
+			msg="Updation Successfully";
+		}
+		else
+		{
+			msg="Updation Failed";
+		}
+		return msg;
+	}
 }
+		
+
