@@ -51,19 +51,19 @@
                     <th>Delete</th>
 				</tr>
             </thead>
-            <%for(User user:designerList) { %>
+            <%for(User user1 : designerList) { %>
             <tbody>
                 <tr>
-                    <td><%=user.getUser_id() %></td>
-                    <td><%=user.getFirstname() %></td>
-                    <td><%=user.getLastname() %></td>
-                    <td><%=user.getAddress() %></td>
-                    <td><%=user.getArea_id() %></td>
-                    <td><%=user.getMobileno() %></td>
-                    <td><%=user.getGender() %></td>
-                    <td><%=user.getVisitingfees() %></td>
-                    <td><%=user.getEmail() %></td>
-                    <td><%=user.getPassword() %></td>
+                    <td><%=user1.getUser_id() %></td>
+                    <td><%=user1.getFirstname() %></td>
+                    <td><%=user1.getLastname() %></td>
+                    <td><%=user1.getAddress() %></td>
+                    <td><%=user1.getArea_id() %></td>
+                    <td><%=user1.getMobileno() %></td>
+                    <td><%=user1.getGender() %></td>
+                    <td><%=user1.getVisitingfees() %></td>
+                    <td><%=user1.getEmail() %></td>
+                    <td><%=user1.getPassword() %></td>
                     <td>
                     <div class="table-data-feature">
                        <a href=""class="item" data-toggle="tooltip" data-placement="top" title="Edit">

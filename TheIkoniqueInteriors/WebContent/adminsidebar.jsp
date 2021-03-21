@@ -14,7 +14,7 @@
 	<div class="menu-sidebar__content js-scrollbar1">
 		<nav class="navbar-sidebar">
 			<ul class="list-unstyled navbar__list">
-				<li class="active has-sub"><a href="customer.jsp"> <i
+				<li class="active has-sub"><a href="admin.jsp"> <i
 						class="fas fa-home"></i>Home
 				</a> 		
 				<li class="has-sub"><a class="js-arrow" href="#"> <i

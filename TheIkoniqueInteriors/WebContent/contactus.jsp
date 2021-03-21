@@ -124,6 +124,10 @@
                             <div class="card-footer px-0 mx-auto">
                                 <button type="submit" class="btn btn-primary">Send message</button>
                             </div>
+                            <br>
+                            <div class="card-footer px-0 mx-auto">
+                                <button onclick="window.location.href='customer.jsp'" class="btn btn-primary">Home</button>
+                            </div>
                         </div>
                         <!-- End of Contact Card -->
                     </div>

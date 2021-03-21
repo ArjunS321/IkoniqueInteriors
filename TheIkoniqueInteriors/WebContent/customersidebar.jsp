@@ -80,7 +80,7 @@ if (null != httpSession) {
 				<li><a href="appointmentcards.jsp"> <i class="fas fa-male"></i>Appoint
 						Interior Designer
 				</a></li>
-				<li><a href="enquiry.jsp"> <i class="fas fa-question"></i>Enquiry
+				<li><a href="contactus.jsp"> <i class="fas fa-question"></i>Enquiry
 				</a></li>
 				<li><a href="aboutus.jsp"> <i class="fas fa-exclamation"></i>About
 						Us

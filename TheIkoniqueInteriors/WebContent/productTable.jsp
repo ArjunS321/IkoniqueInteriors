@@ -81,9 +81,9 @@
                     <td><%=s %></td>
                     <% String str="No Owner"; %>
                     
-                    <% for(User user : designerList){%>
-                       <%if(product.getProduct_owner_id() == user.getUser_id()){ %>
-                             <%str=user.getFirstname()+" "+user.getLastname();%> <% break;} %>
+                    <% for(User user1 : designerList){%>
+                       <%if(product.getProduct_owner_id() == user1.getUser_id()){ %>
+                             <%str=user1.getFirstname()+" "+user1.getLastname();%> <% break;} %>
                        
                      <%} %>
                      <td><%=str %></td>

@@ -953,6 +953,48 @@ public class userDaoImpl implements userDao {
 		return 0;
 	}
 
+	@Override
+	public Product fetchProductDetail(Connection connection, int productid) {
+		String selectQuery = "select * from product where i_product_id = ?";
+		Product product = null;
+		
+		try(PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)){
+			preparedStatement.setInt(1, productid);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				product=new Product();
+				product.setProduct_id(resultSet.getInt("i_product_id"));
+				product.setProduct_name(resultSet.getString("c_product_name"));
+				product.setProduct_price(resultSet.getString("d_product_price"));
+				product.setProduct_quantity(resultSet.getString("i_product_quantity"));
+				product.setProduct_weight(resultSet.getString("d_product_weight"));
+				product.setProduct_owner_id(resultSet.getInt("i_product_owner_id"));
+				product.setProduct_desc(resultSet.getString("c_product_description"));
+				product.setCategory_id(resultSet.getInt("i_main_category_id"));
+				product.setOfferid(resultSet.getInt("i_offer_id"));
+				product.setSubcategory_id(resultSet.getInt("i_sub_category_id"));
+				product.setStatus(resultSet.getInt("i_status"));
+				byte[] productimage = resultSet.getBytes("b_product_image"); 
+				String imageString=null;
+				  if(null!=productimage && productimage.length>0)
+				  { 
+					imageString = Base64.getEncoder().encodeToString(productimage);
+					product.setProductpicString(imageString);
+				  }
+				  else
+				  {
+					  System.out.println("blank....");
+				  }
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();		
+		}
+		return product;
+	}
+
 }
 
 	

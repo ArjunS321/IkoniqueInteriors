@@ -42,4 +42,5 @@ public interface userService {
 	public String updateProductDetails(Product product);
 	public Offer fetchOfferDetails(int offerid);
 	public String updateOfferDetails(Offer offer);
+	public Product SelectProductDetail(int productid);
 }

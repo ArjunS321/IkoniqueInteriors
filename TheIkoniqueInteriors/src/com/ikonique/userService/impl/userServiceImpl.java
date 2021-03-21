@@ -357,6 +357,12 @@ public class userServiceImpl {
 		}
 		return msg;
 	}
+
+	public Product SelectProductDetail(int productid) {
+		Product product = new Product();
+		product = userDao.fetchProductDetail(connection,productid);
+		return product;
+	}
 }
 		
 

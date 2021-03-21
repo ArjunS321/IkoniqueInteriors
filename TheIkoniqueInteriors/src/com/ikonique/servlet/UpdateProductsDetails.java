@@ -105,7 +105,6 @@ public class UpdateProductsDetails extends HttpServlet {
 				RequestDispatcher requestdispatcher = request.getRequestDispatcher("editproducts.jsp");
 				requestdispatcher.forward(request, response);
 			}
-			
 		}
 		else if(type2.equalsIgnoreCase("forproduct")) {
 			int productid = Integer.parseInt(request.getParameter("productId"));
@@ -121,17 +120,8 @@ public class UpdateProductsDetails extends HttpServlet {
 			int productstatus = Integer.parseInt(request.getParameter("exampleRadios2"));
 			String productimage=request.getParameter("photo");
 			Part part = request.getPart("photo");
-			InputStream is=null;
-			if(null!=part)
-			{
-				
-	            System.out.println(part.getSubmittedFileName());
-				is = part.getInputStream();
-			}
-			else
-			{
-				System.out.println("null image");
-			}
+			InputStream is=part.getInputStream();
+			
 			Product product = new Product();
 			product.setProduct_id(productid);
 			product.setProduct_name(productname);

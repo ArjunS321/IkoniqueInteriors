@@ -4,6 +4,16 @@
 <html lang="en-US">
 <head>
     <title>Category Table</title>
+    <link type="text/css"
+	href="neuro/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"
+	integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg=="
+	crossorigin="anonymous" />
+<!-- Pixel CSS -->
+<link type="text/css" href="css/login1css.css" rel="stylesheet">
+<link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         h3 span {
@@ -59,7 +69,7 @@
                     </td>
                     <td>
                      <div class="table-data-feature">
-                       <a href="DelectCategoryDetails?categoryId=<%=category.getCategory_id() %>" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                       <a href="DelectCategoryDetails?categoryId=<%=category.getCategory_id() %>" data-toggle="modal" data-target="#modal-default" class="item" id="delbtn" data-toggle="tooltip" data-placement="top" title="Delete">
                        <i class="zmdi zmdi-delete"></i>
                        </a>                                    
                   </div>
@@ -69,7 +79,59 @@
             <%} %>
         </table>
     </div>
+	<div class="modal fade" id="modal-default" tabindex="-1" role="dialog"
+		aria-labelledby="modal-default" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="h6 modal-title mb-0" id="modal-title-default">Terms
+						of Service</h2>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+<!-- 						<span aria-hidden="true">×</span> -->
+					</button>
+				</div>
+				<div class="modal-body">
+					<p></p>
+                    <p></p>
+				</div>
+				<div class="modal-footer">
+					<button href="" type="button" class="btn btn-sm">I Got
+						It</button>
+					<button type="button" class="btn text-danger ml-auto" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
+				<script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
+				<script src="neuro/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+				<script src="neuro/vendor/headroom.js/dist/headroom.min.js"></script>
+
+				<!-- Vendor JS -->
+				<script src="neuro/vendor/onscreen/dist/on-screen.umd.min.js"></script>
+				<script src="neuro/vendor/nouislider/distribute/nouislider.min.js"></script>
+				<script
+					src="neuro/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+				<script src="neuro/vendor/waypoints/lib/jquery.waypoints.min.js"></script>
+				<script src="neuro/vendor/jarallax/dist/jarallax.min.js"></script>
+				<script src="neuro/vendor/jquery.counterup/jquery.counterup.min.js"></script>
+				<script
+					src="neuro/vendor/jquery-countdown/dist/jquery.countdown.min.js"></script>
+				<script
+					src="neuro/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+				<script src="neuro/vendor/prismjs/prism.js"></script>
+
+				<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+				<!-- Neumorphism JS -->
+				<script src="neuro/assets/js/neumorphism.js"></script>
+				<%@include file="commonjs.jsp"%>
     <script>
+//     $('#delbtn').onclick(function(){
+//     	$('#modal-default').modal('show');
+//     })
+    
         (function(document) {
             'use strict';
 
