@@ -166,6 +166,7 @@ public class userDaoImpl implements userDao {
 					user.setUser_id(resultSet.getInt("i_user_id"));
 					user.setFirstname(resultSet.getString("c_first_name"));
 					user.setLastname(resultSet.getString("c_last_name"));
+					user.setPassword(resultSet.getString("c_password"));
 					user.setAddress(resultSet.getString("c_address"));
 					user.setMobileno(resultSet.getString("c_contact_no"));
 					user.setEmail(resultSet.getString("c_email"));

@@ -27,28 +27,35 @@
 						 <img src="data:image/jpg;base64,<%=product.getProductpicString() %>" alt="">
 						</a>
 					</div>
-					 
 					<div class="product-title">
 						<h3>
-							<a href="SelectProductLandDetails"><%=product.getProduct_name() %></a>
+							<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>"><%=product.getProduct_name() %></a>
 						</h3>
 					</div>
 					<div class="product-btns">
-						<a href="SelectProductLandDetails" class="btn-small mr-2"><%=product.getProduct_price() %></a> 
-						<a href="#" class="btn-round mr-2"><i class="fa fa-shopping-cart"></i></a> 
+						<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>" class="btn-small mr-2"><%=product.getProduct_price() %></a> 
+						<a class="btn-round mr-2"><i att="0" class="fa fa-shopping-cart" style="color: black"></i></a> 
 						<a class="btn-round"><i att="0" class="fa fa-heart" style="color: black"></i></a>
 					</div>
 				</div>
 			</div>
 			<%} %>
 		</div>
-			
 	</div>
 </section>
 <script>
 $('.fa-heart').click(function(){
     if($(this).attr('att') == 0){
         $(this).css('color', 'red');
+        $(this).attr('att',1);
+    } else {
+        $(this).css('color', 'black');
+        $(this).attr('att',0);
+    }
+});
+$('.fa-shopping-cart').click(function(){
+    if($(this).attr('att') == 0){
+        $(this).css('color', 'blue');
         $(this).attr('att',1);
     } else {
         $(this).css('color', 'black');

@@ -57,7 +57,7 @@
                             <span class="price display-3 text-dark mb-0"><%=product.getProduct_price() %></span>
                         </div>
                         <div class="product-btns wishlist">
-                        	<a href="" class="btn-round"><i class="fa fa-heart"></i></a>
+                        	<a class="btn-round"><i att="0" class="fa fa-heart" style="color: black"></i></a>
                         </div>
                         <br><br>
                         <h4 class="mb-3">Product Description</h4>
@@ -97,4 +97,15 @@
 				<!-- Neumorphism JS -->
 				<script src="neuro/assets/js/neumorphism.js"></script>
 				<%@include file="commonjs.jsp"%>
+				<script>
+$('.fa-heart').click(function(){
+    if($(this).attr('att') == 0){
+        $(this).css('color', 'red');
+        $(this).attr('att',1);
+    } else {
+        $(this).css('color', 'black');
+        $(this).attr('att',0);
+    }
+});
+</script>
 </html>

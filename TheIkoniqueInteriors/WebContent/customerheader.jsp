@@ -169,7 +169,7 @@
 										</a>
 									</div>
 									<div class="account-dropdown__item">
-										<a href="#"> <i class="fas fa-key"></i>Change Password
+										<a href="changepassword.jsp"> <i class="fas fa-key"></i>Change Password
 										</a>
 									</div>
 								</div>

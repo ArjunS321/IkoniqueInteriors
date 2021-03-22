@@ -46,6 +46,26 @@
 	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
 }
 
+#form .indicator3 {
+	position: absolute;
+	top: 50px;
+	right: 20px;
+	width: 10px;
+	height: 10px;
+	background: #555;
+	border-radius: 50%;
+}
+
+#form.invalid2 .indicator3 {
+	background: #f00;
+	box-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00;
+}
+
+#form.valid2 .indicator3 {
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
+}
+
 .forget {
 	top: 30px;
 }
@@ -71,7 +91,7 @@
 <% HttpSession httpSession = request.getSession(false);
 	User user = null;   
 	if(null!=httpSession){
-	   user = (User)httpSession.getAttribute("user");
+	   user = (User)httpSession.getAttribute("loginBean");
    }
 %>
 <body class="animsition">
@@ -85,7 +105,16 @@
 				<section class="min-vh-80 d-flex bg-primary align-items-center">
 					<form action="ChangePassword" class="w-50 ml-10" class="box"
 						class="form" id="form" method="post" onsubmit="return login()">
-
+						<input type="hidden" name="oldpassdata" id="oldpassdata" value="<%=user.getPassword()%>">
+						<div class="form-group mb-3 ml-10 inputBox">
+							<label for="oldpass">Old Password</label> <input type="hidden"
+								name="user_id" value="<%=String.valueOf(user.getUser_id())%>">
+							<br> <input type="password" name="oldpass"
+								class="form-control" id="oldpass" autocomplete="off"
+								aria-describedby="emailHelp" onkeyup="validate2();"> <span
+								class="indicator3"></span>
+						</div>
+						
 						<div class="form-group mb-3 ml-10 inputBox">
 							<label for="newpass">New Password</label> <input type="hidden"
 								name="user_id" value="<%=String.valueOf(user.getUser_id())%>">
@@ -188,30 +217,47 @@
 // 		}
 		
 		function validate(){
-				const form= document.getElementById('form');
-				const newpass= document.getElementById('newpass').value;
-				const pattern=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
+			const form= document.getElementById('form');
+			const newpass= document.getElementById('newpass').value;
+			const pattern1=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
+			const oldpass = document.getElementById('oldpass').value;
+			const oldpassdata = document.getElementById('oldpassdata').value;
 				
-				if(newpass.match(pattern)){
+				if(newpass.match(pattern1))
+				{
 					form.classList.add('valid')
 					form.classList.remove('invalid')
-				}else{
+				}
+				else
+				{
+					form.classList.add('invalid')
+					form.classList.remove('valid')
+				}	
+				if(newpass.match(oldpass))
+				{
 					form.classList.add('invalid')
 					form.classList.remove('valid')
 				}
+				else
+				{
+					form.classList.add('valid')
+					form.classList.remove('invalid')
+				}
+				
 				if(newpass == "")
-					{
+				{
 					form.classList.remove('invalid')
 					form.classList.remove('valid')
-					}
+				}
 			}
 			
 			function validate1()
 			{
 				const form= document.getElementById('form');
-				const cpass= document.getElementById('cpass').value;
+				const cpass = document.getElementById('cpass').value;
 				const newpass= document.getElementById('newpass').value;
-				const pattern1=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
+				const oldpass = document.getElementById('oldpass').value;
+				const oldpassdata = document.getElementById('oldpassdata').value;
 				
 				if(cpass.match(newpass))
 				{
@@ -230,18 +276,54 @@
 				}
 			}
 			
+			function validate2()
+			{
+				const form= document.getElementById('form');
+				const newpass= document.getElementById('newpass').value;
+				const pattern1=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
+				const oldpass = document.getElementById('oldpass').value;
+				const oldpassdata = document.getElementById('oldpassdata').value;
+				
+				if(oldpass.match(newpass))
+				{
+					form.classList.add('invalid2')
+					form.classList.remove('valid2')
+				}
+				else
+				{
+					form.classList.add('valid2')
+					form.classList.remove('invalid2')
+				}
+				if(oldpass.match(oldpassdata))
+				{
+					form.classList.add('valid2')
+					form.classList.remove('invalid2')
+				}
+				else
+				{
+					form.classList.add('invalid2')
+					form.classList.remove('valid2')
+				}
+				if(oldpass == "")
+				{
+					form.classList.remove('invalid2')
+					form.classList.remove('valid2')
+				}
+			}
+			
 			function login()
 			{
 				const form= document.getElementById('form');
+				const oldpassdata = document.getElementById('oldpassdata').value;
+				const oldpass = document.getElementById('oldpass');
 				const newpass= document.getElementById('newpass').value;
 				const cpass= document.getElementById('cpass').value;
 				
 				
 				const pattern1=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
 				
-				if(newpass.match(pattern1) && cpass.match(pattern1) && cpass.match(newpass))
+				if(newpass.match(pattern1) && cpass.match(pattern1) && cpass.match(newpass) && oldpass.match(oldpassdata))
 					{
-						
 // 						window.location="/customer.jsp";
 						return true;
 					}
