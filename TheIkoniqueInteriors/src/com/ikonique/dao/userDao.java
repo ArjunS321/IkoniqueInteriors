@@ -78,6 +78,8 @@ public interface userDao {
 
 	public Product fetchProductDetail(Connection connection, int productid);
 
+	public int updatePass(Connection connection, String confirmpass, int user_id);
+
 	
 
 	

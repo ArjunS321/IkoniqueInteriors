@@ -43,4 +43,5 @@ public interface userService {
 	public Offer fetchOfferDetails(int offerid);
 	public String updateOfferDetails(Offer offer);
 	public Product SelectProductDetail(int productid);
+	public String modifyPass(String confirmpass, int user_id);
 }

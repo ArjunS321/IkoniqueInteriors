@@ -363,6 +363,23 @@ public class userServiceImpl {
 		product = userDao.fetchProductDetail(connection,productid);
 		return product;
 	}
+
+	public String modifyPass(String confirmpass, int user_id) {
+		String msg=null;
+		
+		int count=0;
+		count=userDao.updatePass(connection,confirmpass,user_id);
+		if(count>0) {
+			msg="Updation Of Password Successfully";
+		}
+		else
+		{
+			msg="Updation Of Password Failed";
+		}
+		
+		return msg;
+		
+	}
 }
 		
 

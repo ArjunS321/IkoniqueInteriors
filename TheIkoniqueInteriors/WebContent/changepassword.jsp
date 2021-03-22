@@ -103,7 +103,7 @@
 			<div class="main-content">
 				<h1 align="center" style="margin-top: 50px;">Change Password</h1>
 				<section class="min-vh-80 d-flex bg-primary align-items-center">
-					<form action="ChangePassword" class="w-50 ml-10" class="box"
+					<form action="UpdatePassword" class="w-50 ml-10" class="box"
 						class="form" id="form" method="post" onsubmit="return login()">
 						<input type="hidden" name="oldpassdata" id="oldpassdata" value="<%=user.getPassword()%>">
 						<div class="form-group mb-3 ml-10 inputBox">

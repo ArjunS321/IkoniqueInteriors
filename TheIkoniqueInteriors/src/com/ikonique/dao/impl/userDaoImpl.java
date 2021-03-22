@@ -996,6 +996,23 @@ public class userDaoImpl implements userDao {
 		return product;
 	}
 
+	@Override
+	public int updatePass(Connection connection, String confirmpass, int user_id) {
+		String updateQuery = "update user set c_password=? where i_user_id=?";
+		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+			preparedStatement.setString(1, confirmpass);
+			preparedStatement.setInt(2, user_id);
+
+			return preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
+
 }
 
 	
