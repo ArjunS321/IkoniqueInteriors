@@ -51,7 +51,7 @@
                     <th>Delete</th>
 				</tr>
             </thead>
-            <%for(User user1 : designerList) { %>
+           <%for(User user1 : designerList){ %>
             <tbody>
                 <tr>
                     <td><%=user1.getUser_id() %></td>

@@ -55,7 +55,7 @@
 			<!-- Content -->
 			<div class="card-body shadow-soft border border-light rounded p-4">
 				<h2 class="mb-3"><%=product.getProduct_name() %></h2>
-<!-- 				<p id="finalprice">hi:-</p> -->
+				<p id="finalprice">hi:-</p>
 				<p class="mb-4 des">By Product Owner</p>
 				<i class="fas fa-badge-check"></i> <img class="center rounded"
 					src="data:image/jpg;base64,<%=product.getProductpicString() %>"
@@ -70,9 +70,11 @@
 				<div>
 					<span Style="font-size: 8mm" class="h5">&#x20B9; <span
 						Style="font-size: 8mm" id="mainprice"
-						class="h5 mb-0 text-gray text-through mr-2"><%=product.getProduct_price() %></span></span>
+						class="h5 mb-0 text-gray text-through mr-2" value="<%=product.getProduct_price() %>"><%=product.getProduct_price() %></span></span>
+					 <%for(Offer offer:offerList) { %>
+	
 					<span Style="font-size: 8mm" id="discount"
-						class="h6 mb-0 text-danger"> <%for(Offer offer:offerList) { %>
+						class="h6 mb-0 text-danger" value="<%=offer.getDiscount() %>">					
 						<%if(product.getOfferid()==offer.getOfferid()){ %> <%=offer.getDiscount() %>
 						<%} %> <%} %> % Off
 					</span>
@@ -131,19 +133,18 @@
 	
 // });
 
-// 				function discount()
-// 				{
-// 					var main = $('#mainprice').value();
-// 					var dis = $('#discount').value();
-// 					var dec = $(dis / 100).tofixed(2);
-// 					var mult = main * dec;
-// 					var discount = main - mult;
-// 					return discount;
-// 					$('#finalprice').val(discount);
-// 					document.getElementById("finalprice").innerHTML = discount ;
-//  				}
+				function discount()
+ 				{
+ 					var main = $('#mainprice').text();
+ 					var dis = $('#discount').text();
+ 					var dec = $(dis / 100).tofixed(2);
+ 					var mult = main * dec;
+ 					var discount = main - mult;
+					return discount;
 				
-// 				document.getElementById("finalprice").innerHTML = discount() ;
+  				}
+				
+				document.getElementById("finalprice").innerHTML = discount() ;
 				
 				$('.fa-heart').click(function(){
 				    if($(this).attr('att') == 0){
