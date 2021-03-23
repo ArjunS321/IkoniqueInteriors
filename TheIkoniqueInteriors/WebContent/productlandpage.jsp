@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
 .btn:click {
 	border-color: #e6e7ee;
@@ -29,9 +30,17 @@
 </style>
 <meta charset="ISO-8859-1">
 <title>Product Land Page</title>
-<%Product product = (Product)request.getAttribute("product"); %>
+<%
+	Product product = (Product) request.getAttribute("product");
+%>
 <jsp:include page="/SelectOfferDetails" />
-<%List<Offer> offerList =(List)request.getAttribute("offerList"); %>
+<%
+	List<Offer> offerList = (List) request.getAttribute("offerList");
+%>
+<jsp:include page="/SelectDesignerDetails" />
+<%
+	List<User> designerList = (List) request.getAttribute("designerList");
+%>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"
 	integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg=="
@@ -54,37 +63,47 @@
 			style="background-color: #e6e7ee;">
 			<!-- Content -->
 			<div class="card-body shadow-soft border border-light rounded p-4">
-				<h2 class="mb-3"><%=product.getProduct_name() %></h2>
-				<p id="finalprice">hi:-</p>
-				<p class="mb-4 des">By Product Owner</p>
+				<h2 class="mb-3"><%=product.getProduct_name()%></h2>
+<!-- 				<p id="finalprice"></p> -->
+				<% String str="Ikonique"; %>
+				<%for(User user1 : designerList) {%>
+					<%if(product.getProduct_owner_id()==user1.getUser_id()){ %>
+						<%str=user1.getFirstname()+" "+user1.getLastname();%> 
+					<% break;} %>
+					<%} %>
+				<p class="mb-4 des">By <%=str %></p>
 				<i class="fas fa-badge-check"></i> <img class="center rounded"
-					src="data:image/jpg;base64,<%=product.getProductpicString() %>"
+					src="data:image/jpg;base64,<%=product.getProductpicString()%>"
 					alt="">
 
 				<div class="d-flex mb-3">
-					<span class="h5 mb-0">&#x20B9;</span> 
-<!-- 					<span class="price display-3 text-dark mb-0" id="finalprice"></span><br> -->
+					<span class="h5 mb-0">&#x20B9;</span>
+						<span class="price display-3 text-dark mb-0" id="finalprice"></span><br>
 					<br>
 				</div>
 
 				<div>
-					<span Style="font-size: 8mm" class="h5">&#x20B9; <span
-						Style="font-size: 8mm" id="mainprice"
-						class="h5 mb-0 text-gray text-through mr-2" value="<%=product.getProduct_price() %>"><%=product.getProduct_price() %></span></span>
-					 <%for(Offer offer:offerList) { %>
-	
-					<span Style="font-size: 8mm" id="discount"
-						class="h6 mb-0 text-danger" value="<%=offer.getDiscount() %>">					
-						<%if(product.getOfferid()==offer.getOfferid()){ %> <%=offer.getDiscount() %>
-						<%} %> <%} %> % Off
+					<span Style="font-size: 8mm" class="h5">&#x20B9;
+						<span Style="font-size: 8mm" id="mainprice"
+							class="h5 mb-0 text-gray text-through mr-2"
+							value="<%=product.getProduct_price()%>"><%=product.getProduct_price()%>
+						</span>
 					</span>
+					
+					<%for (Offer offer : offerList) {%>
+					<%if (product.getOfferid() == offer.getOfferid()) {%>
+					<span Style="font-size: 8mm" id="discount"
+						class="h6 mb-0 text-danger" value="<%=offer.getDiscount() %>">
+						<%=offer.getDiscount() %>
+					</span>
+					<%break;}%>
+					<%}%>
 				</div>
 				<div class="product-btns wishlist">
 					<a class="btn-round"><i att="0" class="fa fa-heart"
 						style="color: black"></i></a>
 				</div>
-				<br>
-				<br>
+				<br> <br>
 				<h4 class="mb-3">Product Description</h4>
 				<p class="mb-4 des"><%=product.getProduct_desc()%></p>
 				<h4 class="mb-3">Product Weight</h4>
@@ -126,37 +145,33 @@
 <script src="neuro/assets/js/neumorphism.js"></script>
 <%@include file="commonjs.jsp"%>
 <script>
-// $(document).ready(function(){
-// 	var main = $('#mainprice').value();
-// 	var dis = $('#discount').value();
-// 	document.getElementById("finalprice").innerHTML = main ;
+	function discount() {
+		var main = $('#mainprice').text();
+		var dis = $('#discount').text();
+		var dec = (dis / 100).toFixed(2);
+		var mult = main * dec;
+		var discount = (main - mult);
+		var discount1 = (discount).toFixed(2);
+		return discount1;
+	}
+
+	function concat(){
+		var dis1 = $('#discount').text();
+		var s2 = dis1.concat("% Off");
+		return s2;
+	}
 	
-// });
+	document.getElementById("finalprice").innerHTML = discount();
+	document.getElementById("discount").innerHTML = concat();
 
-				function discount()
- 				{
- 					var main = $('#mainprice').text();
- 					var dis = $('#discount').text();
- 					var dec = $(dis / 100).tofixed(2);
- 					var mult = main * dec;
- 					var discount = main - mult;
-					return discount;
-				
-  				}
-				
-				document.getElementById("finalprice").innerHTML = discount() ;
-				
-				$('.fa-heart').click(function(){
-				    if($(this).attr('att') == 0){
-				        $(this).css('color', 'red');
-				        $(this).attr('att',1);
-				    } else {
-				        $(this).css('color', 'black');
-				        $(this).attr('att',0);
-				    }
-				});
-
-
-
+	$('.fa-heart').click(function() {
+		if ($(this).attr('att') == 0) {
+			$(this).css('color', 'red');
+			$(this).attr('att', 1);
+		} else {
+			$(this).css('color', 'black');
+			$(this).attr('att', 0);
+		}
+	});
 </script>
 </html>
