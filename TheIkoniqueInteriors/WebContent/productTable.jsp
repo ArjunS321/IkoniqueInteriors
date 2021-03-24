@@ -10,6 +10,7 @@
     <title>Product Table</title>
      <%@include file="FontFaces.jsp"%>
 	<%@include file="commoncss.jsp"%>
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         h3 span {

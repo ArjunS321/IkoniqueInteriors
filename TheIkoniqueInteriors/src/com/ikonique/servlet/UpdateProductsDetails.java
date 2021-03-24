@@ -134,8 +134,12 @@ public class UpdateProductsDetails extends HttpServlet {
 			product.setSubcategory_id(subcatgoryid);
 			product.setOfferid(offerid);
 			product.setStatus(productstatus);
-			product.setProductpicStream(is);
-			product.setProductpicString(Base64.getEncoder().encodeToString(Main.getBytesFromInputStream(part.getInputStream())));
+			if(part.getSize()!=0)
+			{
+				product.setProductpicStream(is);
+				product.setProductpicString(Base64.getEncoder().encodeToString(Main.getBytesFromInputStream(part.getInputStream())));
+				System.out.println("is Not Null...."+part.getSize());
+			}
 			
 			message = userimpl.updateProductDetails(product);
 			

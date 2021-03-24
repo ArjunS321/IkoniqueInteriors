@@ -884,29 +884,57 @@ public class userDaoImpl implements userDao {
 	@Override
 	public int modifyProductDetails(Product product, Connection connection) {
 		String updateQuery = "update product set c_product_name=?,d_product_price=?,i_product_quantity=?,d_product_weight=?,i_product_owner_id=?,c_product_description=?,i_main_category_id=?,i_sub_category_id=?,i_offer_id=?,i_status=?,b_product_image=? where i_product_id=?";
-		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
-			preparedStatement.setString(1, product.getProduct_name());
-			preparedStatement.setString(2, product.getProduct_price());
-			preparedStatement.setString(3, product.getProduct_quantity());
-			preparedStatement.setString(4, product.getProduct_weight());
-			preparedStatement.setInt(5,product.getProduct_owner_id());
-			preparedStatement.setString(6, product.getProduct_desc());
-			preparedStatement.setInt(7, product.getCategory_id());
-			preparedStatement.setInt(8, product.getSubcategory_id());
-			preparedStatement.setInt(9, product.getOfferid());
-			preparedStatement.setInt(10, product.getStatus());
-			preparedStatement.setBlob(11, product.getProductpicStream());
-			preparedStatement.setInt(12, product.getProduct_id());
-			
-			
-			
-			return preparedStatement.executeUpdate();
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		String updateQuery2 = "update product set c_product_name=?,d_product_price=?,i_product_quantity=?,d_product_weight=?,i_product_owner_id=?,c_product_description=?,i_main_category_id=?,i_sub_category_id=?,i_offer_id=?,i_status=? where i_product_id=?";
+		if(product.getProductpicStream()!=null)
+		{
+			try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+				preparedStatement.setString(1, product.getProduct_name());
+				preparedStatement.setString(2, product.getProduct_price());
+				preparedStatement.setString(3, product.getProduct_quantity());
+				preparedStatement.setString(4, product.getProduct_weight());
+				preparedStatement.setInt(5,product.getProduct_owner_id());
+				preparedStatement.setString(6, product.getProduct_desc());
+				preparedStatement.setInt(7, product.getCategory_id());
+				preparedStatement.setInt(8, product.getSubcategory_id());
+				preparedStatement.setInt(9, product.getOfferid());
+				preparedStatement.setInt(10, product.getStatus());
+				preparedStatement.setBlob(11, product.getProductpicStream());
+				preparedStatement.setInt(12, product.getProduct_id());
+				
+				System.out.println("Not Null..."+product.getProductpicStream());
+				
+				return preparedStatement.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		else
+		{
+			try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery2)) {
+				preparedStatement.setString(1, product.getProduct_name());
+				preparedStatement.setString(2, product.getProduct_price());
+				preparedStatement.setString(3, product.getProduct_quantity());
+				preparedStatement.setString(4, product.getProduct_weight());
+				preparedStatement.setInt(5,product.getProduct_owner_id());
+				preparedStatement.setString(6, product.getProduct_desc());
+				preparedStatement.setInt(7, product.getCategory_id());
+				preparedStatement.setInt(8, product.getSubcategory_id());
+				preparedStatement.setInt(9, product.getOfferid());
+				preparedStatement.setInt(10, product.getStatus());
+				preparedStatement.setInt(11, product.getProduct_id());
+				
+				System.out.println("Null....");
+				
+				return preparedStatement.executeUpdate();
 
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		return 0;
 	}
 
