@@ -61,7 +61,7 @@
 						<!-- 						aria-hidden="true"></span> <span class="sr-only">Next</span> -->
 					</a>
 				</div>
-<%-- 				<%@include file="product.jsp"%> --%>
+				<%@include file="product.jsp"%>
 				<div class="col-12 col-lg-15">
                 <div class="card shadow-soft border-light mb-6">
                     <div class="card-body px-5 py-5 text-center text-md-left" style="background-color: #e6e7ee;">

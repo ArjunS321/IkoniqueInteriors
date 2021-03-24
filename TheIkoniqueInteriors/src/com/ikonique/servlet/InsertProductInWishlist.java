@@ -30,7 +30,6 @@ public class InsertProductInWishlist extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		doPost(request, response);
 	}
 	
 	/**
@@ -38,11 +37,16 @@ public class InsertProductInWishlist extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		
+		 HttpSession httpSession = request.getSession(false);  
+		  	User user = null;    
+		  	if(null!=httpSession){ 
+		  	   user = (User)httpSession.getAttribute("loginBean"); 
+		     } 
+		    
 		int productid = Integer.parseInt(request.getParameter("productid"));
-		int userid = Integer.parseInt(request.getParameter("userid"));
-		System.out.println("List:-"+userid);
+		String opname = request.getParameter("operation");
+		
+		System.out.println("List:-"+productid+" "+opname+" "+user.getUser_id());
 		
 		
 	}

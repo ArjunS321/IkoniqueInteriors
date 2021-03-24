@@ -33,6 +33,7 @@ public class SelectProductDetails extends HttpServlet {
 		// TODO Auto-generated method stub
 		List<Product> productList = us.fetchproductdetails();
 		request.setAttribute("productList", productList);
+		System.out.println("select product details called...");
 		
 	}
 

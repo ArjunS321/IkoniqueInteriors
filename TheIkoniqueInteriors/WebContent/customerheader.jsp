@@ -2,10 +2,10 @@
 <%@include file="FontFaces.jsp"%>
 
 <%@include file="commoncss.jsp"%>
-<% HttpSession httpSession = request.getSession(false);
-	User user = null;   
-	if(null!=httpSession){
-	   user = (User)httpSession.getAttribute("loginBean");
+<% HttpSession httpSession1 = request.getSession(false);
+	User customeruser = null;   
+	if(null!=httpSession1){
+		customeruser = (User)httpSession1.getAttribute("loginBean");
    }
 %>
 
@@ -139,23 +139,23 @@
 					<div class="account-wrap">
 						<div class="account-item clearfix js-item-menu">
 							<div class="image">
-								<img src="data:image/jpg;base64,<%=user.getUserProfilepicString() %>" />
+								<img src="data:image/jpg;base64,<%=customeruser.getUserProfilepicString() %>" />
 							</div>
 							<div class="content">
-								<a class="js-acc-btn" href="#"><%=user.getFirstname()%> <%=user.getLastname() %></a>
+								<a class="js-acc-btn" href="#"><%=customeruser.getFirstname()%> <%=customeruser.getLastname() %></a>
 							</div>
 							<div class="account-dropdown js-dropdown">
 								<div class="info clearfix">
 									<div class="image">
 										<a href="editpro.jsp">
-										<img src="data:image/jpg;base64,<%=user.getUserProfilepicString() %>" />
+										<img src="data:image/jpg;base64,<%=customeruser.getUserProfilepicString() %>" />
 										</a>
 									</div>
 									<div class="content">
 										<h5 class="name">
-											<a href="editpro.jsp"><%=user.getFirstname()%> <%=user.getLastname() %></a>
+											<a href="editpro.jsp"><%=customeruser.getFirstname()%> <%=customeruser.getLastname() %></a>
 										</h5>
-										<span class="email"><%=user.getEmail() %></span>
+										<span class="email"><%=customeruser.getEmail() %></span>
 									</div>
 									
 								</div>

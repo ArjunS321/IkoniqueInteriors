@@ -49,7 +49,7 @@ if(null!=httpSession)
 					<div class="product-btns">
 						<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>" class="btn-small mr-2"><%=product.getProduct_price() %></a> 
 						<a class="btn-round mr-2"><i att="0" class="fa fa-shopping-cart" style="color: black"></i></a> 
-						<a method="post" href="InsertProductInWishlist?productid=<%=product.getProduct_id() %>" class="btn-round"><i  att="0" class="fa fa-heart" style="color: black"></i></a>
+						<a class="btn-round"><i id="<%=product.getProduct_id() %>" att="0" class="fa fa-heart" style="color: black"></i></a>
 					</div>
 <%-- 					<input type="hidden" value="<%=String.valueOf(user.getUser_id()) %>" name="userid"> --%>
 				</div>
@@ -61,7 +61,17 @@ if(null!=httpSession)
 
 <script>
 $('.fa-heart').click(function(){
+	alert($(this).attr('id'));
     if($(this).attr('att') == 0){
+    
+    	var pid = $(this).attr('id');
+    	var opname = "red";
+    	
+    	$.post( "InsertProductInWishlist", {productid: pid , operation : opname } )
+		  .done(function( data ) {
+			  alert("succesfull called..");
+		  });
+    	
         $(this).css('color', 'red');
         $(this).attr('att',1);
     } else {
