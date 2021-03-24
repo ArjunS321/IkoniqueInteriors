@@ -109,6 +109,8 @@
 						<div class="form-group mb-3 ml-10 inputBox">
 							<label for="oldpass">Old Password</label> <input type="hidden"
 								name="user_id" value="<%=String.valueOf(user.getUser_id())%>">
+								<input type="hidden"
+								name="role_id" value="<%=String.valueOf(user.getRole_id())%>">
 							<br> <input type="password" name="oldpass"
 								class="form-control" id="oldpass" autocomplete="off"
 								aria-describedby="emailHelp" onkeyup="validate2();"> <span

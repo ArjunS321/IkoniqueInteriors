@@ -47,6 +47,7 @@ public class UpdateUserDetails extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		User user =new User();
+		int roleid = Integer.parseInt(request.getParameter("role_id"));
 		String fname=request.getParameter("fname");
 		String lname=request.getParameter("lname");
 		String email=request.getParameter("email");
@@ -57,17 +58,9 @@ public class UpdateUserDetails extends HttpServlet {
 		int areaId=Integer.parseInt(request.getParameter("area"));
 		System.out.println(exampleRadios);
 		Part part = request.getPart("photo");
-		InputStream is=null;
-		if(null!=part)
-		{
-			
-            System.out.println(part.getSubmittedFileName());
-			is = part.getInputStream();
-		}
-		else
-		{
-			System.out.println("null image");
-		}
+		InputStream is=part.getInputStream();
+		
+		
 		try
 		{
 			int user_id=Integer.parseInt(request.getParameter("user_id"));
@@ -84,15 +77,39 @@ public class UpdateUserDetails extends HttpServlet {
 		user.setMobileno(contactno);
 		user.setArea_id(areaId);
 		user.setGender(exampleRadios);
-		user.setUserProfilepicStream(is);
-		user.setUserProfilepicString(Base64.getEncoder().encodeToString(Main.getBytesFromInputStream(part.getInputStream())));
-		String msg=u1.updateUserDetails(user);
+		user.setRole_id(roleid);
 		
+		if(part.getSize()!=0)
+		{
+			user.setUserProfilepicStream(is);
+			user.setUserProfilepicString(Base64.getEncoder().encodeToString(Main.getBytesFromInputStream(part.getInputStream())));
+			System.out.println("is Not Null...."+part.getSize());
+		}
+		String msg=u1.updateUserDetails(user);
 		System.out.println(msg);
-		HttpSession httpSession = request.getSession(false);
-		httpSession.setAttribute("loginBean", user);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
-		dispatcher.forward(request, response);
+		
+		if(user.getRole_id()==1)
+		{
+			HttpSession httpSession = request.getSession(false);
+			httpSession.setAttribute("loginBean", user);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
+			dispatcher.forward(request, response);
+		}
+		else if(user.getRole_id()==2)
+		{
+			HttpSession httpSession = request.getSession(false);
+			httpSession.setAttribute("loginBean", user);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
+			dispatcher.forward(request, response);
+		}
+		else
+		{
+			HttpSession httpSession = request.getSession(false);
+			httpSession.setAttribute("loginBean", user);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("admin.jsp");
+			dispatcher.forward(request, response);
+		}
+		
 		
 		
 		

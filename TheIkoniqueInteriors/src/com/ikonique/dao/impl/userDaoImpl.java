@@ -213,24 +213,48 @@ public class userDaoImpl implements userDao {
 
 	@Override
 	public int modifyUserDetails(User user, Connection connection) {
-		String updateQuery = "update user set c_first_name=?,c_last_name=?,c_address=?,c_contact_no=?,c_email=?,c_gender=?,i_area_id=?,b_image=?where i_user_id=?";
-		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
-			preparedStatement.setString(1, user.getFirstname());
-			preparedStatement.setString(2, user.getLastname());
-			preparedStatement.setString(3, user.getAddress());
-			preparedStatement.setString(4, user.getMobileno());
-			preparedStatement.setString(5, user.getEmail());
-			preparedStatement.setString(6, user.getGender());
-			preparedStatement.setInt(7, user.getArea_id());
-			preparedStatement.setBlob(8, user.getUserProfilepicStream());
-			preparedStatement.setInt(9, user.getUser_id());
+		String updateQuery = "update user set c_first_name=?,c_last_name=?,c_address=?,c_contact_no=?,c_email=?,c_gender=?,i_area_id=?,b_image=? where i_user_id=?";
+		String updateQuery2 = "update user set c_first_name=?,c_last_name=?,c_address=?,c_contact_no=?,c_email=?,c_gender=?,i_area_id=? where i_user_id=?";
+		if(user.getUserProfilepicStream()!=null)
+		{
+			try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+				preparedStatement.setString(1, user.getFirstname());
+				preparedStatement.setString(2, user.getLastname());
+				preparedStatement.setString(3, user.getAddress());
+				preparedStatement.setString(4, user.getMobileno());
+				preparedStatement.setString(5, user.getEmail());
+				preparedStatement.setString(6, user.getGender());
+				preparedStatement.setInt(7, user.getArea_id());
+				preparedStatement.setBlob(8, user.getUserProfilepicStream());
+				preparedStatement.setInt(9, user.getUser_id());
 
-			return preparedStatement.executeUpdate();
+				return preparedStatement.executeUpdate();
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		else
+		{
+			try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery2)) {
+				preparedStatement.setString(1, user.getFirstname());
+				preparedStatement.setString(2, user.getLastname());
+				preparedStatement.setString(3, user.getAddress());
+				preparedStatement.setString(4, user.getMobileno());
+				preparedStatement.setString(5, user.getEmail());
+				preparedStatement.setString(6, user.getGender());
+				preparedStatement.setInt(7, user.getArea_id());
+				preparedStatement.setInt(8, user.getUser_id());
+
+				return preparedStatement.executeUpdate();
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 
 		return 0;
 	}

@@ -265,8 +265,8 @@ if (null != httpSession) {
 					<div class="container">
 						<form action="UpdateUserDetails" class="box" class="form" id="form" method="post"
 							enctype="multipart/form-data" onsubmit="return login()">
-							<input type="hidden" name="user_id"
-								value="<%=String.valueOf(user.getUser_id())%>">
+							<input type="hidden" name="user_id" value="<%=String.valueOf(user.getUser_id())%>">
+							<input type="hidden" name="role_id" value="<%=String.valueOf(user.getRole_id())%>">
 							<div>
 
 

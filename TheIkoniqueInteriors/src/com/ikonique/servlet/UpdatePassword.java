@@ -37,6 +37,7 @@ public class UpdatePassword extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String confirmpass=request.getParameter("cpass");
+		int roleid=Integer.parseInt(request.getParameter("role_id"));
 		int user_id=0;
 		try {
 			 user_id=Integer.parseInt(request.getParameter("user_id"));
@@ -47,14 +48,43 @@ public class UpdatePassword extends HttpServlet {
 		}
 		String msg=u1.modifyPass(confirmpass,user_id);
 		System.out.println(msg);
-		if(msg=="Updation Of Password Successfully") {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
-			dispatcher.forward(request, response);
+		if(roleid==1)
+		{
+			if(msg=="Updation Of Password Successfully") 
+			{
+				RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
+				dispatcher.forward(request, response);
+			}
+			else
+			{
+				System.out.println("Not Update Pass");
+			}
+		}
+		else if(roleid==2)
+		{
+			if(msg=="Updation Of Password Successfully") 
+			{
+				RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
+				dispatcher.forward(request, response);
+			}
+			else
+			{
+				System.out.println("Not Update Pass");
+			}
 		}
 		else
 		{
-			System.out.println("Not Update Pass");
+			if(msg=="Updation Of Password Successfully") 
+			{
+				RequestDispatcher dispatcher = request.getRequestDispatcher("admin.jsp");
+				dispatcher.forward(request, response);
+			}
+			else
+			{
+				System.out.println("Not Update Pass");
+			}
 		}
+		
 	}
 
 }

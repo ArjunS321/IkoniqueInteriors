@@ -153,12 +153,12 @@
 								</div>
 								<div class="account-dropdown__body">
 									<div class="account-dropdown__item">
-										<a href="editprofile.jsp"> <i class="zmdi zmdi-account"></i>Edit
+										<a href="editpro.jsp"> <i class="zmdi zmdi-account"></i>Edit
 											Profile
 										</a>
 									</div>
 									<div class="account-dropdown__item">
-										<a href="#"> <i class="fas fa-key"></i>Change Password
+										<a href="changepassword.jsp"> <i class="fas fa-key"></i>Change Password
 										</a>
 									</div>
 								</div>

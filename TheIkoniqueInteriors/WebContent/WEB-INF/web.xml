@@ -339,4 +339,14 @@
     <servlet-name>UpdatePassword</servlet-name>
     <url-pattern>/UpdatePassword</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InsertProductInWishlist</display-name>
+    <servlet-name>InsertProductInWishlist</servlet-name>
+    <servlet-class>com.ikonique.servlet.InsertProductInWishlist</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertProductInWishlist</servlet-name>
+    <url-pattern>/InsertProductInWishlist</url-pattern>
+  </servlet-mapping>
 </web-app>
