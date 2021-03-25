@@ -11,6 +11,7 @@ import com.ikonique.bean.Offer;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
+import com.ikonique.bean.Wishlist;
 import com.ikonique.dao.userDao;
 import com.ikonique.dao.impl.userDaoImpl;
 import com.ikonique.util.Main;
@@ -379,6 +380,37 @@ public class userServiceImpl {
 		
 		return msg;
 		
+	}
+
+	public String insertIntoWishlist(Wishlist wishlist) {
+		String msg=null;
+		int insertintowishlist = userDao.saveWishlistDetails(connection , wishlist);
+		if(insertintowishlist>0) {
+			msg="Insertion Is Successfully";
+		}
+		else
+		{
+			msg="Insertion Is Failed";
+		}
+		return msg;
+	}
+
+	public String deleteIntoWishlist(Wishlist wishlist) {
+		int deleteCount=0;
+		String msg=null;
+		deleteCount=userDao.removeIntoWishlist(wishlist,connection);
+		if(deleteCount>0) {
+			msg="Deletion Successfully";
+		}
+		else
+		{
+			msg="Deletion Failed";
+		}
+		return msg;
+	}
+
+	public List<Wishlist> fetchWishlistDetails() {
+		return userDao.selectWishlistDetails(connection);
 	}
 }
 		

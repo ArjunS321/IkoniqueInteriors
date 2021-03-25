@@ -341,12 +341,22 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>InsertProductInWishlist</display-name>
-    <servlet-name>InsertProductInWishlist</servlet-name>
-    <servlet-class>com.ikonique.servlet.InsertProductInWishlist</servlet-class>
+    <display-name>InsertDeleteProductInWishlist</display-name>
+    <servlet-name>InsertDeleteProductInWishlist</servlet-name>
+    <servlet-class>com.ikonique.servlet.InsertDeleteProductInWishlist</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>InsertProductInWishlist</servlet-name>
-    <url-pattern>/InsertProductInWishlist</url-pattern>
+    <servlet-name>InsertDeleteProductInWishlist</servlet-name>
+    <url-pattern>/InsertDeleteProductInWishlist</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectWishlistDetails</display-name>
+    <servlet-name>SelectWishlistDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.SelectWishlistDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectWishlistDetails</servlet-name>
+    <url-pattern>/SelectWishlistDetails</url-pattern>
   </servlet-mapping>
 </web-app>

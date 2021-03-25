@@ -9,6 +9,7 @@ import com.ikonique.bean.Offer;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
+import com.ikonique.bean.Wishlist;
 
 public interface userDao {
 
@@ -79,6 +80,12 @@ public interface userDao {
 	public Product fetchProductDetail(Connection connection, int productid);
 
 	public int updatePass(Connection connection, String confirmpass, int user_id);
+
+	public int saveWishlistDetails(Connection connection, Wishlist wishlist);
+
+	public int removeIntoWishlist(Wishlist wishlist, Connection connection);
+
+	public List<Wishlist> selectWishlistDetails(Connection connection);
 
 	
 

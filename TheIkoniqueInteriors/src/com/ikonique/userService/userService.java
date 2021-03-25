@@ -8,6 +8,7 @@ import com.ikonique.bean.Offer;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
+import com.ikonique.bean.Wishlist;
 
 public interface userService {
 
@@ -44,4 +45,7 @@ public interface userService {
 	public String updateOfferDetails(Offer offer);
 	public Product SelectProductDetail(int productid);
 	public String modifyPass(String confirmpass, int user_id);
+	public String insertIntoWishlist(Wishlist wishlist);
+	public String deleteIntoWishlist(Wishlist wishlist);
+	public List<Wishlist> fetchWishlistDetails();
 }

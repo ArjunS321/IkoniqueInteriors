@@ -3,6 +3,7 @@ package com.ikonique.dao.impl;
 import java.sql.DriverManager;
 import java.sql.Blob;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,6 +21,7 @@ import com.ikonique.bean.Offer;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
+import com.ikonique.bean.Wishlist;
 import com.ikonique.dao.userDao;
 
 public class userDaoImpl implements userDao {
@@ -1063,6 +1065,80 @@ public class userDaoImpl implements userDao {
 		}
 
 		return 0;
+	}
+
+	@Override
+	public int saveWishlistDetails(Connection connection, Wishlist wishlist) {
+		int i = 0, insertedWishlistid = 0;
+		String insertQuery = "insert into wishlist (i_things_id,i_person_id,d_added_date) values(?,?,?)";
+		try { 
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try(PreparedStatement preparedStatement = connection.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS)) {
+			preparedStatement.setInt(1, wishlist.getProductid());
+			preparedStatement.setInt(2, wishlist.getUserid());
+			preparedStatement.setDate(3, (Date) wishlist.getCurrentdate());
+
+			i = preparedStatement.executeUpdate();
+			ResultSet resultSet = preparedStatement.getGeneratedKeys();
+
+			while (resultSet.next()) 
+			{
+				insertedWishlistid = resultSet.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return insertedWishlistid;
+	}
+
+	@Override
+	public int removeIntoWishlist(Wishlist wishlist, Connection connection) {
+		// TODO Auto-generated method stub
+		String deletequery = "delete from wishlist where i_things_id=? and i_person_id=?";
+		try(PreparedStatement preparedStatement = connection.prepareStatement(deletequery)) {
+			preparedStatement.setInt(1, wishlist.getProductid());
+			preparedStatement.setInt(2, wishlist.getUserid());
+			return preparedStatement.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public List<Wishlist> selectWishlistDetails(Connection connection) {
+		String selectQuery="select * from wishlist";
+		List<Wishlist> wishlistList = new ArrayList<Wishlist>();
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery);
+				
+				ResultSet resultSet=preparedStatement.executeQuery())
+		{
+			while(resultSet.next())
+			{
+				
+				Wishlist wishlist = new Wishlist();
+				wishlist.setWishlistid(resultSet.getInt("i_wishlist_id"));
+				wishlist.setProductid(resultSet.getInt("i_things_id"));
+				wishlist.setUserid(resultSet.getInt("i_person_id"));
+				wishlist.setCurrentdate(resultSet.getDate("d_added_date"));
+				wishlistList.add(wishlist);
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return wishlistList;
+
 	}
 
 }
