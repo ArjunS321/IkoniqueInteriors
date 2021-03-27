@@ -48,30 +48,9 @@ public class InsertDeleteProductInWishlist extends HttpServlet {
 		  	   user = (User)httpSession.getAttribute("loginBean"); 
 		     } 
 		
-//		Date date = new Date();  
-//		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
-//		String strDate = formatter.format(date);
-//		try {
-//			Date date1 = formatter.parse(strDate);
-//			System.out.println(formatter.format(date1));
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}	
-//		  	Date dob = null;
-//		  	String date = dob.toString();
-//			try
-//			{
-//				 dob = new SimpleDateFormat("dd/MM/yyyy").parse(date);
-//				 System.out.println(dob);
-//			} 
-//			catch (ParseException e)
-//			{
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
-//		String strDate= formatter.format(date);
+		  	Date date=new Date();
+		  	java.sql.Date sqldate=new java.sql.Date(date.getTime());
+		  	System.out.println(sqldate);
 		  	int productid = 0;
 		try
 		{
@@ -87,7 +66,7 @@ public class InsertDeleteProductInWishlist extends HttpServlet {
 		Wishlist wishlist = new Wishlist();
 		wishlist.setUserid(user.getUser_id());
 		wishlist.setProductid(productid);
-//		wishlist.setCurrentdate(date);
+		wishlist.setCurrentdate(sqldate);
 //		System.out.println("List:-"+productid+" "+opname+" "+user.getUser_id());
 		if(opname.equalsIgnoreCase("red"))
 		{
