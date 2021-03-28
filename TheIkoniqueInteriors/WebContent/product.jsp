@@ -64,6 +64,7 @@ if(null!=httpSession)
 						<%} %>	
 						<%}else{ %>
 							style="color: black"
+							
 						<%} %>
 						></i></a>  	
 								<%--  <a class="btn-round"><i id="<%=product.getProduct_id() %>" att="0" class="fa fa-heart" style="color: black"></i></a> --%> 
