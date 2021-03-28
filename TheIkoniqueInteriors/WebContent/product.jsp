@@ -22,8 +22,8 @@ if(null!=httpSession)
 %>  --%>
 <jsp:include page="/SelectProductDetails"/>
 <%List <Product> productList =(List)request.getAttribute("productList"); %>
- <jsp:include page="/SelectWishlistDetails"/>
-<%List <Wishlist> wishlistList =(List)request.getAttribute("wishlistList"); %>
+  <jsp:include page="/SelectWishlistDetails"/>
+<%List <Wishlist> wishlistList =(List)request.getAttribute("wishlistList"); %> 
 <body>
 <section class="section-bg" style="background-color: #e6e7ee;">
 	<div class="container" >
@@ -53,14 +53,20 @@ if(null!=httpSession)
 					<div class="product-btns">
 						<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>" class="btn-small mr-2"><%=product.getProduct_price() %></a> 
 						<a class="btn-round mr-2"><i att="0" class="fa fa-shopping-cart" style="color: black"></i></a> 
-						 <%for(Wishlist wishlist : wishlistList) {%>
+						  <a class="btn-round"><i id="<%=product.getProduct_id() %>" att="1" class="fa fa-heart"
+						  <%if(null!=wishlistList && !wishlistList.isEmpty()) {%>
+						  <%for(Wishlist wishlist : wishlistList) {%>
 							<%if(product.getProduct_id()==wishlist.getProductid()){ %>
-								<a class="btn-round"><i id="<%=product.getProduct_id() %>" att="1" class="fa fa-heart" style="color: red"></i></a>
+								 style="color: red"
 							<%}else{ %>
-								<a class="btn-round"><i id="<%=product.getProduct_id() %>" att="0" class="fa fa-heart" style="color: black"></i></a>
+								style="color: black"
 							<%} %>
-						<%} %>	 	
-								<%-- <a class="btn-round"><i id="<%=product.getProduct_id() %>" att="0" class="fa fa-heart" style="color: black"></i></a> --%>
+						<%} %>	
+						<%}else{ %>
+							style="color: black"
+						<%} %>
+						></i></a>  	
+								<%--  <a class="btn-round"><i id="<%=product.getProduct_id() %>" att="0" class="fa fa-heart" style="color: black"></i></a> --%> 
 						</div>
 <%-- 					<input type="hidden" value="<%=String.valueOf(user.getUser_id()) %>" name="userid"> --%>
 				</div>
