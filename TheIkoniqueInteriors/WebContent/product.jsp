@@ -53,17 +53,17 @@ if(null!=httpSession)
 					<div class="product-btns">
 						<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>" class="btn-small mr-2"><%=product.getProduct_price() %></a> 
 						<a class="btn-round mr-2"><i att="0" class="fa fa-shopping-cart" style="color: black"></i></a> 
-						  <a class="btn-round"><i id="<%=product.getProduct_id() %>" att="1" class="fa fa-heart"
+						  <a class="btn-round"><i id="<%=product.getProduct_id() %>"  class="fa fa-heart"
 						  <%if(null!=wishlistList && !wishlistList.isEmpty()) {%>
 						  <%for(Wishlist wishlist : wishlistList) {%>
 							<%if(product.getProduct_id()==wishlist.getProductid()){ %>
-								 style="color: red"
+								att="1" style="color: red"
 							<%}else{ %>
-								style="color: black"
+								att="0" style="color: black"
 							<%} %>
 						<%} %>	
 						<%}else{ %>
-							style="color: black"
+							 att="0" style="color: black"
 							
 						<%} %>
 						></i></a>  	
@@ -78,7 +78,7 @@ if(null!=httpSession)
 </section>
 
 <script>
-$(document).ready(function(){
+
 	
 	
 
@@ -110,7 +110,7 @@ $('.fa-heart').click(function(){
     }
    
 });
-});
+
 $('.fa-shopping-cart').click(function(){
     if($(this).attr('att') == 0){
         $(this).css('color', 'blue');
