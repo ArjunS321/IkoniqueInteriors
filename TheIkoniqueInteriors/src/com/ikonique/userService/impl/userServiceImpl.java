@@ -409,8 +409,8 @@ public class userServiceImpl {
 		return msg;
 	}
 
-	public List<Wishlist> fetchWishlistDetails() {
-		return userDao.selectWishlistDetails(connection);
+	public List<Wishlist> fetchWishlistDetails(int i) {
+		return userDao.selectWishlistDetails(connection,i);
 	}
 }
 		

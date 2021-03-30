@@ -47,5 +47,5 @@ public interface userService {
 	public String modifyPass(String confirmpass, int user_id);
 	public String insertIntoWishlist(Wishlist wishlist);
 	public String deleteIntoWishlist(Wishlist wishlist);
-	public List<Wishlist> fetchWishlistDetails();
+	public List<Wishlist> fetchWishlistDetails(int i);
 }

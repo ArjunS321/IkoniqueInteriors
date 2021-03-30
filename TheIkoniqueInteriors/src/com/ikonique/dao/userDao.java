@@ -85,7 +85,7 @@ public interface userDao {
 
 	public int removeIntoWishlist(Wishlist wishlist, Connection connection);
 
-	public List<Wishlist> selectWishlistDetails(Connection connection);
+	public List<Wishlist> selectWishlistDetails(Connection connection, int i);
 
 	
 

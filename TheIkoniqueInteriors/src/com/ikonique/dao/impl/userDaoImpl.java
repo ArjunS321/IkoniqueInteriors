@@ -1115,13 +1115,14 @@ public class userDaoImpl implements userDao {
 	}
 
 	@Override
-	public List<Wishlist> selectWishlistDetails(Connection connection) {
-		String selectQuery="select * from wishlist";
+	public List<Wishlist> selectWishlistDetails(Connection connection,int i) {
+		String selectQuery="select * from wishlist where i_person_id=?";
 		List<Wishlist> wishlistList = new ArrayList<Wishlist>();
-		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery);
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery)){
+				preparedStatement.setInt(1, i);
 				
-				ResultSet resultSet=preparedStatement.executeQuery())
-		{
+				ResultSet resultSet=preparedStatement.executeQuery();
+		
 			while(resultSet.next())
 			{
 				
