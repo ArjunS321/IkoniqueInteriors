@@ -87,7 +87,7 @@ public class UpdateUserDetails extends HttpServlet {
 		}
 		String msg=u1.updateUserDetails(user);
 		System.out.println(msg);
-		
+		System.out.println("");
 		if(user.getRole_id()==1)
 		{
 			HttpSession httpSession = request.getSession(false);
