@@ -10,14 +10,12 @@
 
 <%@include file="commoncss.jsp"%>
 </head>
-<body class="animsition">
+<body class="animsition" style="background-color: #e6e7ee;">
 	<div class="page-wrapper">
-
-<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>
-
-		<%@include file="visitorsidebar.jsp"%>
 		<div class="page-container">
-			<%@include file="visitorheader.jsp"%>
+		<%@include file="visitorsidebar.jsp"%>
+		<%@include file="visitorheader.jsp"%>
+			<%@include file="product.jsp"%>
 		</div>
 	</div>
 	<%@include file="commonjs.jsp"%>

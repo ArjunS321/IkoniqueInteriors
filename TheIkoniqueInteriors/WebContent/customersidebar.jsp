@@ -70,7 +70,7 @@ if (null != httpSession) {
 					</ul>
 					</li>
 				
-				<li><a href="#"> <i class="fas fa-bullseye"></i>Visualizer
+				<li><a href="visualizer.jsp"> <i class="fas fa-bullseye"></i>Visualizer
 				</a></li>
 				<li><a href="wishlist.jsp"> <i class="fas fa-bookmark"></i>Wishlist
 				</a></li>

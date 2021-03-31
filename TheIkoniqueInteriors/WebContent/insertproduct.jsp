@@ -24,7 +24,7 @@
 <title>Insert Product,Category,Sub-Category & Offer</title>
 </head>
 <style>
-#form .indicator1
+#form .indicator1	/*Product name*/
 {
 	position: absolute;
 	top: 50px;
@@ -35,7 +35,7 @@
 	border-radius: 50%;
 }
 
-#form.invalid .indicator1
+#form.invalid .indicator1 /*Product name*/
 {
 	background: #f00;
 	box-shadow: 0 0 5px #f00,
@@ -44,7 +44,35 @@
 				0 0 40px #f00;
 }
 
-#form.valid .indicator1
+#form.valid .indicator1  /*Product name*/
+{ 
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0,
+				0 0 10px #0f0,
+				0 0 20px #0f0,
+				0 0 40px #0f0;
+}
+#form .indicator2   /*Product Price*/
+{
+	position: absolute;
+	top: 50px;
+	right: 20px;
+	width: 10px;
+	height:10px;
+	background: #555;
+	border-radius: 50%;
+}
+
+#form.invalid1 .indicator2   /*Product Price*/
+{
+	background: #f00;
+	box-shadow: 0 0 5px #f00,
+				0 0 10px #f00,
+				0 0 20px #f00,
+				0 0 40px #f00;
+}
+
+#form.valid1 .indicator2   /*Product Price*/
 {
 	background: #0f0;
 	box-shadow: 0 0 5px #0f0,
@@ -52,7 +80,7 @@
 				0 0 20px #0f0,
 				0 0 40px #0f0;
 }
-#form .indicator2
+#form .indicator3  /*Product Qnt*/
 {
 	position: absolute;
 	top: 50px;
@@ -62,8 +90,8 @@
 	background: #555;
 	border-radius: 50%;
 }
-
-#form.invalid1 .indicator2 
+ 
+#form.invalid2 .indicator3  /*Product Qnt*/
 {
 	background: #f00;
 	box-shadow: 0 0 5px #f00,
@@ -72,7 +100,7 @@
 				0 0 40px #f00;
 }
 
-#form.valid1 .indicator2 
+#form.valid2 .indicator3  /*Product Qnt*/
 {
 	background: #0f0;
 	box-shadow: 0 0 5px #0f0,
@@ -80,7 +108,7 @@
 				0 0 20px #0f0,
 				0 0 40px #0f0;
 }
-#form .indicator3
+#form .indicator4		/*Product Weight*/
 {
 	position: absolute;
 	top: 50px;
@@ -91,7 +119,7 @@
 	border-radius: 50%;
 }
 
-#form.invalid2 .indicator3
+#form.invalid3 .indicator4  /*Product Weight*/
 {
 	background: #f00;
 	box-shadow: 0 0 5px #f00,
@@ -100,7 +128,7 @@
 				0 0 40px #f00;
 }
 
-#form.valid2 .indicator3
+#form.valid3 .indicator4  /*Product Weight*/
 {
 	background: #0f0;
 	box-shadow: 0 0 5px #0f0,
@@ -108,7 +136,7 @@
 				0 0 20px #0f0,
 				0 0 40px #0f0;
 }
-#form .indicator4
+#form .indicator5     /*Product Desc*/
 {
 	position: absolute;
 	top: 50px;
@@ -119,7 +147,7 @@
 	border-radius: 50%;
 }
 
-#form.invalid3 .indicator4
+#form.invalid4 .indicator5   /*Product Desc*/
 {
 	background: #f00;
 	box-shadow: 0 0 5px #f00,
@@ -128,7 +156,7 @@
 				0 0 40px #f00;
 }
 
-#form.valid3 .indicator4
+#form.valid4 .indicator5   /*Product Desc*/
 {
 	background: #0f0;
 	box-shadow: 0 0 5px #0f0,
@@ -136,7 +164,7 @@
 				0 0 20px #0f0,
 				0 0 40px #0f0;
 }
-#form .indicator5
+#form .indicator6  /*Category Dropdown*/
 {
 	position: absolute;
 	top: 50px;
@@ -147,7 +175,7 @@
 	border-radius: 50%;
 }
 
-#form.invalid4 .indicator5
+#form.invalid5 .indicator6  /*Category Dropdown*/
 {
 	background: #f00;
 	box-shadow: 0 0 5px #f00,
@@ -156,7 +184,7 @@
 				0 0 40px #f00;
 }
 
-#form.valid4 .indicator5
+#form.valid5 .indicator6  /*Category Dropdown*/
 {
 	background: #0f0;
 	box-shadow: 0 0 5px #0f0,
@@ -164,7 +192,7 @@
 				0 0 20px #0f0,
 				0 0 40px #0f0;
 }
-#form .indicator6
+#form .indicator7    
 {
 	position: absolute;
 	top: 50px;
@@ -175,7 +203,7 @@
 	border-radius: 50%;
 }
 
-#form.invalid5 .indicator6
+#form.invalid6 .indicator7    
 {
 	background: #f00;
 	box-shadow: 0 0 5px #f00,
@@ -184,7 +212,7 @@
 				0 0 40px #f00;
 }
 
-#form.valid5 .indicator6
+#form.valid6 .indicator7    
 {
 	background: #0f0;
 	box-shadow: 0 0 5px #0f0,
@@ -192,7 +220,7 @@
 				0 0 20px #0f0,
 				0 0 40px #0f0;
 }
-#form .indicator7
+#form .indicator8		/*categoty*/
 {
 	position: absolute;
 	top: 50px;
@@ -203,7 +231,7 @@
 	border-radius: 50%;
 }
 
-#form.invalid6 .indicator7
+#form.invalid7 .indicator8 /*categoty*/
 {
 	background: #f00;
 	box-shadow: 0 0 5px #f00,
@@ -212,64 +240,7 @@
 				0 0 40px #f00;
 }
 
-#form.valid6 .indicator7
-{
-	background: #0f0;
-	box-shadow: 0 0 5px #0f0,
-				0 0 10px #0f0,
-				0 0 20px #0f0,
-				0 0 40px #0f0;
-}
-#form .indicator8
-{
-	position: absolute;
-	top: 50px;
-	right: 20px;
-	width: 10px;
-	height:10px;
-	background: #555;
-	border-radius: 50%;
-}
-
-#form.invalid7 .indicator8
-{
-	background: #f00;
-	box-shadow: 0 0 5px #f00,
-				0 0 10px #f00,
-				0 0 20px #f00,
-				0 0 40px #f00;
-}
-
-#form.valid7 .indicator8
-{
-	background: #0f0;
-	box-shadow: 0 0 5px #0f0,
-				0 0 10px #0f0,
-				0 0 20px #0f0,
-				0 0 40px #0f0;
-}
-
-#form .indicator9
-{
-	position: absolute;
-	top: 50px;
-	right: 20px;
-	width: 10px;
-	height:10px;
-	background: #555;
-	border-radius: 50%;
-}
-
-#form.invalid8 .indicator9
-{
-	background: #f00;
-	box-shadow: 0 0 5px #f00,
-				0 0 10px #f00,
-				0 0 20px #f00,
-				0 0 40px #f00;
-}
-
-#form.valid8 .indicator9
+#form.valid7 .indicator8 /*categoty*/
 {
 	background: #0f0;
 	box-shadow: 0 0 5px #0f0,
@@ -278,7 +249,7 @@
 				0 0 40px #0f0;
 }
 
-#form .indicator10
+#form .indicator9  /*subcategory*/
 {
 	position: absolute;
 	top: 50px;
@@ -289,7 +260,7 @@
 	border-radius: 50%;
 }
 
-#form.invalid10 .indicator10
+#form.invalid8 .indicator9 /*subcategory*/
 {
 	background: #f00;
 	box-shadow: 0 0 5px #f00,
@@ -298,7 +269,7 @@
 				0 0 40px #f00;
 }
 
-#form.valid10 .indicator10
+#form.valid8 .indicator9 /*subcategory*/
 {
 	background: #0f0;
 	box-shadow: 0 0 5px #0f0,
@@ -307,7 +278,7 @@
 				0 0 40px #0f0;
 }
 
-#form .indicator11
+#form .indicator10   /*Product Owner drop*/
 {
 	position: absolute;
 	top: 50px;
@@ -318,7 +289,7 @@
 	border-radius: 50%;
 }
 
-#form.invalid11 .indicator11
+#form.invalid10 .indicator10   /*Product Owner drop*/
 {
 	background: #f00;
 	box-shadow: 0 0 5px #f00,
@@ -327,7 +298,7 @@
 				0 0 40px #f00;
 }
 
-#form.valid11 .indicator11
+#form.valid10 .indicator10     /*Product Owner drop*/
 {
 	background: #0f0;
 	box-shadow: 0 0 5px #0f0,
@@ -336,7 +307,7 @@
 				0 0 40px #0f0;
 }
 
-#form .indicator12
+#form .indicator11   /*product Offer drop*/
 {
 	position: absolute;
 	top: 50px;
@@ -347,7 +318,7 @@
 	border-radius: 50%;
 }
 
-#form.invalid12 .indicator12
+#form.invalid11 .indicator11  /*product Offer drop*/
 {
 	background: #f00;
 	box-shadow: 0 0 5px #f00,
@@ -356,7 +327,7 @@
 				0 0 40px #f00;
 }
 
-#form.valid12 .indicator12
+#form.valid11 .indicator11  /*product Offer drop*/
 {
 	background: #0f0;
 	box-shadow: 0 0 5px #0f0,
@@ -365,7 +336,7 @@
 				0 0 40px #0f0;
 }
 
-#form .indicator13
+#form .indicator12  /*Offer name*/
 {
 	position: absolute;
 	top: 50px;
@@ -376,7 +347,7 @@
 	border-radius: 50%;
 }
 
-#form.invalid13 .indicator13
+#form.invalid12 .indicator12  /*Offer name*/
 {
 	background: #f00;
 	box-shadow: 0 0 5px #f00,
@@ -385,7 +356,66 @@
 				0 0 40px #f00;
 }
 
-#form.valid13 .indicator13
+#form.valid12 .indicator12  /*Offer name*/
+{
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0,
+				0 0 10px #0f0,
+				0 0 20px #0f0,
+				0 0 40px #0f0;
+}
+
+#form .indicator13   /*offer discount*/
+{
+	position: absolute;
+	top: 50px;
+	right: 20px;
+	width: 10px;
+	height:10px;
+	background: #555;
+	border-radius: 50%;
+}
+
+#form.invalid13 .indicator13  /*offer discount*/
+{
+	background: #f00;
+	box-shadow: 0 0 5px #f00,
+				0 0 10px #f00,
+				0 0 20px #f00,
+				0 0 40px #f00;
+}
+
+#form.valid13 .indicator13  /*offer discount*/
+{
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0,
+				0 0 10px #0f0,
+				0 0 20px #0f0,
+				0 0 40px #0f0;
+}
+
+#form .indicator14   /*Product image*/
+{
+	position: absolute;
+	top: 20px;
+	left: 520px;
+ 	right: 20px; 
+	width: 10px;
+	height:10px;
+	background: #555;
+	border-radius: 50%;
+}
+
+#form.invalid14 .indicator14 /*Product image*/
+{
+	background: #f00;
+	box-shadow: 0 0 5px #f00,
+				0 0 10px #f00,
+				0 0 20px #f00,
+				0 0 40px #f00;
+}
+
+#form.valid14 .indicator14  /*Product image*/
 {
 	background: #0f0;
 	box-shadow: 0 0 5px #0f0,
@@ -411,7 +441,7 @@
 		Sub-Category ,Offer & Product</h1>
 	<hr class="my-5" style="background-color: #d4d4d4;">
 	<form action="InsertProductsDetails" class="w-50 ml-10" class="box" class="form" id="form"
-		method="post" onsubmit=" login()" enctype="multipart/form-data">
+		method="post" onsubmit="myAlertFunction(event)" enctype="multipart/form-data">
 		<div class="form-group mb-3 ml-10 inputBox">
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="exampleRadios1"
@@ -449,26 +479,26 @@
 			<div class="form-group mb-3 ml-10 inputBox">
 				<label for="offerdiscount">Offer Discount</label> <input type="text"
 					name="offerdiscount" class="form-control" id="offerdiscount" autocomplete="off"
-					aria-describedby="emailHelp" onkeyup="validate13();"> <span
+					aria-describedby="emailHelp" onkeyup="validate13();" maxLength="5"> <span
 					class="indicator13"></span>
 			</div>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox pprice">
 			<label for="pprice">Product Price</label> <input type="text"
 				name="pprice" class="form-control" id="pprice" autocomplete="off"
-				aria-describedby="emailHelp" onkeyup="validate2();"> <span
+				aria-describedby="emailHelp" onkeyup="validate2();" maxLength="5"> <span
 				class="indicator2"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox pquentity">
 			<label for="pquentity">Product Quantity</label> <input type="text"
 				name="pquentity" class="form-control" id="pquentity"
 				autocomplete="off" aria-describedby="emailHelp"
-				onkeyup="validate3();"> <span class="indicator3"></span>
+				onkeyup="validate3();"  maxLength="4"> <span class="indicator3"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox pweight">
 			<label for="pweight">Product Weight</label> <input type="text"
 				name="pweight" class="form-control" id="pweight" autocomplete="off"
-				aria-describedby="emailHelp" onkeyup="validate4();"> <span
+				aria-describedby="emailHelp" onkeyup="validate4();" maxLength="6"> <span
 				class="indicator4"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox pdesc">
@@ -542,14 +572,15 @@
 		</div>
 		<div align="center">
 		<div class="custom-file  mb-3 ml-10 col-sm-8 image">
-									<input type="file" class="custom-file-input" id="customFile"
-										aria-label="File upload" name="photo"> <label
-										class="custom-file-label" for="customFile">Choose Product Image</label>
-								</div>
-								</div>
-		<div align="center">
-		<button type="submit" name="submit" class="btn form-group btn-primary ml-10">Submit</button>
-	</div>
+		<input type="file" class="custom-file-input" id="customFile"
+		aria-label="File upload" name="photo" onchange="return validate14()"><span class="indicator14"></span> <label
+		class="custom-file-label" for="customFile">Choose Product Image</label>
+		
+		</div>
+		</div>
+		<div align="center" class="submit">
+			<button type="submit" id="submit" name="submit" onClick="return confirm(`Are you sure?`)" class="btn form-group btn-primary ml-10">Submit</button>
+		</div>
 	</form>
 	<script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
 	<script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
@@ -574,11 +605,97 @@
 	<!-- Neumorphism JS -->
 	<script src="neuro/assets/js/neumorphism.js"></script>
 	<%@include file="commonjs.jsp"%>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script>
-// 	$(document).ready(function()
-// 	{
+// 	$(document).on('submit', '[id=form]', function (e) {
+// 		  e.preventDefault();
+
+// 		  var data = $(this).serialize();
+
+// 		  swal({
+// 		    title: "Are you sure?",
+// 		    text: "You will not be able to recover this imaginary file!",
+// 		    type: "warning",
+// 		    showCancelButton: true,
+// 		    confirmButtonColor: "#DD6B55",
+// 		    confirmButtonText: "Yes, delete it!",
+// 		    cancelButtonText: "No, cancel plx!",
+// 		    closeOnConfirm: false,
+// 		    closeOnCancel: false
+// 		  },
+// 		    function (isConfirm) {
+// 		      if (isConfirm) {
+// 		        $.ajax({
+// 		          type: 'POST',
+// 		          url: 'InsertProductsDetails',
+// 		          data: data,
+// 		          success: function (data) {
+// 		            swal("Deleted!", "Your imaginary file has been deleted.", "success");
+// 		          },
+// 		          error: function (data) {
+// 		            swal("NOT Deleted!", "Something blew up.", "error");
+// 		          }
+// 		        });
+// 		      } else {
+// 		        swal("Cancelled", "Your imaginary file is safe :)", "error");
+// 		      }
+// 		    });
+
+// 		  return false;
+// 		});
+// 	$("button").click(function() {
+// 		$.ajax({
+//             url:"InsertProductsDetails",
+//             method:"POST",
+//             data:$('#form').serialize(),
+//             success:function(data)
+//             {
+//                 	swal({title: "Good job", text: "You clicked the button!", type: "success"
+// 						},function(){ 
+// 						       location.reload();
+// 						   });
+						
+//             }
+// 		})
+		
+// 	});
+	function validate14() {    //product image
+		var fileInput = 
+                document.getElementById('customFile');
+              
+            var filePath = fileInput.value;
+          
+            // Allowing file type
+            var allowedExtensions = 
+                    /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+              
+            if (!allowedExtensions.exec(filePath)) {
+            	form.classList.add('invalid14')
+				form.classList.remove('valid14')
+               // alert('Invalid file type');
+                fileInput.value = '';
+                return false;
+            } 
+            else 
+            {
+            	form.classList.remove('invalid14')
+				form.classList.add('valid14')
+            }
+	}
 	
-	function validate1() {
+	$(document).ready(function(){
+		var radio = $('input[name=exampleRadios1]:checked').length;
+		if (radio == 0) {
+			document.getElementById("submit").style.visibility = "hidden";
+		}
+		$('input[type="radio"]').click(function() {
+			if($(this).attr('name') == 'exampleRadios1') {
+				document.getElementById("submit").style.visibility = "visible";
+	       }
+		});
+	});
+	
+	function validate1() {  //product name
 			const form = document.getElementById('form');
 			const pname = document.getElementById('pname').value;
 			
@@ -592,10 +709,17 @@
 				form.classList.remove('invalid')
 				form.classList.add('valid')
 			}
+			if($.isNumeric(pname))
+			{
+				form.classList.add('invalid')
+				form.classList.remove('valid')
+			}
 		}
-	function validate2() {
+	function validate2() {  // product price
 		const form = document.getElementById('form');
 		const pprice = document.getElementById('pprice').value;
+		const pattern = "^-?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)$";
+		
 		if (pprice == "") 
 		{
 			form.classList.add('invalid1')
@@ -606,10 +730,21 @@
 			form.classList.remove('invalid1')
 			form.classList.add('valid1')
 		}
+		if(pprice.match(pattern))
+		{
+			form.classList.remove('invalid1')
+			form.classList.add('valid1')
+		}
+		else
+		{
+			form.classList.add('invalid1')
+			form.classList.remove('valid1')
+		}
 	}
-	function validate3() {
+	function validate3() {		//Product qnt
 		const form = document.getElementById('form');
 		const pquentity = document.getElementById('pquentity').value;
+		const pattern = "^-?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)$";
 		
 		if (pquentity == "") 
 		{
@@ -621,11 +756,22 @@
 			form.classList.remove('invalid2')
 			form.classList.add('valid2')
 		}
+		
+		if(pquentity.match(pattern))
+		{
+			form.classList.remove('invalid2')
+			form.classList.add('valid2')
+		}
+		else
+		{
+			form.classList.add('invalid2')
+			form.classList.remove('valid2')
+		}
 	}
-	function validate4() {
+	function validate4() {     // Product Weight
 		const form = document.getElementById('form');
 		const pweight = document.getElementById('pweight').value;
-		
+		const pattern = "^-?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)$";
 		if (pweight == "") 
 		{
 			form.classList.add('invalid3')
@@ -636,8 +782,18 @@
 			form.classList.remove('invalid3')
 			form.classList.add('valid3')
 		}
+		if(pweight.match(pattern))
+		{
+			form.classList.remove('invalid3')
+			form.classList.add('valid3')
+		}
+		else
+		{
+			form.classList.add('invalid3')
+			form.classList.remove('valid3')
+		}
 	}
-	function validate5() {
+	function validate5() {    // Product Desc
 		const form = document.getElementById('form');
 		const pdescription = document.getElementById('pdescription').value;
 		
@@ -652,7 +808,7 @@
 			form.classList.add('valid4')
 		}
 	}
-	function validate6() {
+	function validate6() {  //Category Dropdown
 		const form = document.getElementById('form');
 		var e=document.getElementById('category');
 		
@@ -680,7 +836,7 @@
 			form.classList.remove('valid6')
 		}
 	}
-	function validate8() {
+	function validate8() {			// category
 		const form = document.getElementById('form');
 		const cname = document.getElementById('cname').value;
 		
@@ -694,8 +850,15 @@
 			form.classList.remove('invalid7')
 			form.classList.add('valid7')
 		}
+		if($.isNumeric(cname))
+		{
+			form.classList.add('invalid7')
+			form.classList.remove('valid7')
+		}
+		
 	}
-	function validate9() {
+	
+	function validate9() {  //subcategory
 		const form = document.getElementById('form');
 		const scname = document.getElementById('scname').value;
 		
@@ -709,9 +872,93 @@
 			form.classList.remove('invalid8')
 			form.classList.add('valid8')
 		}
+		if($.isNumeric(scname))
+		{
+			form.classList.add('invalid8')
+			form.classList.remove('valid8')
+		}
+	}
+	
+	function validate10() {    // Product Owner drop
+		const form = document.getElementById('form');
+		var e=document.getElementById('ownername');
+		
+		var value=e.options[e.selectedIndex].value;
+		if (value!='0') 
+		{
+			form.classList.add('valid10')
+			form.classList.remove('invalid10')
+		} else {
+			form.classList.add('invalid10')
+			form.classList.remove('valid10')
+		}
+	}
+	
+	function validate11() {    // Product Offer drop
+		const form = document.getElementById('form');
+		var e=document.getElementById('offer');
+		
+		var value=e.options[e.selectedIndex].value;
+		if (value!='0') 
+		{
+			form.classList.add('valid11')
+			form.classList.remove('invalid11')
+		} else {
+			form.classList.add('invalid11')
+			form.classList.remove('valid11')
+		}
+	}
+	
+	function validate12() {  //Offer name
+		const form = document.getElementById('form');
+		const offername = document.getElementById('offername').value;
+		
+		if (offername == "") 
+		{
+			form.classList.add('invalid12')
+			form.classList.remove('valid12')
+		}
+		else
+		{
+			form.classList.remove('invalid12')
+			form.classList.add('valid12')
+		}
+		if($.isNumeric(offername))
+		{
+			form.classList.add('invalid12')
+			form.classList.remove('valid12')
+		}
+	}
+	
+	function validate13() {  //Offer discount 
+		const form = document.getElementById('form');
+		const offerdiscount = document.getElementById('offerdiscount').value;
+		const pattern = "^-?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)$";
+		
+		if (offerdiscount == "") 
+		{
+			form.classList.add('invalid13')
+			form.classList.remove('valid13')
+		}
+		else
+		{
+			form.classList.remove('invalid13')
+			form.classList.add('valid13')
+		}
+		if(offerdiscount.match(pattern))
+		{
+			form.classList.remove('invalid13')
+			form.classList.add('valid13')
+		}
+		else
+		{
+			form.classList.add('invalid13')
+			form.classList.remove('valid13')
+		}
 	}
 	$("input[name='exampleRadios1']").change(function() 
 	{
+		
 		if ($(this).val() == "category") 
 		{
 			$(".cname").show();

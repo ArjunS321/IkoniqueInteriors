@@ -132,7 +132,11 @@
 					<div class="account-wrap">
 						<div class="account-item clearfix js-item-menu">
 							<div class="image">
-								<img src="data:image/jpg;base64,<%=user.getUserProfilepicString() %>" alt="John Doe" />
+							<%if(user.getUserProfilepicString()!=null){ %>
+									<img src="data:image/jpg;base64,<%=user.getUserProfilepicString() %>"/>
+								<%}else{ %>
+									<img src="bg-img/Blank-Photo.png">
+								<%} %>
 							</div>
 							<div class="content">
 								<a class="js-acc-btn" href="#"><%=user.getFirstname()%> <%=user.getLastname() %></a>
@@ -140,9 +144,15 @@
 							<div class="account-dropdown js-dropdown">
 								<div class="info clearfix">
 									<div class="image">
-										<a href="editpro.jsp"> <img
-											src="data:image/jpg;base64,<%=user.getUserProfilepicString() %>" alt="John Doe" />
+									<%if(user.getUserProfilepicString()!=null){ %>
+										<a href="editpro.jsp"> 
+											<img src="data:image/jpg;base64,<%=user.getUserProfilepicString() %>"/>
 										</a>
+										<%}else{ %>
+										<a href="editpro.jsp"> 
+											<img src="bg-img/Blank-Photo.png">
+										</a>
+										<%} %>
 									</div>
 									<div class="content">
 										<h5 class="name">
