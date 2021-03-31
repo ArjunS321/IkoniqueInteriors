@@ -127,6 +127,27 @@
 	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
 }
 
+#form .indicator7 {
+	position: absolute;
+	top: 20px;
+	left: 290px;
+	right: 20px;
+	width: 10px;
+	height: 10px;
+	background: #555;
+	border-radius: 50%;
+}
+
+#form.invalid7 .indicator7 {
+	background: #f00;
+	box-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00;
+}
+
+#form.valid7 .indicator7 {
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
+}
+
 #form .indicator8 {
 	position: absolute;
 	top: 20px;
@@ -272,13 +293,17 @@ if (null != httpSession) {
 
 								<div
 									class="profile-image1 bg-primary shadow-inset border border-light rounded ml-11 p-3 ">
+									<%if(user.getUserProfilepicString()!=null) {%>
 									<img src="data:image/jpg;base64,<%=user.getUserProfilepicString() %>" height="365px" width="150px" 
 										class="card-img-top rounded" alt="Leos Portrait">
+									<%}else{ %>
+										<img src="bg-img/Blank-Photo.png" height="365px" width="150px" class="card-img-top rounded" alt="Leos Portrait">
+									<% }%>
 								</div>
 								<br>
 								<div class="custom-file mr-1 col-lg-3 col-sm-6">
 									<input type="file" class="custom-file-input" id="customFile"
-										aria-label="File upload" name="photo"> <label
+										aria-label="File upload" name="photo" onchange="return validate8()"><span class="indicator7"></span> <label
 										class="custom-file-label" for="customFile">Choose file</label>
 								</div>
 
@@ -443,7 +468,7 @@ function validate1() {
 		form.classList.remove('valid')
 	}
 	if (fname == "") {
-		form.classList.remove('invalid')
+		form.classList.add('invalid')
 		form.classList.remove('valid')
 	}
 }
@@ -460,7 +485,7 @@ function validate2() {
 		form.classList.remove('valid1')
 	}
 	if (lname == "") {
-		form.classList.remove('invalid1')
+		form.classList.add('invalid1')
 		form.classList.remove('valid1')
 	}
 }
@@ -477,7 +502,7 @@ function validate3() {
 		form.classList.remove('valid2')
 	}
 	if (email == "") {
-		form.classList.remove('invalid2')
+		form.classList.add('invalid2')
 		form.classList.remove('valid2')
 	}
 }
@@ -495,7 +520,7 @@ function validate5() {
 		form.classList.remove('valid4')
 	}
 	if (address == "") {
-		form.classList.remove('invalid4')
+		form.classList.add('invalid4')
 		form.classList.remove('valid4')
 	}
 }
@@ -513,7 +538,7 @@ function validate6() {
 		form.classList.remove('valid5')
 	}
 	if (cno == "") {
-		form.classList.remove('invalid5')
+		form.classList.add('invalid5')
 		form.classList.remove('valid5')
 	}
 }
@@ -538,6 +563,30 @@ function validate7() {
 	
 }
 
+function validate8() {    //product image
+	var fileInput = 
+            document.getElementById('customFile');
+          
+        var filePath = fileInput.value;
+      
+        // Allowing file type
+        var allowedExtensions = 
+                /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+          
+        if (!allowedExtensions.exec(filePath)) {
+        	form.classList.add('invalid7')
+			form.classList.remove('valid7')
+           // alert('Invalid file type');
+            fileInput.value = '';
+            return false;
+        } 
+        else 
+        {
+        	form.classList.remove('invalid7')
+			form.classList.add('valid7')
+        }
+}
+
 function login(){
 	const form = document.getElementById('form');
 	const fname = document.getElementById('fname').value;
@@ -551,7 +600,7 @@ function login(){
 	var e=document.getElementById('area');
 	var value=e.options[e.selectedIndex].value;
 		
-	if(fname!=" " && lname!=" " && email.match(pattern) && value!='0' && address!=" " && cno.match(pattern1)){
+	if(fname!="" && lname!="" && email.match(pattern) && value!='0' && address!="" && cno.match(pattern1)){
 		return true;
 	}
 	else{

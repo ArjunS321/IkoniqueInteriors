@@ -441,7 +441,7 @@
 		Sub-Category ,Offer & Product</h1>
 	<hr class="my-5" style="background-color: #d4d4d4;">
 	<form action="InsertProductsDetails" class="w-50 ml-10" class="box" class="form" id="form"
-		method="post" onsubmit="login()" enctype="multipart/form-data">
+		method="post" enctype="multipart/form-data" onsubmit="return login()">
 		<div class="form-group mb-3 ml-10 inputBox">
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="exampleRadios1"
@@ -659,6 +659,70 @@
 // 		})
 		
 // 	});
+$(document).ready(function(){
+	
+});
+
+function login(){
+	const form = document.getElementById('form');
+	const productname = document.getElementById('pname').value;
+	const offername = document.getElementById('offername').value;
+	const offerdiscount = document.getElementById('offerdiscount').value;
+	const productprice = document.getElementById('pprice').value;
+	const pquentity = document.getElementById('pquentity').value;
+	const productweight = document.getElementById('pweight').value;
+	const productdesc = document.getElementById('pdescription').value;
+	const scname = document.getElementById('scname').value;
+	const cname = document.getElementById('cname').value;
+	var owner = document.getElementById('ownername');
+	var ownervalue = owner.options[owner.selectedIndex].value;
+	var category = document.getElementById('category');
+	var categoryvalue = category.options[category.selectedIndex].value;
+	var offer = document.getElementById('offer');
+	var offervalue = offer.options[offer.selectedIndex].value;
+	var subcategory = document.getElementById('subcategory');
+	var subcategoryvalue = subcategory.options[subcategory.selectedIndex].value;
+	const radiovalue = $("input[name='exampleRadios1']:checked").val();
+	alert("radio value:-"+radiovalue);
+	
+	if(radiovalue=="category")
+	{
+		if(cname!="")
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else if(radiovalue=="subcategory")
+	{
+		if(scname!="" && categoryvalue!='0')
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else if(radiovalue=="product")
+	{
+		if(pname!="" && productprice!="" && pquentity!="" && productweight!="" && productdesc!="" && categoryvalue!='0' && ownervalue!='0' && offervalue!='0' && subcategoryvalue!='0')
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		alert("dasdadasd.....");
+	}
+}
 	function validate14() {    //product image
 		var fileInput = 
                 document.getElementById('customFile');
