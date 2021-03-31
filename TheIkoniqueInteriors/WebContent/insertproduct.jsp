@@ -441,7 +441,7 @@
 		Sub-Category ,Offer & Product</h1>
 	<hr class="my-5" style="background-color: #d4d4d4;">
 	<form action="InsertProductsDetails" class="w-50 ml-10" class="box" class="form" id="form"
-		method="post" onsubmit="myAlertFunction(event)" enctype="multipart/form-data">
+		method="post" onsubmit="login()" enctype="multipart/form-data">
 		<div class="form-group mb-3 ml-10 inputBox">
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="exampleRadios1"
@@ -579,7 +579,7 @@
 		</div>
 		</div>
 		<div align="center" class="submit">
-			<button type="submit" id="submit" name="submit" onClick="return confirm(`Are you sure?`)" class="btn form-group btn-primary ml-10">Submit</button>
+			<button type="submit" id="submit" name="submit" class="btn form-group btn-primary ml-10">Submit</button>
 		</div>
 	</form>
 	<script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
@@ -975,7 +975,45 @@
 			$(".offer").hide();
 			$(".offername").hide();
 			$(".offerdiscount").hide();
-			
+			document.getElementById("pname").value = "";
+			document.getElementById("offername").value = "";
+			document.getElementById("offerdiscount").value = "";
+			document.getElementById("pprice").value = "";
+			document.getElementById("pquentity").value = "";
+			document.getElementById("pweight").value = "";
+			document.getElementById("pdescription").value = "";
+			document.getElementById("ownername").value = "";
+			document.getElementById("category").value = "";
+			document.getElementById("offer").value = "";
+			document.getElementById("subcategory").value = "";
+			document.getElementById("scname").value = "";
+			form.classList.remove('invalid')
+			form.classList.remove('valid')
+			form.classList.remove('invalid1')
+			form.classList.remove('valid1')
+			form.classList.remove('invalid2')
+			form.classList.remove('valid2')	
+			form.classList.remove('invalid3')
+			form.classList.remove('valid3')
+			form.classList.remove('invalid4')
+			form.classList.remove('valid4')
+			form.classList.remove('invalid5')
+			form.classList.remove('valid5')
+			form.classList.remove('invalid6')
+			form.classList.remove('valid6')
+			form.classList.remove('invalid8')
+			form.classList.remove('valid8')
+			form.classList.remove('invalid9')
+			form.classList.remove('valid9')
+			form.classList.remove('invalid10')
+			form.classList.remove('valid10')
+			form.classList.remove('invalid11')
+			form.classList.remove('valid11')
+			form.classList.remove('invalid12')
+			form.classList.remove('valid12')
+			form.classList.remove('invalid13')
+			form.classList.remove('valid13')
+				
 		} 
 		else if($(this).val() == "subcategory")
 		{
@@ -993,6 +1031,47 @@
 			$(".offer").hide();
 			$(".offername").hide();
 			$(".offerdiscount").hide();
+			document.getElementById("pname").value = "";
+			document.getElementById("category").value = "";
+			document.getElementById("subcategory").value = "";
+			document.getElementById("offername").value = "";
+			document.getElementById("offerdiscount").value = "";
+			document.getElementById("pprice").value = "";
+			document.getElementById("pquentity").value = "";
+			document.getElementById("pweight").value = "";
+			document.getElementById("pdescription").value = "";
+			document.getElementById("ownername").value = "";
+			document.getElementById("offer").value = "";
+			document.getElementById("cname").value = "";
+			document.getElementById("scname").value = "";
+			form.classList.remove('invalid')
+			form.classList.remove('valid')
+			form.classList.remove('invalid1')
+			form.classList.remove('valid1')
+			form.classList.remove('invalid2')
+			form.classList.remove('valid2')	
+			form.classList.remove('invalid3')
+			form.classList.remove('valid3')
+			form.classList.remove('invalid4')
+			form.classList.remove('valid4')
+			form.classList.remove('invalid5')
+			form.classList.remove('valid5')
+			form.classList.remove('invalid6')
+			form.classList.remove('valid6')
+			form.classList.remove('invalid7')
+			form.classList.remove('valid7')
+			form.classList.remove('invalid8')
+			form.classList.remove('valid8')
+			form.classList.remove('invalid9')
+			form.classList.remove('valid9')
+			form.classList.remove('invalid10')
+			form.classList.remove('valid10')
+			form.classList.remove('invalid11')
+			form.classList.remove('valid11')
+			form.classList.remove('invalid12')
+			form.classList.remove('valid12')
+			form.classList.remove('invalid13')
+			form.classList.remove('valid13')
 		}
 		else if($(this).val() == "offer")
 		{
@@ -1010,6 +1089,47 @@
 			$(".image").hide();
 			$(".ownername").hide();
 			$(".offer").hide();
+			document.getElementById("pname").value = "";
+			document.getElementById("category").value = "";
+			document.getElementById("subcategory").value = "";
+			document.getElementById("offername").value = "";
+			document.getElementById("offerdiscount").value = "";
+			document.getElementById("pprice").value = "";
+			document.getElementById("pquentity").value = "";
+			document.getElementById("pweight").value = "";
+			document.getElementById("pdescription").value = "";
+			document.getElementById("ownername").value = "";
+			document.getElementById("offer").value = "";
+			document.getElementById("cname").value = "";
+			document.getElementById("scname").value = "";
+			form.classList.remove('invalid')
+			form.classList.remove('valid')
+			form.classList.remove('invalid1')
+			form.classList.remove('valid1')
+			form.classList.remove('invalid2')
+			form.classList.remove('valid2')	
+			form.classList.remove('invalid3')
+			form.classList.remove('valid3')
+			form.classList.remove('invalid4')
+			form.classList.remove('valid4')
+			form.classList.remove('invalid5')
+			form.classList.remove('valid5')
+			form.classList.remove('invalid6')
+			form.classList.remove('valid6')
+			form.classList.remove('invalid7')
+			form.classList.remove('valid7')
+			form.classList.remove('invalid8')
+			form.classList.remove('valid8')
+			form.classList.remove('invalid9')
+			form.classList.remove('valid9')
+			form.classList.remove('invalid10')
+			form.classList.remove('valid10')
+			form.classList.remove('invalid11')
+			form.classList.remove('valid11')
+			form.classList.remove('invalid12')
+			form.classList.remove('valid12')
+			form.classList.remove('invalid13')
+			form.classList.remove('valid13')
 		}
 		else 
 		{
@@ -1027,6 +1147,47 @@
 			$(".image").show();
 			$(".ownername").show();
 			$(".offer").show();
+			document.getElementById("pname").value = "";
+			document.getElementById("category").value = "";
+			document.getElementById("subcategory").value = "";
+			document.getElementById("offername").value = "";
+			document.getElementById("offerdiscount").value = "";
+			document.getElementById("pprice").value = "";
+			document.getElementById("pquentity").value = "";
+			document.getElementById("pweight").value = "";
+			document.getElementById("pdescription").value = "";
+			document.getElementById("ownername").value = "";
+			document.getElementById("offer").value = "";
+			document.getElementById("cname").value = "";
+			document.getElementById("scname").value = "";
+			form.classList.remove('invalid')
+			form.classList.remove('valid')
+			form.classList.remove('invalid1')
+			form.classList.remove('valid1')
+			form.classList.remove('invalid2')
+			form.classList.remove('valid2')	
+			form.classList.remove('invalid3')
+			form.classList.remove('valid3')
+			form.classList.remove('invalid4')
+			form.classList.remove('valid4')
+			form.classList.remove('invalid5')
+			form.classList.remove('valid5')
+			form.classList.remove('invalid6')
+			form.classList.remove('valid6')
+			form.classList.remove('invalid7')
+			form.classList.remove('valid7')
+			form.classList.remove('invalid8')
+			form.classList.remove('valid8')
+			form.classList.remove('invalid9')
+			form.classList.remove('valid9')
+			form.classList.remove('invalid10')
+			form.classList.remove('valid10')
+			form.classList.remove('invalid11')
+			form.classList.remove('valid11')
+			form.classList.remove('invalid12')
+			form.classList.remove('valid12')
+			form.classList.remove('invalid13')
+			form.classList.remove('valid13')
 		}
 	});
 	$("#category").change(function() {
