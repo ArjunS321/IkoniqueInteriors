@@ -48,4 +48,5 @@ public interface userService {
 	public String insertIntoWishlist(Wishlist wishlist);
 	public String deleteIntoWishlist(Wishlist wishlist);
 	public List<Wishlist> fetchWishlistDetails(int i);
+	public User getUserDetails(int user_id);
 }

@@ -1142,6 +1142,49 @@ public class userDaoImpl implements userDao {
 
 	}
 
+	@Override
+	public User selectUserDetails(Connection connection, int user_id) {
+		String selectQuery = "select * from user where i_user_id = ?";
+		User user=null;
+		
+		try(PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)){
+			preparedStatement.setInt(1, user_id);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				user=new User();
+				user.setUser_id(resultSet.getInt("i_user_id"));
+				user.setFirstname(resultSet.getString("c_first_name"));
+				user.setLastname(resultSet.getString("c_last_name"));
+				user.setAddress(resultSet.getString("c_address"));
+				user.setMobileno(resultSet.getString("c_contact_no"));
+				user.setEmail(resultSet.getString("c_email"));
+				user.setGender(resultSet.getString("c_gender"));
+				user.setRole_id(resultSet.getInt("i_role_id"));
+				user.setArea_id(resultSet.getInt("i_area_id"));
+				
+				 byte[] imageData = resultSet.getBytes("b_image"); String imageString=null;
+				  
+				  if(null!=imageData && imageData.length>0) { imageString =
+				  Base64.getEncoder().encodeToString(imageData);
+				 
+				  user.setUserProfilepicString(imageString);}
+				   
+				
+				
+				
+				
+				
+			}
+			//System.out.println("name:-"+category.getCategory_name());
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();		
+		}
+		return user;
+	}
+
 }
 
 	

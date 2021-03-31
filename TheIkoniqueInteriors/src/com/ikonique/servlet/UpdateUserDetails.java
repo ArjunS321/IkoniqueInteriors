@@ -88,24 +88,26 @@ public class UpdateUserDetails extends HttpServlet {
 		String msg=u1.updateUserDetails(user);
 		System.out.println(msg);
 		System.out.println("");
+		User user1=u1.getUserDetails(user.getUser_id());
+		
 		if(user.getRole_id()==1)
 		{
 			HttpSession httpSession = request.getSession(false);
-			httpSession.setAttribute("loginBean", user);
+			httpSession.setAttribute("loginBean", user1);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
 			dispatcher.forward(request, response);
 		}
 		else if(user.getRole_id()==2)
 		{
 			HttpSession httpSession = request.getSession(false);
-			httpSession.setAttribute("loginBean", user);
+			httpSession.setAttribute("loginBean", user1);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
 			dispatcher.forward(request, response);
 		}
 		else
 		{
 			HttpSession httpSession = request.getSession(false);
-			httpSession.setAttribute("loginBean", user);
+			httpSession.setAttribute("loginBean", user1);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("admin.jsp");
 			dispatcher.forward(request, response);
 		}

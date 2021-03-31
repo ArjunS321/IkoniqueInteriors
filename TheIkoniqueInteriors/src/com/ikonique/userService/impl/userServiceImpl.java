@@ -412,6 +412,12 @@ public class userServiceImpl {
 	public List<Wishlist> fetchWishlistDetails(int i) {
 		return userDao.selectWishlistDetails(connection,i);
 	}
+
+	public User getUserDetails(int user_id) {
+		User user =new User();
+		user= userDao.selectUserDetails(connection,user_id);
+		return user;
+	}
 }
 		
 

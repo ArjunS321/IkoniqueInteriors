@@ -87,6 +87,8 @@ public interface userDao {
 
 	public List<Wishlist> selectWishlistDetails(Connection connection, int i);
 
+	public User selectUserDetails(Connection connection, int user_id);
+
 	
 
 	

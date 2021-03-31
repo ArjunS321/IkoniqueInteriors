@@ -387,9 +387,9 @@ if (null != httpSession) {
 									<!-- End of Form -->
 									<!-- Form -->
 
-									<input type="submit" name="submit"
+									<button type="submit" name="submit"
 										class="btn form-group btn-primary mt-5 ml-10 margin1">Save
-										Changes
+										Changes</button>
 									<!-- End of Form -->
 								</div>
 							</div>
