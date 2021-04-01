@@ -586,7 +586,7 @@ function validate8() {    //product image
 			form.classList.add('valid7')
         }
 }
-
+ 
 function login(){
 	const form = document.getElementById('form');
 	const fname = document.getElementById('fname').value;

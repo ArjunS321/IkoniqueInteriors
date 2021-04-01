@@ -684,7 +684,7 @@ function login(){
 	var subcategoryvalue = subcategory.options[subcategory.selectedIndex].value;
 	const radiovalue = $("input[name='exampleRadios1']:checked").val();
 	alert("radio value:-"+radiovalue);
-	
+	 
 	if(radiovalue=="category")
 	{
 		if(cname!="")
