@@ -1,3 +1,4 @@
+<%@page import="com.ikonique.bean.Wishlist"%>
 <%@page import="com.ikonique.bean.Offer"%>
 <%@page import="com.ikonique.bean.Product"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -41,6 +42,9 @@
 <%
 	List<User> designerList = (List) request.getAttribute("designerList");
 %>
+ <jsp:include page="/SelectWishlistDetails"/>
+<%List <Wishlist> wishlistList =(List)request.getAttribute("wishlistList"); %> 
+<%List <Integer> wishlistint =(List)request.getAttribute("wishlistint"); %>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"
 	integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg=="
@@ -100,8 +104,18 @@
 					<%}%>
 				</div>
 				<div class="product-btns wishlist">
-					<a class="btn-round"><i att="0" class="fa fa-heart"
-						style="color: black"></i></a>
+				<a class="btn-round"><i id="<%=product.getProduct_id() %>" class="fa fa-heart"
+				<%if(null!=wishlistint && !wishlistint.isEmpty()) {%>
+						  
+							<%if(wishlistint.contains(product.getProduct_id())){ %>
+								att="1" style="color: red"
+							<%}else{ %>
+								att="0" style="color: black"
+							<%} %>
+							
+						<%}else{ %>
+							 att="0" style="color: black"
+							<%} %>></i></a>
 				</div>
 				<br> <br>
 				<h4 class="mb-3">Product Description</h4>
@@ -164,14 +178,34 @@
 	document.getElementById("finalprice").innerHTML = discount();
 	document.getElementById("discount").innerHTML = concat();
 
-	$('.fa-heart').click(function() {
-		if ($(this).attr('att') == 0) {
-			$(this).css('color', 'red');
-			$(this).attr('att', 1);
-		} else {
-			$(this).css('color', 'black');
-			$(this).attr('att', 0);
-		}
+	$('.fa-heart').click(function(){
+		alert($(this).attr('id'));
+	    if($(this).attr('att') == 0){
+	    
+	    	var pid = $(this).attr('id');
+	    	var opname = "red";
+	    	
+	    	$.post( "InsertDeleteProductInWishlist", {productid: pid , operation : opname } )
+			  .done(function( data ) {
+				  alert("succesfull called..");
+			  });
+	    	
+	        $(this).css('color', 'red');
+	        $(this).attr('att',1);
+	    } else {
+	    	var pid = $(this).attr('id');
+	    	var opname = "black";
+	    	
+	    	$.post( "InsertDeleteProductInWishlist", {productid: pid , operation : opname } )
+			  .done(function( data ) {
+				  alert("succesfull called..");
+			  });
+	    	
+	        $(this).css('color', 'black');
+	        $(this).attr('att',0);
+	    }
+	   
 	});
+
 </script>
 </html>

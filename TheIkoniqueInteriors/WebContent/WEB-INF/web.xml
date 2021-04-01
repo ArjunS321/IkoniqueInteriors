@@ -359,4 +359,14 @@
     <servlet-name>SelectWishlistDetails</servlet-name>
     <url-pattern>/SelectWishlistDetails</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectParticularProduct</display-name>
+    <servlet-name>SelectParticularProduct</servlet-name>
+    <servlet-class>com.ikonique.servlet.SelectParticularProduct</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectParticularProduct</servlet-name>
+    <url-pattern>/SelectParticularProduct</url-pattern>
+  </servlet-mapping>
 </web-app>

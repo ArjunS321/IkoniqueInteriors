@@ -26,7 +26,7 @@ if(null!=httpSession)
 <%List <Wishlist> wishlistList =(List)request.getAttribute("wishlistList"); %> 
 <%List <Integer> wishlistint =(List)request.getAttribute("wishlistint"); %> 
 <body>
-<p><%=wishlistList.size() %> </p>
+
 <section class="section-bg" style="background-color: #e6e7ee;">
 	<div class="container" >
 
