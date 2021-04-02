@@ -53,4 +53,6 @@ public interface userService {
 	public String insertFeedbackDetails(FeedBack feedBack);
 	public List<FeedBack> fetchfeedbackdetails();
 	public FeedBack getfeedbackland(int feedbackid);
+	public String deleteFromFeedback(int feedbackid);
+	public Product selectProductDetail(int id) ;
 }

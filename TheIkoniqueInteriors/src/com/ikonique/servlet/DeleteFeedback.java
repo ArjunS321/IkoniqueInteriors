@@ -8,19 +8,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ikonique.bean.FeedBack;
 import com.ikonique.userService.impl.userServiceImpl;
 
 /**
- * Servlet implementation class SelectFeedbackLand
+ * Servlet implementation class DeleteFeedback
  */
-public class SelectFeedbackLand extends HttpServlet {
+public class DeleteFeedback extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       userServiceImpl us = new userServiceImpl();
+       userServiceImpl us=new userServiceImpl();
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectFeedbackLand() {
+    public DeleteFeedback() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,24 +29,25 @@ public class SelectFeedbackLand extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int feedbackid = Integer.parseInt(request.getParameter("feedbackid"));
-		
-		FeedBack feedBack = new FeedBack();
-		feedBack = us.getfeedbackland(feedbackid);
-		
-		
-			request.setAttribute("feedBack",feedBack );
-			RequestDispatcher dispatcher = request.getRequestDispatcher("feedbacklandpage.jsp");
-			dispatcher.forward(request, response);
-	
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		int feedbackid=Integer.parseInt(request.getParameter("feedbackid"));
+		String message=null;
+		message=us.deleteFromFeedback(feedbackid);
+		
+		if(message=="Deletion Successfully") {
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("managefeedback.jsp");
+	  		requestDispatcher.forward(request, response);
+		}
+		else {
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("feedbacklandpage.jsp");
+	  		requestDispatcher.forward(request, response);
+		}
 	}
 
 }

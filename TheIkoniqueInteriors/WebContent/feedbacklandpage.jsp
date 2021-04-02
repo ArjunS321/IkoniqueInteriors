@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.ikonique.bean.FeedBack"%>
 <%@page import="com.ikonique.bean.Wishlist"%>
 <%@page import="com.ikonique.bean.Offer"%>
 <%@page import="com.ikonique.bean.Product"%>
@@ -96,6 +98,13 @@ textarea {
 </style>
 <meta charset="ISO-8859-1">
 <title>feedback land page</title>
+<%
+	FeedBack feedBack = (FeedBack) request.getAttribute("feedBack");
+%>
+<jsp:include page="/SelectUserDetails"/>
+<%List<User> userList =(List)request.getAttribute("userList"); %>
+<jsp:include page="/SelectProductDetails"/>
+<%List<Product> productList =(List)request.getAttribute("productList"); %>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"
 	integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg=="
@@ -118,10 +127,18 @@ textarea {
 			style="background-color: #e6e7ee;">
 			<!-- Content -->
 			<div class="card-body shadow-soft border border-light rounded p-4">
-				<h2 class="mb-3">product name</h2>
-				<p class="des">12/12/2012</p>
-				<img src="bg-img/1.jpg" class="pic" style="border-radius: 1000px; height: 50px; width: 50px;">
-				<p class="pic1 des">Customer Name</p>
+			<%for(Product product:productList){ %>
+				<%if(product.getProduct_id()==feedBack.getProductid()){ %>
+				<h2 class="mb-3"><%=product.getProduct_name() %></h2>
+				<%} %>
+			<%} %>
+				<p class="des"><%=feedBack.getFeedbackdate() %></p>
+				<%for(User user1:userList){ %>
+					<%if(user1.getUser_id()==feedBack.getUserid()){ %>
+						<img src="data:image/jpg;base64,<%=user1.getUserProfilepicString() %>" class="pic" style="border-radius: 1000px; height: 50px; width: 50px;">
+						<p class="pic1 des">  <%=user1.getFirstname() %>   <%=user1.getLastname() %></p>
+					<%} %>
+				<%} %>
 <%-- <% String str="Ikonique"; %> --%> 
 <%-- 				<%for(User user1 : designerList) {%> --%>
 <%-- 					<%if(product.getProduct_owner_id()==user1.getUser_id()){ %> --%>
@@ -129,9 +146,12 @@ textarea {
 <%-- 					<% break;} %> --%>
 <%-- 					<%} %> --%>
 <%-- 				<p class="mb-4 des">By <%=str %></p> --%>
+			<%for(Product product:productList){ %>	
+			 <%if(product.getProduct_id()==feedBack.getProductid()) {%>	
 				<i class="fas fa-badge-check"></i> <img class="center rounded"
-					src="bg-img/1.jpg" alt="">
-
+					src="data:image/jpg;base64,<%=product.getProductpicString() %>" alt="">
+			<%} %>
+			<%} %>
 				<div class="d-flex mb-3">
 						<span class="price display-3 text-dark mb-0" id="finalprice">Feedback</span><br>
 					<br>
@@ -139,13 +159,20 @@ textarea {
 
 				<br> <br>
 				<h4 class="mb-3">Product Description</h4>
-				<p class="mb-4 des">Product Description</p>
+				<%for(Product product:productList){ %>
+				 <%if(product.getProduct_id()==feedBack.getProductid()){ %>
+					<p class="mb-4 des"><%=product.getProduct_desc() %></p>
+				 <%} %>
+				<%} %>
 				<h4 class="mb-3">Customer Feedback</h4>
-				<p class="mb-4">Feedback Desc</p>
+				<p class="mb-4"><%=feedBack.getFeedbackdesc() %></p>
+				<form action="DeleteFeedback" method="post" id="form">
+				<input type="hidden" name="feedbackid" id="feedbackid" value="<%=String.valueOf(feedBack.getFeedbackid())%>">
 				<div align="center">
-				<button type="button" class="btn rounded-bottom col-lg-5"
+				<button type="submit" class="btn rounded-bottom col-lg-5"
 					style="background-color: #e6e7ee;">Delete Feedback</button>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@page import="javax.jws.soap.SOAPBinding.Use"%>
+<%-- <%@page import="javax.jws.soap.SOAPBinding.Use"%> --%>
 <%@page import="com.ikonique.bean.Product"%>
 <%@page import="com.ikonique.bean.FeedBack"%>
 <%@page import="com.ikonique.bean.Category"%>
@@ -66,16 +66,16 @@
                 	<%for(User user1 : userList){ %>
                 		<%if(user1.getUser_id()==feedback.getUserid()){ %>
                     		<td><a href="SelectFeedbackLand?feedbackid=<%=feedback.getFeedbackid()%>"><img src="data:image/jpg;base64,<%=user1.getUserProfilepicString() %>" class="ml-5" style="border-radius: 1000px; height: 50px; width: 50px;"></a></td>
-                   	 		<td><a style="color:black;" href="feedbacklandpage.jsp"><%=user1.getFirstname() %> <%=user1.getLastname() %></a></td>
+                   	 		<td><a style="color:black;" href="SelectFeedbackLand?feedbackid=<%=feedback.getFeedbackid()%>"><%=user1.getFirstname() %> <%=user1.getLastname() %></a></td>
                    	 	<%} %>
                     <%} %>
                     <%for(Product product : productList){ %>
                     	<%if(product.getProduct_id()==feedback.getProductid()){ %>
-                    		<td><a style="color:black;" href="feedbacklandpage.jsp"><%=product.getProduct_name() %></a></td>
+                    		<td><a style="color:black;" href="SelectFeedbackLand?feedbackid=<%=feedback.getFeedbackid()%>"><%=product.getProduct_name() %></a></td>
                     	<%} %>
                     <%} %>
-                   	<td><a style="color:black;" href="feedbacklandpage.jsp"><%=feedback.getFeedbackdesc() %></a></td>
-                   	<td><a style="color:black;" href="feedbacklandpage.jsp"><%=feedback.getFeedbackdate() %></a></td>
+                   	<td><a style="color:black;" href="SelectFeedbackLand?feedbackid=<%=feedback.getFeedbackid()%>"><%=feedback.getFeedbackdesc() %></a></td>
+                   	<td><a style="color:black;" href="SelectFeedbackLand?feedbackid=<%=feedback.getFeedbackid()%>"><%=feedback.getFeedbackdate() %></a></td>
                    	
                 </tr>
                </tbody>

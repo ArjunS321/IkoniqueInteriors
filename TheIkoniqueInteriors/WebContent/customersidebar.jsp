@@ -57,7 +57,7 @@ if (null != httpSession) {
 								<%for(SubCategory subcategory:subcategoryList){ %>
 								<%if(subcategory.getCategory_id()==category.getCategory_id()){ %>
 								<ul class="list-unstyled js-sub-list">
-								<li><a class="js-arrow" href="SelectParticularProduct?categoryid=<%=category.getCategory_id() %>" ><i class="fas fa-arrow-circle-o-right"></i><%=subcategory.getSub_category_name() %></a></li>
+								<li><a class="js-arrow" href="SelectParticularProduct?subcategoryid=<%=subcategory.getSub_category_id() %>" ><i class="fas fa-arrow-circle-o-right"></i><%=subcategory.getSub_category_name() %></a></li>
 								<!-- <li><a class="js-arrow" href="customerhomelamp.jsp"><i class="fas fa-arrow-circle-o-right"></i>Lighting</a></li>
 								<li><a class="js-arrow" href="customerhomeart.jsp"><i class="fas fa-arrow-circle-o-right"></i>Art</a></li> -->
 							</ul>

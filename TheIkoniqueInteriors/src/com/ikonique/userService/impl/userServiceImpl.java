@@ -443,6 +443,26 @@ public class userServiceImpl {
 		feedBack = userDao.selectfeedbackDetails(connection,feedbackid);
 		return feedBack;
 	}
+
+	public String deleteFromFeedback(int feedbackid) {
+		int deleteCount=0;
+		String msg=null;
+		deleteCount=userDao.removeIntoFeedback(feedbackid,connection);
+		if(deleteCount>0) {
+			msg="Deletion Successfully";
+		}
+		else
+		{
+			msg="Deletion Failed";
+		}
+		return msg;
+	}
+
+	public Product selectProductDetail(int id) {
+		Product product =new Product();
+		product = userDao.fetchProduct(connection,id);
+		return product;
+	}
 }
 		
 
