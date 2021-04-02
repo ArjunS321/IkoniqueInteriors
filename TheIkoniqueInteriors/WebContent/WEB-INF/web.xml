@@ -369,4 +369,14 @@
     <servlet-name>SelectParticularProduct</servlet-name>
     <url-pattern>/SelectParticularProduct</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InsertFeedback</display-name>
+    <servlet-name>InsertFeedback</servlet-name>
+    <servlet-class>com.ikonique.servlet.InsertFeedback</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertFeedback</servlet-name>
+    <url-pattern>/InsertFeedback</url-pattern>
+  </servlet-mapping>
 </web-app>

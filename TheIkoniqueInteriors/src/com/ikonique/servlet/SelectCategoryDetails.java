@@ -34,7 +34,12 @@ public class SelectCategoryDetails extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		List<Category> categoryList = us.fetchcategorydetails();
+		for(Category category : categoryList)
+		{
+			System.out.println(category.getCategory_name());
+		}
 		request.setAttribute("categoryList", categoryList);
+		
 		
 	}
 

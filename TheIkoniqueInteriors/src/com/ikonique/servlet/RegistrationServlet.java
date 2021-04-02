@@ -82,11 +82,8 @@ public class RegistrationServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			/* user.setVisitingfees(vfees); */
-
-			
-
 			message = s1.saveUserDetails(user);
-
+			System.out.println(message);
 		}
 		else
 		{
@@ -124,10 +121,10 @@ public class RegistrationServlet extends HttpServlet {
 
 		}
 
-		if (message == "Registration Failed") 
+		if (message.equalsIgnoreCase("Registration Failed")) 
 		{
+			System.out.println("hello if con");
 			  message=null;
-			
 			  RequestDispatcher requestdispatcher =
 			  request.getRequestDispatcher("register.jsp");
 			  requestdispatcher.forward(request, response);
@@ -137,9 +134,7 @@ public class RegistrationServlet extends HttpServlet {
 		{ 
 			  RequestDispatcher requestdispatcher =
 			  request.getRequestDispatcher("login.jsp"); requestdispatcher.forward(request,response);
-		}
-		 
-		response.getWriter().append(message); 
+		} 
 
 	}
 

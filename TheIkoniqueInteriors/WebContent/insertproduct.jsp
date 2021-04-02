@@ -441,7 +441,7 @@
 		Sub-Category ,Offer & Product</h1>
 	<hr class="my-5" style="background-color: #d4d4d4;">
 	<form action="InsertProductsDetails" class="w-50 ml-10" class="box" class="form" id="form"
-		method="post" enctype="multipart/form-data" onsubmit="return login()">
+		method="post" enctype="multipart/form-data" >
 		<div class="form-group mb-3 ml-10 inputBox">
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="exampleRadios1"
@@ -664,6 +664,7 @@ $(document).ready(function(){
 });
 
 function login(){
+	alert("login called...");
 	const form = document.getElementById('form');
 	const productname = document.getElementById('pname').value;
 	const offername = document.getElementById('offername').value;
@@ -682,17 +683,20 @@ function login(){
 	var offervalue = offer.options[offer.selectedIndex].value;
 	var subcategory = document.getElementById('subcategory');
 	var subcategoryvalue = subcategory.options[subcategory.selectedIndex].value;
-	const radiovalue = $("input[name='exampleRadios1']:checked").val();
+	//const radiovalue = $("input[name='exampleRadios1']:checked").val();
+	var radiovalue = document.getElementById("exampleRadios21").value;
 	alert("radio value:-"+radiovalue);
 	 
-	if(radiovalue=="category")
+	if(radiovalue == "category")
 	{
 		if(cname!="")
 		{
+			//window.location = "/admin.jsp";
 			return true;
 		}
 		else
 		{
+			//window.location = "/insertproduct.jsp";
 			return false;
 		}
 	}

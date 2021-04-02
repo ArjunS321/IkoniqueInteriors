@@ -42,7 +42,7 @@
 				<br>
 				<section class="min-vh-80 d-flex align-items-center">
 					<form class="w-50 ml-10" class="box"
-						class="form" id="form" method="post" onsubmit=" login()"
+						class="form" id="form" method="post" onsubmit="return login()"
 						enctype="multipart/form-data">
 						<div class="form-group mb-3 ml-10 inputBox">
 							Choose Your <b>Role</b><br>
@@ -288,23 +288,26 @@
 
 		// 		}
 		
-		$(document).ready(function(){
+$(document).ready(function(){
 
     $('#form').on('submit', function() {
         event.preventDefault();
         $.ajax({
             url:"RegistrationServlet",
             method:"POST",
-            data:$('#form').serialize(),
+            data:$("form").serialize(),
             success:function(data)
             {
-                if(data ==="null")
+            	alert("data value:-"+$("form").serialize());
+                if(data === "null")
                 {
+                	 alert("failed..........");
                 	 $('#modal-default').modal('show');
                 	 $('#modal').modal('hide');
                 }
                 else
                 {
+                	alert("succesful..........");
                 	$('#modal').modal('show');
                 	$('#modal-default').modal('hide'); 
                 }
@@ -326,7 +329,7 @@
 				form.classList.remove('valid')
 			}
 			if (email == "") {
-				form.classList.remove('invalid')
+				form.classList.add('invalid')
 				form.classList.remove('valid')
 			}
 		}
@@ -344,12 +347,13 @@
 				form.classList.remove('valid1')
 			}
 			if (pass == "") {
-				form.classList.remove('invalid1')
+				form.classList.add('invalid1')
 				form.classList.remove('valid1')
 			}
 		}
 
 		function login() {
+			alert("login called...");
 			const form = document.getElementById('form');
 			const email = document.getElementById('email').value;
 			const pass = document.getElementById('pass').value;
@@ -357,13 +361,13 @@
 			const pattern1 = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
 
 			const fname = document.getElementById('fname').value;
-			const pattern2 = " ";
+			const pattern2 = "";
 
 			const lname = document.getElementById('lname').value;
-			const pattern3 = "  ";
+			const pattern3 = "";
 
 			const add = document.getElementById('add').value;
-			const pattern4 = " ";
+			const pattern4 = "";
 
 			const mno = document.getElementById('mno').value;
 			const pattern5 = /(7|8|9)\d{9}/
@@ -372,7 +376,7 @@
 			const pattern7 = "^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$";
 
 			const vfees = document.getElementById('vfees').value;
-			const pattern8 = " ";
+			const pattern8 = "";
 
 			
 			const area = document.getElementById('area').value; 
@@ -383,13 +387,14 @@
 					&& fname != pattern2 && lname != pattern3
 					&& add != pattern4 && mno.match(pattern5)
 					&& strUser!=0 && pin.match(pattern7)) {
-
-				window.location = "/customer.jsp";
+				alert("login if.....");
+				//window.location = "/login.jsp";
 				//return true; 
 				//response.sendRedirect("customer.jsp");
 			} else {
-				//return false;
-				window.location = "/register.jsp";
+				alert("login else.....");
+				return false;
+				//window.location = "/register.jsp";
 			}
 		}
 
@@ -406,7 +411,7 @@
 				form.classList.remove('valid2')
 			}
 			if (fname == "") {
-				form.classList.remove('invalid2')
+				form.classList.add('invalid2')
 				form.classList.remove('valid2')
 			}
 		}
@@ -423,7 +428,7 @@
 				form.classList.remove('valid3')
 			}
 			if (lname == "") {
-				form.classList.remove('invalid3')
+				form.classList.add('invalid3')
 				form.classList.remove('valid3')
 			}
 		}
@@ -440,7 +445,7 @@
 				form.classList.remove('valid4')
 			}
 			if (add == "") {
-				form.classList.remove('invalid4')
+				form.classList.add('invalid4')
 				form.classList.remove('valid4')
 			}
 		}
@@ -457,7 +462,7 @@
 				form.classList.remove('valid5')
 			}
 			if (mno == "") {
-				form.classList.remove('invalid5')
+				form.classList.add('invalid5')
 				form.classList.remove('valid5')
 			}
 		}
@@ -543,7 +548,7 @@
 				form.classList.remove('valid8')
 			}
 			if (vfees == "") {
-				form.classList.remove('invalid8')
+				form.classList.add('invalid8')
 				form.classList.remove('valid8')
 			}
 		}

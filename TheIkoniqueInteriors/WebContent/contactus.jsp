@@ -116,7 +116,7 @@
                                 </div>
                                 <!-- Form -->
                                 <div class="form-group">
-                                    <label for="exampleFormControlTextarea2">Your Email</label>
+                                    <label for="exampleFormControlTextarea2">Your Message...</label>
                                     <textarea class="form-control" placeholder="Enter your message..." id="exampleFormControlTextarea2" rows="4"></textarea>
                                 </div>
                                 <!-- End of Form -->

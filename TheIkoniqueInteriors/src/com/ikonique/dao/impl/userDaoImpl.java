@@ -17,6 +17,7 @@ import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
 
 import com.ikonique.bean.Area;
 import com.ikonique.bean.Category;
+import com.ikonique.bean.FeedBack;
 import com.ikonique.bean.Offer;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
@@ -1183,6 +1184,40 @@ public class userDaoImpl implements userDao {
 			e.printStackTrace();		
 		}
 		return user;
+	}
+
+	@Override
+	public int saveFeedBackDetails(Connection connection, FeedBack feedBack) {
+		int i = 0, insertedfeedbacktid = 0;
+		String insertQuery = "insert into feedback (i_object_id,i_consumer_id,c_description,d_feedback_date) values(?,?,?,?)";
+		try { 
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try(PreparedStatement preparedStatement = connection.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS)) {
+			
+			preparedStatement.setInt(1, feedBack.getProductid());
+			preparedStatement.setInt(2, feedBack.getUserid());
+			preparedStatement.setString(3, feedBack.getFeedbackdesc());
+			preparedStatement.setDate(4, (Date) feedBack.getFeedbackdate());
+			
+
+			i = preparedStatement.executeUpdate();
+			ResultSet resultSet = preparedStatement.getGeneratedKeys();
+
+			while (resultSet.next()) 
+			{
+				insertedfeedbacktid = resultSet.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return insertedfeedbacktid;
 	}
 
 }

@@ -9,13 +9,71 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
-.btn:click {
-	border-color: #e6e7ee;
+
+textarea {
+    overflow: auto;
+    resize: none;
 }
-/* .des */
-/* { */
-/* 	margin-top:-9rem !important;	 */
-/* } */
+.form-control1
+{
+	font-size: 1rem;
+    border-radius: 0.55rem;
+    box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #ffffff;
+    padding: 0.6rem 0.75rem;
+}
+.form-control2
+{
+	display: block;
+    width: 100%;
+    height: calc(1.5em + 1.2rem + 0.0625rem);
+    padding: 0.6rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: #44476A;
+    background-color: #e6e7ee;
+    background-clip: padding-box;
+    border: 0.0625rem solid #D1D9E6;
+    border-radius: 0.55rem;
+    box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+.btn {
+    position: relative;
+    transition: all 0.2s ease;
+    letter-spacing: 0.025em;
+    font-size: 1rem;
+    border-color: #D1D9E6;
+    box-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px #ffffff;  
+    display: inline-block;
+    font-weight: 400;
+    color: #44476A;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 0.0625rem solid transparent;
+    padding: 0.55rem 0.95rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.55rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary1 {
+    color: #31344b;
+    background-color: #e6e7ee;
+    border-color: #e6e7ee;
+    box-shadow: inset 0 1px 0 rgb(236 240 243 / 15%), 0 1px 1px rgb(38 40 51 / 8%);
+}
+
+/* .btn:focus {  */
+/*    outline: #D1D9E6 !important;   */
+/*    box-shadow: none !important;    */
+/*  }  */
+
 .center {
 	display: block;
 	margin-left: auto;
@@ -130,6 +188,23 @@
 				<button type="button" class="btn rounded-bottom ml-3 col-lg-5"
 					style="background-color: #e6e7ee;">Add to Cart</button>
 
+<!-- 					<div class="form-group mb-1 ml-6 mr-10 inputBox"> -->
+<!-- 						<label for="add">FeedBack</label> -->
+<!-- 						<textarea rows="5" name="feedback" class="form-control" id="feedback" -->
+<!-- 						autocomplete="off" aria-describedby="emailHelp"></textarea> -->
+<!-- 					</div> -->
+					<form action="InsertFeedback" method="post" id="form">
+					<input type="hidden" name="productid" id="productid" value="<%=String.valueOf(product.getProduct_id())%>">
+					<div class="ml-7">
+					<br>
+                         <h4 align="center" class="mb-3 mr-7">Your FeedBack</h4>
+                         <textarea style="background-color: #e6e7ee;" class="form-control1" placeholder="Enter Your FeedBack..." name="feedback" id="feedback" rows="4" cols="95"></textarea>
+                    </div>
+                    <br>
+                    <div align="center">
+                         <button type="submit" name="submit" id="submit" class="btn btn-primary1">Send FeedBack</button>
+                    </div>
+                    </form>
 			</div>
 			<!-- End Content -->
 		</div>

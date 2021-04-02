@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ikonique.bean.Area;
 import com.ikonique.bean.Category;
+import com.ikonique.bean.FeedBack;
 import com.ikonique.bean.Offer;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
@@ -49,4 +50,5 @@ public interface userService {
 	public String deleteIntoWishlist(Wishlist wishlist);
 	public List<Wishlist> fetchWishlistDetails(int i);
 	public User getUserDetails(int user_id);
+	public String insertFeedbackDetails(FeedBack feedBack);
 }
