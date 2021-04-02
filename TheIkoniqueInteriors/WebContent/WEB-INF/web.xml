@@ -379,4 +379,24 @@
     <servlet-name>InsertFeedback</servlet-name>
     <url-pattern>/InsertFeedback</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectFeedBackDetails</display-name>
+    <servlet-name>SelectFeedBackDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.SelectFeedBackDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectFeedBackDetails</servlet-name>
+    <url-pattern>/SelectFeedBackDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectFeedbackLand</display-name>
+    <servlet-name>SelectFeedbackLand</servlet-name>
+    <servlet-class>com.ikonique.servlet.SelectFeedbackLand</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectFeedbackLand</servlet-name>
+    <url-pattern>/SelectFeedbackLand</url-pattern>
+  </servlet-mapping>
 </web-app>

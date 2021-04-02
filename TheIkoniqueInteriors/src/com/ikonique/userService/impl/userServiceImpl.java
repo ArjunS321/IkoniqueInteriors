@@ -432,6 +432,17 @@ public class userServiceImpl {
 		}
 		return msg;
 	}
+
+	public List<FeedBack> fetchfeedbackdetails() {
+		// TODO Auto-generated method stub
+		return userDao.selectFeedbackDetails(connection);
+	}
+
+	public FeedBack getfeedbackland(int feedbackid) {
+		FeedBack feedBack =new FeedBack();
+		feedBack = userDao.selectfeedbackDetails(connection,feedbackid);
+		return feedBack;
+	}
 }
 		
 

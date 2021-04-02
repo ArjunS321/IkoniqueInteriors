@@ -91,6 +91,10 @@ public interface userDao {
 	public User selectUserDetails(Connection connection, int user_id);
 
 	public int saveFeedBackDetails(Connection connection, FeedBack feedBack);
+
+	public List<FeedBack> selectFeedbackDetails(Connection connection);
+
+	public FeedBack selectfeedbackDetails(Connection connection, int feedbackid);
 	
 	
 

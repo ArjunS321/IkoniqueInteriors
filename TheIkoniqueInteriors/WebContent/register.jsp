@@ -33,15 +33,23 @@
 %>
 <body class="animsition">
 	<div class="page-wrapper">
+	
 		<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>
 		<%-- 		<%@include file="customersidebar.jsp"%> --%>
 		<%-- 		<%@include file="customerheader.jsp"%> --%>
 		<div class="page-container">
 			<div class="main-content">
+			
 				<h1 align="center" style="margin-top: 50px;">Registration</h1>
+				<div class="alert alert-error collapse" role="alert" id="passwordsNoMatchRegister">
+  	<span>
+  		<p>Looks like the passwords you entered don't match!</p>
+  	</span>
+	</div>
 				<br>
 				<section class="min-vh-80 d-flex align-items-center">
-					<form class="w-50 ml-10" class="box"
+				
+					<form action="RegistrationServlet" class="w-50 ml-10" class="box"
 						class="form" id="form" method="post" onsubmit="return login()"
 						enctype="multipart/form-data">
 						<div class="form-group mb-3 ml-10 inputBox">
@@ -83,7 +91,7 @@
 							<label for="areaname">Area</label> <select name="area"
 								class="form-control" id="area" aria-describedby="emailHelp"
 								onchange="validate6()">
-								<option value="0" selected>select</option>
+								<option value="0" selected>  </option>
 								<%
 									for (Area place : area) {
 								%>
@@ -252,68 +260,33 @@
 	</div>
 
 	<script>
-		// 		form.addEventListener('submit',(event)=> {
-		// 			 event.preventDefault();
-
-		// 			validate();
-		// 			validate1();
-		// 		})
-
-		// 		const sendData =(sRate,count) =>{
-		// 	if(sRate == count)
-		// 		{	
-		// 			swal( "","log in is successful!!","valid"); 
-		// 		}
-		// }
-
-		// 		const successMsg = () => {
-
-		// 			 var formCon =document.getElementsByClassName('form-group');
-
-		// 			var count=(formCon.length)-2;
-
-		// 			for(var i=0;i< formCon.length;i++)
-		// 				{
-		// 					if(formCon[i].className == 'form-group valid'){
-		// 						var sRate=0+i;
-		// 						console.log(sRate);
-		// 						sendData(sRate,count);
-
-		// 					}
-		// 					else
-		// 						{
-		// 							return false;
-		// 						}
-		// 				} 
-
-		// 		}
 		
 $(document).ready(function(){
 
-    $('#form').on('submit', function() {
-        event.preventDefault();
-        $.ajax({
-            url:"RegistrationServlet",
-            method:"POST",
-            data:$("form").serialize(),
-            success:function(data)
-            {
-            	alert("data value:-"+$("form").serialize());
-                if(data === "null")
-                {
-                	 alert("failed..........");
-                	 $('#modal-default').modal('show');
-                	 $('#modal').modal('hide');
-                }
-                else
-                {
-                	alert("succesful..........");
-                	$('#modal').modal('show');
-                	$('#modal-default').modal('hide'); 
-                }
-            }
-        })
-    });
+//     $('#form').on('submit', function() {
+//         event.preventDefault();
+//         $.ajax({
+//             url:"RegistrationServlet",
+//             method:"POST",
+//             data:$("form").serialize(),
+//             success:function(data)
+//             {
+//             	alert("data value:-"+$("form").serialize());
+//                 if(data === "null")
+//                 {
+//                 	 alert("failed..........");
+//                 	 $('').modal('show');
+//                 	 $('#modal').modal('hide');
+//                 }
+//                 else
+//                 {
+//                 	alert("succesful..........");
+//                 	$('#modal').modal('show');
+//                 	$('#modal-default').modal('hide'); 
+//                 }
+//             }
+//         })
+//     });
 });
 
 		function validate() {
@@ -353,49 +326,50 @@ $(document).ready(function(){
 		}
 
 		function login() {
-			alert("login called...");
-			const form = document.getElementById('form');
-			const email = document.getElementById('email').value;
-			const pass = document.getElementById('pass').value;
-			const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
-			const pattern1 = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
-
-			const fname = document.getElementById('fname').value;
-			const pattern2 = "";
-
-			const lname = document.getElementById('lname').value;
-			const pattern3 = "";
-
-			const add = document.getElementById('add').value;
-			const pattern4 = "";
-
-			const mno = document.getElementById('mno').value;
-			const pattern5 = /(7|8|9)\d{9}/
-
-			const pin = document.getElementById('pin').value;
-			const pattern7 = "^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$";
-
-			const vfees = document.getElementById('vfees').value;
-			const pattern8 = "";
-
 			
-			const area = document.getElementById('area').value; 
-		    var strUser = area.options[area.selectedIndex].value;
-
-			if (email.match(pattern) && pass.match(pattern1) 
-					&& pass.length >= 8 && pass.length <= 20
-					&& fname != pattern2 && lname != pattern3
-					&& add != pattern4 && mno.match(pattern5)
-					&& strUser!=0 && pin.match(pattern7)) {
-				alert("login if.....");
-				//window.location = "/login.jsp";
-				//return true; 
-				//response.sendRedirect("customer.jsp");
-			} else {
-				alert("login else.....");
-				return false;
-				//window.location = "/register.jsp";
-			}
+ 			const form = document.getElementById('form');
+  			var fname = document.getElementById('fname').value;
+  			var lname = document.getElementById('lname').value;
+  			var add = document.getElementById('add').value;
+  		   	var mno = document.getElementById('mno').value;
+  		  	var email = document.getElementById('email').value;
+  		 	var pass = document.getElementById('pass').value;
+  			var vfees = document.getElementById('vfees').value;
+			var areavalue = $('#area :selected').text();
+			const emailpattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+			const passpattern = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
+			const mnopattern = /(7|8|9)\d{9}/
+			alert("area value:-"+areavalue);
+  			if(fname == null || fname == "" && lname == null || lname == "" && add == null 
+ 				|| add == "" && mno == null || mno == ""  && email == null 
+ 				|| email == ""  && pass == null || pass == ""  
+ 				&& vfees == null || vfees == "" && areavalue == null || areavalue == "")
+  			{
+  					//alert("if....");
+  	 				$('#modal').modal('hide');
+  	             	$('#modal-default').modal('show');
+  	 				return false;
+  	 				window.location = "/register.jsp";
+ 			}
+ 			else
+ 			{
+ 				if(mno.match(mnopattern) && pass.match(passpattern) && email.match(emailpattern))
+  				{
+ 					//alert("else....");
+ 					$('#modal').modal('show');
+             		$('#modal-default').modal('hide');
+ 					return true;
+ 					window.location = "/login.jsp";
+  				}
+ 				else
+ 				{
+ 					//alert("if....");
+  	 				$('#modal').modal('hide');
+  	             	$('#modal-default').modal('show');
+  	 				return false;
+  	 				window.location = "/register.jsp";
+ 				}
+ 			}
 		}
 
 		function validate2() {

@@ -355,6 +355,14 @@ public class userDaoImpl implements userDao {
 				//String visitingfess = resultSet.getString("i_visiting_fess");
 				
 				User user = new User();
+
+				byte[] imageData = resultSet.getBytes("b_image"); 
+				String imageString=null;
+				 if(null!=imageData && imageData.length>0) 
+				 { 
+					 imageString = Base64.getEncoder().encodeToString(imageData);
+					 user.setUserProfilepicString(imageString);
+				 }
 				user.setUser_id(id);
 				user.setFirstname(fname);
 				user.setLastname(lname);
@@ -1218,6 +1226,57 @@ public class userDaoImpl implements userDao {
 		}
 
 		return insertedfeedbacktid;
+	}
+
+	@Override
+	public List<FeedBack> selectFeedbackDetails(Connection connection) {
+		String selectQuery="select * from feedback";
+		List<FeedBack> feedbackList = new ArrayList<FeedBack>();
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery);
+		ResultSet resultSet=preparedStatement.executeQuery())
+		{
+			while(resultSet.next())
+			{
+				FeedBack feedBack = new FeedBack();
+				feedBack.setFeedbackid(resultSet.getInt("i_feedback_id"));
+				feedBack.setProductid(resultSet.getInt("i_object_id"));
+				feedBack.setUserid(resultSet.getInt("i_consumer_id"));
+				feedBack.setFeedbackdesc(resultSet.getString("c_description"));
+				feedBack.setFeedbackdate(resultSet.getDate("d_feedback_date"));
+				
+				feedbackList.add(feedBack);
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return feedbackList;
+	}
+
+	@Override
+	public FeedBack selectfeedbackDetails(Connection connection, int feedbackid) {
+		String selectQuery = "select * from feedback where i_feedback_id = ?";
+		FeedBack feedBack = null;
+		
+		try(PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)){
+			preparedStatement.setInt(1, feedbackid);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				feedBack = new FeedBack();
+				feedBack.setFeedbackid(resultSet.getInt("i_feedback_id"));
+				feedBack.setProductid(resultSet.getInt("i_object_id"));
+				feedBack.setUserid(resultSet.getInt("i_consumer_id"));
+				feedBack.setFeedbackdesc(resultSet.getString("c_description"));
+				feedBack.setFeedbackdate(resultSet.getDate("d_feedback_date"));	
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();		
+		}
+		return feedBack;
 	}
 
 }

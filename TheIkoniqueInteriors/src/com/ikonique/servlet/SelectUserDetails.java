@@ -38,8 +38,6 @@ public class SelectUserDetails extends HttpServlet {
 		List<User> userList = us.fetchuserdetails();
 		request.setAttribute("userList", userList);
 		
-		RequestDispatcher requestDispatcher=request.getRequestDispatcher("table.jsp");
-		requestDispatcher.forward(request, response);
 	}
 
 	/**

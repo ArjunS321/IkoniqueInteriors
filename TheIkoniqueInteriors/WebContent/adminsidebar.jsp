@@ -21,16 +21,16 @@
 						class="fas  fa-caret-down"></i>Manage
 				</a>
 					<ul class="list-unstyled navbar__sub-list js-sub-list">
-						<li class="has-sub"><a class="js-arrow" href="#"><i
+						<li class="has-sub"><a class="js-arrow" href="managecustomer.jsp"><i
 								class="fas"></i>Customer Profile</a>
 						</li>
-						<li class="has-sub"><a class="js-arrow" href="#"><i
+						<li class="has-sub"><a class="js-arrow" href="managedesigner.jsp"><i
 								class="fas"></i>Designer Profile</a>
 						</li>
 						<li class="has-sub"><a class="js-arrow" href="#"><i
 								class="fas"></i>Product</a>
 						</li>
-						<li class="has-sub"><a class="js-arrow" href="#"><i
+						<li class="has-sub"><a class="js-arrow" href="managefeedback.jsp"><i
 								class="fas"></i>Feedback</a>
 						</li>
 						<li class="has-sub"><a class="js-arrow" href="#"><i
@@ -67,11 +67,11 @@
 						</ul>
 						</li>
 						
-				<li><a href="myorder.jsp"> <i class="fas fa-credit-card"></i>Payment Status
+				<li><a href="#"> <i class="fas fa-credit-card"></i>Payment Status
 				</a></li>
-				<li><a href="appointmentcards.jsp"> <i class="fas  fa-truck"></i>Track Orders
+				<li><a href="#"> <i class="fas  fa-truck"></i>Track Orders
 				</a></li>
-				<li><a href="enquiry.jsp"> <i class="fas fa-file-text"></i>Generate Report
+				<li><a href="#"> <i class="fas fa-file-text"></i>Generate Report
 				</a></li>
 				<li><a href="aboutus.jsp"> <i class="fas fa-exclamation"></i>About Us
 				</a></li>

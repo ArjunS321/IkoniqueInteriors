@@ -51,4 +51,6 @@ public interface userService {
 	public List<Wishlist> fetchWishlistDetails(int i);
 	public User getUserDetails(int user_id);
 	public String insertFeedbackDetails(FeedBack feedBack);
+	public List<FeedBack> fetchfeedbackdetails();
+	public FeedBack getfeedbackland(int feedbackid);
 }
