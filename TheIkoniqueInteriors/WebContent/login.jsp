@@ -106,35 +106,42 @@
 				0 0 20px #0f0,
 				0 0 40px #0f0;
 }
-
-#form .indicator2
+.eye
 {
 	position: absolute;
-	top: 50px;
+	top: 45px;
 	right: 20px;
-	width: 10px;
-	height:10px;
-	background: #555;
-	border-radius: 50%;
+	width: 15px;
+	height:15px;
 }
+/* #form .indicator2 */
+/* { */
+/* 	position: absolute; */
+/* 	top: 50px; */
+/* 	right: 20px; */
+/* 	width: 10px; */
+/* 	height:10px; */
+/* 	background: #555; */
+/* 	border-radius: 50%; */
+/* } */
 
-#form.invalid1 .indicator2
-{
-	background: #f00;
-	box-shadow: 0 0 5px #f00,
-				0 0 10px #f00,
-				0 0 20px #f00,
-				0 0 40px #f00;
-}
+/* #form.invalid1 .indicator2 */
+/* { */
+/* 	background: #f00; */
+/* 	box-shadow: 0 0 5px #f00, */
+/* 				0 0 10px #f00, */
+/* 				0 0 20px #f00, */
+/* 				0 0 40px #f00; */
+/* } */
 
-#form.valid1 .indicator2
-{
-	background: #0f0;
-	box-shadow: 0 0 5px #0f0,
-				0 0 10px #0f0,
-				0 0 20px #0f0,
-				0 0 40px #0f0;
-}
+/* #form.valid1 .indicator2 */
+/* { */
+/* 	background: #0f0; */
+/* 	box-shadow: 0 0 5px #0f0, */
+/* 				0 0 10px #0f0, */
+/* 				0 0 20px #0f0, */
+/* 				0 0 40px #0f0; */
+/* } */
 .forget
 {
 	top: 30px;
@@ -181,14 +188,15 @@
 					<div class="form-group mb-3 ml-10">
 						<label for="password">Password</label> 
 						<input type="password" name="password" class="form-control" id="pass" onkeyup="validate1();">
-						<span class="indicator2"></span>
+<!-- 						<span class="indicator2"></span> -->
+						<i class="eye far fa-eye" id="togglePassword"></i>
 					</div>
 					
-					<div class="form-check square-check mb-3 ml-10">
-						<input class="form-check-input" type="checkbox" value=""
-							id="remember"> <label class="form-check-label"
-							for="remember"> Remember me </label>
-					</div>
+<!-- 					<div class="form-check square-check mb-3 ml-10"> -->
+<!-- 						<input class="form-check-input" type="checkbox" value="" -->
+<!-- 							id="remember"> <label class="form-check-label" -->
+<!-- 							for="remember"> Remember me </label> -->
+<!-- 					</div> -->
 					
 					<div align="right" class="forget ml-10">
 				<h6> <a class="color small" id="forget" href="forget-pass.jsp">Forgotten Password?</a> </h6><br>
@@ -276,10 +284,16 @@
 // 						}
 // 				} 
 
-			
-			
-			
 // 		}
+	const togglePassword = document.querySelector('#togglePassword');
+	const password = document.querySelector('#pass');
+	togglePassword.addEventListener('click', function (e) {
+	    // toggle the type attribute
+	    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+	    password.setAttribute('type', type);
+	    // toggle the eye slash icon
+	    this.classList.toggle('fa-eye-slash');
+	});
 		
 		function validate(){
 				const form= document.getElementById('form');
@@ -329,17 +343,12 @@
 				
 				if(email.match(pattern) && pass.match(pattern1))
 					{
-						
-// 						window.location="/customer.jsp";
 						return true;
 					}
 				else{
 					return false;
-// 					window.location="/triallogin.jsp";
 				}
 			}
-			
-
 // 			$(window).on('load', function(){
 // 			  setTimeout(removeLoader, 2000); 
 // 			});

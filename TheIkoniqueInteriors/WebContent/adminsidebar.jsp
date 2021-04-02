@@ -33,7 +33,7 @@
 						<li class="has-sub"><a class="js-arrow" href="managefeedback.jsp"><i
 								class="fas"></i>Feedback</a>
 						</li>
-						<li class="has-sub"><a class="js-arrow" href="#"><i
+						<li class="has-sub"><a class="js-arrow" href="socialmediamanagement.jsp"><i
 								class="fas"></i>Social Media</a>
 						</li>
 					</ul>
