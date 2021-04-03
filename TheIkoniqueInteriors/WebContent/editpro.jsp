@@ -168,6 +168,66 @@
 	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
 }
 
+#form .indicator9 {
+	position: absolute;
+	top: 50px;
+	right: -150px;
+	width: 10px;
+	height: 10px;
+	background: #555;
+	border-radius: 50%;
+}
+
+#form.invalid9 .indicator9 {
+	background: #f00;
+	box-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00;
+}
+
+#form.valid9 .indicator9 {
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
+}
+
+#form .indicator10 {
+	position: absolute;
+	top: 50px;
+	right: -150px;
+	width: 10px;
+	height: 10px;
+	background: #555;
+	border-radius: 50%;
+}
+
+#form.invalid10 .indicator10 {
+	background: #f00;
+	box-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00;
+}
+
+#form.valid10 .indicator10 {
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
+}
+
+#form .indicator11 {
+	position: absolute;
+	top: 50px;
+	right: -150px;
+	width: 10px;
+	height: 10px;
+	background: #555;
+	border-radius: 50%;
+}
+
+#form.invalid11 .indicator11 {
+	background: #f00;
+	box-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00;
+}
+
+#form.valid11 .indicator11 {
+	background: #0f0;
+	box-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
+}
+
 .form-control1 {
 	font-size: 1rem;
 	border-radius: 0.55rem;
@@ -338,8 +398,34 @@ if (null != httpSession) {
 											 rows="5" autocomplete="off" name="address" onkeyup="validate5();"><%=user.getAddress()%></textarea>
 										<span class="indicator5"></span>
 									</div>
+									<%if(user.getRole_id()==2) {%>
+									
+									<div class="form-group mb-4 margin1">
+										<label for="validationServerUsername">About Me</label>
+										<textarea class="form-control1" id="aboutme"
+											 rows="5" autocomplete="off" name="aboutme" onkeyup="validate9();"><%=user.getAboutme() %></textarea>
+										<span class="indicator9"></span>
+									</div>
+									
+									
+									
+									<div class="form-group mb-4 margin1">
+										<label for="validationServerUsername">Designation</label> <input
+											type="text" class="form-control1" id="designation"
+											 value="<%=user.getDesignation()%>"
+											autocomplete="off" name="designation" onkeyup="validate10();"> <span class="indicator10"></span>
+									</div>
+									
+									<div class="form-group mb-4 margin1">
+										<label for="validationServerUsername">Visiting Fees</label> <input
+											type="text" class="form-control1" id="vfees"
+											 value="<%=user.getVisitingfees()%>"
+											autocomplete="off" name="vfees" onkeyup="validate11();"> <span class="indicator11"></span>
+									</div>
+									<%} %>
 									<div class="dropdown">
 										<div class="form-group ml-6" style="width: 530px">
+											<label for="validationServerUsername">Area</label>
 											<select class="form-control" name="area" id="area" onchange="validate7()">
 											<option value="0" ></option>
 												<%
@@ -586,6 +672,60 @@ function validate8() {    //product image
 			form.classList.add('valid7')
         }
 }
+
+function validate9() {
+	const form = document.getElementById('form');
+	const aboutme = document.getElementById('aboutme').value;
+	
+
+	if (aboutme !=" ") {
+		form.classList.add('valid9')
+		form.classList.remove('invalid9')
+	} else {
+		form.classList.add('invalid9')
+		form.classList.remove('valid9')
+	}
+	if (aboutme == "") {
+		form.classList.add('invalid9')
+		form.classList.remove('valid9')
+	}
+}
+ 
+function validate10() {
+	const form = document.getElementById('form');
+	const designation = document.getElementById('designation').value;
+	
+
+	if (designation !=" ") {
+		form.classList.add('valid10')
+		form.classList.remove('invalid10')
+	} else {
+		form.classList.add('invalid10')
+		form.classList.remove('valid9')
+	}
+	if (designation == "") {
+		form.classList.add('invalid10')
+		form.classList.remove('valid10')
+	}
+}
+
+function validate11() {
+	const form = document.getElementById('form');
+	const vfees = document.getElementById('vfees').value;
+	
+
+	if (vfees !=" ") {
+		form.classList.add('valid11')
+		form.classList.remove('invalid11')
+	} else {
+		form.classList.add('invalid11')
+		form.classList.remove('valid11')
+	}
+	if (vfees == "") {
+		form.classList.add('invalid11')
+		form.classList.remove('valid11')
+	}
+}
  
 function login(){
 	const form = document.getElementById('form');
@@ -595,12 +735,15 @@ function login(){
 	const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
 	const area = document.getElementById('area').value;
 	const address = document.getElementById('address').value;
+	const aboutme = document.getElementById('aboutme').value;
+	const designation = document.getElementById('designation').value;
+	const vfees = document.getElementById('vfees').value;
 	const cno = document.getElementById('cno').value;
 	const pattern1 = /(7|8|9)\d{9}/
 	var e=document.getElementById('area');
 	var value=e.options[e.selectedIndex].value;
 		
-	if(fname!="" && lname!="" && email.match(pattern) && value!='0' && address!="" && cno.match(pattern1)){
+	if(fname!="" && lname!="" && email.match(pattern) && value!='0' && address!=""  && aboutme!=""  && designation!="" && vfees!="" && cno.match(pattern1)){
 		return true;
 	}
 	else{

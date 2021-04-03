@@ -43,7 +43,8 @@ public class LoginServlet extends HttpServlet {
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		User user = u1.getUser(email,password);
-		/* System.out.println(user.getUser_id()); */
+		
+		
 		
 		
 		if(user!=null) {
@@ -59,7 +60,7 @@ public class LoginServlet extends HttpServlet {
 			{
 				HttpSession httpSession = request.getSession();
 				httpSession.setAttribute("loginBean", user);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("#");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("interiordesigner.jsp");
 				dispatcher.forward(request, response);
 			}
 			else

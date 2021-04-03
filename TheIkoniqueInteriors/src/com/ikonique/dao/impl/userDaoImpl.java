@@ -173,6 +173,9 @@ public class userDaoImpl implements userDao {
 					user.setLastname(resultSet.getString("c_last_name"));
 					user.setPassword(resultSet.getString("c_password"));
 					user.setAddress(resultSet.getString("c_address"));
+					user.setAboutme(resultSet.getString("c_about_description"));
+					user.setDesignation(resultSet.getString("c_designation"));
+					user.setVisitingfees(resultSet.getString("i_visiting_fess"));
 					user.setMobileno(resultSet.getString("c_contact_no"));
 					user.setEmail(resultSet.getString("c_email"));
 					user.setArea_id(resultSet.getInt("i_area_id"));
@@ -218,6 +221,63 @@ public class userDaoImpl implements userDao {
 
 	@Override
 	public int modifyUserDetails(User user, Connection connection) {
+		
+		if(user.getRole_id()==2) {
+			
+			String updateQuery = "update user set c_first_name=?,c_last_name=?,c_address=?,c_contact_no=?,c_email=?,c_gender=?,i_area_id=?,c_about_description=?,i_visiting_fess=?,c_designation=?, b_image=? where i_user_id=?";
+			String updateQuery2 = "update user set c_first_name=?,c_last_name=?,c_address=?,c_contact_no=?,c_email=?,c_gender=?,i_area_id=?,c_about_description=?,i_visiting_fess=?,c_designation=? where i_user_id=?";
+			if(user.getUserProfilepicStream()!=null)
+			{
+				try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+					preparedStatement.setString(1, user.getFirstname());
+					preparedStatement.setString(2, user.getLastname());
+					preparedStatement.setString(3, user.getAddress());
+					preparedStatement.setString(4, user.getMobileno());
+					preparedStatement.setString(5, user.getEmail());
+					preparedStatement.setString(6, user.getGender());
+					preparedStatement.setInt(7, user.getArea_id());
+					preparedStatement.setString(8, user.getAboutme());
+					preparedStatement.setString(9, user.getVisitingfees());
+					preparedStatement.setString(10, user.getDesignation());
+					preparedStatement.setBlob(11, user.getUserProfilepicStream());
+					preparedStatement.setInt(12, user.getUser_id());
+
+					return preparedStatement.executeUpdate();
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			else
+			{
+				try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery2)) {
+					preparedStatement.setString(1, user.getFirstname());
+					preparedStatement.setString(2, user.getLastname());
+					preparedStatement.setString(3, user.getAddress());
+					preparedStatement.setString(4, user.getMobileno());
+					preparedStatement.setString(5, user.getEmail());
+					preparedStatement.setString(6, user.getGender());
+					preparedStatement.setInt(7, user.getArea_id());
+					preparedStatement.setString(8, user.getAboutme());
+					preparedStatement.setString(9, user.getVisitingfees());
+					preparedStatement.setString(10, user.getDesignation());
+					preparedStatement.setInt(11, user.getUser_id());
+
+					return preparedStatement.executeUpdate();
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+
+			return 0;
+
+			
+		}else {
+		
 		String updateQuery = "update user set c_first_name=?,c_last_name=?,c_address=?,c_contact_no=?,c_email=?,c_gender=?,i_area_id=?,b_image=? where i_user_id=?";
 		String updateQuery2 = "update user set c_first_name=?,c_last_name=?,c_address=?,c_contact_no=?,c_email=?,c_gender=?,i_area_id=? where i_user_id=?";
 		if(user.getUserProfilepicStream()!=null)
@@ -262,6 +322,7 @@ public class userDaoImpl implements userDao {
 		
 
 		return 0;
+		}
 	}
 
 	@Override
@@ -1172,6 +1233,9 @@ public class userDaoImpl implements userDao {
 				user.setFirstname(resultSet.getString("c_first_name"));
 				user.setLastname(resultSet.getString("c_last_name"));
 				user.setAddress(resultSet.getString("c_address"));
+				user.setAboutme(resultSet.getString("c_about_description"));
+				user.setDesignation(resultSet.getString("c_designation"));
+				user.setVisitingfees(resultSet.getString("i_visiting_fess"));
 				user.setMobileno(resultSet.getString("c_contact_no"));
 				user.setEmail(resultSet.getString("c_email"));
 				user.setGender(resultSet.getString("c_gender"));

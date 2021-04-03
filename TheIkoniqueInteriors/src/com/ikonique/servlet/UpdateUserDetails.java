@@ -52,6 +52,9 @@ public class UpdateUserDetails extends HttpServlet {
 		String lname=request.getParameter("lname");
 		String email=request.getParameter("email");
 		String address=request.getParameter("address");
+		String aboutme=request.getParameter("aboutme");
+		String designation=request.getParameter("designation");
+		String vfees=request.getParameter("vfees");
 		String contactno=request.getParameter("contactno");
 		String exampleRadios = request.getParameter("exampleRadios");
 		String photo=request.getParameter("photo");
@@ -74,6 +77,9 @@ public class UpdateUserDetails extends HttpServlet {
 		user.setLastname(lname);
 		user.setEmail(email);
 		user.setAddress(address);
+		user.setAboutme(aboutme);
+		user.setDesignation(designation);
+		user.setVisitingfees(vfees);
 		user.setMobileno(contactno);
 		user.setArea_id(areaId);
 		user.setGender(exampleRadios);
@@ -101,7 +107,7 @@ public class UpdateUserDetails extends HttpServlet {
 		{
 			HttpSession httpSession = request.getSession(false);
 			httpSession.setAttribute("loginBean", user1);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("interiordesigner.jsp");
 			dispatcher.forward(request, response);
 		}
 		else
