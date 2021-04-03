@@ -179,27 +179,19 @@
 								<div class="modal-dialog modal-dialog-centered" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
-											<h2 class="h6 modal-title mb-0" id="modal-title-default">Terms
-												of Service</h2>
+											<h2 class="h6 modal-title mb-0" id="modal-title-default">The Ikonique Interiors</h2>
 											<button type="button" class="close" data-dismiss="modal"
 												aria-label="Close">
 <!-- 												<span aria-hidden="true">Ã</span> -->
 											</button>
 										</div>
 										<div class="modal-body">
-											<p>Register Failed!!!!!!!!</p>
-											<p>The European Unionâs General Data Protection
-												Regulation (G.D.P.R.) goes into effect on May 25 and is
-												meant to ensure a common set of data rights in the European
-												Union. It requires organizations to notify users as soon as
-												possible of high-risk data breaches that could personally
-												affect them.</p>
+											<p><h4><b>Error : Your Registration Is Failed!!</b></h4></p>
+											<p><h5>Check Your Fill Data...</h5></p>
+											<p><h5>Something Went Wrong Try Again...</h5></p>
 										</div>
 										<div class="modal-footer">
-											<button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Ok</button>
-<!-- 											<button type="button" -->
-<!-- 												class="btn btn-primary text-danger ml-auto" -->
-<!-- 												data-dismiss="modal">Close</button> -->
+											<button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">OK</button>
 										</div>
 									</div>
 								</div>
@@ -209,21 +201,16 @@
 								<div class="modal-dialog modal-dialog-centered" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
-											<h2 class="h6 modal-title mb-0" id="modal-title-default">Terms
-												of Service</h2>
+											<h2 class="h6 modal-title mb-0" id="modal-title-default">The Ikonique Interiors</h2>
 											<button type="button" class="close" data-dismiss="modal"
 												aria-label="Close">
 <!-- 												<span aria-hidden="true">Ã</span> -->
 											</button>
 										</div>
 										<div class="modal-body">
-											<p>Register Succefully!!!!!!!!</p>
-											<p>The European Unionâs General Data Protection
-												Regulation (G.D.P.R.) goes into effect on May 25 and is
-												meant to ensure a common set of data rights in the European
-												Union. It requires organizations to notify users as soon as
-												possible of high-risk data breaches that could personally
-												affect them.</p>
+											<p><h4><b>Your Registration Is successful!!</b></h4></p>
+											<p><h5>Now You Can Login Into The WebSite..</h5></p>
+											<p><h5>Enjoy Your Shopping....</h5></p>
 										</div>
 										<div class="modal-footer">
 											<a href="login.jsp" type="button"
@@ -362,7 +349,6 @@ $(document).ready(function(){
 			const emailpattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
 			const passpattern = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
 			const mnopattern = /(7|8|9)\d{9}/
-			alert("area value:-"+areavalue);
   			if(fname == null || fname == "" && lname == null || lname == "" && add == null 
  				|| add == "" && mno == null || mno == ""  && email == null 
  				|| email == ""  && pass == null || pass == ""  

@@ -29,12 +29,22 @@ if(null!=httpSession)
 <%List <Integer> wishlistint =(List)request.getAttribute("wishlistint"); %>  --%>
 
 <title>Products</title>
-<body>
+<style>
+input.search-input
+{
+			width: 300px;
+            margin-left: 850px;
+            background-color: #e6e7ee;
+            float: 150;
+           
+}
+</style>
+<body style="background-color: #e6e7ee;">
 <%@include file="customersidebar.jsp"%>
 <%@include file="customerheader.jsp"%>
 <div class="page-wrapper">
 <div class="page-container">
-<div class="main-content">
+<div class="main-content" style="background-color: #e6e7ee;">
 		<div class="row ml-4">
 			<div class="col-xl-12">
 				<div class="section-title">
@@ -46,14 +56,17 @@ if(null!=httpSession)
 					<%} %>
 				<%} %>
 				</div>
+				
+				<input type="text" id="mySearch" placeholder="Search Products..." class="form-control search-input">
+				<br>
 			</div>
 		</div>
 		<section style="background-color: #e6e7ee;">
-		<div class="row" style="margin-left:10px; margin-right:10px;">
+		<div class="row" style="margin-left:10px; margin-right:10px;" id="result">
 		<%for(Product product : productlist) {%>
 			<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
 				<div class="single-product">
-					<div class="product-thumb">
+					<div class="product-thumb" id="show">
 						<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>">
 <%-- 						 <input type="text" name="pid" id="pid" value="<%=product.getProduct_id() %>"> --%>
 						 <img src="data:image/jpg;base64,<%=product.getProductpicString() %>" alt="">
@@ -61,13 +74,13 @@ if(null!=httpSession)
 					</div>
 					<div class="product-title">
 						<h3>
-							<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>"><%=product.getProduct_name() %></a>
+							 <a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>"><%=product.getProduct_name() %></a>
 						</h3>
 					</div>
 					<div class="product-btns">
 						<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>" class="btn-small mr-2"><%=product.getProduct_price() %></a> 
 						<a class="btn-round mr-2"><i att="0" class="fa fa-shopping-cart" style="color: black"></i></a> 
-						  <a class="btn-round"><i id="<%=product.getProduct_id() %>"  class="fa fa-heart" ></i></a>
+						<a class="btn-round"><i id="<%=product.getProduct_id() %>"  class="fa fa-heart" ></i></a>
 					
 						
 						<%--  <%if(null!=wishlistint && !wishlistint.isEmpty()) {%>
@@ -90,8 +103,8 @@ if(null!=httpSession)
 			</div>
 			<%} %>
 		</div>
-	
 </section>
+</table>
 </div>
 </div>
 </div>
@@ -138,46 +151,29 @@ $('.fa-shopping-cart').click(function(){
         $(this).attr('att',0);
     }
 });
- 
- (function(document) {
-     'use strict';
+ $("#mySearch").keyup(function() {
 
-     var TableFilter = (function(myArray) {
-         var search_input;
+     // Retrieve the input field text and reset the count to zero
+     var filter = $(this).val(),
+       count = 0;
 
-         function _onInputSearch(e) {
-             search_input = e.target;
-             var tables = document.getElementsByClassName(search_input.getAttribute('data-table'));
-             myArray.forEach.call(tables, function(table) {
-                 myArray.forEach.call(table.tBodies, function(tbody) {
-                     myArray.forEach.call(tbody.rows, function(row) {
-                         var text_content = row.textContent.toLowerCase();
-                         var search_val = search_input.value.toLowerCase();
-                         row.style.display = text_content.indexOf(search_val) > -1 ? '' : 'none';
-                     });
-                 });
-             });
-         }
+     // Loop through the comment list
+     $('#result div').each(function() {
 
-         return {
-             init: function() {
-                 var inputs = document.getElementsByClassName('search-input');
-                 myArray.forEach.call(inputs, function(input) {
-                     input.oninput = _onInputSearch;
-                 });
-             }
-         };
-     })(Array.prototype);
 
-     document.addEventListener('readystatechange', function() {
-         if (document.readyState === 'complete') {
-             TableFilter.init();
-         }
+       // If the list item does not contain the text phrase fade it out
+       if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+         $(this).hide();  // MY CHANGE
+
+         // Show the list item if the phrase matches and increase the count by 1
+       } else {
+         $(this).show(); // MY CHANGE
+         count++;
+       }
+
      });
 
- })(document);
- 
-
+   });
  
 </script>
 </body>
