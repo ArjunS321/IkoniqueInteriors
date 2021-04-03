@@ -13,7 +13,7 @@ Ikonique Interiors and Design
   src: url("https://fonts.shopifycdn.com/itc_avant_garde_gothic/itcavantgardegothic_n7.e4cdcda7001c6328cfe571734c25261390a886d4.woff2?h1=a3VjaGJoaWRlc2kuY29t&hmac=6fca022e4ea3037e266be85647aaa14943fc9246d1c55d323a80e8313521b79f") format("woff2"),
        url("https://fonts.shopifycdn.com/itc_avant_garde_gothic/itcavantgardegothic_n7.92961a6809350e21152cba06e9fa88f81a23d481.woff?h1=a3VjaGJoaWRlc2kuY29t&hmac=61f54fbd510f766835fbb4cd996f68ac96b711fc4013f7f8b9fddae8e04acf2b") format("woff");
 }
-
+ 
   @font-face {
   font-family: Futura;
   font-weight: 400;
