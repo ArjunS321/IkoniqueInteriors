@@ -102,6 +102,10 @@ textarea {
 <link rel="stylesheet" href="css1/product.css">
 <!-- Pixel CSS -->
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
+
+<%
+	User user = (User) request.getAttribute("user");
+%>
 </head>
 <body style="background-color: #e6e7ee">
 	<%@include file="customersidebar.jsp"%>
@@ -113,12 +117,19 @@ textarea {
 			<div class="card-body shadow-soft border border-light rounded p-4">
 				<i class="fas fa-badge-check"></i> 
 				<div class="card shadow-inset border-light p-3" style="margin-right:710px; background-color: lightgrey;">
-					<img class="rounded" src="bg-img/Blank-Photo.png" alt="" height="400px" width="300px" >
+					
+					<%if(user.getUserProfilepicString()!=null) {%>
+									<img src="data:image/jpg;base64,<%=user.getUserProfilepicString() %>" height="400px" width="300px" 
+										class="rounded" >
+									<%}else{ %>
+										<img src="bg-img/Blank-Photo.png" height="400px" width="300px" class="rounded" >
+									<% }%>
+					
 				</div>
 				<div align="center" style="margin-top:-20rem;">
 					<h3 class="">Hello,</h3>
-					<h1 class="ml-10 display-3">I'M Name</h1>
-					<h4 class="ml-10">Designation</h4>
+					<h1 class="ml-10 display-3">I'M <%=user.getFirstname() %> <%=user.getLastname() %></h1>
+					<h4 class="ml-10"><%=user.getDesignation() %></h4>
 				</div>
 				<br><br><br><br><br><br><br>
 				<div class="ml-6">
@@ -126,7 +137,7 @@ textarea {
                  </div>
 				<div class="ml-7 mb-5">
                          <h4 align="center" class="mb-3 mr-7">About Me</h4>
-                         <textarea readonly style="background-color: #e6e7ee; resize: none;" class="form-control1" name="desc" id="desc" rows="10" cols="95"></textarea>
+                         <textarea readonly style="background-color: #e6e7ee; resize: none;" class="form-control1" name="desc" id="desc" rows="10" cols="95"><%=user.getAboutme() %></textarea>
                  </div>
                  <br>
                  <h4 align="center" class="mb-3">Services</h4>

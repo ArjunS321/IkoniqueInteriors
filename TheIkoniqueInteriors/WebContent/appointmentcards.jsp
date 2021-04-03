@@ -40,7 +40,7 @@
 						%>
 						<section>
 							<div class="container">
-								<a href="interiordesignerdetails.jsp">
+								<a href="SelectDesigner?designerid=<%=user1.getUser_id() %> ">
 									<div class="card" style="height: 300px;">
 										<div class="imgBx">
 											<%

@@ -1345,8 +1345,55 @@ public class userDaoImpl implements userDao {
 
 	}
 
+	@Override
+	public User fetchDesigner(Connection connection, int designerid) {
+		String selectQuery = "select * from user where i_user_id = ?";
+		
+		
+		try(PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)){
+			preparedStatement.setInt(1, designerid);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				Integer id = resultSet.getInt("i_user_id");
+				String fname = resultSet.getString("c_first_name");
+				String lname = resultSet.getString("c_last_name");
+				String address = resultSet.getString("c_address");
+				String phoneno = resultSet.getString("c_contact_no");
+				String email = resultSet.getString("c_email");
+				String password = resultSet.getString("c_password");
+				String gender = resultSet.getString("c_gender");
+				//Integer role = resultSet.getInt("i_role_id");
+				Integer areaid = resultSet.getInt("i_area_id");
+				//Integer status = resultSet.getInt("i_status");
+				String visitingfess = resultSet.getString("i_visiting_fess");
+				String designation = resultSet.getString("c_designation");
+				String aboutme = resultSet.getString("c_about_description");
+				
+				User user = new User();
+				user.setUser_id(id);
+				user.setFirstname(fname);
+				user.setLastname(lname);
+				user.setAddress(address);
+				user.setMobileno(phoneno);
+				user.setEmail(email);
+				user.setPassword(password);
+				user.setGender(gender);
+				user.setArea_id(areaid);
+				user.setVisitingfees(visitingfess);	
+				user.setDesignation(designation);	
+				user.setAboutme(aboutme);	
+				
+				return user;
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();		
+		}
+		return null;
 }
-
+}
 	
 
 

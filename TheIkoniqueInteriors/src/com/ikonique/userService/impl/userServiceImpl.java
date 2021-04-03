@@ -463,6 +463,12 @@ public class userServiceImpl {
 		return  userDao.fetchProduct(connection,id);
 		
 	}
+
+	public User getDesigner(int designerid) {
+		User user =new User();
+		user = userDao.fetchDesigner(connection,designerid);
+		return user;
+	}
 }
 		
 
