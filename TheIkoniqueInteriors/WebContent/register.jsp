@@ -113,9 +113,9 @@
 						</div> -->
 						<div class="form-group mb-3 ml-10 inputBox vfees">
 							<label for="visitingfees">Visiting Fees</label> <input
-								type="number" name="vfees1" class="form-control" id="vfees"
+								type="text" name="vfees1" class="form-control" id="vfees"
 								autocomplete="off" aria-describedby="emailHelp"
-								onkeyup="validate8();"> <span id="vfees2"
+								onkeyup="validate8();" onkeypress="return onlyNumberKey(event)"> <span id="vfees2"
 								class="indicator10"></span>
 						</div>
 
@@ -125,7 +125,7 @@
 							<label for="mobilenumber">Mobile Number</label> <input
 								type="text" name="mno" class="form-control" id="mno"
 								autocomplete="off" aria-describedby="emailHelp"
-								onkeyup="validate5();" maxLength="10"> <span class="indicator6"></span>
+								onkeyup="validate5();" maxLength="10" onkeypress="return onlyNumberKey(event)"> <span class="indicator6"></span>
 						</div>
 						<div class="form-group mb-3 ml-10 inputBox">
 							Gender<br>
@@ -260,7 +260,14 @@
 	</div>
 
 	<script>
-		
+	function onlyNumberKey(evt) {
+        
+        // Only ASCII charactar in that range allowed
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+            return false;
+        return true;
+    }
 $(document).ready(function(){
 
 //     $('#form').on('submit', function() {

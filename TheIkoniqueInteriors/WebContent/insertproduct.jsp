@@ -479,26 +479,26 @@
 			<div class="form-group mb-3 ml-10 inputBox">
 				<label for="offerdiscount">Offer Discount</label> <input type="text"
 					name="offerdiscount" class="form-control" id="offerdiscount" autocomplete="off"
-					aria-describedby="emailHelp" onkeyup="validate13();" maxLength="5"> <span
-					class="indicator13"></span>
+					aria-describedby="emailHelp" onkeyup="validate13();" maxLength="5"onkeypress="return onlyNumberKey(event)"> <span
+					class="indicator13" ></span>
 			</div>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox pprice">
 			<label for="pprice">Product Price</label> <input type="text"
 				name="pprice" class="form-control" id="pprice" autocomplete="off"
-				aria-describedby="emailHelp" onkeyup="validate2();" maxLength="5"> <span
+				aria-describedby="emailHelp" onkeyup="validate2();" maxLength="5" onkeypress="return onlyNumberKey(event)"> <span
 				class="indicator2"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox pquentity">
 			<label for="pquentity">Product Quantity</label> <input type="text"
 				name="pquentity" class="form-control" id="pquentity"
 				autocomplete="off" aria-describedby="emailHelp"
-				onkeyup="validate3();"  maxLength="4"> <span class="indicator3"></span>
+				onkeyup="validate3();"  maxLength="4" onkeypress="return onlyNumberKey(event)"> <span class="indicator3"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox pweight">
 			<label for="pweight">Product Weight</label> <input type="text"
 				name="pweight" class="form-control" id="pweight" autocomplete="off"
-				aria-describedby="emailHelp" onkeyup="validate4();" maxLength="6"> <span
+				aria-describedby="emailHelp" onkeyup="validate4();" maxLength="6"  onkeypress="return onlyNumberKey(event)"> <span
 				class="indicator4"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox pdesc">
@@ -607,6 +607,14 @@
 	<%@include file="commonjs.jsp"%>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script>
+function onlyNumberKey(evt) {
+        
+        // Only ASCII charactar in that range allowed
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57) && ASCIICode != 46)
+            return false;
+        return true;
+    }
 // 	$(document).on('submit', '[id=form]', function (e) {
 // 		  e.preventDefault();
 

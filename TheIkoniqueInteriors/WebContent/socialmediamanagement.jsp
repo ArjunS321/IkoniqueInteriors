@@ -45,7 +45,7 @@
 								<div class="card-body text-center py-5">
 									<div
 										class="btn-instagram1 icon icon-shape shadow-inset border-light rounded-circle mb-3">
-										<span class="fab fa-instagram"></span>
+										<span onclick="window.location='https://instagram.com/meet_suthar_98?igshid=1866cp7e8v5wd'" class="fab fa-instagram"></span>
 									</div>
 									<!-- Heading -->
 									<h2 class="h4 mr-2">Instagram</h2>
@@ -58,7 +58,7 @@
 								<div class="card-body text-center py-5">
 									<div
 										class="btn-facebook icon icon-shape shadow-inset border-light rounded-circle mb-3">
-										<span class="fab fa-facebook"></span>
+										<span onclick="window.location='https://www.facebook.com/profile.php?id=100013277928212'" class="fab fa-facebook"></span>
 									</div>
 									<!-- Heading -->
 									<h2 class="h4 mr-2">FaceBook</h2>
@@ -71,7 +71,7 @@
 								<div class="card-body text-center py-5">
 									<div
 										class="btn-twitter icon icon-shape shadow-inset border-light rounded-circle mb-3">
-										<span class="fab fa-twitter"></span>
+										<span onclick="window.location='https://twitter.com/Solanki31415767?s=08'" class="fab fa-twitter"></span>
 									</div>
 									<!-- Heading -->
 									<h2 class="h4 mr-2">Twitter</h2>

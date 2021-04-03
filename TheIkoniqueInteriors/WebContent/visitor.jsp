@@ -15,7 +15,7 @@
 		<div class="page-container">
 		<%@include file="visitorsidebar.jsp"%>
 		<%@include file="visitorheader.jsp"%>
-			<%@include file="product.jsp"%>
+<%-- 			<%@include file="product.jsp"%> --%>
 		</div>
 	</div>
 	<%@include file="commonjs.jsp"%>
