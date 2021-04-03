@@ -1,6 +1,7 @@
 package com.ikonique.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,12 +34,11 @@ public class SelectParticularProduct extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		int id=Integer.parseInt(request.getParameter("subcategoryid"));
 		System.out.println(id);
-		Product product=null;
-		product=us.selectProductDetail(id);
+		List<Product> productlist=us.selectProductDetail(id);
 		
-		System.out.println(product.getProduct_name());
-		request.setAttribute("product", product);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("");
+		
+		request.setAttribute("productlist", productlist);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("commonproduct.jsp");
 		dispatcher.forward(request, response);
 		
 	}

@@ -98,7 +98,7 @@ public interface userDao {
 
 	public int removeIntoFeedback(int feedbackid, Connection connection);
 
-	public Product fetchProduct(Connection connection, int id);
+	public List<Product> fetchProduct(Connection connection, int id);
 	
 	
 

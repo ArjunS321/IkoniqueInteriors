@@ -458,10 +458,10 @@ public class userServiceImpl {
 		return msg;
 	}
 
-	public Product selectProductDetail(int id) {
-		Product product =new Product();
-		product = userDao.fetchProduct(connection,id);
-		return product;
+	public List<Product> selectProductDetail(int id) {
+		
+		return  userDao.fetchProduct(connection,id);
+		
 	}
 }
 		

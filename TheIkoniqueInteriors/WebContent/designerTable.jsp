@@ -44,9 +44,11 @@
 					<th>Contact No<i class="fa fa-fw fa-sort" onclick="sortTable(5)"></i></th>
 					<th>Gender<i class="fa fa-fw fa-sort" onclick="sortTable(6)"></i></th>
 					<th>Visiting Fees<i class="fa fa-fw fa-sort" onclick="sortTable(7)"></i></th>
-					<th>Email-Id<i class="fa fa-fw fa-sort" onclick="sortTable(8)"></i></th>
-					<th>Status<i class="fa fa-fw fa-sort" onclick="sortTable(9)"></i></th>
-					<th>User image<i class="fa fa-fw fa-sort" onclick="sortTable(10)"></i></th>
+					<th>Designation<i class="fa fa-fw fa-sort" onclick="sortTable(8)"></i></th>
+					<th>About Me<i class="fa fa-fw fa-sort" onclick="sortTable(9)"></i></th>
+					<th>Email-Id<i class="fa fa-fw fa-sort" onclick="sortTable(10)"></i></th>
+					<th>Status<i class="fa fa-fw fa-sort" onclick="sortTable(11)"></i></th>
+					<th>User image<i class="fa fa-fw fa-sort" onclick="sortTable(12)"></i></th>
 					<th>Edit</th>
                     <th>Delete</th>
 				</tr>
@@ -62,6 +64,8 @@
                     <td><%=user1.getMobileno() %></td>
                     <td><%=user1.getGender() %></td>
                     <td><%=user1.getVisitingfees() %></td>
+                    <td><%=user1.getDesignation() %></td>
+                    <td><%=user1.getAboutme() %></td>
                     <td><%=user1.getEmail() %></td>
                     <td><%=user1.getPassword() %></td>
                     <td>

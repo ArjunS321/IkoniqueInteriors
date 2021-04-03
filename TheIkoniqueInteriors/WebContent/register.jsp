@@ -118,8 +118,22 @@
 								onkeyup="validate8();" onkeypress="return onlyNumberKey(event)"> <span id="vfees2"
 								class="indicator10"></span>
 						</div>
-
-
+						<div class="form-group mb-3 ml-10 inputBox designation">
+							<label for="designation">Designation</label> <input
+								type="text" name="designation" class="form-control" id="designation"
+								autocomplete="off" aria-describedby="emailHelp"
+								onkeyup="validate9();"> <span id="designation2"
+								class="indicator11"></span>
+						</div>
+						
+						<div class="form-group mb-3 ml-10 inputBox aboutme" >
+							<label for="aboutme">About YourSelf</label>
+							<textarea rows="5" name="aboutme" class="form-control" id="aboutme"
+								autocomplete="off" aria-describedby="emailHelp"
+								onkeyup="validate10();"></textarea>
+							<span class="indicator12"></span>
+						</div>
+						
 
 						<div class="form-group mb-3 ml-10 inputBox">
 							<label for="mobilenumber">Mobile Number</label> <input
@@ -148,7 +162,7 @@
 						<div class="form-group mb-3 ml-10">
 							<label for="password">Password</label> <input type="password"
 								name="password" class="form-control" id="pass"
-								onkeyup="validate1();"> <span class="indicator2"></span>
+								onkeyup="validate1();" maxLength="8"> <span class="indicator2"></span>
 							<h6 class="small">
 								* Password Must Contain 8-20 Character<br>* Password must
 								Contain Atleast one: <br>Special Character(@#$&!)<br>Number[0-9]<br>An
@@ -342,6 +356,8 @@ $(document).ready(function(){
   		  	var email = document.getElementById('email').value;
   		 	var pass = document.getElementById('pass').value;
   			var vfees = document.getElementById('vfees').value;
+  			var designation=document.getElementById('designation').value;
+  			var aboutme=document.getElementById('aboutme').value;
 			var areavalue = $('#area :selected').text();
 			const emailpattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
 			const passpattern = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
@@ -350,7 +366,8 @@ $(document).ready(function(){
   			if(fname == null || fname == "" && lname == null || lname == "" && add == null 
  				|| add == "" && mno == null || mno == ""  && email == null 
  				|| email == ""  && pass == null || pass == ""  
- 				&& vfees == null || vfees == "" && areavalue == null || areavalue == "")
+ 				&& vfees == null || vfees == "" && areavalue == null || areavalue == ""
+ 				&& designation=="" || designation== null && aboutme==null || aboutme=="")
   			{
   					//alert("if....");
   	 				$('#modal').modal('hide');
@@ -496,26 +513,46 @@ $(document).ready(function(){
 			
 		}
 
-		/* function validate7() {
+		 function validate9() {
 			
 		
 			const form = document.getElementById('form');
-			const pin = document.getElementById('pin').value;
-			const pattern = "^[1-9]{1}[0-9]{2}[0-9]{3}$";
+			const designation = document.getElementById('designation').value;
+			
 
-			if (pin.match(pattern) && pin.length == 6) {
-				form.classList.add('valid7')
-				form.classList.remove('invalid7')
+			if (designation!="") {
+				form.classList.add('valid11')
+				form.classList.remove('invalid11')
 			} else {
-				form.classList.add('invalid7')
-				form.classList.remove('valid7')
+				form.classList.add('invalid11')
+				form.classList.remove('valid11')
 			}
-			if (pin == "") {
-				form.classList.remove('invalid7')
-				form.classList.remove('valid7')
+			if (designation == "") {
+				form.classList.add('invalid11')
+				form.classList.remove('valid11')
 			}
 		}
- */
+		 
+		 function validate10() {
+				
+				
+				const form = document.getElementById('form');
+				const aboutme = document.getElementById('aboutme').value;
+				
+
+				if (aboutme!="") {
+					form.classList.add('valid12')
+					form.classList.remove('invalid12')
+				} else {
+					form.classList.add('invalid12')
+					form.classList.remove('valid12')
+				}
+				if (aboutme == "") {
+					form.classList.add('invalid12')
+					form.classList.remove('valid12')
+				}
+			}
+ 
 		function validate8() {
 			const form = document.getElementById('form');
 			const vfees = document.getElementById('vfees').value;
@@ -538,8 +575,12 @@ $(document).ready(function(){
 
 			if ($(this).val() == "option21") {
 				$(".vfees").show();
+				$(".designation").show();
+				$(".aboutme").show();
 			} else {
 				$(".vfees").hide();
+				$(".designation").hide();
+				$(".aboutme").hide();
 				/* $("#fname").value=""; 
 				$("#lname").value=""; 
 				$("#add").value=''; 
@@ -563,6 +604,7 @@ $(document).ready(function(){
 				document.getElementById("area").value = "";
 				document.getElementById("pass").value = "";
 				document.getElementById("vfees").value = "0";
+				document.getElementById("designation").value = "";
 
 				form.classList.remove('invalid1')
 				form.classList.remove('valid1')
@@ -588,6 +630,13 @@ $(document).ready(function(){
 				form.classList.remove('invalid8')
 				form.classList.remove('valid8')
 
+				form.classList.remove('invalid11')
+				form.classList.remove('valid11')
+				
+				form.classList.remove('invalid12')
+				form.classList.remove('valid12')
+				
+				
 				form.classList.remove('invalid')
 				form.classList.remove('valid')
 

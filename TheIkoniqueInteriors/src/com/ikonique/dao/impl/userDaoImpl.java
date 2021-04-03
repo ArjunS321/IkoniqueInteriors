@@ -74,7 +74,7 @@ public class userDaoImpl implements userDao {
 	public int insertDesignerDetails(User user, Connection connection) {
 
 		int i = 0, insertedUserId = 0;
-		String insertQuery = "insert into user (c_first_name,c_last_name,c_address,c_contact_no,c_email,c_password,c_gender,i_role_id,i_visiting_fess,i_area_id) values (?,?,?,?,?,?,?,?,?,?)";
+		String insertQuery = "insert into user (c_first_name,c_last_name,c_address,c_contact_no,c_email,c_password,c_gender,i_role_id,i_visiting_fess,c_about_description,c_designation,i_area_id) values (?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -93,7 +93,9 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setString(7, user.getGender());
 			preparedStatement.setInt(8, 2);
 			preparedStatement.setString(9, user.getVisitingfees());
-			preparedStatement.setInt(10, user.getArea_id());
+			preparedStatement.setString(10, user.getAboutme());
+			preparedStatement.setString(11, user.getDesignation());
+			preparedStatement.setInt(12, user.getArea_id());
 
 			i = preparedStatement.executeUpdate();
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -405,6 +407,8 @@ public class userDaoImpl implements userDao {
 				Integer areaid = resultSet.getInt("i_area_id");
 				//Integer status = resultSet.getInt("i_status");
 				String visitingfess = resultSet.getString("i_visiting_fess");
+				String designation = resultSet.getString("c_designation");
+				String aboutme = resultSet.getString("c_about_description");
 				
 				User user = new User();
 				user.setUser_id(id);
@@ -417,6 +421,8 @@ public class userDaoImpl implements userDao {
 				user.setGender(gender);
 				user.setArea_id(areaid);
 				user.setVisitingfees(visitingfess);	
+				user.setDesignation(designation);	
+				user.setAboutme(aboutme);	
 				designerList.add(user);
 			}
 		}
@@ -1296,16 +1302,16 @@ public class userDaoImpl implements userDao {
 	}
 
 	@Override
-	public Product fetchProduct(Connection connection, int id) {
+	public List<Product> fetchProduct(Connection connection, int id) {
 		String selectQuery = "select * from product where i_sub_category_id = ?";
-		Product product = null;
+		List<Product> productlist=new ArrayList<Product>();
 		
 		try(PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)){
 			preparedStatement.setInt(1, id);
 			
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while(resultSet.next()) {
-				product=new Product();
+				Product product=new Product();
 				product.setProduct_id(resultSet.getInt("i_product_id"));
 				product.setProduct_name(resultSet.getString("c_product_name"));
 				product.setProduct_price(resultSet.getString("d_product_price"));
@@ -1328,13 +1334,14 @@ public class userDaoImpl implements userDao {
 				  {
 					  System.out.println("blank....");
 				  }
+				  productlist.add(product);
 			}
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();		
 		}
-		return product;
+		return productlist;
 
 	}
 

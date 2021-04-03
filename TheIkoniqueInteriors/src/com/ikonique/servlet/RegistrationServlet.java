@@ -95,6 +95,8 @@ public class RegistrationServlet extends HttpServlet {
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
 			String vfees = request.getParameter("vfees1");
+			String aboutme = request.getParameter("aboutme");
+			String designation = request.getParameter("designation");
 			String areaname=request.getParameter("area");
 
 			User user = new User();
@@ -107,6 +109,8 @@ public class RegistrationServlet extends HttpServlet {
 			user.setEmail(email);
 			user.setPassword(password);
 			user.setVisitingfees(vfees); 
+			user.setAboutme(aboutme);
+			user.setDesignation(designation);
 			try {
 				user.setArea_id(Integer.parseInt(areaname));
 			}

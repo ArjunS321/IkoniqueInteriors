@@ -16,6 +16,8 @@ public class User {
 	private String email;
 	private String password;
 	private String visitingfees;
+	private String designation;
+	private String aboutme;
 	private int area_id;
 	private InputStream UserProfilepicStream;
 	private String UserProfilepicString;
@@ -98,6 +100,18 @@ public class User {
 	}
 	public void setRole_id(int role_id) {
 		this.role_id = role_id;
+	}
+	public String getDesignation() {
+		return designation;
+	}
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+	public String getAboutme() {
+		return aboutme;
+	}
+	public void setAboutme(String aboutme) {
+		this.aboutme = aboutme;
 	}
 	
 	
