@@ -21,7 +21,8 @@ if(null!=httpSession)
    user = (User)httpSession.getAttribute("loginbean");
 }
 %>  --%>
-
+<jsp:include page="/SelectSubCategoryDetails"/>
+<%List<SubCategory> subcategoryList1 =(List)request.getAttribute("subcategoryList"); %>
 <%List <Product> productlist =(List)request.getAttribute("productlist"); %>
  <%--  <jsp:include page="/SelectWishlistDetails"/>
 <%List <Wishlist> wishlistList =(List)request.getAttribute("wishlistList"); %> 
@@ -31,18 +32,24 @@ if(null!=httpSession)
 <body>
 <%@include file="customersidebar.jsp"%>
 <%@include file="customerheader.jsp"%>
-<section class="section-bg" style="background-color: #e6e7ee; margin-left:300px;">
-	
-
-		<div class="row" style="margin-left:290px;">
+<div class="page-wrapper">
+<div class="page-container">
+<div class="main-content">
+		<div class="row ml-4">
 			<div class="col-xl-12">
 				<div class="section-title">
-					<h2>Products</h2>
+				<%for(SubCategory subCategory : subcategoryList1){ %>
+					<%for(Product product : productlist){ %>
+					<%if(subCategory.getSub_category_id() == product.getSubcategory_id()){ %>
+					<h2><%=subCategory.getSub_category_name() %> Products</h2>
+					<%break;} %>
+					<%} %>
+				<%} %>
 				</div>
 			</div>
 		</div>
-		
-		<div class="row" >
+		<section style="background-color: #e6e7ee;">
+		<div class="row" style="margin-left:10px; margin-right:10px;">
 		<%for(Product product : productlist) {%>
 			<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
 				<div class="single-product">
@@ -85,6 +92,9 @@ if(null!=httpSession)
 		</div>
 	
 </section>
+</div>
+</div>
+</div>
 
 <script>
 

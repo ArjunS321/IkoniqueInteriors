@@ -22,7 +22,7 @@
 		<%@include file="customerheader.jsp"%> 
 		<div class="page-container">
 			<div class="main-content">
-			<div class="row">
+					<div class="row ml-4">
 						<div class="col-xl-12">
 							<div class="section-title">
 								<h2>Visualizer</h2>
