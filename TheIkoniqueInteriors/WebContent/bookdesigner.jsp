@@ -129,7 +129,7 @@
 {
 	position: absolute;
 	top:20px;
-	left:23rem;
+	left:32rem;
 	width: 10px;
 	height:10px;
 	background: #555;
@@ -229,24 +229,19 @@ textarea {
 	margin-left: 1000px !important;
 	margin-top: -6rem !important;
 }
-
-.datepicker1 {
-    border-radius: 4px;
-    direction: ltr;
+.dropdown-menu
+{
+	background-color :#e6e7ee !important;
+	left : 770px !important;
 }
 </style>
 <meta charset="ISO-8859-1">
 <title>Book Interior Designer</title>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"
-	integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg=="
-	crossorigin="anonymous" />
 
 <!-- Fontawesome -->
 <link type="text/css"
 	href="neuro/vendor/@fortawesome/fontawesome-free/css/all.min.css"
 	rel="stylesheet">
-<link rel="stylesheet" href="css1/product.css">
 <!-- Pixel CSS -->
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 
@@ -305,22 +300,35 @@ textarea {
 							maxLength="10" onkeypress="return onlyNumberKey(event)">
 						<span class="indicator4"></span>
 					</div>
-					<div class="form-group col-lg-5 date" style="margin-left:300px;">
-						<label class="h6" for="exampleInputDate1">Choose a date</label>
-						<div class="input-group mb-4">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><span
-									class="far fa-calendar-alt"></span></span>
+					<div class="section section-lg pt-2 ml-10">
+						<div class="container">
+							<div class="row mb-lg-7 mb-0">
+								<div class="col-12 col-md-8 mb-0">
+									<!-- Form -->
+									<div class="form-group">
+										<label class="h6" for="exampleInputDate1">Choose a
+											date</label>
+										<div class="input-group">
+											<div class="input-group-prepend">
+												<span class="input-group-text"><span
+													class="far fa-calendar-alt"></span></span>
+											</div>
+											<input class="form-control datepicker"
+												style="background-color: #e6e7ee; border-radius: 0.55rem;  box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #ffffff;" 
+												id="exampleInputDate1"
+												placeholder="Select date" type="text"
+												aria-label="Date with icon left" onclick="validate5();">
+												<span class="indicator5"></span>
+										</div>
+									</div>
+									<!-- End of Form -->
+									<br>
+									<button type="button" class="btn col-lg-4 rounded-bottom">Pay Now</button>
+								</div>
 							</div>
-							<input style="background-color: #e6e7ee; border-radius: 0.55rem;
-   	 						box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #ffffff;" 
-   	 						class="form-control datepicker1" id="exampleInputDate1"
-								placeholder="Select date" type="text"
-								aria-label="Date with icon left" onkeyup="validate5();">
-								<span class="indicator5"></span>
 						</div>
 					</div>
-					<button type="button" class="btn col-lg-4 rounded-bottom">Pay Now</button>
+					
 				</form>
 		</div>
 			<!-- End Content -->
@@ -349,7 +357,26 @@ textarea {
 
 <!-- Neumorphism JS -->
 <script src="neuro/assets/js/neumorphism.js"></script>
-<%@include file="commonjs.jsp"%>
+<!-- Bootstrap JS-->
+    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+ <!-- Vendor JS       -->
+    <script src="vendor/slick/slick.min.js">
+    </script>
+    <script src="vendor/wow/wow.min.js"></script>
+    <script src="vendor/animsition/animsition.min.js"></script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="vendor/select2/select2.min.js">
+    </script>
+    <!-- Main JS-->
+    <script type="module" src="js/main.js"></script>
 <script>
 $(document).ready(function () {
 	$("#form").hide();
@@ -357,5 +384,97 @@ $(document).ready(function () {
 $("#book").click(function(){
 	$("#form").show();
 });
+$('.datepicker').datepicker({ 
+        startDate: new Date()
+    });
+function onlyNumberKey(evt) {
+    
+    // Only ASCII charactar in that range allowed
+    var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+    if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+        return false;
+    return true;
+}
+function validate1() {
+	const form = document.getElementById('form');
+	const fname = document.getElementById('fname').value;
+	const pattern = " ";
+
+	if (fname != pattern) {
+		form.classList.add('valid')
+		form.classList.remove('invalid')
+	} else {
+		form.classList.add('invalid')
+		form.classList.remove('valid')
+	}
+	if (fname == "") {
+		form.classList.add('invalid')
+		form.classList.remove('valid')
+	}
+}
+function validate2() {
+	const form = document.getElementById('form');
+	const lname = document.getElementById('lname').value;
+	const pattern = "  ";
+
+	if (lname != pattern) {
+		form.classList.add('valid1')
+		form.classList.remove('invalid1')
+	} else {
+		form.classList.add('invalid1')
+		form.classList.remove('valid1')
+	}
+	if (lname == "") {
+		form.classList.add('invalid1')
+		form.classList.remove('valid1')
+	}
+}
+function validate3() {
+	const form = document.getElementById('form');
+	const add = document.getElementById('add').value;
+	const pattern = " ";
+
+	if (add != pattern) {
+		form.classList.add('valid2')
+		form.classList.remove('invalid2')
+	} else {
+		form.classList.add('invalid2')
+		form.classList.remove('valid2')
+	}
+	if (add == "") {
+		form.classList.add('invalid2')
+		form.classList.remove('valid2')
+	}
+}
+function validate4() {
+	const form = document.getElementById('form');
+	const mno = document.getElementById('mno').value;
+	const pattern = /(7|8|9)\d{9}/
+
+	if (mno.match(pattern) && mno.length == 10) {
+		form.classList.add('valid3')
+		form.classList.remove('invalid3')
+	} else {
+		form.classList.add('invalid3')
+		form.classList.remove('valid3')
+	}
+	if (mno == "") {
+		form.classList.add('invalid3')
+		form.classList.remove('valid3')
+	}
+}
+function validate5() {
+	const form = document.getElementById('form');
+	const date = document.getElementById('exampleInputDate1').value;
+	alert("date is:-"+date);
+	if (date == "") {
+		form.classList.add('invalid4')
+		form.classList.remove('valid4')
+	}
+	else {
+		form.classList.remove('invalid4')
+		form.classList.add('valid4')
+	}
+}
 </script>
 </html>
