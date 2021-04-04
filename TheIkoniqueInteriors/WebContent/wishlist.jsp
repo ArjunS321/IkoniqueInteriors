@@ -72,6 +72,7 @@
                         <a href="#" class="btn btn-sm btn-block" style="background-color: #e6e7ee;"><span class="fa fa-heart mr-1"></span> 
                             Wishlist
                         </a>
+                       
                     </div>
                   
                 </div> 
