@@ -64,7 +64,7 @@ public class UpdatePassword extends HttpServlet {
 		{
 			if(msg=="Updation Of Password Successfully") 
 			{
-				RequestDispatcher dispatcher = request.getRequestDispatcher("customer.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("interiordesigner.jsp");
 				dispatcher.forward(request, response);
 			}
 			else
