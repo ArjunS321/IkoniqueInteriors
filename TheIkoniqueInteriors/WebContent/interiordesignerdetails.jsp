@@ -128,12 +128,12 @@ textarea {
 				</div>
 				<div align="center" style="margin-top:-20rem;">
 					<h3 class="">Hello,</h3>
-					<h1 class="ml-10 display-3">I'M <%=user.getFirstname() %> <%=user.getLastname() %></h1>
+					<h1 class="ml-10 display-3">I'M <%=user.getFirstname() %></h1>
 					<h4 class="ml-10"><%=user.getDesignation() %></h4>
 				</div>
 				<br><br><br><br><br><br><br>
 				<div class="ml-6">
-                         <button type="submit" name="submit" id="submit" class="btn col-lg-2 btn-primary1">Hire Me</button>
+                         <a href="bookdesigner.jsp" type="submit" name="submit" id="submit" class="btn col-lg-2 btn-primary1">Hire Me</a>
                  </div>
 				<div class="ml-7 mb-5">
                          <h4 align="center" class="mb-3 mr-7">About Me</h4>
@@ -151,7 +151,7 @@ textarea {
                   <h4 align="center" class="mb-3 ml-6"><u>If You Have Any Project In Your Mind?</u></h4>
                  	<br>
                  	<div align="center" class="ml-6">
-                         <button type="submit" name="submit" id="submit" class="btn col-lg-2 btn-primary1">Hire Me</button>
+                         <a href="bookdesigner.jsp" type="submit" name="submit" id="submit" class="btn col-lg-2 btn-primary1">Hire Me</a>
                  	</div>
                  	<hr class="my-5"  style="background-color: #A9A9A9;">
                  </div>

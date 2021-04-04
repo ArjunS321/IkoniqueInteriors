@@ -44,9 +44,6 @@ public class LoginServlet extends HttpServlet {
 		String password=request.getParameter("password");
 		User user = u1.getUser(email,password);
 		
-		
-		
-		
 		if(user!=null) {
 			if(user.getRole_id()==1)
 			{
@@ -71,8 +68,11 @@ public class LoginServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 			
-		}else {
+		}
+		else 
+		{
 			// forward to login page with proper message
+			System.out.println("else condition login......");
 			request.setAttribute("message", "Incorrect username or password. please try again.");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 			dispatcher.forward(request, response);

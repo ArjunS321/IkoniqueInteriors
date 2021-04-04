@@ -177,14 +177,13 @@
 			<div class="main-content">
 			<h1 align="center" style="margin-top: 50px;">Login</h1>
 				  <section class="min-vh-80 d-flex bg-primary align-items-center">
-				<form action="LoginServlet " class="w-50 ml-10" class="box" class="form" id="form" method="post"  onsubmit="return login()">
-				
+				<form action="LoginServlet" onsubmit="return login()" class="w-50 ml-10" class="box" class="form" id="form" 
+				 enctype="multipart/form-data" method="post">
 					<div class="form-group mb-3 ml-10 inputBox">
 						<label for="email">Email address</label> 
 						<input type="text" name="email" class="form-control" id="email" autocomplete="off" aria-describedby="emailHelp" onkeyup="validate();">
 						<span class="indicator1"></span>
 					</div>
-					
 					<div class="form-group mb-3 ml-10">
 						<label for="password">Password</label> 
 						<input type="password" name="password" class="form-control" id="pass" onkeyup="validate1();">
@@ -215,8 +214,52 @@
                                     <a class="color" href="register.jsp"><b>Sign Up Here</b></a>
                                 </h6>
                 </div>
+                <div class="modal fade" id="modal-Failed" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content bg-primary">
+                            <div class="modal-header">
+                                <p class="modal-title" id="modal-title-notification">A new experience, personalized for you.</p>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="py-3 text-center">
+                                    <span class="modal-icon display-1-lg"><span class="fas fa-exclamation"></span></span>
+                                    <h2 class="h4 my-3">Important message!</h2>
+                                    <p>Do you know that you can assign status and relation to a company right in the visit list?.</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="login.jsp" type="button" class="btn btn-sm btn-primary">Ok Got It</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="modal-success" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content bg-primary">
+                            <div class="modal-header">
+                                <p class="modal-title" id="modal-title-notification">A new experience, personalized for you.</p>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="py-3 text-center">
+                                    <span class="modal-icon display-1-lg"><span class="fas fa-exclamation"></span></span>
+                                    <h2 class="h4 my-3">Important modal-success!</h2>
+                                    <p>Do you know that you can assign status and relation to a company right in the visit list?.</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="LoginServlet" type="button" class="btn btn-sm btn-primary">Ok Got It</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 				
-				</form>
+					</form>
 				</section>
 				
 				<!-- Core -->
@@ -309,7 +352,7 @@
 				}
 				if(email == "")
 					{
-					form.classList.remove('invalid')
+					form.classList.add('invalid')
 					form.classList.remove('valid')
 					}
 			}
@@ -328,7 +371,7 @@
 				}
 				if(pass == "")
 					{
-					form.classList.remove('invalid1')
+					form.classList.add('invalid1')
 					form.classList.remove('valid1')
 					}
 			}
@@ -341,24 +384,34 @@
 				const pattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/
 				const pattern1=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
 				
-				if(email.match(pattern) && pass.match(pattern1))
+				if(email == "" || email == null && pass == "" || pass == null)
+				{
+					alert("if....");
+					$('#model-success').modal('hide');
+             		$('#modal-Failed').modal('show');
+             		return false;
+             		window.location = "/login.jsp";
+				}
+				else
+				{
+					if(email.match(pattern) && pass.match(pattern1))
 					{
+						alert("else if....");
+						$('#modal-success').modal('show');
+  	             		$('#modal-Failed').modal('hide');
 						return true;
 					}
-				else{
-					return false;
 				}
 			}
-// 			$(window).on('load', function(){
-// 			  setTimeout(removeLoader, 2000); 
-// 			});
-// 			function removeLoader(){
-// 			    $( "#loader" ).fadeOut(500, function() {
-// 			      $( "#loader" ).remove(); 
-// 			  });  
-// 			}
 
-		
+			// 			$(window).on('load', function(){
+			// 			  setTimeout(removeLoader, 2000); 
+			// 			});
+			// 			function removeLoader(){
+			// 			    $( "#loader" ).fadeOut(500, function() {
+			// 			      $( "#loader" ).remove(); 
+			// 			  });  
+			// 			}
 		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </body>

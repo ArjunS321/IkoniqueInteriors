@@ -65,8 +65,8 @@ input.search-input
 		<div class="row" style="margin-left:10px; margin-right:10px;" id="result">
 		<%for(Product product : productlist) {%>
 			<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-				<div class="single-product">
-					<div class="product-thumb" id="show">
+				<div class="single-product" id="single">
+					<div class="product-thumb">
 						<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>">
 <%-- 						 <input type="text" name="pid" id="pid" value="<%=product.getProduct_id() %>"> --%>
 						 <img src="data:image/jpg;base64,<%=product.getProductpicString() %>" alt="">
@@ -104,15 +104,12 @@ input.search-input
 			<%} %>
 		</div>
 </section>
-</table>
 </div>
 </div>
 </div>
-
+</body>
+<%@include file="commonjs.jsp"%>
 <script>
-
-	
-
 /* $('.fa-heart').click(function(){
 	alert($(this).attr('id'));
     if($(this).attr('att') == 0){
@@ -151,30 +148,36 @@ $('.fa-shopping-cart').click(function(){
         $(this).attr('att',0);
     }
 });
- $("#mySearch").keyup(function() {
+//  $("#mySearch").keyup(function() {
 
-     // Retrieve the input field text and reset the count to zero
-     var filter = $(this).val(),
-       count = 0;
+//      // Retrieve the input field text and reset the count to zero
+//      var filter = $(this).val(),
+//        count = 0;
 
-     // Loop through the comment list
-     $('#result div').each(function() {
+//      // Loop through the comment list
+//      $('#result div').each(function() {
 
+//        // If the list item does not contain the text phrase fade it out
+//        if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+//           $(this).hide(); // MY CHANGE
 
-       // If the list item does not contain the text phrase fade it out
-       if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-         $(this).hide();  // MY CHANGE
+//          // Show the list item if the phrase matches and increase the count by 1
+//        } else {
+//           $(this).show();// MY CHANGE
+//          count++;
+//        }
 
-         // Show the list item if the phrase matches and increase the count by 1
-       } else {
-         $(this).show(); // MY CHANGE
-         count++;
-       }
+//      });
 
-     });
+//    });
 
-   });
+$("#mySearch").on("keyup", function() {
+		    var value = $(this).val().toLowerCase();
+		    $("#result *").filter(function() {
+		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		    });
+		  });
+ 
  
 </script>
-</body>
 </html>

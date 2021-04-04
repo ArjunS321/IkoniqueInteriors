@@ -295,7 +295,7 @@ $(document).ready(function(){
 //             }
 //         })
 //     });
-});
+ });
 
 		function validate() {
 			const form = document.getElementById('form');
