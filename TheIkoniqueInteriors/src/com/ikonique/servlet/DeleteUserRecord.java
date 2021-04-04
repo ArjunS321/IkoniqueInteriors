@@ -40,7 +40,7 @@ public class DeleteUserRecord extends HttpServlet {
 		if (null != httpSession) {
 			user = (User) httpSession.getAttribute("loginBean");
 		}
-		
+		System.out.println("............");
 		String message=u1.deleteUserDetails(user.getUser_id());
 		System.out.println(message);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
