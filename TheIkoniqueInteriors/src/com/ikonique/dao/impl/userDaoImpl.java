@@ -472,6 +472,15 @@ public class userDaoImpl implements userDao {
 				String aboutme = resultSet.getString("c_about_description");
 				
 				User user = new User();
+				
+				 byte[] imageData = resultSet.getBytes("b_image"); String imageString=null;
+				  
+				  if(null!=imageData && imageData.length>0) { imageString =
+				  Base64.getEncoder().encodeToString(imageData);
+				 
+				  user.setUserProfilepicString(imageString);}
+				   
+				
 				user.setUser_id(id);
 				user.setFirstname(fname);
 				user.setLastname(lname);
@@ -1435,6 +1444,14 @@ public class userDaoImpl implements userDao {
 				String aboutme = resultSet.getString("c_about_description");
 				
 				User user = new User();
+				 byte[] imageData = resultSet.getBytes("b_image"); String imageString=null;
+				  
+				  if(null!=imageData && imageData.length>0) { imageString =
+				  Base64.getEncoder().encodeToString(imageData);
+				 
+				  user.setUserProfilepicString(imageString);}
+				   
+				
 				user.setUser_id(id);
 				user.setFirstname(fname);
 				user.setLastname(lname);

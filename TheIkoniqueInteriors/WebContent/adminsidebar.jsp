@@ -16,7 +16,9 @@
 			<ul class="list-unstyled navbar__list">
 				<li class="active has-sub"><a href="admin.jsp"> <i
 						class="fas fa-home"></i>Home
-				</a> 		
+				</a> 
+				<li><a href="visualizer.jsp"> <i class="fas fa-bullseye"></i>Visualizer
+				</a></li>		
 				<li class="has-sub"><a class="js-arrow" href="#"> <i
 						class="fas  fa-caret-down"></i>Manage
 				</a>

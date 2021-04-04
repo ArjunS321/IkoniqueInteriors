@@ -67,7 +67,7 @@
 				<li><a href="visualizer.jsp"> <i class="fas fa-bullseye"></i>Visualizer
 				</a></li>
 				
-				<li><a href="myorder.jsp"> <i class="fas fa-suitcase"></i>My
+				<li><a href="myorder.jsp"> <i class="fas fa-suitcase"></i>Manage
 						Appointments
 				</a></li>
 				

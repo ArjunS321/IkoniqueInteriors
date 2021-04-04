@@ -173,7 +173,8 @@ textarea {
 							
 						<%}else{ %>
 							 att="0" style="color: black"
-							<%} %>></i></a>
+							<%} %>
+					></i></a>
 				</div>
 				<br> <br>
 				<h4 class="mb-3">Product Description</h4>
@@ -234,6 +235,38 @@ textarea {
 <script src="neuro/assets/js/neumorphism.js"></script>
 <%@include file="commonjs.jsp"%>
 <script>
+
+$('.fa-heart').click(function(){
+	alert($(this).attr('id'));
+    if($(this).attr('att') == 0){
+    
+    	var pid = $(this).attr('id');
+    	var opname = "red";
+    	
+    	$.post( "InsertDeleteProductInWishlist", {productid: pid , operation : opname } )
+		  .done(function( data ) {
+			  alert("succesfull called..");
+		  });
+    	
+        $(this).css('color', 'red');
+        $(this).attr('att',1);
+    } else {
+    	var pid = $(this).attr('id');
+    	var opname = "black";
+    	
+    	$.post( "InsertDeleteProductInWishlist", {productid: pid , operation : opname } )
+		  .done(function( data ) {
+			  alert("succesfull called..");
+		  });
+    	
+        $(this).css('color', 'black');
+        $(this).attr('att',0);
+    }
+   
+});
+
+
+
 	function discount() {
 		var main = $('#mainprice').text();
 		var dis = $('#discount').text();
@@ -253,34 +286,6 @@ textarea {
 	document.getElementById("finalprice").innerHTML = discount();
 	document.getElementById("discount").innerHTML = concat();
 
-	$('.fa-heart').click(function(){
-		alert($(this).attr('id'));
-	    if($(this).attr('att') == 0){
-	    
-	    	var pid = $(this).attr('id');
-	    	var opname = "red";
-	    	
-	    	$.post( "InsertDeleteProductInWishlist", {productid: pid , operation : opname } )
-			  .done(function( data ) {
-				  alert("succesfull called..");
-			  });
-	    	
-	        $(this).css('color', 'red');
-	        $(this).attr('att',1);
-	    } else {
-	    	var pid = $(this).attr('id');
-	    	var opname = "black";
-	    	
-	    	$.post( "InsertDeleteProductInWishlist", {productid: pid , operation : opname } )
-			  .done(function( data ) {
-				  alert("succesfull called..");
-			  });
-	    	
-	        $(this).css('color', 'black');
-	        $(this).attr('att',0);
-	    }
-	   
-	});
-
+	
 </script>
 </html>
