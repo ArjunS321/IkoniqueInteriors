@@ -214,51 +214,52 @@
                                     <a class="color" href="register.jsp"><b>Sign Up Here</b></a>
                                 </h6>
                 </div>
-                <div class="modal fade" id="modal-Failed" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content bg-primary">
-                            <div class="modal-header">
-                                <p class="modal-title" id="modal-title-notification">A new experience, personalized for you.</p>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">�</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="py-3 text-center">
-                                    <span class="modal-icon display-1-lg"><span class="fas fa-exclamation"></span></span>
-                                    <h2 class="h4 my-3">Important message!</h2>
-                                    <p>Do you know that you can assign status and relation to a company right in the visit list?.</p>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="login.jsp" type="button" class="btn btn-sm btn-primary">Ok Got It</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="modal-success" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content bg-primary">
-                            <div class="modal-header">
-                                <p class="modal-title" id="modal-title-notification">A new experience, personalized for you.</p>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">�</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="py-3 text-center">
-                                    <span class="modal-icon display-1-lg"><span class="fas fa-exclamation"></span></span>
-                                    <h2 class="h4 my-3">Important modal-success!</h2>
-                                    <p>Do you know that you can assign status and relation to a company right in the visit list?.</p>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="LoginServlet" type="button" class="btn btn-sm btn-primary">Ok Got It</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-				
+               <div class="modal fade" id="modal-failed" tabindex="-1"
+								role="dialog" aria-labelledby="modal-default" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h2 class="h6 modal-title mb-0" id="modal-title-default">The Ikonique Interiors</h2>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+<!-- 												<span aria-hidden="true">Ã</span> -->
+											</button>
+										</div>
+										<div class="modal-body">
+											<p><h4><b>Error : Your Registration Is Failed!!</b></h4></p>
+											<p><h5>Check Your Fill Data...</h5></p>
+											<p><h5>Something Went Wrong Try Again...</h5></p>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">OK</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							 <div class="modal fade" id="modal-success" tabindex="-1"
+								role="dialog" aria-labelledby="modal-default" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h2 class="h6 modal-title mb-0" id="modal-title-default">The Ikonique Interiors</h2>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+<!-- 												<span aria-hidden="true">Ã</span> -->
+											</button>
+										</div>
+										<div class="modal-body">
+											<p><h4><b>Your Registration Is successful!!</b></h4></p>
+											<p><h5>Now You Can Login Into The WebSite..</h5></p>
+											<p><h5>Enjoy Your Shopping....</h5></p>
+										</div>
+										<div class="modal-footer">
+											<a href="login.jsp" type="button"
+												class="btn btn-primary text-danger ml-auto"
+												>I Got It</a>
+										</div>
+									</div>
+								</div>
+							</div>
 					</form>
 				</section>
 				
@@ -328,6 +329,12 @@
 // 				} 
 
 // 		}
+
+
+	
+	
+	
+	
 	const togglePassword = document.querySelector('#togglePassword');
 	const password = document.querySelector('#pass');
 	togglePassword.addEventListener('click', function (e) {
@@ -337,7 +344,8 @@
 	    // toggle the eye slash icon
 	    this.classList.toggle('fa-eye-slash');
 	});
-		
+	
+	
 		function validate(){
 				const form= document.getElementById('form');
 				const email= document.getElementById('email').value;

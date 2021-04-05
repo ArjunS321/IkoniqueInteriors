@@ -34,14 +34,19 @@
 <body style="background-color: #e6e7ee;">
 <%@include file="customersidebar.jsp"%>
 <%@include file="customerheader.jsp"%>
+
+<br><br><br>
 <div class="row mr-0 ml-2">
+	
+	 <%for(Product product:productList){ %>
+                	<%if(wishlistint.contains(product.getProduct_id())){ %>
+  
     <div class="col-10 ml-10">
-        <div class="card shadow-soft border-light p-4 ml-5 mt-7" style="background-color: #e6e7ee;">
+        <div class="card shadow-soft border-light p-4 ml-5 mt-3" style="background-color: #e6e7ee;">
+        	
             <div class="row align-items-center">
                 
-                <%for(Product product:productList){ %>
-                	<%if(wishlistint.contains(product.getProduct_id())){ %>
-                <aside class="col-md-3">
+                             <aside class="col-md-3">
                 
 	                    <a href="#">
 	                        <img src="data:image/jpg;base64,<%=product.getProductpicString()%>" alt="premium watch">
@@ -64,25 +69,39 @@
                     </div> 
                     
                     <!-- info-price-detail // -->
-                    <span class="text-success small"><span class="fas fa-shipping-fast mr-1"></span>Free shipping</span>
+                    <!-- <span class="text-success small"><span class="fas fa-shipping-fast mr-1"></span>Free shipping</span> -->
                     <div class="mt-4">
                         <a class="btn btn-sm btn-block mb-3" style="background-color: #e6e7ee;" href="#">
-                            Details
+                            Add To Cart
                         </a>
-                        <a href="#" class="btn btn-sm btn-block" style="background-color: #e6e7ee;"><span class="fa fa-heart mr-1"></span> 
-                            Wishlist
-                        </a>
+                        <a href="#" class="btn btn-sm btn-block" style="background-color: #e6e7ee;"><i id="<%=product.getProduct_id() %>"  class="fa fa-heart" 
+                           
+                       	
+						 <%if(null!=wishlistint && !wishlistint.isEmpty()) {%>
+						  
+							<%if(wishlistint.contains(product.getProduct_id())){ %>
+								att="1" style="color: red"
+							<%}else{ %>
+								att="0" style="color: black"
+							<%} %>
+							
+						<%}else{ %>
+							 att="0" style="color: black"
+							<%} %>
+						
+						></i></a>
                        
                     </div>
                  
                 </div> 
-                <%}%>
-                <%} %>
+               
             </div> 
+            
         </div>
     </div>
+      <%}%><br>
+ <%} %>
 </div>
-  
 </body>
 <script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
 				<script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
@@ -108,4 +127,37 @@
 				<!-- Neumorphism JS -->
 				<script src="neuro/assets/js/neumorphism.js"></script>
 				<%@include file="commonjs.jsp"%>
+<script>
+
+$('.fa-heart').click(function(){
+	alert($(this).attr('id'));
+    if($(this).attr('att') == 0){
+    
+    	var pid = $(this).attr('id');
+    	var opname = "red";
+    	
+    	$.post( "InsertDeleteProductInWishlist", {productid: pid , operation : opname } )
+		  .done(function( data ) {
+			  alert("succesfull called..");
+		  });
+    	
+        $(this).css('color', 'red');
+        $(this).attr('att',1);
+    } else {
+    	var pid = $(this).attr('id');
+    	var opname = "black";
+    	
+    	$.post( "InsertDeleteProductInWishlist", {productid: pid , operation : opname } )
+		  .done(function( data ) {
+			  alert("succesfull called..");
+		  });
+    	
+        $(this).css('color', 'black');
+        $(this).attr('att',0);
+    }
+   
+});
+
+
+</script>
 </html>

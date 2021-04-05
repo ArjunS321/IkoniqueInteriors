@@ -56,20 +56,7 @@ if(null!=httpSession)
 						<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>" class="btn-small mr-2"><%=product.getProduct_price() %></a> 
 						<a class="btn-round mr-2"><i att="0" class="fa fa-shopping-cart" style="color: black"></i></a> 
 						  <a class="btn-round"><i id="<%=product.getProduct_id() %>"  class="fa fa-heart"
-						 <%-- 
-						  <%if(null!=wishlistList && !wishlistList.isEmpty()) {%>
-						  <%for(Wishlist wishlist : wishlistList) {%>
-							<%if(product.getProduct_id()==wishlist.getProductid()){ %>
-								att="1" style="color: red"
-							<%}else{ %>
-								att="0" style="color: black"
-							<%} %>
-						<%} %>	
-						<%}else{ %>
-							 att="0" style="color: black"
-							
-						<%} %>
-						></i></a> --%>  	
+						
 						
 						
 						 <%if(null!=wishlistint && !wishlistint.isEmpty()) {%>
