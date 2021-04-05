@@ -24,7 +24,7 @@
 <body class="animsition" style="background-color: #e6e7ee;">
 	<div class="page-wrapper" style="background-color: #e6e7ee;">
 		<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>
-		<%@include file="designersidebar.jsp"%>
+		<%@include file="commonsidebar.jsp"%>
 		<%@include file="designerheader.jsp"%>
 <%-- 		<div class="page-container">
 			<div class="main-content pt-4"  style="background-color: #e6e7ee;">

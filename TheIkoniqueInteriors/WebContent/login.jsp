@@ -395,18 +395,17 @@
 				if(email == "" || email == null && pass == "" || pass == null)
 				{
 					alert("if....");
-					$('#model-success').modal('hide');
-             		$('#modal-Failed').modal('show');
+// 					$('#modal-success').modal('hide');
+//              		$('#modal-Failed').modal('show');
              		return false;
-             		window.location = "/login.jsp";
 				}
 				else
 				{
 					if(email.match(pattern) && pass.match(pattern1))
 					{
 						alert("else if....");
-						$('#modal-success').modal('show');
-  	             		$('#modal-Failed').modal('hide');
+// 						$('#modal-success').modal('show');
+//   	             		$('#modal-Failed').modal('hide');
 						return true;
 					}
 				}

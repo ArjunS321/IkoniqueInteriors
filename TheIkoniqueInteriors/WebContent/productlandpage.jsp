@@ -172,12 +172,15 @@ else
 				</div>
 
 				<div>
+				<%if(product.getOfferid()!=0){ %>
 					<span Style="font-size: 8mm" class="h5">&#x20B9;
 						<span Style="font-size: 8mm" id="mainprice"
 							class="h5 mb-0 text-gray text-through mr-2"
 							value="<%=product.getProduct_price()%>"><%=product.getProduct_price()%>
 						</span>
 					</span>
+				<%} %>
+				<span hidden id="mainprice" value="<%=product.getProduct_price()%>"><%=product.getProduct_price()%></span>
 					
 					<%for (Offer offer : offerList) {%>
 					<%if (product.getOfferid() == offer.getOfferid()) {%>
@@ -296,6 +299,7 @@ $('.fa-heart').click(function(){
 
 	function discount() {
 		var main = $('#mainprice').text();
+		alert("price"+main);
 		var dis = $('#discount').text();
 		var dec = (dis / 100).toFixed(2);
 		var mult = main * dec;

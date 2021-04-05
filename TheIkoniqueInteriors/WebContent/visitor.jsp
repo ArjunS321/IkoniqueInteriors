@@ -13,7 +13,7 @@
 <body class="animsition" style="background-color: #e6e7ee;">
 	<div class="page-wrapper">
 		<div class="page-container">
-		<%@include file="visitorsidebar.jsp"%>
+		<%@include file="commonsidebar.jsp"%>
 		<%@include file="visitorheader.jsp"%>
 <%-- 			<%@include file="product.jsp"%> --%>
 		</div>

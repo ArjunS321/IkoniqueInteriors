@@ -9,7 +9,7 @@
 <%@include file="commoncss.jsp"%>
 </head>
 <body>
-<%@include file="adminsidebar.jsp"%>
+<%@include file="commonsidebar.jsp"%>
 <%@include file="adminheader.jsp"%>
 </body>
 </html>
