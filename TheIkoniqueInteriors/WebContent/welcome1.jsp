@@ -113,7 +113,7 @@ Ikonique Interiors and Design
           <span>IKONIQUE INTERIORS AND DESIGN</span> 
       </h1>
     </div>
-	<div class="welcome-text" style="margin-top:180px;">
+	<div class="welcome-text" style="margin-top:180px; margin-left:500px;">
 		<a href="register.jsp">Register Here</a>
 		<a href="login.jsp">Login</a><br><br><br><br><br><br><br><br><br><br>
 		<a href="visitor.jsp">Skip Login</a>
