@@ -117,7 +117,7 @@ textarea {
 <!-- Pixel CSS -->
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 </head>
-<%! int temp = '0'; %>
+<%-- <%! int temp = '0'; %>
 <%
 HttpSession httpSession3 = request.getSession(false);
 User user2 = null;   
@@ -130,13 +130,13 @@ else
 {
 	temp = '0';
 }
-%> 
+%>  --%>
 <body style="background-color: #e6e7ee">
-	<%if(temp==1){ %>
-	<%if(user2.getRole_id()==1 ){ %>
+	<%-- <%if(temp==1){ %>
+	<%if(user2.getRole_id()==1 ){ %> --%>
 		<%@include file="customersidebar.jsp"%>
 		<%@include file="customerheader.jsp"%> 
-		<%} else if(user2.getRole_id()==2){%>
+		<%-- <%} else if(user2.getRole_id()==2){%>
 			<%@include file="designersidebar.jsp"%>
 			<%@include file="designerheader.jsp"%> 
 		<%}else{%>
@@ -146,7 +146,7 @@ else
 	<%}else{ %>
 			<%@include file="visitorsidebar.jsp"%>
 			<%@include file="visitorheader.jsp"%> 
-		<%} %>
+		<%} %> --%>
 	<div class="col-5 col-lg-11 ml-6 mt-7">
 		<div class="card shadow-inset border-light p-3 ml-10"
 			style="background-color: #e6e7ee;">

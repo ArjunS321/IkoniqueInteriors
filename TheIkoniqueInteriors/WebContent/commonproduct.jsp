@@ -13,7 +13,7 @@
 
 <link rel="stylesheet" href="css1/product.css">
 </head>
-<%! int temp = '0'; %>
+<%-- <%! int temp = '0'; %>
 <%
 HttpSession httpSession2 = request.getSession(false);
 User user1 = null;   
@@ -26,7 +26,7 @@ else
 {
 	temp = '0';
 }
-%> 
+%>  --%>
 <jsp:include page="/SelectSubCategoryDetails"/>
 <%List<SubCategory> subcategoryList1 =(List)request.getAttribute("subcategoryList"); %>
 <%List <Product> productlist =(List)request.getAttribute("productlist"); %>
@@ -46,21 +46,21 @@ input.search-input
 }
 </style>
 <body style="background-color: #e6e7ee;">
-<%if(temp==1){ %>
-	<%if(user1.getRole_id()==1 ){ %>
+<%-- <%if(temp==1){ %>
+	<%if(user1.getRole_id()==1 ){ %> --%>
 		<%@include file="customersidebar.jsp"%>
 		<%@include file="customerheader.jsp"%> 
-		<%} else if(user1.getRole_id()==2){%>
-			<%@include file="designersidebar.jsp"%>
-			<%@include file="designerheader.jsp"%> 
-		<%}else{%>
-			<%@include file="adminsidebar.jsp"%>
-			<%@include file="adminheader.jsp"%> 
-		<%}%>
-	<%}else{ %>
-			<%@include file="visitorsidebar.jsp"%>
-			<%@include file="visitorheader.jsp"%> 
-		<%} %>
+<%-- 		<%} else if(user1.getRole_id()==2){%> --%>
+<%-- 			<%@include file="designersidebar.jsp"%> --%>
+<%-- 			<%@include file="designerheader.jsp"%>  --%>
+<%-- 		<%}else{%> --%>
+<%-- 			<%@include file="adminsidebar.jsp"%> --%>
+<%-- 			<%@include file="adminheader.jsp"%>  --%>
+<%-- 		<%}%> --%>
+<%-- 	<%}else{ %> --%>
+<%-- 			<%@include file="visitorsidebar.jsp"%> --%>
+<%-- 			<%@include file="visitorheader.jsp"%>  --%>
+<%-- 		<%} %> --%>
 <div class="page-wrapper">
 <div class="page-container">
 <div class="main-content" style="background-color: #e6e7ee;">

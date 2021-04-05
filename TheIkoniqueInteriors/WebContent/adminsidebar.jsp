@@ -23,19 +23,19 @@
 						class="fas  fa-caret-down"></i>Manage
 				</a>
 					<ul class="list-unstyled navbar__sub-list js-sub-list">
-						<li class="has-sub"><a class="js-arrow" href="managecustomer.jsp"><i
+						<li><a href="managecustomer.jsp"><i
 								class="fas"></i>Customer Profile</a>
 						</li>
-						<li class="has-sub"><a class="js-arrow" href="managedesigner.jsp"><i
+						<li><a href="managedesigner.jsp"><i
 								class="fas"></i>Designer Profile</a>
 						</li>
-						<li class="has-sub"><a class="js-arrow" href="#"><i
+						<li ><a href="#"><i
 								class="fas"></i>Product</a>
 						</li>
-						<li class="has-sub"><a class="js-arrow" href="managefeedback.jsp"><i
+						<li ><a href="managefeedback.jsp"><i
 								class="fas"></i>Feedback</a>
 						</li>
-						<li class="has-sub"><a class="js-arrow" href="socialmediamanagement.jsp"><i
+						<li ><a href="socialmediamanagement.jsp"><i
 								class="fas"></i>Social Media</a>
 						</li>
 					</ul>
@@ -48,26 +48,26 @@
 						class="fas  fa-caret-down"></i>Manage Tables
 				</a>
 					<ul class="list-unstyled navbar__sub-list js-sub-list">
-						<li class="has-sub"><a class="js-arrow" href="SelectUserDetails"><i
+						<li><a href="SelectUserDetails"><i
 								class="fas"></i>Customer Table</a>
 						</li>
-						<li class="has-sub"><a class="js-arrow" href="designerTable.jsp"><i
+						<li><a href="designerTable.jsp"><i
 								class="fas"></i>Designer Table</a>
 						</li>
-						<li class="has-sub"><a class="js-arrow" href="productTable.jsp"><i
+						<li><a href="productTable.jsp"><i
 								class="fas"></i>Product Table</a>
 						</li>
-						<li class="has-sub"><a class="js-arrow" href="categoryTable.jsp"><i
+						<li><a href="categoryTable.jsp"><i
 								class="fas"></i>Category Table</a>
 						</li>
-						<li class="has-sub"><a class="js-arrow" href="subcategoryTable.jsp"><i
+						<li><a href="subcategoryTable.jsp"><i
 								class="fas"></i>Sub-Category Table</a>
 						</li>
-						<li class="has-sub"><a class="js-arrow" href="offertable.jsp"><i
+						<li><a href="offertable.jsp"><i
 								class="fas"></i>Offer Table</a>
 						</li>
-						</ul>
-						</li>
+					</ul>
+				</li>
 						
 				<li><a href="#"> <i class="fas fa-credit-card"></i>Payment Status
 				</a></li>
