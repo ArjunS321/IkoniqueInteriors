@@ -80,7 +80,8 @@ if (null != httpSession) {
 							
 							</li> -->
 					</ul>
-					<%} %></li>
+					<%} %>
+				</li>
 				<li><a href="visualizer.jsp"> <i class="fas fa-bullseye"></i>Visualizer
 				</a></li>
 				<li><a href="wishlist.jsp"> <i class="fas fa-bookmark"></i>Wishlist
