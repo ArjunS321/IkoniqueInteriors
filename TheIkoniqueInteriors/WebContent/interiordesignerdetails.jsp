@@ -86,6 +86,8 @@ textarea {
 	margin-left: 1000px !important;
 	margin-top: -6rem !important;
 }
+
+
 </style>
 <meta charset="ISO-8859-1">
 <title>Interior Designer Details</title>
@@ -119,7 +121,7 @@ textarea {
 				<div class="card shadow-inset border-light p-3" style="margin-right:710px; background-color: lightgrey;">
 					
 					<%if(user.getUserProfilepicString()!=null) {%>
-									<img src="data:image/jpg;base64,<%=user.getUserProfilepicString() %>" height="400px" width="300px" 
+									<img src="data:image/jpg;base64,<%=user.getUserProfilepicString() %>" style="height:300px; width:300px;" 
 										class="rounded" >
 									<%}else{ %>
 										<img src="bg-img/Blank-Photo.png" height="400px" width="300px" class="rounded" >

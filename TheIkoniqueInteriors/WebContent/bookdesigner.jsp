@@ -316,7 +316,7 @@ textarea {
 												style="background-color: #e6e7ee; border-radius: 0.55rem;  box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #ffffff;" 
 												id="exampleInputDate1"
 												placeholder="Select date" type="text"
-												aria-label="Date with icon left" onclick="validate5();">
+												aria-label="Date with icon left" onclick="validate5()">
 												<span class="indicator5"></span>
 										</div>
 									</div>
@@ -462,11 +462,16 @@ function validate4() {
 		form.classList.remove('valid3')
 	}
 }
-function validate5() {
+
+//  	$("#exampleInputDate1").click(function(){
+//  		alert("click date...");
+ 		
+//  	});
+	function validate5() {
 	const form = document.getElementById('form');
 	const date = document.getElementById('exampleInputDate1').value;
 	alert("date is:-"+date);
-	if (date == "") {
+	if (date == "" || date == null) {
 		form.classList.add('invalid4')
 		form.classList.remove('valid4')
 	}
@@ -475,5 +480,7 @@ function validate5() {
 		form.classList.add('valid4')
 	}
 }
+
+
 </script>
 </html>
