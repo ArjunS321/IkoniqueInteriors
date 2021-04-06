@@ -49,7 +49,7 @@
                              <aside class="col-md-3">
                 
 	                    <a href="#">
-	                        <img src="data:image/jpg;base64,<%=product.getProductpicString()%>" alt="premium watch">
+	                        <img src="data:image/jpg;base64,<%=product.getProductpicString()%>">
 	                    </a>
                    
                 </aside>
@@ -70,7 +70,7 @@
                     <!-- <span class="text-success small"><span class="fas fa-shipping-fast mr-1"></span>Free shipping</span> -->
                     <div class="mt-4">
                        <div class="ml-7 mt-3">
-											<a class="btn-link text-dark" href="#"><span
+											<a class="btn-link text-dark" href="InsertProductInCart?productid=<%=product.getProduct_id()%>"><span
 												class="fas fa-shopping-cart mr-2"></span>Add To Cart </a>
 										</div>
                         <div class="ml-7 mt-3">

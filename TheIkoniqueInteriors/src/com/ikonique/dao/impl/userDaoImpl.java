@@ -16,6 +16,7 @@ import javax.servlet.RequestDispatcher;
 import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
 
 import com.ikonique.bean.Area;
+import com.ikonique.bean.Cart;
 import com.ikonique.bean.Category;
 import com.ikonique.bean.FeedBack;
 import com.ikonique.bean.Offer;
@@ -1480,6 +1481,81 @@ public class userDaoImpl implements userDao {
 		String deletequery = "delete from wishlist where i_things_id=? and i_person_id=?";
 		try(PreparedStatement preparedStatement = connection.prepareStatement(deletequery)) {
 			preparedStatement.setInt(1,productcid);
+			preparedStatement.setInt(2,user_id);
+			
+			return preparedStatement.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public int saveCartDetails(Connection connection, Cart cart) {
+		int i = 0, insertedcartid = 0;
+		String insertQuery = "insert into cart (i_goods_id,i_buyer_id,d_date) values(?,?,?)";
+		try { 
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try(PreparedStatement preparedStatement = connection.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS)) {
+			
+			preparedStatement.setInt(1, cart.getProductid());
+			preparedStatement.setInt(2, cart.getUserid());
+			preparedStatement.setDate(3, (Date) cart.getCurrentdate());
+			
+
+			i = preparedStatement.executeUpdate();
+			ResultSet resultSet = preparedStatement.getGeneratedKeys();
+
+			while (resultSet.next()) 
+			{
+				insertedcartid = resultSet.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return insertedcartid;
+	}
+
+	@Override
+	public List<Cart> selectCartDetails(Connection connection, int user_id) {
+		String selectQuery="select * from cart where i_buyer_id=?";
+		List<Cart> cartList = new ArrayList<Cart>();
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery)){
+				preparedStatement.setInt(1, user_id);
+				
+				ResultSet resultSet=preparedStatement.executeQuery();
+		
+			while(resultSet.next())
+			{
+				Cart cart = new Cart();
+				cart.setCartid(resultSet.getInt("i_cart_id"));
+				cart.setProductid(resultSet.getInt("i_goods_id"));
+				cart.setUserid(resultSet.getInt("i_buyer_id"));
+				cart.setCurrentdate(resultSet.getDate("d_date"));
+				cartList.add(cart);
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return cartList;
+	}
+
+	@Override
+	public int removeIntoCart(int productid, int user_id, Connection connection) {
+		String deletequery = "delete from cart where i_goods_id=? and i_buyer_id=?";
+		try(PreparedStatement preparedStatement = connection.prepareStatement(deletequery)) {
+			preparedStatement.setInt(1,productid);
 			preparedStatement.setInt(2,user_id);
 			
 			return preparedStatement.executeUpdate();

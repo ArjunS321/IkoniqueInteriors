@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.ikonique.bean.Area;
+import com.ikonique.bean.Cart;
 import com.ikonique.bean.Category;
 import com.ikonique.bean.FeedBack;
 import com.ikonique.bean.Offer;
@@ -103,6 +104,12 @@ public interface userDao {
 	public User fetchDesigner(Connection connection, int designerid);
 
 	public int removeIntoWishlist(int productcid, int user_id, Connection connection);
+
+	public int saveCartDetails(Connection connection, Cart cart);
+
+	public List<Cart> selectCartDetails(Connection connection, int user_id);
+
+	public int removeIntoCart(int productid, int user_id, Connection connection);
 	
 	
 

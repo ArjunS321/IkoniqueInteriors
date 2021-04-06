@@ -3,6 +3,7 @@ package com.ikonique.userService;
 import java.util.List;
 
 import com.ikonique.bean.Area;
+import com.ikonique.bean.Cart;
 import com.ikonique.bean.Category;
 import com.ikonique.bean.FeedBack;
 import com.ikonique.bean.Offer;
@@ -57,4 +58,7 @@ public interface userService {
 	public List<Product> selectProductDetail(int id) ;
 	public User getDesigner(int designerid);
 	public String deleteFromWishlist(int productcid, int user_id);
+	public String insertIntoCart(Cart cart);
+	public List<Cart> fetchCartDetails(int user_id);
+	public String deleteFromCart(int productid, int user_id);
 }

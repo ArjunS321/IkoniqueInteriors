@@ -429,4 +429,34 @@
     <servlet-name>DeleteWishlistDetail</servlet-name>
     <url-pattern>/DeleteWishlistDetail</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InsertProductInCart</display-name>
+    <servlet-name>InsertProductInCart</servlet-name>
+    <servlet-class>com.ikonique.servlet.InsertProductInCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertProductInCart</servlet-name>
+    <url-pattern>/InsertProductInCart</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectCartDetails</display-name>
+    <servlet-name>SelectCartDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.SelectCartDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectCartDetails</servlet-name>
+    <url-pattern>/SelectCartDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteCartDetail</display-name>
+    <servlet-name>DeleteCartDetail</servlet-name>
+    <servlet-class>com.ikonique.servlet.DeleteCartDetail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteCartDetail</servlet-name>
+    <url-pattern>/DeleteCartDetail</url-pattern>
+  </servlet-mapping>
 </web-app>

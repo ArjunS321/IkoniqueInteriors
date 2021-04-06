@@ -214,10 +214,10 @@ else
 					KG
 				</p>
 					
-				<button type="button" class="btn rounded-bottom col-lg-5 ml-6"
-					style="background-color: #e6e7ee;">Buy Now</button>
-				<button type="button" class="btn rounded-bottom ml-3 col-lg-5"
-					style="background-color: #e6e7ee;">Add to Cart</button>
+				<a href="#" class="btn rounded-bottom col-lg-5 ml-6"
+					style="background-color: #e6e7ee;">Buy Now</a>
+				<a href="InsertProductInCart?productid=<%=product.getProduct_id()%>" class="btn rounded-bottom ml-3 col-lg-5"
+					style="background-color: #e6e7ee;">Add to Cart</a>
 
 <!-- 					<div class="form-group mb-1 ml-6 mr-10 inputBox"> -->
 <!-- 						<label for="add">FeedBack</label> -->

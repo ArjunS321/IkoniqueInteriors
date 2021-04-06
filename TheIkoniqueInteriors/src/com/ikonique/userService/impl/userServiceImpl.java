@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.ikonique.bean.Area;
+import com.ikonique.bean.Cart;
 import com.ikonique.bean.Category;
 import com.ikonique.bean.FeedBack;
 import com.ikonique.bean.Offer;
@@ -474,6 +475,37 @@ public class userServiceImpl {
 		int deleteCount=0;
 		String msg=null;
 		deleteCount=userDao.removeIntoWishlist(productcid,user_id,connection);
+		if(deleteCount>0) {
+			msg="Deletion Successfully";
+		}
+		else
+		{
+			msg="Deletion Failed";
+		}
+		return msg;
+	}
+
+	public String insertIntoCart(Cart cart) {
+		String msg=null;
+		int insertintocart = userDao.saveCartDetails(connection , cart);
+		if(insertintocart>0) {
+			msg="Insertion Is Successfully";
+		}
+		else
+		{
+			msg="Insertion Is Failed";
+		}
+		return msg;
+	}
+
+	public List<Cart> fetchCartDetails(int user_id) {
+		return userDao.selectCartDetails(connection,user_id);
+	}
+
+	public String deleteFromCart(int productid, int user_id) {
+		int deleteCount=0;
+		String msg=null;
+		deleteCount=userDao.removeIntoCart(productid,user_id,connection);
 		if(deleteCount>0) {
 			msg="Deletion Successfully";
 		}
