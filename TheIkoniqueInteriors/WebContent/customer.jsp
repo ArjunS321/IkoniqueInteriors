@@ -31,7 +31,7 @@
 	<div class="page-wrapper" style="background-color: #e6e7ee;">
 		<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>
 		<%@include file="commonsidebar.jsp"%>
-		<%@include file="customerheader.jsp"%>
+		<%@include file="commonheader.jsp"%>
 		<div class="page-container">
 			<div class="main-content pt-4"  style="background-color: #e6e7ee;">
 				<div id="Carousel2"

@@ -1,5 +1,4 @@
 <%@include file="FontFaces.jsp"%>
-
 <%@include file="commoncss.jsp"%>
 
 <header class="header-desktop"  style="background-color: #e6e7ee;">

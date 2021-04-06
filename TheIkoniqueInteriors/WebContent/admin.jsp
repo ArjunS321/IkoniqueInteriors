@@ -10,6 +10,6 @@
 </head>
 <body>
 <%@include file="commonsidebar.jsp"%>
-<%@include file="adminheader.jsp"%>
+<%@include file="commonheader.jsp"%>
 </body>
 </html>
