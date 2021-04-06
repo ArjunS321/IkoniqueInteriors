@@ -469,6 +469,20 @@ public class userServiceImpl {
 		user = userDao.fetchDesigner(connection,designerid);
 		return user;
 	}
+
+	public String deleteFromWishlist(int productcid, int user_id) {
+		int deleteCount=0;
+		String msg=null;
+		deleteCount=userDao.removeIntoWishlist(productcid,user_id,connection);
+		if(deleteCount>0) {
+			msg="Deletion Successfully";
+		}
+		else
+		{
+			msg="Deletion Failed";
+		}
+		return msg;
+	}
 }
 		
 

@@ -419,4 +419,14 @@
     <servlet-name>SelectDesigner</servlet-name>
     <url-pattern>/SelectDesigner</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteWishlistDetail</display-name>
+    <servlet-name>DeleteWishlistDetail</servlet-name>
+    <servlet-class>com.ikonique.servlet.DeleteWishlistDetail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteWishlistDetail</servlet-name>
+    <url-pattern>/DeleteWishlistDetail</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -101,6 +101,8 @@ public interface userDao {
 	public List<Product> fetchProduct(Connection connection, int id);
 
 	public User fetchDesigner(Connection connection, int designerid);
+
+	public int removeIntoWishlist(int productcid, int user_id, Connection connection);
 	
 	
 

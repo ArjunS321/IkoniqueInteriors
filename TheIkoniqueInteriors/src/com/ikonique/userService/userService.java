@@ -56,4 +56,5 @@ public interface userService {
 	public String deleteFromFeedback(int feedbackid);
 	public List<Product> selectProductDetail(int id) ;
 	public User getDesigner(int designerid);
+	public String deleteFromWishlist(int productcid, int user_id);
 }

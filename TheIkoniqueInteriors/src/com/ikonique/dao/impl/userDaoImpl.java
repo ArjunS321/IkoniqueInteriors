@@ -1474,6 +1474,22 @@ public class userDaoImpl implements userDao {
 		}
 		return null;
 }
+
+	@Override
+	public int removeIntoWishlist(int productcid, int user_id, Connection connection) {
+		String deletequery = "delete from wishlist where i_things_id=? and i_person_id=?";
+		try(PreparedStatement preparedStatement = connection.prepareStatement(deletequery)) {
+			preparedStatement.setInt(1,productcid);
+			preparedStatement.setInt(2,user_id);
+			
+			return preparedStatement.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }
 	
 

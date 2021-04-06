@@ -55,42 +55,28 @@
                 </aside>
                 <div class="col-md-6">
                     <div class="info-main">
-                        <a href="#" class="h5 title"> <%=product.getProduct_name() %> </a>
+                        <a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>" class="h5 title"> <%=product.getProduct_name() %> </a>
                        <!--  <p>Monitor your health. Track your workouts. Get the motivation you need to achieve your fitness goals. And stay connected to the people and information you care about.</p> -->
                     	<p><%= product.getProduct_desc() %></p>
                     </div>
                 </div> 
                 <div class="col-12 col-md-3">
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center ml-7">
                         <span class="h5 mb-0 text-gray  mr-2">
-                            $<%=product.getProduct_price() %>
+                            &#x20B9;<%=product.getProduct_price() %>
                         </span>
-                        
-                    </div> 
-                    
+                    </div>
                     <!-- info-price-detail // -->
                     <!-- <span class="text-success small"><span class="fas fa-shipping-fast mr-1"></span>Free shipping</span> -->
                     <div class="mt-4">
-                        <a class="btn btn-sm btn-block mb-3" style="background-color: #e6e7ee;" href="#">
-                            Add To Cart
-                        </a>
-                        <a href="#" class="btn btn-sm btn-block" style="background-color: #e6e7ee;"><i id="<%=product.getProduct_id() %>"  class="fa fa-heart" 
-                           
-                       	
-						 <%if(null!=wishlistint && !wishlistint.isEmpty()) {%>
-						  
-							<%if(wishlistint.contains(product.getProduct_id())){ %>
-								att="1" style="color: red"
-							<%}else{ %>
-								att="0" style="color: black"
-							<%} %>
-							
-						<%}else{ %>
-							 att="0" style="color: black"
-							<%} %>
-						
-						></i></a>
-                       
+                       <div class="ml-7 mt-3">
+											<a class="btn-link text-dark" href="#"><span
+												class="fas fa-shopping-cart mr-2"></span>Add To Cart </a>
+										</div>
+                        <div class="ml-7 mt-3">
+											<a class="btn-link text-dark" href="DeleteWishlistDetail?productid=<%=product.getProduct_id()%>"><span
+												class="far fa-trash-alt mr-2"></span>Remove </a>
+										</div>
                     </div>
                  
                 </div> 
