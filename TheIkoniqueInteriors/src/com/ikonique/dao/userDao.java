@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.ikonique.bean.Area;
+import com.ikonique.bean.Booking;
+import com.ikonique.bean.BookingInfo;
 import com.ikonique.bean.Cart;
 import com.ikonique.bean.Category;
 import com.ikonique.bean.FeedBack;
@@ -110,6 +112,10 @@ public interface userDao {
 	public List<Cart> selectCartDetails(Connection connection, int user_id);
 
 	public int removeIntoCart(int productid, int user_id, Connection connection);
+
+	public int saveBookingDetails(Connection connection, Booking booking);
+
+	public int saveBookingInfoDetails(Connection connection, BookingInfo bookingInfo);
 	
 	
 

@@ -16,6 +16,8 @@ import javax.servlet.RequestDispatcher;
 import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
 
 import com.ikonique.bean.Area;
+import com.ikonique.bean.Booking;
+import com.ikonique.bean.BookingInfo;
 import com.ikonique.bean.Cart;
 import com.ikonique.bean.Category;
 import com.ikonique.bean.FeedBack;
@@ -1565,6 +1567,76 @@ public class userDaoImpl implements userDao {
 			e.printStackTrace();
 		}
 		return 0;
+	}
+
+	@Override
+	public int saveBookingDetails(Connection connection, Booking booking) {
+		int i = 0, insertedBookingId = 0;
+		String insertQuery = "insert into booking (i_designer_id,i_fees,i_user_id) values (?,?,?)";
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery,
+				Statement.RETURN_GENERATED_KEYS)) {
+			preparedStatement.setInt(1, booking.getDesignerid());
+//			preparedStatement.setDate(2, booking.getBookingdate());
+			preparedStatement.setInt(2, booking.getVfees());
+			preparedStatement.setInt(3, booking.getUserid());
+	
+			
+			i = preparedStatement.executeUpdate();
+			ResultSet resultSet = preparedStatement.getGeneratedKeys();
+
+			while (resultSet.next()) 
+			{
+				insertedBookingId = resultSet.getInt(1);
+			}
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return insertedBookingId;
+	}
+
+	@Override
+	public int saveBookingInfoDetails(Connection connection, BookingInfo bookingInfo) {
+		int i = 0, insertedBooinginfoId = 0;
+		String insertQuery = "insert into booking_info (i_book_id,c_booking_firstname,c_booking_lastname,c_booking_address,c_booking_contactno,c_booking_email) values(?,?,?,?,?,?)";
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS)) {
+			preparedStatement.setInt(1, bookingInfo.getBookingid());
+			preparedStatement.setString(2, bookingInfo.getBookingfname());
+			preparedStatement.setString(3, bookingInfo.getBookinglname());
+			preparedStatement.setString(4, bookingInfo.getBookingaddress());
+			preparedStatement.setString(5, bookingInfo.getBookingcno());
+			preparedStatement.setString(6, bookingInfo.getBookingemail());
+			
+
+			i = preparedStatement.executeUpdate();
+			ResultSet resultSet = preparedStatement.getGeneratedKeys();
+
+			while (resultSet.next()) {
+				insertedBooinginfoId = resultSet.getInt(1);
+			}
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return insertedBooinginfoId;
 	}
 }
 	

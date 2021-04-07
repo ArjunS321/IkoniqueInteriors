@@ -459,4 +459,24 @@
     <servlet-name>DeleteCartDetail</servlet-name>
     <url-pattern>/DeleteCartDetail</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InsertBookingDetails</display-name>
+    <servlet-name>InsertBookingDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.InsertBookingDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertBookingDetails</servlet-name>
+    <url-pattern>/InsertBookingDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectPerticularDesigner</display-name>
+    <servlet-name>SelectPerticularDesigner</servlet-name>
+    <servlet-class>com.ikonique.servlet.SelectPerticularDesigner</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectPerticularDesigner</servlet-name>
+    <url-pattern>/SelectPerticularDesigner</url-pattern>
+  </servlet-mapping>
 </web-app>

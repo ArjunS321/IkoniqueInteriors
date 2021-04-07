@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.ikonique.bean.Area;
+import com.ikonique.bean.Booking;
+import com.ikonique.bean.BookingInfo;
 import com.ikonique.bean.Cart;
 import com.ikonique.bean.Category;
 import com.ikonique.bean.FeedBack;
@@ -512,6 +514,34 @@ public class userServiceImpl {
 		else
 		{
 			msg="Deletion Failed";
+		}
+		return msg;
+	}
+
+	public int insertBookingDetails(Booking booking) {
+		String msg=null;
+		int insertintobooking = userDao.saveBookingDetails(connection , booking);
+		if(insertintobooking>0) 
+		{
+			msg="Insertion Is Successfully";
+		}
+		else
+		{
+			msg="Insertion Is Failed";
+		}
+		return insertintobooking;
+	}
+
+	public String insertBookingInfo(BookingInfo bookingInfo) {
+		String msg=null;
+		int insertintobookinginfo = userDao.saveBookingInfoDetails(connection , bookingInfo);
+		if(insertintobookinginfo>0) 
+		{
+			msg="Insertion Is Successfully";
+		}
+		else
+		{
+			msg="Insertion Is Failed";
 		}
 		return msg;
 	}

@@ -48,20 +48,25 @@ $quantity-btn-color: #95d7fc;
 		<%@include file="customerheader.jsp"%>
 		<div class="page-container">
 			<div class="main-content">
+			<div class="card shadow-inset border-light p-3 mr-2 ml-2 mb-1" 
+ 			style="background-color: #e6e7ee;"> 
 				<div class="row mr-0 ml-0" style="background-color: #e6e7ee;">
+<%-- 				<%! double sum = '0'; %> --%>
 				<%for(Product product : productList){ %>
 					<%if(cartint.contains(product.getProduct_id())){ %>
 					<div class="col-12">
 						<div class="card shadow-soft border-light p-4 mb-5" style="background-color: #e6e7ee;">
-							<div class="row align-items-center">
+							<div class="row align-items-center item">
 								<div class="col-3">
 									<a href="#"> <img src="data:image/jpg;base64,<%=product.getProductpicString()%>">
 									</a>
 								</div>
 								<div class="col">
 									<div class="d-flex mb-2 font-weight-bold">
-										<a class="h5" href="#"><%=product.getProduct_name() %></a> <span
-											class="h5 ml-auto"><%=product.getProduct_price() %></span>
+										<a class="h5 pname" href="#"><%=product.getProduct_name() %></a> <span
+											id="mainprice" class="price h5 ml-auto">&#x20B9;<%=product.getProduct_price() %></span>
+										<input type="text" id="sum" name="sum2" value="<%=product.getProduct_price() %>" onkeyup="mainprice()">	
+										
 									</div>
 									<ul class="pl-3">
 										<li class="small"><%=product.getProduct_desc() %></li>
@@ -77,13 +82,9 @@ $quantity-btn-color: #95d7fc;
 											<i class="fas fa-plus"></i>
 										</button>
 										</div>
-										<div style="margin-left:47rem;">
+										<div style="margin-left:45rem;">
 											<a class="btn-link text-dark" href="DeleteCartDetail?productid=<%=product.getProduct_id()%>"><span
 												class="far fa-trash-alt mr-2"></span>Remove</a>
-										</div>
-										<div style="margin-left:47rem;" class="mt-3">
-											<a class="btn-link text-dark" href="#"><span
-												class="fa fa-shopping-bag mr-2"></span>Buy Now</a>
 										</div>
 									</div>
 								</div>
@@ -91,9 +92,30 @@ $quantity-btn-color: #95d7fc;
 						</div>
 						<%} %>
 						<%} %>
+						
 					</div>
+					<!-- <hr class="my-5" style="background-color: lightgrey; margin-top:10px !important;">
+					MRP
+					<hr class="my-5" style="background-color: lightgrey; margin-top:0px !important;">
+					Discount
+					<hr class="my-5" style="background-color: lightgrey; margin-top:0px !important;">
+					Tax
+					<hr class="my-5" style="background-color: lightgrey; margin-top:0px !important;">
+					Total
+					<hr class="my-5" style="background-color: lightgrey; margin-top:0px !important;"> -->
+					<div class="card-body p-0">
+                <ul class="list-group list-group-sm mt-3">
+                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>MRP</span> <span id="mrp" class="ml-auto"> &#x20B9;</span> </li>
+                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>Discount</span> <span class="ml-auto">&#x20B9;18.00</span> </li>
+                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>Tax</span> <span class="ml-auto">&#x20B9;18.00</span> </li>
+                    <li class="list-group-item d-flex font-weight-bold rounded-bottom h5"  style="background-color: #e6e7ee !important;"> <span>Total</span> <span class="ml-auto"> &#x20B9;416.00</span></li> 
+                </ul>
+                <a class="btn btn-block mt-4 mb-3" href="detailfillup.jsp">Place Order</a> 
+            </div>
 				</div>
+				
 		</div>
+	</div>
 	</div>
 </body>
 <!-- Core -->
@@ -117,11 +139,15 @@ $quantity-btn-color: #95d7fc;
 				<script src="neuro/vendor/prismjs/prism.js"></script>
 
 				<script async defer src="https://buttons.github.io/buttons.js"></script>
-
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 				<!-- Neumorphism JS -->
 				<script src="neuro/assets/js/neumorphism.js"></script>
 				<%@include file="commonjs.jsp"%>
 				<script>
+				$(document).ready(function(){
+					alert("fn ready...");
+					
+				});
 				function up(max) {
 				    document.getElementById("myNumber").value = parseInt(document.getElementById("myNumber").value) + 1;
 				    if (document.getElementById("myNumber").value >= parseInt(max)) {
@@ -134,5 +160,41 @@ $quantity-btn-color: #95d7fc;
 				        document.getElementById("myNumber").value = min;
 				    }
 				}
+// 				function totalprice() 
+// 				{
+// 					alert("fn called");
+// 					var sum = 0.0;
+// 					$('#myTable > tbody > tr').each(function() {
+// 						alert("loop called");
+// 						var price = $(this).find('.price1').text();
+// 						sum+=price;
+// 						alert(price);
+// 					});
+// 					alert("total sum:-"+price);
+// 					var obj = [];
+// 					  for(var i=0;i<$('.item').length;i++){
+// 						  alert("loop called");
+// 						  obj[i] = {
+//  								  Product Name : $('.item').eq(i).find('.pname').html()
+// 								  Price : $('.item').eq(i).find('.price').html()
+// 						  }
+// 						  alert("Price value:-"+obj);
+// 					  };
+					  
+// 				}
+				var sum1 = 0;
+				function mainprice()
+				{
+					alert("mainprice called..");
+						alert("loop called..");
+						var price = document.getElementById("sum").value();
+						alert("main price"+price);
+						sum1 = sum1 + price;
+					
+					alert("total price"+sum1);
+//  					return sum;
+				}
+// 				document.getElementById("sum").innerHTML = mainprice();
+				
 				</script>
 </html>

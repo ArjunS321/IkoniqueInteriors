@@ -214,7 +214,7 @@ else
 					KG
 				</p>
 					
-				<a href="#" class="btn rounded-bottom col-lg-5 ml-6"
+				<a href="InsertProductInCart?productid=<%=product.getProduct_id()%>" class="btn rounded-bottom col-lg-5 ml-6"
 					style="background-color: #e6e7ee;">Buy Now</a>
 				<a href="InsertProductInCart?productid=<%=product.getProduct_id()%>" class="btn rounded-bottom ml-3 col-lg-5"
 					style="background-color: #e6e7ee;">Add to Cart</a>

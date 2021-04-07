@@ -135,7 +135,7 @@ textarea {
 				</div>
 				<br><br><br><br><br><br><br>
 				<div class="ml-6">
-                         <a href="bookdesigner.jsp" type="submit" name="submit" id="submit" class="btn col-lg-2 btn-primary1">Hire Me</a>
+                         <a href="SelectPerticularDesigner?designerid=<%=user.getUser_id() %>" type="submit" name="submit" id="submit" class="btn col-lg-2 btn-primary1">Hire Me</a>
                  </div>
 				<div class="ml-7 mb-5">
                          <h4 align="center" class="mb-3 mr-7">About Me</h4>

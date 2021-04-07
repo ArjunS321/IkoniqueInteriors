@@ -1,3 +1,4 @@
+<%@page import="com.ikonique.bean.Area"%>
 <%@page import="com.ikonique.bean.Wishlist"%>
 <%@page import="com.ikonique.bean.Offer"%>
 <%@page import="com.ikonique.bean.Product"%>
@@ -152,34 +153,6 @@
 				0 0 20px #0f0,
 				0 0 40px #0f0;
 }
-#form .indicator6
-{
-	position: absolute;
-	top:50px;
-	left:44rem;
-	width: 10px;
-	height:10px;
-	background: #555;
-	border-radius: 50%;
-}
-
-#form.invalid5 .indicator6
-{
-	background: #f00;
-	box-shadow: 0 0 5px #f00,
-				0 0 10px #f00,
-				0 0 20px #f00,
-				0 0 40px #f00;
-}
-
-#form.valid5 .indicator6
-{
-	background: #0f0;
-	box-shadow: 0 0 5px #0f0,
-				0 0 10px #0f0,
-				0 0 20px #0f0,
-				0 0 40px #0f0;
-}
 textarea {
     overflow: auto;
     resize: none;
@@ -263,7 +236,7 @@ textarea {
 }
 </style>
 <meta charset="ISO-8859-1">
-<title>Book Interior Designer</title>
+<title>Customer Details</title>
 
 <!-- Fontawesome -->
 <link type="text/css"
@@ -271,10 +244,18 @@ textarea {
 	rel="stylesheet">
 <!-- Pixel CSS -->
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
-<%
-	User user = (User) request.getAttribute("user");
-%>
+
 </head>
+<% HttpSession httpSession = request.getSession(false);
+	User user = null;   
+	if(null!=httpSession){
+	   user = (User)httpSession.getAttribute("loginBean");
+   }
+%>
+<jsp:include page="/AreaRegistration" />
+<%
+	List<Area> area = (List) request.getAttribute("area");
+%>
 <body style="background-color: #e6e7ee">
 	<%@include file="customersidebar.jsp"%>
 	<%@include file="customerheader.jsp"%>
@@ -283,87 +264,62 @@ textarea {
 			style="background-color: #e6e7ee;">
 			<!-- Content -->
 		<div class="card-body shadow-soft border border-light rounded p-4">
-			<div class="ml-10 col-12 col-lg-6">
-                <div class="card shadow-inset border-light p-3" style="background-color: #e6e7ee;">
-                    <!-- Content -->
-                    <div class="card-body shadow-soft border border-light rounded p-4">
-                        <h4 class="mb-3">Book Me</h4>
-                        <div class="d-flex mb-3"> 
-                            <span class="h5 mb-0">&#x20B9;</span> 
-                            <span class="price display-2 text-dark mb-0"><%=user.getVisitingfees() %></span> 
-                        </div>
-                        <p class="mb-4"><%=user.getAboutme() %></p>
-                        <a href="#" type="button" class="btn col-lg-4 rounded-bottom">Back</a>
-                        <button id="book" type="button" class="ml-7 btn col-lg-4 rounded-bottom">Book Me</button>
-                    </div>
-                    <!-- End Content -->
-                </div>
-            </div>
             <br><br>
-            <form action="InsertBookingDetails" method="post" align="center" id="form" name="form">
-            <h1>Enter Details</h1>
+            <form align="center" id="form" name="form">
+            <h1>Customer Details</h1>
             <br>
-            		<input type="hidden" id="visitingfees" name="visitingfees" value="<%=user.getVisitingfees() %>">
-            		<input type="hidden" id="designerid" name="designerid" value="<%=user.getUser_id()%>">
 					<div class="form-group mb-3 inputBox">
 						<label for="fname">First Name</label><br><input type="text"
 							name="fname" style="background-color: #e6e7ee;" class="form-control1 col-lg-5" id="fname" autocomplete="off"
-							aria-describedby="emailHelp" onkeyup="validate1();"> <span
+							aria-describedby="emailHelp" onkeyup="validate1();" value="<%=user.getFirstname()%>"> <span
 							class="indicator1"></span>
 					</div>
 					<div class="form-group mb-3 inputBox">
 						<label for="lname">Last Name</label><br><input type="text"
 							name="lname"  style="background-color: #e6e7ee;" class="form-control1 col-lg-5" id="lname" autocomplete="off"
-							aria-describedby="emailHelp" onkeyup="validate2();"> <span
+							aria-describedby="emailHelp" onkeyup="validate2();" value="<%=user.getLastname()%>"> <span
 							class="indicator2"></span>
 					</div>
 					<div class="form-group mb-3 inputBox">
 						<label for="add">Address</label><br>
 						<textarea rows="5" name="address"  style="background-color: #e6e7ee;" class="form-control1 col-lg-5" id="add"
 							autocomplete="off" aria-describedby="emailHelp"
-							onkeyup="validate3();"></textarea>
+							onkeyup="validate3();"><%=user.getAddress() %></textarea>
 						<span class="indicator3"></span>
 					</div>
+					<div class="form-group mb-3 inputBox">
+							<label for="areaname">Area</label><br><select name="area"
+								class="form-control col-lg-5" id="area" aria-describedby="emailHelp"
+								onchange="validate6()" style="background-color: #e6e7ee; border-radius: 0.55rem;
+								  margin-left: 19rem; box-shadow:none;">
+								<option value="0" selected>  </option>
+								<%for (Area place : area) {%>
+									<%if (user.getArea_id() == place.getArea_id()) {%>
+										  <option value="<%=place.getArea_id()%>" selected><%=place.getArea_name()%></option>
+									<%} else {%>
+												<option value="<%=place.getArea_id()%>"><%=place.getArea_name()%></option>
+									<%}%>
+								<%} %>
+							</select> <span class="indicator8"></span>
+
+						</div>
 					<div class="form-group mb-3 inputBox">
 						<label for="mobilenumber">Mobile Number</label><br><input type="text"
 							name="mno"  style="background-color: #e6e7ee;" class="form-control1 col-lg-5" id="mno" autocomplete="off"
 							aria-describedby="emailHelp" onkeyup="validate4();"
-							maxLength="10" onkeypress="return onlyNumberKey(event)">
+							maxLength="10" onkeypress="return onlyNumberKey(event)" value="<%=user.getMobileno()%>">
 						<span class="indicator4"></span>
 					</div>
 					<div class="form-group mb-3 inputBox">
-							<label for="email">Email address</label><br><input type="text"
+							<label for="email">Email address</label><br><input readonly type="text"
 								style="background-color: #e6e7ee;" name="email" class="col-lg-5 form-control1" id="email" autocomplete="off"
-								aria-describedby="emailHelp" onkeyup="validate6();"> <span
-								class="indicator6"></span>
-					</div>
-					<div class="section section-lg pt-2 ml-10">
-						<div class="container">
-							<div class="row mb-lg-7 mb-0">
-								<div class="col-12 col-md-8 mb-0">
-									<!-- Form -->
-									<div class="form-group">
-										<label class="h6" for="exampleInputDate1">Choose a
-											date</label>
-										<div class="input-group">
-											<div class="input-group-prepend">
-												<span class="input-group-text"><span
-													class="far fa-calendar-alt"></span></span>
-											</div>
-											<input name="bookdate" class="form-control datepicker"
-												style="background-color: #e6e7ee; border-radius: 0.55rem;  box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #ffffff;" 
-												id="exampleInputDate1"
-												placeholder="Select date" type="text"
-												aria-label="Date with icon left" onclick="validate5()">
-												<span class="indicator5"></span>
-										</div>
-									</div>
-									<!-- End of Form -->
-									<br>
-									<button type="submit" class="btn col-lg-4 rounded-bottom">Pay Now</button>
-								</div>
-							</div>
+								aria-describedby="emailHelp" onkeyup="validate();" value="<%=user.getEmail()%>"> <span
+								class="indicator1"></span>
 						</div>
+						<br>
+					<div class="mr-10">
+						<button type="submit" name="submit"
+						class="col-lg-2 btn form-group ml-10">Buy</button>
 					</div>
 					
 				</form>
@@ -416,14 +372,9 @@ textarea {
     <script type="module" src="js/main.js"></script>
 <script>
 $(document).ready(function () {
-	$("#form").hide();
+	
 });
-$("#book").click(function(){
-	$("#form").show();
-});
-$('.datepicker').datepicker({ 
-        startDate: new Date()
-    });
+
 function onlyNumberKey(evt) {
     
     // Only ASCII charactar in that range allowed
@@ -431,23 +382,6 @@ function onlyNumberKey(evt) {
     if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
         return false;
     return true;
-}
-function validate6() {
-	const form = document.getElementById('form');
-	const email = document.getElementById('email').value;
-	const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
-
-	if (email.match(pattern)) {
-		form.classList.add('valid5')
-		form.classList.remove('invalid5')
-	} else {
-		form.classList.add('invalid5')
-		form.classList.remove('valid5')
-	}
-	if (email == "") {
-		form.classList.add('invalid5')
-		form.classList.remove('valid5')
-	}
 }
 function validate1() {
 	const form = document.getElementById('form');
