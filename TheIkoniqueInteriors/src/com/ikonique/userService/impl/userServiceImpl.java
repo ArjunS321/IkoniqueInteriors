@@ -538,6 +538,8 @@ public class userServiceImpl {
 		if(insertintobookinginfo>0) 
 		{
 			msg="Insertion Is Successfully";
+			Main main=new Main();
+			main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {bookingInfo.getBookingemail()}, "Booking Successfull", "Your Booking For Interior Designer Is Successfull...Designer Will Contact You..Thank You For Using Our System...Have A Good Day!!");
 		}
 		else
 		{
