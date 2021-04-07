@@ -1,3 +1,4 @@
+<%@page import="com.ikonique.bean.Cart"%>
 <%@page import="com.ikonique.bean.Wishlist"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.ikonique.bean.User"%>
@@ -25,6 +26,10 @@ if(null!=httpSession)
   <jsp:include page="/SelectWishlistDetails"/>
 <%List <Wishlist> wishlistList =(List)request.getAttribute("wishlistList"); %> 
 <%List <Integer> wishlistint =(List)request.getAttribute("wishlistint"); %> 
+<jsp:include page="/SelectCartDetails"/>
+<%List <Cart> cartList =(List)request.getAttribute("cartList"); %> 
+<%List <Integer> cartlistint =(List)request.getAttribute("cartint"); %> 
+
 <body>
 
 <section class="section-bg" style="background-color: #e6e7ee;">
@@ -54,11 +59,24 @@ if(null!=httpSession)
 					</div>
 					<div class="product-btns">
 						<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>" class="btn-small mr-2">&#x20B9;<%=product.getProduct_price() %></a> 
-						<a href="InsertProductInCart?productid=<%=product.getProduct_id()%>" class="btn-round mr-2"><i att="0" class="fa fa-shopping-cart" style="color: black"></i></a> 
+						
+						<!-- For Cart Icon -->
+						<a  class="btn-round mr-2"><i class="fa fa-shopping-cart" id="<%=product.getProduct_id() %>"
+						 <%if(null!=cartlistint && !cartlistint.isEmpty()) {%>
+						  
+							<%if(cartlistint.contains(product.getProduct_id())){ %>
+								att="1" style="color: blue"
+							<%}else{ %>
+								att="0" style="color: black"
+							<%} %>
+							
+						<%}else{ %>
+							 att="0" style="color: black"
+							<%} %>
+						></i></a> 
+						
+						  <!-- For Wishlist Icon -->
 						  <a class="btn-round"><i id="<%=product.getProduct_id() %>"  class="fa fa-heart"
-						
-						
-						
 						 <%if(null!=wishlistint && !wishlistint.isEmpty()) {%>
 						  
 							<%if(wishlistint.contains(product.getProduct_id())){ %>
@@ -70,11 +88,9 @@ if(null!=httpSession)
 						<%}else{ %>
 							 att="0" style="color: black"
 							<%} %>
-						
 						></i></a>
-								<%--  <a class="btn-round"><i id="<%=product.getProduct_id() %>" att="0" class="fa fa-heart" style="color: black"></i></a> --%> 
 						</div>
-<%-- 					<input type="hidden" value="<%=String.valueOf(user.getUser_id()) %>" name="userid"> --%>
+ 					
 				</div>
 			</div>
 			<%} %>
@@ -114,7 +130,7 @@ $('.fa-heart').click(function(){
    
 });
 
-$('.fa-shopping-cart').click(function(){
+/* $('.fa-shopping-cart').click(function(){
     if($(this).attr('att') == 0){
         $(this).css('color', 'blue');
         $(this).attr('att',1);
@@ -122,7 +138,37 @@ $('.fa-shopping-cart').click(function(){
         $(this).css('color', 'black');
         $(this).attr('att',0);
     }
+}); */
+
+$('.fa-shopping-cart').click(function(){
+	alert($(this).attr('id'));
+    if($(this).attr('att') == 0){
+    
+    	var pid = $(this).attr('id');
+    	var opname = "blue";
+    	
+    	$.post( "InsertDeleteProductInCart", {productid: pid , operation : opname } )
+		  .done(function( data ) {
+			  alert("succesfull called..");
+		  });
+    	
+        $(this).css('color', 'blue');
+        $(this).attr('att',1);
+    } else {
+    	var pid = $(this).attr('id');
+    	var opname = "black";
+    	
+    	$.post( "InsertDeleteProductInCart", {productid: pid , operation : opname } )
+		  .done(function( data ) {
+			  alert("succesfull called..");
+		  });
+    	
+        $(this).css('color', 'black');
+        $(this).attr('att',0);
+    }
+   
 });
+
 </script>
 </body>
 </html>

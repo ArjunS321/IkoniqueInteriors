@@ -9,16 +9,19 @@
 <head>
 <%@include file="FontFaces.jsp"%>
 <%@include file="commoncss.jsp"%>
-<% int temp = 0; %>
+<% int temp = '0'; %>
 <% HttpSession httpSessionsidebaar = request.getSession(false);
 	User usersidebaar = null;   
 	if(null!=httpSessionsidebaar){
 		usersidebaar = (User)httpSessionsidebaar.getAttribute("loginBean");
-		temp = 1;
+		if(usersidebaar!=null){
+			temp = '1';
+		}
+		
    }
 	else
 	{
-		temp = 0;
+		temp = '0';
 	}
 %>
 <jsp:include page="/SelectCategoryDetails"/>
@@ -29,7 +32,7 @@
 <meta charset="ISO-8859-1">
 </head>
 <body class=animsition>
-<%if(temp == 1){ %>
+<%if(temp == '1'){ %>
 	<%if(usersidebaar.getRole_id()==1){ %>
 	<aside class="menu-sidebar d-none d-lg-block" style="background-color: #e6e7ee;">
 	<div class="logo" style="background-color: #e6e7ee;">

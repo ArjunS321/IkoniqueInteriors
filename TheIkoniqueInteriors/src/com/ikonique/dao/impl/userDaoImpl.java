@@ -1638,6 +1638,53 @@ public class userDaoImpl implements userDao {
 		}
 		return insertedBooinginfoId;
 	}
+
+	@Override
+	public int saveInCart(Connection connection, Cart cart) {
+		int i = 0, insertedCartId = 0;
+		String insertQuery = "insert into cart (i_goods_id,i_buyer_id,d_date) values(?,?,?)";
+		try { 
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try(PreparedStatement preparedStatement = connection.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS)) {
+			preparedStatement.setInt(1, cart.getProductid());
+			preparedStatement.setInt(2, cart.getUserid());
+			preparedStatement.setDate(3, (Date) cart.getCurrentdate());
+
+			i = preparedStatement.executeUpdate();
+			ResultSet resultSet = preparedStatement.getGeneratedKeys();
+
+			while (resultSet.next()) 
+			{
+				insertedCartId = resultSet.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return insertedCartId;
+
+	}
+
+	@Override
+	public int removeInCart(Cart cart, Connection connection) {
+		String deletequery = "delete from cart where i_goods_id=? and i_buyer_id=?";
+		try(PreparedStatement preparedStatement = connection.prepareStatement(deletequery)) {
+			preparedStatement.setInt(1,cart.getProductid());
+			preparedStatement.setInt(2, cart.getUserid());
+			return preparedStatement.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }
 	
 

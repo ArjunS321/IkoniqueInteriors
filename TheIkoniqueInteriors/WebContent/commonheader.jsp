@@ -10,7 +10,10 @@
 User userheader = null;
 if (null != httpSession) {
 	userheader = (User) httpSession.getAttribute("loginBean");
-	temp = '1';
+	if(userheader!=null){
+		temp = '1';
+	}
+	
 } else {
 	temp = '0';
 }

@@ -11,7 +11,7 @@
 <%@include file="commoncss.jsp"%>
 </head>
 <body class="animsition" style="background-color: #e6e7ee;">
-<%-- 		<%@include file="commonsidebar.jsp"%> --%>
+	<%@include file="commonsidebar.jsp"%> 
 		<%@include file="commonheader.jsp"%>
 	<div class="page-wrapper">
 		<div class="page-container">

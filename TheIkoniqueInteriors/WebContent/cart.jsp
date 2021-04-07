@@ -65,7 +65,7 @@ $quantity-btn-color: #95d7fc;
 									<div class="d-flex mb-2 font-weight-bold">
 										<a class="h5 pname" href="#"><%=product.getProduct_name() %></a> <span
 											id="mainprice" class="price h5 ml-auto">&#x20B9;<%=product.getProduct_price() %></span>
-										<input type="text" id="sum" name="sum2" value="<%=product.getProduct_price() %>" onkeyup="mainprice()">	
+										<%-- <input type="text" id="sum" name="sum2" value="<%=product.getProduct_price() %>" onkeyup="mainprice()"> --%>	
 										
 									</div>
 									<ul class="pl-3">

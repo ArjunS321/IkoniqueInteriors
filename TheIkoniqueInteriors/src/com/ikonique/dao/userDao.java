@@ -116,6 +116,10 @@ public interface userDao {
 	public int saveBookingDetails(Connection connection, Booking booking);
 
 	public int saveBookingInfoDetails(Connection connection, BookingInfo bookingInfo);
+
+	public int saveInCart(Connection connection, Cart cart);
+
+	public int removeInCart(Cart cart, Connection connection);
 	
 	
 

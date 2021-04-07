@@ -547,6 +547,34 @@ public class userServiceImpl {
 		}
 		return msg;
 	}
+
+	public String insertInCart(Cart cart) {
+		String msg=null;
+		int insertintocart = userDao.saveInCart(connection , cart);
+		if(insertintocart>0) {
+			msg="Insertion Is Successfully";
+		}
+		else
+		{
+			msg="Insertion Is Failed";
+		}
+		return msg;
+	}
+
+	public String deleteInCart(Cart cart) {
+		int deleteCount=0;
+		String msg=null;
+		deleteCount=userDao.removeInCart(cart,connection);
+		if(deleteCount>0) {
+			msg="Deletion Successfully";
+		}
+		else
+		{
+			msg="Deletion Failed";
+		}
+		return msg;
+	
+	}
 }
 		
 

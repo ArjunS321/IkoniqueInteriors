@@ -479,4 +479,14 @@
     <servlet-name>SelectPerticularDesigner</servlet-name>
     <url-pattern>/SelectPerticularDesigner</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InsertDeleteProductInCart</display-name>
+    <servlet-name>InsertDeleteProductInCart</servlet-name>
+    <servlet-class>com.ikonique.servlet.InsertDeleteProductInCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertDeleteProductInCart</servlet-name>
+    <url-pattern>/InsertDeleteProductInCart</url-pattern>
+  </servlet-mapping>
 </web-app>
