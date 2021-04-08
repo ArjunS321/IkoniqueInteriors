@@ -16,9 +16,8 @@
 </head>
 <body class="animsition">
 	<div class="page-wrapper">
-		<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>
-		<%@include file="customersidebar.jsp"%>
-		<%@include file="customerheader.jsp"%>
+	<%@include file="commonsidebar.jsp"%>
+<%@include file="commonheader.jsp"%>
 		<div class="page-container">
 			<div class="main-content">
 

@@ -40,8 +40,8 @@
 <%
 	List<Area> area1 = (List) request.getAttribute("area");
 %>
-<%@include file="adminsidebar.jsp"%>
-<%@include file="adminheader.jsp"%>
+<%@include file="commonsidebar.jsp"%>
+<%@include file="commonheader.jsp"%>
     <div class="container" style="overflow-x: scroll">
         <h2>
             <span>Customer Details Table</span>

@@ -32,8 +32,8 @@
 
 </head>
 <body style="background-color: #e6e7ee;">
-<%@include file="customersidebar.jsp"%>
-<%@include file="customerheader.jsp"%>
+<%@include file="commonsidebar.jsp"%>
+<%@include file="commonheader.jsp"%>
 
 <br><br><br>
 <div class="row mr-0 ml-2">

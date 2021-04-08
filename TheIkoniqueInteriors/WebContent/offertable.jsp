@@ -18,13 +18,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
      <%@include file="FontFaces.jsp"%>
 	<%@include file="commoncss.jsp"%>
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-   
-     <%@include file="FontFaces.jsp"%>
-	<%@include file="commoncss.jsp"%>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
+	    <style type="text/css">
         h3 span {
             font-size: 22px;
         }
@@ -43,8 +37,8 @@
 <body class="mt32">
 <jsp:include page="/SelectOfferDetails"/>
 <%List<Offer> offerList =(List)request.getAttribute("offerList"); %>
-<%@include file="adminsidebar.jsp"%>
-<%@include file="adminheader.jsp"%>
+<%@include file="commonsidebar.jsp"%>
+<%@include file="commonheader.jsp"%>
     <div class="container" style="overflow-x: scroll">
         <h2>
             <span>Offer Details Table</span>

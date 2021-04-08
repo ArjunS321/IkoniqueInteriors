@@ -43,9 +43,9 @@ $quantity-btn-color: #95d7fc;
 <%List <Product> productList =(List)request.getAttribute("productList"); %>
 <body>
 <div class="page-wrapper">
-		<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>
-		<%@include file="customersidebar.jsp"%>
-		<%@include file="customerheader.jsp"%>
+
+<%@include file="commonsidebar.jsp"%>
+<%@include file="commonheader.jsp"%>
 		<div class="page-container">
 			<div class="main-content">
 			<div class="card shadow-inset border-light p-3 mr-2 ml-2 mb-1" 

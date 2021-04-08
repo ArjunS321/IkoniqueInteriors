@@ -48,19 +48,9 @@ input.search-input
 <body style="background-color: #e6e7ee;">
 <%-- <%if(temp==1){ %>
 	<%if(user1.getRole_id()==1 ){ %> --%>
-		<%@include file="customersidebar.jsp"%>
-		<%@include file="customerheader.jsp"%> 
-<%-- 		<%} else if(user1.getRole_id()==2){%> --%>
-<%-- 			<%@include file="designersidebar.jsp"%> --%>
-<%-- 			<%@include file="designerheader.jsp"%>  --%>
-<%-- 		<%}else{%> --%>
-<%-- 			<%@include file="adminsidebar.jsp"%> --%>
-<%-- 			<%@include file="adminheader.jsp"%>  --%>
-<%-- 		<%}%> --%>
-<%-- 	<%}else{ %> --%>
-<%-- 			<%@include file="visitorsidebar.jsp"%> --%>
-<%-- 			<%@include file="visitorheader.jsp"%>  --%>
-<%-- 		<%} %> --%>
+<%@include file="commonsidebar.jsp"%>
+<%@include file="commonheader.jsp"%>
+
 <div class="page-wrapper">
 <div class="page-container">
 <div class="main-content" style="background-color: #e6e7ee;">

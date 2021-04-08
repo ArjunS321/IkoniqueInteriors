@@ -155,7 +155,8 @@
 							class="fas  fa-caret-down"></i>Manage Tables
 				</a>
 					<ul class="list-unstyled navbar__sub-list js-sub-list">
-						
+						<li><a href="customertable.jsp"><i class="fas"></i>Customer Table</a>
+						</li>
 						<li><a href="designerTable.jsp"><i class="fas"></i>Designer Table</a>
 						</li>
 						<li><a href="productTable.jsp"><i class="fas"></i>Product Table</a>

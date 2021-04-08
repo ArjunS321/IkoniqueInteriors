@@ -246,10 +246,10 @@ textarea {
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 
 </head>
-<% HttpSession httpSession = request.getSession(false);
+<% HttpSession httpSession1 = request.getSession(false);
 	User user = null;   
-	if(null!=httpSession){
-	   user = (User)httpSession.getAttribute("loginBean");
+	if(null!=httpSession1){
+	   user = (User)httpSession1.getAttribute("loginBean");
    }
 %>
 <jsp:include page="/AreaRegistration" />
@@ -257,8 +257,8 @@ textarea {
 	List<Area> area = (List) request.getAttribute("area");
 %>
 <body style="background-color: #e6e7ee">
-	<%@include file="customersidebar.jsp"%>
-	<%@include file="customerheader.jsp"%>
+<%@include file="commonsidebar.jsp"%>
+<%@include file="commonheader.jsp"%>
 	<div class="col-5 col-lg-11 ml-6 mt-7">
 		<div class="card shadow-inset border-light p-3 ml-10"
 			style="background-color: #e6e7ee;">

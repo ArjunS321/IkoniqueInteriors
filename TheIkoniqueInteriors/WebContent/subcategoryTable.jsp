@@ -36,9 +36,9 @@
 </head>
 <body class="mt32">
 <jsp:include page="/SelectSubCategoryDetails"/>
-<%List<SubCategory> subcategoryList =(List)request.getAttribute("subcategoryList"); %>
-<%@include file="adminsidebar.jsp"%>
-<%@include file="adminheader.jsp"%>
+<%List<SubCategory> subcategoryList1 =(List)request.getAttribute("subcategoryList"); %>
+<%@include file="commonsidebar.jsp"%>
+<%@include file="commonheader.jsp"%>
     <div class="container" style="overflow-x: scroll">
         <h2>
             <span>Sub-Category Details Table</span>
@@ -58,7 +58,7 @@
                     <th>Delete</th>
                 </tr>
             </thead>
-            <%for(SubCategory subcategory:subcategoryList) { %>
+            <%for(SubCategory subcategory:subcategoryList1) { %>
             <tbody>
                 <tr>
                     <td><%=subcategory.getSub_category_id() %></td>

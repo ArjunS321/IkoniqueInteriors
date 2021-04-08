@@ -120,8 +120,8 @@ textarea {
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 </head>
 <body style="background-color: #e6e7ee">
-	<%@include file="adminsidebar.jsp"%>
-	<%@include file="adminheader.jsp"%>
+<%@include file="commonsidebar.jsp"%>
+<%@include file="commonheader.jsp"%>
 	<div class="col-5 col-lg-11 ml-6 mt-7">
 		<div class="card shadow-inset border-light p-3 ml-10"
 			style="background-color: #e6e7ee;">

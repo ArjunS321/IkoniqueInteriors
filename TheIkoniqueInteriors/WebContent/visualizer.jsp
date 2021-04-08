@@ -14,21 +14,7 @@
 	crossorigin="anonymous">
 
 </head>
-<%-- <%! int temp = '0'; %>
-<% HttpSession httpSession2 = request.getSession(false);
-	User customeruser1 = null;   
-	if(null!=httpSession2){
-		customeruser1 = (User)httpSession2.getAttribute("loginBean");
-		if(customeruser1!=null){
-			temp = '1';
-		}
-		
-	}
-	else
-	{
-		temp = '0';
-	}
-%> --%>
+
 
 <body class="animsition" style="background-color: #e6e7ee;">
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -36,21 +22,7 @@
 	<div class="page-wrapper">
 	<%@include file="commonsidebar.jsp"%>
 		<%@include file="commonheader.jsp"%> 
-<%-- 	<%if(temp==1){ %>
-	<%if(customeruser1.getRole_id()==1 ){ %>
-		<%@include file="commonsidebar.jsp"%>
-		<%@include file="commonheader.jsp"%> 
-		<%} else if(customeruser1.getRole_id()==2){%>
-			<%@include file="designersidebar.jsp"%>
-			<%@include file="designerheader.jsp"%> 
-		<%}else{%>
-			<%@include file="adminsidebar.jsp"%>
-			<%@include file="adminheader.jsp"%> 
-		<%}%>
-	<%}else{ %>
-			<%@include file="visitorsidebar.jsp"%>
-			<%@include file="visitorheader.jsp"%> 
-		<%} %> --%>
+
 		<div class="page-container">
 			<div class="main-content">
 					<div class="row ml-4">

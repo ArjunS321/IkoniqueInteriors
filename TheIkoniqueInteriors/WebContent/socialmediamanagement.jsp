@@ -30,8 +30,8 @@
    <%@include file="commoncss.jsp"%>
 </head>
 <body style="background-color: #e6e7ee;">
-<%@include file="adminsidebar.jsp"%>
-<%@include file="adminheader.jsp"%>
+<%@include file="commonsidebar.jsp"%>
+<%@include file="commonheader.jsp"%>
 	
 	
 				

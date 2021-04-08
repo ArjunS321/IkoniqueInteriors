@@ -33,8 +33,8 @@
    <%@include file="commoncss.jsp"%>
 </head>
 <body class="mt32">
-<%@include file="adminsidebar.jsp"%>
-<%@include file="adminheader.jsp"%>
+<%@include file="commonsidebar.jsp"%>
+<%@include file="commonheader.jsp"%>
     <div class="container" style="overflow-x: scroll">
         <h2>
             <span>Customer Details Table</span>

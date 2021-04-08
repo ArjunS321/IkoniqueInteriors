@@ -34,9 +34,9 @@
 </head>
 <body class="mt32">
 <jsp:include page="/SelectCategoryDetails"/>
-<%List<Category> categoryList =(List)request.getAttribute("categoryList"); %>
-<%@include file="adminsidebar.jsp"%>
-<%@include file="adminheader.jsp"%>
+<%List<Category> categoryList1 =(List)request.getAttribute("categoryList"); %>
+<%@include file="commonsidebar.jsp"%>
+<%@include file="commonheader.jsp"%>
     <div class="container" style="overflow-x: scroll">
         <h2>
             <span>Category Details Table</span>
@@ -56,7 +56,7 @@
                     <th>Delete</th>
                 </tr>
             </thead>
-            <%for(Category category:categoryList) { %>
+            <%for(Category category:categoryList1) { %>
             <tbody>
                 <tr>
                     <td><%=category.getCategory_id() %></td>

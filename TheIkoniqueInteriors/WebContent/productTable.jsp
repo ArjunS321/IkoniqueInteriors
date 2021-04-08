@@ -43,16 +43,16 @@
 <jsp:include page="/SelectProductDetails"/>
 <%List<Product> productList =(List)request.getAttribute("productList"); %>
 <jsp:include page="/SelectCategoryDetails"/>
-<%List<Category> categoryList =(List)request.getAttribute("categoryList"); %>
+<%List<Category> categoryList1 =(List)request.getAttribute("categoryList"); %>
 <jsp:include page="/SelectSubCategoryDetails"/>
-<%List<SubCategory> subcategoryList =(List)request.getAttribute("subcategoryList"); %>
+<%List<SubCategory> subcategoryList1 =(List)request.getAttribute("subcategoryList"); %>
 <jsp:include page="/SelectDesignerDetails"/>
 <%List<User> designerList =(List)request.getAttribute("designerList"); %>
 <jsp:include page="/SelectOfferDetails"/>
 <%List<Offer> offerList =(List)request.getAttribute("offerList"); %>
 
-<%@include file="adminsidebar.jsp"%>
-<%@include file="adminheader.jsp"%>
+<%@include file="commonsidebar.jsp"%>
+<%@include file="commonheader.jsp"%>
     <div class="container" style="overflow-x: scroll">
         <h2>
             <span>Product Details Table</span>
@@ -108,13 +108,13 @@
                      <td><%=product.getProduct_desc()%></td>
                      <td><%=product.getStatus() %></td>
                      
-                     <%for (Category category : categoryList) {%>
+                     <%for (Category category : categoryList1) {%>
 						<%if (product.getCategory_id() == category.getCategory_id()) {%>
 							<td><%=category.getCategory_name() %></td>
 						<%} %>
 					  <%}%>
 					  
-                      <%for (SubCategory subcategory : subcategoryList) {%>
+                      <%for (SubCategory subcategory : subcategoryList1) {%>
 							<%if (product.getSubcategory_id() == subcategory.getSub_category_id()) {%>
 									<td><%=subcategory.getSub_category_name() %></td>
 							<%} %>

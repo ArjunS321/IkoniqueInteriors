@@ -76,9 +76,7 @@
 %>
 <body class="animsition">
 	<div class="page-wrapper">
-		<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>
-		<%-- 		<%@include file="customersidebar.jsp"%> --%>
-		<%-- 		<%@include file="customerheader.jsp"%> --%>
+
 		<div class="page-container">
 			<div class="main-content">
 				<h1 align="center" style="margin-top: 50px;">Change Password</h1>

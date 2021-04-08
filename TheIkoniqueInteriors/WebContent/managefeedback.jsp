@@ -42,8 +42,8 @@
 <%List<User> userList =(List)request.getAttribute("userList"); %>
 <jsp:include page="/SelectProductDetails"/>
 <%List<Product> productList =(List)request.getAttribute("productList"); %>
-<%@include file="adminsidebar.jsp"%>
-<%@include file="adminheader.jsp"%>
+<%@include file="commonsidebar.jsp"%>
+<%@include file="commonheader.jsp"%>
     <div class="container" style="overflow-x: scroll">
         <h2>
             <span>Feedback Details Table</span>

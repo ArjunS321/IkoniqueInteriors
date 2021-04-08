@@ -21,8 +21,8 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
 			rel="stylesheet">
-		<%@include file="customersidebar.jsp"%>
-		<%@include file="customerheader.jsp"%>
+<%@include file="commonsidebar.jsp"%>
+<%@include file="commonheader.jsp"%>
 <body class="animsition" style="background-color: #e6e7ee;">
 	<div class="page-wrapper">
 		<div class="page-container">
