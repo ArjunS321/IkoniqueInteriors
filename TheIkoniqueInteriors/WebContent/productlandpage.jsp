@@ -227,10 +227,20 @@ else
                     </form>
                      <button class="btn" id="feedbacks" style="color:black; "><h4>See  Others  Feedback.....</h4></button>
                      <input type="hidden" id="productid" value="<%=product.getProduct_id()%>">
-                     <div >
-                     	<p id="listfeedback"></p>
-                     </div>
-                     
+                    <br>
+                    <div class="feedbackdetails" id="feedbackdetails">
+                    	<hr class="my-5"  style="background-color: lightgrey;">
+                    	<img src="bg-img/1.jpg" class="mt-2" style="border-radius: 1000px; height: 50px; width: 50px;">
+                    	<div style="margin-left:4rem; margin-top: -2rem;">
+                    		<h4>First Last Name</h4>
+                   	 	</div>
+                    	<div style="margin-left:60rem; margin-top: -1rem;">
+                    		<h5>Date</h5>
+                    	</div>
+                    	<div id="listfeedback" class="mt-4">
+                    	</div>
+                   	 	<hr class="my-5"  style="background-color: lightgrey;">
+                   	 </div>
 			</div>
 			<!-- End Content -->
 		</div>
@@ -260,7 +270,9 @@ else
 <script src="neuro/assets/js/neumorphism.js"></script>
 <%@include file="commonjs.jsp"%>
 <script>
-
+$(document).ready(function () {
+	$("#feedbackdetails").hide();
+});
 $('.fa-heart').click(function(){
 	alert($(this).attr('id'));
     if($(this).attr('att') == 0){
@@ -313,19 +325,16 @@ $('.fa-heart').click(function(){
 	document.getElementById("discount").innerHTML = concat();
 	
 	$("#feedbacks").click(function() {
-		alert("heyaa1");
+		$("#feedbackdetails").show();
 		const id= document.getElementById('productid').value;
-		alert(id);
 		$.get( "SelectProductFeedBacks", {productid: id } )
 		  .done(function( data ) {
-			  alert("heyaa2");
 			 var list= jQuery.parseJSON( data);
 			 $.each(list, function( key, value ) {
-				 alert("heyaa3");
 				 $('#listfeedback')
-	                .append($("<h1></h1>")
-	                .attr("value",value.i_feedback_id)
-	                .text(value.c_description));  
+	                .append($("<p></p>")
+	                .attr("value",value.feedbackid)
+	                .text(value.feedbackdesc));  
 				});
 		  });
 	});
