@@ -47,8 +47,10 @@ public class InsertProductsDetails extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("kjbhbew");
 		String name = request.getParameter("exampleRadios1");
 		String message = null;
+		System.out.println(name);
 		if(name.equalsIgnoreCase("category"))
 		{
 			String categoryname = request.getParameter("cname");
@@ -114,6 +116,7 @@ public class InsertProductsDetails extends HttpServlet {
 		}
 		else
 		{
+				
 			
 				String productname=request.getParameter("pname");
 				String productprice=request.getParameter("pprice");
@@ -140,6 +143,7 @@ public class InsertProductsDetails extends HttpServlet {
 				{
 					System.out.println("null image");
 				}
+				System.out.println(productname+""+productprice+""+productqty+""+productweight+""+ownerid+""+offerid+""+produtdesc+""+categoryid+""+subcategoryid+""+part.getSubmittedFileName());
 				Product product=new Product();
 				product.setProduct_name(productname);
 				product.setProduct_price(productprice);

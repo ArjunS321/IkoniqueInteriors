@@ -44,8 +44,7 @@
 			<ul class="list-unstyled navbar__list">
 				<li class="active has-sub"><a href="customer.jsp"> <i
 						class="fas fa-home"></i>Home<%=usersidebaar.getRole_id() %><%=usersidebaar.getFirstname() %>
-				</a> <!-- 							<ul class="list-unstyled navbar__sub-list js-sub-list"> -->
-					<!-- 								<li><a href="index.jsp">Dashboard 1</a></li> --> <!--							</ul></li> -->
+				</a></li> 
 				
 				
 				
@@ -60,27 +59,11 @@
 								<%if(subcategory.getCategory_id()==category.getCategory_id()){ %>
 								<ul class="list-unstyled js-sub-list">
 								<li><a class="js-arrow" href="SelectParticularProduct?subcategoryid=<%=subcategory.getSub_category_id() %>" ><i class="fas fa-arrow-circle-o-right"></i><%=subcategory.getSub_category_name() %></a></li>
-								<!-- <li><a class="js-arrow" href="customerhomelamp.jsp"><i class="fas fa-arrow-circle-o-right"></i>Lighting</a></li>
-								<li><a class="js-arrow" href="customerhomeart.jsp"><i class="fas fa-arrow-circle-o-right"></i>Art</a></li> -->
+								
 							</ul>
 							<%} %>
 					<%} %></li>
-						<!-- <li class="has-sub"><a class="js-arrow" href="#"><i
-								class="fas fa-toggle-down (alias)"></i>Hotel</a>
-							<ul class="list-unstyled js-sub-list">
-								<li><a href="#"><i class="fas fa-arrow-circle-o-right"></i>Bed</a></li>
-								<li><a href="#"><i class="fas fa-arrow-circle-o-right"></i>Lamps</a></li>
-								<li><a href="#"><i class="fas fa-arrow-circle-o-right"></i>Art</a></li>
-							</ul></li>
-						<li class="has-sub"><a class="js-arrow" href="#"><i
-								class="fas fa-toggle-down (alias)"></i>Office</a>
-							<ul class="list-unstyled js-sub-list">
-								<li><a href="#"><i class="fas fa-arrow-circle-o-right"></i>Tables</a></li>
-								<li><a href="#"><i class="fas fa-arrow-circle-o-right"></i>Lamps</a></li>
-								<li><a href="#"><i class="fas fa-arrow-circle-o-right"></i>Wall-Art</a></li>
-							</ul>
-							
-							</li> -->
+						
 					</ul>
 					<%} %>
 				</li>
@@ -116,45 +99,7 @@
 			<ul class="list-unstyled navbar__list">
 				<li class="active has-sub"><a href="customer.jsp"> <i
 						class="fas fa-home"></i>Home<%=usersidebaar.getRole_id() %><%=usersidebaar.getFirstname() %>
-				</a> <!-- 							<ul class="list-unstyled navbar__sub-list js-sub-list"> -->
-					<!-- 								<li><a href="index.jsp">Dashboard 1</a></li> --> <!--							</ul></li> -->
-				
-				
-				
-				<%-- <li class="has-sub"><a class="js-arrow" href="#"> <i
-						class="fas  fa-caret-down"></i>Categories
-				</a>
-				<%for(Category category:categoryList){ %>
-					<ul class="list-unstyled navbar__sub-list js-sub-list">
-						<li class="has-sub"><a class="js-arrow" href="#"><i
-								class="fas  fa-toggle-down (alias)"></i><%=category.getCategory_name() %></a>
-								<%for(SubCategory subcategory:subcategoryList){ %>
-								<%if(subcategory.getCategory_id()==category.getCategory_id()){ %>
-								<ul class="list-unstyled js-sub-list">
-								<li><a class="js-arrow" href="SelectParticularProduct?subcategoryid=<%=subcategory.getSub_category_id() %>" ><i class="fas fa-arrow-circle-o-right"></i><%=subcategory.getSub_category_name() %></a></li>
-								<!-- <li><a class="js-arrow" href="customerhomelamp.jsp"><i class="fas fa-arrow-circle-o-right"></i>Lighting</a></li>
-								<li><a class="js-arrow" href="customerhomeart.jsp"><i class="fas fa-arrow-circle-o-right"></i>Art</a></li> -->
-							</ul>
-							<%} %>
-					<%} %></li>
-						<!-- <li class="has-sub"><a class="js-arrow" href="#"><i
-								class="fas fa-toggle-down (alias)"></i>Hotel</a>
-							<ul class="list-unstyled js-sub-list">
-								<li><a href="#"><i class="fas fa-arrow-circle-o-right"></i>Bed</a></li>
-								<li><a href="#"><i class="fas fa-arrow-circle-o-right"></i>Lamps</a></li>
-								<li><a href="#"><i class="fas fa-arrow-circle-o-right"></i>Art</a></li>
-							</ul></li>
-						<li class="has-sub"><a class="js-arrow" href="#"><i
-								class="fas fa-toggle-down (alias)"></i>Office</a>
-							<ul class="list-unstyled js-sub-list">
-								<li><a href="#"><i class="fas fa-arrow-circle-o-right"></i>Tables</a></li>
-								<li><a href="#"><i class="fas fa-arrow-circle-o-right"></i>Lamps</a></li>
-								<li><a href="#"><i class="fas fa-arrow-circle-o-right"></i>Wall-Art</a></li>
-							</ul>
-							
-							</li> -->
-					</ul>
-					<%} %></li> --%>
+				</a> </li>
 				<li><a href="visualizer.jsp"> <i class="fas fa-bullseye"></i>Visualizer
 				</a></li>
 				
@@ -210,8 +155,7 @@
 							class="fas  fa-caret-down"></i>Manage Tables
 				</a>
 					<ul class="list-unstyled navbar__sub-list js-sub-list">
-						<li><a href="SelectUserDetails"><i class="fas"></i>Customer Table</a>
-						</li>
+						
 						<li><a href="designerTable.jsp"><i class="fas"></i>Designer Table</a>
 						</li>
 						<li><a href="productTable.jsp"><i class="fas"></i>Product Table</a>
@@ -251,8 +195,7 @@
 			<ul class="list-unstyled navbar__list">
 				<li class="active has-sub"><a class="js-arrow" href="#"> <i
 						class="fas fa-home"></i>Home
-				</a> <!-- 							<ul class="list-unstyled navbar__sub-list js-sub-list"> -->
-					<!-- 								<li><a href="index.jsp">Dashboard 1</a></li> --> <!-- 							</ul></li> -->
+				</a></li>
 				<li class="has-sub"><a class="js-arrow" href="#"> <i
 						class="fas  fa-caret-down"></i>Categories
 				</a>
