@@ -1685,6 +1685,34 @@ public class userDaoImpl implements userDao {
 		}
 		return 0;
 	}
+
+	@Override
+	public List<FeedBack> selectProductFeedbacks(Connection connection, int productId) {
+		String selectQuery="select * from feedback where i_object_id=?";
+		List<FeedBack> feedbackList = new ArrayList<FeedBack>();
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery)){
+				preparedStatement.setInt(1, productId);
+				
+				ResultSet resultSet=preparedStatement.executeQuery();
+		
+			while(resultSet.next())
+			{
+				FeedBack feedBack=new FeedBack();
+				feedBack.setFeedbackid(resultSet.getInt("i_feedback_id"));
+				feedBack.setProductid(resultSet.getInt("i_object_id"));
+				feedBack.setUserid(resultSet.getInt("i_consumer_id"));
+				feedBack.setFeedbackdesc(resultSet.getString("c_description"));
+				feedBack.setFeedbackdate(resultSet.getDate("d_feedback_date"));
+				
+				feedbackList.add(feedBack);
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return feedbackList;
+	}
 }
 	
 

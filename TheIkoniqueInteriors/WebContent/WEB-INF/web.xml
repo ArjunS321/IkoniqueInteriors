@@ -489,4 +489,14 @@
     <servlet-name>InsertDeleteProductInCart</servlet-name>
     <url-pattern>/InsertDeleteProductInCart</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectProductFeedBacks</display-name>
+    <servlet-name>SelectProductFeedBacks</servlet-name>
+    <servlet-class>com.ikonique.servlet.SelectProductFeedBacks</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectProductFeedBacks</servlet-name>
+    <url-pattern>/SelectProductFeedBacks</url-pattern>
+  </servlet-mapping>
 </web-app>

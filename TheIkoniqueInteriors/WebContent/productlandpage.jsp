@@ -221,9 +221,16 @@ else
                     </div>
                     <br>
                     <div align="center">
-                         <button type="submit" name="submit" id="submit" class="btn btn-primary1">Send FeedBack</button>
+                         <button type="submit" name="submit" id="submit" class="btn btn-primary1">Send FeedBack</button><br><br>                         
                     </div>
+                   
                     </form>
+                     <button class="btn" id="feedbacks" style="color:black; "><h4>See  Others  Feedback.....</h4></button>
+                     <input type="hidden" id="productid" value="<%=product.getProduct_id()%>">
+                     <div >
+                     	<p id="listfeedback"></p>
+                     </div>
+                     
 			</div>
 			<!-- End Content -->
 		</div>
@@ -304,6 +311,24 @@ $('.fa-heart').click(function(){
 	
 	document.getElementById("finalprice").innerHTML = discount();
 	document.getElementById("discount").innerHTML = concat();
+	
+	$("#feedbacks").click(function() {
+		alert("heyaa1");
+		const id= document.getElementById('productid').value;
+		alert(id);
+		$.get( "SelectProductFeedBacks", {productid: id } )
+		  .done(function( data ) {
+			  alert("heyaa2");
+			 var list= jQuery.parseJSON( data);
+			 $.each(list, function( key, value ) {
+				 alert("heyaa3");
+				 $('#listfeedback')
+	                .append($("<h1></h1>")
+	                .attr("value",value.i_feedback_id)
+	                .text(value.c_description));  
+				});
+		  });
+	});
 
 	
 </script>

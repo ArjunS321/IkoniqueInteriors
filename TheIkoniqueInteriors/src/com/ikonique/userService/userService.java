@@ -67,4 +67,5 @@ public interface userService {
 	public String insertBookingInfo(BookingInfo bookingInfo);
 	public String insertInCart(Cart cart);
 	public String deleteInCart(Cart cart);
+	public List<FeedBack> fatchProductFeedbacks(int productId);
 }

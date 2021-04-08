@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.ikonique.bean.SubCategory;
+import com.ikonique.bean.FeedBack;
 import com.ikonique.userService.impl.userServiceImpl;
 
 /**
- * Servlet implementation class SelectSubcategory
+ * Servlet implementation class SelectProductFeedBacks
  */
-public class SelectSubcategory extends HttpServlet {
+public class SelectProductFeedBacks extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	userServiceImpl s1 = new userServiceImpl();
+       userServiceImpl us=new userServiceImpl();
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectSubcategory() {
+    public SelectProductFeedBacks() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,23 +30,24 @@ public class SelectSubcategory extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String categoryname=request.getParameter("category");
-		int categoryid=0;
+		int productId=0;
 		try {
-			categoryid=Integer.parseInt(categoryname);
+			productId=Integer.parseInt(request.getParameter("productid"));
+			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+				
+		List<FeedBack> productfeedbacklist = us.fatchProductFeedbacks(productId);
+		request.setAttribute("productfeedbackList", productfeedbacklist);
 		
-		System.out.println(categoryid);
-		List<SubCategory> subcatList = s1.fetchSubCategory(categoryid);
-		
-
-		String json = new Gson().toJson(subcatList);
+		String json = new Gson().toJson(productfeedbacklist);
 		response.getWriter().append(json);
-	
 		
+		for(FeedBack f1:productfeedbacklist) {
+			System.out.println(f1.getFeedbackdesc());
+		}
 	}
 
 	/**

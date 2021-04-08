@@ -120,6 +120,8 @@ public interface userDao {
 	public int saveInCart(Connection connection, Cart cart);
 
 	public int removeInCart(Cart cart, Connection connection);
+
+	public List<FeedBack> selectProductFeedbacks(Connection connection, int productId);
 	
 	
 

@@ -575,6 +575,10 @@ public class userServiceImpl {
 		return msg;
 	
 	}
+
+	public List<FeedBack> fatchProductFeedbacks(int productId) {
+		return userDao.selectProductFeedbacks(connection,productId);
+	}
 }
 		
 
