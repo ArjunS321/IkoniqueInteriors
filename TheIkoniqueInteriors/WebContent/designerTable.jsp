@@ -4,6 +4,18 @@
 <html lang="en-US">
 <head>
     <title>Interior-Designer Table</title>
+    <link type="text/css"
+	href="neuro/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"
+	integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg=="
+	crossorigin="anonymous" />
+<!-- Pixel CSS -->
+<link type="text/css" href="css/login1css.css" rel="stylesheet">
+<link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    
      <%@include file="FontFaces.jsp"%>
 	<%@include file="commoncss.jsp"%>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
@@ -32,6 +44,7 @@
         <h2>
             <span>Interior-Designer Details Table</span>
             <input type="search" placeholder="Search..." class="form-control search-input" data-table="customers-list"/>
+       		<br>
         </h2>
         <table class="table table-striped mt32 customers-list" id="myTable">
             <thead>
@@ -47,7 +60,7 @@
 					<th>Designation<i class="fa fa-fw fa-sort" onclick="sortTable(8)"></i></th>
 					<th>About Me<i class="fa fa-fw fa-sort" onclick="sortTable(9)"></i></th>
 					<th>Email-Id<i class="fa fa-fw fa-sort" onclick="sortTable(10)"></i></th>
-					<th>Status<i class="fa fa-fw fa-sort" onclick="sortTable(11)"></i></th>
+					<th>Password<i class="fa fa-fw fa-sort" onclick="sortTable(11)"></i></th>
 					<th>User image<i class="fa fa-fw fa-sort" onclick="sortTable(12)"></i></th>
 					<th>Edit</th>
                     <th>Delete</th>
@@ -68,6 +81,11 @@
                     <td><%=user1.getAboutme() %></td>
                     <td><%=user1.getEmail() %></td>
                     <td><%=user1.getPassword() %></td>
+                    <%if(user1.getUserProfilepicString()!=null){ %>
+                    <td><img src="data:image/jpg;base64,<%=user1.getUserProfilepicString() %>"></td>
+                    <%}else{ %>
+                    <td><img src="bg-img/Blank-Photo.png"></td>
+                    <%} %>
                     <td>
                     <div class="table-data-feature">
                        <a href=""class="item" data-toggle="tooltip" data-placement="top" title="Edit">

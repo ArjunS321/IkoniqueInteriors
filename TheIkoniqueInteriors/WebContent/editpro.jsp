@@ -355,9 +355,9 @@ if (null != httpSession) {
 									class="profile-image1 bg-primary shadow-inset border border-light rounded ml-11 p-3 ">
 									<%if(user.getUserProfilepicString()!=null) {%>
 									<img src="data:image/jpg;base64,<%=user.getUserProfilepicString() %>" height="365px" width="150px" 
-										class="card-img-top rounded" alt="Leos Portrait">
+										class="card-img-top rounded">
 									<%}else{ %>
-										<img src="bg-img/Blank-Photo.png" height="365px" width="150px" class="card-img-top rounded" alt="Leos Portrait">
+										<img src="bg-img/Blank-Photo.png" height="365px" width="150px" class="card-img-top rounded">
 									<% }%>
 								</div>
 								<br>

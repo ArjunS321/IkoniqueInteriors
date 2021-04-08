@@ -8,6 +8,17 @@
 <html lang="en-US">
 <head>
     <title>Product Table</title>
+    <link type="text/css"
+	href="neuro/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"
+	integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg=="
+	crossorigin="anonymous" />
+<!-- Pixel CSS -->
+<link type="text/css" href="css/login1css.css" rel="stylesheet">
+<link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
      <%@include file="FontFaces.jsp"%>
 	<%@include file="commoncss.jsp"%>
 
@@ -46,7 +57,10 @@
         <h2>
             <span>Product Details Table</span>
             <input type="search" placeholder="Search..." class="form-control search-input" data-table="customers-list"/>
+        	<br>
         </h2>
+        <a class="btn" style="margin-left:72rem;" href="insertproduct.jsp"><i class="fa fa-plus" aria-hidden="true"></i></a><br><br>
+        
         <table class="table table-striped mt32 customers-list" id="myTable">
             <thead>
                 <tr>
