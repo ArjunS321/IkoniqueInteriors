@@ -1,3 +1,4 @@
+<%@page import="com.ikonique.bean.FeedBack"%>
 <%@page import="com.ikonique.bean.Wishlist"%>
 <%@page import="com.ikonique.bean.Offer"%>
 <%@page import="com.ikonique.bean.Product"%>
@@ -103,6 +104,13 @@ textarea {
  <jsp:include page="/SelectWishlistDetails"/>
 <%List <Wishlist> wishlistList =(List)request.getAttribute("wishlistList"); %> 
 <%List <Integer> wishlistint =(List)request.getAttribute("wishlistint"); %>
+
+<jsp:include page="/SelectUserDetails"/>
+<%List<User> userList =(List)request.getAttribute("userList"); %>
+
+<jsp:include page="/SelectFeedBackDetails"/>
+<%List<FeedBack> feedbackList =(List)request.getAttribute("feedbackList"); %>
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"
 	integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg=="
@@ -225,22 +233,37 @@ else
                     </div>
                    
                     </form>
-                     <button class="btn" id="feedbacks" style="color:black; "><h4>See  Others  Feedback.....</h4></button>
-                     <input type="hidden" id="productid" value="<%=product.getProduct_id()%>">
+                     
                     <br>
+                  <%--   <%if(null!=feedbackList) {%>
+                    	<h4>Others FeedBack .....</h4>
+                    <%} %> --%>
                     <div class="feedbackdetails" id="feedbackdetails">
                     	<hr class="my-5"  style="background-color: lightgrey;">
-                    	<img src="bg-img/1.jpg" class="mt-2" style="border-radius: 1000px; height: 50px; width: 50px;">
-                    	<div style="margin-left:4rem; margin-top: -2rem;">
-                    		<h4>First Last Name</h4>
-                   	 	</div>
-                    	<div style="margin-left:60rem; margin-top: -1rem;">
-                    		<h5>Date</h5>
-                    	</div>
-                    	<div id="listfeedback" class="mt-4">
-                    	</div>
-                   	 	<hr class="my-5"  style="background-color: lightgrey;">
+                    	<%for(User user: userList){ %>
+                    		<%for(FeedBack feedback:feedbackList){ %>
+                    			<%if(user.getUser_id()==feedback.getUserid() && feedback.getProductid()==product.getProduct_id()){ %>
+                    			
+		                    	<img src="data:image/jpg;base64,<%=user.getUserProfilepicString()%>" class="mt-2" style="border-radius: 1000px; height: 50px; width: 50px;">
+		                    	<div style="margin-left:4rem; margin-top: -2rem;">
+		                    		<h4><%=user.getFirstname() %> <%=user.getLastname() %></h4>
+		                   	 	</div>
+		                    	<div style="margin-left:60rem; margin-top: -1rem;">
+		                    		<h5><%=feedback.getFeedbackdate() %></h5>
+		                    	</div>
+		                    	<div id="listfeedback" class="mt-4"><%=feedback.getFeedbackdesc() %>
+		                    	</div>
+		                    	 <hr class="my-5"  style="background-color: lightgrey;">
+		                    	<%} %>
+		                    <%} %>
+                    	<%} %>
+                    	
+                   	 	
                    	 </div>
+                   	 <%-- <input type="hidden" id="productid" value="<%=product.getProduct_id()%>">
+                   	
+                    <button class="btn" id="feedbacks" style="color:black; "><h4>See  Others  Feedback.....</h4></button>
+                    	  --%>
 			</div>
 			<!-- End Content -->
 		</div>
@@ -271,7 +294,7 @@ else
 <%@include file="commonjs.jsp"%>
 <script>
 $(document).ready(function () {
-	$("#feedbackdetails").hide();
+	$("#feedbackdetails").show();
 });
 $('.fa-heart').click(function(){
 	alert($(this).attr('id'));
@@ -323,8 +346,8 @@ $('.fa-heart').click(function(){
 	
 	document.getElementById("finalprice").innerHTML = discount();
 	document.getElementById("discount").innerHTML = concat();
-	
-	$("#feedbacks").click(function() {
+	/* 
+	 $("#feedbacks").click(function() {
 		$("#feedbackdetails").show();
 		const id= document.getElementById('productid').value;
 		$.get( "SelectProductFeedBacks", {productid: id } )
@@ -337,8 +360,10 @@ $('.fa-heart').click(function(){
 	                .text(value.feedbackdesc));  
 				});
 		  });
+		
 	});
-
+	 
+ */
 	
 </script>
 </html>
