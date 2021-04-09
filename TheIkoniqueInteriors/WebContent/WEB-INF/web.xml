@@ -499,4 +499,24 @@
     <servlet-name>SelectProductFeedBacks</servlet-name>
     <url-pattern>/SelectProductFeedBacks</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectBookingDetails</display-name>
+    <servlet-name>SelectBookingDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.SelectBookingDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectBookingDetails</servlet-name>
+    <url-pattern>/SelectBookingDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectBookingInfoDetails</display-name>
+    <servlet-name>SelectBookingInfoDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.SelectBookingInfoDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectBookingInfoDetails</servlet-name>
+    <url-pattern>/SelectBookingInfoDetails</url-pattern>
+  </servlet-mapping>
 </web-app>

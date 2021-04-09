@@ -68,4 +68,6 @@ public interface userService {
 	public String insertInCart(Cart cart);
 	public String deleteInCart(Cart cart);
 	public List<FeedBack> fatchProductFeedbacks(int productId);
+	public List<Booking> selectBookingDetails() ;
+	public List<BookingInfo> selectBookingInfoDetails();
 }

@@ -122,6 +122,12 @@ public interface userDao {
 	public int removeInCart(Cart cart, Connection connection);
 
 	public List<FeedBack> selectProductFeedbacks(Connection connection, int productId);
+
+	public List<Booking> fetchBookingDetails(Connection connection);
+
+	public List<BookingInfo> fetchBookingInfoDetails(Connection connection);
+
+	
 	
 	
 

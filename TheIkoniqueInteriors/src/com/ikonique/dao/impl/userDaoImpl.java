@@ -705,7 +705,7 @@ public class userDaoImpl implements userDao {
 	@Override
 	public List<SubCategory> getSubCategory(Connection connection, int categoryid) {
 	
-		String selectQuery="select * from sub_category where i_category_id=?";
+		String selectQuery="select * from sub_category where i_category_id=? and i_status=1";
 		List<SubCategory> subcatlist= new ArrayList<SubCategory>();
 		
 
@@ -1230,7 +1230,7 @@ public class userDaoImpl implements userDao {
 
 	}
 
-	@Override
+	@Override///////////////////////////////////////
 	public User selectUserDetails(Connection connection, int user_id) {
 		String selectQuery = "select * from user where i_user_id = ?";
 		User user=null;
@@ -1572,7 +1572,7 @@ public class userDaoImpl implements userDao {
 	@Override
 	public int saveBookingDetails(Connection connection, Booking booking) {
 		int i = 0, insertedBookingId = 0;
-		String insertQuery = "insert into booking (i_designer_id,i_fees,i_user_id) values (?,?,?)";
+		String insertQuery = "insert into booking (i_designer_id,i_fees,i_user_id,d_date) values (?,?,?,?)";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -1583,9 +1583,9 @@ public class userDaoImpl implements userDao {
 		try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery,
 				Statement.RETURN_GENERATED_KEYS)) {
 			preparedStatement.setInt(1, booking.getDesignerid());
-//			preparedStatement.setDate(2, booking.getBookingdate());
 			preparedStatement.setInt(2, booking.getVfees());
 			preparedStatement.setInt(3, booking.getUserid());
+			preparedStatement.setDate(4, booking.getBookingdate());
 	
 			
 			i = preparedStatement.executeUpdate();
@@ -1607,7 +1607,7 @@ public class userDaoImpl implements userDao {
 	@Override
 	public int saveBookingInfoDetails(Connection connection, BookingInfo bookingInfo) {
 		int i = 0, insertedBooinginfoId = 0;
-		String insertQuery = "insert into booking_info (i_book_id,c_booking_firstname,c_booking_lastname,c_booking_address,c_booking_contactno,c_booking_email) values(?,?,?,?,?,?)";
+		String insertQuery = "insert into booking_info (i_book_id,c_booking_firstname,c_booking_lastname,c_booking_address,c_booking_contactno,c_booking_email,d_booking_date) values(?,?,?,?,?,?,?)";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -1622,7 +1622,7 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setString(4, bookingInfo.getBookingaddress());
 			preparedStatement.setString(5, bookingInfo.getBookingcno());
 			preparedStatement.setString(6, bookingInfo.getBookingemail());
-			
+			preparedStatement.setDate(7, bookingInfo.getBookingdate());
 
 			i = preparedStatement.executeUpdate();
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -1713,7 +1713,74 @@ public class userDaoImpl implements userDao {
 		}
 		return feedbackList;
 	}
-}
+
+	@Override
+	public List<Booking> fetchBookingDetails(Connection connection) {
+		String selectQuery="select * from booking ";
+		List<Booking> bookingList = new ArrayList<Booking>();
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery)){
+				
+				
+				ResultSet resultSet=preparedStatement.executeQuery();
+		
+			while(resultSet.next())
+			{
+				Booking booking=new Booking();
+				booking.setBookingid(resultSet.getInt("i_booking_id"));
+				booking.setDesignerid(resultSet.getInt("i_designer_id"));
+				booking.setBookingdate(resultSet.getDate("d_date"));
+				booking.setVfees(resultSet.getInt("i_fees"));
+				booking.setPaymentstatus(resultSet.getInt("c_payment_status"));
+				booking.setBookingstatus(resultSet.getInt("c_booking_status"));
+				booking.setUserid(resultSet.getInt("i_user_id"));
+				
+				bookingList.add(booking);
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return bookingList;
+	}
+
+	@Override
+	public List<BookingInfo> fetchBookingInfoDetails(Connection connection) {
+		String selectQuery="select * from booking_info ";
+		List<BookingInfo> bookinginfoList = new ArrayList<BookingInfo>();
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery)){
+				
+				
+				ResultSet resultSet=preparedStatement.executeQuery();
+		
+			while(resultSet.next())
+			{
+				BookingInfo bookinginfo=new BookingInfo();
+				bookinginfo.setBookinginfoid(resultSet.getInt("i_booking_info_id"));
+				bookinginfo.setBookingid(resultSet.getInt("i_book_id"));
+				bookinginfo.setBookingfname(resultSet.getString("c_booking_firstname"));
+				bookinginfo.setBookinglname(resultSet.getString("c_booking_lastname"));
+				bookinginfo.setBookingaddress(resultSet.getString("c_booking_address"));
+				bookinginfo.setBookingcno(resultSet.getString("c_booking_contactno"));
+				bookinginfo.setBookingdate(resultSet.getDate("d_booking_date"));
+				bookinginfo.setBookingemail(resultSet.getString("c_booking_email"));
+				bookinginfoList.add(bookinginfo);
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return bookinginfoList;
+	}
+
+
+	}
+
+
+	
+
+
 	
 
 

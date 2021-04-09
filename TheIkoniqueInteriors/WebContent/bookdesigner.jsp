@@ -415,6 +415,7 @@ textarea {
     <!-- Main JS-->
     <script type="module" src="js/main.js"></script>
 <script>
+
 $(document).ready(function () {
 	$("#form").hide();
 });

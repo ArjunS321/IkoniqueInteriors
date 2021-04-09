@@ -235,9 +235,9 @@ else
                     </form>
                      
                     <br>
-                  <%--   <%if(null!=feedbackList) {%>
-                    	<h4>Others FeedBack .....</h4>
-                    <%} %> --%>
+                    
+                    	
+                  
                     <div class="feedbackdetails" id="feedbackdetails">
                     	<hr class="my-5"  style="background-color: lightgrey;">
                     	<%for(User user: userList){ %>
@@ -248,7 +248,7 @@ else
 		                    	<div style="margin-left:4rem; margin-top: -2rem;">
 		                    		<h4><%=user.getFirstname() %> <%=user.getLastname() %></h4>
 		                   	 	</div>
-		                    	<div style="margin-left:60rem; margin-top: -1rem;">
+		                    	<div style="margin-left:55rem; margin-top: -1rem;">
 		                    		<h5><%=feedback.getFeedbackdate() %></h5>
 		                    	</div>
 		                    	<div id="listfeedback" class="mt-4"><%=feedback.getFeedbackdesc() %>
@@ -257,6 +257,7 @@ else
 		                    	<%} %>
 		                    <%} %>
                     	<%} %>
+                    
                     	
                    	 	
                    	 </div>

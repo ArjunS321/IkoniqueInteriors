@@ -51,29 +51,23 @@ public class InsertBookingDetails extends HttpServlet {
 		   user = (User)httpSession.getAttribute("loginBean");
 	   }
 
-//		Date date=new Date();
-//	  	java.sql.Date sqldate=new java.sql.Date(date.getTime());
+		Date date=new Date();
+		String bookdate = request.getParameter("bookdate");
+			try {
+				date = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("bookdate"));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			java.sql.Date sqldate=new java.sql.Date(date.getTime());
+			 
 		
-//		Date cd = null;
-//		try
-//		{
-//			String bookdate = request.getParameter("bookdate");
-//			date = new SimpleDateFormat("yyyy-mm-dd").parse(request.getParameter("bookdate"));
-//			 DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-//			 cd = df.parse(bookdate);
-//			 System.out.println("date is:-"+cd);
-//		} 
-//		catch (ParseException e)
-//		{
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} 
 	  	int designerid = Integer.parseInt(request.getParameter("designerid"));
 	  	int visitingfees = Integer.parseInt(request.getParameter("visitingfees"));
 	  	
 	  	Booking booking = new Booking();
 	  	booking.setDesignerid(designerid);
-//	  	booking.setBookingdate((java.sql.Date) cd);
+	  	booking.setBookingdate(sqldate);
 	  	booking.setVfees(visitingfees);
 	  	booking.setUserid(user.getUser_id());
 	  	
@@ -93,7 +87,7 @@ public class InsertBookingDetails extends HttpServlet {
 	  	bookingInfo.setBookingaddress(address);
 	  	bookingInfo.setBookingcno(mno);
 	  	bookingInfo.setBookingemail(email);
-//	  	bookingInfo.setBookingdate((java.sql.Date) date);
+	  	bookingInfo.setBookingdate(sqldate);
 	  	String msg2 = us.insertBookingInfo(bookingInfo);
 	  	if(msg2.equalsIgnoreCase("Insertion Is Successfully"))
 	  	{

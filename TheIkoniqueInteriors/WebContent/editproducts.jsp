@@ -598,18 +598,12 @@
 												 
 			</select> <span class="indicator6"></span>
 			</div> 
-			<div class="form-group mb-3 ml-10 inputBox category">
+			<div class="form-group mb-3 ml-10 inputBox subcategory">
 			<label for="subcategory">Sub-Category</label> 
 			<select name="subcategory" class="form-control" id="subcategory" 
 			aria-describedby="emailHelp" onchange="validate6()">
 			<option value="0" selected>Select sub-category</option>	
-										 <%for(SubCategory subcategory1 : subcategorylist) {%>
-											<%if(subcategory1.getSub_category_id()==product.getSubcategory_id()){ %>
-												<option value="<%=subcategory1.getSub_category_id()%>" selected><%=subcategory1.getSub_category_name()%></option>
-											<%} else {%>
-												<option value="<%=subcategory1.getSub_category_id()%>" selected><%=subcategory1.getSub_category_name()%></option>
-											<%} %>
-										<%} %> 
+										
 			</select> <span class="indicator6"></span>
 
 			</div> 
@@ -1021,6 +1015,29 @@ $("#category").change(function() {
 			form.classList.remove('valid13')
 		}
 	}
+ 	
+$("#category").change(function() {
+		
+		const catid= document.getElementById('category').value;
+		alert(catid);
+		$.get( "SelectSubcategory", {category: catid } )
+		  .done(function( data ) {
+			  $('#subcategory').empty()
+			 var list= jQuery.parseJSON( data);
+			  $('#subcategory')
+              .append($("<option></option>")
+              .attr("value","-1")
+              .text("Please Select"));
+			 $.each(list, function( key, value ) {
+				 $('#subcategory')
+	                .append($("<option></option>")
+	                .attr("value",value.sub_category_id)
+	                .text(value.sub_category_name));  
+				});
+		  });
+		
+	});
+ 	
 	</script>
 	
 	
