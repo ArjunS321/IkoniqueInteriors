@@ -13,6 +13,7 @@ import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
 import com.ikonique.bean.Wishlist;
+import com.ikonique.bean.roomdesign;
 
 public interface userService {
 
@@ -70,4 +71,5 @@ public interface userService {
 	public List<FeedBack> fatchProductFeedbacks(int productId);
 	public List<Booking> selectBookingDetails() ;
 	public List<BookingInfo> selectBookingInfoDetails();
+	public List<roomdesign> fetchroomdesigndetails();
 }

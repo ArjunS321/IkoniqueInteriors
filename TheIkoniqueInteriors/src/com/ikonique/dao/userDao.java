@@ -14,6 +14,7 @@ import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
 import com.ikonique.bean.Wishlist;
+import com.ikonique.bean.roomdesign;
 
 public interface userDao {
 
@@ -126,6 +127,8 @@ public interface userDao {
 	public List<Booking> fetchBookingDetails(Connection connection);
 
 	public List<BookingInfo> fetchBookingInfoDetails(Connection connection);
+
+	public List<roomdesign> selectroomdesigndetails(Connection connection);
 
 	
 	

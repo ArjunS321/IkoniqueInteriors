@@ -16,6 +16,7 @@ import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
 import com.ikonique.bean.Wishlist;
+import com.ikonique.bean.roomdesign;
 import com.ikonique.dao.userDao;
 import com.ikonique.dao.impl.userDaoImpl;
 import com.ikonique.util.Main;
@@ -591,6 +592,10 @@ public class userServiceImpl {
 
 	public List<BookingInfo> selectBookingInfoDetails() {
 		return userDao.fetchBookingInfoDetails(connection);
+	}
+
+	public List<roomdesign> fetchroomdesigndetails() {
+		return userDao.selectroomdesigndetails(connection);
 	}
 }
 		

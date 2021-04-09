@@ -15,7 +15,6 @@
 
 </head>
 
-
 <body class="animsition" style="background-color: #e6e7ee;">
 <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
@@ -37,7 +36,7 @@
 					
 						<div class="card" style="height: 300px; width: 500px;">
 							<div class="imgBx">
-								<a href="#"><img src="bg-img/Visulizer Image.jpeg"></a>
+								<a href="roomdesign.jsp"><img src="bg-img/Visulizer Image.jpeg"></a>
 							</div>
 							<div class="content">
 								<div class="contentBx">

@@ -26,6 +26,7 @@ import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
 import com.ikonique.bean.Wishlist;
+import com.ikonique.bean.roomdesign;
 import com.ikonique.dao.userDao;
 
 public class userDaoImpl implements userDao {
@@ -1772,6 +1773,29 @@ public class userDaoImpl implements userDao {
 			e.printStackTrace();
 		}
 		return bookinginfoList;
+	}
+
+	@Override
+	public List<roomdesign> selectroomdesigndetails(Connection connection) {
+		String selectQuery="select * from roomdesign";
+		List<roomdesign> roomdesignList = new ArrayList<roomdesign>();
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery)){
+				
+			ResultSet resultSet=preparedStatement.executeQuery();
+			while(resultSet.next())
+			{
+				roomdesign roomdesign = new roomdesign();
+				roomdesign.setDesignid(resultSet.getInt("i_design_id"));
+				roomdesign.setSampleimage(resultSet.getString("c_sample_image"));
+				roomdesign.setCdesign(resultSet.getString("c_design"));
+				roomdesignList.add(roomdesign);
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return roomdesignList;
 	}
 
 
