@@ -1512,13 +1512,12 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setInt(2, cart.getUserid());
 			preparedStatement.setDate(3, (Date) cart.getCurrentdate());
 			
-
 			i = preparedStatement.executeUpdate();
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
 			while (resultSet.next()) 
 			{
-				insertedcartid = resultSet.getInt(1);
+				insertedcartid = resultSet.getInt(4);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

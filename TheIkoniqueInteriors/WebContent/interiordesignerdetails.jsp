@@ -144,9 +144,12 @@ textarea {
                  <br>
                  <h4 align="center" class="mb-3">Services</h4>
                  <div class="ml-7 mb-5">
-                         <textarea readonly style="background-color: #e6e7ee; resize: none;" class="form-control1" name="desc" id="desc" rows="10" cols="25"></textarea>
-                         <textarea readonly style="background-color: #e6e7ee; resize: none;" class="form-control1 ml-5" name="desc" id="desc" rows="10" cols="25"></textarea>
-                         <textarea readonly style="background-color: #e6e7ee; resize: none;" class="form-control1 ml-5" name="desc" id="desc" rows="10" cols="25"></textarea>
+                         <textarea readonly style="background-color: #e6e7ee; resize: none;  text-align: center;" class="form-control1" name="desc" id="desc" rows="12" cols="25">Personalised Service
+						Every home is a unique expression of its homeowners. We ensure your house design is in keeping with your distinct tastes. Everything, from creating furniture to choosing furnishings and lighting, is meant to reflect your sense of design.</textarea>
+                         <textarea readonly style="background-color: #e6e7ee; resize: none;  text-align: center;" class="form-control1 ml-5" name="desc" id="desc" rows="12" cols="25">Interior Design Experts
+						The most important decision you will make when it comes to interior decoration is finding skilled and reliable professionals. At Beautiful Homes Service, we ensure your house design is in the hands of our panel of experienced interior designers.</textarea>
+                         <textarea readonly style="background-color: #e6e7ee; resize: none;  text-align: center;" class="form-control1 ml-5" name="desc" id="desc" rows="12" cols="25">End-to-End Service
+							While we work towards giving you your dream home interior design, all you need to do is relax while everything is taken care of. From concept to creation and planning to execution, our team has got you covered</textarea>
                  </div>
                  <div>
                   <hr class="my-5"  style="background-color: #A9A9A9;">

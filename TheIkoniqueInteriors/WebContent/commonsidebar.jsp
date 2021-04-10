@@ -43,7 +43,7 @@
 		<nav class="navbar-sidebar">
 			<ul class="list-unstyled navbar__list">
 				<li class="active has-sub"><a href="customer.jsp"> <i
-						class="fas fa-home"></i>Home<%=usersidebaar.getRole_id() %><%=usersidebaar.getFirstname() %>
+						class="fas fa-home"></i>Home
 				</a></li> 
 				
 				
@@ -98,7 +98,7 @@
 		<nav class="navbar-sidebar">
 			<ul class="list-unstyled navbar__list">
 				<li class="active has-sub"><a href="customer.jsp"> <i
-						class="fas fa-home"></i>Home<%=usersidebaar.getRole_id() %><%=usersidebaar.getFirstname() %>
+						class="fas fa-home"></i>Home
 				</a> </li>
 				<li><a href="visualizer.jsp"> <i class="fas fa-bullseye"></i>Visualizer
 				</a></li>
@@ -129,7 +129,7 @@
 			<nav class="navbar-sidebar">
 				<ul class="list-unstyled navbar__list">
 					<li><a href="admin.jsp"> 
-					<i class="fas fa-home"></i>Home<%=usersidebaar.getRole_id() %><%=usersidebaar.getFirstname() %></a>
+					<i class="fas fa-home"></i>Home</a>
 					</li>
 					 <li><a href="visualizer.jsp"> <i class="fas fa-bullseye"></i>Visualizer
 					</a></li>		
