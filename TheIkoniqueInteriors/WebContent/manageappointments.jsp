@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.ikonique.userService.impl.userServiceImpl"%>
 <%@page import="com.ikonique.bean.BookingInfo"%>
 <%@page import="com.ikonique.bean.Booking"%>
 <%@page import="com.ikonique.bean.Category"%>
@@ -49,6 +50,9 @@ if (null != httpSession1) {
 <jsp:include page="/SelectBookingInfoDetails"/>
 <%List<BookingInfo> bookinginfolist =(List)request.getAttribute("bookinginfolist"); %>
 
+<%userServiceImpl us=new userServiceImpl(); %>
+<%List<BookingInfo> bookinginfolist2=us.selectPreviousBookingInfo(); %>
+
 <body class="mt32">
 <%@include file="commonsidebar.jsp"%>
 <%@include file="commonheader.jsp"%>
@@ -90,28 +94,68 @@ if (null != httpSession1) {
                     <td><%=bookinginfo.getBookingdate() %></td>
                     <td><%=booking.getPaymentstatus() %></td>
                     <td><%=booking.getBookingstatus() %></td>
-                    <%-- <td>
-                    <div class="table-data-feature">
-                       <a href="EditProductsDetails?categoryId=<%=category.getCategory_id() %>"class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                        <i class="zmdi zmdi-edit"></i>
-                        </a>
-                     </div>
-                    </td>
-                    <td>
-                     <div class="table-data-feature">
-                       <a href="DelectCategoryDetails?categoryId=<%=category.getCategory_id() %>" data-toggle="modal" data-target="#modal-default" class="item" id="delbtn" data-toggle="tooltip" data-placement="top" title="Delete">
-                       <i class="zmdi zmdi-delete"></i>
-                       </a>                                    
-                  </div>
-                  </td> --%>
+                   
                 </tr>
                 </tbody>
+                
                  <%} %> 
                 <%} %>
                 <%} %>
              <%} %> 
         </table>
+        
     </div>
+    <a href="#" id="previousclick" style="color:#0C0C0B;" >Your Previous Appointments</a>
+     <div class="container" style="overflow-x: scroll" id="previous">
+        <h2>
+            <span>Previous Appointments</span>
+            <input type="search" placeholder="Search Appointments" class="form-control search-input" data-table="customers-list"/>
+            <br>
+        </h2>
+       
+        <table class="table table-striped mt32 customers-list" id="myTable">
+            <thead>
+                <tr>
+                    <th>Booking-Id<i class="fa fa-fw fa-sort" onclick="sortTable(0)"></i></th>
+                    <th>Customer Name<i class="fa fa-fw fa-sort" onclick="sortTable(1)"></i></th>
+                    <th>Address<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
+                    <th>Contact-No<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
+                    <th>Email-Id<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
+                    <th>Booking-Date<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
+                    <th>Payment Status<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
+                    <th>Booking Status<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
+                    <!-- <th>Edit</th>
+                    <th>Delete</th>-->
+ 		             
+		  			 </tr>
+		            </thead>
+             <%for(Booking booking:bookinglist) { %>
+             	<%if(booking.getDesignerid()==user.getUser_id()) {%>
+             		<%for(BookingInfo bookinginfo:bookinginfolist2) {%>
+             		<%if(bookinginfo.getBookingid()==booking.getBookingid()){ %>
+             		
+            		<tbody>
+               	 	<tr>
+                    <td><%=bookinginfo.getBookingid() %></td>
+                    <td><%=bookinginfo.getBookingfname()%> <%=bookinginfo.getBookinglname() %></td>
+                    <td><%=bookinginfo.getBookingaddress()%></td>
+                    <td><%=bookinginfo.getBookingcno() %></td>
+                    <td><%=bookinginfo.getBookingemail() %></td>
+                    <td><%=bookinginfo.getBookingdate() %></td>
+                    <td><%=booking.getPaymentstatus() %></td>
+                    <td><%=booking.getBookingstatus() %></td>
+                </tr>
+                </tbody>
+                
+                 <%} %> 
+                <%} %>
+                <%} %>
+             <%} %> 
+        </table>
+        
+    </div>
+    
+    
 	<script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
 				<script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
 				<script src="neuro/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -140,6 +184,10 @@ if (null != httpSession1) {
 //     $('#delbtn').onclick(function(){
 //     	$('#modal-default').modal('show');
 //     })
+    $('#previous').hide();
+    $('#previousclick').click(function(){
+    	$('#previous').show();
+    });
     
         (function(document) {
             'use strict';

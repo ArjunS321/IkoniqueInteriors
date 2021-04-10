@@ -1746,10 +1746,12 @@ public class userDaoImpl implements userDao {
 
 	@Override
 	public List<BookingInfo> fetchBookingInfoDetails(Connection connection) {
-		String selectQuery="select * from booking_info ";
+		String selectQuery="select * from booking_info where d_booking_date>=?";
+		java.util.Date date=new java.util.Date();
+		java.sql.Date sqldate=new java.sql.Date(date.getTime());
 		List<BookingInfo> bookinginfoList = new ArrayList<BookingInfo>();
 		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery)){
-				
+			preparedStatement.setDate(1,sqldate );
 				
 				ResultSet resultSet=preparedStatement.executeQuery();
 		
@@ -1795,6 +1797,39 @@ public class userDaoImpl implements userDao {
 			e.printStackTrace();
 		}
 		return roomdesignList;
+	}
+
+	@Override
+	public List<BookingInfo> fetchPreviousBookingInfoDetails(Connection connection) {
+		String selectQuery="select * from booking_info where d_booking_date<?";
+		java.util.Date date=new java.util.Date();
+		java.sql.Date sqldate=new java.sql.Date(date.getTime());
+		List<BookingInfo> bookinginfoList = new ArrayList<BookingInfo>();
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery)){
+			preparedStatement.setDate(1,sqldate );
+				
+				ResultSet resultSet=preparedStatement.executeQuery();
+		
+			while(resultSet.next())
+			{
+				BookingInfo bookinginfo=new BookingInfo();
+				bookinginfo.setBookinginfoid(resultSet.getInt("i_booking_info_id"));
+				bookinginfo.setBookingid(resultSet.getInt("i_book_id"));
+				bookinginfo.setBookingfname(resultSet.getString("c_booking_firstname"));
+				bookinginfo.setBookinglname(resultSet.getString("c_booking_lastname"));
+				bookinginfo.setBookingaddress(resultSet.getString("c_booking_address"));
+				bookinginfo.setBookingcno(resultSet.getString("c_booking_contactno"));
+				bookinginfo.setBookingdate(resultSet.getDate("d_booking_date"));
+				bookinginfo.setBookingemail(resultSet.getString("c_booking_email"));
+				bookinginfoList.add(bookinginfo);
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return bookinginfoList;
+
 	}
 
 

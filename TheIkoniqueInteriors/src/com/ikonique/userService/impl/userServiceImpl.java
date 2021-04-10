@@ -597,6 +597,10 @@ public class userServiceImpl {
 	public List<roomdesign> fetchroomdesigndetails() {
 		return userDao.selectroomdesigndetails(connection);
 	}
+	
+	public List<BookingInfo> selectPreviousBookingInfo() {
+		return userDao.fetchPreviousBookingInfoDetails(connection);
+	}
 }
 		
 

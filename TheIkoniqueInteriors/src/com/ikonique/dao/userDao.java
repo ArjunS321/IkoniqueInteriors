@@ -130,6 +130,8 @@ public interface userDao {
 
 	public List<roomdesign> selectroomdesigndetails(Connection connection);
 
+	public List<BookingInfo> fetchPreviousBookingInfoDetails(Connection connection);
+
 	
 	
 	

@@ -72,4 +72,5 @@ public interface userService {
 	public List<Booking> selectBookingDetails() ;
 	public List<BookingInfo> selectBookingInfoDetails();
 	public List<roomdesign> fetchroomdesigndetails();
+	public List<BookingInfo> selectPreviousBookingInfo() ;
 }
