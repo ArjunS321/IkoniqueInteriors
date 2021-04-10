@@ -58,7 +58,10 @@ $quantity-btn-color: #95d7fc;
 			<div class="card shadow-inset border-light p-3 mr-2 ml-2 mb-1" 
  			style="background-color: #e6e7ee;"> 
 				<div class="row mr-0 ml-0" style="background-color: #e6e7ee;">
-<%-- 				<%! double sum = '0'; %> --%>
+ 				<%int count=0; %>
+ 				<%for(Cart cart:cartList){ %>
+ 					<%count=count+1; %>
+ 				<%} %>
 				<%for(Product product : productList){ %>
 					<%if(cartint.contains(product.getProduct_id())){ %>
 					<div class="col-12">
@@ -107,6 +110,8 @@ $quantity-btn-color: #95d7fc;
 								</div>
 							</div>
 						</div>
+						
+						<input id="count" type="hidden" value="<%=count %>">
 						<%} %>
 						<%} %>
 						
@@ -163,23 +168,52 @@ $quantity-btn-color: #95d7fc;
 				<script>
 				$(document).ready(function(){
 					alert("fn ready...");
-					
 				});
+				var p=$('#mainprice').text();
+				
+				var price=p.substring(1);
+				alert("price is:"+price);
+				var mrp=0;
 				function up(max) {
 				    document.getElementById("myNumber").value = parseInt(document.getElementById("myNumber").value) + 1;
 				    if (document.getElementById("myNumber").value >= parseInt(max)) {
 				        document.getElementById("myNumber").value = max;
 				    }
+				   var quantity=parseInt(document.getElementById("myNumber").value);
+				   alert(quantity);
+				    var totalprice = price * quantity;
+				    alert("total Price:"+totalprice);
+				    document.getElementById("mainprice").innerHTML =totalprice;
+				    
+				    var count=parseInt(document.getElementById("count").value);
+					alert(count);
+					/* var i=0;
+					while(i<count)
+					{
+						mrp=  document.getElementById("mainprice").value;
+						alert(mrp);
+					}	 */
+				
+				    
+					
 				}
 				function down(min) {
 				    document.getElementById("myNumber").value = parseInt(document.getElementById("myNumber").value) - 1;
 				    if (document.getElementById("myNumber").value <= parseInt(min)) {
 				        document.getElementById("myNumber").value = min;
 				    }
+				    var quantity=parseInt(document.getElementById("myNumber").value);
+					   alert(quantity);
+					    var totalprice = price * quantity;
+					    alert("total Price:"+totalprice);
+					    document.getElementById("mainprice").innerHTML =totalprice;
+					    
+					   
 				}
+				
 				function discount() {
 					var main = $('#mainprice').text();
-					alert("price"+main);
+					//alert("price"+main);
 					var dis = $('#discount').text();
 					var dec = (dis / 100).toFixed(2);
 					var mult = main * dec;
@@ -218,7 +252,7 @@ $quantity-btn-color: #95d7fc;
 // 					  };
 					  
 // 				}
-				var sum1 = 0;
+				/* var sum1 = 0;
 				function mainprice()
 				{
 					alert("mainprice called..");
@@ -229,7 +263,7 @@ $quantity-btn-color: #95d7fc;
 					
 					alert("total price"+sum1);
 //  					return sum;
-				}
+				} */
 // 				document.getElementById("sum").innerHTML = mainprice();
 				
 				</script>

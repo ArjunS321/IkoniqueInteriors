@@ -236,8 +236,16 @@ else
                      
                     <br>
                     
-                    	
-                  
+                    	<%int count=0; %>
+                    	<%for(User user: userList){ %>
+                    		<%for(FeedBack feedback:feedbackList){ %>
+                    			<%if(user.getUser_id()==feedback.getUserid() && feedback.getProductid()==product.getProduct_id()){ %>
+                  						<%count=count+1; %>
+                 				 <%} %>
+		                    <%} %>
+                    	<%} %>
+                    <%if(count>0){ %>
+                    <h4>Total FeedBacks:<%=count %></h4>
                     <div class="feedbackdetails" id="feedbackdetails">
                     	<hr class="my-5"  style="background-color: lightgrey;">
                     	<%for(User user: userList){ %>
@@ -257,7 +265,9 @@ else
 		                    	<%} %>
 		                    <%} %>
                     	<%} %>
-                    
+                    <%}else {%>
+                    <h4>No FeedBack For This Product</h4>
+                    <%} %>
                     	
                    	 	
                    	 </div>
