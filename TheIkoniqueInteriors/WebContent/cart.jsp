@@ -1,5 +1,7 @@
 
 <!DOCTYPE html>
+<%@page import="com.ikonique.dao.impl.userDaoImpl"%>
+<%@page import="com.ikonique.dao.userDao"%>
 <%@page import="com.ikonique.bean.Product"%>
 <%@page import="com.ikonique.bean.Cart"%>
 <html lang="en">
@@ -34,7 +36,7 @@ $quantity-btn-color: #95d7fc;
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 
 <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
-
+<% userDao ud= new userDaoImpl();%>
 </head>
 <jsp:include page="/SelectCartDetails"/>
 <%List <Cart> cartList =(List)request.getAttribute("cartList"); %> 
