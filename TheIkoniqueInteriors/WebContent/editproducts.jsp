@@ -713,7 +713,7 @@
 	<!-- Neumorphism JS -->
 	<script src="neuro/assets/js/neumorphism.js"></script>
 	<%@include file="commonjs.jsp"%>
-	<!-- <script>
+	 <script>
 $("#category").change(function() {
 		
 		const catid= document.getElementById('category').value;
@@ -734,10 +734,8 @@ $("#category").change(function() {
 		  });
 		
 	});
-	</script> -->
 	
-	<script>
- 	function validate1() {			// category name
+ 	function validate1() {			
 		const form = document.getElementById('form');
 		const cname = document.getElementById('cname').value;
 		
