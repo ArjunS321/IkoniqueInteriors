@@ -23,83 +23,252 @@
 
 <body class="animsition" style="background-color: #e6e7ee;">
 	<div class="page-wrapper" style="background-color: #e6e7ee;">
-		<%-- 		<%@include file="customermobilesidebar.jsp"%> --%>
-<%@include file="commonsidebar.jsp"%>
-<%@include file="commonheader.jsp"%>
-<%-- 		<div class="page-container">
-			<div class="main-content pt-4"  style="background-color: #e6e7ee;">
-				<div id="Carousel2"
-					class="carousel slide shadow-soft border border-light p-4 rounded mt-5"
-					data-ride="carousel">
-					<div class="carousel-inner rounded">
-						<div class="carousel-item active">
-							<img class="d-block w-150 h-50"
-								src="assets/img/slideshow image.jpg" alt="First slide">
-						</div>
-						<div class="carousel-item">
-							<img class="d-block w-150 h-50"
-								src="assets/img/slideshow image.jpg" alt="Second slide">
-						</div>
-						<div class="carousel-item">
-							<img class="d-block w-150 h-50"
-								src="assets/img/slideshow image.jpg" alt="Third slide">
-						</div>
-					</div>
-					<a class="carousel-control-prev" href="#Carousel2" role="button"
-						data-slide="prev"> 
-						<!-- 						<span class="carousel-control-prev-icon" aria-hidden="true"></span>  -->
-						<!-- 						<span class="sr-only">Previous</span> -->
-					</a> <a class="carousel-control-next" href="#Carousel2" role="button"
-						data-slide="next"> 
-						<!-- 					 <span class="carousel-control-next-icon" -->
-						<!-- 						aria-hidden="true"></span> <span class="sr-only">Next</span> -->
-					</a>
-				</div>
-				<%@include file="product.jsp"%>
-				<!-- <div class="col-12 col-lg-15">
-                <div class="card shadow-soft border-light mb-6">
-                    <div class="card-body px-5 py-5 text-center text-md-left" style="background-color: #e6e7ee;">
-                        <div class="row align-items-center">
-                            <div class="col-md-6">
-                                <h2 class="mb-3">Get in touch</h2>
-                                <p class="mb-0">
-                                    If you need any help with our products or services, choose one of the following ways to contact us.
-                                </p>
+		<%@include file="commonsidebar.jsp"%>
+		<%@include file="commonheader.jsp"%>
+		<div class="main-content" style="margin-left:17rem; background-color: #e6e7ee;">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                    <div class="row">
+                            <div class="col-md-12">
+                                <div class="overview-wrap">
+                                    <h2 class="title-1">Interior Designer Dashboard</h2>
+                                </div>
                             </div>
-                            <div class="col-12 col-md-6 mt-4 mt-md-0 text-md-right">
-                                <a href="contactus.jsp" class="btn btn-primary" style="background-color: #e6e7ee; border-color: #e6e7ee; color: black;">
-                                    <span class="mr-1">
-                                        <span class="fas fa-headphones"></span>
-                                    </span>
-                                    Contact Us
-                                </a>
+                        </div>
+                    <div class="row m-t-25">
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c1">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-account-o"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2>100</h2>
+                                                <span>Booking Members</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart1"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c2">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-shopping-cart"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2>1,500</h2>
+                                                <span>My Design items</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart2"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c3">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-calendar-note"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2>200</h2>
+                                                <span>Number Of Project In This Week</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart3"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c4">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i>&#x20B9;</i>
+                                            </div>
+                                            <div class="text">
+                                                <h2>&#x20B9;1,00,000</h2>
+                                                <span>total earnings</span>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <canvas id="widgetChart4"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="au-card recent-report" style="background-color: #e6e7ee;">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2">recent reports</h3>
+                                        <div class="chart-info">
+                                            <div class="chart-info__left">
+                                                <div class="chart-note">
+                                                    <span class="dot dot--blue"></span>
+                                                    <span>products</span>
+                                                </div>
+                                                <div class="chart-note mr-0">
+                                                    <span class="dot dot--green"></span>
+                                                    <span>Bookings</span>
+                                                </div>
+                                            </div>
+                                            <div class="chart-info__right">
+                                                <div class="chart-statis">
+                                                    <span class="index incre">
+                                                        <i class="zmdi zmdi-long-arrow-up"></i>25%</span>
+                                                    <span class="label">products</span>
+                                                </div>
+                                                <div class="chart-statis mr-0">
+                                                    <span class="index decre">
+                                                        <i class="zmdi zmdi-long-arrow-down"></i>10%</span>
+                                                    <span class="label">Booking</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="recent-report__chart">
+                                            <canvas id="recent-rep-chart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="au-card chart-percent-card" style="background-color: #e6e7ee;">
+                                    <div class="au-card-inner">
+                                        <h3 class="title-2 tm-b-5">char by %</h3>
+                                        <div class="row no-gutters">
+                                            <div class="col-xl-6">
+                                                <div class="chart-note-wrap">
+                                                    <div class="chart-note mr-0 d-block">
+                                                        <span class="dot dot--blue"></span>
+                                                        <span>products</span>
+                                                    </div>
+                                                    <div class="chart-note mr-0 d-block">
+                                                        <span class="dot dot--red"></span>
+                                                        <span>Booking</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="percent-chart">
+                                                    <canvas id="percent-chart"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h2 class="title-1 m-b-25">Customer's Booking</h2>
+                                <div class="table-responsive table--no-card m-b-40">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th>date</th>
+                                                <th>order ID</th>
+                                                <th>name</th>
+                                                <th class="text-right">price</th>
+                                                <th class="text-right">quantity</th>
+                                                <th class="text-right">total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>2018-09-29 05:57</td>
+                                                <td>100398</td>
+                                                <td>iPhone X 64Gb Grey</td>
+                                                <td class="text-right">&#x20B9;999.00</td>
+                                                <td class="text-right">1</td>
+                                                <td class="text-right">&#x20B9;999.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2018-09-28 01:22</td>
+                                                <td>100397</td>
+                                                <td>Samsung S8 Black</td>
+                                                <td class="text-right">&#x20B9;756.00</td>
+                                                <td class="text-right">1</td>
+                                                <td class="text-right">&#x20B9;756.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2018-09-27 02:12</td>
+                                                <td>100396</td>
+                                                <td>Game Console Controller</td>
+                                                <td class="text-right">&#x20B9;22.00</td>
+                                                <td class="text-right">2</td>
+                                                <td class="text-right">&#x20B9;44.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2018-09-26 23:06</td>
+                                                <td>100395</td>
+                                                <td>iPhone X 256Gb Black</td>
+                                                <td class="text-right">&#x20B9;1199.00</td>
+                                                <td class="text-right">1</td>
+                                                <td class="text-right">&#x20B9;1199.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2018-09-25 19:03</td>
+                                                <td>100393</td>
+                                                <td>USB 3.0 Cable</td>
+                                                <td class="text-right">&#x20B9;10.00</td>
+                                                <td class="text-right">3</td>
+                                                <td class="text-right">&#x20B9;30.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2018-09-29 05:57</td>
+                                                <td>100392</td>
+                                                <td>Smartwatch 4.0 LTE Wifi</td>
+                                                <td class="text-right">&#x20B9;199.00</td>
+                                                <td class="text-right">6</td>
+                                                <td class="text-right">&#x20B9;1494.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2018-09-24 19:10</td>
+                                                <td>100391</td>
+                                                <td>Camera C430W 4k</td>
+                                                <td class="text-right">&#x20B9;699.00</td>
+                                                <td class="text-right">1</td>
+                                                <td class="text-right">&#x20B9;699.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2018-09-22 00:43</td>
+                                                <td>100393</td>
+                                                <td>USB 3.0 Cable</td>
+                                                <td class="text-right">&#x20B9;10.00</td>
+                                                <td class="text-right">3</td>
+                                                <td class="text-right">&#x20B9;30.00</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © Ikonique Interiors 2020 . All rights reserved.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div> -->
-            
-             
-            
-            <hr class="my-5"  style="background-color: #e6e7ee;">
-        <div class="row"  style="background-color: #e6e7ee;">
-            <div class="col">
-<!--                 <a href="https://themesberg.com" target="_blank" class="d-flex justify-content-center"> -->
-<!--                     <img src="neuro/assets/img/themesberg.svg" height="25" class="mb-3" alt="Themesberg Logo"> -->
-<!--                 </a> -->
-            <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
-                <p class="font-weight-normal font-small mb-0">Copyright © Ikonique Interiors
-                    <span class="current-year">2020</span>. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-			</div>
-		</div> --%>
+                 </div>
+           </div>
 	</div>
-	<!-- Core -->
+</body>	
+<!-- Core -->
 	<script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
 	<script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
 	<script src="neuro/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -124,5 +293,4 @@
 	<!-- Neumorphism JS -->
 	<script src="neuro/assets/js/neumorphism.js"></script>
 	<%@include file="commonjs.jsp"%>
-</body>
 </html>

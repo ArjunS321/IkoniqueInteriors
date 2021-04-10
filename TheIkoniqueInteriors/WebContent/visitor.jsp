@@ -11,13 +11,19 @@
 <%@include file="commoncss.jsp"%>
 </head>
 <body class="animsition" style="background-color: #e6e7ee;">
-	<%@include file="commonsidebar.jsp"%> 
+		<%@include file="commonsidebar.jsp"%> 
 		<%@include file="commonheader.jsp"%>
 	<div class="page-wrapper">
 		<div class="page-container">
-		
-<%-- 			<%@include file="product.jsp"%> --%>
+			<%@include file="visitorproduct.jsp"%>
 		</div>
+		<div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © Ikonique Interiors 2020 . All rights reserved.</p>
+                                </div>
+                            </div>
+                        </div>
 	</div>
 	<%@include file="commonjs.jsp"%>
 </body>
