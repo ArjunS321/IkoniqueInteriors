@@ -44,7 +44,7 @@
                         <h2 class="h1 mb-4">Design with us, Develop Anything.</h2>
                         <p class="lead">Themesberg is an experienced and passionate group of designers, developers, project managers, writers and artists. Every client we work with becomes a part of the team. Together we face the challenges and celebrate the victories.</p>
                         <p class="lead">Our small team is active in the creative community, endlessly interested in what’s next, and generally pleasant to be around.</p>
-                        <img src="neuro/assets/img/signature.svg" alt="signature" class="mt-4" width="150">
+<!--                         <img src="neuro/assets/img/signature.svg" alt="signature" class="mt-4" width="150"> -->
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                         <!-- Profile Card -->
                         <div class="card bg-primary shadow-soft border-light text-center py-4 mb-5">
                             <div class="profile-image shadow-inset border border-light bg-primary rounded-circle p-3 mx-auto">
-                                <img src="bg-img/1.jpg" class="card-img-top shadow-soft p-2 border border-light rounded-circle" alt="Neil Avatar">
+                                <img src="bg-img/arjun.jpg"style="height:130px;" class="card-img-top shadow-soft p-2 border border-light rounded-circle" alt="Neil Avatar">
                             </div>
                             <div class="card-body">
                                 <h3 class="h5 mb-2">Arjun Solanki</h3>
@@ -91,7 +91,7 @@
                         <!-- Profile Card -->
                         <div class="card bg-primary shadow-soft border-light text-center py-4 mb-5">
                             <div class="profile-image shadow-inset border border-light bg-primary rounded-circle p-3 mx-auto">
-                                <img src="neuro/assets/img/team/profile-picture-3.jpg" class="card-img-top shadow-soft p-2 border border-light rounded-circle" alt="Bonnie Avatar">
+                                <img src="bg-img/Saleha.jpeg" style="height:130px;" class="card-img-top shadow-soft p-2 border border-light rounded-circle" alt="Bonnie Avatar">
                             </div>
                             <div class="card-body">
                                 <h3 class="h5 mb-2">Saleha Shaikh</h3>

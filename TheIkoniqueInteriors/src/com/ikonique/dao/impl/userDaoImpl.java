@@ -1517,7 +1517,7 @@ public class userDaoImpl implements userDao {
 
 			while (resultSet.next()) 
 			{
-				insertedcartid = resultSet.getInt(4);
+				insertedcartid = resultSet.getInt(1);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
