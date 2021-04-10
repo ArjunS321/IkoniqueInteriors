@@ -1,5 +1,6 @@
 
 <!DOCTYPE html>
+<%@page import="com.ikonique.bean.Offer"%>
 <%@page import="com.ikonique.dao.impl.userDaoImpl"%>
 <%@page import="com.ikonique.dao.userDao"%>
 <%@page import="com.ikonique.bean.Product"%>
@@ -43,6 +44,10 @@ $quantity-btn-color: #95d7fc;
 <%List <Integer> cartint =(List)request.getAttribute("cartint"); %>
 <jsp:include page="/SelectProductDetails"/>
 <%List <Product> productList =(List)request.getAttribute("productList"); %>
+<jsp:include page="/SelectOfferDetails" />
+<%
+	List<Offer> offerList = (List) request.getAttribute("offerList");
+%>
 <body>
 <div class="page-wrapper">
 
@@ -63,13 +68,23 @@ $quantity-btn-color: #95d7fc;
 									<a href="#"> <img src="data:image/jpg;base64,<%=product.getProductpicString()%>">
 									</a>
 								</div>
+<%-- 								<span hidden id="mainprice" value="<%=product.getProduct_price()%>"><%=product.getProduct_price()%></span> --%>
 								<div class="col">
 									<div class="d-flex mb-2 font-weight-bold">
-										<a class="h5 pname" href="#"><%=product.getProduct_name() %></a> <span
-											id="mainprice" class="price h5 ml-auto">&#x20B9;<%=product.getProduct_price() %></span>
+										<a class="h5 pname" href="#"><%=product.getProduct_name() %></a>
+										<span id="mainprice" class="price h5 ml-auto">&#x20B9;<%=product.getProduct_price() %></span><br>
+<!-- 										<span class="price text-dark mb-0" id="finalprice"></span> -->
 										<%-- <input type="text" id="sum" name="sum2" value="<%=product.getProduct_price() %>" onkeyup="mainprice()"> --%>	
 										
 									</div>
+<%-- 									<%for (Offer offer : offerList) {%> --%>
+<%-- 									<%if (product.getOfferid() == offer.getOfferid()) {%> --%>
+<!-- 					<span Style="font-size: 8mm" id="discount" -->
+<%-- 						class="h6 mb-0 text-danger" value="<%=offer.getDiscount() %>"> --%>
+<%-- 						<%=offer.getDiscount() %> --%>
+<!-- 					</span> -->
+<%-- 					<%break;}%> --%>
+<%-- 					<%}%> --%>
 									<ul class="pl-3">
 										<li class="small"><%=product.getProduct_desc() %></li>
 									</ul>
@@ -107,10 +122,10 @@ $quantity-btn-color: #95d7fc;
 					<hr class="my-5" style="background-color: lightgrey; margin-top:0px !important;"> -->
 					<div class="card-body p-0">
                 <ul class="list-group list-group-sm mt-3">
-                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>MRP</span> <span id="mrp" class="ml-auto"> &#x20B9;</span> </li>
-                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>Discount</span> <span class="ml-auto">&#x20B9;18.00</span> </li>
-                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>Tax</span> <span class="ml-auto">&#x20B9;18.00</span> </li>
-                    <li class="list-group-item d-flex font-weight-bold rounded-bottom h5"  style="background-color: #e6e7ee !important;"> <span>Total</span> <span class="ml-auto"> &#x20B9;416.00</span></li> 
+                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>MRP</span> <span id="mrp" class="ml-auto"> &#x20B9;13,174</span> </li>
+                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>Discount</span> <span class="ml-auto">-  &#x20B9;906.6</span> </li>
+                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>Tax</span> <span class="ml-auto">+  &#x20B9;2,208.132</span> </li>
+                    <li class="list-group-item d-flex font-weight-bold rounded-bottom h5"  style="background-color: #e6e7ee !important;"> <span>Total</span> <span class="ml-auto"> &#x20B9;14,475.53</span></li> 
                 </ul>
                 <a class="btn btn-block mt-4 mb-3" href="detailfillup.jsp">Place Order</a> 
             </div>
@@ -162,6 +177,25 @@ $quantity-btn-color: #95d7fc;
 				        document.getElementById("myNumber").value = min;
 				    }
 				}
+				function discount() {
+					var main = $('#mainprice').text();
+					alert("price"+main);
+					var dis = $('#discount').text();
+					var dec = (dis / 100).toFixed(2);
+					var mult = main * dec;
+					var discount = (main - mult);
+					var discount1 = (discount).toFixed(2);
+					return discount1;
+				}
+
+				function concat(){
+					var dis1 = $('#discount').text();
+					var s2 = dis1.concat("% Off");
+					return s2;
+				}
+				
+				document.getElementById("finalprice").innerHTML = discount();
+				document.getElementById("discount").innerHTML = concat();
 // 				function totalprice() 
 // 				{
 // 					alert("fn called");
