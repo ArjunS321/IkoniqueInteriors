@@ -318,8 +318,8 @@ textarea {
 						</div>
 						<br>
 					<div class="mr-10">
-						<button type="submit" name="submit"
-						class="col-lg-2 btn form-group ml-10">Buy</button>
+						<a href="paymentforn.jsp" type="submit" name="submit"
+						class="col-lg-2 btn form-group ml-10">Buy</a>
 					</div>
 					
 				</form>

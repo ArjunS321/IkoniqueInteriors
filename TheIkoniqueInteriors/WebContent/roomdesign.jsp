@@ -53,10 +53,10 @@
 		</nav>
 	</div>
  </aside>
-	<section>
+	<section  style="position: none; margin-left:20rem!important;">
 		<div>
 	<!-- 	<hr class="my-5"  style="background-color: #e6e7ee;">  -->
- 				<div class="row" style="margin-left: 40rem;"> 
+ 				<div class="row" style="margin-left: 20rem;"> 
  					<div class="col-xl-12"> 
  						<div class="section-title font"> 
  							<h2>Bedroom Visualizer</h2> 
@@ -75,9 +75,10 @@
 			}
 			%>
 
-			<div class="grid-item"
-				style="margin-left: 20rem;">
+			<div class="grid-item">
+			<div align="right">
 				<iframe height="700" width="1100" src="<%=designurl%>"></iframe>
+				</div>
 			</div>
 		</div>
 

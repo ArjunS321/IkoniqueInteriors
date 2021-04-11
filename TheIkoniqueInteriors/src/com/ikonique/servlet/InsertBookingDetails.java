@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -91,11 +92,14 @@ public class InsertBookingDetails extends HttpServlet {
 	  	String msg2 = us.insertBookingInfo(bookingInfo);
 	  	if(msg2.equalsIgnoreCase("Insertion Is Successfully"))
 	  	{
+	  		RequestDispatcher requestDispatcher= request.getRequestDispatcher("interiorpaymentform.jsp");
+	  		requestDispatcher.forward(request, response);
 	  		
 	  	}
 	  	else
 	  	{
-	  		
+	  		RequestDispatcher requestDispatcher= request.getRequestDispatcher("bookdesigner.jsp");
+	  		requestDispatcher.forward(request, response);
 	  	}
 	}
 
