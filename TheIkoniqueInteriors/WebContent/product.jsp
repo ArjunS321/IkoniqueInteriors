@@ -13,14 +13,23 @@
 
 <link rel="stylesheet" href="css1/product.css">
 </head>
-<%-- <%
-HttpSession httpSession = request.getSession(false);
-User user = null;   
-if(null!=httpSession)
-{
-   user = (User)httpSession.getAttribute("loginbean");
-}
-%>  --%>
+ 
+<% int temp1 = '0'; %>
+<% HttpSession httpSession4 = request.getSession(false);
+	User user4 = null;   
+	if(null!=httpSession4){
+		user4 = (User)httpSession4.getAttribute("loginBean");
+		if(user4!=null){
+			temp1 = '1';
+		}
+		
+   }
+	else
+	{
+		temp1 = '0';
+	}
+%>
+<%if(temp1 == '1'){ %>
 <jsp:include page="/SelectProductDetails"/>
 <%List <Product> productList =(List)request.getAttribute("productList"); %>
   <jsp:include page="/SelectWishlistDetails"/>
@@ -29,9 +38,7 @@ if(null!=httpSession)
 <jsp:include page="/SelectCartDetails"/>
 <%List <Cart> cartList =(List)request.getAttribute("cartList"); %> 
 <%List <Integer> cartlistint =(List)request.getAttribute("cartint"); %> 
-
 <body>
-
 <section class="section-bg" style="background-color: #e6e7ee;">
 	<div class="container" >
 
@@ -97,10 +104,8 @@ if(null!=httpSession)
 		</div>
 	</div>
 </section>
+</body>
 <script>
-
-	
-
 $('.fa-heart').click(function(){
 	alert($(this).attr('id'));
     if($(this).attr('att') == 0){
@@ -168,7 +173,55 @@ $('.fa-shopping-cart').click(function(){
     }
    
 });
-
 </script>
+<%}else{%>
+<jsp:include page="/SelectProductDetails"/>
+<%List <Product> productList =(List)request.getAttribute("productList"); %>
+<body>
+<section class="section-bg" style="background-color: #e6e7ee;">
+	<div class="container" >
+
+		<div class="row">
+			<div class="col-xl-12">
+				<div class="section-title">
+					<h2>Products</h2>
+				</div>
+			</div>
+		</div>
+		<div class="row" >
+		<%for(Product product : productList) {%>
+			<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+				<div class="single-product">
+					<div class="product-thumb">
+						<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>">
+<%-- 						 <input type="text" name="pid" id="pid" value="<%=product.getProduct_id() %>"> --%>
+						 <img src="data:image/jpg;base64,<%=product.getProductpicString() %>" alt="">
+						</a>
+					</div>
+					<div class="product-title">
+						<h3>
+							<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>"><%=product.getProduct_name() %></a>
+						</h3>
+					</div>
+					<div class="product-btns">
+						<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>" class="btn-small mr-2">&#x20B9;<%=product.getProduct_price() %></a> 
+						<a class="btn-round mr-2"><i class="fa fa-shopping-cart" id="<%=product.getProduct_id() %>"></i></a> 
+						<a class="btn-round"><i id="<%=product.getProduct_id() %>"  class="fa fa-heart"></i></a>
+						</div>
+				</div>
+			</div>
+			<%} %>
+		</div>
+	</div>
+</section>
 </body>
+<script>
+$('.fa-heart').click(function(){
+	window.location="login.jsp";
+});
+$('.fa-shopping-cart').click(function(){
+	window.location="login.jsp";
+});
+</script>
+<%} %>
 </html>

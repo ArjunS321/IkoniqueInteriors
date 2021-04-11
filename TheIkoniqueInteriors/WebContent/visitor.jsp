@@ -15,7 +15,32 @@
 		<%@include file="commonheader.jsp"%>
 	<div class="page-wrapper">
 		<div class="page-container">
-			<%@include file="visitorproduct.jsp"%>
+		<div id="Carousel2"
+					class="carousel slide shadow-soft border border-light p-4 rounded mt-5"
+					data-ride="carousel">
+					<div class="carousel-inner rounded">
+						<div class="carousel-item active">
+							<img class="d-block w-150 h-50"
+								src="assets/img/slideshow image.jpg" alt="First slide">
+						</div>
+						<div class="carousel-item">
+							<img class="d-block w-150 h-50"
+								src="assets/img/slideshow image.jpg" alt="Second slide">
+						</div>
+						<div class="carousel-item">
+							<img class="d-block w-150 h-50"
+								src="assets/img/slideshow image.jpg" alt="Third slide">
+						</div>
+					</div>
+<!-- 					<a class="carousel-control-prev" href="#Carousel2" role="button" -->
+<!-- 						data-slide="prev"> 						<span class="carousel-control-prev-icon" aria-hidden="true"></span>  -->
+<!-- 												<span class="sr-only">Previous</span> -->
+<!-- 					</a> <a class="carousel-control-next" href="#Carousel2" role="button" -->
+<!-- 						data-slide="next"> 					 <span class="carousel-control-next-icon" -->
+<!-- 												aria-hidden="true"></span> <span class="sr-only">Next</span> -->
+<!-- 					</a> -->
+				</div>
+			<%@include file="product.jsp"%>
 		</div>
 		<div class="row">
                             <div class="col-md-12">

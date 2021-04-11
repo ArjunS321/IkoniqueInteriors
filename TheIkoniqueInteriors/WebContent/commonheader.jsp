@@ -21,6 +21,19 @@ if (null != httpSession) {
 <meta charset="ISO-8859-1">
 <%@include file="FontFaces.jsp"%>
 <%@include file="commoncss.jsp"%>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"
+	integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg=="
+	crossorigin="anonymous" />
+<link type="text/css" href="css/login1css.css" rel="stylesheet">
+
+<!-- Fontawesome -->
+<link type="text/css"
+	href="neuro/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="css1/product.css">
+<!-- Pixel CSS -->
+<link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 </head>
 <body>
 	<%
@@ -509,9 +522,11 @@ if (null != httpSession) {
 							<i class="zmdi zmdi-search"></i>
 						</button>
 					</form>
-					<div class="header-button">
-						<button type="button" onclick="location.href='register.jsp';"
-							class="btn btn-secondary btn-sm">Sign In</button>
+					<div class="">
+					<button type="submit" name="submit" onclick="location.href='register.jsp';"
+							class="btn ml-9">Register</button>
+						<button type="submit" name="submit" onclick="location.href='login.jsp';"
+							class="btn ml-1">login</button>
 					</div>
 				</div>
 			</div>

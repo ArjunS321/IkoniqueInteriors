@@ -7,10 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
-
 textarea {
     overflow: auto;
     resize: none;
@@ -88,29 +85,6 @@ textarea {
 	margin-top: -6rem !important;
 }
 </style>
-<meta charset="ISO-8859-1">
-<title>Product Land Page</title>
-<%
-	Product product = (Product) request.getAttribute("product");
-%>
-<jsp:include page="/SelectOfferDetails" />
-<%
-	List<Offer> offerList = (List) request.getAttribute("offerList");
-%>
-<jsp:include page="/SelectDesignerDetails" />
-<%
-	List<User> designerList = (List) request.getAttribute("designerList");
-%>
- <jsp:include page="/SelectWishlistDetails"/>
-<%List <Wishlist> wishlistList =(List)request.getAttribute("wishlistList"); %> 
-<%List <Integer> wishlistint =(List)request.getAttribute("wishlistint"); %>
-
-<jsp:include page="/SelectUserDetails"/>
-<%List<User> userList =(List)request.getAttribute("userList"); %>
-
-<jsp:include page="/SelectFeedBackDetails"/>
-<%List<FeedBack> feedbackList =(List)request.getAttribute("feedbackList"); %>
-
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css"
 	integrity="sha512-3PN6gfRNZEX4YFyz+sIyTF6pGlQiryJu9NlGhu9LrLMQ7eDjNgudQoFDK3WSNAayeIKc6B8WXXpo4a7HqxjKwg=="
@@ -124,25 +98,48 @@ textarea {
 <link rel="stylesheet" href="css1/product.css">
 <!-- Pixel CSS -->
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
-</head>
-<%-- <%! int temp = '0'; %>
+<meta charset="ISO-8859-1">
+<title>Product Land Page</title>
+<% int temp2 = '0'; %>
+<% HttpSession httpSession5 = request.getSession(false);
+	User user5 = null;   
+	if(null!=httpSession5){
+		user5 = (User)httpSession5.getAttribute("loginBean");
+		if(user5!=null){
+			temp2 = '1';
+		}
+		
+   }
+	else
+	{
+		temp2 = '0';
+	}
+%>
 <%
-HttpSession httpSession3 = request.getSession(false);
-User user2 = null;   
-if(null!=httpSession3)
-{
-   user2 = (User)httpSession3.getAttribute("loginbean");
-	temp = '1';
-}
-else
-{
-	temp = '0';
-}
-%>  --%>
-<body style="background-color: #e6e7ee">
-	
+	Product product = (Product) request.getAttribute("product");
+%>
+<jsp:include page="/SelectOfferDetails" />
+<%
+	List<Offer> offerList = (List) request.getAttribute("offerList");
+%>
+<jsp:include page="/SelectDesignerDetails" />
+<%
+	List<User> designerList = (List) request.getAttribute("designerList");
+%>
+<jsp:include page="/SelectUserDetails"/>
+<%List<User> userList =(List)request.getAttribute("userList"); %>
+
+<jsp:include page="/SelectFeedBackDetails"/>
+<%List<FeedBack> feedbackList =(List)request.getAttribute("feedbackList"); %>
 <%@include file="commonsidebar.jsp"%>
 <%@include file="commonheader.jsp"%>
+</head>
+<%if(temp2 == '1'){ %>
+
+<jsp:include page="/SelectWishlistDetails"/>
+<%List <Wishlist> wishlistList =(List)request.getAttribute("wishlistList"); %> 
+<%List <Integer> wishlistint =(List)request.getAttribute("wishlistint"); %>
+<body style="background-color: #e6e7ee">
 		<div class="col-5 col-lg-11 ml-6 mt-7">
 		<div class="card shadow-inset border-light p-3 ml-10"
 			style="background-color: #e6e7ee;">
@@ -280,29 +277,6 @@ else
 		</div>
 	</div>
 </body>
-<script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
-<script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
-<script src="neuro/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="neuro/vendor/headroom.js/dist/headroom.min.js"></script>
-
-<!-- Vendor JS -->
-<script src="neuro/vendor/onscreen/dist/on-screen.umd.min.js"></script>
-<script src="neuro/vendor/nouislider/distribute/nouislider.min.js"></script>
-<script
-	src="neuro/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<script src="neuro/vendor/waypoints/lib/jquery.waypoints.min.js"></script>
-<script src="neuro/vendor/jarallax/dist/jarallax.min.js"></script>
-<script src="neuro/vendor/jquery.counterup/jquery.counterup.min.js"></script>
-<script src="neuro/vendor/jquery-countdown/dist/jquery.countdown.min.js"></script>
-<script
-	src="neuro/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-<script src="neuro/vendor/prismjs/prism.js"></script>
-
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-
-<!-- Neumorphism JS -->
-<script src="neuro/assets/js/neumorphism.js"></script>
-<%@include file="commonjs.jsp"%>
 <script>
 $(document).ready(function () {
 	$("#feedbackdetails").show();
@@ -375,6 +349,196 @@ $('.fa-heart').click(function(){
 	});
 	 
  */
-	
 </script>
+<%}else{ %>
+<body style="background-color: #e6e7ee">
+		<div class="col-5 col-lg-11 ml-6 mt-7">
+		<div class="card shadow-inset border-light p-3 ml-10"
+			style="background-color: #e6e7ee;">
+			<!-- Content -->
+			<div class="card-body shadow-soft border border-light rounded p-4">
+				<h2 class="mb-3"><%=product.getProduct_name()%></h2>
+
+				<% String str="Ikonique"; %>
+				<%for(User user1 : designerList) {%>
+					<%if(product.getProduct_owner_id()==user1.getUser_id()){ %>
+						<%str=user1.getFirstname()+" "+user1.getLastname();%> 
+					<% break;} %>
+					<%} %>
+				<p class="mb-4 des">By <%=str %></p>
+				<i class="fas fa-badge-check"></i> <img class="center rounded"
+					src="data:image/jpg;base64,<%=product.getProductpicString()%>"
+					alt="">
+
+				<div class="d-flex mb-3">
+					<span class="h5 mb-0">&#x20B9;</span>
+						<span class="price display-3 text-dark mb-0" id="finalprice"></span><br>
+					<br>
+				</div>
+
+				<div>
+				<%if(product.getOfferid()!=0){ %>
+					<span Style="font-size: 8mm" class="h5">&#x20B9;
+						<span Style="font-size: 8mm" id="mainprice"
+							class="h5 mb-0 text-gray text-through mr-2"
+							value="<%=product.getProduct_price()%>"><%=product.getProduct_price()%>
+						</span>
+					</span>
+				<%} %>
+				<span hidden id="mainprice" value="<%=product.getProduct_price()%>"><%=product.getProduct_price()%></span>
+					
+					<%for (Offer offer : offerList) {%>
+					<%if (product.getOfferid() == offer.getOfferid()) {%>
+					<span Style="font-size: 8mm" id="discount"
+						class="h6 mb-0 text-danger" value="<%=offer.getDiscount() %>">
+						<%=offer.getDiscount() %>
+					</span>
+					<%break;}%>
+					<%}%>
+				</div>
+				<div class="product-btns wishlist">
+				<a class="btn-round"><i id="<%=product.getProduct_id() %>" class="fa fa-heart"></i></a>
+				</div>
+				<br> <br>
+				<h4 class="mb-3">Product Description</h4>
+				<p class="mb-4 des"><%=product.getProduct_desc()%></p>
+				<h4 class="mb-3">Product Weight</h4>
+				<p class="mb-4"><%=product.getProduct_weight()%>
+					KG
+				</p>
+					
+				<a href="login.jsp" class="btn rounded-bottom col-lg-5 ml-6"
+					style="background-color: #e6e7ee;">Buy Now</a>
+				<a href="login.jsp" class="btn rounded-bottom ml-3 col-lg-5"
+					style="background-color: #e6e7ee;">Add to Cart</a>
+
+<!-- 					<div class="form-group mb-1 ml-6 mr-10 inputBox"> -->
+<!-- 						<label for="add">FeedBack</label> -->
+<!-- 						<textarea rows="5" name="feedback" class="form-control" id="feedback" -->
+<!-- 						autocomplete="off" aria-describedby="emailHelp"></textarea> -->
+<!-- 					</div> -->
+					<form action="login.jsp" method="post" id="form">
+					<div class="ml-7">
+					<br>
+                         <h4 align="center" class="mb-3 mr-7">Your FeedBack</h4>
+                         <textarea style="background-color: #e6e7ee;" class="form-control1" placeholder="Enter Your FeedBack..." name="feedback" id="feedback" rows="4" cols="95"></textarea>
+                    </div>
+                    <br>
+                    <div align="center">
+                         <button type="submit" name="submit" id="submit" class="btn btn-primary1">Send FeedBack</button><br><br>                         
+                    </div>
+                   
+                    </form>
+                     
+                    <br>
+                    
+                    	<%int count=0; %>
+                    	<%for(User user: userList){ %>
+                    		<%for(FeedBack feedback:feedbackList){ %>
+                    			<%if(user.getUser_id()==feedback.getUserid() && feedback.getProductid()==product.getProduct_id()){ %>
+                  						<%count=count+1; %>
+                 				 <%} %>
+		                    <%} %>
+                    	<%} %>
+                    <%if(count>0){ %>
+                    <h4>Total FeedBacks:<%=count %></h4>
+                    <div class="feedbackdetails" id="feedbackdetails">
+                    	<hr class="my-5"  style="background-color: lightgrey;">
+                    	<%for(User user: userList){ %>
+                    		<%for(FeedBack feedback:feedbackList){ %>
+                    			<%if(user.getUser_id()==feedback.getUserid() && feedback.getProductid()==product.getProduct_id()){ %>
+                    			
+		                    	<img src="data:image/jpg;base64,<%=user.getUserProfilepicString()%>" class="mt-2" style="border-radius: 1000px; height: 50px; width: 50px;">
+		                    	<div style="margin-left:4rem; margin-top: -2rem;">
+		                    		<h4><%=user.getFirstname() %> <%=user.getLastname() %></h4>
+		                   	 	</div>
+		                    	<div style="margin-left:55rem; margin-top: -1rem;">
+		                    		<h5><%=feedback.getFeedbackdate() %></h5>
+		                    	</div>
+		                    	<div id="listfeedback" class="mt-4"><%=feedback.getFeedbackdesc() %>
+		                    	</div>
+		                    	 <hr class="my-5"  style="background-color: lightgrey;">
+		                    	<%} %>
+		                    <%} %>
+                    	<%} %>
+                    <%}else {%>
+                    <h4>No FeedBack For This Product</h4>
+                    <%} %>
+                  </div>
+			</div>
+			<!-- End Content -->
+		</div>
+	</div>
+</body>
+<script>
+$(document).ready(function () {
+	$("#feedbackdetails").show();
+});
+$('.fa-heart').click(function(){
+	window.location="login.jsp";
+});
+
+	function discount() {
+		var main = $('#mainprice').text();
+		alert("price"+main);
+		var dis = $('#discount').text();
+		var dec = (dis / 100).toFixed(2);
+		var mult = main * dec;
+		var discount = (main - mult);
+		var discount1 = (discount).toFixed(2);
+		return discount1;
+	}
+
+	function concat(){
+		var dis1 = $('#discount').text();
+		var s2 = dis1.concat("% Off");
+		return s2;
+	}
+	
+	document.getElementById("finalprice").innerHTML = discount();
+	document.getElementById("discount").innerHTML = concat();
+	/* 
+	 $("#feedbacks").click(function() {
+		$("#feedbackdetails").show();
+		const id= document.getElementById('productid').value;
+		$.get( "SelectProductFeedBacks", {productid: id } )
+		  .done(function( data ) {
+			 var list= jQuery.parseJSON( data);
+			 $.each(list, function( key, value ) {
+				 $('#listfeedback')
+	                .append($("<p></p>")
+	                .attr("value",value.feedbackid)
+	                .text(value.feedbackdesc));  
+				});
+		  });
+		
+	});
+	 
+ */
+</script>
+<%} %>
+<script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
+<script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
+<script src="neuro/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="neuro/vendor/headroom.js/dist/headroom.min.js"></script>
+
+<!-- Vendor JS -->
+<script src="neuro/vendor/onscreen/dist/on-screen.umd.min.js"></script>
+<script src="neuro/vendor/nouislider/distribute/nouislider.min.js"></script>
+<script
+	src="neuro/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="neuro/vendor/waypoints/lib/jquery.waypoints.min.js"></script>
+<script src="neuro/vendor/jarallax/dist/jarallax.min.js"></script>
+<script src="neuro/vendor/jquery.counterup/jquery.counterup.min.js"></script>
+<script src="neuro/vendor/jquery-countdown/dist/jquery.countdown.min.js"></script>
+<script
+	src="neuro/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script src="neuro/vendor/prismjs/prism.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- Neumorphism JS -->
+<script src="neuro/assets/js/neumorphism.js"></script>
+<%@include file="commonjs.jsp"%>
 </html>

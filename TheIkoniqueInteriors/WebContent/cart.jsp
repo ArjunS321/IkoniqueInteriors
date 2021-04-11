@@ -72,10 +72,11 @@ $quantity-btn-color: #95d7fc;
 									</a>
 								</div>
 <%-- 								<span hidden id="mainprice" value="<%=product.getProduct_price()%>"><%=product.getProduct_price()%></span> --%>
+								<input class="individulmainprice" type="hidden" value="<%=product.getProduct_price() %>">
 								<div class="col">
 									<div class="d-flex mb-2 font-weight-bold">
 										<a class="h5 pname" href="#"><%=product.getProduct_name() %></a>
-										<span id="mainprice" class="price h5 ml-auto">&#x20B9;<%=product.getProduct_price() %></span><br>
+										<span id="mainprice" class="price lineitemtotal h5 ml-auto"><%=product.getProduct_price() %></span><br>
 <!-- 										<span class="price text-dark mb-0" id="finalprice"></span> -->
 										<%-- <input type="text" id="sum" name="sum2" value="<%=product.getProduct_price() %>" onkeyup="mainprice()"> --%>	
 										
@@ -98,10 +99,10 @@ $quantity-btn-color: #95d7fc;
 										</button>
 										<input style="width:50px; background-color:#e6e7ee;" type="text" id="myNumber"
 											class="form-control input-number" value="1" />
-										<button id="up" class="btn" onclick="up('20')">
+										<button data-id="<%=product.getProduct_price() %>" id="up" class="btn plus">
 											<i class="fas fa-plus"></i>
 										</button>
-										</div>
+									</div>
 										<div style="margin-left:45rem;">
 											<a class="btn-link text-dark" href="DeleteCartDetail?productid=<%=product.getProduct_id()%>"><span
 												class="far fa-trash-alt mr-2"></span>Remove</a>
@@ -127,10 +128,10 @@ $quantity-btn-color: #95d7fc;
 					<hr class="my-5" style="background-color: lightgrey; margin-top:0px !important;"> -->
 					<div class="card-body p-0">
                 <ul class="list-group list-group-sm mt-3">
-                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>MRP</span> <span id="mrp" class="ml-auto"> &#x20B9;13,174</span> </li>
-                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>Discount</span> <span class="ml-auto">-  &#x20B9;906.6</span> </li>
-                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>Tax</span> <span class="ml-auto">+  &#x20B9;2,208.132</span> </li>
-                    <li class="list-group-item d-flex font-weight-bold rounded-bottom h5"  style="background-color: #e6e7ee !important;"> <span>Total</span> <span class="ml-auto"> &#x20B9;14,475.53</span></li> 
+                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>MRP</span> <span id="mrp" class="ml-auto">13,174</span> </li>
+                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>Discount</span> <span id="dis" class="ml-auto">906.6</span> </li>
+                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>Tax</span> <span id="tax" class="ml-auto">2,208.132</span> </li>
+                    <li class="list-group-item d-flex font-weight-bold rounded-bottom h5"  style="background-color: #e6e7ee !important;"> <span>Total</span> <span id="grandtotal" class="ml-auto">14,475.53</span></li> 
                 </ul>
                 <a class="btn btn-block mt-4 mb-3" href="detailfillup.jsp">Place Order</a> 
             </div>
@@ -167,48 +168,52 @@ $quantity-btn-color: #95d7fc;
 				<%@include file="commonjs.jsp"%>
 				<script>
 				$(document).ready(function(){
-					alert("fn ready...");
+// 					alert("fn ready...");
+					$( ".plus" ).click(function() {
+// 						  alert( "Handler for .click() called."+$(this).attr('data-id'));
+// 						  alert("que:-"+$(this).parent().find('#myNumber').val());
+						  var qunt =  parseInt($(this).parent().find('#myNumber').val());
+						  qunt = qunt + 1;
+						  $(this).parent().find('#myNumber').val(qunt);
+						  var amount = parseInt($(this).attr('data-id'));
+						  var total = qunt * amount;
+// 						  alert("total p:-"+total);
+						  $(this).parent().parent().find('#mainprice').text(total);
+						  updatetotal();
+					});
+					
+					
 				});
-				var p=$('#mainprice').text();
 				
-				var price=p.substring(1);
-				alert("price is:"+price);
-				var mrp=0;
+				function updatetotal()
+				{
+					var total=0;
+					var tax = 0;
+					var grandtotal = 0;
+					$( ".lineitemtotal" ).each(function() {
+						total = total + parseInt($(this).text());
+					   
+					  });
+					alert("total:-"+total);
+					$("#mrp").text(total);
+					tax = (total * 18)/100;
+					$("#tax").text(tax);
+					grandtotal = total + tax;
+					$("#grandtotal").text(grandtotal);
+					
+				}
 				function up(max) {
 				    document.getElementById("myNumber").value = parseInt(document.getElementById("myNumber").value) + 1;
 				    if (document.getElementById("myNumber").value >= parseInt(max)) {
 				        document.getElementById("myNumber").value = max;
 				    }
-				   var quantity=parseInt(document.getElementById("myNumber").value);
-				   alert(quantity);
-				    var totalprice = price * quantity;
-				    alert("total Price:"+totalprice);
-				    document.getElementById("mainprice").innerHTML =totalprice;
-				    
-				    var count=parseInt(document.getElementById("count").value);
-					alert(count);
-					/* var i=0;
-					while(i<count)
-					{
-						mrp=  document.getElementById("mainprice").value;
-						alert(mrp);
-					}	 */
-				
-				    
-					
 				}
+				
 				function down(min) {
 				    document.getElementById("myNumber").value = parseInt(document.getElementById("myNumber").value) - 1;
 				    if (document.getElementById("myNumber").value <= parseInt(min)) {
 				        document.getElementById("myNumber").value = min;
-				    }
-				    var quantity=parseInt(document.getElementById("myNumber").value);
-					   alert(quantity);
-					    var totalprice = price * quantity;
-					    alert("total Price:"+totalprice);
-					    document.getElementById("mainprice").innerHTML =totalprice;
-					    
-					   
+				    }   
 				}
 				
 				function discount() {

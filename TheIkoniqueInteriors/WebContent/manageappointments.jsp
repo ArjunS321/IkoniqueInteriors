@@ -27,6 +27,11 @@
             margin-left: auto;
             float: 150
         }
+          h2 input.search-input1 {
+            width: 300px;
+            margin-left: auto;
+            float: 150
+        }
         .mt32 {
             margin-top: 100px;
             margin-left: 300px;
@@ -105,25 +110,27 @@ if (null != httpSession1) {
         </table>
         
     </div>
-    <a href="#" id="previousclick" style="color:#0C0C0B;" >Your Previous Appointments</a>
+    <div class="mt-5 ml-5">
+    <a class="btn" href="#" id="previousclick" style="color:#0C0C0B;" >Your Previous Appointments</a>
+    </div>
      <div class="container" style="overflow-x: scroll" id="previous">
-        <h2>
+        <br><h2>
             <span>Previous Appointments</span>
-            <input type="search" placeholder="Search Appointments" class="form-control search-input" data-table="customers-list"/>
+            <input type="search" placeholder="Search Appointments" class="form-control search-input1" data-table="customers-list1"/>
             <br>
         </h2>
        
-        <table class="table table-striped mt32 customers-list" id="myTable">
+        <table class="table table-striped mt32 customers-list1" id="myTable1">
             <thead>
                 <tr>
-                    <th>Booking-Id<i class="fa fa-fw fa-sort" onclick="sortTable(0)"></i></th>
-                    <th>Customer Name<i class="fa fa-fw fa-sort" onclick="sortTable(1)"></i></th>
-                    <th>Address<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
-                    <th>Contact-No<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
-                    <th>Email-Id<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
-                    <th>Booking-Date<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
-                    <th>Payment Status<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
-                    <th>Booking Status<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
+                    <th>Booking-Id<i class="fa fa-fw fa-sort" onclick="sortTable1(0)"></i></th>
+                    <th>Customer Name<i class="fa fa-fw fa-sort" onclick="sortTable1(1)"></i></th>
+                    <th>Address<i class="fa fa-fw fa-sort" onclick="sortTable1(2)"></i></th>
+                    <th>Contact-No<i class="fa fa-fw fa-sort" onclick="sortTable1(2)"></i></th>
+                    <th>Email-Id<i class="fa fa-fw fa-sort" onclick="sortTable1(2)"></i></th>
+                    <th>Booking-Date<i class="fa fa-fw fa-sort" onclick="sortTable1(2)"></i></th>
+                    <th>Payment Status<i class="fa fa-fw fa-sort" onclick="sortTable1(2)"></i></th>
+                    <th>Booking Status<i class="fa fa-fw fa-sort" onclick="sortTable1(2)"></i></th>
                     <!-- <th>Edit</th>
                     <th>Delete</th>-->
  		             
@@ -227,6 +234,44 @@ if (null != httpSession1) {
 
         })(document);
         
+        (function(document) {
+            'use strict';
+
+            var TableFilter = (function(myArray) {
+                var search_input;
+
+                function _onInputSearch(e) {
+                    search_input = e.target;
+                    var tables = document.getElementsByClassName(search_input.getAttribute('data-table'));
+                    myArray.forEach.call(tables, function(table) {
+                        myArray.forEach.call(table.tBodies, function(tbody) {
+                            myArray.forEach.call(tbody.rows, function(row) {
+                                var text_content = row.textContent.toLowerCase();
+                                var search_val = search_input.value.toLowerCase();
+                                row.style.display = text_content.indexOf(search_val) > -1 ? '' : 'none';
+                            });
+                        });
+                    });
+                }
+
+                return {
+                    init: function() {
+                        var inputs = document.getElementsByClassName('search-input1');
+                        myArray.forEach.call(inputs, function(input) {
+                            input.oninput = _onInputSearch;
+                        });
+                    }
+                };
+            })(Array.prototype);
+
+            document.addEventListener('readystatechange', function() {
+                if (document.readyState === 'complete') {
+                    TableFilter.init();
+                }
+            });
+
+        })(document);
+        
         function sortTable(n) {
         	  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
         	  table = document.getElementById("myTable");
@@ -268,6 +313,47 @@ if (null != httpSession1) {
         		  }
         	  }
         }
+        function sortTable1(n) {
+      	  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+      	  table = document.getElementById("myTable1");
+      	  switching = true;
+      	  dir = "asc";
+      	  while (switching) {
+      		  switching = false;
+      		  rows = table.rows;
+      		  for (i = 1; i < (rows.length - 1); i++) {
+      			  shouldSwitch = false;
+      			  x = rows[i].getElementsByTagName("TD")[n];
+      		      y = rows[i + 1].getElementsByTagName("TD")[n];
+      		      if (dir == "asc") {
+      		          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+      		            // If so, mark as a switch and break the loop:
+      		            shouldSwitch = true;
+      		            break;
+      		          }
+      		      }
+      		      else if (dir == "desc") 
+      		      {
+      		    	  if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) 
+      		    	  {
+      		              shouldSwitch = true;
+      		              break;
+      		          }
+      		      }
+      		  }
+      		  if (shouldSwitch) {
+      			  rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      		      switching = true;
+      		      switchcount ++;
+      		  }
+      		  else {
+      			  if (switchcount == 0 && dir == "asc") {
+      			        dir = "desc";
+      			        switching = true;
+      			      }
+      		  }
+      	  }
+      }
     </script>
     <%@include file="commonjs.jsp"%>
 </body>

@@ -247,7 +247,7 @@ textarea {
 <jsp:include page="/SelectBookingInfoDetails"/>
 <%List<BookingInfo> bookinginfolist =(List)request.getAttribute("bookinginfolist"); %>
 </head>
-<%!String name=null; %>
+<%!String count=null; %>
 <body style="background-color: #e6e7ee">
 	<%@include file="commonsidebar.jsp"%>
 	<%@include file="commonheader.jsp"%>
