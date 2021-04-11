@@ -64,6 +64,7 @@ $quantity-btn-color: #95d7fc;
  				<%} %>
 				<%for(Product product : productList){ %>
 					<%if(cartint.contains(product.getProduct_id())){ %>
+					 
 					<div class="col-12">
 						<div class="card shadow-soft border-light p-4 mb-5" style="background-color: #e6e7ee;">
 							<div class="row align-items-center item">
@@ -71,30 +72,33 @@ $quantity-btn-color: #95d7fc;
 									<a href="#"> <img src="data:image/jpg;base64,<%=product.getProductpicString()%>">
 									</a>
 								</div>
-<%-- 								<span hidden id="mainprice" value="<%=product.getProduct_price()%>"><%=product.getProduct_price()%></span> --%>
+<%--  								<span hidden id="mainpricediscount" value="<%=product.getProduct_price()%>"><%=product.getProduct_price()%></span> --%>
 								<input class="individulmainprice" type="hidden" value="<%=product.getProduct_price() %>">
 								<div class="col">
 									<div class="d-flex mb-2 font-weight-bold">
 										<a class="h5 pname" href="#"><%=product.getProduct_name() %></a>
-										<span id="mainprice" class="price lineitemtotal h5 ml-auto"><%=product.getProduct_price() %></span><br>
-<!-- 										<span class="price text-dark mb-0" id="finalprice"></span> -->
-										<%-- <input type="text" id="sum" name="sum2" value="<%=product.getProduct_price() %>" onkeyup="mainprice()"> --%>	
 										
+										<%if(product.getOfferid() != 0){ %>
+										<span id="mainprice" class="price lineitemtotal text-through h5 ml-auto"><%=product.getProduct_price() %></span><br>
+										<%}else{ %>
+										<span id="mainprice" class="price lineitemtotal h5 ml-auto"><%=product.getProduct_price() %></span><br>
+										<%} %>
 									</div>
-<%-- 									<%for (Offer offer : offerList) {%> --%>
-<%-- 									<%if (product.getOfferid() == offer.getOfferid()) {%> --%>
-<!-- 					<span Style="font-size: 8mm" id="discount" -->
-<%-- 						class="h6 mb-0 text-danger" value="<%=offer.getDiscount() %>"> --%>
-<%-- 						<%=offer.getDiscount() %> --%>
-<!-- 					</span> -->
-<%-- 					<%break;}%> --%>
-<%-- 					<%}%> --%>
+<!-- 									<span id="individuldiscount" style="margin-left:48rem;" class="price lineitemtotal h5"></span><br> -->
+ 									<%for (Offer offer : offerList) {%>
+										<%if (product.getOfferid() == offer.getOfferid()) {%> 
+ 											<span Style="font-size: 5mm; margin-left:45rem;" id="discount" 
+											class="h6 mb-0 text-danger" value="<%=offer.getDiscount() %>"> 
+											<%=offer.getDiscount() %>% Off 
+											</span>
+										<%break;}%> 
+ 								<%}%> 
 									<ul class="pl-3">
 										<li class="small"><%=product.getProduct_desc() %></li>
 									</ul>
 									<br>
 									<div class="d-flex align-items-center">
-										<button id="down" class="btn" onclick=" down('1')">
+										<button data-id="<%=product.getProduct_price() %>" id="down" class="btn minus">
 											<i class="fas fa-minus"></i>
 										</button>
 										<input style="width:50px; background-color:#e6e7ee;" type="text" id="myNumber"
@@ -115,7 +119,7 @@ $quantity-btn-color: #95d7fc;
 						<input id="count" type="hidden" value="<%=count %>">
 						<%} %>
 						<%} %>
-						
+							
 					</div>
 					<!-- <hr class="my-5" style="background-color: lightgrey; margin-top:10px !important;">
 					MRP
@@ -128,10 +132,10 @@ $quantity-btn-color: #95d7fc;
 					<hr class="my-5" style="background-color: lightgrey; margin-top:0px !important;"> -->
 					<div class="card-body p-0">
                 <ul class="list-group list-group-sm mt-3">
-                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>MRP</span> <span id="mrp" class="ml-auto">13,174</span> </li>
-                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>Discount</span> <span id="dis" class="ml-auto">906.6</span> </li>
-                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>Tax</span> <span id="tax" class="ml-auto">2,208.132</span> </li>
-                    <li class="list-group-item d-flex font-weight-bold rounded-bottom h5"  style="background-color: #e6e7ee !important;"> <span>Total</span> <span id="grandtotal" class="ml-auto">14,475.53</span></li> 
+                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>MRP</span> <span id="mrp" class="ml-auto"></span> </li>
+                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>Discount</span> <span id="dis" class="ml-auto"></span> </li>
+                    <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>Tax</span> <span id="tax" class="ml-auto"></span> </li>
+                    <li class="list-group-item d-flex font-weight-bold rounded-bottom h5"  style="background-color: #e6e7ee !important;"> <span>Total</span> <span id="grandtotal" class="ml-auto"></span></li> 
                 </ul>
                 <a class="btn btn-block mt-4 mb-3" href="detailfillup.jsp">Place Order</a> 
             </div>
@@ -169,6 +173,7 @@ $quantity-btn-color: #95d7fc;
 				<script>
 				$(document).ready(function(){
 // 					alert("fn ready...");
+					updatetotal();
 					$( ".plus" ).click(function() {
 // 						  alert( "Handler for .click() called."+$(this).attr('data-id'));
 // 						  alert("que:-"+$(this).parent().find('#myNumber').val());
@@ -182,7 +187,18 @@ $quantity-btn-color: #95d7fc;
 						  updatetotal();
 					});
 					
-					
+					$( ".minus" ).click(function() {
+// 						  alert( "Handler for .click() called."+$(this).attr('data-id'));
+// 						  alert("que:-"+$(this).parent().find('#myNumber').val());
+						  var qunt =  parseInt($(this).parent().find('#myNumber').val());
+						  qunt = qunt - 1;
+						  $(this).parent().find('#myNumber').val(qunt);
+						  var amount = parseInt($(this).attr('data-id'));
+						  var total = qunt * amount;
+// 						  alert("total p:-"+total);
+						  $(this).parent().parent().find('#mainprice').text(total);
+						  updatetotal();
+					});
 				});
 				
 				function updatetotal()
@@ -194,12 +210,14 @@ $quantity-btn-color: #95d7fc;
 						total = total + parseInt($(this).text());
 					   
 					  });
-					alert("total:-"+total);
+// 					alert("total:-"+total);
 					$("#mrp").text(total);
 					tax = (total * 18)/100;
-					$("#tax").text(tax);
+					tax1 = (tax).toFixed(2);
+					$("#tax").text(tax1);
 					grandtotal = total + tax;
-					$("#grandtotal").text(grandtotal);
+					grandtotal1 = (grandtotal).toFixed(2);
+					$("#grandtotal").text(grandtotal1);
 					
 				}
 				function up(max) {
@@ -216,25 +234,25 @@ $quantity-btn-color: #95d7fc;
 				    }   
 				}
 				
-				function discount() {
-					var main = $('#mainprice').text();
-					//alert("price"+main);
-					var dis = $('#discount').text();
-					var dec = (dis / 100).toFixed(2);
-					var mult = main * dec;
-					var discount = (main - mult);
-					var discount1 = (discount).toFixed(2);
-					return discount1;
-				}
+// 				function discount() {
+// 					var main = $('#mainpricediscount').text();
+// 					alert("price"+main);
+// 					var dis = $('#discount').text();
+// 					var dec = (dis / 100).toFixed(2);
+// 					var mult = main * dec;
+// 					var discount = (main - mult);
+// 					var discount1 = (discount).toFixed(2);
+// 					return discount1;
+// 				}
 
-				function concat(){
-					var dis1 = $('#discount').text();
-					var s2 = dis1.concat("% Off");
-					return s2;
-				}
+// 				function concat(){
+// 					var dis1 = $('#discount').text();
+// 					var s2 = dis1.concat("% Off");
+// 					return s2;
+// 				}
 				
-				document.getElementById("finalprice").innerHTML = discount();
-				document.getElementById("discount").innerHTML = concat();
+// 				document.getElementById("individuldiscount").innerHTML = discount();
+// 				document.getElementById("discount").innerHTML = concat();
 // 				function totalprice() 
 // 				{
 // 					alert("fn called");
