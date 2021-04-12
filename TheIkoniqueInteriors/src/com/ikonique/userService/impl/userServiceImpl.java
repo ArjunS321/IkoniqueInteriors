@@ -527,8 +527,10 @@ public class userServiceImpl {
 			msg="Insertion Is Successfully";
 			User user=userDao.selectUserDetails(connection,booking.getUserid());
 			User user1=userDao.selectUserDetails(connection,booking.getDesignerid());
+			StringBuilder builder = new StringBuilder();
+			builder.append("adas");
 			Main main=new Main();
-			main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {user1.getEmail()}, "Notification For Booking","One Customer Added");
+			main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {user1.getEmail()}, "Notification For Booking",builder.toString());
 			//"Customer Name: new String[] {user.getFirstname()} new String[] {user.getLastname()} Customer Contact No: new String[] {user.getMobileno()} Customer Mail-Id: new String[] {user.getEmail()}");
 		}
 		else

@@ -7,7 +7,7 @@
 <%@page import="com.ikonique.bean.Wishlist"%>
 <%@page import="com.ikonique.bean.Offer"%>
 <%@page import="com.ikonique.bean.Product"%>
-
+<%@ page session="false" %>
 <%
 	Random randomGenerator = new Random();
 int randomInt = randomGenerator.nextInt(1000000);

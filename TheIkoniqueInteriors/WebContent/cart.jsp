@@ -84,7 +84,16 @@ $quantity-btn-color: #95d7fc;
 										<span id="mainprice" class="price lineitemtotal h5 ml-auto"><%=product.getProduct_price() %></span><br>
 										<%} %>
 									</div>
-<!-- 									<span id="individuldiscount" style="margin-left:48rem;" class="price lineitemtotal h5"></span><br> -->
+									<%! double discount = 0.0d; %>
+									<%for (Offer offer : offerList) {%>
+										<%if (product.getOfferid() == offer.getOfferid()) {%> 
+ 											<%discount = offer.getDiscount(); %>
+										<%break;}%> 
+ 								<%}%> 
+ 								<%if(product.getOfferid() != 0){ %>
+									<span id="individuldiscount" style="margin-left:43rem;" class="price discount h5"><%=Double.parseDouble(product.getProduct_price())-((Double.parseDouble(product.getProduct_price()) * discount)/100) %></span><br>
+ 								<%}%>
+ 								<input id="discontvalue" class="discontvalue" type="hidden" value="<%=((Double.parseDouble(product.getProduct_price()) * discount)/100)%>">
  									<%for (Offer offer : offerList) {%>
 										<%if (product.getOfferid() == offer.getOfferid()) {%> 
  											<span Style="font-size: 5mm; margin-left:45rem;" id="discount" 
@@ -207,18 +216,24 @@ $quantity-btn-color: #95d7fc;
 				function updatetotal()
 				{
 					var total=0;
+					var disc = 0;
 					var tax = 0;
 					var grandtotal = 0;
 					$( ".lineitemtotal" ).each(function() {
 						total = total + parseInt($(this).text());
 					   
 					  });
+					$( ".discontvalue" ).each(function() {
+						disc = disc + parseInt($(this).val());
+					   
+					  });
 // 					alert("total:-"+total);
 					$("#mrp").text(total);
-					tax = (total * 18)/100;
+					$("#dis").text(disc);
+					tax = ((total - disc) * 18)/100;
 					tax1 = (tax).toFixed(2);
 					$("#tax").text(tax1);
-					grandtotal = total + tax;
+					grandtotal = total - disc + tax;
 					grandtotal1 = (grandtotal).toFixed(2);
 					$("#grandtotal").text(grandtotal1);
 					

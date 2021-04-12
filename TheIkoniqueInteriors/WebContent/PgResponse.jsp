@@ -48,12 +48,8 @@ try{
 	rel="stylesheet">
 <!-- Pixel CSS -->
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
+<%@ page session="false" %>
 </head>
-<% HttpSession httpSession = request.getSession(false);  
-		  	User user = null;    
-		  	if(null!=httpSession){ 
-		  	   user = (User)httpSession.getAttribute("loginBean"); 
-		     } %>
 <body>
 <p hidden>
 <%= outputHTML %>
