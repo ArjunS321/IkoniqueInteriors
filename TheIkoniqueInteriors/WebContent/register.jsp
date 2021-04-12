@@ -352,10 +352,26 @@ $(document).ready(function(){
   			if(fname == null || fname == "" && lname == null || lname == "" && add == null 
  				|| add == "" && mno == null || mno == ""  && email == null 
  				|| email == ""  && pass == null || pass == ""  
- 				&& vfees == null || vfees == "" && areavalue == null || areavalue == ""
- 				&& designation=="" || designation== null && aboutme==null || aboutme=="")
+ 				&& areavalue == null || areavalue == "")
   			{
-  					//alert("if....");
+  					if($('input[name="exampleRadios1"]:checked').val()=="option21")
+  					{
+  						if(vfees == null || vfees == "" && designation=="" || designation== null && aboutme==null || aboutme=="")
+  						{	
+  							alert("if ...if...if");
+  							$('#modal').modal('hide');
+  		  	             	$('#modal-default').modal('show');
+  		  	 				return false;
+  						}
+  						else
+  						{
+  							alert("if ...if....else");
+  							$('#modal').modal('show');
+  		             		$('#modal-default').modal('hide');
+  		 					return true;
+  						}
+  					}
+  					alert("if....main");
   	 				$('#modal').modal('hide');
   	             	$('#modal-default').modal('show');
   	 				return false;
