@@ -247,7 +247,10 @@ textarea {
 <jsp:include page="/SelectBookingInfoDetails"/>
 <%List<BookingInfo> bookinginfolist =(List)request.getAttribute("bookinginfolist"); %>
 </head>
-<%!String count=null; %>
+<%!int count=0; %>
+<%!int length=0; %>
+<%!int count1=0; %>
+
 <body style="background-color: #e6e7ee">
 	<%@include file="commonsidebar.jsp"%>
 	<%@include file="commonheader.jsp"%>
@@ -258,12 +261,22 @@ textarea {
 			<div class="card-body shadow-soft border border-light rounded p-4">
 			<div align="center">
 					
-					
 					<%for(Booking booking: bookinglist){ %>
 					<%if(booking.getUserid()==user.getUser_id()){ %>
-					<%for(BookingInfo bookingInfo: bookinginfolist){ %>
-					<%if(bookingInfo.getBookingid()==booking.getBookingid()){ %>
+					
 					<%count=count+1; %>
+					
+					<%} %>
+					<%} %>
+					<%length=count; %>
+					<%for(Booking booking: bookinglist){ %>
+					<%if(booking.getUserid()==user.getUser_id()){ %>
+					<%count1 = count1 + 1; %>
+					<%for(BookingInfo bookingInfo: bookinginfolist){ %>
+					
+					<%if(bookingInfo.getBookingid()==booking.getBookingid() && count1==length ){ %>
+					
+<%-- 					<%=count=count+1 %> --%>
 											<div class="form-group mb-3 inputBox">
 												<label for="lname">Name</label><br><input type="text"
 													name="lname"  style="background-color: #e6e7ee;" readonly class="form-control1 col-lg-5" id="lname" autocomplete="off"
@@ -340,9 +353,10 @@ textarea {
 
 
 					</form>
+					<% %>
+					<%}break; %>
 					<%} %>
-					<%} %>
-					<%} %>
+					<%}break; %>
 					<%} %>
 					
 				</div>
@@ -351,7 +365,7 @@ textarea {
 			</div>
 		</div>
 <!-- 		</div> -->
-	<p><%=count %></p>
+<%-- 	<%=count%> --%>
 </body>
 <script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
 <script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>

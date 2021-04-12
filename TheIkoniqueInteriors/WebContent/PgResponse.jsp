@@ -49,18 +49,18 @@ try{
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 </head>
 <body>
-<p hidden>
+<p>
 <%= outputHTML %>
-<% String[] sArr= outputHTML.split(","); %>
-<%-- <% for( String s : sArr){ %> --%>
-<%-- <p> <%= s %></p> --%>
-<%-- <%} %> --%>
+<%--  <% String[] sArr= outputHTML.split(","); %>  --%>
+<%--  <% for( String s : sArr){ %>  --%>
+<%--  <p> <%= s %></p> --%>
+<%--  <%} %> --%>
 <%-- <p><%= sArr[9] %></p> --%>
-<% String[] sArr1= sArr[9].split("="); %>
-<%= sArr1[1] %>
+<%--  <% String[] sArr1= sArr[9].split("="); %> --%>
+<%--  <%= sArr1[1] %> --%>
 
 </p>
-<%if(sArr1[1].equals("TXN_SUCCESS")){ %>
+<%-- <%if(sArr1[1].equals("TXN_SUCCESS")){ %>
 <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content bg-primary">
                             <div class="modal-header">
@@ -103,7 +103,7 @@ try{
                         </div>
                     </div>
 
-<%} %>
+<%} %> --%>
 </body>
 <script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
 <script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>

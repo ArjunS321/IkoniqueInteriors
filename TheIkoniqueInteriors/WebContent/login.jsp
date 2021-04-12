@@ -177,7 +177,7 @@
 			<div class="main-content">
 			<h1 align="center" style="margin-top: 50px;">Login</h1>
 				  <section class="min-vh-80 d-flex bg-primary align-items-center">
-				<form action="LoginServlet" onsubmit="return login()" class="w-50 ml-10" class="box" class="form" id="form" 
+				<form action="LoginServlet" onsubmit="return meet()" class="w-50 ml-10" class="box" class="form" id="form" 
 				 enctype="multipart/form-data" method="post">
 					<div class="form-group mb-3 ml-10 inputBox">
 						<label for="email">Email address</label> 
@@ -214,7 +214,9 @@
                                     <a class="color" href="register.jsp"><b>Sign Up Here</b></a>
                                 </h6>
                 </div>
-               <div class="modal fade" id="modal-failed" tabindex="-1"
+                <div id="hi">Hiiii</div>
+                <div id="bye">Bye</div>
+               <div class="modal fade" id="modal-default" tabindex="-1"
 								role="dialog" aria-labelledby="modal-default" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 								<div class="modal-dialog modal-dialog-centered" role="document">
 									<div class="modal-content">
@@ -236,7 +238,7 @@
 									</div>
 								</div>
 							</div>
-							 <div class="modal fade" id="modal-success" tabindex="-1"
+							 <div class="modal fade" id="modal" tabindex="-1"
 								role="dialog" aria-labelledby="modal-default" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 								<div class="modal-dialog modal-dialog-centered" role="document">
 									<div class="modal-content">
@@ -384,7 +386,7 @@
 					}
 			}
 			
-			function login()
+			function meet()
 			{
 				const form= document.getElementById('form');
 				const email= document.getElementById('email').value;
@@ -395,8 +397,10 @@
 				if(email == "" || email == null && pass == "" || pass == null)
 				{
 					alert("if....");
-// 					$('#modal-success').modal('hide');
-//              		$('#modal-Failed').modal('show');
+// 					$('#modal').modal('hide');
+//              		$('#modal-default').modal('show');
+					$("#bye").show();
+					$("#hi").hide();
              		return false;
 				}
 				else
@@ -404,10 +408,20 @@
 					if(email.match(pattern) && pass.match(pattern1))
 					{
 						alert("else if....");
-// 						$('#modal-success').modal('show');
-//   	             		$('#modal-Failed').modal('hide');
+// 						$('#modal').modal('show');
+//   	             		$('#modal-default').modal('hide');
+						$("#hi").show();
+						$("#bye").hide();
 						return true;
 					}
+					else
+						{
+// 						$('#modal').modal('hide');
+// 	             		$('#modal-default').modal('show');
+						$("#bye").show();
+						$("#hi").hide();
+							return false;
+						}
 				}
 			}
 

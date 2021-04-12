@@ -300,7 +300,7 @@ textarea {
                 </div>
             </div>
             <br><br>
-            <form action="InsertBookingDetails" method="post" align="center" id="form" name="form">
+            <form  method="post" action="InsertBookingDetails" align="center" id="form" name="form" onsubmit="return arjun()">
             <h1>Enter Details</h1>
             <br>
             		<input type="hidden" id="visitingfees" name="visitingfees" value="<%=user.getVisitingfees() %>">
@@ -355,12 +355,12 @@ textarea {
 												id="exampleInputDate1"
 												placeholder="Select date" type="text"
 												aria-label="Date with icon left" onclick="validate5()">
-												<span class="indicator5"></span>
+												
 										</div>
 									</div>
 									<!-- End of Form -->
 									<br>
-									<button type="submit" class="btn col-lg-4 rounded-bottom">Pay Now</button>
+									<button type="submit" name="submit" class="btn col-lg-4 rounded-bottom" id="pay">Pay Now</button>
 								</div>
 							</div>
 						</div>
@@ -422,6 +422,7 @@ $(document).ready(function () {
 $("#book").click(function(){
 	$("#form").show();
 });
+
 $('.datepicker').datepicker({ 
         startDate: new Date()
     });
@@ -432,6 +433,38 @@ function onlyNumberKey(evt) {
     if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
         return false;
     return true;
+}
+function arjun(){
+	alert("submit called");
+
+	const form = document.getElementById('form');
+	var email = document.getElementById('email').value;
+	const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+	var fname = document.getElementById('fname').value;
+	var lname = document.getElementById('lname').value;
+	var add = document.getElementById('add').value;
+	var mno = document.getElementById('mno').value;
+	const pattern2 = /(7|8|9)\d{9}/
+	var date = document.getElementById('exampleInputDate1').value;
+	
+		if(email == null || email=="" && fname == "" || fname == null  && lname == "" || lname == null
+			&& add == "" || add == null && mno == null || mno == "" && date == null || date =="")
+			{
+			return false;
+			}
+		else
+			{
+			if(email.match(pattern) && mno.match(pattern2))
+					{
+					alert("else if");
+					 return true;
+					}
+			else
+				{
+				return false;
+			}
+			}
+		
 }
 function validate6() {
 	const form = document.getElementById('form');
@@ -526,7 +559,7 @@ function validate4() {
 	function validate5() {
 	const form = document.getElementById('form');
 	const date = document.getElementById('exampleInputDate1').value;
-	alert("date is:-"+date);
+	
 	if (date == "" || date == null) {
 		form.classList.add('invalid4')
 		form.classList.remove('valid4')

@@ -1,16 +1,23 @@
+<%@page import="com.ikonique.bean.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Payment Page</title>
 <link type="text/css"
 	href="neuro/vendor/@fortawesome/fontawesome-free/css/all.min.css"
 	rel="stylesheet">
 <!-- Pixel CSS -->
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
-
+<%
+HttpSession httpSession1 = request.getSession(false);
+User user = null;
+if (null != httpSession1) {
+	user = (User) httpSession1.getAttribute("loginBean");
+}
+%>
 </head>
 <body>
 
