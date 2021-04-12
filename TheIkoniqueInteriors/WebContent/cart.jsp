@@ -75,9 +75,8 @@ $quantity-btn-color: #95d7fc;
 <%--  								<span hidden id="mainpricediscount" value="<%=product.getProduct_price()%>"><%=product.getProduct_price()%></span> --%>
 								<input class="individulmainprice" type="hidden" value="<%=product.getProduct_price() %>">
 								<div class="col">
-									<div class="d-flex mb-2 font-weight-bold">
+									<div class="d-flex font-weight-bold">
 										<a class="h5 pname" href="#"><%=product.getProduct_name() %></a>
-										
 										<%if(product.getOfferid() != 0){ %>
 										<span id="mainprice" data-id="<%=product.getProduct_price() %>" class="price lineitemtotal lineitemtotal1 text-through h5 ml-auto"><%=product.getProduct_price() %></span><br>
 										<%}else{ %>
@@ -90,18 +89,20 @@ $quantity-btn-color: #95d7fc;
  											<%discount = offer.getDiscount(); %>
 										<%break;}%> 
  								<%}%> 
- 								<%if(product.getOfferid() != 0){ %>
-									<span id="individuldiscount" style="margin-left:43rem;" class="price discount h5"><%=Double.parseDouble(product.getProduct_price())-((Double.parseDouble(product.getProduct_price()) * discount)/100) %></span><br>
- 								<%}%>
- 								<input id="discontvalue" class="discontvalue" type="hidden" value="<%=((Double.parseDouble(product.getProduct_price()) * discount)/100)%>">
- 									<%for (Offer offer : offerList) {%>
+ 								<%for (Offer offer : offerList) {%>
 										<%if (product.getOfferid() == offer.getOfferid()) {%> 
- 											<span Style="font-size: 5mm; margin-left:45rem;" id="discount" 
+ 											<span Style="font-size: 5mm; margin-left:44rem;" id="discount" 
 											class="h6 mb-0 lineitemtotal1 text-danger" value="<%=offer.getDiscount() %>"> 
 											<%=offer.getDiscount() %>% Off 
 											</span>
 										<%break;}%> 
  								<%}%> 
+ 								<%if(product.getOfferid() != 0){ %>
+									<span hidden id="individuldiscount" style="margin-left:40rem;" class="price mb-2 individuldiscount h5"><%=(Double.parseDouble(product.getProduct_price()) * discount)/100 %></span><br>
+ 									<span hidden id="discount1" class="price mb-2 discount1 h5"><%=(Double.parseDouble(product.getProduct_price()) * discount)/100 %></span>
+ 								<%}%>
+ 								<input id="discontvalue" class="discontvalue" type="hidden" value="<%=((Double.parseDouble(product.getProduct_price()) * discount)/100)%>">
+ 									
 									<ul class="pl-3">
 										<li class="small"><%=product.getProduct_desc() %></li>
 									</ul>
@@ -184,30 +185,50 @@ $quantity-btn-color: #95d7fc;
 // 					alert("fn ready...");
 					updatetotal();
 					$( ".plus" ).click(function() {
+						 
 // 						  alert( "Handler for .click() called."+$(this).attr('data-id'));
 // 						  alert("que:-"+$(this).parent().find('#myNumber').val());
 						  var qunt =  parseInt($(this).parent().find('#myNumber').val());
 						  qunt = qunt + 1;
+						  if(qunt===11)
+						  {
+							  qunt = qunt - 1;
+						  }
 						  $(this).parent().find('#myNumber').val(qunt);
+						  if (document.getElementById("myNumber").value >= parseInt('10')) {
+						        document.getElementById("myNumber").value = '10';
+						    }
 						  var amount = parseInt($(this).attr('data-id'));
 						  var total = qunt * amount;
-						  var disc = $(this).parent().parent().find('#discount').text();
-						  discount(amount,disc);
+						  var discamt = $(this).parent().parent().find('#discount1').text();
+						  var disctotal = discamt * qunt;
+						  var disctotal1 = (disctotal).toFixed(2);
+// 						  var disc = $(this).parent().parent().find('#discount').text();
 // 						  alert("total p:-"+total);
 						  $(this).parent().parent().find('#mainprice').text(total);
+						  $(this).parent().parent().find('#individuldiscount').text(disctotal1);
 						  updatetotal();
 					});
 					
 					$( ".minus" ).click(function() {
+						
 // 						  alert( "Handler for .click() called."+$(this).attr('data-id'));
 // 						  alert("que:-"+$(this).parent().find('#myNumber').val());
 						  var qunt =  parseInt($(this).parent().find('#myNumber').val());
 						  qunt = qunt - 1;
+						  if(qunt===0)
+						  {
+							qunt = qunt + 1;  
+						  }
 						  $(this).parent().find('#myNumber').val(qunt);
 						  var amount = parseInt($(this).attr('data-id'));
 						  var total = qunt * amount;
+						  var discamt = $(this).parent().parent().find('#discount1').text();
+						  var disctotal = discamt * qunt;
+						  var disctotal1 = (disctotal).toFixed(2);
 // 						  alert("total p:-"+total);
 						  $(this).parent().parent().find('#mainprice').text(total);
+						  $(this).parent().parent().find('#individuldiscount').text(disctotal1);
 						  updatetotal();
 					});
 					
@@ -223,8 +244,8 @@ $quantity-btn-color: #95d7fc;
 						total = total + parseInt($(this).text());
 					   
 					  });
-					$( ".discontvalue" ).each(function() {
-						disc = disc + parseInt($(this).val());
+					$( ".individuldiscount" ).each(function() {
+						disc = disc + parseInt($(this).text());
 					   
 					  });
 // 					alert("total:-"+total);
@@ -238,20 +259,7 @@ $quantity-btn-color: #95d7fc;
 					$("#grandtotal").text(grandtotal1);
 					
 				}
-				function up(max) {
-				    document.getElementById("myNumber").value = parseInt(document.getElementById("myNumber").value) + 1;
-				    if (document.getElementById("myNumber").value >= parseInt(max)) {
-				        document.getElementById("myNumber").value = max;
-				    }
-				}
-				
-				function down(min) {
-				    document.getElementById("myNumber").value = parseInt(document.getElementById("myNumber").value) - 1;
-				    if (document.getElementById("myNumber").value <= parseInt(min)) {
-				        document.getElementById("myNumber").value = min;
-				    }   
-				}
-				
+			
 				function discount(amount,disc) {
 					alert("disc fn total:-"+amount);
 // 					var dis = $('#discount').text();
