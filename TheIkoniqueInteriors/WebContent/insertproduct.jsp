@@ -441,7 +441,7 @@
 		Sub-Category ,Offer & Product</h1>
 	<hr class="my-5" style="background-color: #d4d4d4;">
 	<form action="InsertProductsDetails" class="w-50 ml-10" class="box" class="form" id="form"
-		method="post" enctype="multipart/form-data" >
+		method="post" enctype="multipart/form-data" onsubmit="return validate()">
 		<div class="form-group mb-3 ml-10 inputBox">
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="exampleRadios1"
@@ -671,7 +671,7 @@ $(document).ready(function(){
 	
 });
 
-function login(){
+function validate(){
 	alert("login called...");
 	const form = document.getElementById('form');
 	const productname = document.getElementById('pname').value;

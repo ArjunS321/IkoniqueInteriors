@@ -365,7 +365,6 @@ textarea {
 							</div>
 						</div>
 					</div>
-					
 				</form>
 		</div>
 			<!-- End Content -->
@@ -426,6 +425,16 @@ $("#book").click(function(){
 $('.datepicker').datepicker({ 
         startDate: new Date()
     });
+    
+var dates = ["04-14-2021", "04-15-2021", "04-22-2021", "04-25-2021"];
+
+$('#exampleInputDate1').datepicker({
+    beforeShowDay: function(date){
+        var string = jQuery.datepicker.formatDate('mm-dd-yy', date);
+        return [ dates.indexOf(string) == -1 ]
+    }
+});
+
 function onlyNumberKey(evt) {
     
     // Only ASCII charactar in that range allowed

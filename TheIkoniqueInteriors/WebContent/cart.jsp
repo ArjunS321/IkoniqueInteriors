@@ -79,7 +79,7 @@ $quantity-btn-color: #95d7fc;
 										<a class="h5 pname" href="#"><%=product.getProduct_name() %></a>
 										
 										<%if(product.getOfferid() != 0){ %>
-										<span id="mainprice" class="price lineitemtotal text-through h5 ml-auto"><%=product.getProduct_price() %></span><br>
+										<span id="mainprice" data-id="<%=product.getProduct_price() %>" class="price lineitemtotal lineitemtotal1 text-through h5 ml-auto"><%=product.getProduct_price() %></span><br>
 										<%}else{ %>
 										<span id="mainprice" class="price lineitemtotal h5 ml-auto"><%=product.getProduct_price() %></span><br>
 										<%} %>
@@ -88,7 +88,7 @@ $quantity-btn-color: #95d7fc;
  									<%for (Offer offer : offerList) {%>
 										<%if (product.getOfferid() == offer.getOfferid()) {%> 
  											<span Style="font-size: 5mm; margin-left:45rem;" id="discount" 
-											class="h6 mb-0 text-danger" value="<%=offer.getDiscount() %>"> 
+											class="h6 mb-0 lineitemtotal1 text-danger" value="<%=offer.getDiscount() %>"> 
 											<%=offer.getDiscount() %>% Off 
 											</span>
 										<%break;}%> 
@@ -182,6 +182,8 @@ $quantity-btn-color: #95d7fc;
 						  $(this).parent().find('#myNumber').val(qunt);
 						  var amount = parseInt($(this).attr('data-id'));
 						  var total = qunt * amount;
+						  var disc = $(this).parent().parent().find('#discount').text();
+						  discount(amount,disc);
 // 						  alert("total p:-"+total);
 						  $(this).parent().parent().find('#mainprice').text(total);
 						  updatetotal();
@@ -199,6 +201,7 @@ $quantity-btn-color: #95d7fc;
 						  $(this).parent().parent().find('#mainprice').text(total);
 						  updatetotal();
 					});
+					
 				});
 				
 				function updatetotal()
@@ -234,16 +237,16 @@ $quantity-btn-color: #95d7fc;
 				    }   
 				}
 				
-// 				function discount() {
-// 					var main = $('#mainpricediscount').text();
-// 					alert("price"+main);
+				function discount(amount,disc) {
+					alert("disc fn total:-"+amount);
 // 					var dis = $('#discount').text();
+					alert("discount perticular:-"+disc);
 // 					var dec = (dis / 100).toFixed(2);
 // 					var mult = main * dec;
 // 					var discount = (main - mult);
 // 					var discount1 = (discount).toFixed(2);
 // 					return discount1;
-// 				}
+				}
 
 // 				function concat(){
 // 					var dis1 = $('#discount').text();

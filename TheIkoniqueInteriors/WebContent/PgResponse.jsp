@@ -1,3 +1,4 @@
+<%@page import="com.ikonique.bean.User"%>
 <%@page import="utils.PaytmConstants"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -48,19 +49,24 @@ try{
 <!-- Pixel CSS -->
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 </head>
+<% HttpSession httpSession = request.getSession(false);  
+		  	User user = null;    
+		  	if(null!=httpSession){ 
+		  	   user = (User)httpSession.getAttribute("loginBean"); 
+		     } %>
 <body>
-<p>
+<p hidden>
 <%= outputHTML %>
-<%--  <% String[] sArr= outputHTML.split(","); %>  --%>
+  <% String[] sArr= outputHTML.split(","); %>  
 <%--  <% for( String s : sArr){ %>  --%>
 <%--  <p> <%= s %></p> --%>
 <%--  <%} %> --%>
-<%-- <p><%= sArr[9] %></p> --%>
-<%--  <% String[] sArr1= sArr[9].split("="); %> --%>
-<%--  <%= sArr1[1] %> --%>
+ <p><%= sArr[9] %></p> 
+  <% String[] sArr1= sArr[9].split("="); %> 
+  <%= sArr1[1] %> 
 
 </p>
-<%-- <%if(sArr1[1].equals("TXN_SUCCESS")){ %>
+ <%if(sArr1[1].equals("TXN_SUCCESS")){ %>
 <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content bg-primary">
                             <div class="modal-header">
@@ -103,7 +109,7 @@ try{
                         </div>
                     </div>
 
-<%} %> --%>
+<%} %> 
 </body>
 <script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
 <script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
