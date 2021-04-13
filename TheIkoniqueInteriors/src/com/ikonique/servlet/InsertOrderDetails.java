@@ -46,12 +46,13 @@ public class InsertOrderDetails extends HttpServlet {
 	  	java.sql.Date sqldate=new java.sql.Date(date.getTime());
 	  	double amount=Double.parseDouble(request.getParameter("total"));
 	  	
-	  	String select[] = request.getParameterValues("sel"); 
+//	  	String select[] = request.getParameterValues("sel"); 
+//
+//	  	if (select != null && select.length != 0) {
+//
+//	  	for (int i = 0; i < select.length; i++) {
+//	  	out.println(select[i]);
+//	}
 
-	  	if (select != null && select.length != 0) {
-
-	  	for (int i = 0; i < select.length; i++) {
-	  	out.println(select[i]);
 	}
-
 }

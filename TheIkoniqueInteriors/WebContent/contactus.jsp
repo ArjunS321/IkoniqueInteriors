@@ -1,3 +1,4 @@
+<%@page import="com.ikonique.bean.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -16,7 +17,12 @@
 
 <!-- Pixel CSS -->
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
-	
+ <%HttpSession httpSession = request.getSession(false);  
+		  	User user = null;    
+		  	if(null!=httpSession){ 
+		  	   user = (User)httpSession.getAttribute("loginBean"); 
+		     } 	
+		  	%>
 </head>
 <body>
     <main>
@@ -87,46 +93,67 @@
                                             </div>
                                             <h2 class="h5 icon-box-title">Email</h2>
                                             <a href="#">ikoniqueinteriors@gmail.com</a>
-                                            <br><a href="#">ikoniqueinteriors@gmail.com</a>
                                         </div>
                                         <!-- End of Email Box -->
                                     </div>
                                 </div>
                             </div>
-                            <form class="col-12 col-md-8 mx-auto">
-                                <!-- Form -->
+                            <form action="SendEnquiry" id="form" method="post" onsubmit="return validate()" class="col-12 col-md-8 mx-auto">
+								<div
+									class="alert alert-success alert-dismissible shadow-soft fade"
+									role="alert" id="model">
+									<span class="alert-inner--icon"><span
+										class="far fa-thumbs-up"></span></span> <span
+										class="alert-inner--text"><strong>Well done!</strong>
+										You successfully read this important alert message.</span>
+									<button type="button" class="close" data-dismiss="alert"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<!-- Form -->
                                 <div class="form-group">
                                     <label for="nameInputIcon2">Your Name</label>
-                                    <div class="input-group mb-4">
+                                    <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><span class="far fa-user-circle"></span></span>
                                         </div>
-                                        <input class="form-control" id="nameInputIcon2" placeholder="e.g. Bonnie Green" type="text" aria-label="contact name input">
+                                        <input name="customername" class="form-control" id="customername" onkeyup="validate1();" placeholder="e.g. Bonnie Green" type="text" aria-label="contact name input">
+                                        
                                     </div>
+                                    <span class="small validate" id="p"></span>
                                 </div>
                                 <!-- Form -->
                                 <div class="form-group">
                                     <label for="emailInputIcon2">Your Email</label>
-                                    <div class="input-group mb-4">
+                                    <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><span class="far fa-envelope"></span></span>
                                         </div>
-                                        <input class="form-control" id="emailInputIcon2" placeholder="example@company.com" type="email" aria-label="contact email input">
+                                        <input name="emailid" class="form-control" id="emailid" onkeyup="validate2();" placeholder="example@company.com" type="email" aria-label="contact email input">
+                                         
                                     </div>
+                                    <span class="small validate" id="p1"></span>
                                 </div>
                                 <!-- Form -->
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea2">Your Message...</label>
-                                    <textarea class="form-control" placeholder="Enter your message..." id="exampleFormControlTextarea2" rows="4"></textarea>
+                                    <textarea name="message" class="form-control" onkeyup="validate3();" placeholder="Enter your message..." id="message" rows="4"></textarea>
+                                     <span class="small validate" id="p2"></span>
                                 </div>
                                 <!-- End of Form -->
-                            </form>
-                            <div class="card-footer px-0 mx-auto">
-                                <button type="submit" class="btn btn-primary">Send message</button>
+                           
+                            <div class="card-footer px-0 ml-10">
+                                <button type="submit" id="submit" class="btn btn-primary">Send message</button>
                             </div>
+                             </form>
                             <br>
-                            <div class="card-footer px-0 mx-auto">
+                            <div class="card-footer px-0" style="margin-left:29rem;">
+                            <%if(user.getRole_id()==1) {%>
                                 <button onclick="window.location.href='customer.jsp'" class="btn btn-primary">Home</button>
+                            <%}else if(user.getRole_id()==2){ %>
+                            	<button onclick="window.location.href='interiordesigner.jsp'" class="btn btn-primary">Home</button>
+                            <%} %>
                             </div>
                         </div>
                         <!-- End of Contact Card -->
@@ -136,7 +163,82 @@
         </section>
         <!-- End of section -->
     </main>
-    <!-- Core -->
+</body>
+<script>
+$(document).ready(function(){
+// 	$("#model").hide();
+	$('#model').modal('hide');
+});
+function validate()
+{
+	const form = document.getElementById('form'); 	
+	var name = document.getElementById('customername').value;
+	var email = document.getElementById('emailid').value;
+	var message = document.getElementById('message').value;
+	
+	if(name == null || name == "" && email == null || email == "" && message =="" || message == null)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+function validate1()
+{
+	const form = document.getElementById('form'); 	
+	var name = document.getElementById('customername').value;
+	if(name == null || name == "")
+	{
+		$('#p').html('Name Field Is Empty').css('color', 'red');
+	}
+	else
+	{
+		$('#p').html('Name Is Valid').css('color', 'Green');
+	}
+}
+
+function validate2()
+{
+	const form = document.getElementById('form'); 	
+	var email = document.getElementById('emailid').value;
+	const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+	if(email == null || email == "")
+	{
+		$('#p1').html('Email Field Is Empty').css('color', 'red');
+	}
+	else
+	{
+		if(email.match(pattern))
+		{
+			$('#p1').html('Email Is Valid').css('color', 'Green');
+		}
+		else
+		{
+			$('#p1').html('Email Is Not Valid').css('color', 'red');
+		}
+		
+	}
+}
+
+function validate3()
+{
+	const form = document.getElementById('form'); 	
+	var message = document.getElementById('message').value;
+	if(message == null || message == "")
+	{
+		$('#p2').html('Message Field Is Empty').css('color', 'red');
+	}
+	else
+	{
+		$('#p2').html('Message Is Valid').css('color', 'Green');
+	}
+}
+
+</script>
+<!-- Core -->
 				<script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
 				<script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
 				<script src="neuro/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -161,5 +263,5 @@
 				<!-- Neumorphism JS -->
 				<script src="neuro/assets/js/neumorphism.js"></script>
 				<%@include file="commonjs.jsp"%>
-</body>
+				
 </html>

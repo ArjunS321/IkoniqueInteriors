@@ -543,7 +543,7 @@
     <description></description>
     <display-name>SendEnquiry</display-name>
     <servlet-name>SendEnquiry</servlet-name>
-    <servlet-class>com.payment.servlet.SendEnquiry</servlet-class>
+    <servlet-class>com.ikonique.servlet.SendEnquiry</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SendEnquiry</servlet-name>
