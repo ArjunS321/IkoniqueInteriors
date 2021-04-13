@@ -117,7 +117,8 @@ public class InsertProductsDetails extends HttpServlet {
 		else
 		{
 				
-			
+				String togglevalue = request.getParameter("togglevalue");
+				System.out.println("togal value:-"+togglevalue);
 				String productname=request.getParameter("pname");
 				String productprice=request.getParameter("pprice");
 				String productqty=request.getParameter("pquentity");
@@ -143,7 +144,8 @@ public class InsertProductsDetails extends HttpServlet {
 				{
 					System.out.println("null image");
 				}
-				System.out.println(productname+""+productprice+""+productqty+""+productweight+""+ownerid+""+offerid+""+produtdesc+""+categoryid+""+subcategoryid+""+part.getSubmittedFileName());
+				
+// 				System.out.println(productname+""+productprice+""+productqty+""+productweight+""+ownerid+""+offerid+""+produtdesc+""+categoryid+""+subcategoryid+""+part.getSubmittedFileName());
 				Product product=new Product();
 				product.setProduct_name(productname);
 				product.setProduct_price(productprice);
@@ -160,8 +162,26 @@ public class InsertProductsDetails extends HttpServlet {
 				
 				if(message!=null)
 				{
-					RequestDispatcher requestdispatcher = request.getRequestDispatcher("productTable.jsp");
-					requestdispatcher.forward(request, response);
+					if(togglevalue.equals("true"))
+					{
+						System.out.println("toggle condition called...");
+						StringBuilder builder = new StringBuilder();
+						builder.append("Product Name Is :- "+productname);
+						builder.append("\n");
+						builder.append("Product Price Is :-"+productprice);
+						builder.append("\n");
+						builder.append("About Product :-"+produtdesc);
+						Main main=new Main();
+						main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {"sutharmeet17@gmail.com"}, "Notification For New Arrival Product",builder.toString());
+						RequestDispatcher requestdispatcher = request.getRequestDispatcher("productTable.jsp");
+						requestdispatcher.forward(request, response);
+					}
+					else
+					{
+						RequestDispatcher requestdispatcher = request.getRequestDispatcher("productTable.jsp");
+						requestdispatcher.forward(request, response);
+					}
+					
 				}
 				else
 				{

@@ -440,7 +440,7 @@
 	<h1 align="center" style="margin-top: 50px;">Insert Category,
 		Sub-Category ,Offer & Product</h1>
 	<hr class="my-5" style="background-color: #d4d4d4;">
-	<form method="post" action="InsertProductsDetails" onsubmit="return validate()"
+	<form method="post" action="InsertProductsDetails"
 	class="w-50 ml-10" class="box" class="form" id="form" enctype="multipart/form-data">
 		<div class="form-group mb-3 ml-10 inputBox">
 			<div class="form-check">
@@ -580,6 +580,12 @@
 		
 		</div>
 		</div>
+		<div style="margin-left:25rem;" class="sendmail custom-control custom-switch">
+			<input type="checkbox" class="custom-control-input"
+				id="customSwitch1"> <label class="custom-control-label"
+				for="customSwitch1">Send Mail Notification</label>
+		</div>
+		<input type="hidden" value="" name="togglevalue" id="togglevalue">
 		<div align="center" class="submit mt-4">
 			<button type="submit" id="submit" name="submit" class="btn form-group btn-primary ml-10">Submit</button>
 		</div>
@@ -670,7 +676,18 @@ function onlyNumberKey(evt) {
 		
 // 	});
 $(document).ready(function(){
-	
+	var switchStatus = false;
+	$("#customSwitch1").on('change', function() {
+	    if ($(this).is(':checked')) 
+	    {
+	        switchStatus = $(this).is(':checked');
+	    }
+	    else 
+	    {
+	       switchStatus = $(this).is(':checked');
+	    }
+	    $("#togglevalue").val(switchStatus);
+	});
 });
 
 function validate()
@@ -1066,6 +1083,7 @@ function validate()
 			$(".offer").hide();
 			$(".offername").hide();
 			$(".offerdiscount").hide();
+			$(".sendmail").hide();
 			document.getElementById("pname").value = "";
 			document.getElementById("offername").value = "";
 			document.getElementById("offerdiscount").value = "";
@@ -1122,6 +1140,7 @@ function validate()
 			$(".offer").hide();
 			$(".offername").hide();
 			$(".offerdiscount").hide();
+			$(".sendmail").hide();
 			document.getElementById("pname").value = "";
 			document.getElementById("category").value = "";
 			document.getElementById("subcategory").value = "";
@@ -1180,6 +1199,7 @@ function validate()
 			$(".image").hide();
 			$(".ownername").hide();
 			$(".offer").hide();
+			$(".sendmail").hide();
 			document.getElementById("pname").value = "";
 			document.getElementById("category").value = "";
 			document.getElementById("subcategory").value = "";
@@ -1238,6 +1258,7 @@ function validate()
 			$(".image").show();
 			$(".ownername").show();
 			$(".offer").show();
+			$(".sendmail").show();
 			document.getElementById("pname").value = "";
 			document.getElementById("category").value = "";
 			document.getElementById("subcategory").value = "";
