@@ -1,3 +1,4 @@
+<%@page import="jdk.javadoc.internal.doclets.toolkit.util.JavaScriptScanner"%>
 <%@page import="com.ikonique.bean.Area"%>
 <%@page import="com.ikonique.bean.Wishlist"%>
 <%@page import="com.ikonique.bean.Offer"%>
@@ -246,6 +247,8 @@ textarea {
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 
 </head>
+
+
 <% HttpSession httpSession1 = request.getSession(false);
 	User user = null;   
 	if(null!=httpSession1){
@@ -265,9 +268,10 @@ textarea {
 			<!-- Content -->
 		<div class="card-body shadow-soft border border-light rounded p-4">
             <br><br>
-            <form align="center" id="form" name="form">
+            <form align="center" id="form" method="post" name="form" action="InsertOrderDetails">
             <h1>Customer Details</h1>
             <br>
+           
 					<div class="form-group mb-3 inputBox">
 						<label for="fname">First Name</label><br><input type="text"
 							name="fname" style="background-color: #e6e7ee;" class="form-control1 col-lg-5" id="fname" autocomplete="off"
@@ -316,9 +320,10 @@ textarea {
 								aria-describedby="emailHelp" onkeyup="validate();" value="<%=user.getEmail()%>"> <span
 								class="indicator1"></span>
 						</div>
+						<input type="hidden" name="total" value="<%=request.getParameter("gt")%>">
 						<br>
 					<div class="mr-10">
-						<a href="paymentforn.jsp" type="submit" name="submit"
+						<a type="submit" name="submit"
 						class="col-lg-2 btn form-group ml-10">Buy</a>
 					</div>
 					

@@ -529,4 +529,14 @@
     <servlet-name>SelectRoomDesign</servlet-name>
     <url-pattern>/SelectRoomDesign</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InsertOrderDetails</display-name>
+    <servlet-name>InsertOrderDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.InsertOrderDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertOrderDetails</servlet-name>
+    <url-pattern>/InsertOrderDetails</url-pattern>
+  </servlet-mapping>
 </web-app>
