@@ -183,19 +183,18 @@
 						<label for="email">Email address</label> 
 						<input type="text" name="email" class="form-control" id="email" autocomplete="off" aria-describedby="emailHelp" onkeyup="validate();">
 						<span class="indicator1"></span>
+						<span class="small" id="p"></span>
 					</div>
-					<div class="form-group mb-3 ml-10">
+					<div class="form-group mb-1 ml-10">
 						<label for="password">Password</label> 
 						<input type="password" name="password" class="form-control" id="pass" onkeyup="validate1();">
 <!-- 						<span class="indicator2"></span> -->
 						<i class="eye far fa-eye" id="togglePassword"></i>
+						<span class="small" id="p1"></span><br><br>
 					</div>
-					
-<!-- 					<div class="form-check square-check mb-3 ml-10"> -->
-<!-- 						<input class="form-check-input" type="checkbox" value="" -->
-<!-- 							id="remember"> <label class="form-check-label" -->
-<!-- 							for="remember"> Remember me </label> -->
-<!-- 					</div> -->
+					<div class="form-group ml-10">
+						<span class="small" id="p2"></span>
+					</div>
 					
 					<div align="right" class="forget ml-10">
 				<h6> <a class="color small" id="forget" href="forget-pass.jsp">Forgotten Password?</a> </h6><br>
@@ -214,54 +213,6 @@
                                     <a class="color" href="register.jsp"><b>Sign Up Here</b></a>
                                 </h6>
                 </div>
-                <div id="hi">Hiiii</div>
-                <div id="bye">Bye</div>
-               <div class="modal fade" id="modal-default" tabindex="-1"
-								role="dialog" aria-labelledby="modal-default" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-								<div class="modal-dialog modal-dialog-centered" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h2 class="h6 modal-title mb-0" id="modal-title-default">The Ikonique Interiors</h2>
-											<button type="button" class="close" data-dismiss="modal"
-												aria-label="Close">
-<!-- 												<span aria-hidden="true">Ã</span> -->
-											</button>
-										</div>
-										<div class="modal-body">
-											<p><h4><b>Error : Your Registration Is Failed!!</b></h4></p>
-											<p><h5>Check Your Fill Data...</h5></p>
-											<p><h5>Something Went Wrong Try Again...</h5></p>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">OK</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							 <div class="modal fade" id="modal" tabindex="-1"
-								role="dialog" aria-labelledby="modal-default" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-								<div class="modal-dialog modal-dialog-centered" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h2 class="h6 modal-title mb-0" id="modal-title-default">The Ikonique Interiors</h2>
-											<button type="button" class="close" data-dismiss="modal"
-												aria-label="Close">
-<!-- 												<span aria-hidden="true">Ã</span> -->
-											</button>
-										</div>
-										<div class="modal-body">
-											<p><h4><b>Your Registration Is successful!!</b></h4></p>
-											<p><h5>Now You Can Login Into The WebSite..</h5></p>
-											<p><h5>Enjoy Your Shopping....</h5></p>
-										</div>
-										<div class="modal-footer">
-											<a href="login.jsp" type="button"
-												class="btn btn-primary text-danger ml-auto"
-												>I Got It</a>
-										</div>
-									</div>
-								</div>
-							</div>
 					</form>
 				</section>
 				
@@ -356,14 +307,17 @@
 				if(email.match(pattern)){
 					form.classList.add('valid')
 					form.classList.remove('invalid')
+					$('#p').html('Email Is Valid').css('color', 'Green');
 				}else{
 					form.classList.add('invalid')
 					form.classList.remove('valid')
+					$('#p').html('Email Is Not Valid').css('color', 'red');
 				}
 				if(email == "")
 					{
 					form.classList.add('invalid')
 					form.classList.remove('valid')
+					$('#p').html('Email Field Is Empty').css('color', 'red');
 					}
 			}
 			
@@ -375,14 +329,17 @@
 				if(pass.match(pattern1)){
 					form.classList.add('valid1')
 					form.classList.remove('invalid1')
+					$('#p1').html('Password Is Valid').css('color', 'Green');
 				}else{
 					form.classList.add('invalid1')
 					form.classList.remove('valid1')
+					$('#p1').html('Password Is Not Valid').css('color', 'red');
 				}
 				if(pass == "")
 					{
 					form.classList.add('invalid1')
 					form.classList.remove('valid1')
+					$('#p1').html('Password Field Is Empty').css('color', 'red');
 					}
 			}
 			
@@ -397,10 +354,7 @@
 				if(email == "" || email == null && pass == "" || pass == null)
 				{
 					alert("if....");
-// 					$('#modal').modal('hide');
-//              		$('#modal-default').modal('show');
-					$("#bye").show();
-					$("#hi").hide();
+					$('#p2').html('Please Check Enter Email-Id & Password').css('color', 'red');
              		return false;
 				}
 				else
@@ -408,20 +362,14 @@
 					if(email.match(pattern) && pass.match(pattern1))
 					{
 						alert("else if....");
-// 						$('#modal').modal('show');
-//   	             		$('#modal-default').modal('hide');
-						$("#hi").show();
-						$("#bye").hide();
+						$('#p2').html('Ready To Go...').css('color', 'green');
 						return true;
 					}
 					else
-						{
-// 						$('#modal').modal('hide');
-// 	             		$('#modal-default').modal('show');
-						$("#bye").show();
-						$("#hi").hide();
-							return false;
-						}
+					{
+						$('#p2').html('Please check Enter Email-Id & Password').css('color', 'red');
+						return false;
+					}
 				}
 			}
 

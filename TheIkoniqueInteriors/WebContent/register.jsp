@@ -70,20 +70,20 @@
 							<label for="fname">First Name</label> <input type="text"
 								name="fname" class="form-control" id="fname" autocomplete="off"
 								aria-describedby="emailHelp" onkeyup="validate2();"> <span
-								class="indicator3"></span>
+								class="indicator3"></span><span class="small validate" id="p"></span>
 						</div>
 						<div class="form-group mb-3 ml-10 inputBox">
 							<label for="lname">Last Name</label> <input type="text"
 								name="lname" class="form-control" id="lname" autocomplete="off"
 								aria-describedby="emailHelp" onkeyup="validate3();"> <span
-								class="indicator4"></span>
+								class="indicator4"></span><span class="small validate" id="p1"></span>
 						</div>
 						<div class="form-group mb-3 ml-10 inputBox">
 							<label for="add">Address</label>
 							<textarea rows="5" name="address" class="form-control" id="add"
 								autocomplete="off" aria-describedby="emailHelp"
 								onkeyup="validate4();"></textarea>
-							<span class="indicator5"></span>
+							<span class="indicator5"></span><span class="small validate" id="p2"></span>
 						</div>
 
 
@@ -91,7 +91,7 @@
 							<label for="areaname">Area</label> <select name="area"
 								class="form-control" id="area" aria-describedby="emailHelp"
 								onchange="validate6()">
-								<option value="0" selected>  </option>
+								<option value="0" selected>Select Area</option>
 								<%
 									for (Area place : area) {
 								%>
@@ -101,7 +101,7 @@
 								<%
 									}
 								%>
-							</select> <span class="indicator8"></span>
+							</select> <span class="indicator8"></span><span class="small validate" id="p3"></span>
 
 						</div>
 
@@ -116,14 +116,14 @@
 								type="text" name="vfees1" class="form-control" id="vfees"
 								autocomplete="off" aria-describedby="emailHelp"
 								onkeyup="validate8();" onkeypress="return onlyNumberKey(event)"> <span id="vfees2"
-								class="indicator10"></span>
+								class="indicator10"></span><span class="small validate" id="p4"></span>
 						</div>
 						<div class="form-group mb-3 ml-10 inputBox designation">
 							<label for="designation">Designation</label> <input
 								type="text" name="designation" class="form-control" id="designation"
 								autocomplete="off" aria-describedby="emailHelp"
 								onkeyup="validate9();"> <span id="designation2"
-								class="indicator11"></span>
+								class="indicator11"></span><span class="small validate" id="p5"></span>
 						</div>
 						
 						<div class="form-group mb-3 ml-10 inputBox aboutme" >
@@ -131,7 +131,7 @@
 							<textarea rows="5" name="aboutme" class="form-control" id="aboutme"
 								autocomplete="off" aria-describedby="emailHelp"
 								onkeyup="validate10();"></textarea>
-							<span class="indicator12"></span>
+							<span class="indicator12"></span><span class="small validate" id="p6"></span>
 						</div>
 						
 
@@ -139,13 +139,14 @@
 							<label for="mobilenumber">Mobile Number</label> <input
 								type="text" name="mno" class="form-control" id="mno"
 								autocomplete="off" aria-describedby="emailHelp"
-								onkeyup="validate5();" maxLength="10" onkeypress="return onlyNumberKey(event)"> <span class="indicator6"></span>
+								onkeyup="validate5();" maxLength="10" onkeypress="return onlyNumberKey(event)"> 
+								<span class="indicator6"></span><span class="small validate" id="p7"></span>
 						</div>
 						<div class="form-group mb-3 ml-10 inputBox">
 							Gender<br>
 							<div class="form-check">
 								<input class="form-check-input" type="radio"
-									name="exampleRadios" id="exampleRadios1" value="Male">
+									name="exampleRadios" id="exampleRadios1" value="Male" checked>
 								<label class="form-check-label" for="exampleRadios1">
 									Male </label> <input class="form-check-input" type="radio"
 									name="exampleRadios" id="exampleRadios2" value="Female">
@@ -157,12 +158,13 @@
 							<label for="email">Email address</label> <input type="text"
 								name="email" class="form-control" id="email" autocomplete="off"
 								aria-describedby="emailHelp" onkeyup="validate();"> <span
-								class="indicator1"></span>
+								class="indicator1"></span><span class="small validate" id="p8"></span>
 						</div>
 						<div class="form-group mb-3 ml-10">
 							<label for="password">Password</label> <input type="password"
 								name="password" class="form-control" id="pass"
 								onkeyup="validate1();" maxLength="8"> <span class="indicator2"></span>
+							<span class="small validate" id="p9"></span>
 							<h6 class="small">
 								* Password Must Contain 8-20 Character<br>* Password must
 								Contain Atleast one: <br>Special Character(@#$&!)<br>Number[0-9]<br>An
@@ -303,13 +305,16 @@ $(document).ready(function(){
 			const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
 
 			if (email.match(pattern)) {
+				$('#p8').html('Email Is Valid').css('color', 'Green');
 				form.classList.add('valid')
 				form.classList.remove('invalid')
 			} else {
+				$('#p8').html('Email Is Not Valid').css('color', 'red');
 				form.classList.add('invalid')
 				form.classList.remove('valid')
 			}
 			if (email == "") {
+				$('#p8').html('Email Field Is Empty').css('color', 'red');
 				form.classList.add('invalid')
 				form.classList.remove('valid')
 			}
@@ -323,13 +328,16 @@ $(document).ready(function(){
 			if (pass.match(pattern1) && pass.length >= 8 && pass.length <= 20) {
 				form.classList.add('valid1')
 				form.classList.remove('invalid1')
+				$('#p9').html('Password Is Valid').css('color', 'Green');
 			} else {
 				form.classList.add('invalid1')
 				form.classList.remove('valid1')
+				$('#p9').html('Password Is Not Valid').css('color', 'red');
 			}
 			if (pass == "") {
 				form.classList.add('invalid1')
 				form.classList.remove('valid1')
+				$('#p9').html('Password Field Is Empty').css('color', 'red');
 			}
 		}
 
@@ -404,13 +412,22 @@ $(document).ready(function(){
 			const pattern = " ";
 
 			if (fname != pattern) {
+				$('#p').html('First Name Is Valid').css('color', 'Green');
 				form.classList.add('valid2')
 				form.classList.remove('invalid2')
 			} else {
+				$('#p').html('First Name Is Not Valid').css('color', 'red');
 				form.classList.add('invalid2')
 				form.classList.remove('valid2')
 			}
 			if (fname == "") {
+				$('#p').html('First Name Field Is Empty').css('color', 'red');
+				form.classList.add('invalid2')
+				form.classList.remove('valid2')
+			}
+			if($.isNumeric(fname))
+			{
+				$('#p').html('First Name Is Not Valid').css('color', 'red');
 				form.classList.add('invalid2')
 				form.classList.remove('valid2')
 			}
@@ -421,13 +438,22 @@ $(document).ready(function(){
 			const pattern = "  ";
 
 			if (lname != pattern) {
+				$('#p1').html('Last Name Is Valid').css('color', 'Green');
 				form.classList.add('valid3')
 				form.classList.remove('invalid3')
 			} else {
+				$('#p1').html('Last Name Is Not Valid').css('color', 'red');
 				form.classList.add('invalid3')
 				form.classList.remove('valid3')
 			}
 			if (lname == "") {
+				$('#p1').html('Last Name Field Is Empty').css('color', 'red');
+				form.classList.add('invalid3')
+				form.classList.remove('valid3')
+			}
+			if($.isNumeric(lname))
+			{
+				$('#p1').html('Last Name Is Not Valid').css('color', 'red');
 				form.classList.add('invalid3')
 				form.classList.remove('valid3')
 			}
@@ -438,13 +464,16 @@ $(document).ready(function(){
 			const pattern = " ";
 
 			if (add != pattern) {
+				$('#p2').html('Address Is Valid').css('color', 'Green');
 				form.classList.add('valid4')
 				form.classList.remove('invalid4')
 			} else {
+				$('#p2').html('Address Is Not Valid').css('color', 'red');
 				form.classList.add('invalid4')
 				form.classList.remove('valid4')
 			}
 			if (add == "") {
+				$('#p2').html('Address Field Is Empty').css('color', 'red');
 				form.classList.add('invalid4')
 				form.classList.remove('valid4')
 			}
@@ -455,13 +484,16 @@ $(document).ready(function(){
 			const pattern = /(7|8|9)\d{9}/
 
 			if (mno.match(pattern) && mno.length == 10) {
+				$('#p7').html('Mobile Number Is Valid').css('color', 'Green');
 				form.classList.add('valid5')
 				form.classList.remove('invalid5')
 			} else {
+				$('#p7').html('Mobile Number Is Not Valid').css('color', 'red');
 				form.classList.add('invalid5')
 				form.classList.remove('valid5')
 			}
 			if (mno == "") {
+				$('#p7').html('Mobile Number Field Is Empty').css('color', 'red');
 				form.classList.add('invalid5')
 				form.classList.remove('valid5')
 			}
@@ -469,50 +501,23 @@ $(document).ready(function(){
 
 		function validate6() {
 			
-			/* const form = document.getElementById('form');
-			const area = document.getElementById('area').value;
-			const pattern = " ";
-
-			if (area != pattern) {
-				form.classList.add('valid6')
-				form.classList.remove('invalid6')
-			} else {
-				form.classList.add('invalid6')
-				form.classList.remove('valid6')
-			}
-			if (area == "") {
-				form.classList.remove('invalid6')
-				form.classList.remove('valid6')
-			}
-			 */
 			 
 			const form = document.getElementById('form');
-			/*const area = document.getElementById('area').value; 
-			const value=area.options[area.selectedIndex].value; */
-			/* console.log(area); */
-// 			var strUser = area.options[area.selectedIndex].value;
-
-// 			 var strUser1 = e.options[e.selectedIndex].text; 
-
 			var e=document.getElementById('area');
-			
 			var value=e.options[e.selectedIndex].value;
 			
-			
-			if (value!='0') {
-				
+			if (value!='0') 
+			{
+				$('#p3').html('Area Field Is Valid').css('color', 'Green');
 				form.classList.add('valid6')
 				form.classList.remove('invalid6')
-			} else {
+			} 
+			else 
+			{
+				$('#p3').html('Area Field Is Empty').css('color', 'red');
 				form.classList.add('invalid6')
 				form.classList.remove('valid6')
 			}
-// 			if (area == "") {
-// 				form.classList.remove('invalid6')
-// 				form.classList.remove('valid6')
-// 			}
-			
-			
 		}
 
 		 function validate9() {
@@ -523,13 +528,22 @@ $(document).ready(function(){
 			
 
 			if (designation!="") {
+				$('#p5').html('Designation Is Valid').css('color', 'Green');
 				form.classList.add('valid11')
 				form.classList.remove('invalid11')
 			} else {
+				$('#p5').html('Designation Is Not Valid').css('color', 'red');
 				form.classList.add('invalid11')
 				form.classList.remove('valid11')
 			}
 			if (designation == "") {
+				$('#p5').html('Designation Field Is Empty').css('color', 'red');
+				form.classList.add('invalid11')
+				form.classList.remove('valid11')
+			}
+			if($.isNumeric(designation))
+			{
+				$('#p5').html('Designation Is Not Valid').css('color', 'red');
 				form.classList.add('invalid11')
 				form.classList.remove('valid11')
 			}
@@ -543,13 +557,16 @@ $(document).ready(function(){
 				
 
 				if (aboutme!="") {
+					$('#p6').html('About Me Is Valid').css('color', 'Green');
 					form.classList.add('valid12')
 					form.classList.remove('invalid12')
 				} else {
+					$('#p6').html('About Me Is Not Valid').css('color', 'red');
 					form.classList.add('invalid12')
 					form.classList.remove('valid12')
 				}
 				if (aboutme == "") {
+					$('#p6').html('About Me Field Is Empty').css('color', 'red');
 					form.classList.add('invalid12')
 					form.classList.remove('valid12')
 				}
@@ -561,13 +578,16 @@ $(document).ready(function(){
 			const pattern = " ";
 
 			if (vfees != pattern) {
+				$('#p4').html('Visiting Fees Is Valid').css('color', 'Green');
 				form.classList.add('valid8')
 				form.classList.remove('invalid8')
 			} else {
+				$('#p4').html('Visiting Fees Is Not Valid').css('color', 'red');
 				form.classList.add('invalid8')
 				form.classList.remove('valid8')
 			}
 			if (vfees == "") {
+				$('#p4').html('Visiting Fees Field Is Empty').css('color', 'red');
 				form.classList.add('invalid8')
 				form.classList.remove('valid8')
 			}
@@ -579,35 +599,57 @@ $(document).ready(function(){
 				$(".vfees").show();
 				$(".designation").show();
 				$(".aboutme").show();
-			} else {
-				$(".vfees").hide();
-				$(".designation").hide();
-				$(".aboutme").hide();
-				/* $("#fname").value=""; 
-				$("#lname").value=""; 
-				$("#add").value=''; 
-				$("#pin").value=''; 
-				$("#exampleRadios1").value=''; 
-				$("#exampleRadios2").value=''; 
-				$("#mno").value=''; 
-				$("#email").value=''; 
-				$("#area").value=''; 
-				$("#pass").value=''; 
-				$("#vfees").value='0'; 
-				 */
+				
+				form.classList.remove('invalid1')
+				form.classList.remove('valid1')
+
+				form.classList.remove('invalid2')
+				form.classList.remove('valid2')
+
+				form.classList.remove('invalid3')
+				form.classList.remove('valid3')
+
+				form.classList.remove('invalid4')
+				form.classList.remove('valid4')
+
+				form.classList.remove('invalid5')
+				form.classList.remove('valid5')
+
+				form.classList.remove('invalid6')
+				form.classList.remove('valid6')
+
+				form.classList.remove('invalid7')
+				form.classList.remove('valid7')
+
+				form.classList.remove('invalid8')
+				form.classList.remove('valid8')
+
+				form.classList.remove('invalid11')
+				form.classList.remove('valid11')
+				
+				form.classList.remove('invalid12')
+				form.classList.remove('valid12')
+			
+				form.classList.remove('invalid')
+				form.classList.remove('valid')
+				
+				
 				document.getElementById("fname").value = "";
 				document.getElementById("lname").value = "";
 				document.getElementById("add").value = "";
 				document.getElementById("pin").value = "";
-				/*        document.getElementById("exampleRadios1").value="";
-				       document.getElementById("exampleRadios2").value=""; */
 				document.getElementById("mno").value = "";
 				document.getElementById("email").value = "";
 				document.getElementById("area").value = "";
 				document.getElementById("pass").value = "";
 				document.getElementById("vfees").value = "0";
 				document.getElementById("designation").value = "";
-
+			} else {
+				$(".vfees").hide();
+				$(".designation").hide();
+				$(".aboutme").hide();
+				
+				
 				form.classList.remove('invalid1')
 				form.classList.remove('valid1')
 
@@ -638,9 +680,19 @@ $(document).ready(function(){
 				form.classList.remove('invalid12')
 				form.classList.remove('valid12')
 				
-				
 				form.classList.remove('invalid')
 				form.classList.remove('valid')
+
+				document.getElementById("fname").value = "";
+				document.getElementById("lname").value = "";
+				document.getElementById("add").value = "";
+				document.getElementById("pin").value = "";
+				document.getElementById("mno").value = "";
+				document.getElementById("email").value = "";
+				document.getElementById("area").value = "";
+				document.getElementById("pass").value = "";
+				document.getElementById("vfees").value = "0";
+				document.getElementById("designation").value = "";
 
 			}
 

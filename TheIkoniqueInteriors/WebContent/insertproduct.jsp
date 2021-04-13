@@ -440,8 +440,8 @@
 	<h1 align="center" style="margin-top: 50px;">Insert Category,
 		Sub-Category ,Offer & Product</h1>
 	<hr class="my-5" style="background-color: #d4d4d4;">
-	<form action="InsertProductsDetails" class="w-50 ml-10" class="box" class="form" id="form"
-		method="post" enctype="multipart/form-data" onsubmit="return validate()">
+	<form method="post" action="InsertProductsDetails" onsubmit="return validate()"
+	class="w-50 ml-10" class="box" class="form" id="form" enctype="multipart/form-data">
 		<div class="form-group mb-3 ml-10 inputBox">
 			<div class="form-check">
 				<input class="form-check-input" type="radio" name="exampleRadios1"
@@ -464,7 +464,7 @@
 				<label for="pname">Product Name</label> <input type="text"
 					name="pname" class="form-control" id="pname" autocomplete="off"
 					aria-describedby="emailHelp" onkeyup="validate1();"> <span
-					class="indicator1"></span>
+					class="indicator1"></span><span class="small" id="p5"></span>
 			</div>
 		</div>
 		<div class="offername">
@@ -472,7 +472,7 @@
 				<label for="offername">Offer Name</label> <input type="text"
 					name="offername" class="form-control" id="offername" autocomplete="off"
 					aria-describedby="emailHelp" onkeyup="validate12();"> <span
-					class="indicator12"></span>
+					class="indicator12"></span><span class="small" id="p3"></span>
 			</div>
 		</div>
 		<div class="offerdiscount">
@@ -480,33 +480,34 @@
 				<label for="offerdiscount">Offer Discount</label> <input type="text"
 					name="offerdiscount" class="form-control" id="offerdiscount" autocomplete="off"
 					aria-describedby="emailHelp" onkeyup="validate13();" maxLength="5"onkeypress="return onlyNumberKey(event)"> <span
-					class="indicator13" ></span>
+					class="indicator13" ></span><span class="small" id="p4"></span>
 			</div>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox pprice">
 			<label for="pprice">Product Price</label> <input type="text"
 				name="pprice" class="form-control" id="pprice" autocomplete="off"
 				aria-describedby="emailHelp" onkeyup="validate2();" maxLength="5" onkeypress="return onlyNumberKey(event)"> <span
-				class="indicator2"></span>
+				class="indicator2"></span><span class="small" id="p6"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox pquentity">
 			<label for="pquentity">Product Quantity</label> <input type="text"
 				name="pquentity" class="form-control" id="pquentity"
 				autocomplete="off" aria-describedby="emailHelp"
-				onkeyup="validate3();"  maxLength="4" onkeypress="return onlyNumberKey(event)"> <span class="indicator3"></span>
+				onkeyup="validate3();"  maxLength="4" onkeypress="return onlyNumberKey(event)"> 
+				<span class="indicator3"></span><span class="small" id="p7"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox pweight">
 			<label for="pweight">Product Weight</label> <input type="text"
 				name="pweight" class="form-control" id="pweight" autocomplete="off"
 				aria-describedby="emailHelp" onkeyup="validate4();" maxLength="6"  onkeypress="return onlyNumberKey(event)"> <span
-				class="indicator4"></span>
+				class="indicator4"></span><span class="small" id="p8"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox pdesc">
 			<label for="pdescription">Product Description</label>
 			<textarea rows="5" name="pdescription" class="form-control"
 				id="pdescription" autocomplete="off" aria-describedby="emailHelp"
 				onkeyup="validate5();"></textarea>
-			<span class="indicator5"></span>
+			<span class="indicator5"></span><span class="small" id="p9"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox category">
 			<label for="category">Category</label> <select name="category"
@@ -519,7 +520,7 @@
 														<option value="<%=category.getCategory_id()%>"><%=category.getCategory_name()%></option>
 													<%} %>
 												<%}%> 
-			</select> <span class="indicator6"></span>
+			</select> <span class="indicator6"></span><span class="small" id="p2"></span>
 
 		</div>
 		 <div class="form-group mb-3 ml-10 inputBox ownername">
@@ -535,7 +536,7 @@
 												<% 
 				 									} 
 			 								%> 
-			</select> <span class="indicator10"></span>
+			</select> <span class="indicator10"></span><span class="small" id="p10"></span>
 
 		</div> 
 		<div class="form-group mb-3 ml-10 inputBox offer">
@@ -548,37 +549,38 @@
 				    	<option value="<%=offer.getOfferid()%>"><%=offer.getOffername()%></option>
 					<%} %>
 				<%}%> 
-			</select> <span class="indicator11"></span>
+			</select> <span class="indicator11"></span><span class="small" id="p11"></span>
 
 		</div> 
 		<div class="form-group mb-3 ml-10 inputBox subcategory">
 			<label for="subcategory">Sub-Category</label> <select
 				name="subcategory" class="form-control" id="subcategory"
 				aria-describedby="emailHelp" onchange="validate7()">
-				<option value="0" selected>select Sub-Category</option>
-			</select> <span class="indicator7"></span>
+				<option value="-1" selected>select Sub-Category</option>
+			</select> <span class="indicator7"></span><span class="small" id="p12"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox cname">
 			<label for="cname">Category Name</label> <input type="text"
 				name="cname" class="form-control" id="cname" autocomplete="off"
 				aria-describedby="emailHelp" onkeyup="validate8();"> <span
-				class="indicator8"></span>
+				class="indicator8"></span><span class="small" id="p"></span>
 		</div>
 		<div class="form-group mb-3 ml-10 inputBox scname">
 			<label for="scname">Sub-Category Name</label> <input type="text"
 				name="scname" class="form-control" id="scname" autocomplete="off"
 				aria-describedby="emailHelp" onkeyup="validate9();"> <span
-				class="indicator9"></span>
+				class="indicator9"></span><span class="small" id="p1"></span>
 		</div>
 		<div align="center">
 		<div class="custom-file  mb-3 ml-10 col-sm-8 image">
 		<input type="file" class="custom-file-input" id="customFile"
-		aria-label="File upload" name="photo" onchange="return validate14()"><span class="indicator14"></span> <label
+		aria-label="File upload" name="photo" onchange="return validate14()"><span class="indicator14"></span>
+		<span class="small" id="p13"></span> <label
 		class="custom-file-label" for="customFile">Choose Product Image</label>
 		
 		</div>
 		</div>
-		<div align="center" class="submit">
+		<div align="center" class="submit mt-4">
 			<button type="submit" id="submit" name="submit" class="btn form-group btn-primary ml-10">Submit</button>
 		</div>
 	</form>
@@ -671,68 +673,51 @@ $(document).ready(function(){
 	
 });
 
-function validate(){
-	alert("login called...");
-	const form = document.getElementById('form');
-	const productname = document.getElementById('pname').value;
-	const offername = document.getElementById('offername').value;
-	const offerdiscount = document.getElementById('offerdiscount').value;
-	const productprice = document.getElementById('pprice').value;
-	const pquentity = document.getElementById('pquentity').value;
-	const productweight = document.getElementById('pweight').value;
-	const productdesc = document.getElementById('pdescription').value;
-	const scname = document.getElementById('scname').value;
-	const cname = document.getElementById('cname').value;
-	var owner = document.getElementById('ownername');
-	var ownervalue = owner.options[owner.selectedIndex].value;
-	var category = document.getElementById('category');
-	var categoryvalue = category.options[category.selectedIndex].value;
-	var offer = document.getElementById('offer');
-	var offervalue = offer.options[offer.selectedIndex].value;
-	var subcategory = document.getElementById('subcategory');
-	var subcategoryvalue = subcategory.options[subcategory.selectedIndex].value;
-	//const radiovalue = $("input[name='exampleRadios1']:checked").val();
+function validate()
+{
+// 	alert("login called...");
 	var radiovalue = document.getElementById("exampleRadios21").value;
-	alert("radio value:-"+radiovalue);
-	 
-	if(radiovalue == "category")
+// 	alert("radio value:-"+radiovalue);
+	const form = document.getElementById('form');
+	var cname = document.getElementById('cname').value;
+	var scname = document.getElementById('scname').value;
+	var category = document.getElementById('category');
+ 	var categoryvalue = category.options[category.selectedIndex].value;
+// 	var productname = document.getElementById('pname').value;
+// 	var offername = document.getElementById('offername').value;
+// 	var offerdiscount = document.getElementById('offerdiscount').value;
+// 	var productprice = document.getElementById('pprice').value;
+// 	var pquentity = document.getElementById('pquentity').value;
+// 	var productweight = document.getElementById('pweight').value;
+// 	var productdesc = document.getElementById('pdescription').value; 	
+// 	var owner = document.getElementById('ownername');
+// 	var ownervalue = owner.options[owner.selectedIndex].value;
+// 	var offer = document.getElementById('offer');
+// 	var offervalue = offer.options[offer.selectedIndex].value;
+// 	var subcategory = document.getElementById('subcategory');
+// 	var subcategoryvalue = subcategory.options[subcategory.selectedIndex].value;
+	if(radiovalue=="category")
 	{
-		if(cname!="")
+		alert("if con...");
+		if(cname == "" || cname == null)
 		{
-			//window.location = "/admin.jsp";
-			return true;
+			return false;
 		}
 		else
 		{
-			//window.location = "/insertproduct.jsp";
-			return false;
+			return true;
 		}
 	}
 	else if(radiovalue=="subcategory")
 	{
-		if(scname!="" && categoryvalue!='0')
+		if(scname == "" || scname == null && categoryvalue == '0')
+		{
+			return false;
+		}	
+		else
 		{
 			return true;
 		}
-		else
-		{
-			return false;
-		}
-	}
-	else if(radiovalue=="product")
-	{
-		if(pname!="" && productprice!="" && pquentity!="" && productweight!="" && productdesc!="" && categoryvalue!='0' && ownervalue!='0' && offervalue!='0' && subcategoryvalue!='0')
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else
-	{
-		alert("dasdadasd.....");
 	}
 }
 	function validate14() {    //product image
@@ -746,6 +731,7 @@ function validate(){
                     /(\.jpg|\.jpeg|\.png|\.gif)$/i;
               
             if (!allowedExtensions.exec(filePath)) {
+            	$('#p13').html('Product Image Field Is Empty Or You Choose Wrong Format').css('color', 'red');
             	form.classList.add('invalid14')
 				form.classList.remove('valid14')
                // alert('Invalid file type');
@@ -754,6 +740,7 @@ function validate(){
             } 
             else 
             {
+            	$('#p13').html('Product Image Is Valid').css('color', 'Green');
             	form.classList.remove('invalid14')
 				form.classList.add('valid14')
             }
@@ -777,16 +764,19 @@ function validate(){
 			
 			if (pname == "") 
 			{
+				$('#p5').html('Product Name Field Is Empty').css('color', 'red');
 				form.classList.add('invalid')
 				form.classList.remove('valid')
 			}
 			else
 			{
+				$('#p5').html('Product Name Is Valid').css('color', 'Green');
 				form.classList.remove('invalid')
 				form.classList.add('valid')
 			}
 			if($.isNumeric(pname))
 			{
+				$('#p5').html('Product Name Is Not Valid').css('color', 'red');
 				form.classList.add('invalid')
 				form.classList.remove('valid')
 			}
@@ -798,23 +788,24 @@ function validate(){
 		
 		if (pprice == "") 
 		{
+			$('#p6').html('Product Price Field Is Empty').css('color', 'red');
 			form.classList.add('invalid1')
 			form.classList.remove('valid1')
 		}
 		else
 		{
-			form.classList.remove('invalid1')
-			form.classList.add('valid1')
-		}
-		if(pprice.match(pattern))
-		{
-			form.classList.remove('invalid1')
-			form.classList.add('valid1')
-		}
-		else
-		{
-			form.classList.add('invalid1')
-			form.classList.remove('valid1')
+			if(pprice.match(pattern))
+			{
+				$('#p6').html('Product Price Is Valid').css('color', 'Green');
+				form.classList.remove('invalid1')
+				form.classList.add('valid1')
+			}
+			else
+			{
+				$('#p6').html('Product Price Is Not Valid').css('color', 'red');
+				form.classList.add('invalid1')
+				form.classList.remove('valid1')
+			}
 		}
 	}
 	function validate3() {		//Product qnt
@@ -824,24 +815,24 @@ function validate(){
 		
 		if (pquentity == "") 
 		{
+			$('#p7').html('Product Quantity Field Is Empty').css('color', 'red');
 			form.classList.add('invalid2')
 			form.classList.remove('valid2')
 		}
 		else
 		{
-			form.classList.remove('invalid2')
-			form.classList.add('valid2')
-		}
-		
-		if(pquentity.match(pattern))
-		{
-			form.classList.remove('invalid2')
-			form.classList.add('valid2')
-		}
-		else
-		{
-			form.classList.add('invalid2')
-			form.classList.remove('valid2')
+			if(pquentity.match(pattern))
+			{
+				$('#p7').html('Product Quantity Is Valid').css('color', 'Green');
+				form.classList.remove('invalid2')
+				form.classList.add('valid2')
+			}
+			else
+			{
+				$('#p7').html('Product Quantity Is Not Valid').css('color', 'red');
+				form.classList.add('invalid2')
+				form.classList.remove('valid2')
+			}	
 		}
 	}
 	function validate4() {     // Product Weight
@@ -850,23 +841,24 @@ function validate(){
 		const pattern = "^-?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)$";
 		if (pweight == "") 
 		{
+			$('#p8').html('Product Weight Field Is Empty').css('color', 'red');
 			form.classList.add('invalid3')
 			form.classList.remove('valid3')
 		}
 		else
 		{
-			form.classList.remove('invalid3')
-			form.classList.add('valid3')
-		}
-		if(pweight.match(pattern))
-		{
-			form.classList.remove('invalid3')
-			form.classList.add('valid3')
-		}
-		else
-		{
-			form.classList.add('invalid3')
-			form.classList.remove('valid3')
+			if(pweight.match(pattern))
+			{
+				$('#p8').html('Product Weight Is Valid').css('color', 'Green');
+				form.classList.remove('invalid3')
+				form.classList.add('valid3')
+			}
+			else
+			{
+				$('#p8').html('Product Weight Is Not Valid').css('color', 'red');
+				form.classList.add('invalid3')
+				form.classList.remove('valid3')
+			}
 		}
 	}
 	function validate5() {    // Product Desc
@@ -875,11 +867,13 @@ function validate(){
 		
 		if (pdescription == "") 
 		{
+			$('#p9').html('Product Description Field Is Empty').css('color', 'red');
 			form.classList.add('invalid4')
 			form.classList.remove('valid4')
 		}
 		else
 		{
+			$('#p9').html('Product Description Is Valid').css('color', 'Green');
 			form.classList.remove('invalid4')
 			form.classList.add('valid4')
 		}
@@ -891,9 +885,11 @@ function validate(){
 		var value=e.options[e.selectedIndex].value;
 		if (value!='0') 
 		{
+			$('#p2').html('Category Is Valid').css('color', 'Green');
 			form.classList.add('valid5')
 			form.classList.remove('invalid5')
 		} else {
+			$('#p2').html('Category Field Is Empty').css('color', 'red');
 			form.classList.add('invalid5')
 			form.classList.remove('valid5')
 		}
@@ -903,13 +899,18 @@ function validate(){
 		var e=document.getElementById('subcategory');
 		
 		var value=e.options[e.selectedIndex].value;
-		if (value!='0') 
+		if (value == '-1') 
 		{
-			form.classList.add('valid6')
-			form.classList.remove('invalid6')
-		} else {
+			$('#p12').html('Sub-Category Field Is Empty').css('color', 'red');
 			form.classList.add('invalid6')
 			form.classList.remove('valid6')
+		} 
+		else 
+		{
+			$('#p12').html('Sub-Category Is Valid').css('color', 'Green');
+			form.classList.add('valid6')
+			form.classList.remove('invalid6')
+			
 		}
 	}
 	function validate8() {			// category
@@ -918,16 +919,19 @@ function validate(){
 		
 		if (cname == "") 
 		{
+			$('#p').html('Category Field Is Empty').css('color', 'red');
 			form.classList.add('invalid7')
 			form.classList.remove('valid7')
 		}
 		else
 		{
+			$('#p').html('Category Is Valid').css('color', 'Green');
 			form.classList.remove('invalid7')
 			form.classList.add('valid7')
 		}
 		if($.isNumeric(cname))
 		{
+			$('#p').html('Category Is Not Valid').css('color', 'red');
 			form.classList.add('invalid7')
 			form.classList.remove('valid7')
 		}
@@ -940,16 +944,19 @@ function validate(){
 		
 		if (scname == "") 
 		{
+			$('#p1').html('Sub-Category Field Is Empty').css('color', 'red');
 			form.classList.add('invalid8')
 			form.classList.remove('valid8')
 		}
 		else
 		{
+			$('#p1').html('Sub-Category Is Valid').css('color', 'Green');
 			form.classList.remove('invalid8')
 			form.classList.add('valid8')
 		}
 		if($.isNumeric(scname))
 		{
+			$('#p1').html('Sub-Category Is Not Valid').css('color', 'red');
 			form.classList.add('invalid8')
 			form.classList.remove('valid8')
 		}
@@ -962,9 +969,11 @@ function validate(){
 		var value=e.options[e.selectedIndex].value;
 		if (value!='0') 
 		{
+			$('#p10').html('Product Owner Is Valid').css('color', 'Green');
 			form.classList.add('valid10')
 			form.classList.remove('invalid10')
 		} else {
+			$('#p10').html('Product Owner Field Is Empty').css('color', 'red');
 			form.classList.add('invalid10')
 			form.classList.remove('valid10')
 		}
@@ -977,9 +986,11 @@ function validate(){
 		var value=e.options[e.selectedIndex].value;
 		if (value!='0') 
 		{
+			$('#p11').html('Product Offer Is Valid').css('color', 'Green');
 			form.classList.add('valid11')
 			form.classList.remove('invalid11')
 		} else {
+			$('#p11').html('Product Offer Field Is Empty').css('color', 'red');
 			form.classList.add('invalid11')
 			form.classList.remove('valid11')
 		}
@@ -991,16 +1002,19 @@ function validate(){
 		
 		if (offername == "") 
 		{
+			$('#p3').html('Offer Field Is Empty').css('color', 'red');
 			form.classList.add('invalid12')
 			form.classList.remove('valid12')
 		}
 		else
 		{
+			$('#p3').html('Offer Is Valid').css('color', 'Green');
 			form.classList.remove('invalid12')
 			form.classList.add('valid12')
 		}
 		if($.isNumeric(offername))
 		{
+			$('#p3').html('Offer Is Not Valid').css('color', 'red');
 			form.classList.add('invalid12')
 			form.classList.remove('valid12')
 		}
@@ -1013,23 +1027,24 @@ function validate(){
 		
 		if (offerdiscount == "") 
 		{
+			$('#p4').html('Discount Field Is Empty').css('color', 'red');
 			form.classList.add('invalid13')
 			form.classList.remove('valid13')
 		}
 		else
 		{
-			form.classList.remove('invalid13')
-			form.classList.add('valid13')
-		}
-		if(offerdiscount.match(pattern))
-		{
-			form.classList.remove('invalid13')
-			form.classList.add('valid13')
-		}
-		else
-		{
-			form.classList.add('invalid13')
-			form.classList.remove('valid13')
+			if(offerdiscount.match(pattern))
+			{
+				$('#p4').html('Discount Is Valid').css('color', 'Green');
+				form.classList.remove('invalid13')
+				form.classList.add('valid13')
+			}
+			else
+			{
+				$('#p4').html('Discount Is Not Valid').css('color', 'red');
+				form.classList.add('invalid13')
+				form.classList.remove('valid13')
+			}
 		}
 	}
 	$("input[name='exampleRadios1']").change(function() 

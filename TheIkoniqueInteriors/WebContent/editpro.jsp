@@ -150,7 +150,7 @@
 
 #form .indicator8 {
 	position: absolute;
-	top: 20px;
+	top: 50px;
 	right: 26px;
 	width: 10px;
 	height: 10px;
@@ -349,8 +349,6 @@ if (null != httpSession) {
 							<input type="hidden" name="user_id" value="<%=String.valueOf(user.getUser_id())%>">
 							<input type="hidden" name="role_id" value="<%=String.valueOf(user.getRole_id())%>">
 							<div>
-
-
 								<div
 									class="profile-image1 bg-primary shadow-inset border border-light rounded ml-11 p-3 ">
 									<%if(user.getUserProfilepicString()!=null) {%>
@@ -363,10 +361,10 @@ if (null != httpSession) {
 								<br>
 								<div class="custom-file mr-1 col-lg-3 col-sm-6">
 									<input type="file" class="custom-file-input" id="customFile"
-										aria-label="File upload" name="photo" onchange="return validate8()"><span class="indicator7"></span> <label
-										class="custom-file-label" for="customFile">Choose file</label>
+										aria-label="File upload" name="photo" onchange="return validate8()"><span class="indicator7"></span> 
+										<label class="custom-file-label" for="customFile">Choose file</label>
+										<span class="small validate" id="p5"></span>
 								</div>
-
 								<div class="col-lg-5 col-sm-6 ml-10 ml-5 margin">
 									<!-- Form -->
 
@@ -376,7 +374,8 @@ if (null != httpSession) {
 										<label for="validationServer01">First name</label> <input
 											type="text" class="form-control1" id="fname"
 											 value="<%=user.getFirstname()%>"
-											autocomplete="off" name="fname" onkeyup="validate1();"> <span class="indicator1"></span>
+											autocomplete="off" name="fname" onkeyup="validate1();"> 
+											<span class="indicator1"></span><span class="small validate" id="p"></span>
 									</div>
 									<!-- End of Form -->
 									<!-- Form -->
@@ -384,19 +383,20 @@ if (null != httpSession) {
 										<label for="validationServerUsername">Lastname</label> <input
 											type="text" class="form-control1" id="lname"
 											 value="<%=user.getLastname()%>"
-											autocomplete="off" name="lname" onkeyup="validate2();"> <span class="indicator2"></span>
+											autocomplete="off" name="lname" onkeyup="validate2();"> 
+											<span class="indicator2"></span><span class="small validate" id="p1"></span>
 									</div>
 									<div class="form-group mb-4 margin1">
 										<label for="validationServerUsername">Email</label> <input
 											type="text" class="form-control1" id="email" 
 											 value="<%=user.getEmail()%>"
-											autocomplete="off" readonly name="email" onkeyup="validate3();"><span class="indicator3"></span>
+											autocomplete="off" readonly name="email" onkeyup="validate3();">
 									</div>
 									<div class="form-group mb-4 margin1">
 										<label for="validationServerUsername">Address</label>
 										<textarea class="form-control1" id="address"
 											 rows="5" autocomplete="off" name="address" onkeyup="validate5();"><%=user.getAddress()%></textarea>
-										<span class="indicator5"></span>
+										<span class="indicator5"></span><span class="small validate" id="p2"></span>
 									</div>
 									<%if(user.getRole_id()==2) {%>
 									
@@ -449,7 +449,7 @@ if (null != httpSession) {
 												<%
 																			}
 																		%>
-											</select><span class="indicator8"></span>
+											</select><span class="indicator8"></span><span class="small validate" id="p3"></span>
 										</div>
 									</div>
 
@@ -459,7 +459,7 @@ if (null != httpSession) {
 											value="<%=user.getMobileno()%>" type="text"
 											class="form-control1" id="cno" 
 											 maxlength="10" autocomplete="off" name="contactno" onkeyup="validate6();">
-										<span class="indicator6"></span>
+										<span class="indicator6"></span><span class="small validate" id="p4"></span>
 									</div>
 									<div class="form-group mb-3  inputBox margin1">
 										Gender<br>
@@ -547,13 +547,22 @@ function validate1() {
 	
 
 	if (fname != " ") {
+		$('#p').html('First Name Is Valid').css('color', 'Green');
 		form.classList.add('valid')
 		form.classList.remove('invalid')
 	} else {
+		$('#p').html('First Name Is Not Valid').css('color', 'red');
 		form.classList.add('invalid')
 		form.classList.remove('valid')
 	}
 	if (fname == "") {
+		$('#p').html('First Name Field Is Empty').css('color', 'red');
+		form.classList.add('invalid')
+		form.classList.remove('valid')
+	}
+	if($.isNumeric(fname))
+	{
+		$('#p').html('First Name Is Not Valid').css('color', 'red');
 		form.classList.add('invalid')
 		form.classList.remove('valid')
 	}
@@ -564,13 +573,22 @@ function validate2() {
 	
 
 	if (lname != " ") {
+		$('#p1').html('Last Name Is Valid').css('color', 'Green');
 		form.classList.add('valid1')
 		form.classList.remove('invalid1')
 	} else {
+		$('#p1').html('Last Name Is Not Valid').css('color', 'red');
 		form.classList.add('invalid1')
 		form.classList.remove('valid1')
 	}
 	if (lname == "") {
+		$('#p1').html('Last Name Field Is Empty').css('color', 'red');
+		form.classList.add('invalid1')
+		form.classList.remove('valid1')
+	}
+	if($.isNumeric(lname))
+	{
+		$('#p1').html('Last Name Is Not Valid').css('color', 'red');
 		form.classList.add('invalid1')
 		form.classList.remove('valid1')
 	}
@@ -599,13 +617,16 @@ function validate5() {
 	
 
 	if (address !=" ") {
+		$('#p2').html('Address Is Valid').css('color', 'Green');
 		form.classList.add('valid4')
 		form.classList.remove('invalid4')
 	} else {
+		$('#p2').html('Address Is Not Valid').css('color', 'red');
 		form.classList.add('invalid4')
 		form.classList.remove('valid4')
 	}
 	if (address == "") {
+		$('#p2').html('Address Field Is Empty').css('color', 'red');
 		form.classList.add('invalid4')
 		form.classList.remove('valid4')
 	}
@@ -617,13 +638,16 @@ function validate6() {
 	const pattern = /(7|8|9)\d{9}/
 
 	if (cno.match(pattern)) {
+		$('#p4').html('Mobile Number Is Valid').css('color', 'Green');
 		form.classList.add('valid5')
 		form.classList.remove('invalid5')
 	} else {
+		$('#p4').html('Mobile Number Is Not Valid').css('color', 'red');
 		form.classList.add('invalid5')
 		form.classList.remove('valid5')
 	}
 	if (cno == "") {
+		$('#p4').html('Mobile Number Field Is Empty').css('color', 'red');
 		form.classList.add('invalid5')
 		form.classList.remove('valid5')
 	}
@@ -637,11 +661,13 @@ function validate7() {
 	
 	if (value!='0') 
 	{
+		$('#p3').html('Area Is Valid').css('color', 'Green');
 		form.classList.add('valid6')
 		form.classList.remove('invalid6')
 	} 
 	else
 	{
+		$('#p3').html('Address Is Not Valid').css('color', 'red');
 		form.classList.add('invalid6')
 		form.classList.remove('valid6')
 	}
@@ -660,6 +686,7 @@ function validate8() {    //product image
                 /(\.jpg|\.jpeg|\.png|\.gif)$/i;
           
         if (!allowedExtensions.exec(filePath)) {
+        	$('#p5').html('Product Image Field Is Empty Or You Choose Wrong Format').css('color', 'red');
         	form.classList.add('invalid7')
 			form.classList.remove('valid7')
            // alert('Invalid file type');
@@ -668,6 +695,7 @@ function validate8() {    //product image
         } 
         else 
         {
+        	$('#p5').html('Product Image Is Valid').css('color', 'Green');
         	form.classList.remove('invalid7')
 			form.classList.add('valid7')
         }

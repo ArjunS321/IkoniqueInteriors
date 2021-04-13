@@ -48,7 +48,6 @@
             <input type="search" placeholder="Search Customer" class="form-control search-input" data-table="customers-list"/>
             <br>
         </h2>
-        <a class="btn" style="margin-left:72rem;" href="insertproduct.jsp"><i class="fa fa-plus" aria-hidden="true"></i></a><br><br>
         <table class="table table-striped mt32 customers-list" id="myTable">
             <thead>
                 <tr>
