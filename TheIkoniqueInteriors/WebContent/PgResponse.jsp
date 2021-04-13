@@ -57,9 +57,9 @@ try{
 <%--  <% for( String s : sArr){ %>  --%>
 <%--  <p> <%= s %></p> --%>
 <%--  <%} %> --%>
- <p><%= sArr[9] %></p> 
+ <p hidden><%= sArr[9] %></p> 
   <% String[] sArr1= sArr[9].split("="); %> 
-  <%= sArr1[1] %> 
+ <p hidden> <%= sArr1[1] %> </p>
 
 </p>
  <%if(sArr1[1].equals("TXN_SUCCESS")){ %>

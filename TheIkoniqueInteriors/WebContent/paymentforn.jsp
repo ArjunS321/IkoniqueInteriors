@@ -312,7 +312,7 @@ textarea {
 								type="text" style="background-color: #e6e7ee;" readonly
 								name="TXN_AMOUNT" title="TXN_AMOUNT"
 								class="col-lg-5 form-control1" id="email" autocomplete="off"
-								aria-describedby="emailHelp" value="1">
+								aria-describedby="emailHelp" value="<%=request.getParameter("gt") %>">
 						</div>
 						<input type="submit" value="CheckOut"
 							class="btn col-lg-4 rounded-bottom">

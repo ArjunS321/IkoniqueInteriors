@@ -126,7 +126,7 @@ $quantity-btn-color: #95d7fc;
 							</div>
 						</div>
 						
-						<input id="count" type="hidden" value="<%=count %>">
+						<input id="count"  type="hidden" value="<%=count %>">
 						<%} %>
 						<%} %>
 							
@@ -146,9 +146,16 @@ $quantity-btn-color: #95d7fc;
                     <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>Discount</span> <span id="dis" class="ml-auto"></span> </li>
                     <li class="list-group-item d-flex"  style="background-color: #e6e7ee !important;"> <span>Tax</span> <span id="tax" class="ml-auto"></span> </li>
                     <li class="list-group-item d-flex font-weight-bold rounded-bottom h5"  style="background-color: #e6e7ee !important;"> <span>Total</span> <span id="grandtotal" class="ml-auto"></span></li> 
+                   
                 </ul>
-                <a class="btn btn-block mt-4 mb-3" href="detailfillup.jsp">Place Order</a> 
+                <form action="detailfillup.jsp">
+                
+                <input type="hidden" name="gt" id="total" value="">
+                <button class="btn btn-block mt-4 mb-3" type="submit">Place Order</button>
+<!--                 <a class="btn btn-block mt-4 mb-3" href="detailfillup.jsp">Place Order</a>  -->
+            	</form>
             </div>
+            
 				</div>
 				
 		</div>
@@ -257,6 +264,7 @@ $quantity-btn-color: #95d7fc;
 					grandtotal = total - disc + tax;
 					grandtotal1 = (grandtotal).toFixed(2);
 					$("#grandtotal").text(grandtotal1);
+					$("#total").val(grandtotal1);
 					
 				}
 			
