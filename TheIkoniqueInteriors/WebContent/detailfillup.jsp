@@ -268,7 +268,7 @@ textarea {
 			<!-- Content -->
 		<div class="card-body shadow-soft border border-light rounded p-4">
             <br><br>
-            <form align="center" id="form" name="form">
+            <form align="center" id="form" method="post" name="form" action="InsertOrderDetails">
             <h1>Customer Details</h1>
             <br>
            
@@ -320,9 +320,10 @@ textarea {
 								aria-describedby="emailHelp" onkeyup="validate();" value="<%=user.getEmail()%>"> <span
 								class="indicator1"></span>
 						</div>
+						<input type="hidden" name="total" value="<%=request.getParameter("gt")%>">
 						<br>
 					<div class="mr-10">
-						<a href="paymentforn.jsp?gt=<%=request.getParameter("gt") %>" type="submit" name="submit"
+						<a type="submit" name="submit"
 						class="col-lg-2 btn form-group ml-10">Buy</a>
 					</div>
 					
