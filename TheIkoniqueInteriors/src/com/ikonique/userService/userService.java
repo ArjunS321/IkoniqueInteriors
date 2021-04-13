@@ -9,6 +9,7 @@ import com.ikonique.bean.Cart;
 import com.ikonique.bean.Category;
 import com.ikonique.bean.FeedBack;
 import com.ikonique.bean.Offer;
+import com.ikonique.bean.Order;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
@@ -73,4 +74,5 @@ public interface userService {
 	public List<BookingInfo> selectBookingInfoDetails();
 	public List<roomdesign> fetchroomdesigndetails();
 	public List<BookingInfo> selectPreviousBookingInfo() ;
+	public int insertOrderDetails(Order order) ;
 }

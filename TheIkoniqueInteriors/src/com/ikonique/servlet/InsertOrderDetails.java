@@ -9,14 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ikonique.bean.Order;
 import com.ikonique.bean.User;
+import com.ikonique.userService.impl.userServiceImpl;
 
 /**
  * Servlet implementation class InsertOrderDetails
  */
 public class InsertOrderDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+       userServiceImpl us=new userServiceImpl();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -44,15 +46,32 @@ public class InsertOrderDetails extends HttpServlet {
 	   }
 		Date date=new Date();
 	  	java.sql.Date sqldate=new java.sql.Date(date.getTime());
-	  	double amount=Double.parseDouble(request.getParameter("total"));
 	  	
-//	  	String select[] = request.getParameterValues("sel"); 
-//
-//	  	if (select != null && select.length != 0) {
-//
-//	  	for (int i = 0; i < select.length; i++) {
-//	  	out.println(select[i]);
-//	}
+	  	
+	  	String fname=request.getParameter("fname");
+	  	String lname=request.getParameter("lname");
+	  	double amount=Double.parseDouble(request.getParameter("total"));
+	  	String cno=request.getParameter("mno");
+	  	String address=request.getParameter("address");
+	  	String email=request.getParameter("email");
+	  	
+		Order order=new Order();
+		order.setFirstname(fname);
+		order.setLastname(lname);
+		order.setContactnum(cno);
+		order.setAmount(amount);
+		order.setAddress(address);
+		order.setEmail(email);
+		order.setOrderdate(sqldate);
+		order.setUserid(user.getUser_id());
+		
+		int id = us.insertOrderDetails(order);
+		System.out.println("insertedId:"+id);
+		
+		
+	  	
 
+
+	  	
 	}
 }

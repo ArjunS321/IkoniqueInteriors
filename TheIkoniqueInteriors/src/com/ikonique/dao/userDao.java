@@ -10,6 +10,7 @@ import com.ikonique.bean.Cart;
 import com.ikonique.bean.Category;
 import com.ikonique.bean.FeedBack;
 import com.ikonique.bean.Offer;
+import com.ikonique.bean.Order;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
@@ -131,6 +132,8 @@ public interface userDao {
 	public List<roomdesign> selectroomdesigndetails(Connection connection);
 
 	public List<BookingInfo> fetchPreviousBookingInfoDetails(Connection connection);
+
+	public int saveOrderDetails(Connection connection, Order order);
 
 	
 	

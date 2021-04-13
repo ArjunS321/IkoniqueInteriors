@@ -12,6 +12,7 @@ import com.ikonique.bean.Cart;
 import com.ikonique.bean.Category;
 import com.ikonique.bean.FeedBack;
 import com.ikonique.bean.Offer;
+import com.ikonique.bean.Order;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
@@ -602,6 +603,29 @@ public class userServiceImpl {
 	
 	public List<BookingInfo> selectPreviousBookingInfo() {
 		return userDao.fetchPreviousBookingInfoDetails(connection);
+	}
+
+	public int insertOrderDetails(Order order) {
+		String msg=null;
+		int insertinorder = userDao.saveOrderDetails(connection , order);
+		if(insertinorder>0) 
+		{
+			msg="Insertion Is Successfully";
+			/*
+			 * User user=userDao.selectUserDetails(connection,booking.getUserid()); User
+			 * user1=userDao.selectUserDetails(connection,booking.getDesignerid());
+			 * StringBuilder builder = new StringBuilder(); builder.append("adas"); Main
+			 * main=new Main(); main.sendFromGMail("ikoniqueinteriors@gmail.com",
+			 * "SAM@616263", new String[] {user1.getEmail()},
+			 * "Notification For Booking",builder.toString());
+			 */
+			//"Customer Name: new String[] {user.getFirstname()} new String[] {user.getLastname()} Customer Contact No: new String[] {user.getMobileno()} Customer Mail-Id: new String[] {user.getEmail()}");
+		}
+		else
+		{
+			msg="Insertion Is Failed";
+		}
+		return insertinorder;
 	}
 }
 		

@@ -1,4 +1,4 @@
-<%@page import="jdk.javadoc.internal.doclets.toolkit.util.JavaScriptScanner"%>
+
 <%@page import="com.ikonique.bean.Area"%>
 <%@page import="com.ikonique.bean.Wishlist"%>
 <%@page import="com.ikonique.bean.Offer"%>
@@ -268,7 +268,7 @@ textarea {
 			<!-- Content -->
 		<div class="card-body shadow-soft border border-light rounded p-4">
             <br><br>
-            <form align="center" id="form" method="post" name="form" action="InsertOrderDetails">
+            <form  action="InsertOrderDetails" align="center" id="form" method="post" name="form" >
             <h1>Customer Details</h1>
             <br>
            
@@ -291,22 +291,7 @@ textarea {
 							onkeyup="validate3();"><%=user.getAddress() %></textarea>
 						<span class="indicator3"></span>
 					</div>
-					<div class="form-group mb-3 inputBox">
-							<label for="areaname">Area</label><br><select name="area"
-								class="form-control col-lg-5" id="area" aria-describedby="emailHelp"
-								onchange="validate6()" style="background-color: #e6e7ee; border-radius: 0.55rem;
-								  margin-left: 19rem; box-shadow:none;">
-								<option value="0" selected>  </option>
-								<%for (Area place : area) {%>
-									<%if (user.getArea_id() == place.getArea_id()) {%>
-										  <option value="<%=place.getArea_id()%>" selected><%=place.getArea_name()%></option>
-									<%} else {%>
-												<option value="<%=place.getArea_id()%>"><%=place.getArea_name()%></option>
-									<%}%>
-								<%} %>
-							</select> <span class="indicator8"></span>
-
-						</div>
+					
 					<div class="form-group mb-3 inputBox">
 						<label for="mobilenumber">Mobile Number</label><br><input type="text"
 							name="mno"  style="background-color: #e6e7ee;" class="form-control1 col-lg-5" id="mno" autocomplete="off"
@@ -323,8 +308,8 @@ textarea {
 						<input type="hidden" name="total" value="<%=request.getParameter("gt")%>">
 						<br>
 					<div class="mr-10">
-						<a type="submit" name="submit"
-						class="col-lg-2 btn form-group ml-10">Buy</a>
+						<button type="submit" name="submit"
+						class="col-lg-2 btn form-group ml-10">Buy</button>
 					</div>
 					
 				</form>

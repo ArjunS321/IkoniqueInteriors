@@ -125,7 +125,8 @@ $quantity-btn-color: #95d7fc;
 								</div>
 							</div>
 						</div>
-						
+						product+proid()
+					if(request.getparameter("product"+id)!=null)
 						<input id="count"  type="hidden" value="<%=count %>">
 						<%} %>
 						<%} %>

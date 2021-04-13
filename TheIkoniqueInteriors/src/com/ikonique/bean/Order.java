@@ -10,6 +10,13 @@ public class Order
 	private Date orderdate;
 	private String orderstatus;
 	private String paymentstatus;
+	
+	private String firstname;
+	private String lastname;
+	private String address;
+	private String contactnum;
+	private String email;
+	
 	public int getOrderid() {
 		return orderid;
 	}
@@ -45,6 +52,36 @@ public class Order
 	}
 	public void setPaymentstatus(String paymentstatus) {
 		this.paymentstatus = paymentstatus;
+	}
+	public String getFirstname() {
+		return firstname;
+	}
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+	public String getLastname() {
+		return lastname;
+	}
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getContactnum() {
+		return contactnum;
+	}
+	public void setContactnum(String contactnum) {
+		this.contactnum = contactnum;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 

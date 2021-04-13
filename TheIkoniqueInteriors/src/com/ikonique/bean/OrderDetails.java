@@ -4,8 +4,8 @@ public class OrderDetails {
 	private int orderdetailid;
 	private int orderid;
 	private int productid;
-	private double amount;
 	private int quantity;
+	
 	public int getOrderdetailid() {
 		return orderdetailid;
 	}
@@ -24,12 +24,7 @@ public class OrderDetails {
 	public void setProductid(int productid) {
 		this.productid = productid;
 	}
-	public double getAmount() {
-		return amount;
-	}
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
+	
 	public int getQuantity() {
 		return quantity;
 	}
