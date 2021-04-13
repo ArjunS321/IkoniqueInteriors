@@ -113,8 +113,8 @@
 								name="role_id" value="<%=String.valueOf(user.getRole_id())%>">
 							<br> <input type="password" name="oldpass"
 								class="form-control" id="oldpass" autocomplete="off"
-								aria-describedby="emailHelp" onkeyup="validate2();"> <span
-								class="indicator3"></span>
+								aria-describedby="emailHelp" onkeyup="validate2();" maxLength="8"> <span
+								class="indicator3"></span><span class="small validate" id="p2"></span>
 						</div>
 						
 						<div class="form-group mb-3 ml-10 inputBox">
@@ -122,14 +122,14 @@
 								name="user_id" value="<%=String.valueOf(user.getUser_id())%>">
 							<br> <input type="password" name="newpass"
 								class="form-control" id="newpass" autocomplete="off"
-								aria-describedby="emailHelp" onkeyup="validate();"> <span
-								class="indicator1"></span>
+								aria-describedby="emailHelp" onkeyup="validate();" maxLength="8"> <span
+								class="indicator1"></span><span class="small validate" id="p1"></span>
 						</div>
 
 						<div class="form-group mb-3 ml-10">
 							<label for="cpass">Confirm Password</label> <input
 								type="password" name="cpass" class="form-control" id="cpass"
-								onkeyup="validate1();"> <span class="indicator2"></span>
+								onkeyup="validate1();" maxLength="8"> <span class="indicator2"></span>
 							<span class="small" id="p"></span>
 							<h6 class="small">
 								* Password Must Contain 8-20 Character<br>* Password must
@@ -137,9 +137,10 @@
 								Uppercase Charater[A-Z]<br>A Lowercase Character[a-z]
 							</h6>
 						</div>
-
+						<div class="mb-4"><span style="margin-left:28rem;" class="medium" id="p3"></span></div>
+						
 						<div align="center">
-
+						
 							<button type="submit" name="submit"
 								class="btn btn-primary form-group ml-10">Submit</button>
 						</div>
@@ -227,27 +228,32 @@
 				
 				if(newpass.match(pattern1))
 				{
+					$('#p1').html('New Password Is Valid').css('color', 'Green');
 					form.classList.add('valid')
 					form.classList.remove('invalid')
 				}
 				else
 				{
+					$('#p1').html('New Password Is Not Valid').css('color', 'red');
 					form.classList.add('invalid')
 					form.classList.remove('valid')
 				}	
 				if(newpass.match(oldpass))
 				{
+					$('#p1').html('New Password Can Not Same With Old Password').css('color', 'red');
 					form.classList.add('invalid')
 					form.classList.remove('valid')
 				}
 				else
 				{
+					$('#p1').html('New Password Is Valid').css('color', 'Green');
 					form.classList.add('valid')
 					form.classList.remove('invalid')
 				}
 				
 				if(newpass == "")
 				{
+					$('#p1').html('New Password Field Is Empty').css('color', 'red');
 					form.classList.remove('invalid')
 					form.classList.remove('valid')
 				}
@@ -263,17 +269,20 @@
 				
 				if(cpass.match(newpass))
 				{
+					$('#p').html('Confirm Password Is Valid').css('color', 'Green');
 					form.classList.add('valid1')
 					form.classList.remove('invalid1')
 				}
 				else
 				{
+					$('#p').html('Confirm Password Is Not Same As New Password').css('color', 'red');
 					form.classList.add('invalid1')
 					form.classList.remove('valid1')
 				}
 				if(cpass == "")
 				{
-					form.classList.remove('invalid1')
+					$('#p').html('Confirm  Password Field Is Empty').css('color', 'red');
+					form.classList.add('invalid1')
 					form.classList.remove('valid1')
 				}
 			}
@@ -284,30 +293,23 @@
 				const newpass= document.getElementById('newpass').value;
 				const pattern1=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
 				const oldpass = document.getElementById('oldpass').value;
-				const oldpassdata = document.getElementById('oldpassdata').value;
+				const oldpassdata = document.getElementById('oldpassdata').value; //database value
 				
-				if(oldpass.match(newpass))
-				{
-					form.classList.add('invalid2')
-					form.classList.remove('valid2')
-				}
-				else
-				{
-					form.classList.add('valid2')
-					form.classList.remove('invalid2')
-				}
 				if(oldpass.match(oldpassdata))
 				{
+					$('#p2').html('Old Password Is Same').css('color', 'Green');
 					form.classList.add('valid2')
 					form.classList.remove('invalid2')
 				}
 				else
 				{
+					$('#p2').html('Old Password Is Not Same').css('color', 'red');
 					form.classList.add('invalid2')
 					form.classList.remove('valid2')
 				}
 				if(oldpass == "")
 				{
+					$('#p2').html('Old Password Field Is Empty').css('color', 'red');
 					form.classList.remove('invalid2')
 					form.classList.remove('valid2')
 				}
@@ -325,23 +327,26 @@
 				const pattern1=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
 				
 				if(newpass.match(pattern1) && cpass.match(pattern1) && cpass.match(newpass) && oldpass.match(oldpassdata))
-					{
+				{
 // 						window.location="/customer.jsp";
 						return true;
-					}
-				else{
+				}
+				else
+				{
+					$('#p3').html('Please Fill Up Fields...').css('color', 'red');
 					return false;
 // 					window.location="/triallogin.jsp";
+					
 				}
 			}
 			
 
-$('#newpass, #cpass').on('keyup', function () {
-  if ($('#newpass').val() == $('#cpass').val()) {
-    $('#p').html('Password Matched').css('color', 'green');
-  } else 
-    $('#p').html('Confirm Password Must Match With New Password').css('color', 'red');
-});
+// $('#newpass, #cpass').on('keyup', function () {
+//   if ($('#newpass').val() == $('#cpass').val()) {
+//     $('#p').html('Password Matched').css('color', 'green');
+//   } else 
+//     $('#p').html('Confirm Password Must Match With New Password').css('color', 'red');
+// });
 		
 		</script>
 </body>

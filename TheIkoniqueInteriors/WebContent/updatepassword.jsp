@@ -89,14 +89,14 @@
 								name="user_id" value="<%=String.valueOf(user.getUser_id())%>">
 							<br> <input type="password" name="newpass"
 								class="form-control" id="newpass" autocomplete="off"
-								aria-describedby="emailHelp" onkeyup="validate();"> <span
-								class="indicator1"></span>
+								aria-describedby="emailHelp" onkeyup="validate();"  maxLength="8"> <span
+								class="indicator1"></span><span class="small validate" id="p1"></span>
 						</div>
 
 						<div class="form-group mb-3 ml-10">
 							<label for="cpass">Confirm Password</label> <input
 								type="password" name="cpass" class="form-control" id="cpass"
-								onkeyup="validate1();"> <span class="indicator2"></span>
+								onkeyup="validate1();"  maxLength="8"> <span class="indicator2"></span>
 							<span class="small" id="p"></span>
 							<h6 class="small">
 								* Password Must Contain 8-20 Character<br>* Password must

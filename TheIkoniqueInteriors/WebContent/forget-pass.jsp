@@ -66,9 +66,10 @@
 							<label for="email">Email address</label> <input type="text"
 								name="email" class="form-control" id="email" autocomplete="off"
 								aria-describedby="emailHelp" onkeyup="validate();"> <span
-								class="indicator7"></span>
+								class="indicator7"></span><span class="small validate" id="p"></span>
 								
 						</div>
+						<div class="mb-3"><span style="margin-left:26rem;" class="medium" id="p1"></span></div>
 						<div align="center">
 							<button type="submit" name="submit"
 								class="btn btn-primary form-group ml-10">Send</button>
@@ -121,18 +122,24 @@
 				const pattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/
 				
 				
-				if(email.match(pattern)){
+				if(email.match(pattern))
+				{
+					$('#p').html('Email Is valid').css('color', 'Green');
 					form.classList.add('valid6')
 					form.classList.remove('invalid6')
-				}else{
+				}
+				else
+				{
+					$('#p').html('Email Is Not Valid').css('color', 'red');
 					form.classList.add('invalid6')
 					form.classList.remove('valid6')
 				}
 				if(email == "")
-					{
-						form.classList.remove('invalid6')
-						form.classList.remove('valid6')
-					}
+				{
+					$('#p').html('Email Field Is Empty').css('color', 'red');
+					form.classList.remove('invalid6')
+					form.classList.remove('valid6')
+				}
 			}
 			function login()
 			{
@@ -141,11 +148,13 @@
 				const pattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/
 				
 				if(email.match(pattern))
-					{
+				{
 // 						window.location="/customer.jsp";
 						return true;
-					}
-				else{
+				}
+				else
+				{
+					$('#p1').html('Please Fill-Up The Filed').css('color', 'red');
 					return false;
 // 					window.location="/triallogin.jsp";
 				}

@@ -79,9 +79,10 @@
 								name="otp" class="form-control" id="otp" autocomplete="off"
 								aria-describedby="emailHelp" placeholder="Enter Your OTP Here" onkeyup="validate();" maxLength="4"> 
  								<span 
- 								class="indicator7"></span> 
+ 								class="indicator7"></span> <span class="small" id="p"></span>
  								<input style="visibility:hidden;" value="<%=otpstring %>" type="text" name="otp1"  id="otp1">
 						</div>
+						<div><span style="margin-left:25rem;" class="medium" id="p"></span></div>
 						<div align="center">
 							<button type="submit" name="submit"
 								class="btn btn-primary form-group ml-10">Submit</button>
@@ -127,20 +128,31 @@ function validate() {
 	const form = document.getElementById('form');
 	const otp = document.getElementById('otp').value;
 	const otp1=document.getElementById('otp1').value;
-	const pattern = "[0-9]{4}"
-
-	if (otp.match(pattern) && otp.match(otp1) && otp.length == 4) {
-		form.classList.add('valid')
+	const pattern = "^-?([0-9]*\.?[0-9]+|[0-9]+\.?[0-9]*)$";
+	
+	if (otp == "") 
+	{
+		$('#p').html('OTP Field Is Empty').css('color', 'red');
+		form.classList.add('invalid')
+		form.classList.remove('valid')
+	}else
+	{
+		$('#p').html('OTP Field Is Not Empty').css('color', 'Green');
 		form.classList.remove('invalid')
-	} else {
+		form.classList.add('valid')
+	}
+	if(otp.match(pattern))
+	{
+		$('#p').html('OTP Field Is Valid').css('color', 'Green');
+		form.classList.remove('invalid')
+		form.classList.add('valid')
+	}
+	else
+	{
+		$('#p').html('OTP Field Is Not Valid').css('color', 'red');
 		form.classList.add('invalid')
 		form.classList.remove('valid')
 	}
-	if (otp == "") {
-		form.classList.remove('invalid')
-		form.classList.remove('valid')
-	}
-	
 }
 
 function login(){
@@ -148,19 +160,17 @@ function login(){
 	const otp=document.getElementById('otp').value;
 	const otp1=document.getElementById('otp1').value;
 	
-	 
-	console.log(otp1);
-	
-	if(otp.match(otp1)){
+	if(otp.match(otp1))
+	{
 		return true;
 	}
 	else
-		{
-			
-			return false;
-			form.classList.add('invalid')
-			form.classList.remove('valid')
-		}
+	{
+		$('#p1').html('OTP Is Wrong').css('color', 'red');
+		return false;
+		form.classList.add('invalid')
+		form.classList.remove('valid')
+	}
 	
 }
 
