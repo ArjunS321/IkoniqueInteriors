@@ -148,7 +148,7 @@ textarea {
 						Every home is a unique expression of its homeowners. We ensure your house design is in keeping with your distinct tastes. Everything, from creating furniture to choosing furnishings and lighting, is meant to reflect your sense of design.</textarea>
                          <textarea readonly style="background-color: #e6e7ee; resize: none;  text-align: center;" class="form-control1 ml-5" name="desc" id="desc" rows="12" cols="25">Interior Design Experts
 						The most important decision you will make when it comes to interior decoration is finding skilled and reliable professionals. At Beautiful Homes Service, we ensure your house design is in the hands of our panel of experienced interior designers.</textarea>
-                         <textarea readonly style="background-color: #e6e7ee; resize: none;  text-align: center;" class="form-control1 ml-5" name="desc" id="desc" rows="12" cols="25">End-to-End Service
+                         <textarea readonly style="background-color: #e6e7ee; resize: none;  text-align: center;" class="form-control1 ml-5" name="desc" id="desc" rows="12" cols="26">End-to-End Service
 							While we work towards giving you your dream home interior design, all you need to do is relax while everything is taken care of. From concept to creation and planning to execution, our team has got you covered</textarea>
                  </div>
                  <div>
@@ -156,7 +156,7 @@ textarea {
                   <h4 align="center" class="mb-3 ml-6"><u>If You Have Any Project In Your Mind?</u></h4>
                  	<br>
                  	<div align="center" class="ml-6">
-                         <a href="bookdesigner.jsp" type="submit" name="submit" id="submit" class="btn col-lg-2 btn-primary1">Hire Me</a>
+                         <a href="SelectPerticularDesigner?designerid=<%=user.getUser_id() %>" type="submit" name="submit" id="submit" class="btn col-lg-2 btn-primary1">Hire Me</a>
                  	</div>
                  	<hr class="my-5"  style="background-color: #A9A9A9;">
                  </div>
