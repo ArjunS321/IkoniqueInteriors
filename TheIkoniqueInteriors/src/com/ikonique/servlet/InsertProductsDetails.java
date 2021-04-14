@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +17,7 @@ import com.ikonique.bean.Category;
 import com.ikonique.bean.Offer;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
+import com.ikonique.bean.User;
 import com.ikonique.userService.userService;
 import com.ikonique.userService.impl.userServiceImpl;
 import com.ikonique.util.Main;
@@ -165,14 +167,26 @@ public class InsertProductsDetails extends HttpServlet {
 					if(togglevalue.equals("true"))
 					{
 						System.out.println("toggle condition called...");
-						StringBuilder builder = new StringBuilder();
-						builder.append("Product Name Is :- "+productname);
-						builder.append("\n");
-						builder.append("Product Price Is :-"+productprice);
-						builder.append("\n");
-						builder.append("About Product :-"+produtdesc);
-						Main main=new Main();
-						main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {"sutharmeet17@gmail.com"}, "Notification For New Arrival Product",builder.toString());
+						
+						List<User> userList = serviceimpl.fetchuserdetails();
+						
+						for(User user: userList) {
+							
+							if(user.getStatus()==1) {
+								StringBuilder builder = new StringBuilder();
+								builder.append("Product Name Is :- "+productname);
+								builder.append("\n");
+								builder.append("Product Price Is :-"+productprice);
+								builder.append("\n");
+								builder.append("About Product :-"+produtdesc);
+								
+								System.out.println("HII");
+								
+								Main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {user.getEmail()}, "Notification For New Arrival Product",builder.toString());
+								System.out.println("HII2");
+							}
+						}
+						
 						RequestDispatcher requestdispatcher = request.getRequestDispatcher("productTable.jsp");
 						requestdispatcher.forward(request, response);
 					}

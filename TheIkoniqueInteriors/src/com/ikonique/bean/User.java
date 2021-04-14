@@ -8,6 +8,7 @@ public class User {
 
 	private int user_id;
 	private int role_id;
+	private int status;
 	private String firstname;
 	private String lastname;
 	private String address;
@@ -112,6 +113,12 @@ public class User {
 	}
 	public void setAboutme(String aboutme) {
 		this.aboutme = aboutme;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	

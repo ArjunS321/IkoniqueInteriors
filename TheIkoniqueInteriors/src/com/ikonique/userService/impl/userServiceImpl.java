@@ -627,6 +627,22 @@ public class userServiceImpl {
 		}
 		return insertinorder;
 	}
+	
+	public int updatePaymentStatus(int bookid) {
+		int updateCount=0;
+		String msg=null;
+		updateCount=userDao.modifyBookingPaymentStatus(bookid,connection);
+		if(updateCount>0) {
+			msg="Updation Successfully";
+		}
+		else
+		{
+			msg="Updation Failed";
+		}
+		return updateCount;
+	}
+
 }
+
 		
 

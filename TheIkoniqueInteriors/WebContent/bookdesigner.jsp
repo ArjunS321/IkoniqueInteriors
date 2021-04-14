@@ -361,7 +361,7 @@ textarea {
 									<!-- End of Form -->
 									<br>
 									<div><span class="medium" id="p6"></span></div>
-									<button type="submit" name="submit" class="btn mt-4 col-lg-4 rounded-bottom" id="pay">Pay Now</button>
+									<button type="submit" name="submit" class="btn mt-4 col-lg-4 rounded-bottom" id="pay">Book Me</button>
 								</div>
 							</div>
 						</div>

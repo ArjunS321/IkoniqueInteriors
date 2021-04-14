@@ -75,4 +75,5 @@ public interface userService {
 	public List<roomdesign> fetchroomdesigndetails();
 	public List<BookingInfo> selectPreviousBookingInfo() ;
 	public int insertOrderDetails(Order order) ;
+	public int updatePaymentStatus(int bookid);
 }

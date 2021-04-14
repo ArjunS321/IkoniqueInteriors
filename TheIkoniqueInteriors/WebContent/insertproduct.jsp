@@ -527,8 +527,8 @@
 			<label for="ownername">Product Owner</label> <select name="ownername"
 				class="form-control" id="ownername" aria-describedby="emailHelp"
 				onchange="validate10()">
-				<option value="0" selected>Select Owner</option>
-				
+				<option value="-1" selected>Select Owner</option>
+				<option value="0" >By Ikonique</option>
 												<%
 				 									for (User user : designerList) { 
 												%> 
@@ -543,8 +543,10 @@
 			<label for="offer">Product Offer</label> <select name="offer"
 				class="form-control" id="offer" aria-describedby="emailHelp"
 				onchange="validate11()">
-				<option value="0" selected>Select Offer</option>
+				<option value="-1" selected>Select Offer</option>
+				<option value="0">No Offer</option>
 				<% for(Offer offer : offerList) {  %> 
+					
 					<%if(offer.getValidoffer()==1){ %>
 				    	<option value="<%=offer.getOfferid()%>"><%=offer.getOffername()%></option>
 					<%} %>
@@ -984,7 +986,7 @@ function validate()
 		var e=document.getElementById('ownername');
 		
 		var value=e.options[e.selectedIndex].value;
-		if (value!='0') 
+		if (value!='-1') 
 		{
 			$('#p10').html('Product Owner Is Valid').css('color', 'Green');
 			form.classList.add('valid10')
@@ -1001,7 +1003,7 @@ function validate()
 		var e=document.getElementById('offer');
 		
 		var value=e.options[e.selectedIndex].value;
-		if (value!='0') 
+		if (value!='-1') 
 		{
 			$('#p11').html('Product Offer Is Valid').css('color', 'Green');
 			form.classList.add('valid11')

@@ -135,6 +135,8 @@ public interface userDao {
 
 	public int saveOrderDetails(Connection connection, Order order);
 
+	public int modifyBookingPaymentStatus(int bookid, Connection connection);
+
 	
 	
 	
