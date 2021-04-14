@@ -268,7 +268,8 @@ textarea {
 			<!-- Content -->
 		<div class="card-body shadow-soft border border-light rounded p-4">
             <br><br>
-            <form  action="InsertOrderDetails" align="center" id="form" method="post" name="form" >
+            <form  action="InsertOrderDetails" align="center" onsubmit="return validate()" id="form" method="post" name="form" 
+            >
             <h1>Customer Details</h1>
             <br>
            
@@ -276,20 +277,20 @@ textarea {
 						<label for="fname">First Name</label><br><input type="text"
 							name="fname" style="background-color: #e6e7ee;" class="form-control1 col-lg-5" id="fname" autocomplete="off"
 							aria-describedby="emailHelp" onkeyup="validate1();" value="<%=user.getFirstname()%>"> <span
-							class="indicator1"></span>
+							class="indicator1"></span><br><span class="small" id="p"></span>
 					</div>
 					<div class="form-group mb-3 inputBox">
 						<label for="lname">Last Name</label><br><input type="text"
 							name="lname"  style="background-color: #e6e7ee;" class="form-control1 col-lg-5" id="lname" autocomplete="off"
 							aria-describedby="emailHelp" onkeyup="validate2();" value="<%=user.getLastname()%>"> <span
-							class="indicator2"></span>
+							class="indicator2"></span><br><span class="small" id="p1"></span>
 					</div>
 					<div class="form-group mb-3 inputBox">
 						<label for="add">Address</label><br>
 						<textarea rows="5" name="address"  style="background-color: #e6e7ee;" class="form-control1 col-lg-5" id="add"
 							autocomplete="off" aria-describedby="emailHelp"
 							onkeyup="validate3();"><%=user.getAddress() %></textarea>
-						<span class="indicator3"></span>
+						<span class="indicator3"></span><br><span class="small" id="p2"></span>
 					</div>
 					
 					<div class="form-group mb-3 inputBox">
@@ -297,16 +298,16 @@ textarea {
 							name="mno"  style="background-color: #e6e7ee;" class="form-control1 col-lg-5" id="mno" autocomplete="off"
 							aria-describedby="emailHelp" onkeyup="validate4();"
 							maxLength="10" onkeypress="return onlyNumberKey(event)" value="<%=user.getMobileno()%>">
-						<span class="indicator4"></span>
+						<span class="indicator4"></span><br><span class="small" id="p3"></span>
 					</div>
 					<div class="form-group mb-3 inputBox">
 							<label for="email">Email address</label><br><input readonly type="text"
 								style="background-color: #e6e7ee;" name="email" class="col-lg-5 form-control1" id="email" autocomplete="off"
-								aria-describedby="emailHelp" onkeyup="validate();" value="<%=user.getEmail()%>"> <span
-								class="indicator1"></span>
+								aria-describedby="emailHelp" onkeyup="validate();" value="<%=user.getEmail()%>">
 						</div>
 						<input type="hidden" name="total" value="<%=request.getParameter("gt")%>">
 						<br>
+						<div><span class="medium" id="p4"></span></div>
 					<div class="mr-10">
 						<button type="submit" name="submit"
 						class="col-lg-2 btn form-group ml-10">Buy</button>
@@ -364,7 +365,34 @@ textarea {
 $(document).ready(function () {
 	
 });
-
+function validate()
+{
+	const form = document.getElementById('form');
+	var fname = document.getElementById('fname').value;
+	var lname = document.getElementById('lname').value;
+	var add = document.getElementById('add').value;
+	var mno = document.getElementById('mno').value;
+	const pattern2 = /(7|8|9)\d{9}/
+	
+		if(fname == "" || fname == null  && lname == "" || lname == null
+				&& add == "" || add == null && mno == null || mno == "")
+		{
+			$('#p4').html('PLEASE ENTER VALID DATA!!').css('color', 'red');
+			return false;
+		}
+		else
+		{
+			if(mno.match(pattern2))
+			{
+				 return true;
+			}
+			else
+			{
+				$('#p4').html('PLEASE CHECK YOUR MOBILE NUMBER!!').css('color', 'red');
+				return false;
+			}
+		}
+}
 function onlyNumberKey(evt) {
     
     // Only ASCII charactar in that range allowed
@@ -378,14 +406,27 @@ function validate1() {
 	const fname = document.getElementById('fname').value;
 	const pattern = " ";
 
-	if (fname != pattern) {
+	if (fname != pattern) 
+	{
+		$('#p').html('First Name Is Valid').css('color', 'Green');
 		form.classList.add('valid')
 		form.classList.remove('invalid')
-	} else {
+	} 
+	else 
+	{
+		$('#p').html('First Name Is Not Valid').css('color', 'red');
 		form.classList.add('invalid')
 		form.classList.remove('valid')
 	}
-	if (fname == "") {
+	if (fname == "") 
+	{
+		$('#p').html('First Name Field Is Empty').css('color', 'red');
+		form.classList.add('invalid')
+		form.classList.remove('valid')
+	}
+	if($.isNumeric(fname))
+	{
+		$('#p').html('First Name Is Not Valid').css('color', 'red');
 		form.classList.add('invalid')
 		form.classList.remove('valid')
 	}
@@ -395,14 +436,27 @@ function validate2() {
 	const lname = document.getElementById('lname').value;
 	const pattern = "  ";
 
-	if (lname != pattern) {
+	if (lname != pattern) 
+	{
+		$('#p1').html('Last Name Is Valid').css('color', 'Green');
 		form.classList.add('valid1')
 		form.classList.remove('invalid1')
-	} else {
+	} 
+	else 
+	{
+		$('#p1').html('Last Name Is Not Valid').css('color', 'red');
 		form.classList.add('invalid1')
 		form.classList.remove('valid1')
 	}
-	if (lname == "") {
+	if (lname == "") 
+	{
+		$('#p1').html('Last Name Field Is Empty').css('color', 'red');
+		form.classList.add('invalid1')
+		form.classList.remove('valid1')
+	}
+	if($.isNumeric(lname))
+	{
+		$('#p1').html('Last Name Is Not Valid').css('color', 'red');
 		form.classList.add('invalid1')
 		form.classList.remove('valid1')
 	}
@@ -412,14 +466,21 @@ function validate3() {
 	const add = document.getElementById('add').value;
 	const pattern = " ";
 
-	if (add != pattern) {
+	if (add != pattern) 
+	{
+		$('#p2').html('Address Is Valid').css('color', 'Green');
 		form.classList.add('valid2')
 		form.classList.remove('invalid2')
-	} else {
+	} 
+	else 
+	{
+		$('#p2').html('Address Is Not Valid').css('color', 'red');
 		form.classList.add('invalid2')
 		form.classList.remove('valid2')
 	}
-	if (add == "") {
+	if (add == "") 
+	{
+		$('#p2').html('Address Field Is Empty').css('color', 'red');
 		form.classList.add('invalid2')
 		form.classList.remove('valid2')
 	}
@@ -429,37 +490,25 @@ function validate4() {
 	const mno = document.getElementById('mno').value;
 	const pattern = /(7|8|9)\d{9}/
 
-	if (mno.match(pattern) && mno.length == 10) {
+	if (mno.match(pattern) && mno.length == 10) 
+	{
+		$('#p3').html('Mobile Number Is Valid').css('color', 'Green');
 		form.classList.add('valid3')
 		form.classList.remove('invalid3')
-	} else {
+	} 
+	else
+	{
+		$('#p3').html('Mobile Number Is Not Valid').css('color', 'red');
 		form.classList.add('invalid3')
 		form.classList.remove('valid3')
 	}
-	if (mno == "") {
+	if (mno == "")
+	{
+		$('#p3').html('Mobile Number Field Is Empty').css('color', 'red');
 		form.classList.add('invalid3')
 		form.classList.remove('valid3')
 	}
 }
-
-//  	$("#exampleInputDate1").click(function(){
-//  		alert("click date...");
- 		
-//  	});
-	function validate5() {
-	const form = document.getElementById('form');
-	const date = document.getElementById('exampleInputDate1').value;
-	alert("date is:-"+date);
-	if (date == "" || date == null) {
-		form.classList.add('invalid4')
-		form.classList.remove('valid4')
-	}
-	else {
-		form.classList.remove('invalid4')
-		form.classList.add('valid4')
-	}
-}
-
 
 </script>
 </html>

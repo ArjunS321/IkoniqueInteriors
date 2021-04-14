@@ -300,7 +300,7 @@ textarea {
                 </div>
             </div>
             <br><br>
-            <form  method="post" action="InsertBookingDetails" align="center" id="form" name="form" onsubmit="return arjun()">
+            <form  method="post" action="InsertBookingDetails" align="center" id="form" name="form" onsubmit="return validate()">
             <h1>Enter Details</h1>
             <br>
             		<input type="hidden" id="visitingfees" name="visitingfees" value="<%=user.getVisitingfees() %>">
@@ -309,33 +309,33 @@ textarea {
 						<label for="fname">First Name</label><br><input type="text"
 							name="fname" style="background-color: #e6e7ee;" class="form-control1 col-lg-5" id="fname" autocomplete="off"
 							aria-describedby="emailHelp" onkeyup="validate1();"> <span
-							class="indicator1"></span>
+							class="indicator1"></span><br><span class="small validate" id="p"></span>
 					</div>
 					<div class="form-group mb-3 inputBox">
 						<label for="lname">Last Name</label><br><input type="text"
 							name="lname"  style="background-color: #e6e7ee;" class="form-control1 col-lg-5" id="lname" autocomplete="off"
 							aria-describedby="emailHelp" onkeyup="validate2();"> <span
-							class="indicator2"></span>
+							class="indicator2"></span><br><span class="small validate" id="p1"></span>
 					</div>
 					<div class="form-group mb-3 inputBox">
 						<label for="add">Address</label><br>
 						<textarea rows="5" name="address"  style="background-color: #e6e7ee;" class="form-control1 col-lg-5" id="add"
 							autocomplete="off" aria-describedby="emailHelp"
 							onkeyup="validate3();"></textarea>
-						<span class="indicator3"></span>
+						<span class="indicator3"></span><br><span class="small validate" id="p2"></span>
 					</div>
 					<div class="form-group mb-3 inputBox">
 						<label for="mobilenumber">Mobile Number</label><br><input type="text"
 							name="mno"  style="background-color: #e6e7ee;" class="form-control1 col-lg-5" id="mno" autocomplete="off"
 							aria-describedby="emailHelp" onkeyup="validate4();"
 							maxLength="10" onkeypress="return onlyNumberKey(event)">
-						<span class="indicator4"></span>
+						<span class="indicator4"></span><br><span class="small validate" id="p3"></span>
 					</div>
 					<div class="form-group mb-3 inputBox">
 							<label for="email">Email address</label><br><input type="text"
 								style="background-color: #e6e7ee;" name="email" class="col-lg-5 form-control1" id="email" autocomplete="off"
 								aria-describedby="emailHelp" onkeyup="validate6();"> <span
-								class="indicator6"></span>
+								class="indicator6"></span><br><span class="small validate" id="p4"></span>
 					</div>
 					<div class="section section-lg pt-2 ml-10">
 						<div class="container">
@@ -357,10 +357,11 @@ textarea {
 												aria-label="Date with icon left" onclick="validate5()">
 												
 										</div>
-									</div>
+									</div><span class="small" id="p5"></span>
 									<!-- End of Form -->
 									<br>
-									<button type="submit" name="submit" class="btn col-lg-4 rounded-bottom" id="pay">Pay Now</button>
+									<div><span class="medium" id="p6"></span></div>
+									<button type="submit" name="submit" class="btn mt-4 col-lg-4 rounded-bottom" id="pay">Pay Now</button>
 								</div>
 							</div>
 						</div>
@@ -443,7 +444,7 @@ function onlyNumberKey(evt) {
         return false;
     return true;
 }
-function arjun(){
+function validate(){
 	alert("submit called");
 
 	const form = document.getElementById('form');
@@ -458,21 +459,22 @@ function arjun(){
 	
 		if(email == null || email=="" && fname == "" || fname == null  && lname == "" || lname == null
 			&& add == "" || add == null && mno == null || mno == "" && date == null || date =="")
-			{
+		{
+			$('#p6').html('PLEASE ENTER VALID DATA!!').css('color', 'red');
 			return false;
-			}
+		}
 		else
-			{
+		{
 			if(email.match(pattern) && mno.match(pattern2))
-					{
-					alert("else if");
-					 return true;
-					}
+			{
+				 return true;
+			}
 			else
-				{
+			{
+				$('#p6').html('PLEASE CHECK YOUR EMAIL-ID OR MOBILE NUMBER!!').css('color', 'red');
 				return false;
 			}
-			}
+		}
 		
 }
 function validate6() {
@@ -480,14 +482,20 @@ function validate6() {
 	const email = document.getElementById('email').value;
 	const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
 
-	if (email.match(pattern)) {
+	if (email.match(pattern)) 
+	{
+		$('#p4').html('Email Is Valid').css('color', 'Green');
 		form.classList.add('valid5')
 		form.classList.remove('invalid5')
-	} else {
+	} 
+	else 
+	{
+		$('#p4').html('Email Is Not Valid').css('color', 'red');
 		form.classList.add('invalid5')
 		form.classList.remove('valid5')
 	}
 	if (email == "") {
+		$('#p4').html('Email Field Is Empty').css('color', 'red');
 		form.classList.add('invalid5')
 		form.classList.remove('valid5')
 	}
@@ -497,14 +505,27 @@ function validate1() {
 	const fname = document.getElementById('fname').value;
 	const pattern = " ";
 
-	if (fname != pattern) {
+	if (fname != pattern) 
+	{
+		$('#p').html('First Name Is Valid').css('color', 'Green');
 		form.classList.add('valid')
 		form.classList.remove('invalid')
-	} else {
+	} 
+	else 
+	{
+		$('#p').html('First Name Is Not Valid').css('color', 'red');
 		form.classList.add('invalid')
 		form.classList.remove('valid')
 	}
-	if (fname == "") {
+	if (fname == "") 
+	{
+		$('#p').html('First Name Field Is Empty').css('color', 'red');
+		form.classList.add('invalid')
+		form.classList.remove('valid')
+	}
+	if($.isNumeric(fname))
+	{
+		$('#p').html('First Name Is Not Valid').css('color', 'red');
 		form.classList.add('invalid')
 		form.classList.remove('valid')
 	}
@@ -514,14 +535,27 @@ function validate2() {
 	const lname = document.getElementById('lname').value;
 	const pattern = "  ";
 
-	if (lname != pattern) {
+	if (lname != pattern) 
+	{
+		$('#p1').html('Last Name Is Valid').css('color', 'Green');
 		form.classList.add('valid1')
 		form.classList.remove('invalid1')
-	} else {
+	} 
+	else 
+	{
+		$('#p1').html('Last Name Is Not Valid').css('color', 'red');
 		form.classList.add('invalid1')
 		form.classList.remove('valid1')
 	}
-	if (lname == "") {
+	if (lname == "") 
+	{
+		$('#p1').html('Last Name Field Is Empty').css('color', 'red');
+		form.classList.add('invalid1')
+		form.classList.remove('valid1')
+	}
+	if($.isNumeric(lname))
+	{
+		$('#p1').html('Last Name Is Not Valid').css('color', 'red');
 		form.classList.add('invalid1')
 		form.classList.remove('valid1')
 	}
@@ -531,14 +565,21 @@ function validate3() {
 	const add = document.getElementById('add').value;
 	const pattern = " ";
 
-	if (add != pattern) {
+	if (add != pattern) 
+	{
+		$('#p2').html('Address Is Valid').css('color', 'Green');
 		form.classList.add('valid2')
 		form.classList.remove('invalid2')
-	} else {
+	} 
+	else 
+	{
+		$('#p2').html('Address Is Not Valid').css('color', 'red');
 		form.classList.add('invalid2')
 		form.classList.remove('valid2')
 	}
-	if (add == "") {
+	if (add == "") 
+	{
+		$('#p2').html('Address Field Is Empty').css('color', 'red');
 		form.classList.add('invalid2')
 		form.classList.remove('valid2')
 	}
@@ -548,14 +589,21 @@ function validate4() {
 	const mno = document.getElementById('mno').value;
 	const pattern = /(7|8|9)\d{9}/
 
-	if (mno.match(pattern) && mno.length == 10) {
+	if (mno.match(pattern) && mno.length == 10) 
+	{
+		$('#p3').html('Mobile Number Is Valid').css('color', 'Green');
 		form.classList.add('valid3')
 		form.classList.remove('invalid3')
-	} else {
+	} 
+	else 
+	{
+		$('#p3').html('Mobile Number Is Not Valid').css('color', 'red');
 		form.classList.add('invalid3')
 		form.classList.remove('valid3')
 	}
-	if (mno == "") {
+	if (mno == "") 
+	{
+		$('#p3').html('Mobile Number Field Is Empty').css('color', 'red');
 		form.classList.add('invalid3')
 		form.classList.remove('valid3')
 	}
@@ -565,15 +613,20 @@ function validate4() {
 //  		alert("click date...");
  		
 //  	});
-	function validate5() {
+	function validate5() 
+	{
 	const form = document.getElementById('form');
 	const date = document.getElementById('exampleInputDate1').value;
 	
-	if (date == "" || date == null) {
+	if (date == "" || date == null) 
+	{
+		$('#p5').html('Booking Date Field Is Empty').css('color', 'red');
 		form.classList.add('invalid4')
 		form.classList.remove('valid4')
 	}
-	else {
+	else 
+	{
+		$('#p5').html('Booking Date Is Valid').css('color', 'Green');
 		form.classList.remove('invalid4')
 		form.classList.add('valid4')
 	}

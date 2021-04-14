@@ -373,13 +373,13 @@ $(document).ready(function(){
   						}
   						else
   						{
-  							alert("if ...if....else");
+//   							alert("if ...if....else");
   							$('#modal').modal('show');
   		             		$('#modal-default').modal('hide');
   		 					return true;
   						}
   					}
-  					alert("if....main");
+//   					alert("if....main");
   	 				$('#modal').modal('hide');
   	             	$('#modal-default').modal('show');
   	 				return false;

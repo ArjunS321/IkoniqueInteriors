@@ -98,20 +98,19 @@
 								type="password" name="cpass" class="form-control" id="cpass"
 								onkeyup="validate1();"  maxLength="8"> <span class="indicator2"></span>
 							<span class="small" id="p"></span>
+							<br>
 							<h6 class="small">
-								* Password Must Contain 8-20 Character<br>* Password must
+								* Password Must Contain 8 Character<br>* Password must
 								Contain Atleast one: <br>Special Character(@#$&!)<br>Number[0-9]<br>An
 								Uppercase Charater[A-Z]<br>A Lowercase Character[a-z]
 							</h6>
 						</div>
-
+						<div class="mb-3"><span style="margin-left:26rem;" class="medium" id="p2"></span></div>
 						<div align="center">
 
 							<button type="submit" name="submit"
 								class="btn btn-primary form-group ml-10">Submit</button>
 						</div>
-
-
 					</form>
 				</section>
 
@@ -190,18 +189,24 @@
 				const newpass= document.getElementById('newpass').value;
 				const pattern=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
 				
-				if(newpass.match(pattern)){
+				if(newpass.match(pattern))
+				{
+					$('#p1').html('New Password Is Valid').css('color', 'Green');
 					form.classList.add('valid')
 					form.classList.remove('invalid')
-				}else{
+				}
+				else
+				{
+					$('#p1').html('New Password Is Not Valid').css('color', 'red');
 					form.classList.add('invalid')
 					form.classList.remove('valid')
 				}
 				if(newpass == "")
-					{
-					form.classList.remove('invalid')
+				{
+					$('#p1').html('New Password Field Is Empty').css('color', 'red');
+					form.classList.add('invalid')
 					form.classList.remove('valid')
-					}
+				}
 			}
 			
 			function validate1()
@@ -209,21 +214,32 @@
 				const form= document.getElementById('form');
 				const cpass= document.getElementById('cpass').value;
 				const newpass= document.getElementById('newpass').value;
-				const pattern1=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
 				
-				if(cpass.match(newpass))
+				if(cpass.match(newpass) && newpass.match(cpass))
 				{
+					$('#p').html('Confirm Password Is Match').css('color', 'Green');
 					form.classList.add('valid1')
 					form.classList.remove('invalid1')
 				}
 				else
 				{
-					form.classList.add('invalid1')
-					form.classList.remove('valid1')
+					if(cpass.match(newpass) && newpass.match(cpass))
+					{
+						$('#p').html('Confirm Password Is Match').css('color', 'Green');
+						form.classList.add('valid1')
+						form.classList.remove('invalid1')
+					}
+					else
+					{
+						$('#p').html('Confirm Password Is Not Match').css('color', 'red');
+						form.classList.add('invalid1')
+						form.classList.remove('valid1')
+					}
 				}
 				if(cpass == "")
 				{
-					form.classList.remove('invalid1')
+					$('#p').html('Confirm Password Field Is Empty').css('color', 'red');
+					form.classList.add('invalid1')
 					form.classList.remove('valid1')
 				}
 			}
@@ -234,28 +250,26 @@
 				const newpass= document.getElementById('newpass').value;
 				const cpass= document.getElementById('cpass').value;
 				
-				
 				const pattern1=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
 				
-				if(newpass.match(pattern1) && cpass.match(pattern1) && cpass.match(newpass))
-					{
-						
-// 						window.location="/customer.jsp";
+				if(newpass.match(pattern1) && cpass.match(newpass))
+				{
 						return true;
-					}
-				else{
+				}
+				else
+				{
+					$('#p2').html('PASSWORD IS INVALID!!').css('color', 'red');
 					return false;
-// 					window.location="/triallogin.jsp";
 				}
 			}
 			
 
-$('#newpass, #cpass').on('keyup', function () {
-  if ($('#newpass').val() == $('#cpass').val()) {
-    $('#p').html('Password Matched').css('color', 'green');
-  } else 
-    $('#p').html('Confirm Password Must Match With New Password').css('color', 'red');
-});
+// $('#newpass, #cpass').on('keyup', function () {
+//   if ($('#newpass').val() == $('#cpass').val()) {
+//     $('#p').html('Password Matched').css('color', 'green');
+//   } else 
+//     $('#p').html('Confirm Password Must Match With New Password').css('color', 'red');
+// });
 		
 		</script>
 </body>

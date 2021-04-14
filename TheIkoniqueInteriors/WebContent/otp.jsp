@@ -82,7 +82,7 @@
  								class="indicator7"></span> <span class="small" id="p"></span>
  								<input style="visibility:hidden;" value="<%=otpstring %>" type="text" name="otp1"  id="otp1">
 						</div>
-						<div><span style="margin-left:25rem;" class="medium" id="p"></span></div>
+						<div class="mb-2"><span style="margin-left:28rem;" class="medium" id="p1"></span></div>
 						<div align="center">
 							<button type="submit" name="submit"
 								class="btn btn-primary form-group ml-10">Submit</button>
@@ -135,23 +135,21 @@ function validate() {
 		$('#p').html('OTP Field Is Empty').css('color', 'red');
 		form.classList.add('invalid')
 		form.classList.remove('valid')
-	}else
-	{
-		$('#p').html('OTP Field Is Not Empty').css('color', 'Green');
-		form.classList.remove('invalid')
-		form.classList.add('valid')
-	}
-	if(otp.match(pattern))
-	{
-		$('#p').html('OTP Field Is Valid').css('color', 'Green');
-		form.classList.remove('invalid')
-		form.classList.add('valid')
 	}
 	else
-	{
-		$('#p').html('OTP Field Is Not Valid').css('color', 'red');
-		form.classList.add('invalid')
-		form.classList.remove('valid')
+	{ 
+		if(otp.match(pattern))
+		{
+			$('#p').html('OTP Field Is Valid').css('color', 'Green');
+			form.classList.remove('invalid')
+			form.classList.add('valid')
+		}
+		else
+		{
+			$('#p').html('OTP Field Is Not Valid').css('color', 'red');
+			form.classList.add('invalid')
+			form.classList.remove('valid')
+		}
 	}
 }
 
@@ -166,10 +164,10 @@ function login(){
 	}
 	else
 	{
-		$('#p1').html('OTP Is Wrong').css('color', 'red');
-		return false;
 		form.classList.add('invalid')
 		form.classList.remove('valid')
+		$('#p1').html('OTP IS INVALID!!').css('color', 'red');
+		return false;
 	}
 	
 }
