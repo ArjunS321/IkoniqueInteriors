@@ -1835,7 +1835,8 @@ public class userDaoImpl implements userDao {
 
 	@Override
 	public int saveOrderDetails(Connection connection, Order order) {
-		int i = 0, insertedOrderId = 0;
+		int i = 0;
+		int insertedOrderId = 0;
 		String insertQuery = "insert into order (i_customer_id,d_amount,d_order_date,c_firstname,c_lastname,c_address,c_contactno,c_email) values (?,?,?,?,?,?,?,?)";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -1844,10 +1845,10 @@ public class userDaoImpl implements userDao {
 			e.printStackTrace();
 		}
 
-		try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS)) {
+		try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
 			preparedStatement.setInt(1, order.getUserid());
-			preparedStatement.setDouble(2, order.getAmount());
-			preparedStatement.setDate(3, (Date) order.getOrderdate());
+			preparedStatement.setDouble(1, order.getAmount());
+			preparedStatement.setDate(3, (Date)order.getOrderdate());
 			preparedStatement.setString(4, order.getFirstname());
 			preparedStatement.setString(5, order.getLastname());
 			preparedStatement.setString(6, order.getAddress());
@@ -1855,11 +1856,13 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setString(8, order.getEmail());
 			
 			i = preparedStatement.executeUpdate();
+//			System.out.println("inside prepare....");
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
-
+			
 			while (resultSet.next()) 
 			{
 				insertedOrderId = resultSet.getInt(1);
+//				System.out.println("order id:-"+insertedOrderId);
 			}
 		} 
 		catch (SQLException e) 

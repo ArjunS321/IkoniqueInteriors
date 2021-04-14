@@ -55,6 +55,15 @@ public class InsertOrderDetails extends HttpServlet {
 	  	String address=request.getParameter("address");
 	  	String email=request.getParameter("email");
 	  	
+	  	System.out.println(fname);
+	  	System.out.println(lname);
+	  	System.out.println(amount);
+	  	System.out.println(cno);
+	  	System.out.println(address);
+	  	System.out.println(email);
+	  	System.out.println(user.getUser_id());
+	  	System.out.println(sqldate);
+	  	
 		Order order=new Order();
 		order.setFirstname(fname);
 		order.setLastname(lname);
