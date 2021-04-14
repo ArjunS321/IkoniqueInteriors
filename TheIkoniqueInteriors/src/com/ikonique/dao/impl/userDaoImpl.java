@@ -401,7 +401,7 @@ public class userDaoImpl implements userDao {
 	@Override
 	public List<User> selectDetails(Connection connection) {
 		// TODO Auto-generated method stub
-		String selectQuery="select * from user where i_role_id=1";
+		String selectQuery="select * from user where i_role_id=1 ";
 		List<User> userList = new ArrayList<User>();
 		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery);
 				
@@ -417,9 +417,9 @@ public class userDaoImpl implements userDao {
 				String email = resultSet.getString("c_email");
 				String password = resultSet.getString("c_password");
 				String gender = resultSet.getString("c_gender");
-				//Integer role = resultSet.getInt("i_role_id");
+				Integer role = resultSet.getInt("i_role_id");
 				Integer areaid = resultSet.getInt("i_area_id");
-				//Integer status = resultSet.getInt("i_status");
+				Integer status = resultSet.getInt("i_status");
 				//String visitingfess = resultSet.getString("i_visiting_fess");
 				
 				User user = new User();
@@ -440,6 +440,8 @@ public class userDaoImpl implements userDao {
 				user.setPassword(password);
 				user.setGender(gender);
 				user.setArea_id(areaid);
+				user.setStatus(status);
+				user.setRole_id(role);
 				//user.setVisitingfees(visitingfess);	
 				userList.add(user);
 			}
@@ -1080,7 +1082,7 @@ public class userDaoImpl implements userDao {
 
 	@Override
 	public int modifyOfferDetails(Offer offer, Connection connection) {
-		System.out.println("hy2...");
+		
 		String updateQuery = "update offer set c_offer_name=?,d_discount=?,i_is_valid=? where i_offer_id=?";
 		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
 			preparedStatement.setString(1, offer.getOffername());
@@ -1573,7 +1575,7 @@ public class userDaoImpl implements userDao {
 	@Override
 	public int saveBookingDetails(Connection connection, Booking booking) {
 		int i = 0, insertedBookingId = 0;
-		String insertQuery = "insert into booking (i_designer_id,i_fees,i_user_id,d_date) values (?,?,?,?)";
+		String insertQuery = "insert into booking (i_designer_id,i_fees,i_user_id,d_date,c_booking_status) values (?,?,?,?,?)";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -1587,7 +1589,7 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setInt(2, booking.getVfees());
 			preparedStatement.setInt(3, booking.getUserid());
 			preparedStatement.setDate(4, booking.getBookingdate());
-	
+			preparedStatement.setString(5, "success");
 			
 			i = preparedStatement.executeUpdate();
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -1731,8 +1733,8 @@ public class userDaoImpl implements userDao {
 				booking.setDesignerid(resultSet.getInt("i_designer_id"));
 				booking.setBookingdate(resultSet.getDate("d_date"));
 				booking.setVfees(resultSet.getInt("i_fees"));
-				booking.setPaymentstatus(resultSet.getInt("c_payment_status"));
-				booking.setBookingstatus(resultSet.getInt("c_booking_status"));
+				booking.setPaymentstatus(resultSet.getString("c_payment_status"));
+				booking.setBookingstatus(resultSet.getString("c_booking_status"));
 				booking.setUserid(resultSet.getInt("i_user_id"));
 				
 				bookingList.add(booking);
@@ -1871,6 +1873,24 @@ public class userDaoImpl implements userDao {
 			e.printStackTrace();
 		}
 		return insertedOrderId;
+
+	}
+
+	@Override
+	public int modifyBookingPaymentStatus(int bookid, Connection connection) {
+		String updateQuery = "update booking set c_payment_status=? where i_booking_id=?";
+		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+			preparedStatement.setString(1, "success");
+			preparedStatement.setDouble(2,bookid);
+			
+			return preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 0;
 
 	}
 

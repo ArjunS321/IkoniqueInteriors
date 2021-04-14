@@ -1,3 +1,4 @@
+<%@page import="com.ikonique.userService.impl.userServiceImpl"%>
 <%@page import="com.ikonique.bean.User"%>
 <%@page import="utils.PaytmConstants"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -50,20 +51,26 @@ try{
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 <%@ page session="false" %>
 </head>
+<%userServiceImpl us=new userServiceImpl(); %>
 <body>
 <p hidden>
 <%= outputHTML %>
   <% String[] sArr= outputHTML.split(","); %>  
-<%--  <% for( String s : sArr){ %>  --%>
-<%--  <p> <%= s %></p> --%>
-<%--  <%} %> --%>
+ <%--  <% for( String s : sArr){ %>  
+ <p> <%= s %></p>
+  <%} %>  --%>
  <p hidden><%= sArr[9] %></p> 
+  <% String[] sArr2= sArr[5].split("_"); %> 
   <% String[] sArr1= sArr[9].split("="); %> 
  <p hidden> <%= sArr1[1] %> </p>
-
+  <p hidden > <%= sArr2[1] %> </p> 
+<% int bookid=Integer.parseInt(sArr2[1]); %>
 </p>
  <%if(sArr1[1].equals("TXN_SUCCESS")){ %>
+ <%int updatecount=us.updatePaymentStatus(bookid); %>
+ <p><%=updatecount %></p>
 <div class="modal-dialog modal-dialog-centered" role="document">
+	
                         <div class="modal-content bg-primary">
                             <div class="modal-header">
                                 <p class="modal-title" id="modal-title-notification">Ikonique Interiors</p>

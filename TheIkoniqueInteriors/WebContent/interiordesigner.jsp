@@ -1,3 +1,4 @@
+<%@page import="com.ikonique.bean.Booking"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -20,6 +21,8 @@
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
+<jsp:include page="/SelectBookingDetails"/>
+<%List<Booking> bookinglist =(List)request.getAttribute("bookinglist"); %>
 
 <body class="animsition" style="background-color: #e6e7ee;">
 	<div class="page-wrapper" style="background-color: #e6e7ee;">
@@ -44,7 +47,11 @@
                                                 <i class="zmdi zmdi-account-o"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>100</h2>
+                                            <%int totalbooking=0; %>
+                                            <%for(Booking booking: bookinglist){ %>
+                                            	<%totalbooking=totalbooking+1; %>
+                                            <%} %>
+                                                <h2><%=totalbooking %></h2>
                                                 <span>Booking Members</span>
                                             </div>
                                         </div>
@@ -98,8 +105,18 @@
                                                 <i>&#x20B9;</i>
                                             </div>
                                             <div class="text">
-                                                <h2>&#x20B9;1,00,000</h2>
+                                            <%int earnings=0; %>
+                                            <%int vfees=0; %>
+                                            <%for(Booking booking:bookinglist) {%>
+                                            	<%if(booking.getPaymentstatus()=="success") {%>
+                                            		<%earnings=earnings+1; %>
+                                            		<input type="text" value="<%=booking.getVfees() %>" id="vfees">	
+                                            	<%} %>
+                                            <%} %>
+                                            <input type="text" value="<%=earnings %>" id="earnings">
+                                                <h2>&#x20B9;<%=earnings %></h2>
                                                 <span>total earnings</span>
+                                                
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -293,4 +310,17 @@
 	<!-- Neumorphism JS -->
 	<script src="neuro/assets/js/neumorphism.js"></script>
 	<%@include file="commonjs.jsp"%>
+	
+<script>
+$(document).ready(function(){
+	const a1 = document.getElementById('vfees').value;
+	const  a2= document.getElementById('earnings').value;
+	
+	const ans=a1*a2;
+	alert("Answer::"+ans);
+});
+
+</script>	
+	
+	
 </html>

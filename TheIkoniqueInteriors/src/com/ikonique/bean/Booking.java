@@ -7,8 +7,8 @@ public class Booking {
 	private int designerid;
 	private Date bookingdate;
 	private int vfees;
-	private int paymentstatus;
-	private int bookingstatus;
+	private String paymentstatus;
+	private String bookingstatus;
 	private int userid;
 	public int getBookingid() {
 		return bookingid;
@@ -34,23 +34,24 @@ public class Booking {
 	public void setVfees(int vfees) {
 		this.vfees = vfees;
 	}
-	public int getPaymentstatus() {
-		return paymentstatus;
-	}
-	public void setPaymentstatus(int paymentstatus) {
-		this.paymentstatus = paymentstatus;
-	}
-	public int getBookingstatus() {
-		return bookingstatus;
-	}
-	public void setBookingstatus(int bookingstatus) {
-		this.bookingstatus = bookingstatus;
-	}
+	
 	public int getUserid() {
 		return userid;
 	}
 	public void setUserid(int userid) {
 		this.userid = userid;
+	}
+	public String getBookingstatus() {
+		return bookingstatus;
+	}
+	public void setBookingstatus(String bookingstatus) {
+		this.bookingstatus = bookingstatus;
+	}
+	public String getPaymentstatus() {
+		return paymentstatus;
+	}
+	public void setPaymentstatus(String paymentstatus) {
+		this.paymentstatus = paymentstatus;
 	}
 	
 }
