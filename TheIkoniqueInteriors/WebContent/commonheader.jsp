@@ -265,6 +265,7 @@ if (null != httpSession) {
 			</div>
 		</div>
 	</header>
+
 	<%
 		} else {
 	%>
