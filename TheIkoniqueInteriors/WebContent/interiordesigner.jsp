@@ -20,6 +20,12 @@
 <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<% HttpSession httpSession1 = request.getSession(false);
+	User user = null;   
+	if(null!=httpSession1){
+	   user = (User)httpSession1.getAttribute("loginBean");
+   }
+%>
 </head>
 <jsp:include page="/SelectBookingDetails"/>
 <%List<Booking> bookinglist =(List)request.getAttribute("bookinglist"); %>
@@ -42,14 +48,16 @@
                             <div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c1">
                                     <div class="overview__inner">
-                                        <div class="overview-box clearfix">
+                                        <div class="overview-box ">
                                             <div class="icon">
                                                 <i class="zmdi zmdi-account-o"></i>
                                             </div>
                                             <div class="text">
                                             <%int totalbooking=0; %>
                                             <%for(Booking booking: bookinglist){ %>
+                                            <%if(user.getUser_id()==booking.getDesignerid()){ %>
                                             	<%totalbooking=totalbooking+1; %>
+                                            <%} %>
                                             <%} %>
                                                 <h2><%=totalbooking %></h2>
                                                 <span>Booking Members</span>
@@ -64,7 +72,7 @@
                             <div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c2">
                                     <div class="overview__inner">
-                                        <div class="overview-box clearfix">
+                                        <div class="overview-box ">
                                             <div class="icon">
                                                 <i class="zmdi zmdi-shopping-cart"></i>
                                             </div>
@@ -82,13 +90,13 @@
                             <div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c3">
                                     <div class="overview__inner">
-                                        <div class="overview-box clearfix">
+                                        <div class="overview-box ">
                                             <div class="icon">
                                                 <i class="zmdi zmdi-calendar-note"></i>
                                             </div>
                                             <div class="text">
                                                 <h2>200</h2>
-                                                <span>Number Of Project In This Week</span>
+                                                <span>Number Of Project </span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -100,21 +108,23 @@
                             <div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c4">
                                     <div class="overview__inner">
-                                        <div class="overview-box clearfix">
+                                        <div class="overview-box ">
                                             <div class="icon">
-                                                <i>&#x20B9;</i>
+                                                <i class="fas fa-inr"></i>
                                             </div>
                                             <div class="text">
-                                            <%int earnings=0; %>
-                                            <%int vfees=0; %>
+                                            <%int earnings1=0; %>
                                             <%for(Booking booking:bookinglist) {%>
-                                            	<%if(booking.getPaymentstatus()=="success") {%>
-                                            		<%earnings=earnings+1; %>
-                                            		<input type="text" value="<%=booking.getVfees() %>" id="vfees">	
+                                            	<%if(user.getUser_id()==booking.getDesignerid()){ %>
+                                            		<%if(booking.getPaymentstatus().equalsIgnoreCase("success")) {%>
+                                            			<%earnings1=earnings1+1; %>                                         			
+                                            		<%} %>
                                             	<%} %>
                                             <%} %>
-                                            <input type="text" value="<%=earnings %>" id="earnings">
-                                                <h2>&#x20B9;<%=earnings %></h2>
+                                            
+                                            <input type="hidden" value="<%=user.getVisitingfees() %>" id="vfees">
+                                            <input type="hidden" value="<%=earnings1 %>" id="earnings">
+                                                <h2 id="a1"></h2>
                                                 <span>total earnings</span>
                                                 
                                             </div>
@@ -313,13 +323,18 @@
 	
 <script>
 $(document).ready(function(){
+	alert("Alert");
+	
+	
+});
+function earn(){
 	const a1 = document.getElementById('vfees').value;
 	const  a2= document.getElementById('earnings').value;
 	
 	const ans=a1*a2;
-	alert("Answer::"+ans);
-});
-
+	return ans;
+}
+document.getElementById("a1").innerHTML = earn();
 </script>	
 	
 	
