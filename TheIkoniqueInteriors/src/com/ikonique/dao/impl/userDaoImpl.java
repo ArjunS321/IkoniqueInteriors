@@ -1847,9 +1847,9 @@ public class userDaoImpl implements userDao {
 			e.printStackTrace();
 		}
 
-		try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+		try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS)) {
 			preparedStatement.setInt(1, order.getUserid());
-			preparedStatement.setDouble(1, order.getAmount());
+			preparedStatement.setDouble(2, order.getAmount());
 			preparedStatement.setDate(3, (Date)order.getOrderdate());
 			preparedStatement.setString(4, order.getFirstname());
 			preparedStatement.setString(5, order.getLastname());
