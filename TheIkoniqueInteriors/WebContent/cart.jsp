@@ -62,6 +62,7 @@ $quantity-btn-color: #95d7fc;
  				<%for(Cart cart:cartList){ %>
  					<%count=count+1; %>
  				<%} %>
+ 				<%int maximumid=0; %>
 				<%for(Product product : productList){ %>
 					<%if(cartint.contains(product.getProduct_id())){ %>
 					 
@@ -113,6 +114,7 @@ $quantity-btn-color: #95d7fc;
 										</button>
 										<input style="width:50px; background-color:#e6e7ee;" type="text" id="myNumber"
 											class="form-control input-number" value="1" />
+											<input type="hidden" name="quantity1" id="quantity" value="">
 										<button data-id="<%=product.getProduct_price() %>" id="up" class="btn plus">
 											<i class="fas fa-plus"></i>
 										</button>
@@ -125,12 +127,16 @@ $quantity-btn-color: #95d7fc;
 								</div>
 							</div>
 						</div>
-						product+proid()
-					if(request.getparameter("product"+id)!=null)
+						
 						<input id="count"  type="hidden" value="<%=count %>">
+						
+						<input type="hidden" name="product<%=product.getProduct_id() %>"  value="<%=product.getProduct_id() %>">
+						<%if(maximumid < product.getProduct_id()) {%>
+							<%maximumid =product.getProduct_id(); %>
 						<%} %>
 						<%} %>
-							
+						<%} %>
+							<br><input type="hidden" value="<%=maximumid %>">
 					</div>
 					<!-- <hr class="my-5" style="background-color: lightgrey; margin-top:10px !important;">
 					MRP
@@ -203,6 +209,9 @@ $quantity-btn-color: #95d7fc;
 							  qunt = qunt - 1;
 						  }
 						  $(this).parent().find('#myNumber').val(qunt);
+						  $(this).parent().find('#quantity').name = "quantity"+qunt;
+						  $(this).parent().find('#quantity').val(qunt);
+						 
 						  if (document.getElementById("myNumber").value >= parseInt('10')) {
 						        document.getElementById("myNumber").value = '10';
 						    }
