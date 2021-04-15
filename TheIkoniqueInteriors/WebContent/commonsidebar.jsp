@@ -7,6 +7,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+</style>
 <%@include file="FontFaces.jsp"%>
 <%@include file="commoncss.jsp"%>
 <% int temp = '0'; %>
@@ -42,13 +44,10 @@
 	<div class="menu-sidebar__content js-scrollbar1">
 		<nav class="navbar-sidebar">
 			<ul class="list-unstyled navbar__list">
-				<li class="active has-sub"><a href="customer.jsp"> <i
+				<li><a href="customer.jsp"> <i
 						class="fas fa-home"></i>Home
 				</a></li> 
-				
-				
-				
-				<li class="has-sub"><a class="js-arrow" href="#"> <i
+				<li><a class="js-arrow" href="#"> <i
 						class="fas  fa-caret-down"></i>Categories
 				</a>
 				<%for(Category category:categoryList){ %>
@@ -97,7 +96,7 @@
 	<div class="menu-sidebar__content js-scrollbar1">
 		<nav class="navbar-sidebar">
 			<ul class="list-unstyled navbar__list">
-				<li class="active has-sub"><a href="customer.jsp"> <i
+				<li><a href="customer.jsp"> <i
 						class="fas fa-home"></i>Home
 				</a> </li>
 				<li><a href="visualizer.jsp"> <i class="fas fa-bullseye"></i>Visualizer
@@ -133,7 +132,7 @@
 					</li>
 					 <li><a href="visualizer.jsp"> <i class="fas fa-bullseye"></i>Visualizer
 					</a></li>		
-				<li class="has-sub"><a class="js-arrow" href="#"> <i
+				<li><a class="js-arrow" href="#"> <i
 							class="fas  fa-caret-down"></i>Manage
 				</a>
 					<ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -151,7 +150,7 @@
 				</li>
 				<li><a href="#"> <i class="fas fa-bar-chart-o"></i>Chart
 				</a></li>
-				<li class="has-sub"><a class="js-arrow" href="#"> <i
+				<li><a class="js-arrow" href="#"> <i
 							class="fas  fa-caret-down"></i>Manage Tables
 				</a>
 					<ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -194,10 +193,10 @@
 	<div class="menu-sidebar__content js-scrollbar1">
 		<nav class="navbar-sidebar">
 			<ul class="list-unstyled navbar__list">
-				<li class="active has-sub"><a class="js-arrow" href="#"> <i
+				<li><a class="js-arrow" href="#"> <i
 						class="fas fa-home"></i>Home
 				</a></li>
-				<li class="has-sub"><a class="js-arrow" href="#"> <i
+				<li><a class="js-arrow" href="#"> <i
 						class="fas  fa-caret-down"></i>Categories
 				</a>
 				<%for(Category category:categoryList){ %>
