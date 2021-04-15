@@ -55,9 +55,11 @@
                                             <div class="text">
                                             <%int totalbooking=0; %>
                                             <%for(Booking booking: bookinglist){ %>
-                                            <%if(user.getUser_id()==booking.getDesignerid()){ %>
-                                            	<%totalbooking=totalbooking+1; %>
-                                            <%} %>
+                                            	<%if(user.getUser_id()==booking.getDesignerid()){ %>
+                                           			 <%if(booking.getPaymentstatus().equalsIgnoreCase("success")) {%>
+                                            			<%totalbooking=totalbooking+1; %>
+                                          	 		<%} %>
+                                            	<%} %>
                                             <%} %>
                                                 <h2><%=totalbooking %></h2>
                                                 <span>Booking Members</span>
@@ -323,7 +325,7 @@
 	
 <script>
 $(document).ready(function(){
-	alert("Alert");
+// 	alert("Alert");
 	
 	
 });
