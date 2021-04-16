@@ -36,6 +36,13 @@
             margin-top: 100px;
             margin-left: 300px;
         }
+        .demo-2 
+        {
+  			overflow: hidden;
+ 			white-space: nowrap;
+  			text-overflow: ellipsis;
+  			max-width: 150px;
+		}
     </style>
     
 </head>
@@ -85,8 +92,8 @@
             <tbody>
                 <tr>
                     <td><%=product.getProduct_id() %></td>
-                    <td> <%=product.getProduct_name() %></td>
-                    <td><%=product.getProduct_price() %> $</td>
+                    <td class="demo-2" data-toggle="tooltip" data-placement="bottom" title="<%=product.getProduct_name() %>"><%=product.getProduct_name() %></td>
+                    <td>&#x20B9;<%=product.getProduct_price() %></td>
                     
                     <% String s="No Offer"; %>
                     <% for(Offer offer : offerList){%>
@@ -105,7 +112,7 @@
                      <td><img height="50px" width="50px" src="data:image/jpg;base64,<%=product.getProductpicString() %>"></td>
                      <td><%=product.getProduct_quantity() %></td>
                      <td><%=product.getProduct_weight() %></td>
-                     <td><%=product.getProduct_desc()%></td>
+                     <td class="demo-2" data-toggle="tooltip" data-placement="bottom" title="<%=product.getProduct_desc()%>"><%=product.getProduct_desc()%></td>
                      <td><%=product.getStatus() %></td>
                      
                      <%for (Category category : categoryList1) {%>

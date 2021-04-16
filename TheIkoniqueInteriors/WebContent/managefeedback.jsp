@@ -31,6 +31,13 @@
             margin-top: 100px;
             margin-left: 300px;
         }
+        .demo-2 
+        {
+  			overflow: hidden;
+ 			white-space: nowrap;
+  			text-overflow: ellipsis;
+  			max-width: 150px;
+		}
     </style>
    <%@include file="FontFaces.jsp"%>
    <%@include file="commoncss.jsp"%>
@@ -74,7 +81,7 @@
                     		<td><a style="color:black;" href="SelectFeedbackLand?feedbackid=<%=feedback.getFeedbackid()%>"><%=product.getProduct_name() %></a></td>
                     	<%} %>
                     <%} %>
-                   	<td><a style="color:black;" href="SelectFeedbackLand?feedbackid=<%=feedback.getFeedbackid()%>"><%=feedback.getFeedbackdesc() %></a></td>
+                   	<td class="demo-2" data-toggle="tooltip" data-placement="bottom" title="<%=feedback.getFeedbackdesc() %>"><a style="color:black;" href="SelectFeedbackLand?feedbackid=<%=feedback.getFeedbackid()%>"><%=feedback.getFeedbackdesc() %></a></td>
                    	<td><a style="color:black;" href="SelectFeedbackLand?feedbackid=<%=feedback.getFeedbackid()%>"><%=feedback.getFeedbackdate() %></a></td>
                    	
                 </tr>
