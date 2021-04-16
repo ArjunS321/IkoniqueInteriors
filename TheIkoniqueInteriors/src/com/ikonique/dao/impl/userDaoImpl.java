@@ -473,7 +473,7 @@ public class userDaoImpl implements userDao {
 				String gender = resultSet.getString("c_gender");
 				//Integer role = resultSet.getInt("i_role_id");
 				Integer areaid = resultSet.getInt("i_area_id");
-				//Integer status = resultSet.getInt("i_status");
+				Integer status = resultSet.getInt("i_status");
 				String visitingfess = resultSet.getString("i_visiting_fess");
 				String designation = resultSet.getString("c_designation");
 				String aboutme = resultSet.getString("c_about_description");
@@ -497,6 +497,7 @@ public class userDaoImpl implements userDao {
 				user.setPassword(password);
 				user.setGender(gender);
 				user.setArea_id(areaid);
+				user.setStatus(status);
 				user.setVisitingfees(visitingfess);	
 				user.setDesignation(designation);	
 				user.setAboutme(aboutme);	

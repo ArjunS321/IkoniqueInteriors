@@ -27,7 +27,7 @@
                     <div class="col-12 col-lg-8 text-center">
                         <h1 class="display-2 mb-4">We are Ikonique</h1>
                         <p class="lead mb-5">Ikonique is an independent branding & experience design company working at the intersection of culture, design, and technology. </p>
-                        <a class="btn btn-primary" href="./contact.html"><span class="fas fa-book-reader mr-2"></span>Our Product</a></div>
+                    </div>
                 </div>
             </div>        
         </div>
@@ -108,7 +108,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" target="_blank" aria-label="slack social link" class="icon icon-xs icon-slack mr-3">
+                                        <a href="" target="_blank" aria-label="slack social link" class="icon icon-xs icon-slack mr-3">
                                             <span class="fab fa-instagram"></span>
                                         </a>
                                     </li>
@@ -128,17 +128,17 @@
                                 <span class="h6 font-weight-normal text-gray mb-3">Web Designer</span>
                                 <ul class="list-unstyled d-flex justify-content-center my-3">
                                     <li>
-                                        <a href="#" target="_blank" aria-label="facebook social link" class="icon icon-xs icon-facebook mr-3">
+                                        <a href="https://www.facebook.com/suthar.meet.52/" target="_blank" aria-label="facebook social link" class="icon icon-xs icon-facebook mr-3">
                                             <span class="fab fa-facebook-f"></span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" target="_blank" aria-label="twitter social link" class="icon icon-xs icon-twitter mr-3">
+                                        <a href="https://twitter.com/meetsuthar31?" target="_blank" aria-label="twitter social link" class="icon icon-xs icon-twitter mr-3">
                                             <span class="fab fa-twitter"></span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" target="_blank" aria-label="slack social link" class="icon icon-xs icon-slack mr-3">
+                                        <a href="https://instagram.com/meet_suthar_98?igshid=1866cp7e8v5wd" target="_blank" aria-label="slack social link" class="icon icon-xs icon-slack mr-3">
                                             <span class="fab fa-instagram"></span>
                                         </a>
                                     </li>

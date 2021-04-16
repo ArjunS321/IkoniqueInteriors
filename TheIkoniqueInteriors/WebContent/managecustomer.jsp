@@ -31,6 +31,8 @@
     </style>
    <%@include file="FontFaces.jsp"%>
    <%@include file="commoncss.jsp"%>
+ <jsp:include page="/SelectUserDetails"/>
+<%List<User> userList =(List)request.getAttribute("userList"); %>
 </head>
 <body class="mt32">
 <%@include file="commonsidebar.jsp"%>
@@ -47,22 +49,27 @@
                     <th>image<i class="fa fa-fw fa-sort" onclick="sortTable(0)"></i></th>
                     <th>Customer Name<i class="fa fa-fw fa-sort" onclick="sortTable(1)"></i></th>
                     <th>Contact <i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
-                    <th>email<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
-                    <th>Gender<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
-                    <th>Status<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
+                    <th>email<i class="fa fa-fw fa-sort" onclick="sortTable(3)"></i></th>
+                    <th>Gender<i class="fa fa-fw fa-sort" onclick="sortTable(4)"></i></th>
+                    <th>Status<i class="fa fa-fw fa-sort" onclick="sortTable(5)"></i></th>
                 </tr>
             </thead>
+            <%for(User user : userList){ %>
             <tbody>
                 <tr>
-                    <td><a href="customerlandpage.jsp"><img src="bg-img/1.jpg" class="ml-5" style="border-radius: 1000px; height: 50px; width: 50px;"></a></td>
-                    <td><a style="color:black;" href="customerlandpage.jsp">abcd</a></td>
-                    <td><a style="color:black;" href="customerlandpage.jsp">89989889898</a></td>
-                   	<td><a style="color:black;" href="customerlandpage.jsp">abc@gmail.com</a></td>
-                   	<td><a style="color:black;" href="customerlandpage.jsp">Male</a></td>
-                   	<td><a style="color:black;" href="customerlandpage.jsp">1</a></td>
-                   	
+                	<%if(user.getUserProfilepicString()!=null){ %>
+                	<td><img style="border-radius: 1000px; height: 50px; width: 50px;" src="data:image/jpg;base64,<%=user.getUserProfilepicString()%>"></td>
+                	<%}else{ %>
+                	<td><img src="bg-img/Blank-Photo.png" style="border-radius: 1000px; height: 50px; width: 50px;"></td>
+                	<%} %>
+                    <td><%=user.getFirstname() %> <%=user.getLastname() %></td>
+                    <td><%=user.getMobileno() %></td>
+                   	<td><%=user.getEmail() %></td>
+                   	<td><%=user.getGender() %></td>
+                   	<td><%=user.getStatus() %></td>
                 </tr>
                 </tbody>
+                <%} %>
         </table>
     </div>
 	<div class="modal fade" id="modal-default" tabindex="-1" role="dialog"

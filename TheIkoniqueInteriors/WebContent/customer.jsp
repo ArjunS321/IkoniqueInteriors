@@ -39,26 +39,29 @@
 					<div class="carousel-inner rounded">
 						<div class="carousel-item active">
 							<img class="d-block w-150 h-50"
-								src="assets/img/slideshow image.jpg" alt="First slide">
+								src="assets/img/slideshow1.jpg" alt="First slide">
 						</div>
 						<div class="carousel-item">
 							<img class="d-block w-150 h-50"
-								src="assets/img/slideshow image.jpg" alt="Second slide">
+								src="assets/img/slideshow2.jpg" alt="Second slide">
 						</div>
 						<div class="carousel-item">
 							<img class="d-block w-150 h-50"
-								src="assets/img/slideshow image.jpg" alt="Third slide">
+								src="assets/img/slideshow3.jpg" alt="Third slide">
+						</div>
+						<div class="carousel-item">
+							<img class="d-block w-150 h-50"
+								src="assets/img/slideshow4.jpg" alt="Fourth slide">
+						</div>
+						<div class="carousel-item">
+							<img class="d-block w-150 h-50"
+								src="assets/img/slideshow5.jpg" alt="Fifth slide">
 						</div>
 					</div>
 					<a class="carousel-control-prev" href="#Carousel2" role="button"
-						data-slide="prev"> 
-						<!-- 						<span class="carousel-control-prev-icon" aria-hidden="true"></span>  -->
-						<!-- 						<span class="sr-only">Previous</span> -->
-					</a> <a class="carousel-control-next" href="#Carousel2" role="button"
-						data-slide="next"> 
-						<!-- 					 <span class="carousel-control-next-icon" -->
-						<!-- 						aria-hidden="true"></span> <span class="sr-only">Next</span> -->
-					</a>
+						data-slide="prev"></a> 
+					<a class="carousel-control-next" href="#Carousel2" role="button"
+						data-slide="next"></a>
 				</div>
 				<%@include file="product.jsp"%>
 				<div class="col-12 col-lg-15">

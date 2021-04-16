@@ -96,7 +96,7 @@
 	<div class="menu-sidebar__content js-scrollbar1">
 		<nav class="navbar-sidebar">
 			<ul class="list-unstyled navbar__list">
-				<li><a href="customer.jsp"> <i
+				<li><a href="interiordesigner.jsp"> <i
 						class="fas fa-home"></i>Home
 				</a> </li>
 				<li><a href="visualizer.jsp"> <i class="fas fa-bullseye"></i>Visualizer
@@ -139,8 +139,6 @@
 						<li><a href="managecustomer.jsp"><i class="fas"></i>Customer Profile</a>
 						</li>
 						<li><a href="managedesigner.jsp"><i class="fas"></i>Designer Profile</a>
-						</li>
-						<li><a href="#"><i class="fas"></i>Product</a>
 						</li>
 						<li><a href="managefeedback.jsp"><i class="fas"></i>Feedback</a>
 						</li>
@@ -193,7 +191,7 @@
 	<div class="menu-sidebar__content js-scrollbar1">
 		<nav class="navbar-sidebar">
 			<ul class="list-unstyled navbar__list">
-				<li><a class="js-arrow" href="#"> <i
+				<li><a class="js-arrow" href="visitor.jsp"> <i
 						class="fas fa-home"></i>Home
 				</a></li>
 				<li><a class="js-arrow" href="#"> <i
