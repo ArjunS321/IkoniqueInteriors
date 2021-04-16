@@ -30,7 +30,7 @@
 					class="carousel slide shadow-soft border border-light p-4 rounded mt-5"
 					data-ride="carousel">
 					<div class="carousel-inner rounded">
-						<div class="carousel-item active">
+						<div class="carousel-item">
 							<img class="d-block w-150 h-50"
 								src="assets/img/slideshow1.jpg" alt="First slide">
 						</div>
@@ -38,7 +38,7 @@
 							<img class="d-block w-150 h-50"
 								src="assets/img/slideshow2.jpg" alt="Second slide">
 						</div>
-						<div class="carousel-item">
+						<div class="carousel-item active">
 							<img class="d-block w-150 h-50"
 								src="assets/img/slideshow3.jpg" alt="Third slide">
 						</div>
