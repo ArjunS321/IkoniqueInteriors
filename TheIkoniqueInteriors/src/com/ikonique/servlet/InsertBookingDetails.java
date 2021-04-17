@@ -2,6 +2,7 @@ package com.ikonique.servlet;
 
 import java.awt.print.Book;
 import java.io.IOException;
+import java.sql.Connection;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,7 +18,10 @@ import javax.servlet.http.HttpSession;
 import com.ikonique.bean.Booking;
 import com.ikonique.bean.BookingInfo;
 import com.ikonique.bean.User;
+import com.ikonique.dao.userDao;
+import com.ikonique.dao.impl.userDaoImpl;
 import com.ikonique.userService.impl.userServiceImpl;
+import com.ikonique.util.Main;
 
 /**
  * Servlet implementation class InsertBookingDetails
@@ -51,7 +55,8 @@ public class InsertBookingDetails extends HttpServlet {
 		if(null!=httpSession){
 		   user = (User)httpSession.getAttribute("loginBean");
 	   }
-
+		userDao userDao = new userDaoImpl();
+		Connection connection = Main.getConnection();
 		Date date=new Date();
 		String bookdate = request.getParameter("bookdate");
 			try {
@@ -95,6 +100,21 @@ public class InsertBookingDetails extends HttpServlet {
 	  		RequestDispatcher requestDispatcher= request.getRequestDispatcher("interiorpaymentform.jsp");
 	  		requestDispatcher.forward(request, response);
 	  		
+//	  		User user2=userDao.selectUserDetails(connection,booking.getUserid());
+			User user1=userDao.selectUserDetails(connection,designerid);
+			
+	  		StringBuilder builder = new StringBuilder();
+			builder.append("Customer Name:- "+fname+" "+lname);
+			builder.append("\n");
+			builder.append("Booking Date:- "+sqldate);
+			builder.append("\n");
+			builder.append("Contact No:- "+mno);
+			builder.append("\n");
+			builder.append("Email-Id:- "+email);
+			builder.append("\n");
+			builder.append("Address:- "+address);
+			Main main=new Main();
+			main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {user1.getEmail()}, "Notification For Booking",builder.toString());
 	  	}
 	  	else
 	  	{

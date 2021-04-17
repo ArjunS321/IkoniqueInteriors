@@ -166,7 +166,7 @@
 								onkeyup="validate1();" maxLength="8"> <span class="indicator2"></span>
 							<span class="small validate" id="p9"></span>
 							<h6 class="small">
-								* Password Must Contain 8-20 Character<br>* Password must
+								* Password Must Contain 8 Character<br>* Password must
 								Contain Atleast one: <br>Special Character(@#$&!)<br>Number[0-9]<br>An
 								Uppercase Charater[A-Z]<br>A Lowercase Character[a-z]
 							</h6>

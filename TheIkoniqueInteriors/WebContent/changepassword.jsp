@@ -254,7 +254,7 @@
 				if(newpass == "")
 				{
 					$('#p1').html('New Password Field Is Empty').css('color', 'red');
-					form.classList.remove('invalid')
+					form.classList.add('invalid')
 					form.classList.remove('valid')
 				}
 			}
@@ -310,7 +310,7 @@
 				if(oldpass == "")
 				{
 					$('#p2').html('Old Password Field Is Empty').css('color', 'red');
-					form.classList.remove('invalid2')
+					form.classList.add('invalid2')
 					form.classList.remove('valid2')
 				}
 			}

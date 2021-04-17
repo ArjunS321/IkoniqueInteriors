@@ -1235,7 +1235,7 @@ public class userDaoImpl implements userDao {
 
 	}
 
-	@Override///////////////////////////////////////
+	@Override
 	public User selectUserDetails(Connection connection, int user_id) {
 		String selectQuery = "select * from user where i_user_id = ?";
 		User user=null;
@@ -1840,7 +1840,7 @@ public class userDaoImpl implements userDao {
 	public int saveOrderDetails(Connection connection, Order order) {
 		int i = 0;
 		int insertedOrderId = 0;
-		String insertQuery = "insert into order (i_customer_id,d_amount,d_order_date,c_firstname,c_lastname,c_address,c_contactno,c_email) values (?,?,?,?,?,?,?,?)";
+		String insertQuery = "insert into order_table (i_customer_id,d_amount,d_order_date,c_firstname,c_lastname,c_address,c_contactno,c_email) values (?,?,?,?,?,?,?,?)";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {

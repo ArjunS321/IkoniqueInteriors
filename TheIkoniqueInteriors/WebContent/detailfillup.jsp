@@ -1,4 +1,3 @@
-
 <%@page import="com.ikonique.bean.Area"%>
 <%@page import="com.ikonique.bean.Wishlist"%>
 <%@page import="com.ikonique.bean.Offer"%>
