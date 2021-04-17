@@ -13,6 +13,7 @@ import com.ikonique.bean.Category;
 import com.ikonique.bean.FeedBack;
 import com.ikonique.bean.Offer;
 import com.ikonique.bean.Order;
+import com.ikonique.bean.OrderDetails;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
@@ -634,6 +635,27 @@ public class userServiceImpl {
 			msg="Updation Failed";
 		}
 		return updateCount;
+	}
+
+	public String insertOrderInformation(OrderDetails orderDetails) {
+		String msg=null;
+		int insertIntoOrderInformation = userDao.saveOrderInformation(connection , orderDetails);
+		if(insertIntoOrderInformation>0) {
+			msg="Insertion Is Successfully";
+		}
+		else
+		{
+			msg="Insertion Is Failed";
+		}
+		return msg;
+	}
+
+	public List<Order> selectOrderTableDetails() {
+		return userDao.fetchOrderTableDetails(connection);
+	}
+
+	public List<OrderDetails> selectOrderDetails() {
+		return userDao.fetchOrderDetails(connection);
 	}
 
 }

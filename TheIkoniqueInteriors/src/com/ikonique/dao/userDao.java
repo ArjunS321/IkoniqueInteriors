@@ -11,6 +11,7 @@ import com.ikonique.bean.Category;
 import com.ikonique.bean.FeedBack;
 import com.ikonique.bean.Offer;
 import com.ikonique.bean.Order;
+import com.ikonique.bean.OrderDetails;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
@@ -136,6 +137,12 @@ public interface userDao {
 	public int saveOrderDetails(Connection connection, Order order);
 
 	public int modifyBookingPaymentStatus(int bookid, Connection connection);
+
+	public int saveOrderInformation(Connection connection, OrderDetails orderDetails);
+
+	public List<Order> fetchOrderTableDetails(Connection connection);
+
+	public List<OrderDetails> fetchOrderDetails(Connection connection);
 
 	
 	

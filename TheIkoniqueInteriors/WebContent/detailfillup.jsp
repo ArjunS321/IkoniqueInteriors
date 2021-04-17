@@ -258,6 +258,9 @@ textarea {
 <%
 	List<Area> area = (List) request.getAttribute("area");
 %>
+<%
+	List<Product> productList = (List) request.getAttribute("productList");
+%>
 <body style="background-color: #e6e7ee">
 <%@include file="commonsidebar.jsp"%>
 <%@include file="commonheader.jsp"%>
@@ -267,11 +270,20 @@ textarea {
 			<!-- Content -->
 		<div class="card-body shadow-soft border border-light rounded p-4">
             <br><br>
-            <form  action="InsertOrderDetails" align="center" onsubmit="return validate()" id="form" method="post" name="form" 
-            >
+            <form  action="InsertOrderDetails" align="center" onsubmit="return validate()" id="form" method="post" name="form">
             <h1>Customer Details</h1>
             <br>
-           
+            <%int maximumid = 0;%>
+           <%for(Product product : productList){ %>
+           		<%if(maximumid < product.getProduct_id()){ %>
+           			<%maximumid = product.getProduct_id(); %>
+           		<%} %>
+           <%} %>
+            <%for(Product product : productList){ %>
+            		<input type="hidden" value="<%=product.getProduct_id() %>" name="product<%=product.getProduct_id() %>" id="pid"><br>
+           			<input type="hidden" value="<%=product.getProduct_quantity() %>" name="quantity<%=product.getProduct_id() %>" id="qunt"><br>
+            <%} %>
+           <input type="hidden" value="<%=maximumid %>" name="maximumid" id="maximumid">
 					<div class="form-group mb-3 inputBox">
 						<label for="fname">First Name</label><br><input type="text"
 							name="fname" style="background-color: #e6e7ee;" class="form-control1 col-lg-5" id="fname" autocomplete="off"
@@ -311,7 +323,7 @@ textarea {
 						<button type="submit" name="submit"
 						class="col-lg-2 btn form-group ml-10">Buy</button>
 					</div>
-					
+										
 				</form>
 		</div>
 			<!-- End Content -->

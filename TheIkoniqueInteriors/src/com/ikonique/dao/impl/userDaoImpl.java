@@ -23,6 +23,7 @@ import com.ikonique.bean.Category;
 import com.ikonique.bean.FeedBack;
 import com.ikonique.bean.Offer;
 import com.ikonique.bean.Order;
+import com.ikonique.bean.OrderDetails;
 import com.ikonique.bean.Product;
 import com.ikonique.bean.SubCategory;
 import com.ikonique.bean.User;
@@ -1840,7 +1841,7 @@ public class userDaoImpl implements userDao {
 	public int saveOrderDetails(Connection connection, Order order) {
 		int i = 0;
 		int insertedOrderId = 0;
-		String insertQuery = "insert into order_table (i_customer_id,d_amount,d_order_date,c_firstname,c_lastname,c_address,c_contactno,c_email) values (?,?,?,?,?,?,?,?)";
+		String insertQuery = "insert into order_table (i_customer_id,d_amount,d_order_date,c_order_status,c_firstname,c_lastname,c_address,c_contactno,c_email) values (?,?,?,?,?,?,?,?,?)";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -1852,11 +1853,12 @@ public class userDaoImpl implements userDao {
 			preparedStatement.setInt(1, order.getUserid());
 			preparedStatement.setDouble(2, order.getAmount());
 			preparedStatement.setDate(3, (Date)order.getOrderdate());
-			preparedStatement.setString(4, order.getFirstname());
-			preparedStatement.setString(5, order.getLastname());
-			preparedStatement.setString(6, order.getAddress());
-			preparedStatement.setString(7, order.getContactnum());
-			preparedStatement.setString(8, order.getEmail());
+			preparedStatement.setString(4, "success");
+			preparedStatement.setString(5, order.getFirstname());
+			preparedStatement.setString(6, order.getLastname());
+			preparedStatement.setString(7, order.getAddress());
+			preparedStatement.setString(8, order.getContactnum());
+			preparedStatement.setString(9, order.getEmail());
 			
 			i = preparedStatement.executeUpdate();
 //			System.out.println("inside prepare....");
@@ -1895,8 +1897,99 @@ public class userDaoImpl implements userDao {
 
 	}
 
+	@Override
+	public int saveOrderInformation(Connection connection, OrderDetails orderDetails) {
+		int i = 0;
+		int insertedOrderInformationId = 0;
+		String insertQuery = "insert into order_details (i_order_id,i_product_id,i_quantity) values (?,?,?)";
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+		try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery,Statement.RETURN_GENERATED_KEYS)) 
+		{
+			preparedStatement.setInt(1, orderDetails.getOrderid());
+			preparedStatement.setInt(2, orderDetails.getProductid());
+			preparedStatement.setInt(3, orderDetails.getQuantity());
+			
+			i = preparedStatement.executeUpdate();
+			ResultSet resultSet = preparedStatement.getGeneratedKeys();
+			while (resultSet.next()) 
+			{
+				insertedOrderInformationId = resultSet.getInt(1);
+//				System.out.println("order id:-"+insertedOrderId);
+			}
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return insertedOrderInformationId;
 	}
+
+	@Override
+	public List<Order> fetchOrderTableDetails(Connection connection) {
+		String selectQuery="select * from order_table";
+		List<Order> orderList = new ArrayList<>();
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery)){
+				
+				ResultSet resultSet=preparedStatement.executeQuery();
+		
+			while(resultSet.next())
+			{
+				Order order = new Order();
+				order.setOrderid(resultSet.getInt("i_order_id"));
+				order.setUserid(resultSet.getInt("i_customer_id"));
+				order.setAmount(resultSet.getDouble("d_amount"));
+				order.setOrderdate(resultSet.getDate("d_order_date"));
+				order.setOrderstatus(resultSet.getString("c_order_status"));
+				order.setPaymentstatus(resultSet.getString("c_payment_status"));
+				order.setFirstname(resultSet.getString("c_firstname"));
+				order.setLastname(resultSet.getString("c_lastname"));
+				order.setAddress(resultSet.getString("c_address"));
+				order.setContactnum(resultSet.getString("c_contactno"));
+				order.setEmail(resultSet.getString("c_email"));
+				
+				orderList.add(order);
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return orderList;
+	}
+
+	@Override
+	public List<OrderDetails> fetchOrderDetails(Connection connection) {
+		String selectQuery="select * from order_details";
+		List<OrderDetails> orderdetailsList = new ArrayList<>();
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery)){
+				
+				ResultSet resultSet=preparedStatement.executeQuery();
+		
+			while(resultSet.next())
+			{
+				OrderDetails orderDetails = new OrderDetails();
+				orderDetails.setOrderdetailid(resultSet.getInt("i_order_details_id"));
+				orderDetails.setOrderid(resultSet.getInt("i_order_id"));
+				orderDetails.setProductid(resultSet.getInt("i_product_id"));
+				orderDetails.setQuantity(resultSet.getInt("i_quantity"));
+				
+				orderdetailsList.add(orderDetails);
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return orderdetailsList;
+	}
+}
 
 
 	

@@ -549,4 +549,34 @@
     <servlet-name>SendEnquiry</servlet-name>
     <url-pattern>/SendEnquiry</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListOfCartProduct</display-name>
+    <servlet-name>ListOfCartProduct</servlet-name>
+    <servlet-class>com.ikonique.servlet.ListOfCartProduct</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListOfCartProduct</servlet-name>
+    <url-pattern>/ListOfCartProduct</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectOrderTableDetails</display-name>
+    <servlet-name>SelectOrderTableDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.SelectOrderTableDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectOrderTableDetails</servlet-name>
+    <url-pattern>/SelectOrderTableDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectOrderDetails</display-name>
+    <servlet-name>SelectOrderDetails</servlet-name>
+    <servlet-class>com.ikonique.servlet.SelectOrderDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectOrderDetails</servlet-name>
+    <url-pattern>/SelectOrderDetails</url-pattern>
+  </servlet-mapping>
 </web-app>

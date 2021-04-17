@@ -345,7 +345,7 @@ if (null != httpSession) {
 				<div class="section section-lg pt-4">
 					<div class="container">
 						<form action="UpdateUserDetails" class="box" class="form" id="form" method="post"
-							enctype="multipart/form-data" onsubmit="return login()">
+							enctype="multipart/form-data" onsubmit="return validate()">
 							<input type="hidden" name="user_id" value="<%=String.valueOf(user.getUser_id())%>">
 							<input type="hidden" name="role_id" value="<%=String.valueOf(user.getRole_id())%>">
 							<div>
@@ -494,7 +494,7 @@ if (null != httpSession) {
 										    %>
 										
 									</div>
-
+									<input type="text" value="<%=user.getRole_id() %>" name="role" id="role">
 									<!-- End of Form -->
 									<!-- Form -->
 
@@ -755,31 +755,56 @@ function validate11() {
 	}
 }
  
-function login(){
+function validate(){
+	alert("validate called.,,.");
 	const form = document.getElementById('form');
-	const fname = document.getElementById('fname').value;
-	const lname = document.getElementById('lname').value;
-	const email = document.getElementById('email').value;
-	const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
-	const area = document.getElementById('area').value;
-	const address = document.getElementById('address').value;
-	const aboutme = document.getElementById('aboutme').value;
-	const designation = document.getElementById('designation').value;
-	const vfees = document.getElementById('vfees').value;
-	const cno = document.getElementById('cno').value;
-	const pattern1 = /(7|8|9)\d{9}/
-	var e=document.getElementById('area');
-	var value=e.options[e.selectedIndex].value;
-		
-	if(fname!="" && lname!="" && email.match(pattern) && value!='0' && address!=""  && aboutme!=""  && designation!="" && vfees!="" && cno.match(pattern1)){
-		return true;
+	//return false;
+	var fname = document.getElementById('fname').value;
+	var lname = document.getElementById('lname').value;
+	var address = document.getElementById('address').value;
+	var cno = document.getElementById('cno').value;
+	var areavalue = $('#area :selected').text();
+	var pattern1 = /(7|8|9)\d{9}/
+	var fileInput =  document.getElementById('customFile');
+    var filePath = fileInput.value;
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+	/*var aboutme = document.getElementById('aboutme').value;
+	var designation = document.getElementById('designation').value;
+	var vfees = document.getElementById('vfees').value;
+	var role = document.getElementById('role'); */
+	
+	if(fname == "" || fname == null && lname == null || lname == "" && address == null 
+			|| address == "" && cno == null || cno == "" && areavalue == "" || areavalue == null
+		&& !allowedExtensions.exec(filePath))
+	{
+// 		if(role == '2')
+// 		{
+// 			if(vfees == null || vfees == "" && designation == "" || designation == null && aboutme ==null || aboutme == "")
+// 			{
+// 				fileInput.value = '';
+// 				return false;
+// 			}
+// 			else
+// 			{
+// 				return true;
+// 			}
+// 		}
+// 		else
+// 		{
+			return false;
+// 		}
 	}
-	else{
-		return false;
+	else
+	{
+// 		if(cno.match(pattern1))
+// 		{
+			return true;
+// 		}
+// 		else
+// 		{
+// 			return false;
+// 		}
 	}
-	
-	
-	
 }
 </script>
 </body>

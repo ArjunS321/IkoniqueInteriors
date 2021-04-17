@@ -17,6 +17,7 @@ public class Product {
 	private String productpicString;
 	private int status;
 	
+	
 	public int getProduct_id() {
 		return product_id;
 	}

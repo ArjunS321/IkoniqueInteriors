@@ -3,6 +3,7 @@ package com.ikonique.servlet;
 import java.io.IOException;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ikonique.bean.Order;
+import com.ikonique.bean.OrderDetails;
+import com.ikonique.bean.Product;
 import com.ikonique.bean.User;
 import com.ikonique.userService.impl.userServiceImpl;
 
@@ -41,9 +44,11 @@ public class InsertOrderDetails extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession httpSession = request.getSession(false);
 		User user = null;   
-		if(null!=httpSession){
+		if(null!=httpSession)
+		{
 		   user = (User)httpSession.getAttribute("loginBean");
-	   }
+		}
+		
 		Date date=new Date();
 	  	java.sql.Date sqldate=new java.sql.Date(date.getTime());
 	  	
@@ -66,12 +71,25 @@ public class InsertOrderDetails extends HttpServlet {
 		order.setUserid(user.getUser_id());
 		
 		int id = us.insertOrderDetails(order);
-		System.out.println("insertedId:"+id);
+		//***********************************//
 		
-		
-	  	
-
-
-	  	
+		int maximumid = Integer.parseInt(request.getParameter("maximumid"));
+		for(int i=1;i<=maximumid;i++)
+		{
+			if(request.getParameter("product"+i) != null)
+			{
+				int productid = Integer.parseInt(request.getParameter("product"+i));
+				int quantityid = Integer.parseInt(request.getParameter("quantity"+i));
+				
+				OrderDetails orderDetails = new OrderDetails();
+				orderDetails.setOrderid(id);
+				orderDetails.setProductid(productid);
+				orderDetails.setQuantity(quantityid);
+				
+				String msg = us.insertOrderInformation(orderDetails);
+				
+				System.out.println(msg);
+			}
+		}
 	}
 }
