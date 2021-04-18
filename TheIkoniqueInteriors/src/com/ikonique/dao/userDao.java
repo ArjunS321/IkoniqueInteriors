@@ -144,6 +144,10 @@ public interface userDao {
 
 	public List<OrderDetails> fetchOrderDetails(Connection connection);
 
+	public int modifyOrderPaymentStatus(int bookid, Connection connection);
+
+	public int removeUserCart(int userid, Connection connection);
+
 	
 	
 	

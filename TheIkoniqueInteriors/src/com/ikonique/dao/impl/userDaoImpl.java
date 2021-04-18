@@ -1989,6 +1989,36 @@ public class userDaoImpl implements userDao {
 		}
 		return orderdetailsList;
 	}
+
+	@Override
+	public int modifyOrderPaymentStatus(int bookid, Connection connection) {
+		String updateQuery = "update order_table set c_payment_status=? where i_order_id=?";
+		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+			preparedStatement.setString(1, "success");
+			preparedStatement.setDouble(2,bookid);
+			
+			return preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
+
+	@Override
+	public int removeUserCart(int userid, Connection connection) {
+		String deletequery = "delete from cart where i_buyer_id=?";
+		try(PreparedStatement preparedStatement = connection.prepareStatement(deletequery)) {
+			preparedStatement.setInt(1,userid);
+			return preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }
 
 

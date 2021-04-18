@@ -657,6 +657,36 @@ public class userServiceImpl {
 	public List<OrderDetails> selectOrderDetails() {
 		return userDao.fetchOrderDetails(connection);
 	}
+	
+	public int updateOrderPaymentStatus(int bookid)
+	{
+		int updateOrderCount=0;
+		String msg=null;
+		updateOrderCount=userDao.modifyOrderPaymentStatus(bookid,connection);
+		if(updateOrderCount>0) {
+			msg="Updation Successfully";
+		}
+		else
+		{
+			msg="Updation Failed";
+		}
+		return updateOrderCount;
+	}
+	
+	public int deleteUserCart(int userid)
+	{
+		int deleteCount=0;
+		String msg=null;
+		deleteCount=userDao.removeUserCart(userid,connection);
+		if(deleteCount>0) {
+			msg="Deletion Successfully";
+		}
+		else
+		{
+			msg="Deletion Failed";
+		}
+		return deleteCount;
+	}
 
 }
 

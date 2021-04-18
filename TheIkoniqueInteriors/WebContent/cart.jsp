@@ -65,7 +65,7 @@ quantity-btn-color: #95d7fc ;
 	List<Offer> offerList = (List) request.getAttribute("offerList");
 %>
 <body>
-	
+	<%int temp1 = 0; %>
 		<div class="page-wrapper">
 			<%@include file="commonsidebar.jsp"%>
 			<%@include file="commonheader.jsp"%>
@@ -96,7 +96,7 @@ quantity-btn-color: #95d7fc ;
 							<%
 								if (cartint.contains(product.getProduct_id())) {
 							%>
-
+							<%temp1=temp1+1; %>
 							<div class="col-12">
 								<div class="card shadow-soft border-light p-4 mb-5"
 									style="background-color: #e6e7ee;">
@@ -222,6 +222,7 @@ quantity-btn-color: #95d7fc ;
 							<br>
 							<input name="maximumid" type="hidden" value="<%=maximumid%>">
 						</div>
+						<%if (temp1 > 0){ %>
 						<div class="card-body p-0">
 							<ul class="list-group list-group-sm mt-3">
 								<li class="list-group-item d-flex"
@@ -246,6 +247,31 @@ quantity-btn-color: #95d7fc ;
 							Place Order</button>
 							
 						</div>
+						<%}else{ %>
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content bg-primary">
+								<div class="modal-header">
+									<p class="modal-title" id="modal-title-notification">Ikonique
+										Interiors</p>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<div class="py-3 text-center">
+										<span class="modal-icon display-1-lg"><span
+											class="fas fa-exclamation-triangle"></span></span>
+										<h2 class="h4 my-3">Your Cart Is Empty!</h2>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<a href="customer.jsp" type="button"
+										class="btn btn-sm btn-primary">Home</a>
+								</div>
+							</div>
+						</div>
+						<%
+							}
+						%>
 						</form>
 					</div>
 					

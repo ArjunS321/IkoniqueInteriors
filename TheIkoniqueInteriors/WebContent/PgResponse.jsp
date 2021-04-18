@@ -53,10 +53,17 @@ try{
 </head>
 <%userServiceImpl us=new userServiceImpl(); %>
 <body>
+<%
+HttpSession httpSession = request.getSession(false);
+User user = null;
+if (null != httpSession) {
+	user = (User) httpSession.getAttribute("loginBean");
+}
+%>
 <p hidden>
 <%= outputHTML %>
   <% String[] sArr= outputHTML.split(","); %>  
- <%--  <% for( String s : sArr){ %>  
+ <%-- <% for( String s : sArr){ %>  
  <p> <%= s %></p>
   <%} %>  --%>
  <p hidden><%= sArr[9] %></p> 
@@ -64,11 +71,18 @@ try{
   <% String[] sArr1= sArr[9].split("="); %> 
  <p hidden> <%= sArr1[1] %> </p>
   <p hidden > <%= sArr2[1] %> </p> 
+  <%String id = sArr[5].substring(9,12); %>
+  <p hidden>Hello:-<%=id %></p>
 <% int bookid=Integer.parseInt(sArr2[1]); %>
 </p>
- <%if(sArr1[1].equals("TXN_SUCCESS")){ %>
- <%int updatecount=us.updatePaymentStatus(bookid); %>
- <p hidden><%=updatecount %></p>
+<%if(sArr1[1].equals("TXN_SUCCESS")){ %>
+ <%if(id.equals("BID")){ %>
+ 	<%int updatecount=us.updatePaymentStatus(bookid); %>
+ 	<p hidden><%=updatecount %></p>
+ <%}else{ %>
+ 	<%int updatepayment=us.updateOrderPaymentStatus(bookid); %>
+ 	<%int deletecart = us.deleteUserCart(user.getUser_id()); %>
+ <%} %>
 <div class="modal-dialog modal-dialog-centered" role="document">
 	
                         <div class="modal-content bg-primary">

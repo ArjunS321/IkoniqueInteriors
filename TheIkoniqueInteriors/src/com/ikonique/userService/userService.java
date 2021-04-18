@@ -80,4 +80,6 @@ public interface userService {
 	public String insertOrderInformation(OrderDetails orderDetails);
 	public List<Order> selectOrderTableDetails();
 	public List<OrderDetails> selectOrderDetails();
+	public int updateOrderPaymentStatus(int bookid);
+	public int deleteUserCart(int userid);
 }

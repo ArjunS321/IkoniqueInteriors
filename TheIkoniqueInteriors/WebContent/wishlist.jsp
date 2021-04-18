@@ -37,10 +37,10 @@
 
 <br><br><br>
 <div class="row mr-0 ml-2">
-	
+<%int temp2 = 0; %>
 	 <%for(Product product:productList){ %>
                 	<%if(wishlistint.contains(product.getProduct_id())){ %>
-  
+  	<%temp2 = temp2 + 1; %>
     <div class="col-10 ml-10">
         <div class="card shadow-soft border-light p-4 ml-5 mt-3" style="background-color: #e6e7ee;">
         	
@@ -87,6 +87,30 @@
     </div>
       <%}%><br>
  <%} %>
+ <%if(temp2 == 0){ %>
+		<div style="margin-left:40rem;" class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content bg-primary" style="width:28rem;">
+				<div class="modal-header">
+					<p class="modal-title" id="modal-title-notification">Ikonique
+						Interiors</p>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="py-3 text-center">
+						<span class="modal-icon display-1-lg"><span
+							class="fas fa-exclamation-triangle"></span></span>
+						<h2 class="h4 my-3">Your Wishlist Is Empty!</h2>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<a href="customer.jsp" type="button" class="btn btn-sm btn-primary">Home</a>
+				</div>
+			</div>
+		</div>
+		<%
+			}
+		%>
 </div>
 </body>
 <script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
