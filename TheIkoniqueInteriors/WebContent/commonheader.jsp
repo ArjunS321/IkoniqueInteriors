@@ -55,7 +55,7 @@ if (null != httpSession) {
 			<div class="container-fluid">
 				<div class="header-wrap" style="position: sticky; z-index: 9">
 					<form id="from1" class="form-header" action="" method="POST">
-						 <marquee class="marq" style="width:50rem; font-size: 35px; font-style: normal; font-family: Georgia, serif; color:#483C32;" direction = "left">The Ikonique Interiors</marquee>
+						 <marquee class="marq" style="width:47rem; font-size: 35px; font-style: normal; font-family: Georgia, serif; color:#483C32;" direction = "left">The Ikonique Interiors</marquee>
 					</form>
 					<div class="header-button">
 						<div class="noti-wrap">
@@ -399,7 +399,7 @@ if (null != httpSession) {
 			<div class="container-fluid">
 				<div class="header-wrap">
 					<form class="form-header" action="" method="POST">
-						<marquee class="marq" style="width:50rem; font-size: 35px; font-style: normal; font-family: Georgia, serif; color:#483C32;" direction = "left">The Ikonique Interiors</marquee>
+						<marquee class="marq" style="width:49rem; font-size: 35px; font-style: normal; font-family: Georgia, serif; color:#483C32;" direction = "left">The Ikonique Interiors</marquee>
 					</form>
 					<div class="">
 					<button type="submit" name="submit" onclick="location.href='register.jsp';"

@@ -494,7 +494,7 @@ if (null != httpSession) {
 										    %>
 										
 									</div>
-									<input type="text" value="<%=user.getRole_id() %>" name="role" id="role">
+									<input type="hidden" value="<%=user.getRole_id() %>" name="role" id="role">
 									<!-- End of Form -->
 									<!-- Form -->
 
