@@ -579,4 +579,14 @@
     <servlet-name>SelectOrderDetails</servlet-name>
     <url-pattern>/SelectOrderDetails</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AfterPaymentProcess</display-name>
+    <servlet-name>AfterPaymentProcess</servlet-name>
+    <servlet-class>com.ikonique.servlet.AfterPaymentProcess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AfterPaymentProcess</servlet-name>
+    <url-pattern>/AfterPaymentProcess</url-pattern>
+  </servlet-mapping>
 </web-app>

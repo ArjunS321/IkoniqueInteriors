@@ -1,5 +1,3 @@
-<%@page import="com.ikonique.util.Main"%>
-<%@page import="com.ikonique.userService.impl.userServiceImpl"%>
 <%@page import="com.ikonique.bean.User"%>
 <%@page import="utils.PaytmConstants"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -40,7 +38,6 @@ try{
 	outputHTML=e.toString();
 }
 %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -52,15 +49,14 @@ try{
 <!-- Pixel CSS -->
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 </head>
-<%userServiceImpl us=new userServiceImpl(); %>
 <body>
-<%
+<%-- <%
 HttpSession httpSession = request.getSession(false);
 User user1 = null;
 if (null != httpSession) {
 	user1 = (User) httpSession.getAttribute("loginBean");
 }
-%>
+%> --%>
 <p hidden>
 <%= outputHTML %>
   <% String[] sArr= outputHTML.split(","); %>  
@@ -72,25 +68,13 @@ if (null != httpSession) {
   <% String[] sArr1= sArr[9].split("="); %>		<!-- success -->
   <% String[] sArr3= sArr[10].split("="); %> 	<!-- amount -->
  <p hidden> <%= sArr1[1] %> </p>
-  <p hidden > <%= sArr2[1] %> </p> 
+  <span hidden id="status" name="status"><%=sArr1[1] %></span> 
   <%String id = sArr[5].substring(9,12); %>
-  <p hidden>Hello:-<%=id %></p>
+  <span hidden id="roleid" name="roleid"><%=id %></span>
 <% int bookid=Integer.parseInt(sArr2[1]); %>
+<span hidden id="bookid" name="bookid"><%=bookid %></span>
 </p>
 <%if(sArr1[1].equals("TXN_SUCCESS")){ %>
- <%if(id.equals("BID")){ %>
- 	<%int updatecount=us.updatePaymentStatus(bookid); %>
- 	<p hidden><%=updatecount %></p>
- <%}else{ %>
- 	<%int updatepayment=us.updateOrderPaymentStatus(bookid); %>
-	<%int deletecart = us.deleteUserCart(user1.getUser_id()); %>  
- 	 <%	StringBuilder builder = new StringBuilder(); 
- 		builder.append("Your Order Id:-" + sArr[5]);
- 		builder.append("\n");
- 		builder.append("Your Order Amount:-" + sArr3[1]);
-		Main main=new Main();
-		main.sendFromGMail("ikoniqueinteriors@gmail.com","SAM@616263", new String[] {user1.getEmail()}, "Order Confirmed",builder.toString()); %> 
- <%} %>
 <div class="modal-dialog modal-dialog-centered" role="document">
 	
                         <div class="modal-content bg-primary">
@@ -136,6 +120,7 @@ if (null != httpSession) {
 
 <%} %> 
 </body>
+
 <script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
 <script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
 <script src="neuro/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -173,4 +158,18 @@ if (null != httpSession) {
     </script>
     <!-- Main JS-->
     <script type="module" src="js/main.js"></script>
+<script>
+	$(function() {
+		alert("succesfull called..");
+		var bid = $(this).find('#bookid').text();
+		var status = $(this).find('#status').text();
+		var roleid = $(this).find('#roleid').text();
+	    alert("bid:-" + bid + "status:-" + status + "roleid:-" + roleid);
+			$.post( "AfterPaymentProcess", {bookid : bid , pstatus : status , id : roleid} )
+			  .done(function( data ) 
+			  {
+				  alert("succesfull called..");
+			  });
+	});
+</script>
 </html>
