@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="com.ikonique.bean.OrderDetails"%>
+<%@page import="com.ikonique.bean.Order"%>
 <%@page import="com.ikonique.bean.Offer"%>
 <%@page import="com.ikonique.dao.impl.userDaoImpl"%>
 <%@page import="com.ikonique.dao.userDao"%>
@@ -33,6 +35,13 @@ quantity-btn-color: #95d7fc ;
 	quantity-btn-color;
 }
 }
+.demo-2 
+        {
+  			overflow: hidden;
+ 			white-space: nowrap;
+  			text-overflow: ellipsis;
+  			max-width: 150px;
+		}
 </style>
 <!-- Fontawesome -->
 <link type="text/css"
@@ -43,14 +52,31 @@ quantity-btn-color: #95d7fc ;
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 
 <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
-<% userDao ud= new userDaoImpl();%>
+<%
+HttpSession httpSession1 = request.getSession(false);
+User user1 = null;
+if (null != httpSession1) {
+	user1 = (User) httpSession1.getAttribute("loginBean");
+}
+%>
 </head>
+<jsp:include page="/SelectOrderTableDetails"/>
+<%List<Order> orderList =(List)request.getAttribute("orderList"); %>
+<jsp:include page="/SelectOrderDetails"/>
+<%List<OrderDetails> orderdetailsList =(List)request.getAttribute("orderdetailsList"); %>
+<jsp:include page="/SelectProductDetails"/>
+<%List<Product> productList =(List)request.getAttribute("productList"); %>
+<jsp:include page="/SelectOfferDetails"/>
+<%List<Offer> offerList =(List)request.getAttribute("offerList"); %>
 <body>
 	<div class="page-wrapper">
 		<%@include file="commonsidebar.jsp"%>
 		<%@include file="commonheader.jsp"%>
 		<div class="page-container">
 			<div class="main-content">
+			<%for(Order order : orderList) {%>
+				<%if(order.getUserid()==user1.getUser_id()){ %>
+					<%if(order.getPaymentstatus().equalsIgnoreCase("success")){ %>
 				<div class="card shadow-inset border-light p-3 mr-2 ml-2 mb-5"
 					style="background-color: #e6e7ee;">
 					<div class="row mr-0 ml-0" style="background-color: #e6e7ee;">
@@ -65,10 +91,10 @@ quantity-btn-color: #95d7fc ;
 								<td>Order Id</td>
 								</tr>
 								<tr>
-								<td>Date</td>
-								<td>15000</td>
-								<td>Customer Name</td>
-								<td>OID_155</td>
+								<td><%=order.getOrderdate() %></td>
+								<td><%=order.getAmount() %></td>
+								<td class="demo-2" data-toggle="tooltip" data-placement="bottom" title="<%=order.getAddress() %>"><%=order.getFirstname() %> <%=order.getLastname() %></td>
+								<td>OID_<%=order.getOrderid() %></td>
 								</tr>
 								</table>
 							</div>
@@ -76,83 +102,54 @@ quantity-btn-color: #95d7fc ;
 					</div>
 					<div class="row mr-0 ml-0" style="background-color: #e6e7ee;">
 						<div class="col-12">
+						<%for(OrderDetails orderDetails : orderdetailsList){ %>
+							<%if(order.getOrderid()==orderDetails.getOrderid()){ %>
+							<%for(Product product : productList) {%>
+								<%if(product.getProduct_id()==orderDetails.getProductid()){ %>
 							<div class="card shadow-soft border-light p-4 mb-3"
 								style="background-color: #e6e7ee;">
 								<div class="row align-items-center item">
 									<div class="col-3">
-										<a href="#"> <img src="bg-img/1.jpg"></a>
+										<a href="#"> <img src="data:image/jpg;base64,<%=product.getProductpicString() %>"></a>
 									</div>
 									<div class="col">
 										<div class="d-flex font-weight-bold">
-											<a class="h5 pname" href="#">abvc</a> <span id="mainprice"
-												class="price lineitemtotal h5 ml-auto">56500</span><br>
+											<a class="h5 pname" href="#"><%=product.getProduct_name() %></a> <span id="mainprice"
+												class="price lineitemtotal h5 ml-auto"><%=product.getProduct_price() %></span><br>
+												
 										</div>
+										<div class="d-flex font-weight-bold">
+										<%for (Offer offer : offerList) {%>
+													<%if (product.getOfferid() == offer.getOfferid()) {%>
+														<span Style="font-size: 5mm;"id="discount" class="h6 mb-0 ml-auto lineitemtotal1 text-danger"
+															value="<%=offer.getDiscount()%>"> <%=offer.getDiscount()%>%Off
+														</span>
+													<%break;}%>
+												<%}%>
+											</div>
 										<span Style="font-size: 5mm; margin-left: 44rem;"
 											id="discount" class="h6 mb-0 lineitemtotal1 text-danger"
 											value=""> </span>
 										<ul class="pl-3">
-											<li class="small">sfgvasfdgsdfgfas</li>
+											<li class="small"><%=product.getProduct_desc() %></li>
+											<li class="small">Quantity :  <%=orderDetails.getQuantity() %></li>
 										</ul>
-										<button style="margin-left:34rem;" class="btn btn-block col-lg-4" type="submit">Buy It Again</button>
-										<button style="margin-left:34rem;" class="btn btn-block col-lg-4" type="submit">Write A Product Review</button>
+										<a href="InsertProductInCart?productid=<%=product.getProduct_id()%>" style="margin-left:34rem;" class="btn btn-block col-lg-4" type="submit">Buy It Again</a>
+										<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>" style="margin-left:34rem;" class="btn btn-block col-lg-4" type="submit">Write A Product Review</a>
 									</div>
 								</div>
 							</div>
+										<%} %>
+									<%} %>
+								<%} %>
+							<%} %>
 						</div>
 						<button style="margin-left:21rem;" class="btn btn-block col-lg-6" type="submit">Download Invoice</button>
 					</div>
 				</div>
-				<div class="card shadow-inset border-light p-3 mr-2 ml-2 mb-1"
-					style="background-color: #e6e7ee;">
-					<div class="row mr-0 ml-0" style="background-color: #e6e7ee;">
-						<div class="col-12">
-							<div class="card shadow-soft border-light p-4 mb-3"
-								style="background-color: #e6e7ee;">
-								<table>
-								<tr>
-								<td>Order Placed</td>
-								<td>Total</td>
-								<td>Ship To</td>
-								<td>Order Id</td>
-								</tr>
-								<tr>
-								<td>Date</td>
-								<td>15000</td>
-								<td>Customer Name</td>
-								<td>OID_155</td>
-								</tr>
-								</table>
-							</div>
-						</div>
-					</div>
-					<div class="row mr-0 ml-0" style="background-color: #e6e7ee;">
-						<div class="col-12">
-							<div class="card shadow-soft border-light p-4 mb-3"
-								style="background-color: #e6e7ee;">
-								<div class="row align-items-center item">
-									<div class="col-3">
-										<a href="#"> <img src="bg-img/1.jpg"></a>
-									</div>
-									<div class="col">
-										<div class="d-flex font-weight-bold">
-											<a class="h5 pname" href="#">abvc</a> <span id="mainprice"
-												class="price lineitemtotal h5 ml-auto">56500</span><br>
-										</div>
-										<span Style="font-size: 5mm; margin-left: 44rem;"
-											id="discount" class="h6 mb-0 lineitemtotal1 text-danger"
-											value=""> </span>
-										<ul class="pl-3">
-											<li class="small">sfgvasfdgsdfgfas</li>
-										</ul>
-										<button style="margin-left:34rem;" class="btn btn-block col-lg-4" type="submit">Buy It Again</button>
-										<button style="margin-left:34rem;" class="btn btn-block col-lg-4" type="submit">Write A Product Review</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<button style="margin-left:21rem;" class="btn btn-block col-lg-6" type="submit">Download Invoice</button>
-					</div>
-				</div>
+						<%} %>
+					<%} %>
+				<%} %>
 			</div>
 		</div>
 	</div>

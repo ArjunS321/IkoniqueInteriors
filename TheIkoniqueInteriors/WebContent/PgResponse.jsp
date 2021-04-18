@@ -1,9 +1,11 @@
+<%@page import="com.ikonique.util.Main"%>
 <%@page import="com.ikonique.userService.impl.userServiceImpl"%>
 <%@page import="com.ikonique.bean.User"%>
 <%@page import="utils.PaytmConstants"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*,com.paytm.pg.merchant.CheckSumServiceHelper"%>
+<%@ page session="false" %> 
 <%
 Enumeration<String> paramNames = request.getParameterNames();
 
@@ -43,32 +45,32 @@ try{
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Payment Status</title>
 <link type="text/css"
 	href="neuro/vendor/@fortawesome/fontawesome-free/css/all.min.css"
 	rel="stylesheet">
 <!-- Pixel CSS -->
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
-<%@ page session="false" %>
 </head>
 <%userServiceImpl us=new userServiceImpl(); %>
 <body>
 <%
 HttpSession httpSession = request.getSession(false);
-User user = null;
+User user1 = null;
 if (null != httpSession) {
-	user = (User) httpSession.getAttribute("loginBean");
+	user1 = (User) httpSession.getAttribute("loginBean");
 }
 %>
 <p hidden>
 <%= outputHTML %>
   <% String[] sArr= outputHTML.split(","); %>  
- <%-- <% for( String s : sArr){ %>  
+<%-- <% for( String s : sArr){ %>  
  <p> <%= s %></p>
   <%} %>  --%>
  <p hidden><%= sArr[9] %></p> 
-  <% String[] sArr2= sArr[5].split("_"); %> 
-  <% String[] sArr1= sArr[9].split("="); %> 
+  <% String[] sArr2= sArr[5].split("_"); %>   <!-- oid and bid -->
+  <% String[] sArr1= sArr[9].split("="); %>		<!-- success -->
+  <% String[] sArr3= sArr[10].split("="); %> 	<!-- amount -->
  <p hidden> <%= sArr1[1] %> </p>
   <p hidden > <%= sArr2[1] %> </p> 
   <%String id = sArr[5].substring(9,12); %>
@@ -81,7 +83,13 @@ if (null != httpSession) {
  	<p hidden><%=updatecount %></p>
  <%}else{ %>
  	<%int updatepayment=us.updateOrderPaymentStatus(bookid); %>
- 	<%int deletecart = us.deleteUserCart(user.getUser_id()); %>
+	<%int deletecart = us.deleteUserCart(user1.getUser_id()); %>  
+ 	 <%	StringBuilder builder = new StringBuilder(); 
+ 		builder.append("Your Order Id:-" + sArr[5]);
+ 		builder.append("\n");
+ 		builder.append("Your Order Amount:-" + sArr3[1]);
+		Main main=new Main();
+		main.sendFromGMail("ikoniqueinteriors@gmail.com","SAM@616263", new String[] {user1.getEmail()}, "Order Confirmed",builder.toString()); %> 
  <%} %>
 <div class="modal-dialog modal-dialog-centered" role="document">
 	

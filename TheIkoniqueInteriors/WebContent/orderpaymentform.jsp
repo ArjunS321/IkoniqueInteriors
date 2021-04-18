@@ -350,7 +350,7 @@ textarea {
 						<input type="submit" value="CheckOut"
 							class="btn col-lg-4 rounded-bottom">
 					</form>
-								<%} %>
+								<%break;} %>
 							<%} %>
 						<%} %>
 					<%} %>

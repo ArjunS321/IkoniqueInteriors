@@ -89,9 +89,9 @@ public class InsertOrderDetails extends HttpServlet {
 				String msg = us.insertOrderInformation(orderDetails);
 				
 				System.out.println(msg);
-				RequestDispatcher requestDispatcher= request.getRequestDispatcher("orderpaymentform.jsp");
-		  		requestDispatcher.forward(request, response);
 			}
 		}
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("orderpaymentform.jsp");
+		requestDispatcher.forward(request, response);
 	}
 }

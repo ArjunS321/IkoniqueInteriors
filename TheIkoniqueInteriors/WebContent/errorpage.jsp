@@ -163,10 +163,10 @@
         </div>
       </div>
     </div>
-    <div class="button"><a href="welcome.jsp">GO HOME</a></div>
+    <div class="button"><a class="btn" href="welcome1.jsp">GO HOME</a></div>
   </div>
   <div class="sorry">Opps!!Something Went Wrong.. Please Try Again!!</div>
-</div><a class="inspiration" href="https://dribbble.com/shots/4571035-Error-404" target="_blank" rel="noopener">inspiration</a>
+</div>
 </body>
 <script>
 <%@include file="js/errorpage.js"%>
