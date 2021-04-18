@@ -68,7 +68,7 @@ try{
 </p>
  <%if(sArr1[1].equals("TXN_SUCCESS")){ %>
  <%int updatecount=us.updatePaymentStatus(bookid); %>
- <p><%=updatecount %></p>
+ <p hidden><%=updatecount %></p>
 <div class="modal-dialog modal-dialog-centered" role="document">
 	
                         <div class="modal-content bg-primary">
