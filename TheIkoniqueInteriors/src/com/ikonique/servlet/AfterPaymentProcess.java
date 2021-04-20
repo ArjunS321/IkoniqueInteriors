@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ikonique.bean.OrderDetails;
+import com.ikonique.bean.Product;
 import com.ikonique.bean.User;
 import com.ikonique.userService.impl.userServiceImpl;
+import com.ikonique.util.Main;
 import com.itextpdf.text.log.SysoLogger;
 
 /**
@@ -52,6 +54,8 @@ public class AfterPaymentProcess extends HttpServlet {
 		System.out.println("role for book or order:-"+roleid);
 		int bookid = Integer.parseInt(request.getParameter("bookid"));
 		System.out.println("Order or booking id:-"+bookid);
+		double amt = Double.parseDouble(request.getParameter("gamt"));
+		System.out.println("amount:-"+amt);
 		if(status.equalsIgnoreCase("TXN_SUCCESS"))
 		{
 			if(roleid.equalsIgnoreCase("BID"))
@@ -61,19 +65,27 @@ public class AfterPaymentProcess extends HttpServlet {
 			else
 			{
 				int updatepayment=us.updateOrderPaymentStatus(bookid);
+				if(updatepayment > 0)
+				{
+					StringBuilder builder = new StringBuilder(); 
+			 		builder.append("Your Order Id:-" +bookid);
+			 		builder.append("\n");
+			 		builder.append("Your Order Amount:-" + amt);
+					Main main=new Main();
+					main.sendFromGMail("ikoniqueinteriors@gmail.com","SAM@616263", new String[] {user.getEmail()}, "Order Confirmed",builder.toString()); 
+				}
 				int deletecart = us.deleteUserCart(user.getUser_id());
-				System.out.println(bookid);
+				
+				
 				List<OrderDetails> orderdetailslist = us.getProductAndQuantity(bookid);
-				for(OrderDetails od:orderdetailslist) {
-					System.out.println("Product Id:"+od.getProductid());
+				
+				for(OrderDetails od:orderdetailslist) 
+				{
+					Product product = us.SelectProductDetail(od.getProductid());
+					int updatequantity = Integer.parseInt(product.getProduct_quantity()) - od.getQuantity();
+					int updatecount = us.updateQuantityInProduct(od.getProductid(),updatequantity);
 				}
 				
-//				StringBuilder builder = new StringBuilder(); 
-//		 		builder.append("Your Order Id:-" + sArr[5]);
-//		 		builder.append("\n");
-//		 		builder.append("Your Order Amount:-" + sArr3[1]);
-//				Main main=new Main();
-//				main.sendFromGMail("ikoniqueinteriors@gmail.com","SAM@616263", new String[] {user1.getEmail()}, "Order Confirmed",builder.toString()); 
 			}
 		}
 		else

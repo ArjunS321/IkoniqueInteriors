@@ -82,5 +82,6 @@ public interface userService {
 	public List<OrderDetails> selectOrderDetails();
 	public int updateOrderPaymentStatus(int bookid);
 	public int deleteUserCart(int userid);
-	public List<OrderDetails> getProductAndQuantity(int bookid); 
+	public List<OrderDetails> getProductAndQuantity(int bookid);
+	public int updateQuantityInProduct(int productid, int quantity);
 }

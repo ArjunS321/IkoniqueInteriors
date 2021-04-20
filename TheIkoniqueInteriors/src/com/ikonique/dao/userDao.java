@@ -150,6 +150,8 @@ public interface userDao {
 
 	public List<OrderDetails> fetchProductAndQuantity(Connection connection, int bookid);
 
+	public int modifyQuantityInProduct(int productid, int quantity, Connection connection);
+
 	
 	
 	

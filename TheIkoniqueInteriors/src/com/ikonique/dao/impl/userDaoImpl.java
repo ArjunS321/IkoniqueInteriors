@@ -2049,6 +2049,23 @@ public class userDaoImpl implements userDao {
 		return orderdetailslist;
 		
 	}
+
+	@Override
+	public int modifyQuantityInProduct(int productid, int quantity, Connection connection) {
+		String updateQuery = "update product set i_product_quantity=? where i_product_id=?";
+		try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+			preparedStatement.setInt(1, quantity);
+			preparedStatement.setInt(2, productid);
+			
+			return preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
 }
 
 

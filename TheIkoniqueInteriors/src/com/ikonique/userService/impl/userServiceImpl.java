@@ -693,6 +693,20 @@ public class userServiceImpl {
 		return userDao.fetchProductAndQuantity(connection,bookid);
 	}
 
+	public int updateQuantityInProduct(int productid, int quantity) {
+		int updateQuantityCount=0;
+		String msg=null;
+		updateQuantityCount=userDao.modifyQuantityInProduct(productid,quantity,connection);
+		if(updateQuantityCount>0) {
+			msg="Updation Successfully";
+		}
+		else
+		{
+			msg="Updation Failed";
+		}
+		return updateQuantityCount;
+	}
+
 }
 
 		

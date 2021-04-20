@@ -1,3 +1,4 @@
+<%@page import="com.itextpdf.text.log.SysoLogger"%>
 <%@page import="com.ikonique.bean.User"%>
 <%@page import="utils.PaytmConstants"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -6,12 +7,20 @@
 <%@ page session="false" %> 
 <%
 Enumeration<String> paramNames = request.getParameterNames();
+// List<String> ll = Collections.list(paramNames);
+// System.out.println("paranames:-" + ll);
 
 Map<String, String[]> mapData = request.getParameterMap();
+// for(String str : mapData.keySet())
+// {
+// 	System.out.println(Arrays.toString(mapData.get(str)));
+// }
 TreeMap<String,String> parameters = new TreeMap<String,String>();
 String paytmChecksum =  "";
 while(paramNames.hasMoreElements()) {
+
 	String paramName = (String)paramNames.nextElement();
+// 	System.out.println("check para"+paramName+" "+ paramName.equals("CHECKSUMHASH"));
 	if(paramName.equals("CHECKSUMHASH")){
 		paytmChecksum = mapData.get(paramName)[0];
 	}else{
@@ -22,8 +31,10 @@ boolean isValideChecksum = false;
 String outputHTML="";
 
 try{
+// 	System.out.println("Paytm checksum:- "+ paytmChecksum);
 	isValideChecksum = CheckSumServiceHelper.getCheckSumServiceHelper().verifycheckSum(PaytmConstants.MERCHANT_KEY,parameters,paytmChecksum);
 	outputHTML = parameters.toString();
+// 	System.out.println("checksum:- "+ isValideChecksum);
 // 	if(isValideChecksum && parameters.containsKey("RESPCODE")){
 // 		if(parameters.get("RESPCODE").equals("01")){
 // 			outputHTML = parameters.toString();
@@ -73,6 +84,7 @@ if (null != httpSession) {
   <span hidden id="roleid" name="roleid"><%=id %></span>
 <% int bookid=Integer.parseInt(sArr2[1]); %>
 <span hidden id="bookid" name="bookid"><%=bookid %></span>
+<span hidden id="totalamt" name="totalamt"><%=sArr3[1] %></span>
 </p>
 <%if(sArr1[1].equals("TXN_SUCCESS")){ %>
 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -164,8 +176,9 @@ if (null != httpSession) {
 		var bid = $(this).find('#bookid').text();
 		var status = $(this).find('#status').text();
 		var roleid = $(this).find('#roleid').text();
-	    alert("bid:-" + bid + "status:-" + status + "roleid:-" + roleid);
-			$.post( "AfterPaymentProcess", {bookid : bid , pstatus : status , id : roleid} )
+		var amt = $(this).find('#totalamt').text();
+	    alert("bid:-" + bid + "status:-" + status + "roleid:-" + roleid +"totalamt:-"+amt);
+			$.post( "AfterPaymentProcess", {bookid : bid , pstatus : status , id : roleid, gamt : amt} )
 			  .done(function( data ) 
 			  {
 				  alert("succesfull called..");
