@@ -148,6 +148,8 @@ public interface userDao {
 
 	public int removeUserCart(int userid, Connection connection);
 
+	public List<OrderDetails> fetchProductAndQuantity(Connection connection, int bookid);
+
 	
 	
 	

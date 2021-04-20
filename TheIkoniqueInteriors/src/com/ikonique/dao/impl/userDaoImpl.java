@@ -2019,6 +2019,36 @@ public class userDaoImpl implements userDao {
 		}
 		return 0;
 	}
+
+	@Override
+	public List<OrderDetails> fetchProductAndQuantity(Connection connection, int bookid) {
+		
+		System.out.println("Hii2");
+		String selectQuery="select * from order_details where i_order_id=?";
+		List<OrderDetails> orderdetailslist = new ArrayList<OrderDetails>();
+		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery)){
+				preparedStatement.setInt(1, bookid);
+				
+				ResultSet resultSet=preparedStatement.executeQuery();
+		
+			while(resultSet.next())
+			{
+				System.out.println("Hii3");
+				OrderDetails od=new OrderDetails();
+				od.setOrderid(resultSet.getInt("i_order_id"));
+				od.setProductid(resultSet.getInt("i_product_id"));
+				od.setQuantity(resultSet.getInt("i_quantity"));
+				
+				orderdetailslist.add(od);
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return orderdetailslist;
+		
+	}
 }
 
 

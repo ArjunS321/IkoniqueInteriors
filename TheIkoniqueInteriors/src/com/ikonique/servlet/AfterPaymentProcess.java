@@ -1,12 +1,16 @@
 package com.ikonique.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ikonique.bean.OrderDetails;
 import com.ikonique.bean.User;
 import com.ikonique.userService.impl.userServiceImpl;
 import com.itextpdf.text.log.SysoLogger;
@@ -58,6 +62,12 @@ public class AfterPaymentProcess extends HttpServlet {
 			{
 				int updatepayment=us.updateOrderPaymentStatus(bookid);
 				int deletecart = us.deleteUserCart(user.getUser_id());
+				System.out.println(bookid);
+				List<OrderDetails> orderdetailslist = us.getProductAndQuantity(bookid);
+				for(OrderDetails od:orderdetailslist) {
+					System.out.println("Product Id:"+od.getProductid());
+				}
+				
 //				StringBuilder builder = new StringBuilder(); 
 //		 		builder.append("Your Order Id:-" + sArr[5]);
 //		 		builder.append("\n");

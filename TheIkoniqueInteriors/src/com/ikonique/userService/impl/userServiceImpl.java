@@ -688,6 +688,11 @@ public class userServiceImpl {
 		return deleteCount;
 	}
 
+	public List<OrderDetails> getProductAndQuantity(int bookid) {
+		System.out.println("Hii1");
+		return userDao.fetchProductAndQuantity(connection,bookid);
+	}
+
 }
 
 		

@@ -60,7 +60,7 @@ if (null != httpSession) {
 <p hidden>
 <%= outputHTML %>
   <% String[] sArr= outputHTML.split(","); %>  
-<%-- <% for( String s : sArr){ %>  
+ <%-- <% for( String s : sArr){ %>  
  <p> <%= s %></p>
   <%} %>   --%>
 <p hidden><%= sArr[9] %></p> 
@@ -118,7 +118,7 @@ if (null != httpSession) {
                         </div>
                     </div>
 
-<%} %> 
+<%} %>  
 </body>
 
 <script src="neuro/vendor/jquery/dist/jquery.min.js"></script>

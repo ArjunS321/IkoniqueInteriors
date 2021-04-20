@@ -2,8 +2,8 @@ package utils;
 
 public class PaytmConstants {
 
-//	public final static String MID = "UzBpCf09650105601974";
-//	public final static String MERCHANT_KEY = "3oqEWkf7l_1dw1HO";
+	//public final static String MID = "UzBpCf09650105601974";
+	//public final static String MERCHANT_KEY = "3oqEWkf7l_1dw1HO";
 	
 	public final static String MID = "VWzsAO51442471940391";
 	public final static String MERCHANT_KEY = "VfGg%9pkqmn4XNMG";
