@@ -46,7 +46,7 @@ public class AfterPaymentProcess extends HttpServlet {
 		HttpSession httpSession = request.getSession(false);
 		User user = null;
 		if (null != httpSession) {
-			user = (User) httpSession.getAttribute("loginBean");
+		 	user = (User) httpSession.getAttribute("loginBean");
 		}
 		String status = request.getParameter("pstatus");
 		System.out.println("payment status from paytm:-"+status);
