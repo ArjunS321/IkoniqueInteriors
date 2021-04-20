@@ -62,8 +62,8 @@ if (null != httpSession) {
   <% String[] sArr= outputHTML.split(","); %>  
 <%-- <% for( String s : sArr){ %>  
  <p> <%= s %></p>
-  <%} %>  --%>
- <p hidden><%= sArr[9] %></p> 
+  <%} %>   --%>
+<p hidden><%= sArr[9] %></p> 
   <% String[] sArr2= sArr[5].split("_"); %>   <!-- oid and bid -->
   <% String[] sArr1= sArr[9].split("="); %>		<!-- success -->
   <% String[] sArr3= sArr[10].split("="); %> 	<!-- amount -->
