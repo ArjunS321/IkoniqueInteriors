@@ -68,7 +68,25 @@
 						<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>" class="btn-small mr-2">&#x20B9;<%=product.getProduct_price() %></a> 
 						
 						<!-- For Cart Icon -->
+						<%if(product.getProduct_quantity().equals("0")){ %>
+							
+							 <a class="btn-round"><i id="<%=product.getProduct_id() %>"  class="fa fa-heart"
+						 <%if(null!=wishlistint && !wishlistint.isEmpty()) {%>
+						  
+							<%if(wishlistint.contains(product.getProduct_id())){ %>
+								att="1" style="color: red"
+							<%}else{ %>
+								att="0" style="color: black"
+							<%} %>
+							
+						<%}else{ %>
+							 att="0" style="color: black"
+							<%} %>
+						></i></a> 
+						<%}else{ %>
+						
 						<a  class="btn-round mr-2"><i class="fa fa-shopping-cart" id="<%=product.getProduct_id() %>"
+						
 						 <%if(null!=cartlistint && !cartlistint.isEmpty()) {%>
 						  
 							<%if(cartlistint.contains(product.getProduct_id())){ %>
@@ -96,10 +114,17 @@
 							 att="0" style="color: black"
 							<%} %>
 						></i></a>
+						<%} %>
 						</div>
- 					
+						<div class="mt-3" align="center">
+							<%if(product.getProduct_quantity().equals("0")){ %>
+	 							<span Style="font-size: 6mm" class="text-danger">Out Of Stock</span>
+	 						<%} %>
+ 						</div>
 				</div>
+				
 			</div>
+			
 			<%} %>
 		</div>
 	</div>

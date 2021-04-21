@@ -69,14 +69,22 @@
                     <!-- info-price-detail // -->
                     <!-- <span class="text-success small"><span class="fas fa-shipping-fast mr-1"></span>Free shipping</span> -->
                     <div class="mt-4">
+                    <%if(product.getProduct_quantity().equals("0")){ %>
+                    	<div class="ml-7 mt-3">
+											<span Style="font-size: 6mm" class="text-danger">Out Of Stock</span>
+										</div>
+                    
+                    <%}else{ %>
                        <div class="ml-7 mt-3">
 											<a class="btn-link text-dark" href="InsertProductInCart?productid=<%=product.getProduct_id()%>"><span
 												class="fas fa-shopping-cart mr-2"></span>Add To Cart </a>
 										</div>
+					<%} %>
                         <div class="ml-7 mt-3">
 											<a class="btn-link text-dark" href="DeleteWishlistDetail?productid=<%=product.getProduct_id()%>"><span
 												class="far fa-trash-alt mr-2"></span>Remove </a>
 										</div>
+					
                     </div>
                  
                 </div> 
