@@ -1,6 +1,8 @@
 package com.ikonique.servlet;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -68,9 +70,21 @@ public class GenerateOtpPass extends HttpServlet {
 	 		if(user.getEmail().equalsIgnoreCase(email)) {
 	 			GenerateOtp otp = new GenerateOtp();
 		 		String otpstring = otp.generateOTP();
+		 		ExecutorService emailExecutor = Executors.newSingleThreadExecutor();
+		        emailExecutor.execute(new Runnable() {
+		            @Override
+		            public void run() {
+		                try {
+		                		Main main = new Main();
+		                		main.sendOtp("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {user.getEmail()}, "OTP FOR FORGOT-PASSWORD", "Yours Otp Is:- "+otpstring);
+		                } catch (Exception e) {
+//		                    logger.error("failed", e);
+		                	e.printStackTrace();
+		                }
+		            }
+		        });
+		        emailExecutor.shutdown(); 
 		 		
-		 		Main main = new Main();
-		         main.sendOtp("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {user.getEmail()}, "OTP FOR FORGOT-PASSWORD", otpstring);
 		         request.setAttribute("otpstring", otpstring); 
 		         RequestDispatcher dispatcher = request.getRequestDispatcher("otp.jsp");
 				 dispatcher.forward(request, response);

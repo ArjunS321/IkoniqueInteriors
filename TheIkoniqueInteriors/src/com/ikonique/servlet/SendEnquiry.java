@@ -1,6 +1,8 @@
 package com.ikonique.servlet;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
@@ -48,8 +50,21 @@ public class SendEnquiry extends HttpServlet {
 		builder.append("Customer Email-Id :-" +email);
 		builder.append("\n");
 		builder.append("Customer Message :-" +message);
-		Main main=new Main();
-		main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263",new String[] {"ikoniqueinteriors@gmail.com"} , "Enquiry From User",builder.toString());
+		ExecutorService emailExecutor = Executors.newSingleThreadExecutor();
+        emailExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                	Main main=new Main();
+            		main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263",new String[] {"ikoniqueinteriors@gmail.com"} , "Enquiry From User",builder.toString());
+                } catch (Exception e) {
+//                    logger.error("failed", e);
+                	e.printStackTrace();
+                }
+            }
+        });
+        emailExecutor.shutdown(); 
+		
 		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("contactus.jsp");
 		requestDispatcher.forward(request, response);

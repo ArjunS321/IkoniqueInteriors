@@ -3,6 +3,8 @@ package com.ikonique.servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +23,7 @@ import com.itextpdf.text.log.SysoLogger;
  * Servlet implementation class AfterPaymentProcess
  */
 public class AfterPaymentProcess extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        userServiceImpl us = new userServiceImpl();
     /**
@@ -38,7 +41,7 @@ public class AfterPaymentProcess extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -71,8 +74,22 @@ public class AfterPaymentProcess extends HttpServlet {
 			 		builder.append("Your Order Id:-" +bookid);
 			 		builder.append("\n");
 			 		builder.append("Your Order Amount:-" + amt);
-					Main main=new Main();
-					main.sendFromGMail("ikoniqueinteriors@gmail.com","SAM@616263", new String[] {user.getEmail()}, "Order Confirmed",builder.toString()); 
+			 		
+//			 		ExecutorService emailExecutor = Executors.newSingleThreadExecutor();
+//			        emailExecutor.execute(new Runnable() {
+//			            @Override
+//			            public void run() {
+//			                try {
+			                	Main main=new Main();
+								main.sendFromGMail("ikoniqueinteriors@gmail.com","SAM@616263", new String[] {user.getEmail()}, "Order Confirmed",builder.toString()); 
+//			                } catch (Exception e) {
+////			                    logger.error("failed", e);
+//			                	e.printStackTrace();
+//			                }
+//			            }
+//			        });
+//			        emailExecutor.shutdown(); 
+					
 				}
 				int deletecart = us.deleteUserCart(user.getUser_id());
 				

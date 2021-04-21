@@ -1,9 +1,12 @@
 package com.ikonique.userService.impl;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import com.ikonique.bean.Area;
 import com.ikonique.bean.Booking;
@@ -35,9 +38,20 @@ public class userServiceImpl {
 		
 		int insertedUserId= userDao.insertUserDetails(user,connection);
 		if(insertedUserId>0) {
-			
-			Main main=new Main();
-			main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {user.getEmail()}, "Registration Successfull", "Welcome to the world of THE IKONIQUE INTERIORS");
+			ExecutorService emailExecutor = Executors.newSingleThreadExecutor();
+	        emailExecutor.execute(new Runnable() {
+	            @Override
+	            public void run() {
+	                try {
+	                	Main main=new Main();
+	        			main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {user.getEmail()}, "Registration Successfull", "Welcome to the world of THE IKONIQUE INTERIORS");
+	                } catch (Exception e) {
+//	                    logger.error("failed", e);
+	                	e.printStackTrace();
+	                }
+	            }
+	        });
+	        emailExecutor.shutdown(); 
 			
 			msg="Registration Is Successfully";
 		}
@@ -57,10 +71,23 @@ public class userServiceImpl {
 		int insertedUserId= userDao.insertDesignerDetails(user,connection);
 		if(insertedUserId>0) {
 			msg="Registration Is Successfully";
-			Main main=new Main();
-			main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {user.getEmail()}, "Registration Successfull", "Welcome to the world of THE IKONIQUE INTERIORS");
-			
-		}
+			ExecutorService emailExecutor = Executors.newSingleThreadExecutor();
+	        emailExecutor.execute(new Runnable() {
+	            @Override
+	            public void run() {
+	                try {
+	                	Main main=new Main();
+		            	main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {user.getEmail()}, "Registration Successfull", "Welcome to the world of THE IKONIQUE INTERIORS");
+	                } catch (Exception e) {
+//	                    logger.error("failed", e);
+	                	e.printStackTrace();
+	                }
+	            }
+	        });
+	        emailExecutor.shutdown(); 
+	            	
+	            
+	    }
 		else
 		{
 			msg="Registration Failed";
@@ -527,7 +554,7 @@ public class userServiceImpl {
 		if(insertintobooking>0) 
 		{
 			msg="Insertion Is Successfully";
-			//"Customer Name: new String[] {user.getFirstname()} new String[] {user.getLastname()} Customer Contact No: new String[] {user.getMobileno()} Customer Mail-Id: new String[] {user.getEmail()}");
+			
 		}
 		else
 		{
@@ -542,8 +569,21 @@ public class userServiceImpl {
 		if(insertintobookinginfo>0) 
 		{
 			msg="Insertion Is Successfully";
-			Main main=new Main();
-			main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {bookingInfo.getBookingemail()}, "Booking Successfull", "Your Booking For Interior Designer Is Successfull...Designer Will Contact You..Thank You For Using Our System...Have A Good Day!!");
+			ExecutorService emailExecutor = Executors.newSingleThreadExecutor();
+	        emailExecutor.execute(new Runnable() {
+	            @Override
+	            public void run() {
+	                try {
+	                	Main main=new Main();
+	        			main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {bookingInfo.getBookingemail()}, "Booking Successfull", "Your Booking For Interior Designer Is Successfull...Designer Will Contact You..Thank You For Using Our System...Have A Good Day!!");
+	                } catch (Exception e) {
+//	                    logger.error("failed", e);
+	                	e.printStackTrace();
+	                }
+	            }
+	        });
+	        emailExecutor.shutdown(); 
+			
 		}
 		else
 		{
@@ -606,15 +646,6 @@ public class userServiceImpl {
 		if(insertinorder>0) 
 		{
 			msg="Insertion Is Successfully";
-			/*
-			 * User user=userDao.selectUserDetails(connection,booking.getUserid()); User
-			 * user1=userDao.selectUserDetails(connection,booking.getDesignerid());
-			 * StringBuilder builder = new StringBuilder(); builder.append("adas"); Main
-			 * main=new Main(); main.sendFromGMail("ikoniqueinteriors@gmail.com",
-			 * "SAM@616263", new String[] {user1.getEmail()},
-			 * "Notification For Booking",builder.toString());
-			 */
-			//"Customer Name: new String[] {user.getFirstname()} new String[] {user.getLastname()} Customer Contact No: new String[] {user.getMobileno()} Customer Mail-Id: new String[] {user.getEmail()}");
 		}
 		else
 		{

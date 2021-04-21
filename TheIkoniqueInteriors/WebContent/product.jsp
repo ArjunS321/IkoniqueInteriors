@@ -132,7 +132,6 @@
 </body>
 <script>
 $('.fa-heart').click(function(){
-	alert($(this).attr('id'));
     if($(this).attr('att') == 0){
     
     	var pid = $(this).attr('id');
@@ -140,7 +139,6 @@ $('.fa-heart').click(function(){
     	
     	$.post( "InsertDeleteProductInWishlist", {productid: pid , operation : opname } )
 		  .done(function( data ) {
-			  alert("succesfull called..");
 		  });
     	
         $(this).css('color', 'red');
@@ -151,7 +149,6 @@ $('.fa-heart').click(function(){
     	
     	$.post( "InsertDeleteProductInWishlist", {productid: pid , operation : opname } )
 		  .done(function( data ) {
-			  alert("succesfull called..");
 		  });
     	
         $(this).css('color', 'black');
@@ -171,7 +168,6 @@ $('.fa-heart').click(function(){
 }); */
 
 $('.fa-shopping-cart').click(function(){
-	alert($(this).attr('id'));
     if($(this).attr('att') == 0){
     
     	var pid = $(this).attr('id');
@@ -179,7 +175,6 @@ $('.fa-shopping-cart').click(function(){
     	
     	$.post( "InsertDeleteProductInCart", {productid: pid , operation : opname } )
 		  .done(function( data ) {
-			  alert("succesfull called..");
 		  });
     	
         $(this).css('color', 'blue');
@@ -190,7 +185,6 @@ $('.fa-shopping-cart').click(function(){
     	
     	$.post( "InsertDeleteProductInCart", {productid: pid , operation : opname } )
 		  .done(function( data ) {
-			  alert("succesfull called..");
 		  });
     	
         $(this).css('color', 'black');

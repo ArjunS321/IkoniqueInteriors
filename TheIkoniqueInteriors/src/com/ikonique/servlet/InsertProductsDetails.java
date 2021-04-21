@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -180,10 +182,20 @@ public class InsertProductsDetails extends HttpServlet {
 								builder.append("\n");
 								builder.append("About Product :-"+produtdesc);
 								
-								System.out.println("HII");
-								
-								Main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {user.getEmail()}, "Notification For New Arrival Product",builder.toString());
-								System.out.println("HII2");
+								ExecutorService emailExecutor = Executors.newSingleThreadExecutor();
+						        emailExecutor.execute(new Runnable() {
+						            @Override
+						            public void run() {
+						                try {
+						                	Main main=new Main();
+						                	main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {user.getEmail()}, "Notification For New Arrival Product",builder.toString());
+						                } catch (Exception e) {
+//						                    logger.error("failed", e);
+						                	e.printStackTrace();
+						                }
+						            }
+						        });
+						        emailExecutor.shutdown(); 
 							}
 						}
 						

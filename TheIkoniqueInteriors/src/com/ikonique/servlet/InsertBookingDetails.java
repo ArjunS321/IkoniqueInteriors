@@ -7,6 +7,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -113,8 +115,21 @@ public class InsertBookingDetails extends HttpServlet {
 			builder.append("Email-Id:- "+email);
 			builder.append("\n");
 			builder.append("Address:- "+address);
-			Main main=new Main();
-			main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {user1.getEmail()}, "Notification For Booking",builder.toString());
+			ExecutorService emailExecutor = Executors.newSingleThreadExecutor();
+	        emailExecutor.execute(new Runnable() {
+	            @Override
+	            public void run() {
+	                try {
+	                	Main main=new Main();
+	        			main.sendFromGMail("ikoniqueinteriors@gmail.com", "SAM@616263", new String[] {user1.getEmail()}, "Notification For Booking",builder.toString());
+	                } catch (Exception e) {
+//	                    logger.error("failed", e);
+	                	e.printStackTrace();
+	                }
+	            }
+	        });
+	        emailExecutor.shutdown(); 
+			
 	  	}
 	  	else
 	  	{

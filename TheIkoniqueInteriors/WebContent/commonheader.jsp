@@ -1,3 +1,6 @@
+<%@page import="com.ikonique.bean.Product"%>
+<%@page import="com.ikonique.bean.Cart"%>
+<%@page import="java.util.List"%>
 <%@page import="com.ikonique.bean.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -41,12 +44,32 @@ if (null != httpSession) {
 <!-- Pixel CSS -->
 <link type="text/css" href="neuro/css/neumorphism.css" rel="stylesheet">
 </head>
+
 <body>
 	<%
 		if (temp == '1') {
 	%>
 	<%
 		if (userheader.getRole_id() == 1) {
+	%>
+	<jsp:include page="/SelectCartDetails" />
+	<%
+		List<Cart> cartCountList = (List) request.getAttribute("cartList");
+	%>
+	<%
+		List<Integer> cartcountint = (List) request.getAttribute("cartint");
+	%>
+	<%
+		int cartcount = 0;
+	%>
+	<%
+		for (Cart cart : cartCountList) {
+	%>
+	<%
+		cartcount = cartcount + 1;
+	%>
+	<%
+		}
 	%>
 	<header class="header-desktop" style="background-color: #e6e7ee;">
 		<!-- <link data-require="sweet-alert@*" data-semver="0.4.2" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" /> -->
@@ -60,46 +83,7 @@ if (null != httpSession) {
 					<div class="header-button">
 						<div class="noti-wrap">
 							<div class="noti__item">
-								<a href="cart.jsp"><i class="fas fa-shopping-cart"></i> </a>
-							</div>
-							<div class="noti__item js-item-menu">
-								<i class="zmdi zmdi-notifications"></i> <span class="quantity">3</span>
-								<div class="notifi-dropdown js-dropdown">
-									<div class="notifi__title">
-										<p>You have 3 Notifications</p>
-									</div>
-									<div class="notifi__item">
-										<div class="bg-c1 img-cir img-40">
-											<i class="zmdi zmdi-email-open"></i>
-										</div>
-										<div class="content">
-											<p>You got a email notification</p>
-											<span class="date">April 12, 2018 06:50</span>
-										</div>
-									</div>
-									<div class="notifi__item">
-										<div class="bg-c2 img-cir img-40">
-											<i class="zmdi zmdi-account-box"></i>
-										</div>
-										<div class="content">
-											<p>Your account has been blocked</p>
-											<span class="date">April 12, 2018 06:50</span>
-										</div>
-									</div>
-									<div class="notifi__item">
-										<div class="bg-c3 img-cir img-40">
-											<i class="zmdi zmdi-file-text"></i>
-										</div>
-
-										<div class="content">
-											<p>You got a new file</p>
-											<span class="date">April 12, 2018 06:50</span>
-										</div>
-									</div>
-									<div class="notifi__footer">
-										<a href="#">All notifications</a>
-									</div>
-								</div>
+								<a href="cart.jsp"><i class="fas fa-shopping-cart"></i><span class="quantity"><%=cartcount %></span> </a>
 							</div>
 						</div>
 						<div class="account-wrap">

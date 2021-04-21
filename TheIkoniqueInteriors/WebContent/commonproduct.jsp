@@ -66,13 +66,28 @@ input.search-input
 				<%} %>
 				</div>
 				
-				<input type="text" id="mySearch" placeholder="Search Products..." class="form-control search-input">
 				<br>
 			</div>
 		</div>
 		<section style="background-color: #e6e7ee;">
-		<div class="row" style="margin-left:10px; margin-right:10px;" id="result">
-		<%for(Product product : productlist) {%>
+		<input type="text" id="mySearch" placeholder="Search Products..." class="form-control search-input">
+						<ul style="margin-right:55rem; margin-top:-5rem;" class="navbar-nav navbar-nav-hover align-items-lg-center">
+							<li class="nav-item dropdown"><a href="#" class="nav-link"
+								data-toggle="dropdown"> <span class="nav-link-inner-text">Price Filter</span>
+									<span class="fas fa-angle-down nav-link-arrow ml-2"></span>
+							</a>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="#">above 300</a></li>
+									<li><a class="dropdown-item" href="#">300 - 3000</a></li>
+									<li><a class="dropdown-item" href="#">3000 - 10000</a></li>
+									<li><a class="dropdown-item" href="#">10000 - 20000</a></li>
+									<li><a class="dropdown-item" href="#">20000 - 45000</a></li>
+								</ul></li>
+						</ul>
+			<div class="row" style="margin-left:10px; margin-right:10px;" id="result">
+						<%
+							for (Product product : productlist) {
+						%>
 			<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
 				<div class="single-product" id="single">
 					<div class="product-thumb">
