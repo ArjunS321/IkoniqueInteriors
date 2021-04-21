@@ -200,18 +200,27 @@ textarea {
 					></i></a>
 				</div>
 				<br> <br>
+				<%if(product.getProduct_quantity().equals("0")) {%>
+					<span Style="font-size: 8mm" class="text-danger">Out Of Stock</span>
+				<%} %>
 				<h4 class="mb-3">Product Description</h4>
 				<p class="mb-4 des"><%=product.getProduct_desc()%></p>
 				<h4 class="mb-3">Product Weight</h4>
 				<p class="mb-4"><%=product.getProduct_weight()%>
 					KG
 				</p>
-					
+				<%if(product.getProduct_quantity().equals("0")) {%>	
+				<a  class="btn rounded-bottom col-lg-5 ml-6"
+					style="background-color: #e6e7ee;" >Buy Now</a>
+				<a class="btn rounded-bottom ml-3 col-lg-5"
+					style="background-color: #e6e7ee;" >Add to Cart</a>
+				<%}else{ %>
 				<a href="InsertProductInCart?productid=<%=product.getProduct_id()%>" class="btn rounded-bottom col-lg-5 ml-6"
 					style="background-color: #e6e7ee;">Buy Now</a>
 				<a href="InsertProductInCart?productid=<%=product.getProduct_id()%>" class="btn rounded-bottom ml-3 col-lg-5"
 					style="background-color: #e6e7ee;">Add to Cart</a>
-
+				
+				<%} %>
 <!-- 					<div class="form-group mb-1 ml-6 mr-10 inputBox"> -->
 <!-- 						<label for="add">FeedBack</label> -->
 <!-- 						<textarea rows="5" name="feedback" class="form-control" id="feedback" -->
