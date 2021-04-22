@@ -152,6 +152,8 @@ public interface userDao {
 
 	public int modifyQuantityInProduct(int productid, int quantity, Connection connection);
 
+	public List<Product> fetchFilterProduct(Connection connection, int subcatid, int minprice, int maxprice);
+
 	
 	
 	

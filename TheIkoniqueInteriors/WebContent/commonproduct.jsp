@@ -57,8 +57,10 @@ input.search-input
 		<div class="row ml-4">
 			<div class="col-xl-12">
 				<div class="section-title">
+				<%int id=0; %>
 				<%for(SubCategory subCategory : subcategoryList1){ %>
 					<%for(Product product : productlist){ %>
+						<%id=product.getSubcategory_id(); %>
 					<%if(subCategory.getSub_category_id() == product.getSubcategory_id()){ %>
 					<h2><%=subCategory.getSub_category_name() %> Products</h2>
 					<%break;} %>
@@ -77,9 +79,9 @@ input.search-input
 									<span class="fas fa-angle-down nav-link-arrow ml-2"></span>
 							</a>
 								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="PriceFilterForProduct">All Products</a></li>
-									<li><a class="dropdown-item" href="PriceFilterForProduct">1,000 - 5,000</a></li>
-									<li><a class="dropdown-item" href="PriceFilterForProduct">5,000 - 10,000</a></li>
+									<li><a class="dropdown-item" href="SelectParticularProduct?subcategoryid=<%=id%>">All Products</a></li>
+									<li><a class="dropdown-item" href="PriceFilterForProduct?subcatid=<%=id%>-1000-5000">1,000 - 5,000</a></li>
+									<li><a class="dropdown-item" href="PriceFilterForProduct?subcatid=<%=id%>-5000-10000">5,000 - 10,000</a></li>
 								</ul></li>
 						</ul>
 			<div class="row" style="margin-left:10px; margin-right:10px;" id="result">

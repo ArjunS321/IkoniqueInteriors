@@ -2023,7 +2023,7 @@ public class userDaoImpl implements userDao {
 	@Override
 	public List<OrderDetails> fetchProductAndQuantity(Connection connection, int bookid) {
 		
-		System.out.println("Hii2");
+	
 		String selectQuery="select * from order_details where i_order_id=?";
 		List<OrderDetails> orderdetailslist = new ArrayList<OrderDetails>();
 		try(PreparedStatement preparedStatement=connection.prepareStatement(selectQuery)){
@@ -2033,7 +2033,7 @@ public class userDaoImpl implements userDao {
 		
 			while(resultSet.next())
 			{
-				System.out.println("Hii3");
+				
 				OrderDetails od=new OrderDetails();
 				od.setOrderid(resultSet.getInt("i_order_id"));
 				od.setProductid(resultSet.getInt("i_product_id"));
@@ -2065,6 +2065,52 @@ public class userDaoImpl implements userDao {
 		}
 
 		return 0;
+	}
+
+	@Override
+	public List<Product> fetchFilterProduct(Connection connection, int subcatid, int minprice, int maxprice) {
+		String selectQuery="select * from product where d_product_price<=? and d_product_price>=? and i_sub_category_id=?";
+		List<Product> productlist=new ArrayList<Product>();
+		System.out.println("subid:"+subcatid);
+		try(PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)){
+			preparedStatement.setDouble(1, minprice);
+			preparedStatement.setDouble(2, maxprice);
+			preparedStatement.setInt(3, subcatid);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				Product product=new Product();
+				product.setProduct_id(resultSet.getInt("i_product_id"));
+				product.setProduct_name(resultSet.getString("c_product_name"));
+				product.setProduct_price(resultSet.getString("d_product_price"));
+				product.setProduct_quantity(resultSet.getString("i_product_quantity"));
+				product.setProduct_weight(resultSet.getString("d_product_weight"));
+				product.setProduct_owner_id(resultSet.getInt("i_product_owner_id"));
+				product.setProduct_desc(resultSet.getString("c_product_description"));
+				product.setCategory_id(resultSet.getInt("i_main_category_id"));
+				product.setOfferid(resultSet.getInt("i_offer_id"));
+				product.setSubcategory_id(resultSet.getInt("i_sub_category_id"));
+				product.setStatus(resultSet.getInt("i_status"));
+				byte[] productimage = resultSet.getBytes("b_product_image"); 
+				String imageString=null;
+				  if(null!=productimage && productimage.length>0)
+				  { 
+					imageString = Base64.getEncoder().encodeToString(productimage);
+					product.setProductpicString(imageString);
+				  }
+				  else
+				  {
+					  System.out.println("blank....");
+				  }
+				  productlist.add(product);
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();		
+		}
+		return productlist;
+
 	}
 }
 

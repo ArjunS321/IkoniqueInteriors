@@ -720,7 +720,7 @@ public class userServiceImpl {
 	}
 
 	public List<OrderDetails> getProductAndQuantity(int bookid) {
-		System.out.println("Hii1");
+		
 		return userDao.fetchProductAndQuantity(connection,bookid);
 	}
 
@@ -736,6 +736,10 @@ public class userServiceImpl {
 			msg="Updation Failed";
 		}
 		return updateQuantityCount;
+	}
+
+	public List<Product> selectProductDetail(int subcatid, int minprice, int maxprice) {
+		return userDao.fetchFilterProduct(connection,subcatid,minprice,maxprice);
 	}
 
 }
