@@ -2069,9 +2069,9 @@ public class userDaoImpl implements userDao {
 
 	@Override
 	public List<Product> fetchFilterProduct(Connection connection, int subcatid, int minprice, int maxprice) {
-		String selectQuery="select * from product where d_product_price<=? and d_product_price>=? and i_sub_category_id=?";
+		String selectQuery="select * from product where d_product_price>=? and d_product_price<=? and i_sub_category_id=?";
 		List<Product> productlist=new ArrayList<Product>();
-		System.out.println("subid:"+subcatid);
+		
 		try(PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)){
 			preparedStatement.setDouble(1, minprice);
 			preparedStatement.setDouble(2, maxprice);

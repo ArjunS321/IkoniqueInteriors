@@ -37,15 +37,9 @@ public class PriceFilterForProduct extends HttpServlet {
 		int maxprice=Integer.parseInt(arr[2]);
 		
 		List<Product> productlist=us.selectProductDetail(subcatid,minprice,maxprice);
-		/*
-		 * for(Product product:productlist) {
-		 * System.out.println("pname:"+product.getProduct_name()); }
-		 */
-		
-		
-		 request.setAttribute("productlist", productlist); 
-		 RequestDispatcher dispatcher = request.getRequestDispatcher("commonproduct.jsp");
-		 dispatcher.forward(request, response);
+		request.setAttribute("productlist", productlist); 
+		RequestDispatcher dispatcher = request.getRequestDispatcher("commonproduct.jsp");
+		dispatcher.forward(request, response);
 		 
 		
 		//List<Product> productlist=us.getFilterProducts(subcategoryid);
