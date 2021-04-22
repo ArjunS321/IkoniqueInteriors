@@ -139,11 +139,12 @@ if (null != httpSession) {
 											</a>
 										</div>
 										<div class="account-dropdown__item">
-											<a href="DeleteUserRecord" id="click"
-												onclick="return confirm('Are You Sure You Want To Delete Acoount?')">
+											
+											<a  id="click" onclick='return check()' >
 												<i class="fas fa-user-minus"></i>Delete Account?
 											</a>
 										</div>
+										
 										<div class="account-dropdown__item">
 											<a href="changepassword.jsp"> <i class="fas fa-key"></i>Change
 												Password
@@ -162,6 +163,30 @@ if (null != httpSession) {
 			</div>
 		</div>
 	</header>
+	<div class="modal fade" id="modal" tabindex="-1"
+								role="dialog" aria-labelledby="modal-default" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+								<div class="modal-dialog modal-dialog-centered" role="document" >
+									<div class="modal-content">
+										<div class="modal-header">
+											<h2 class="h6 modal-title mb-0" id="modal-title-default">The Ikonique Interiors</h2>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+<!-- 												<span aria-hidden="true">Ã</span> -->
+											</button>
+										</div>
+										<div class="modal-body">
+											<p><h4><b>Are You Sure ? You Want To Delete Your Account?</b></h4></p>
+											
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-sm" data-dismiss="modal">No</button>
+											<a href="DeleteUserRecord" type="button"
+												class="btn ml-auto"
+												>Yes</a>
+										</div>
+									</div>
+								</div>
+							</div>
 	<%
 		} else if (userheader.getRole_id() == 2) {
 	%>
@@ -228,10 +253,10 @@ if (null != httpSession) {
 											</a>
 										</div>
 										<div class="account-dropdown__item">
-											<a href="DeleteUserRecord" id="click"
-												onclick="return confirm('Are You Sure You Want To Delete Acoount?')">
+											 <a  id="click" onclick='return check()' >
 												<i class="fas fa-user-minus"></i>Delete Account?
 											</a>
+											
 										</div>
 										<div class="account-dropdown__item">
 											<a href="changepassword.jsp"> <i class="fas fa-key"></i>Change
@@ -251,7 +276,31 @@ if (null != httpSession) {
 			</div>
 		</div>
 	</header>
-
+	<div class="modal fade" id="modal" tabindex="-1"
+								role="dialog" aria-labelledby="modal-default" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+								<div class="modal-dialog modal-dialog-centered" role="document" >
+									<div class="modal-content">
+										<div class="modal-header">
+											<h2 class="h6 modal-title mb-0" id="modal-title-default">The Ikonique Interiors</h2>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+<!-- 												<span aria-hidden="true">Ã</span> -->
+											</button>
+										</div>
+										<div class="modal-body">
+											<p><h4><b>Are You Sure ? You Want To Delete Your Account?</b></h4></p>
+											
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-sm" data-dismiss="modal">No</button>
+											<a href="DeleteUserRecord" type="button"
+												class="btn ml-auto"
+												>Yes</a>
+										</div>
+									</div>
+								</div>
+							</div>
+	
 	<%
 		} else {
 	%>
@@ -397,5 +446,15 @@ if (null != httpSession) {
 	</header>
 	<%} %>
 </body>
+
 <%@include file="commonjs.jsp"%>
+<script>
+
+function check()
+{
+	$('#modal').modal('show');
+    return false;
+}
+
+</script>
 </html>

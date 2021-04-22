@@ -74,11 +74,12 @@ if (null != httpSession1) {
                     <th>Booking-Id<i class="fa fa-fw fa-sort" onclick="sortTable(0)"></i></th>
                     <th>Customer Name<i class="fa fa-fw fa-sort" onclick="sortTable(1)"></i></th>
                     <th>Address<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
-                    <th>Contact-No<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
-                    <th>Email-Id<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
-                    <th>Booking-Date<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
-                    <th>Payment Status<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
-                    <th>Booking Status<i class="fa fa-fw fa-sort" onclick="sortTable(2)"></i></th>
+                    <th>Contact-No<i class="fa fa-fw fa-sort" onclick="sortTable(3)"></i></th>
+                    <th>Email-Id<i class="fa fa-fw fa-sort" onclick="sortTable(4)"></i></th>
+                    <th>Booking-Date<i class="fa fa-fw fa-sort" onclick="sortTable(5)"></i></th>
+                    <th>Booking Status<i class="fa fa-fw fa-sort" onclick="sortTable(6)"></i></th>
+                    <th>Payment Status<i class="fa fa-fw fa-sort" onclick="sortTable(7)"></i></th>
+                    
                     <!-- <th>Edit</th>
                     <th>Delete</th>-->
  		             
@@ -97,8 +98,16 @@ if (null != httpSession1) {
                     <td><%=bookinginfo.getBookingcno() %></td>
                     <td><%=bookinginfo.getBookingemail() %></td>
                     <td><%=bookinginfo.getBookingdate() %></td>
-                    <td><%=booking.getPaymentstatus() %></td>
-                    <td><%=booking.getBookingstatus() %></td>
+                    <%if(booking.getBookingstatus().equalsIgnoreCase("success")) {%>
+                    	<td class="text-success"><%=booking.getBookingstatus() %></td>
+                    <%}else{%>
+                    	<td class="text-danger"><%=booking.getBookingstatus() %></td>
+                    <%} %>
+                    <%if(booking.getPaymentstatus().equalsIgnoreCase("success")){ %>
+                    	<td class="text-success"><%=booking.getPaymentstatus() %></td>
+                    <%}else{ %>
+                    	<td class="text-danger"><%=booking.getPaymentstatus() %></td>
+                    <%} %>
                    
                 </tr>
                 </tbody>
@@ -126,11 +135,12 @@ if (null != httpSession1) {
                     <th>Booking-Id<i class="fa fa-fw fa-sort" onclick="sortTable1(0)"></i></th>
                     <th>Customer Name<i class="fa fa-fw fa-sort" onclick="sortTable1(1)"></i></th>
                     <th>Address<i class="fa fa-fw fa-sort" onclick="sortTable1(2)"></i></th>
-                    <th>Contact-No<i class="fa fa-fw fa-sort" onclick="sortTable1(2)"></i></th>
-                    <th>Email-Id<i class="fa fa-fw fa-sort" onclick="sortTable1(2)"></i></th>
-                    <th>Booking-Date<i class="fa fa-fw fa-sort" onclick="sortTable1(2)"></i></th>
-                    <th>Payment Status<i class="fa fa-fw fa-sort" onclick="sortTable1(2)"></i></th>
-                    <th>Booking Status<i class="fa fa-fw fa-sort" onclick="sortTable1(2)"></i></th>
+                    <th>Contact-No<i class="fa fa-fw fa-sort" onclick="sortTable1(3)"></i></th>
+                    <th>Email-Id<i class="fa fa-fw fa-sort" onclick="sortTable1(4)"></i></th>
+                    <th>Booking-Date<i class="fa fa-fw fa-sort" onclick="sortTable1(5)"></i></th>
+                     <th>Booking Status<i class="fa fa-fw fa-sort" onclick="sortTable1(6)"></i></th>
+                    <th>Payment Status<i class="fa fa-fw fa-sort" onclick="sortTable1(7)"></i></th>
+                   
                     <!-- <th>Edit</th>
                     <th>Delete</th>-->
  		             
@@ -149,8 +159,17 @@ if (null != httpSession1) {
                     <td><%=bookinginfo.getBookingcno() %></td>
                     <td><%=bookinginfo.getBookingemail() %></td>
                     <td><%=bookinginfo.getBookingdate() %></td>
-                    <td><%=booking.getPaymentstatus() %></td>
-                    <td><%=booking.getBookingstatus() %></td>
+                    <%if(booking.getBookingstatus().equalsIgnoreCase("success")) {%>
+                    	<td class="text-success"><%=booking.getBookingstatus() %></td>
+                    <%}else{%>
+                    	<td class="text-danger"><%=booking.getBookingstatus() %></td>
+                    <%} %>
+                    <%if(booking.getPaymentstatus().equalsIgnoreCase("success")){ %>
+                    	<td class="text-success"><%=booking.getPaymentstatus() %></td>
+                    <%}else{ %>
+                    	<td class="text-danger"><%=booking.getPaymentstatus() %></td>
+                    <%} %>
+                    
                 </tr>
                 </tbody>
                 
