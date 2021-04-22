@@ -589,4 +589,14 @@
     <servlet-name>AfterPaymentProcess</servlet-name>
     <url-pattern>/AfterPaymentProcess</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PriceFilterForProduct</display-name>
+    <servlet-name>PriceFilterForProduct</servlet-name>
+    <servlet-class>com.ikonique.servlet.PriceFilterForProduct</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PriceFilterForProduct</servlet-name>
+    <url-pattern>/PriceFilterForProduct</url-pattern>
+  </servlet-mapping>
 </web-app>

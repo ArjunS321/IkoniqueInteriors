@@ -77,11 +77,9 @@ input.search-input
 									<span class="fas fa-angle-down nav-link-arrow ml-2"></span>
 							</a>
 								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="#">above 300</a></li>
-									<li><a class="dropdown-item" href="#">300 - 3000</a></li>
-									<li><a class="dropdown-item" href="#">3000 - 10000</a></li>
-									<li><a class="dropdown-item" href="#">10000 - 20000</a></li>
-									<li><a class="dropdown-item" href="#">20000 - 45000</a></li>
+									<li><a class="dropdown-item" href="PriceFilterForProduct">All Products</a></li>
+									<li><a class="dropdown-item" href="PriceFilterForProduct">1,000 - 5,000</a></li>
+									<li><a class="dropdown-item" href="PriceFilterForProduct">5,000 - 10,000</a></li>
 								</ul></li>
 						</ul>
 			<div class="row" style="margin-left:10px; margin-right:10px;" id="result">
