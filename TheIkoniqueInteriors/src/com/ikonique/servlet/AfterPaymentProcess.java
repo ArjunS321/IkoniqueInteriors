@@ -75,20 +75,21 @@ public class AfterPaymentProcess extends HttpServlet {
 			 		builder.append("\n");
 			 		builder.append("Your Order Amount:-" + amt);
 			 		
-//			 		ExecutorService emailExecutor = Executors.newSingleThreadExecutor();
-//			        emailExecutor.execute(new Runnable() {
-//			            @Override
-//			            public void run() {
-//			                try {
+			 		final String useremail=user.getEmail();
+			 		ExecutorService emailExecutor = Executors.newSingleThreadExecutor();
+			        emailExecutor.execute(new Runnable() {
+			            @Override
+			            public void run() {
+			                try {
 			                	Main main=new Main();
-								main.sendFromGMail("ikoniqueinteriors@gmail.com","SAM@616263", new String[] {user.getEmail()}, "Order Confirmed",builder.toString()); 
-//			                } catch (Exception e) {
-////			                    logger.error("failed", e);
-//			                	e.printStackTrace();
-//			                }
-//			            }
-//			        });
-//			        emailExecutor.shutdown(); 
+								main.sendFromGMail("ikoniqueinteriors@gmail.com","SAM@616263", new String[] {useremail}, "Order Confirmed",builder.toString()); 
+			                } catch (Exception e) {
+			                    //logger.error("failed", e);
+			                	e.printStackTrace();
+			                }
+			            }
+			        });
+			        emailExecutor.shutdown(); 
 					
 				}
 				int deletecart = us.deleteUserCart(user.getUser_id());
