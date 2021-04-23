@@ -154,6 +154,8 @@ public interface userDao {
 
 	public List<Product> fetchFilterProduct(Connection connection, int subcatid, int minprice, int maxprice);
 
+	public int deletechildsubcategoryDetails(int categoryId, Connection connection);
+
 	
 	
 	

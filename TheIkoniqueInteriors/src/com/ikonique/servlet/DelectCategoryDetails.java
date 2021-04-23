@@ -30,6 +30,7 @@ public class DelectCategoryDetails extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		String category = request.getParameter("categoryId");
 		int categoryId = Integer.parseInt(category);
+		String deletemsg=userservice.removechildsubcategory(categoryId);
 		String removecategorymsg = userservice.removecategoryDetails(categoryId);
 		response.sendRedirect("categoryTable.jsp");
 		

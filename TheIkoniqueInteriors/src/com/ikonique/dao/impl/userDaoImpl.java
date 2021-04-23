@@ -2112,6 +2112,23 @@ public class userDaoImpl implements userDao {
 		return productlist;
 
 	}
+
+	@Override
+	public int deletechildsubcategoryDetails(int categoryId, Connection connection) {
+		String deleteQuery = "update sub_category set i_status=? where i_category_id=?";
+		try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
+			preparedStatement.setInt(1, 0);
+			preparedStatement.setInt(2, categoryId);
+
+			return preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+
+	}
 }
 
 

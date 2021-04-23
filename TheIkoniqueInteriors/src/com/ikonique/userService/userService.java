@@ -85,4 +85,5 @@ public interface userService {
 	public List<OrderDetails> getProductAndQuantity(int bookid);
 	public int updateQuantityInProduct(int productid, int quantity);
 	public List<Product> selectProductDetail(int subcatid, int minprice, int maxprice);
+	public String removechildsubcategory(int categoryId);
 }

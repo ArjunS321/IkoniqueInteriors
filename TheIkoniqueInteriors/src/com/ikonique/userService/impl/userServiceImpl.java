@@ -742,6 +742,21 @@ public class userServiceImpl {
 		return userDao.fetchFilterProduct(connection,subcatid,minprice,maxprice);
 	}
 
+	public String removechildsubcategory(int categoryId) {
+		int deleteCount=0;
+		String msg=null;
+		deleteCount=userDao.deletechildsubcategoryDetails(categoryId,connection);
+		if(deleteCount>0) {
+			msg="Deletion Successfully";
+		}
+		else
+		{
+			msg="Deletion Failed";
+		}
+		return msg;
+
+	}
+
 }
 
 		

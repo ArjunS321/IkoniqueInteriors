@@ -56,6 +56,7 @@
                     <th>Delete</th>
                 </tr>
             </thead>
+            <%int categoryid=0; %>
             <%for(Category category:categoryList1) { %>
             <tbody>
                 <tr>
@@ -71,7 +72,8 @@
                     </td>
                     <td>
                      <div class="table-data-feature">
-                       <a href="DelectCategoryDetails?categoryId=<%=category.getCategory_id() %>" data-toggle="modal" data-target="#modal-default" class="item" id="delbtn" data-toggle="tooltip" data-placement="top" title="Delete">
+                     	<%categoryid=category.getCategory_id(); %>
+                       <a data-toggle="modal" data-target="#modal-default" class="item" id="delbtn" data-toggle="tooltip" data-placement="top" title="Delete">
                        <i class="zmdi zmdi-delete"></i>
                        </a>                                    
                   </div>
@@ -86,21 +88,20 @@
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h2 class="h6 modal-title mb-0" id="modal-title-default">Terms
-						of Service</h2>
+					<h2 class="h6 modal-title mb-0" id="modal-title-default">The Ikonique Interiors</h2>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 <!-- 						<span aria-hidden="true">×</span> -->
 					</button>
 				</div>
 				<div class="modal-body">
-					<p></p>
-                    <p></p>
+					<p>Are You Sure You Want To Delete This Category?</p>
+                    <p>If Yes Then All SubCategory Will Be Deleted Which Is Belong To This Category.</p>
 				</div>
 				<div class="modal-footer">
-					<button href="" type="button" class="btn btn-sm">I Got
-						It</button>
-					<button type="button" class="btn text-danger ml-auto" data-dismiss="modal">Close</button>
+					<button type="button" class="btn text-danger ml-auto" data-dismiss="modal">No</button>
+					<a href="DelectCategoryDetails?categoryId=<%=categoryid %>"  type="button" class="btn btn-sm">Yes</a>
+					
 				</div>
 			</div>
 		</div>
