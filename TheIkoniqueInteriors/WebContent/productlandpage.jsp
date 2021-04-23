@@ -251,7 +251,7 @@ textarea {
 		                    <%} %>
                     	<%} %>
                     <%if(count>0){ %>
-                    <h4>Total FeedBacks:<%=count %></h4>
+                    <h4>Total FeedBacks On This Product: <%=count %></h4>
                     <div class="feedbackdetails" id="feedbackdetails">
                     	<hr class="my-5"  style="background-color: lightgrey;">
                     	<%for(User user: userList){ %>
