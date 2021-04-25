@@ -91,7 +91,7 @@
                         <!-- Profile Card -->
                         <div class="card bg-primary shadow-soft border-light text-center py-4 mb-5">
                             <div class="profile-image shadow-inset border border-light bg-primary rounded-circle p-3 mx-auto">
-                                <img src="bg-img/Saleha.jpeg" style="height:130px;" class="card-img-top shadow-soft p-2 border border-light rounded-circle" alt="Bonnie Avatar">
+                                <img src="bg-img/Saleha.jpg" style="height:130px;" class="card-img-top shadow-soft p-2 border border-light rounded-circle" alt="Bonnie Avatar">
                             </div>
                             <div class="card-body">
                                 <h3 class="h5 mb-2">Saleha Shaikh</h3>

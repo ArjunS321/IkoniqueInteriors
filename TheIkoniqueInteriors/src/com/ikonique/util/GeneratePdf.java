@@ -11,7 +11,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public class GeneratePdf {
-
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {
@@ -54,7 +54,7 @@ public class GeneratePdf {
 			document.add(table);
 			
 			//add image
-			document.add(Image.getInstance("E:\\MEET DOC\\PIC-2.jpg"));
+			//document.add(Image.getInstance("E:\\MEET DOC\\PIC-2.jpg"));
 			
 			document.close();
 			System.out.println("File is generated");

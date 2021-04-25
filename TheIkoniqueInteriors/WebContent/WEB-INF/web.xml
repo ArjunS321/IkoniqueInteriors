@@ -599,4 +599,14 @@
     <servlet-name>PriceFilterForProduct</servlet-name>
     <url-pattern>/PriceFilterForProduct</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GenerateOrderInvoice</display-name>
+    <servlet-name>GenerateOrderInvoice</servlet-name>
+    <servlet-class>com.ikonique.servlet.GenerateOrderInvoice</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GenerateOrderInvoice</servlet-name>
+    <url-pattern>/GenerateOrderInvoice</url-pattern>
+  </servlet-mapping>
 </web-app>

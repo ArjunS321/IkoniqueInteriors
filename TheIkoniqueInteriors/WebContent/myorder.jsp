@@ -69,11 +69,13 @@ if (null != httpSession1) {
 <jsp:include page="/SelectOfferDetails"/>
 <%List<Offer> offerList =(List)request.getAttribute("offerList"); %>
 <body>
+	
 	<div class="page-wrapper">
 		<%@include file="commonsidebar.jsp"%>
 		<%@include file="commonheader.jsp"%>
 		<div class="page-container">
 			<div class="main-content">
+			
 			<%for(Order order : orderList) {%>
 				<%if(order.getUserid()==user1.getUser_id()){ %>
 					<%if(order.getPaymentstatus().equalsIgnoreCase("success")){ %>
@@ -98,6 +100,7 @@ if (null != httpSession1) {
 								</tr>
 								</table>
 							</div>
+							
 						</div>
 					</div>
 					<div class="row mr-0 ml-0" style="background-color: #e6e7ee;">
@@ -110,7 +113,7 @@ if (null != httpSession1) {
 								style="background-color: #e6e7ee;">
 								<div class="row align-items-center item">
 									<div class="col-3">
-										<a href="#"> <img src="data:image/jpg;base64,<%=product.getProductpicString() %>"></a>
+										<a href="#"> <img src="data:image/jpg;base64,<%=product.getProductpicString()%>"></a>
 									</div>
 									<div class="col">
 										<div class="d-flex font-weight-bold">
@@ -144,15 +147,18 @@ if (null != httpSession1) {
 								<%} %>
 							<%} %>
 						</div>
-						<button style="margin-left:21rem;" class="btn btn-block col-lg-6" type="submit">Download Invoice</button>
+
+						<a style="margin-left:21rem;" class="btn btn-block col-lg-6" href="GenerateOrderInvoice?orderid=<%=order.getOrderid() %>">Download Invoice</a>
 					</div>
 				</div>
 						<%} %>
 					<%} %>
 				<%} %>
+				
 			</div>
 		</div>
 	</div>
+	
 </body>
 <!-- Core -->
 <script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
