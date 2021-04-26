@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,11 +19,13 @@ import com.ikonique.bean.Product;
 import com.ikonique.bean.User;
 import com.ikonique.userService.impl.userServiceImpl;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+
 
 /**
  * Servlet implementation class GenerateOrderInvoice
@@ -70,37 +73,48 @@ public class GenerateOrderInvoice extends HttpServlet {
 			// Simple Para....
 				PdfWriter.getInstance(document, new FileOutputStream(filename));
 				document.open();
-				Paragraph paragraph = new Paragraph("Hello My Name Is Saleha Shaikh!!!");
-				document.add(paragraph);
 				
+				Paragraph paragraph = new Paragraph("The Ikonique Interiors");
+				document.add(paragraph);
+				document.add(new Paragraph(" "));
+				document.add(new Paragraph(" "));
+				
+				//document.add(Image.getInstance("TheIkoniqueInteriors/WebContent/images/icon/logo1.png"));
 				
 				// for space
 				
-				document.add(new Paragraph("Your OrderId Is:= "+orderid));
+				document.add(new Paragraph("Your OrderId Is:= "+" "+"OID_"+orderid));
 				document.add(new Paragraph(" "));
 				document.add(new Paragraph(" "));
-				document.add(new Paragraph(" "));
+				document.add(new Paragraph("Your Invoice "));
 				document.add(new Paragraph(" "));
 						
 			// add table...
 				
-				PdfPTable table = new PdfPTable(5);
+				PdfPTable table = new PdfPTable(8);
 				/*
 				 * PdfPCell c1 = new PdfPCell(); table.addCell(c1);
 				 */
 				
-				PdfPCell c1 = new PdfPCell(new Phrase("Product Name"));
+				PdfPCell c1 = new PdfPCell(new Phrase("Date"));
 				table.addCell(c1);
-				c1 = new PdfPCell(new Phrase("Product Price"));
+				c1 = new PdfPCell(new Phrase("Product Name"));
 				table.addCell(c1);
-				c1 = new PdfPCell(new Phrase("Discount"));
+				c1 = new PdfPCell(new Phrase("Product Price Rs."));
+				table.addCell(c1);
+				c1 = new PdfPCell(new Phrase("Discount %"));
 				table.addCell(c1);
 				c1 = new PdfPCell(new Phrase("Quantity"));
 				table.addCell(c1);
-				c1 = new PdfPCell(new Phrase("Total"));
+				c1 = new PdfPCell(new Phrase("Total Discount Rs."));
+				table.addCell(c1);
+				c1 = new PdfPCell(new Phrase("Total Price Rs."));
+				table.addCell(c1);
+				c1 = new PdfPCell(new Phrase("NET PRICE Rs."));
 				table.addCell(c1);
 				table.setHeaderRows(1);
 				
+				double totaldiscount=0,totaldis=0,discount=0;
 				for(Order order:orderList) {
 					if(order.getOrderid()==orderid) {
 						for(OrderDetails orderdetails:orderdetailsList) {
@@ -112,23 +126,30 @@ public class GenerateOrderInvoice extends HttpServlet {
 										System.out.println("ProductQuantity:="+orderdetails.getQuantity());
 										System.out.println("GrandTotal:="+order.getAmount());
 										
+										table.addCell(String.valueOf(order.getOrderdate()));
 										table.addCell(product.getProduct_name());
 										table.addCell(product.getProduct_price());
 										
 										 for(Offer offer:offerList) { 
 											 if(offer.getOfferid()==product.getOfferid()) {
-												 table.addCell(Double.toString(offer.getDiscount())); 
+												 table.addCell((Double.toString(offer.getDiscount()))+"%");
+												 discount=offer.getDiscount();
 											 }
 											 else
 											 {
 												 table.addCell("-"); 
+												 discount=0;
 											 }
 										 }
 										 
 										
 										table.addCell(String.valueOf(orderdetails.getQuantity()));
+										 totaldiscount=((Double.parseDouble(product.getProduct_price())) *discount)/100;
+										 totaldis=(Math.ceil(totaldiscount))*orderdetails.getQuantity();
+										table.addCell(Double.toString(totaldis));
 										double total=orderdetails.getQuantity() *(Double.parseDouble( product.getProduct_price()));
 										table.addCell(Double.toString(total));
+										table.addCell(Double.toString(total-totaldis));
 										
 									}
 								}	
@@ -148,6 +169,9 @@ public class GenerateOrderInvoice extends HttpServlet {
 				
 				document.close();
 				System.out.println("File is generated");
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("myorder.jsp");
+				dispatcher.forward(request, response);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
