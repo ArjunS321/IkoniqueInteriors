@@ -223,11 +223,21 @@ $('.fa-shopping-cart').click(function(){
 						</h3>
 					</div>
 					<div class="product-btns">
-						<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>" class="btn-small mr-2">&#x20B9;<%=product.getProduct_price() %></a> 
-						<a class="btn-round mr-2"><i class="fa fa-shopping-cart" id="<%=product.getProduct_id() %>"></i></a> 
-						<a class="btn-round"><i id="<%=product.getProduct_id() %>"  class="fa fa-heart"></i></a>
+						<a href="SelectProductLandDetails?productId=<%=product.getProduct_id()%>" class="btn-small mr-2">&#x20B9;<%=product.getProduct_price() %></a>
+						<%if(product.getProduct_quantity().equals("0")){ %> 
+							<a class="btn-round"><i id="<%=product.getProduct_id() %>"  class="fa fa-heart"></i></a> 
+						<%}else{ %>
+							<a class="btn-round mr-2"><i class="fa fa-shopping-cart" id="<%=product.getProduct_id() %>"></i></a>
+							<a class="btn-round"><i id="<%=product.getProduct_id() %>"  class="fa fa-heart"></i></a>
+						<%} %>
 						</div>
+						<div class="mt-3" align="center">
+							<%if(product.getProduct_quantity().equals("0")){ %>
+	 							<span Style="font-size: 6mm" class="text-danger">Out Of Stock</span>
+	 						<%} %>
+ 						</div>
 				</div>
+				
 			</div>
 			<%} %>
 		</div>
