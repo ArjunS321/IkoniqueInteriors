@@ -229,17 +229,17 @@ quantity-btn-color: #95d7fc ;
 							<ul class="list-group list-group-sm mt-3">
 								<li class="list-group-item d-flex"
 									style="background-color: #e6e7ee !important;"><span>MRP</span>
-									<span style="margin-left:66rem;">&#x20B9;</span><span id="mrp" class="ml-auto"></span></li>
+									<span style="margin-left:61rem;">&#x20B9;</span><span id="mrp" class="ml-auto"></span></li>
 								<li class="list-group-item d-flex"
 									style="background-color: #e6e7ee !important;"><span>Discount (-)</span>
-									<span style="margin-left:63rem;">&#x20B9;</span><span id="dis" class="ml-auto"></span></li>
+									<span style="margin-left:58rem;">&#x20B9;</span><span id="dis" class="ml-auto"></span></li>
 								<li class="list-group-item d-flex"
 									style="background-color: #e6e7ee !important;"><span>TAX (+)</span>
-									<span style="margin-left:65rem;">&#x20B9;</span><span id="tax" class="ml-auto"></span></li>
+									<span style="margin-left:60rem;">&#x20B9;</span><span id="tax" class="ml-auto"></span></li>
 								<li
 									class="list-group-item d-flex font-weight-bold rounded-bottom h5"
 									style="background-color: #e6e7ee !important;"><span>Total</span>
-									<span style="margin-left:65rem;">&#x20B9;</span><span id="grandtotal" class="ml-auto"></span></li>
+									<span style="margin-left:60rem;">&#x20B9;</span><span id="grandtotal" class="ml-auto"></span></li>
 
 							</ul>
 							
