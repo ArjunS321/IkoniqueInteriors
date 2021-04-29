@@ -48,6 +48,8 @@ input.search-input
 
 <%if(temp6 == 1){%> 
 <%List <Product> productlist =(List)request.getAttribute("productlist"); %>
+<%int subcatid=(int)request.getAttribute("subcatid"); %>
+<%-- <%String subcategoryname=(String)request.getAttribute("subcategoryname"); %> --%>
  <jsp:include page="/SelectWishlistDetails"/>
 <%List <Wishlist> wishlistList =(List)request.getAttribute("wishlistList"); %> 
 <%List <Integer> wishlistint =(List)request.getAttribute("wishlistint"); %> 
@@ -65,6 +67,7 @@ input.search-input
 				<div class="section-title">
 				<%int id=0; %>
 				<%for(SubCategory subCategory : subcategoryList1){ %>
+					
 					<%for(Product product : productlist){ %>
 						<%id=product.getSubcategory_id(); %>
 					<%if(subCategory.getSub_category_id() == product.getSubcategory_id()){ %>
@@ -85,9 +88,9 @@ input.search-input
 									<span class="fas fa-angle-down nav-link-arrow ml-2"></span>
 							</a>
 								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="SelectParticularProduct?subcategoryid=<%=id%>">All Products</a></li>
-									<li><a class="dropdown-item" href="PriceFilterForProduct?subcatid=<%=id%>-1000-5000">1,000 - 5,000</a></li>
-									<li><a class="dropdown-item" href="PriceFilterForProduct?subcatid=<%=id%>-5000-10000">5,000 - 10,000</a></li>
+									<li><a class="dropdown-item" href="SelectParticularProduct?subcategoryid=<%=subcatid%>">All Products</a></li>
+									<li><a class="dropdown-item" href="PriceFilterForProduct?subcatid=<%=subcatid%>-1000-5000">1,000 - 5,000</a></li>
+									<li><a class="dropdown-item" href="PriceFilterForProduct?subcatid=<%=subcatid%>-5000-10000">5,000 - 10,000</a></li>
 								</ul></li>
 						</ul>
 			<div class="row" style="margin-left:10px; margin-right:10px;" id="result">

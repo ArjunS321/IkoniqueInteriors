@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ikonique.bean.Product;
+import com.ikonique.bean.SubCategory;
 import com.ikonique.userService.impl.userServiceImpl;
 
 /**
@@ -35,9 +36,19 @@ public class PriceFilterForProduct extends HttpServlet {
 		int subcatid=Integer.parseInt(arr[0]);
 		int minprice=Integer.parseInt(arr[1]);
 		int maxprice=Integer.parseInt(arr[2]);
+		String subcategoryname="";
 		
+		List<SubCategory> subcategoryList = us.fetchsubcategorydetails();
+		for(SubCategory subcategory:subcategoryList) {
+			if(subcategory.getSub_category_id()==subcatid) {
+				subcategoryname=subcategory.getSub_category_name();
+			}
+		}
 		List<Product> productlist=us.selectProductDetail(subcatid,minprice,maxprice);
-		request.setAttribute("productlist", productlist); 
+		request.setAttribute("productlist", productlist);
+		request.setAttribute("subcatid", subcatid);
+//		request.setAttribute("subcategoryname", subcategoryname);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("commonproduct.jsp");
 		dispatcher.forward(request, response);
 		 
