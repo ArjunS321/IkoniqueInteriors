@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ikonique.bean.Product;
+import com.ikonique.bean.SubCategory;
 import com.ikonique.userService.impl.userServiceImpl;
 
 /**
@@ -32,12 +33,21 @@ public class SelectParticularProduct extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		int id=Integer.parseInt(request.getParameter("subcategoryid"));
-		System.out.println(id);
-		List<Product> productlist=us.selectProductDetail(id);
+		int subcatid=Integer.parseInt(request.getParameter("subcategoryid"));
+		String subcategoryname="";
 		
+		List<Product> productlist=us.selectProductDetail(subcatid);
+		
+		List<SubCategory> subcategoryList = us.fetchsubcategorydetails();
+		for(SubCategory subcategory:subcategoryList) {
+			if(subcategory.getSub_category_id()==subcatid) {
+				subcategoryname=subcategory.getSub_category_name();
+			}
+		}
 		
 		request.setAttribute("productlist", productlist);
+		request.setAttribute("subcatid", subcatid);
+		request.setAttribute("subcategoryname", subcategoryname);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("commonproduct.jsp");
 		dispatcher.forward(request, response);
 		

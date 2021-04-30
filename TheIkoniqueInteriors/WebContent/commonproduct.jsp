@@ -40,6 +40,10 @@ input.search-input
 	}
 %>
 
+<%List <Product> productlist =(List)request.getAttribute("productlist"); %>
+<%int subcatid=(int)request.getAttribute("subcatid"); %>
+<%String subcategoryname=(String)request.getAttribute("subcategoryname"); %>
+
 <jsp:include page="/SelectSubCategoryDetails"/>
 <%List<SubCategory> subcategoryList1 =(List)request.getAttribute("subcategoryList"); %>
 
@@ -47,9 +51,8 @@ input.search-input
 <%@include file="commonheader.jsp"%>
 
 <%if(temp6 == 1){%> 
-<%List <Product> productlist =(List)request.getAttribute("productlist"); %>
-<%int subcatid=(int)request.getAttribute("subcatid"); %>
-<%-- <%String subcategoryname=(String)request.getAttribute("subcategoryname"); %> --%>
+
+ 
  <jsp:include page="/SelectWishlistDetails"/>
 <%List <Wishlist> wishlistList =(List)request.getAttribute("wishlistList"); %> 
 <%List <Integer> wishlistint =(List)request.getAttribute("wishlistint"); %> 
@@ -58,24 +61,16 @@ input.search-input
 <%List <Integer> cartlistint =(List)request.getAttribute("cartint"); %>
 
 <body style="background-color: #e6e7ee;">
-
+<h1>Hello World</h1>
+<input type="hidden" value="100" >
 <div class="page-wrapper">
 <div class="page-container">
 <div class="main-content" style="background-color: #e6e7ee;">
 		<div class="row ml-4">
 			<div class="col-xl-12">
 				<div class="section-title">
-				<%int id=0; %>
-				<%for(SubCategory subCategory : subcategoryList1){ %>
-					
-					<%for(Product product : productlist){ %>
-						<%id=product.getSubcategory_id(); %>
-					<%if(subCategory.getSub_category_id() == product.getSubcategory_id()){ %>
-					<h2><%=subCategory.getSub_category_name() %> Products</h2>
-					<%break;} %>
-					<%} %>
-				<%} %>
-				</div>
+					<h2><%=subcategoryname%> Products</h2>
+					</div>
 				
 				<br>
 			</div>
@@ -93,6 +88,11 @@ input.search-input
 									<li><a class="dropdown-item" href="PriceFilterForProduct?subcatid=<%=subcatid%>-5000-10000">5,000 - 10,000</a></li>
 								</ul></li>
 						</ul>
+						<div  style="margin-left:400px;">
+							<%if(productlist.isEmpty()){ %>
+							<h5>Match Not Found</h5>
+						<%} %>
+					</div>
 			<div class="row" style="margin-left:10px; margin-right:10px;" id="result">
 						<%
 							for (Product product : productlist) {
@@ -267,7 +267,7 @@ $("#mySearch").on("keyup", function() {
 </script>
 <%}else{ %>
 
-<%List <Product> productlist =(List)request.getAttribute("productlist"); %>
+<%-- <%List <Product> productlist =(List)request.getAttribute("productlist"); %> --%>
 
 <body style="background-color: #e6e7ee;">
 
@@ -279,16 +279,8 @@ $("#mySearch").on("keyup", function() {
 		<div class="row ml-4">
 			<div class="col-xl-12">
 				<div class="section-title">
-				<%int id=0; %>
-				<%for(SubCategory subCategory : subcategoryList1){ %>
-					<%for(Product product : productlist){ %>
-						<%id=product.getSubcategory_id(); %>
-					<%if(subCategory.getSub_category_id() == product.getSubcategory_id()){ %>
-					<h2><%=subCategory.getSub_category_name() %> Products</h2>
-					<%break;} %>
-					<%} %>
-				<%} %>
-				</div>
+					<h2><%=subcategoryname %> Products</h2>
+					</div>
 				
 				<br>
 			</div>
@@ -301,11 +293,16 @@ $("#mySearch").on("keyup", function() {
 									<span class="fas fa-angle-down nav-link-arrow ml-2"></span>
 							</a>
 								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="SelectParticularProduct?subcategoryid=<%=id%>">All Products</a></li>
-									<li><a class="dropdown-item" href="PriceFilterForProduct?subcatid=<%=id%>-1000-5000">1,000 - 5,000</a></li>
-									<li><a class="dropdown-item" href="PriceFilterForProduct?subcatid=<%=id%>-5000-10000">5,000 - 10,000</a></li>
+									<li><a class="dropdown-item" href="SelectParticularProduct?subcategoryid=<%=subcatid%>">All Products</a></li>
+									<li><a class="dropdown-item" href="PriceFilterForProduct?subcatid=<%=subcatid%>-1000-5000">1,000 - 5,000</a></li>
+									<li><a class="dropdown-item" href="PriceFilterForProduct?subcatid=<%=subcatid%>-5000-10000">5,000 - 10,000</a></li>
 								</ul></li>
 						</ul>
+						<div  style="margin-left:400px;">
+							<%if(productlist.isEmpty()){ %>
+							<h5>Match Not Found</h5>
+						<%} %>
+					</div>
 			<div class="row" style="margin-left:10px; margin-right:10px;" id="result">
 						<%
 							for (Product product : productlist) {

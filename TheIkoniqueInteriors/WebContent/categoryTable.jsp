@@ -73,7 +73,7 @@
                     <td>
                      <div class="table-data-feature">
                      	<%categoryid=category.getCategory_id(); %>
-                       <a data-toggle="modal" data-target="#modal-default" class="item" id="delbtn" data-toggle="tooltip" data-placement="top" title="Delete">
+                       <a data-toggle="modal"  data-id="<%=category.getCategory_id() %>" href="#addDeleteDialog" class="item" id="delbtn" data-toggle="tooltip" data-placement="top" title="Delete">
                        <i class="zmdi zmdi-delete"></i>
                        </a>                                    
                   </div>
@@ -83,7 +83,7 @@
             <%} %>
         </table>
     </div>
-	<div class="modal fade" id="modal-default" tabindex="-1" role="dialog"
+	<div class="modal fade hide" id="addDeleteDialog" tabindex="-1" role="dialog"
 		aria-labelledby="modal-default" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
@@ -96,13 +96,12 @@
 				</div>
 				<div class="modal-body">
 					<p>Are You Sure You Want To Delete This Category?</p>
-                    <p>If Yes Then All SubCategory Will Be Deleted Which Is Belong To This Category.</p>
+                    <p>If Yes Then All SubCategory Will Be Deleted Which Are Belong To This Category.</p>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn text-danger ml-auto" data-dismiss="modal">No</button>
-					<a href="DelectCategoryDetails?categoryId=<%=categoryid %>"  type="button" class="btn btn-sm">Yes</a>
-					
-				</div>
+					<a href="" id="a" type="button" class="btn btn-sm">Yes</a>
+			
 			</div>
 		</div>
 	</div>
@@ -134,6 +133,18 @@
 //     $('#delbtn').onclick(function(){
 //     	$('#modal-default').modal('show');
 //     })
+    	var myBookId="";
+    	$(document).on("click", ".open-addDeleteDialog", function () {
+     	var myBookId = $(this).data('id');
+     	alert(myBookId);
+     	<%-- $(".modal-body #bookId").val( myBookId ); --%>
+     	$("#a").attr("href","DelectCategoryDetails") 
+		
+     // As pointed out in comments, 
+     // it is unnecessary to have to manually call the modal.
+     // $('#addBookDialog').modal('show');
+});
+    
     
         (function(document) {
             'use strict';

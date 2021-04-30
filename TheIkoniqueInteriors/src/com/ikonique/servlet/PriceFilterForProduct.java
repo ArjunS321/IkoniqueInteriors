@@ -47,7 +47,7 @@ public class PriceFilterForProduct extends HttpServlet {
 		List<Product> productlist=us.selectProductDetail(subcatid,minprice,maxprice);
 		request.setAttribute("productlist", productlist);
 		request.setAttribute("subcatid", subcatid);
-//		request.setAttribute("subcategoryname", subcategoryname);
+		request.setAttribute("subcategoryname", subcategoryname);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("commonproduct.jsp");
 		dispatcher.forward(request, response);
