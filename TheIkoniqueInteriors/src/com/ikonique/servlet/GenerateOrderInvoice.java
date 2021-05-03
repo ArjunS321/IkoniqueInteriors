@@ -77,8 +77,19 @@ public class GenerateOrderInvoice extends HttpServlet {
 				Paragraph paragraph = new Paragraph("The Ikonique Interiors");
 				document.add(paragraph);
 				document.add(new Paragraph(" "));
+				for(Order order:orderList) {
+					if(order.getOrderid()==orderid) {
+						document.add(new Paragraph("Hello, "+order.getFirstname()+" "+order.getLastname()));
+					}
+				}
 				document.add(new Paragraph(" "));
-				
+				document.add(new Paragraph("Shipping Address: "));
+				for(Order order:orderList) {
+					if(order.getOrderid()==orderid) {
+						document.add(new Paragraph(order.getAddress()));
+					}
+				}
+				document.add(new Paragraph(" "));
 				//document.add(Image.getInstance("TheIkoniqueInteriors/WebContent/images/icon/logo1.png"));
 				
 				// for space
@@ -114,7 +125,7 @@ public class GenerateOrderInvoice extends HttpServlet {
 				table.addCell(c1);
 				table.setHeaderRows(1);
 				
-				double totaldiscount=0,totaldis=0,discount=0;
+				double totaldiscount=0,totaldis=0,discount=0,gt=0;
 				for(Order order:orderList) {
 					if(order.getOrderid()==orderid) {
 						for(OrderDetails orderdetails:orderdetailsList) {
@@ -150,6 +161,7 @@ public class GenerateOrderInvoice extends HttpServlet {
 										double total=orderdetails.getQuantity() *(Double.parseDouble( product.getProduct_price()));
 										table.addCell(Double.toString(total));
 										table.addCell(Double.toString(total-totaldis));
+										gt=gt+(total-totaldis);
 										
 									}
 								}	
@@ -160,9 +172,44 @@ public class GenerateOrderInvoice extends HttpServlet {
 						break;
 					}
 				}
+				for(int i=1;i<=1;i++) {
+					table.addCell("Total");
+					table.addCell("-");
+					table.addCell("-");
+					table.addCell("-");
+					table.addCell("-");
+					table.addCell("-");
+					table.addCell("-");
+					table.addCell(Double.toString(gt));
+				}
+				
+				for(int i=1;i<=1;i++) {
+					table.addCell("Tax(18%)");
+					table.addCell("-");
+					table.addCell("-");
+					table.addCell("-");
+					table.addCell("-");
+					table.addCell("-");
+					table.addCell("-");
+					table.addCell(Double.toString((gt*18)/100));
+				}
+				double ans=(gt*18)/100;
+				double ans1=ans+gt;
+				
+				for(int i=1;i<=1;i++) {
+					table.addCell("Final Amount");
+					table.addCell("-");
+					table.addCell("-");
+					table.addCell("-");
+					table.addCell("-");
+					table.addCell("-");
+					table.addCell("-");
+					table.addCell((Double.toString(ans1)));
+				}
 				
 				
 				document.add(table);
+				document.add(new Paragraph(" "));
 				document.add(new Paragraph("Thanks For Shopping:) "));
 				//add image
 				//document.add(Image.getInstance("E:\\MEET DOC\\PIC-2.jpg"));

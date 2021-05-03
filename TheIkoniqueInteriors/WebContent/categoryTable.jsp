@@ -73,7 +73,7 @@
                     <td>
                      <div class="table-data-feature">
                      	<%categoryid=category.getCategory_id(); %>
-                       <a data-toggle="modal"  data-id="<%=category.getCategory_id() %>" href="#addDeleteDialog" class="item" id="delbtn" data-toggle="tooltip" data-placement="top" title="Delete">
+                       <a data-toggle="modal"  data-id="<%=category.getCategory_id() %>" href="#addDeleteDialog" class="item open-addDeleteDialog" id="delbtn" data-toggle="tooltip" data-placement="top" title="Delete">
                        <i class="zmdi zmdi-delete"></i>
                        </a>                                    
                   </div>
@@ -105,6 +105,7 @@
 			</div>
 		</div>
 	</div>
+	</div>
 	<script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
 				<script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
 				<script src="neuro/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -129,7 +130,7 @@
 				<!-- Neumorphism JS -->
 				<script src="neuro/assets/js/neumorphism.js"></script>
 				<%@include file="commonjs.jsp"%>
-    <script>
+    <script type="text/javascript">
 //     $('#delbtn').onclick(function(){
 //     	$('#modal-default').modal('show');
 //     })
@@ -138,7 +139,7 @@
      	var myBookId = $(this).data('id');
      	alert(myBookId);
      	<%-- $(".modal-body #bookId").val( myBookId ); --%>
-     	$("#a").attr("href","DelectCategoryDetails") 
+     	$("#a").attr("href","DelectCategoryDetails?categoryId="+myBookId) 
 		
      // As pointed out in comments, 
      // it is unnecessary to have to manually call the modal.
@@ -226,6 +227,6 @@
         	  }
         }
     </script>
-    <%@include file="commonjs.jsp"%>
+    <%-- <%@include file="commonjs.jsp"%> --%>
 </body>
 </html>

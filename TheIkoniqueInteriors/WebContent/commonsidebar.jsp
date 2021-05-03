@@ -146,8 +146,8 @@
 						</li>
 					</ul>
 				</li>
-				<li><a href="#"> <i class="fas fa-bar-chart-o"></i>Chart
-				</a></li>
+				<!-- <li><a href="#"> <i class="fas fa-bar-chart-o"></i>Chart
+				</a></li> -->
 				<li><a class="js-arrow" href="#"> <i
 							class="fas  fa-caret-down"></i>Manage Tables
 				</a>
