@@ -195,7 +195,7 @@ public class GenerateOrderInvoice extends HttpServlet {
 				}
 				double ans=(gt*18)/100;
 				double ans1=ans+gt;
-				
+				// Final Amount..
 				for(int i=1;i<=1;i++) {
 					table.addCell("Final Amount");
 					table.addCell("-");
