@@ -435,8 +435,8 @@ if (null != httpSession) {
 						<marquee class="marq" style="width:49rem; font-size: 35px; font-style: normal; font-family: Georgia, serif; color:#483C32;" direction = "left">The Ikonique Interiors</marquee>
 					</form>
 					<div class="">
-					<button type="submit" name="submit" onclick="location.href='register.jsp';"
-							class="btn ml-9">Register</button>
+					 <button type="submit" name="submit" onclick="location.href='register.jsp';"
+							class="btn ml-8">Register</button>
 						<button type="submit" name="submit" onclick="location.href='login.jsp';"
 							class="btn ml-1">login</button>
 					</div>
