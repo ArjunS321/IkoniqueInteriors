@@ -70,7 +70,7 @@ public class GenerateOrderInvoice extends HttpServlet {
 			String filename = "E:\\invoice.pdf";
 			Document document = new Document();
 			 
-			// Simple Para....
+			// Simple Para.... 
 				PdfWriter.getInstance(document, new FileOutputStream(filename));
 				document.open();
 				

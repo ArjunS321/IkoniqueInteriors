@@ -6,11 +6,18 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfWriter;
 
+
+
+
 public class GeneratePdf {
+	
+	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -56,7 +63,10 @@ public class GeneratePdf {
 			//add image
 			//document.add(Image.getInstance("E:\\MEET DOC\\PIC-2.jpg"));
 			
-			document.close();
+			
+			//add chart
+			
+						document.close();
 			System.out.println("File is generated");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
