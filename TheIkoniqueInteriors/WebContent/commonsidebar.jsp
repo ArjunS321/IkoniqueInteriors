@@ -169,7 +169,7 @@
 						
 				<li><a href="paymentstatustable.jsp"> <i class="fas fa-credit-card"></i>Payment Status
 				</a></li>
-				<li><a href="#"> <i class="fas fa-file-text"></i>Generate Report
+				<li><a href="GenerateReportForAdmin"> <i class="fas fa-file-text"></i>Generate Report
 				</a></li>
 				<li><a href="aboutus.jsp"> <i class="fas fa-exclamation"></i>About Us
 				</a></li>

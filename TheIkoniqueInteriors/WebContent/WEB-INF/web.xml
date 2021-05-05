@@ -609,4 +609,14 @@
     <servlet-name>GenerateOrderInvoice</servlet-name>
     <url-pattern>/GenerateOrderInvoice</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GenerateReportForAdmin</display-name>
+    <servlet-name>GenerateReportForAdmin</servlet-name>
+    <servlet-class>com.ikonique.servlet.GenerateReportForAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GenerateReportForAdmin</servlet-name>
+    <url-pattern>/GenerateReportForAdmin</url-pattern>
+  </servlet-mapping>
 </web-app>
