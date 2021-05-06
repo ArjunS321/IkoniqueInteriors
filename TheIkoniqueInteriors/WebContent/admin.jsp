@@ -1,3 +1,6 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="com.ikonique.bean.Order"%>
+<%@page import="com.ikonique.bean.OrderDetails"%>
 <%@page import="com.ikonique.bean.BookingInfo"%>
 <%@page import="com.ikonique.bean.Booking"%>
 <%@page import="com.ikonique.bean.Product"%>
@@ -19,6 +22,10 @@
 <%List<Booking> bookinglist =(List)request.getAttribute("bookinglist"); %>
 <jsp:include page="/SelectBookingInfoDetails"/>
 <%List<BookingInfo> bookinginfolist =(List)request.getAttribute("bookinginfolist"); %>
+<jsp:include page="/SelectOrderDetails"/>
+<%List<OrderDetails> orderdetailsList =(List)request.getAttribute("orderdetailsList"); %>
+<jsp:include page="/SelectOrderTableDetails"/>
+<%List<Order> orderList =(List)request.getAttribute("orderList"); %>
 <body>
 <%@include file="commonsidebar.jsp"%>
 <%@include file="commonheader.jsp"%>
@@ -64,8 +71,12 @@
                                             <div class="icon">
                                                 <i class="zmdi zmdi-shopping-cart"></i>
                                             </div>
+                                            <%int totalitem=0; %>
+                                            <%for(OrderDetails od:orderdetailsList){ %>
+                                            	<%totalitem=totalitem+od.getQuantity(); %>
+                                            <%} %>
                                             <div class="text">
-                                                <h2>388,688</h2>
+                                                <h2><%=totalitem %></h2>
                                                 <span>Items Sold</span>
                                             </div>
                                         </div>
@@ -106,8 +117,17 @@
                                             <div class="icon">
                                                 <i>&#x20B9;</i>
                                             </div>
+                                            <%double totalearning=0; %>
+                                            <%for(Order order:orderList){ %>
+                                            	<%if(order.getPaymentstatus().equals("success")){ %>
+                                            		<%totalearning=totalearning+order.getAmount(); %>
+                                            	<%} %>
+                                            <%} %>
+                                            <%DecimalFormat df=new DecimalFormat("#.00"); %>
+                                            <%-- <%String formated=""; %>
+                                            <%formated =df.format(totalearning); %> --%>
                                             <div class="text">
-                                                <h2>&#x20B9;1,060,386</h2>
+                                                <h2>&#x20B9;<%=(df.format(totalearning))%></h2>
                                                 <span>ToTal Earnings</span>
                                             </div>
                                         </div>
@@ -134,70 +154,24 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        	<%for(Order order:orderList){ %>
+                                        	<%for(OrderDetails od:orderdetailsList){ %>
+                                        	<%if(od.getOrderid()==order.getOrderid()) {%>
+                                        	<%for(Product product:productList) {%>
+                                        	<%if(product.getProduct_id()==od.getProductid()) {%>
                                             <tr>
-                                                <td>2018-09-29 05:57</td>
-                                                <td>100398</td>
-                                                <td>iPhone X 64Gb Grey</td>
-                                                <td class="text-right">&#x20B9;999.00</td>
-                                                <td class="text-right">1</td>
-                                                <td class="text-right">&#x20B9;999.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-28 01:22</td>
-                                                <td>100397</td>
-                                                <td>Samsung S8 Black</td>
-                                                <td class="text-right">&#x20B9;756.00</td>
-                                                <td class="text-right">1</td>
-                                                <td class="text-right">&#x20B9;756.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-27 02:12</td>
-                                                <td>100396</td>
-                                                <td>Game Console Controller</td>
-                                                <td class="text-right">&#x20B9;22.00</td>
-                                                <td class="text-right">2</td>
-                                                <td class="text-right">&#x20B9;44.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-26 23:06</td>
-                                                <td>100395</td>
-                                                <td>iPhone X 256Gb Black</td>
-                                                <td class="text-right">&#x20B9;1199.00</td>
-                                                <td class="text-right">1</td>
-                                                <td class="text-right">&#x20B9;1199.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-25 19:03</td>
-                                                <td>100393</td>
-                                                <td>USB 3.0 Cable</td>
-                                                <td class="text-right">&#x20B9;10.00</td>
-                                                <td class="text-right">3</td>
-                                                <td class="text-right">&#x20B9;30.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-29 05:57</td>
-                                                <td>100392</td>
-                                                <td>Smartwatch 4.0 LTE Wifi</td>
-                                                <td class="text-right">&#x20B9;199.00</td>
-                                                <td class="text-right">6</td>
-                                                <td class="text-right">&#x20B9;1494.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-24 19:10</td>
-                                                <td>100391</td>
-                                                <td>Camera C430W 4k</td>
-                                                <td class="text-right">&#x20B9;699.00</td>
-                                                <td class="text-right">1</td>
-                                                <td class="text-right">&#x20B9;699.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2018-09-22 00:43</td>
-                                                <td>100393</td>
-                                                <td>USB 3.0 Cable</td>
-                                                <td class="text-right">&#x20B9;10.00</td>
-                                                <td class="text-right">3</td>
-                                                <td class="text-right">&#x20B9;30.00</td>
-                                            </tr>
+                                                <td><%=order.getOrderdate() %></td>
+                                                <td>OID_<%=order.getOrderid() %></td>
+                                                <td><%=product.getProduct_name() %></td>
+                                                <td class="text-right">&#x20B9;<%=product.getProduct_price() %></td>
+                                                <td class="text-right"><%=od.getQuantity() %></td>
+                                                <td class="text-right">&#x20B9;<%=order.getAmount()%> </td>
+                                           </tr>
+                                            <%} %>
+                                            <%} %>
+                                            <%} %>
+                                            <%} %>
+                                            <%} %>
                                         </tbody>
                                     </table>
                                 </div>
