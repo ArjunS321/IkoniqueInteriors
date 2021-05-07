@@ -1,3 +1,4 @@
+<%@page import="com.ikonique.bean.Offer"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="com.ikonique.bean.Order"%>
 <%@page import="com.ikonique.bean.OrderDetails"%>
@@ -26,6 +27,8 @@
 <%List<OrderDetails> orderdetailsList =(List)request.getAttribute("orderdetailsList"); %>
 <jsp:include page="/SelectOrderTableDetails"/>
 <%List<Order> orderList =(List)request.getAttribute("orderList"); %>
+<jsp:include page="/SelectOfferDetails"/>
+<%List<Offer> offerList =(List)request.getAttribute("offerList"); %>
 <body>
 <%@include file="commonsidebar.jsp"%>
 <%@include file="commonheader.jsp"%>
@@ -72,8 +75,14 @@
                                                 <i class="zmdi zmdi-shopping-cart"></i>
                                             </div>
                                             <%int totalitem=0; %>
+                                            <%for(Order order:orderList){ %>
                                             <%for(OrderDetails od:orderdetailsList){ %>
+                                            <%if(order.getOrderid()==od.getOrderid()){ %>
+                                            <%if(order.getPaymentstatus().equals("success")) {%>
                                             	<%totalitem=totalitem+od.getQuantity(); %>
+                                            <%} %>	
+                                            <%} %>
+                                            <%} %>
                                             <%} %>
                                             <div class="text">
                                                 <h2><%=totalitem %></h2>
@@ -124,8 +133,7 @@
                                             	<%} %>
                                             <%} %>
                                             <%DecimalFormat df=new DecimalFormat("#.00"); %>
-                                            <%-- <%String formated=""; %>
-                                            <%formated =df.format(totalearning); %> --%>
+                                            
                                             <div class="text">
                                                 <h2>&#x20B9;<%=(df.format(totalearning))%></h2>
                                                 <span>ToTal Earnings</span>
@@ -165,7 +173,16 @@
                                                 <td><%=product.getProduct_name() %></td>
                                                 <td class="text-right">&#x20B9;<%=product.getProduct_price() %></td>
                                                 <td class="text-right"><%=od.getQuantity() %></td>
-                                                <td class="text-right">&#x20B9;<%=order.getAmount()%> </td>
+                                                <%double p=Double.parseDouble(product.getProduct_price()); %>
+                                                <%double discount=0; %>
+                                                <%for(Offer offer:offerList) {%>
+                                                	<%if(offer.getOfferid()==product.getOfferid()) {%>
+                                                		<%discount=(p*offer.getDiscount())/100; %>
+                                                	<%} %>
+                                                <%} %>
+                                                <%double amt=p-discount; %>
+                                                 <%DecimalFormat df1=new DecimalFormat("#.00"); %>
+                                                <td class="text-right">&#x20B9;<%=(df1.format(amt*od.getQuantity()))%> </td>
                                            </tr>
                                             <%} %>
                                             <%} %>
