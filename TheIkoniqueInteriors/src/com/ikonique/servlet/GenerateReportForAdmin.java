@@ -75,7 +75,8 @@ public class GenerateReportForAdmin extends HttpServlet {
 			System.out.println("Hii");
 			String filename = "E:\\IkoniqueReport.pdf";
 			Document document = new Document();
-
+//			response.setContentType("APPLICATION/OCTET-STREAM");
+//			response.setHeader("Content-Disposition", "attachment; filename=\""+filename+"\"");
 			// Simple Para....
 			PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filename));
 			document.open();
@@ -340,9 +341,10 @@ public class GenerateReportForAdmin extends HttpServlet {
 			 */ document.close();
 
 			System.out.println("File is generated");
-
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("admin.jsp");
 			dispatcher.forward(request, response);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

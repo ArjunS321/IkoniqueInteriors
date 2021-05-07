@@ -29,6 +29,9 @@
    }
 %>
 </head>
+<jsp:include page="/SelectProductDetails"/>
+<%List<Product> productList =(List)request.getAttribute("productList"); %>
+
 <jsp:include page="/SelectUserDetails"/>
 <%List<User> userList =(List)request.getAttribute("userList"); %>
 
@@ -90,8 +93,14 @@
                                             <div class="icon">
                                                 <i class="zmdi zmdi-shopping-cart"></i>
                                             </div>
+                                            <%int totalproduct=0; %>
+                                            <%for(Product product: productList){ %>
+                                            	<%if(user.getUser_id() == product.getProduct_owner_id()){ %>
+                                            			<%totalproduct=totalproduct+1; %>
+                                            	<%} %>
+                                            <%} %>
                                             <div class="text">
-                                                <h2>1,500</h2>
+                                                <h2><%=totalproduct %></h2>
                                                 <span>My Design items</span>
                                             </div>
                                         </div>
@@ -108,9 +117,19 @@
                                             <div class="icon">
                                                 <i class="zmdi zmdi-calendar-note"></i>
                                             </div>
+                                            <%int totalpreappointment=0; %>
+                                            <%for(Booking booking:bookinglist) { %>
+             									<%if(booking.getDesignerid()==user.getUser_id()) {%>
+             										<%for(BookingInfo bookinginfo:bookinginfolist2) {%>
+             											<%if(bookinginfo.getBookingid()==booking.getBookingid()){ %>
+             												<%totalpreappointment=totalpreappointment+1; %>
+             											<%} %> 
+                									<%} %>
+                								<%} %>
+             								<%} %> 
                                             <div class="text">
-                                                <h2>200</h2>
-                                                <span>Number Of Project </span>
+                                                <h2><%=totalpreappointment %></h2>
+                                                <span>Previous Appointments</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -145,68 +164,6 @@
                                         </div>
                                         <div class="overview-chart">
                                             <canvas id="widgetChart4"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="au-card recent-report" style="background-color: #e6e7ee;">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2">recent reports</h3>
-                                        <div class="chart-info">
-                                            <div class="chart-info__left">
-                                                <div class="chart-note">
-                                                    <span class="dot dot--blue"></span>
-                                                    <span>products</span>
-                                                </div>
-                                                <div class="chart-note mr-0">
-                                                    <span class="dot dot--green"></span>
-                                                    <span>Bookings</span>
-                                                </div>
-                                            </div>
-                                            <div class="chart-info__right">
-                                                <div class="chart-statis">
-                                                    <span class="index incre">
-                                                        <i class="zmdi zmdi-long-arrow-up"></i>25%</span>
-                                                    <span class="label">products</span>
-                                                </div>
-                                                <div class="chart-statis mr-0">
-                                                    <span class="index decre">
-                                                        <i class="zmdi zmdi-long-arrow-down"></i>10%</span>
-                                                    <span class="label">Booking</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="recent-report__chart">
-                                            <canvas id="recent-rep-chart"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="au-card chart-percent-card" style="background-color: #e6e7ee;">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 tm-b-5">char by %</h3>
-                                        <div class="row no-gutters">
-                                            <div class="col-xl-6">
-                                                <div class="chart-note-wrap">
-                                                    <div class="chart-note mr-0 d-block">
-                                                        <span class="dot dot--blue"></span>
-                                                        <span>products</span>
-                                                    </div>
-                                                    <div class="chart-note mr-0 d-block">
-                                                        <span class="dot dot--red"></span>
-                                                        <span>Booking</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <div class="percent-chart">
-                                                    <canvas id="percent-chart"></canvas>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
