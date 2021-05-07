@@ -27,10 +27,10 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
-import org.jfree.data.general.DefaultPieDataset;
+/*import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.JFreeChart;
+import org.jfree.chart.JFreeChart;*/
 import java.awt.Color;
 
 /**
