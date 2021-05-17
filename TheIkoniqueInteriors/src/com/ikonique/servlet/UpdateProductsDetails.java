@@ -47,16 +47,17 @@ public class UpdateProductsDetails extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String type=request.getParameter("category");
-		String type1=request.getParameter("subcategory");
-		String type2=request.getParameter("product");
-		String type3=request.getParameter("offer"); 
+		String type=request.getParameter("edit");
+		//String type1=request.getParameter("subcategory");
+		//String type2=request.getParameter("product");
+		//String type3=request.getParameter("offer"); 
+		//System.out.println("Hello saleha");
 		/* System.out.println(type3.equalsIgnoreCase("foroffer")); */
 		String message = null;
 		System.out.println("edit:-"+type);
-		System.out.println("edit:-"+type1);
-		System.out.println("edit:-"+type2);
-		System.out.println("edit:-"+type3);
+		//System.out.println("edit:-"+type1);
+		//System.out.println("edit:-"+type2);
+		//System.out.println("edit:-"+type3);
 		if(type.equalsIgnoreCase("forcategory")) {
 			
 			int categoryid = Integer.parseInt(request.getParameter("categoryId"));
@@ -81,7 +82,7 @@ public class UpdateProductsDetails extends HttpServlet {
 			}
 		
 		}
-		else if(type1.equalsIgnoreCase("forsubcategory")) {
+		else if(type.equalsIgnoreCase("forsubcategory")) {
 			int subcategoryid = Integer.parseInt(request.getParameter("subcategoryId"));
 			String subcategoryname = request.getParameter("subcategoryname");
 			int subcategorystatus = Integer.parseInt(request.getParameter("exampleRadios2"));
@@ -106,7 +107,8 @@ public class UpdateProductsDetails extends HttpServlet {
 				requestdispatcher.forward(request, response);
 			}
 		}
-		else if(type2.equalsIgnoreCase("forproduct")) {
+		else if(type.equalsIgnoreCase("forproduct")) {
+			System.out.println("You Are In Product");
 			int productid = Integer.parseInt(request.getParameter("productId"));
 			String productname = request.getParameter("productname");
 			String productprice = request.getParameter("productprice");
@@ -154,7 +156,7 @@ public class UpdateProductsDetails extends HttpServlet {
 				requestdispatcher.forward(request, response);
 			}
 		}
-		else if(type3.equalsIgnoreCase("foroffer"))
+		else 
 		{
 			System.out.println("adfasdfaf");
 			int offerid = Integer.parseInt(request.getParameter("offerid"));

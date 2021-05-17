@@ -34,7 +34,7 @@ public class EditProductDetails extends HttpServlet {
 		String productname = request.getParameter("productId");
 		productid=Integer.parseInt(productname);
 		
-		
+		System.out.println("Product Id:-"+productid);
 		
 		  
 		  

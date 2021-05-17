@@ -434,7 +434,7 @@
 		method="post" onsubmit=" login()" enctype="multipart/form-data">
 		
 		 <div class="form-group mb-3 ml-10 inputBox cname">
-		 <input type="hidden" name="category" value="forcategory">
+		 <input type="hidden" name="edit" value="forcategory">
 			<input type="hidden" name="categoryId" value="<%=String.valueOf(cat.getCategory_id()) %>"> <br>
 			<label for="cname">Category Name</label> 
 			<input type="text" value="<%=cat.getCategory_name() %>" name="cname" class="form-control" id="cname" autocomplete="off"
@@ -470,7 +470,7 @@
 		method="post" onsubmit=" login()" enctype="multipart/form-data">
 		
 			<div class="form-group mb-3 ml-10 inputBox subcatgeoryname">
-			<input type="hidden" name="subcategory" value="forsubcategory">
+			<input type="hidden" name="edit" value="forsubcategory">
 			<input type="hidden" name="subcategoryId" value="<%=String.valueOf(subcategory.getSub_category_id()) %>"> <br>
 			<label for="subcategoryname">Sub-Category Name</label> 
 			<input type="text" value="<%=subcategory.getSub_category_name() %>" name="subcategoryname" class="form-control" id="subcategory" autocomplete="off"
@@ -534,7 +534,7 @@
 			</div>
 								
 			<div class="form-group mb-3 ml-10 inputBox productname">
-			<input type="hidden" name="product" value="forproduct"> <br>
+			<input type="hidden" name="edit" value="forproduct"> <br>
 			<input type="hidden" name="productId" value="<%=String.valueOf(product.getProduct_id()) %>"> <br>
 			<label for="productname">Product Name</label> 
 			<input type="text" value="<%=product.getProduct_name() %>" name="productname" class="form-control" id="productname" autocomplete="off"
@@ -650,7 +650,7 @@
 		<%}else{ %>
 			<form action="UpdateProductsDetails" class="w-50 ml-10" class="box" class="form" id="form"
 			method="post" onsubmit=" login()" enctype="multipart/form-data">
-			<input type="hidden" name="offer" value="foroffer">
+			<input type="hidden" name="edit" value="foroffer">
 			<input type="hidden" name="offerid" value="<%=String.valueOf(offer.getOfferid()) %>">
 			<div class="form-group mb-3 ml-10 inputBox Offername">
 			<label for="Offername">Offer Name</label> 
