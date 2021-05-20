@@ -190,7 +190,8 @@
                                         <%for(Booking booking:bookinglist) {%>
                                         <%if(booking.getDesignerid()==user.getUser_id()){ %>
                                         <%for(BookingInfo bookinginfo:bookinginfolist){ %>
-                                        	
+                                        <%if(booking.getBookingid()==bookinginfo.getBookingid() ){%>
+                                        	<%if(booking.getPaymentstatus().equals("success")) {%>
                                             <tr>
                                                 <td><%=bookinginfo.getBookingdate() %></td>
                                                 <td><%=bookinginfo.getBookingid() %></td>
@@ -203,7 +204,8 @@
                                                 <td><%=booking.getPaymentstatus() %></td>
                                                 <td><%=bookinginfo.getBookingemail() %></td>
                                             </tr>
-                                            
+                                            <%} %>
+                                            <%} %>
                                            <%} %>
                                            <%break;} %> 
                                            <%} %>
