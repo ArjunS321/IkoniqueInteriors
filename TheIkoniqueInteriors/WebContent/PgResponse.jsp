@@ -70,11 +70,12 @@ if (null != httpSession) {
 %> --%>
 <p hidden>
 <%= outputHTML %>
-  <% String[] sArr= outputHTML.split(","); %>  
- <%-- <% for( String s : sArr){ %>  
+   <% String[] sArr= outputHTML.split(","); %>  
+  <%-- <% for( String s : sArr){ %>  
  <p> <%= s %></p>
-  <%} %>   --%>
-<p hidden><%= sArr[9] %></p> 
+  <%} %>    --%> 
+  
+ <p hidden><%= sArr[9] %></p> 
   <% String[] sArr2= sArr[5].split("_"); %>   <!-- oid and bid -->
   <% String[] sArr1= sArr[9].split("="); %>		<!-- success -->
   <% String[] sArr3= sArr[10].split("="); %> 	<!-- amount -->
@@ -131,7 +132,7 @@ if (null != httpSession) {
                     </div>
 
 <%} %>  
-</body>
+ </body>
 
 <script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
 <script src="neuro/vendor/popper.js/dist/umd/popper.min.js"></script>
