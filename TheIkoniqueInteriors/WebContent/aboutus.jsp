@@ -65,7 +65,7 @@
                             </div>
                             <div class="card-body">
                                 <h3 class="h5 mb-2">Arjun Solanki</h3>
-                                <span class="h6 font-weight-normal text-gray mb-3">Co-Founder Ikonique</span>
+                                <span class="h6 font-weight-normal text-gray mb-3">Web Developer And Web Designer</span>
                                 <ul class="list-unstyled d-flex justify-content-center my-3">
                                     <li>
                                         <a href="#" target="_blank" aria-label="facebook social link" class="icon icon-xs icon-facebook mr-3">
@@ -95,7 +95,7 @@
                             </div>
                             <div class="card-body">
                                 <h3 class="h5 mb-2">Saleha Shaikh</h3>
-                                <span class="h6 font-weight-normal text-gray mb-3">Web Developer</span>
+                                <span class="h6 font-weight-normal text-gray mb-3">Web Developer And Web Designer</span>
                                 <ul class="list-unstyled d-flex justify-content-center my-3">
                                     <li>
                                         <a href="#" target="_blank" aria-label="facebook social link" class="icon icon-xs icon-facebook mr-3">
@@ -125,7 +125,7 @@
                             </div>
                             <div class="card-body">
                                 <h3 class="h5 mb-2">Meet Suthar</h3>
-                                <span class="h6 font-weight-normal text-gray mb-3">Web Designer</span>
+                                <span class="h6 font-weight-normal text-gray mb-3">Web Developer And Web Designer</span>
                                 <ul class="list-unstyled d-flex justify-content-center my-3">
                                     <li>
                                         <a href="https://www.facebook.com/suthar.meet.52/" target="_blank" aria-label="facebook social link" class="icon icon-xs icon-facebook mr-3">

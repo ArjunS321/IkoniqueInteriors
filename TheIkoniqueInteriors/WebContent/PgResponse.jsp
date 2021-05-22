@@ -70,12 +70,14 @@ if (null != httpSession) {
 %> --%>
 <p hidden>
 <%= outputHTML %>
-   <% String[] sArr= outputHTML.split(","); %>  
-  <%-- <% for( String s : sArr){ %>  
- <p> <%= s %></p>
-  <%} %>    --%> 
-  
- <p hidden><%= sArr[9] %></p> 
+
+ 
+    <% String[] sArr= outputHTML.split(","); %>  
+  <%--  <% for( String s : sArr){ %>  
+  <p> <%= s %></p> 
+   <%} %>   --%>   
+ 
+  <p hidden><%= sArr[9] %></p> 
   <% String[] sArr2= sArr[5].split("_"); %>   <!-- oid and bid -->
   <% String[] sArr1= sArr[9].split("="); %>		<!-- success -->
   <% String[] sArr3= sArr[10].split("="); %> 	<!-- amount -->
@@ -87,6 +89,7 @@ if (null != httpSession) {
 <span hidden id="bookid" name="bookid"><%=bookid %></span>
 <span hidden id="totalamt" name="totalamt"><%=sArr3[1] %></span>
 </p>
+ 
 <%if(sArr1[1].equals("TXN_SUCCESS")){ %>
 <div class="modal-dialog modal-dialog-centered" role="document">
 	
@@ -131,7 +134,7 @@ if (null != httpSession) {
                         </div>
                     </div>
 
-<%} %>  
+<%} %>   
  </body>
 
 <script src="neuro/vendor/jquery/dist/jquery.min.js"></script>
