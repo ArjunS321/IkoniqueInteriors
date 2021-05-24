@@ -190,22 +190,20 @@
                                         <%for(Booking booking:bookinglist) {%>
                                         <%if(booking.getDesignerid()==user.getUser_id()){ %>
                                         <%for(BookingInfo bookinginfo:bookinginfolist){ %>
-                                        <%if(booking.getBookingid()==bookinginfo.getBookingid() ){%>
+                                       <%--  <%if(booking.getBookingid()==bookinginfo.getBookingid() ){%> --%> 
                                         	<%if(booking.getPaymentstatus().equals("success")) {%>
                                             <tr>
                                                 <td><%=bookinginfo.getBookingdate() %></td>
                                                 <td><%=bookinginfo.getBookingid() %></td>
-                                                <%for(User user2:userList){ %>
-                                                <%if(user2.getUser_id()==booking.getUserid()) {%>
-                                                <td><%=user2.getFirstname() %> <%=user2.getLastname() %></td>
-                                                <%} %>
-                                                <%} %>
+                                                
+                                                <td><%=bookinginfo.getBookingfname() %> <%=bookinginfo.getBookinglname() %></td>
+                                               
                                                 <td><%=booking.getBookingstatus() %></td>
                                                 <td><%=booking.getPaymentstatus() %></td>
                                                 <td><%=bookinginfo.getBookingemail() %></td>
                                             </tr>
                                             <%} %>
-                                            <%} %>
+                                           <%--  <%} %> --%>
                                            <%} %>
                                            <%break;} %> 
                                            <%} %>
