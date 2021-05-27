@@ -147,6 +147,7 @@ public class UpdateProductsDetails extends HttpServlet {
 			
 			if(message!=null)
 			{
+				System.out.println(message);
 				RequestDispatcher requestdispatcher = request.getRequestDispatcher("productTable.jsp");
 				requestdispatcher.forward(request, response);
 			}

@@ -34,17 +34,17 @@ try{
 // 	System.out.println("Paytm checksum:- "+ paytmChecksum);
 	isValideChecksum = CheckSumServiceHelper.getCheckSumServiceHelper().verifycheckSum(PaytmConstants.MERCHANT_KEY,parameters,paytmChecksum);
 	outputHTML = parameters.toString();
-// 	System.out.println("checksum:- "+ isValideChecksum);
-// 	if(isValideChecksum && parameters.containsKey("RESPCODE")){
-// 		if(parameters.get("RESPCODE").equals("01")){
-// 			outputHTML = parameters.toString();
+	/* System.out.println("checksum:- "+ isValideChecksum);
+	if(isValideChecksum && parameters.containsKey("RESPCODE")){
+		if(parameters.get("RESPCODE").equals("01")){
+			outputHTML = parameters.toString();
 			
-// 		}else{
-// 			outputHTML="<b>Payment Failed.</b>";
-// 		}
-// 	}else{
-// 		outputHTML="<b>Checksum mismatched.</b>";
-// 	}
+		}else{
+			outputHTML="<b>Payment Failed.</b>";
+		}
+	}else{
+		outputHTML="<b>Checksum mismatched.</b>";
+	} */
 }catch(Exception e){
 	outputHTML=e.toString();
 }
@@ -73,22 +73,22 @@ if (null != httpSession) {
 
  
     <% String[] sArr= outputHTML.split(","); %>  
-  <%--  <% for( String s : sArr){ %>  
-  <p> <%= s %></p> 
-   <%} %>   --%>   
+<% for( String s : sArr){ %>  
+   <p hidden> <%= s %></p>  
+    <%} %>    
  
   <p hidden><%= sArr[9] %></p> 
   <% String[] sArr2= sArr[5].split("_"); %>   <!-- oid and bid -->
   <% String[] sArr1= sArr[9].split("="); %>		<!-- success -->
   <% String[] sArr3= sArr[10].split("="); %> 	<!-- amount -->
  <p hidden> <%= sArr1[1] %> </p>
-  <span hidden id="status" name="status"><%=sArr1[1] %></span> 
+  <span id="status" name="status"><%=sArr1[1] %></span> 
   <%String id = sArr[5].substring(9,12); %>
-  <span hidden id="roleid" name="roleid"><%=id %></span>
+  <span id="roleid" name="roleid"><%=id %></span>
 <% int bookid=Integer.parseInt(sArr2[1]); %>
-<span hidden id="bookid" name="bookid"><%=bookid %></span>
-<span hidden id="totalamt" name="totalamt"><%=sArr3[1] %></span>
-</p>
+<span id="bookid" name="bookid"><%=bookid %></span>
+<span id="totalamt" name="totalamt"><%=sArr3[1] %></span>
+</p> 
  
 <%if(sArr1[1].equals("TXN_SUCCESS")){ %>
 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -134,7 +134,7 @@ if (null != httpSession) {
                         </div>
                     </div>
 
-<%} %>   
+<%} %>    
  </body>
 
 <script src="neuro/vendor/jquery/dist/jquery.min.js"></script>

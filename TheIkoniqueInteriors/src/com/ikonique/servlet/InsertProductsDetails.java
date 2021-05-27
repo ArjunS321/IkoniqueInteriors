@@ -120,7 +120,7 @@ public class InsertProductsDetails extends HttpServlet {
 		}
 		else
 		{
-				
+				System.out.println("arjun");
 				String togglevalue = request.getParameter("togglevalue");
 				System.out.println("togal value:-"+togglevalue);
 				String productname=request.getParameter("pname");
