@@ -291,7 +291,7 @@ $(document).ready(function () {
 	$("#feedbackdetails").show();
 });
 $('.fa-heart').click(function(){
-	alert($(this).attr('id'));
+// 	alert($(this).attr('id'));
     if($(this).attr('att') == 0){
     
     	var pid = $(this).attr('id');
@@ -323,7 +323,7 @@ $('.fa-heart').click(function(){
 
 	function discount() {
 		var main = $('#mainprice').text();
-		alert("price"+main);
+// 		alert("price"+main);
 		var dis = $('#discount').text();
 		var dec = (dis / 100).toFixed(2);
 		var mult = main * dec;
