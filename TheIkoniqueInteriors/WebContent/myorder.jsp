@@ -270,9 +270,9 @@ if (null != httpSession1) {
 				}
 			
 				function discount(amount,disc) {
-					alert("disc fn total:-"+amount);
+					//alert("disc fn total:-"+amount);
 // 					var dis = $('#discount').text();
-					alert("discount perticular:-"+disc);
+					//alert("discount perticular:-"+disc);
 // 					var dec = (dis / 100).toFixed(2);
 // 					var mult = main * dec;
 // 					var discount = (main - mult);

@@ -366,7 +366,7 @@ $(document).ready(function(){
   					{
   						if(vfees == null || vfees == "" && designation=="" || designation== null && aboutme==null || aboutme=="")
   						{	
-  							alert("if ...if...if");
+  							//alert("if ...if...if");
   							$('#modal').modal('hide');
   		  	             	$('#modal-default').modal('show');
   		  	 				return false;

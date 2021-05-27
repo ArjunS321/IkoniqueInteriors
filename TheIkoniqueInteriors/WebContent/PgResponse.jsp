@@ -73,10 +73,10 @@ if (null != httpSession) {
 
  
     <% String[] sArr= outputHTML.split(","); %>  
-<% for( String s : sArr){ %>  
+<%-- <% for( String s : sArr){ %>  
    <p hidden> <%= s %></p>  
     <%} %>    
- 
+ --%> 
   <p hidden><%= sArr[9] %></p> 
   <% String[] sArr2= sArr[5].split("_"); %>   <!-- oid and bid -->
   <% String[] sArr1= sArr[9].split("="); %>		<!-- success -->
@@ -176,16 +176,16 @@ if (null != httpSession) {
     <script type="module" src="js/main.js"></script>
 <script>
 	$(function() {
-		alert("succesfull called..");
+		//alert("succesfull called..");
 		var bid = $(this).find('#bookid').text();
 		var status = $(this).find('#status').text();
 		var roleid = $(this).find('#roleid').text();
 		var amt = $(this).find('#totalamt').text();
-	    alert("bid:-" + bid + "status:-" + status + "roleid:-" + roleid +"totalamt:-"+amt);
+	    //alert("bid:-" + bid + "status:-" + status + "roleid:-" + roleid +"totalamt:-"+amt);
 			$.post( "AfterPaymentProcess", {bookid : bid , pstatus : status , id : roleid, gamt : amt} )
 			  .done(function( data ) 
 			  {
-				  alert("succesfull called..");
+				  //alert("succesfull called..");
 			  });
 	});
 </script>

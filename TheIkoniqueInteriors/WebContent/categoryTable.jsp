@@ -137,7 +137,7 @@
     	var myBookId="";
     	$(document).on("click", ".open-addDeleteDialog", function () {
      	var myBookId = $(this).data('id');
-     	alert(myBookId);
+     	//alert(myBookId);
      	<%-- $(".modal-body #bookId").val( myBookId ); --%>
      	$("#a").attr("href","DelectCategoryDetails?categoryId="+myBookId) 
 		

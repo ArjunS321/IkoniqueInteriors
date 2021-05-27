@@ -281,7 +281,7 @@
 				
 				if(email == "" || email == null && pass == "" || pass == null)
 				{
-					alert("if....");
+					//alert("if....");
 					$('#p2').html('Please Check Enter Email-Id & Password').css('color', 'red');
              		return false;
 				}
@@ -289,7 +289,7 @@
 				{
 					if(email.match(pattern) && pass.match(pattern1))
 					{
-						alert("else if....");
+						//alert("else if....");
 						return true;
 					}
 					else

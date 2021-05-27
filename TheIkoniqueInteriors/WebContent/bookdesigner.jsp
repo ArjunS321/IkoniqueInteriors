@@ -445,7 +445,7 @@ function onlyNumberKey(evt) {
     return true;
 }
 function validate(){
-	alert("submit called");
+	//alert("submit called");
 
 	const form = document.getElementById('form');
 	var email = document.getElementById('email').value;

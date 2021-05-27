@@ -63,8 +63,8 @@
                     <th>Status<i class="fa fa-fw fa-sort" onclick="sortTable(9)"></i></th>
                     <!-- <th><a class="item" data-toggle="tooltip" data-placement="top" title="Add Category" href="insertproduct.jsp">
                     <i class="fa fa-plus"></i></a></th> -->
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <!-- <th>Edit</th>
+                    <th>Delete</th> -->
                 </tr>
             </thead>
             <%for(User user2:userList) { %>
@@ -89,19 +89,19 @@
                     <td><%=user2.getGender() %></td>
                     <td><%=user2.getRole_id() %></td>
                     
-                    <td>
+                    <!-- <td>
                     <div class="table-data-feature">
                        <a href="#"class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                         <i class="zmdi zmdi-edit"></i>
                         </a>
                      </div>
-                    </td>
+                    </td> -->
                     <td>
-                     <div class="table-data-feature">
+                    <!--  <div class="table-data-feature">
                        <a href="#" data-toggle="modal" data-target="#modal-default" class="item" id="delbtn" data-toggle="tooltip" data-placement="top" title="Delete">
                        <i class="zmdi zmdi-delete"></i>
                        </a>                                    
-                  </div>
+                  </div> -->
                   </td>
                 </tr>
                 </tbody>

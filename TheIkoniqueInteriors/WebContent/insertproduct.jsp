@@ -717,7 +717,7 @@ function validate()
 // 	var subcategoryvalue = subcategory.options[subcategory.selectedIndex].value;
 	if(radiovalue=="category")
 	{
-		alert("if con...");
+		//alert("if con...");
 		if(cname == "" || cname == null)
 		{
 			return false;

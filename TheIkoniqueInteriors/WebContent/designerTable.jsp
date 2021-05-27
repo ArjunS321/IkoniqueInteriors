@@ -67,8 +67,8 @@
 					<th>Email-Id<i class="fa fa-fw fa-sort" onclick="sortTable(10)"></i></th>
 					<th>Password<i class="fa fa-fw fa-sort" onclick="sortTable(11)"></i></th>
 					<th>User image<i class="fa fa-fw fa-sort" onclick="sortTable(12)"></i></th>
-					<th>Edit</th>
-                    <th>Delete</th>
+					<!-- <th>Edit</th>
+                    <th>Delete</th> -->
 				</tr>
             </thead>
            <%for(User user1 : designerList){ %>
@@ -96,18 +96,18 @@
                     <td><img src="bg-img/Blank-Photo.png"></td>
                     <%} %>
                     <td>
-                    <div class="table-data-feature">
+                    <!-- <div class="table-data-feature">
                        <a href=""class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                         <i class="zmdi zmdi-edit"></i>
                         </a>
-                     </div>
+                     </div> -->
                     </td>
                     <td>
-                     <div class="table-data-feature">
+                    <!--  <div class="table-data-feature">
                        <a href="" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                        <i class="zmdi zmdi-delete"></i>
                        </a>                                    
-                  </div>
+                  </div> -->
                   </td>
                 </tr>
             </tbody>

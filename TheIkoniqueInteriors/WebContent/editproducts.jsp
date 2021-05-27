@@ -1017,7 +1017,7 @@ $("#category").change(function() {
 $("#category").change(function() {
 		
 		const catid= document.getElementById('category').value;
-		alert(catid);
+		//alert(catid);
 		$.get( "SelectSubcategory", {category: catid } )
 		  .done(function( data ) {
 			  $('#subcategory').empty()

@@ -489,7 +489,7 @@ $('.fa-heart').click(function(){
 
 	function discount() {
 		var main = $('#mainprice').text();
-		alert("price"+main);
+		//alert("price"+main);
 		var dis = $('#discount').text();
 		var dec = (dis / 100).toFixed(2);
 		var mult = main * dec;
