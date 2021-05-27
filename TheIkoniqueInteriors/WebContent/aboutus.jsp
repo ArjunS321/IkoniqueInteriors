@@ -41,8 +41,8 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-xl-5 text-center text-md-left">
-                        <h2 class="h1 mb-4">Design with us, Develop Anything.</h2>
-                        <p class="lead">Themesberg is an experienced and passionate group of designers, developers, project managers, writers and artists. Every client we work with becomes a part of the team. Together we face the challenges and celebrate the victories.</p>
+                        <h2 class="h1 mb-4">Design with Us.</h2>
+                        <p class="lead">The Ikonique Interior And Design Is A New In A Market Based On Selling Interior Designer Products.We Try Our Best To Satisfy Our Users.</p>
                         <p class="lead">Our small team is active in the creative community, endlessly interested in what’s next, and generally pleasant to be around.</p>
 <!--                         <img src="neuro/assets/img/signature.svg" alt="signature" class="mt-4" width="150"> -->
                     </div>

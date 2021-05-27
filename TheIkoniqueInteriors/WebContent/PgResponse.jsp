@@ -81,7 +81,7 @@ if (null != httpSession) {
   <% String[] sArr2= sArr[5].split("_"); %>   <!-- oid and bid -->
   <% String[] sArr1= sArr[9].split("="); %>		<!-- success -->
   <% String[] sArr3= sArr[10].split("="); %> 	<!-- amount -->
- <p hidden> <%= sArr1[1] %> </p>
+ <p hidden> <%= sArr1[1] %>
   <span id="status" name="status"><%=sArr1[1] %></span> 
   <%String id = sArr[5].substring(9,12); %>
   <span id="roleid" name="roleid"><%=id %></span>

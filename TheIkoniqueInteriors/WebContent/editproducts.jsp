@@ -519,9 +519,9 @@
 		</div>
 		</form>
 		<%}else if(isproduct){ %>
-			<form action="UpdateProductsDetails" class="w-50 ml-10" class="box" class="form" id="form"
+			<form action="UpdateProduct" class="w-50 ml-10" class="box" class="form" id="form"
 			method="post" onsubmit=" login()" enctype="multipart/form-data">
-			
+			<input type="hidden" name="editproduct" value="forproduct"> <br>
 			<div class="profile-image1 bg-primary shadow-inset border border-light rounded ml-10 p-3 ">
 				<img src="data:image/jpg;base64,<%=product.getProductpicString() %>" height="365px" width="150px" 
 				class="card-img-top rounded" alt="Leos Portrait">
@@ -534,7 +534,7 @@
 			</div>
 								
 			<div class="form-group mb-3 ml-10 inputBox productname">
-			<input type="hidden" name="edit" value="forproduct"> <br>
+			
 			<input type="hidden" name="productId" value="<%=String.valueOf(product.getProduct_id()) %>"> <br>
 			<label for="productname">Product Name</label> 
 			<input type="text" value="<%=product.getProduct_name() %>" name="productname" class="form-control" id="productname" autocomplete="off"

@@ -167,6 +167,7 @@
                                         	<%if(od.getOrderid()==order.getOrderid()) {%>
                                         	<%for(Product product:productList) {%>
                                         	<%if(product.getProduct_id()==od.getProductid()) {%>
+                                        	<%if(order.getPaymentstatus().equalsIgnoreCase("success")) {%>
                                             <tr>
                                                 <td><%=order.getOrderdate() %></td>
                                                 <td>OID_<%=order.getOrderid() %></td>
@@ -184,6 +185,7 @@
                                                  <%DecimalFormat df1=new DecimalFormat("#.00"); %>
                                                 <td class="text-right">&#x20B9;<%=(df1.format(amt*od.getQuantity()))%> </td>
                                            </tr>
+                                            <%} %>
                                             <%} %>
                                             <%} %>
                                             <%} %>
