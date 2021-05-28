@@ -73,7 +73,7 @@ public class GenerateReportForAdmin extends HttpServlet {
 		totalearning = Math.ceil(earnings);
 		try {
 			System.out.println("Hii");
-			String filename = "E:\\IkoniqueReport.pdf"; 
+			String filename = "E://IkoniqueReport.pdf"; 
 			Document document = new Document();
 //			response.setContentType("APPLICATION/OCTET-STREAM");
 //			response.setHeader("Content-Disposition", "attachment; filename=\""+filename+"\"");

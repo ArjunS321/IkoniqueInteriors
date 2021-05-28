@@ -520,7 +520,7 @@
 		</form>
 		<%}else if(isproduct){ %>
 			<form action="UpdateProduct" class="w-50 ml-10" class="box" class="form" id="form"
-			method="post" onsubmit=" login()" enctype="multipart/form-data">
+			method="post" enctype="multipart/form-data">
 			<input type="hidden" name="editproduct" value="forproduct"> <br>
 			<div class="profile-image1 bg-primary shadow-inset border border-light rounded ml-10 p-3 ">
 				<img src="data:image/jpg;base64,<%=product.getProductpicString() %>" height="365px" width="150px" 
